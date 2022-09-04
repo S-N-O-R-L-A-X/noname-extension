@@ -1,0 +1,9 @@
+extension["抗七阴"]={
+	intro:"",
+	author:"SNORLAX",
+	netdisk:"",
+	forum:"",
+	version:"1.0",
+	files:["神司马炎.jpg","extension.js","界神孙策.jpg"],
+	size:"5.3MB"
+};
