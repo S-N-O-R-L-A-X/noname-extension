@@ -10,7 +10,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         package: {
             character: {
                 character: {
-                    "卡比兽": ["male", "pokemon", 20, ["睡觉", "梦话", "腹鼓"], []],
+                    "卡比兽": ["male", "pokemon", 20, ["睡觉", "梦话", "腹鼓", "快闪"], []],
                 },
                 translate: {
                     "卡比兽": "卡比兽",
@@ -33,6 +33,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 }
                             },
                         },
+                    },
+                    "快闪": {
+                        trigger: { player: 'damageBegin' },
+                        usable: 1,
+                        content: function () {
+                            trigger.num = 0;
+                        }
                     },
                     "睡觉": {
                         enable: "phaseUse",
@@ -102,7 +109,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 translate: {
                     "神宝": "神宝",
-                    "神宝_info": "锁定技，你不能成为延时类锦囊的目标",
+                    "神宝_info": "锁定技，你不能成为延时类锦囊的目标。",
+                    "快闪": "快闪",
+                    "快闪_info": "每回合限一次，当你受到伤害时，你可以令此伤害无效。",
                     "睡觉": "睡觉",
                     "睡觉_info": "出牌阶段时，若你的武将牌正面向上，你可以翻面，并将体力值恢复至体力上限。",
                     "梦话": "梦话",
