@@ -66,6 +66,37 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             };
                         }
                     },
+                    "腹鼓": {
+                        enable: 'phaseUse',
+                        filter: function (event, player) {
+                            return player.hp * 2 > player.maxHp;
+                        },
+                        content: function () {
+                            player.loseHp(Math.floor(player.maxHp / 2));
+                            if (player.hasSkill('腹鼓2')) {
+                                player.storage.power++;
+                            }
+                            else {
+                                player.storage.power = 1;
+                                player.addSkill('腹鼓2');
+                            }
+                        },
+                    },
+                    "腹鼓2": {
+                        trigger: { source: 'damageBegin1' },
+                        forced: true,
+                        charlotte: true,
+                        content: function () {
+                            trigger.num += player.storage.power;
+                        },
+                        mark: true,
+                        intro: {
+                            content: function (storage, player) {
+                                return `造成伤害时，此伤害+${player.storage.power}`;
+                            }
+                        },
+                    },
+
                 },
                 translate: {
                     "跋扈": "跋扈",
@@ -74,6 +105,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     "睡觉_info": "出牌阶段时，若你的武将牌正面向上，你可以翻面，并将体力值恢复至体力上限。",
                     "梦话": "梦话",
                     "梦话_info": "当你的武将牌从背面翻至正面时，你可以对一名角色造成一点伤害。",
+                    "腹鼓": "腹鼓",
+                    "腹鼓_info": "出牌阶段时，当你的体力值大于体力上限的一半，你可以失去体力上限的一半体力，然后你本局游戏造成的伤害+1。",
                 },
             },
             intro: "",
