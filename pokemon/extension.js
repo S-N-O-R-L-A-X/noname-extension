@@ -25,6 +25,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             },
             skill: {
                 skill: {
+                    "神宝": {
+                        mod: {
+                            targetEnabled: function (card, player, target) {
+                                if (get.type(card) == 'delay') {
+                                    return false;
+                                }
+                            },
+                        },
+                    },
                     "睡觉": {
                         enable: "phaseUse",
                         filter: function (event, player) {
@@ -92,6 +101,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     },
                 },
                 translate: {
+                    "神宝": "神宝",
+                    "神宝_info": "锁定技，你不能成为延时类锦囊的目标",
                     "睡觉": "睡觉",
                     "睡觉_info": "出牌阶段时，若你的武将牌正面向上，你可以翻面，并将体力值恢复至体力上限。",
                     "梦话": "梦话",
