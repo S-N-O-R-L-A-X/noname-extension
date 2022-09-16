@@ -1,13 +1,16 @@
 game.import("extension", function (lib, game, ui, get, ai, _status) {
     return {
         name: "宝可梦", content: function (config, pack) {
+            lib.group.push('pokemon');
+            lib.translate.pokemon = '宝';
+        },
+        precontent: function () {
 
-        }, precontent: function () {
-
-        }, help: {}, config: {}, package: {
+        }, help: {}, config: {},
+        package: {
             character: {
                 character: {
-                    "卡比兽": ["male", "wei", 20, ["睡觉", "梦话", "腹鼓"], []],
+                    "卡比兽": ["male", "pokemon", 20, ["睡觉", "梦话", "腹鼓"], []],
                 },
                 translate: {
                     "卡比兽": "卡比兽",
@@ -23,17 +26,19 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             skill: {
                 skill: {
                     "睡觉": {
-                        enable: 'phaseUse',
+                        enable: "phaseUse",
                         filter: function (event, player) {
                             return !player.isTurnedOver();
                         },
                         content: function () {
                             player.recover(player.maxHp - player.hp);
                             player.turnOver();
-                        }
+                        },
                     },
                     "梦话": {
-                        trigger: { player: 'turnOverEnd' },
+                        trigger: {
+                            player: "turnOverEnd",
+                        },
                         filter: function (event, player) {
                             return !player.isTurnedOver();
                         },
@@ -51,10 +56,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 result.targets[0].damage();
                             };
 
-                        }
+                        },
                     },
                     "腹鼓": {
-                        enable: 'phaseUse',
+                        enable: "phaseUse",
                         filter: function (event, player) {
                             return player.hp * 2 > player.maxHp;
                         },
@@ -70,7 +75,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         },
                     },
                     "腹鼓2": {
-                        trigger: { source: 'damageBegin1' },
+                        trigger: {
+                            source: "damageBegin1",
+                        },
                         forced: true,
                         charlotte: true,
                         content: function () {
@@ -80,7 +87,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         intro: {
                             content: function (storage, player) {
                                 return `造成伤害时，此伤害+${player.storage.power}`;
-                            }
+                            },
                         },
                     },
                 },
@@ -98,6 +105,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             diskURL: "",
             forumURL: "",
             version: "1.0",
-        }, files: { "character": ["143Snorlax.png"], "card": [], "skill": [] }
+        }, files: { "character": ["卡比兽.jpg"], "card": [], "skill": [] }
     }
 })
