@@ -10,7 +10,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         package: {
             character: {
                 character: {
-                    "卡比兽": ["male", "pokemon", 20, ["睡觉", "梦话", "腹鼓", "快闪"], []],
+                    "卡比兽": ["male", "pokemon", 20, ["神宝", "睡觉", "梦话", "腹鼓", "快闪"], []],
                 },
                 translate: {
                     "卡比兽": "卡比兽",
