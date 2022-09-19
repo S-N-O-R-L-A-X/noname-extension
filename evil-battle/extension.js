@@ -9,15 +9,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     const idx = Math.floor(Math.random() * (n - i));
                     ans.push(list[idx]);
                     list.splice(idx, 1);
-                    console.log(list)
                 }
-                console.log(ans)
                 return ans;
             }
             if (lib.config.mode == "brawl") {
                 if (!lib.storage.scene) lib.storage.scene = {};
                 // if (!lib.storage.scene["大战七阴"]) {
-                const list = ['xushao', 'puyuan', 'guozhao', 'guansuo', 'zhaoxiang', 'xin_lingtong', 're_liuzan', "caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi"];
+                const list = ['xushao', 'puyuan', 'guozhao', 'guansuo', 'zhaoxiang', 'xin_lingtong', 're_liuzan', "caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu", "zhouyi"];
                 const characters = initList(list);
                 lib.storage.scene["大战七阴"] = {
                     name: "大战七阴",
