@@ -17,7 +17,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             if (lib.config.mode == "brawl") {
                 if (!lib.storage.scene) lib.storage.scene = {};
                 // if (!lib.storage.scene["大战七阴"]) {
-                const list = ['xushao', 'puyuan', 'guozhao', 'guansuo', 'zhaoxiang', 'xin_lingtong', 're_liuzan'];
+                const list = ['xushao', 'puyuan', 'guozhao', 'guansuo', 'zhaoxiang', 'xin_lingtong', 're_liuzan', "caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi"];
                 const characters = initList(list);
                 lib.storage.scene["大战七阴"] = {
                     name: "大战七阴",
