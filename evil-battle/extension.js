@@ -3,14 +3,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         name: "大战七阴",
         content: function () {
             function initList(arr) {
-                const ans = [], n = arr.length;
-                let list = arr;
-                for (let i = 0; i < 7; ++i) {
-                    const idx = Math.floor(Math.random() * (n - i));
-                    ans.push(list[idx]);
-                    list.splice(idx, 1);
-                }
-                return ans;
+                return arr.randomSort().slice(0, 7);
             }
             if (lib.config.mode == "brawl") {
                 if (!lib.storage.scene) lib.storage.scene = {};
@@ -22,7 +15,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 const characters = initList(list);
                 lib.storage.scene["大战七阴"] = {
                     name: "大战七阴",
-                    intro: "主公可供玩家设定，其余七位ai玩家从阴间武将中随机选中一个。",
+                    intro: `主公可供玩家设定，其余七位ai玩家从阴间武将中随机选中一个。
+                    如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！
+                     https://github.com/S-N-O-R-L-A-X/noname-extension `,
                     players: [
                         { "name": "random", "name2": "none", "identity": "zhu", "position": 1, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": true, "handcards": [], "equips": [], "judges": [] },
                         { "name": characters[0], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
