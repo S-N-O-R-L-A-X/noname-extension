@@ -1,6 +1,13 @@
 game.import("extension", function (lib, game, ui, get, ai, _status) {
     return {
         name: "大战七阴",
+        config: {
+            intro: {
+                name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。`,
+                clear: true,
+                nopointer: true,
+            },
+        },
         content: function () {
             function initList(arr) {
                 return arr.randomSort().slice(0, 7);
@@ -38,6 +45,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 if (!_status.extensionmade) _status.extensionmade = [];
                 _status.extensionmade.push("大战七阴");
             }
-        }
+        },
+
     }
 })
