@@ -16,17 +16,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     connect: true,
                     characterSort: {
                         against7devil: {
-                            against7devil_boss: ["界魏武大帝"],
-                            against7devil_fusion: ["界神孙策"]
+                            against7devil_boss: ["re_boss_caocao"],
+                            against7devil_fusion: ["re_shen_sunce"]
                         }
                     },
                     character: {
-                        "界魏武大帝": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
-                        "界神孙策": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
+                        "re_boss_caocao": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
+                        "re_shen_sunce": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
                     },
                     characterIntro: {
-                        "界魏武大帝": "来源于挑战模式boss魏武大帝，只是加了一个不能成为延时锦囊目标的技能就可以大战七阴。",
-                        "界神孙策": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。",
+                        "re_boss_caocao": "来源于挑战模式boss魏武大帝，只是加了一个不能成为延时锦囊目标的技能就可以大战七阴。",
+                        "re_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。",
                     },
                     skill: {
                         "神护": {
@@ -94,10 +94,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         "冯河_info": "①锁定技，你的手牌上限基数等于你的体力上限。②当你受到其他角色造成的伤害时，若你有牌且你的体力上限大于1，则你防止此伤害，减一点体力上限并将一张手牌交给一名其他角色。然后若你拥有〖英霸〗，则伤害来源获得一个“平定”标记。",
                     },
                     translate: {
-                        "界魏武大帝": "界魏武大帝",
-                        "界神孙策": "界神孙策",
+                        "re_boss_caocao": "界魏武大帝",
+                        "re_shen_sunce": "界神孙策",
                     }
                 };
+                console.log(against7devil.character)
+                // for (let i in against7devil.character) {
+
+                //     const path = 'ext:大战七阴/images/' + i + '.jpg';
+                //     console.log(path);
+                //     //game.js will convert ext to different path in different devices
+                //     against7devil.character[i][4].push(path);
+                // }
                 return against7devil;
             })
         },
@@ -142,13 +150,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         package: {
             character: {
                 character: {
-                    "界魏武大帝": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
-                    "界神孙策": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
+                    "re_boss_caocao": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
+                    "re_shen_sunce": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
 
                 },
                 translate: {
-                    "界魏武大帝": "界魏武大帝",
-                    "界神孙策": "界神孙策",
+                    "re_boss_caocao": "界魏武大帝",
+                    "re_shen_sunce": "界神孙策",
                 }
             },
             skill: {
@@ -224,6 +232,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             against7devil_boss: "挑战boss加强包",
             against7devil_fusion: "融包"
         },
-        files: { "character": ["界魏武大帝.jpg", "界神孙策.jpg"], "card": [], "skill": [] }
+        files: { "character": ["re_boss_caocao", "re_shen_sunce"], "card": [], "skill": [] }
     }
 })
