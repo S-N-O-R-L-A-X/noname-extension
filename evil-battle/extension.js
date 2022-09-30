@@ -8,6 +8,99 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
         },
+        // TODO: divide characters into groups
+        // precontent: function (against7devil) {
+        //     game.import("character", function () {
+        //         var against7devil = {
+        //             name: "against7devil",
+        //             connect: true,
+        //             characterSort: {
+        //                 against7devil: {
+        //                     against7devil_boss: ["界魏武大帝"],
+        //                     against7devil_fusion: ["界神孙策"]
+        //                 }
+        //             },
+        //             character: {
+        //                 "界魏武大帝": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
+        //                 "界神孙策": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
+        //             },
+        //             characterIntro: {
+        //                 "界魏武大帝": "来源于挑战boss",
+        //                 "界神孙策": "来源于挑战boss，孙策",
+        //             },
+        //             skill: {
+        //                 "神护": {
+        //                     mod: {
+        //                         targetEnabled: function (card, player, target) {
+        //                             if (get.type(card) == 'delay') {
+        //                                 return false;
+        //                             }
+        //                         },
+        //                     },
+        //                 },
+        //                 "冯河": {
+        //                     audio: "ext:抗七阴:2",
+        //                     mod: {
+        //                         maxHandcardBase: function (player) {
+        //                             return player.maxHp;
+        //                         },
+        //                     },
+        //                     trigger: {
+        //                         player: "damageBegin2",
+        //                     },
+        //                     forced: true,
+        //                     filter: function (event, player) {
+        //                         return event.source && event.source != player && player.maxHp > 1 && player.countCards('h') > 0;
+        //                     },
+        //                     content: function () {
+        //                         'step 0'
+        //                         player.chooseCardTarget({
+        //                             prompt: '请选择【冯河】的牌和目标',
+        //                             prompt2: '将一张手牌交给一名其他角色并防止伤害' + (player.hasSkill('yingba') ? '，然后令伤害来源获得一个“平定”标记' : ''),
+        //                             filterCard: true,
+        //                             forced: false,
+        //                             filterTarget: lib.filter.notMe,
+        //                             ai1: function (card) {
+        //                                 if (get.tag(card, 'recover') && !game.hasPlayer(function (current) {
+        //                                     return get.attitude(current, player) > 0 && !current.hasSkillTag('nogain');
+        //                                 })) return 0;
+        //                                 return 1 / Math.max(0.1, get.value(card));
+        //                             },
+        //                             ai2: function (target) {
+        //                                 var player = _status.event.player, att = get.attitude(player, target);
+        //                                 if (target.hasSkillTag('nogain')) att /= 9;
+        //                                 return 4 + att;
+        //                             },
+        //                         });
+        //                         'step 1'
+        //                         if (result.bool) {
+        //                             var target = result.targets[0];
+        //                             //player.logSkill('pinghe',target);
+        //                             player.line(target, 'green');
+        //                             target.gain(result.cards, player, 'giveAuto');
+        //                             trigger.cancel();
+        //                             player.loseMaxHp();
+        //                             if (player.hasSkill('yingba')) {
+        //                                 trigger.source.addMark('yingba_mark', 1);
+        //                             }
+        //                         }
+        //                     },
+        //                 },
+        //             },
+        //             translate: {
+        //                 "神护": "神护",
+        //                 "神护_info": "锁定技，你不能成为延时类锦囊的目标",
+        //                 "冯河": "冯河",
+        //                 "冯河_info": "①锁定技，你的手牌上限基数等于你的体力上限。②当你受到其他角色造成的伤害时，若你有牌且你的体力上限大于1，则你防止此伤害，减一点体力上限并将一张手牌交给一名其他角色。然后若你拥有〖英霸〗，则伤害来源获得一个“平定”标记。",
+        //             },
+        //             translate: {
+        //                 "界魏武大帝": "界魏武大帝",
+        //                 "界神孙策": "界神孙策",
+        //             }
+        //         };
+        //         return against7devil;
+        //     })
+        // },
         content: function () {
             function initList(arr) {
                 return arr.randomSort().slice(0, 7);
@@ -46,6 +139,90 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 _status.extensionmade.push("大战七阴");
             }
         },
+        package: {
+            character: {
+                character: {
+                    "界魏武大帝": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
+                    "界神孙策": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
 
+                },
+                translate: {
+                    "界魏武大帝": "界魏武大帝",
+                    "界神孙策": "界神孙策",
+                }
+            },
+            skill: {
+                skill: {
+                    "神护": {
+                        mod: {
+                            targetEnabled: function (card, player, target) {
+                                if (get.type(card) == 'delay') {
+                                    return false;
+                                }
+                            },
+                        },
+                    },
+                    "冯河": {
+                        audio: "ext:抗七阴:2",
+                        mod: {
+                            maxHandcardBase: function (player) {
+                                return player.maxHp;
+                            },
+                        },
+                        trigger: {
+                            player: "damageBegin2",
+                        },
+                        forced: true,
+                        filter: function (event, player) {
+                            return event.source && event.source != player && player.maxHp > 1 && player.countCards('h') > 0;
+                        },
+                        content: function () {
+                            'step 0'
+                            player.chooseCardTarget({
+                                prompt: '请选择【冯河】的牌和目标',
+                                prompt2: '将一张手牌交给一名其他角色并防止伤害' + (player.hasSkill('yingba') ? '，然后令伤害来源获得一个“平定”标记' : ''),
+                                filterCard: true,
+                                forced: false,
+                                filterTarget: lib.filter.notMe,
+                                ai1: function (card) {
+                                    if (get.tag(card, 'recover') && !game.hasPlayer(function (current) {
+                                        return get.attitude(current, player) > 0 && !current.hasSkillTag('nogain');
+                                    })) return 0;
+                                    return 1 / Math.max(0.1, get.value(card));
+                                },
+                                ai2: function (target) {
+                                    var player = _status.event.player, att = get.attitude(player, target);
+                                    if (target.hasSkillTag('nogain')) att /= 9;
+                                    return 4 + att;
+                                },
+                            });
+                            'step 1'
+                            if (result.bool) {
+                                var target = result.targets[0];
+                                //player.logSkill('pinghe',target);
+                                player.line(target, 'green');
+                                target.gain(result.cards, player, 'giveAuto');
+                                trigger.cancel();
+                                player.loseMaxHp();
+                                if (player.hasSkill('yingba')) {
+                                    trigger.source.addMark('yingba_mark', 1);
+                                }
+                            }
+                        },
+                    },
+                },
+                translate: {
+                    "神护": "神护",
+                    "神护_info": "锁定技，你不能成为延时类锦囊的目标",
+                    "冯河": "冯河",
+                    "冯河_info": "①锁定技，你的手牌上限基数等于你的体力上限。②当你受到其他角色造成的伤害时，若你有牌且你的体力上限大于1，则你防止此伤害，减一点体力上限并将一张手牌交给一名其他角色。然后若你拥有〖英霸〗，则伤害来源获得一个“平定”标记。",
+                }
+            }
+        },
+        translate: {
+            against7devil: "抗七阴",
+            against7devil_boss: "挑战boss加强包",
+            against7devil_fusion: "融包"
+        }
     }
 })
