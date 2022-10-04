@@ -1,56 +1,83 @@
 game.import("extension", function (lib, game, ui, get, ai, _status) {
     return {
         name: "大战七阴",
+        editable: false,
         config: {
             intro: {
                 name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。
                 如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！<br>
-                <a href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a>
+                <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a>
                 `,
                 clear: true,
                 nopointer: true,
             },
+            update: {
+                name: '<div class=".update">扩展版本：2.0<font size="4px">▶▶▶</font></div>',
+                clear: true,
+                intro: "点击查看此版本的更新内容",
+                onclick: function () {
+                    if (this.update == undefined) {
+                        const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了更新说明功能<br>' +
+                            '<li><span style="color:#006400">说明二</span>：<br>更新了新武将：魅魔<br>' +
+                            '<li><span style="color:#006400">说明三</span>：<br>增加了github链接跳转功能<br>'
+                        );
+                        this.parentNode.insertBefore(more, this.nextSibling);
+                        this.update = more;
+                        this.innerHTML = '<div class=".update">扩展版本<font size="4px">▼▼▼</font></div>';
+                    }
+                    else {
+                        this.parentNode.removeChild(this.update);
+                        delete this.update;
+                        this.innerHTML = '<div class=".update">扩展版本：2.0<font size="4px">▶▶▶</font></div>';
+                    };
+                }
+            },
         },
         // TODO: divide characters into groups
         precontent: function (against7devil) {
-            game.import("character", function () {
-                var against7devil = {
-                    name: "against7devil",
-                    connect: true,
-                    characterSort: {
-                        against7devil: {
-                            "against7devil_boss": ["re_boss_caocao", "succubus"],
-                            "against7devil_fusion": ["re_shen_sunce"]
-                        }
-                    },
-                    character: {
-                        "re_boss_caocao": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
-                        "re_shen_sunce": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
-                        "succubus": ["female", "shen", 6, ["meihun", "rebiyue", "yuehun", "yunshen", "boss_guimei", "驭心"], ["zhu", "boss", "bossallowed"]],
-                    },
-                    characterIntro: {
-                        "re_boss_caocao": "来源于挑战模式boss魏武大帝，只是加了一个不能成为延时锦囊目标的技能就可以大战七阴。",
-                        "re_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。",
-                        "succubus": "绝代妖姬+神貂蝉，够得上魅魔了吧",
-                    },
-                    skill: {
-                    },
-                    translate: {
-                    },
-                };
+            if (against7devil.enable) {
+                game.import("character", function () {
+                    var against7devil = {
+                        name: "against7devil",
+                        connect: true,
 
-                // for (let i in against7devil.character) {
+                        character: {
+                            "re_boss_caocao": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
+                            "re_shen_sunce": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
+                            "succubus": ["female", "shen", 6, ["meihun", "rebiyue", "yuehun", "yunshen", "boss_guimei", "驭心"], ["zhu", "boss", "bossallowed"]],
+                        },
+                        characterSort: {
+                            against7devil: {
+                                against7devil_boss: ["re_boss_caocao", "succubus"],
+                                against7devil_fusion: ["re_shen_sunce"]
+                            }
+                        },
+                        characterIntro: {
+                            "re_boss_caocao": "来源于挑战模式boss魏武大帝，只是加了一个不能成为延时锦囊目标的技能就可以大战七阴。",
+                            "re_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。",
+                            "succubus": "绝代妖姬+神貂蝉，够得上魅魔了吧",
+                        },
+                        skill: {
+                        },
+                        translate: {
+                        },
+                    };
 
-                //     const path = 'ext:大战七阴/images/' + i + '.jpg';
-                //     console.log(path);
-                //     //game.js will convert ext to different path in different devices
-                //     against7devil.character[i][4].push(path);
-                // }
-                return against7devil;
-            })
+                    // for (let i in against7devil.character) {
+
+                    //     const path = 'ext:大战七阴/images/' + i + '.jpg';
+                    //     console.log(path);
+                    //     //game.js will convert ext to different path in different devices
+                    //     against7devil.character[i][4].push(path);
+                    // }
+                    return against7devil;
+                })
+            }
         },
         content: function () {
-            // lib.init.css(lib.assetURL + 'extension/阳光包', 'extension');
+            lib.init.css(lib.assetURL + 'extension/大战七阴', 'extension');
+
             function initList(arr) {
                 return arr.randomSort().slice(0, 7);
             }
@@ -66,7 +93,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     name: "大战七阴",
                     intro: `主公可供玩家设定，其余七位ai玩家从阴间武将中随机选中一个。
                     如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！<br>
-                     <a href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a>`,
+                     <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a>`,
                     players: [
                         { "name": "random", "name2": "none", "identity": "zhu", "position": 1, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": true, "handcards": [], "equips": [], "judges": [] },
                         { "name": characters[0], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
@@ -243,7 +270,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             }
         },
         translate: {
-            against7devil: "抗七阴",
+            update: "更新情况",
+            against7devil: "大战七阴",
             against7devil_boss: "挑战boss加强包",
             against7devil_fusion: "融包"
         },
