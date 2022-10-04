@@ -16,89 +16,26 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     connect: true,
                     characterSort: {
                         against7devil: {
-                            against7devil_boss: ["re_boss_caocao"],
-                            against7devil_fusion: ["re_shen_sunce"]
+                            "against7devil_boss": ["re_boss_caocao", "succubus"],
+                            "against7devil_fusion": ["re_shen_sunce"]
                         }
                     },
                     character: {
                         "re_boss_caocao": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
                         "re_shen_sunce": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
+                        "succubus": ["female", "shen", 6, ["meihun", "rebiyue", "yuehun", "yunshen", "boss_guimei", "驭心"], ["zhu", "boss", "bossallowed"]],
                     },
                     characterIntro: {
                         "re_boss_caocao": "来源于挑战模式boss魏武大帝，只是加了一个不能成为延时锦囊目标的技能就可以大战七阴。",
                         "re_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。",
+                        "succubus": "绝代妖姬+神貂蝉，够得上魅魔了吧",
                     },
                     skill: {
-                        "神护": {
-                            mod: {
-                                targetEnabled: function (card, player, target) {
-                                    if (get.type(card) == 'delay') {
-                                        return false;
-                                    }
-                                },
-                            },
-                        },
-                        "冯河": {
-                            audio: "ext:抗七阴:2",
-                            mod: {
-                                maxHandcardBase: function (player) {
-                                    return player.maxHp;
-                                },
-                            },
-                            trigger: {
-                                player: "damageBegin2",
-                            },
-                            forced: true,
-                            filter: function (event, player) {
-                                return event.source && event.source != player && player.maxHp > 1 && player.countCards('h') > 0;
-                            },
-                            content: function () {
-                                'step 0'
-                                player.chooseCardTarget({
-                                    prompt: '请选择【冯河】的牌和目标',
-                                    prompt2: '将一张手牌交给一名其他角色并防止伤害' + (player.hasSkill('yingba') ? '，然后令伤害来源获得一个“平定”标记' : ''),
-                                    filterCard: true,
-                                    forced: false,
-                                    filterTarget: lib.filter.notMe,
-                                    ai1: function (card) {
-                                        if (get.tag(card, 'recover') && !game.hasPlayer(function (current) {
-                                            return get.attitude(current, player) > 0 && !current.hasSkillTag('nogain');
-                                        })) return 0;
-                                        return 1 / Math.max(0.1, get.value(card));
-                                    },
-                                    ai2: function (target) {
-                                        var player = _status.event.player, att = get.attitude(player, target);
-                                        if (target.hasSkillTag('nogain')) att /= 9;
-                                        return 4 + att;
-                                    },
-                                });
-                                'step 1'
-                                if (result.bool) {
-                                    var target = result.targets[0];
-                                    //player.logSkill('pinghe',target);
-                                    player.line(target, 'green');
-                                    target.gain(result.cards, player, 'giveAuto');
-                                    trigger.cancel();
-                                    player.loseMaxHp();
-                                    if (player.hasSkill('yingba')) {
-                                        trigger.source.addMark('yingba_mark', 1);
-                                    }
-                                }
-                            },
-                        },
                     },
                     translate: {
-                        "神护": "神护",
-                        "神护_info": "锁定技，你不能成为延时类锦囊的目标",
-                        "冯河": "冯河",
-                        "冯河_info": "①锁定技，你的手牌上限基数等于你的体力上限。②当你受到其他角色造成的伤害时，若你有牌且你的体力上限大于1，则你防止此伤害，减一点体力上限并将一张手牌交给一名其他角色。然后若你拥有〖英霸〗，则伤害来源获得一个“平定”标记。",
                     },
-                    translate: {
-                        "re_boss_caocao": "界魏武大帝",
-                        "re_shen_sunce": "界神孙策",
-                    }
                 };
-                console.log(against7devil.character)
+
                 // for (let i in against7devil.character) {
 
                 //     const path = 'ext:大战七阴/images/' + i + '.jpg';
@@ -152,11 +89,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 character: {
                     "re_boss_caocao": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
                     "re_shen_sunce": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
-
+                    "succubus": ["female", "shen", 6, ["meihun", "rebiyue", "yuehun", "yunshen", "boss_guimei", "驭心"], ["zhu", "boss", "bossallowed"]],
                 },
                 translate: {
                     "re_boss_caocao": "界魏武大帝",
                     "re_shen_sunce": "界神孙策",
+                    "succubus": "魅魔"
                 }
             },
             skill: {
@@ -218,12 +156,85 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             }
                         },
                     },
+                    "驭心": {
+                        audio: "ext:无名扩展:2",
+                        enable: "phaseUse",
+                        usable: 2,
+                        filter: function (event, player) {
+                            if (game.countPlayer() < 3) return false;
+                            for (var i of lib.suit) {
+                                if (player.countCards('h', { suit: i }) > 1) return true;
+                            }
+                            return false;
+                        },
+                        complexCard: true,
+                        position: "h",
+                        filterCard: function (card, player) {
+                            if (!ui.selected.cards.length) {
+                                var suit = get.suit(card);
+                                return player.countCards('h', function (card2) {
+                                    return card != card2 && get.suit(card2, player) == suit;
+                                }) > 0;
+                            }
+                            return get.suit(card, player) == get.suit(ui.selected.cards[0], player);
+                        },
+                        selectCard: 2,
+                        selectTarget: 2,
+                        filterTarget: function (card, player, target) {
+                            return player != target;
+                        },
+                        multitarget: true,
+                        multiline: true,
+                        delay: false,
+                        check: function (card) {
+                            return 6 - get.value(card);
+                        },
+                        targetprompt: ["拼点发起人", "拼点目标"],
+                        content: function () {
+                            'step 0'
+                            player.showCards(cards);
+                            'step 1'
+                            var target = targets[0];
+                            targets.sortBySeat();
+                            if (target != targets[0]) cards.reverse();
+                            for (var i = 0; i < targets.length; i++) {
+                                targets[i].gain(cards[i], player, 'visible');
+                                player.$give(cards[i], targets[i]);
+                            }
+                            'step 2'
+                            if (targets[0].canCompare(targets[1])) {
+                                targets[0].chooseToCompare(targets[1]);
+                            }
+                            else event.finish();
+                            'step 3'
+                            if (result.winner !== targets[0]) targets[0].addMark('huoxin', 1);
+                            if (result.winner !== targets[1]) targets[1].addMark('huoxin', 1);
+                        },
+                        marktext: "魅",
+                        intro: {
+                            name: "魅惑",
+                            "name2": "魅惑",
+                            content: "mark",
+                        },
+                        group: "huoxin_control",
+                        ai: {
+                            order: 1,
+                            result: {
+                                target: function (player, target) {
+                                    if (target.hasMark('huoxin')) return -2;
+                                    return -1;
+                                },
+                            },
+                        },
+                    },
                 },
                 translate: {
                     "神护": "神护",
                     "神护_info": "锁定技，你不能成为延时类锦囊的目标",
                     "冯河": "冯河",
                     "冯河_info": "①锁定技，你的手牌上限基数等于你的体力上限。②当你受到其他角色造成的伤害时，若你有牌且你的体力上限大于1，则你防止此伤害，减一点体力上限并将一张手牌交给一名其他角色。然后若你拥有〖英霸〗，则伤害来源获得一个“平定”标记。",
+                    "驭心": "驭心",
+                    "驭心_info": "出牌阶段限两次，你可以展示两张花色相同的手牌并分别交给两名其他角色，然后令这两名角色拼点，没赢的角色获得1个“魅惑”标记。拥有2个或更多“魅惑”的角色回合即将开始时，该角色移去其所有“魅惑”，此回合改为由你操控。",
                 }
             }
         },
@@ -232,6 +243,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             against7devil_boss: "挑战boss加强包",
             against7devil_fusion: "融包"
         },
-        files: { "character": ["re_boss_caocao", "re_shen_sunce"], "card": [], "skill": [] }
+        files: { "character": ["re_boss_caocao", "re_shen_sunce", "succubus"], "card": [], "skill": [] }
     }
 })
