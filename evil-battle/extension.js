@@ -59,15 +59,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         },
                         characterSort: {
                             against7devil: {
-                                against7devil_boss: ["re_boss_caocao", "succubus"],
+                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo"],
                                 against7devil_fusion: ["re_shen_sunce"]
                             }
                         },
                         characterIntro: {
-                            "re_boss_caocao": "来源于挑战模式boss魏武大帝，只是加了一个不能成为延时锦囊目标的技能就可以大战七阴。",
-                            "re_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。",
-                            "succubus": "绝代妖姬+神貂蝉，够得上魅魔了吧",
-                            "re_boss_huatuo": "来源于挑战模式boss药坛圣手"
+                            "re_boss_caocao": "来源于挑战模式boss魏武大帝，只是加了一个不能成为延时锦囊目标的技能就可以大战七阴。<br> 【强度】★★★★",
+                            "re_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。<br> 【强度】★★★★★",
+                            "succubus": "绝代妖姬+神貂蝉，够得上魅魔了吧。<br>【强度】★★★★★",
+                            "re_boss_huatuo": "来源于挑战模式boss药坛圣手。<br>【强度】★★★★★"
                         },
                         skill: {
                             "神护": {
@@ -200,21 +200,27 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
                         },
                         translate: {
+                            // config
                             update: "更新情况",
+
+                            //classification
                             against7devil: "大战七阴",
                             against7devil_boss: "挑战boss加强包",
                             against7devil_fusion: "融包",
+
+                            //character
+                            "re_boss_caocao": "界魏武大帝",
+                            "re_shen_sunce": "界神孙策",
+                            "succubus": "魅魔",
+                            "re_boss_huatuo": "界药坛圣手",
+
+                            //skill
                             "神护": "神护",
                             "神护_info": "锁定技，你不能成为延时类锦囊的目标",
                             "冯河": "冯河",
                             "冯河_info": "①锁定技，你的手牌上限基数等于你的体力上限。②当你受到其他角色造成的伤害时，若你有牌且你的体力上限大于1，则你防止此伤害，减一点体力上限并将一张手牌交给一名其他角色。然后若你拥有〖英霸〗，则伤害来源获得一个“平定”标记。",
                             "驭心": "驭心",
                             "驭心_info": "出牌阶段限两次，你可以展示两张花色相同的手牌并分别交给两名其他角色，然后令这两名角色拼点，没赢的角色获得1个“魅惑”标记。拥有2个或更多“魅惑”的角色回合即将开始时，该角色移去其所有“魅惑”，此回合改为由你操控。",
-                            "re_boss_caocao": "界魏武大帝",
-                            "re_shen_sunce": "界神孙策",
-                            "succubus": "魅魔",
-                            "re_boss_huatuo": "界药坛圣手",
-
                         },
                     };
 
@@ -245,11 +251,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: '<div class=".update">扩展版本：3.0<font size="4px">▶▶▶</font></div>',
+                name: `<div class=".update">扩展版本：3.0<font size="4px">▶▶▶</font></div>`,
+                version: 3.0,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
-                    if (this.updateContent == undefined) {
+                    if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
                             '<li><span style="color:#006400">说明一</span>：<br>更新了更新说明功能<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>更新了新武将：魅魔<br>' +
