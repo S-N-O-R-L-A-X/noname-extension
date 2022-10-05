@@ -55,19 +55,21 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_boss_caocao": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
                             "re_shen_sunce": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
                             "succubus": ["female", "shen", 6, ["meihun", "rebiyue", "yuehun", "yunshen", "boss_guimei", "驭心"], ["zhu", "boss", "bossallowed"]],
-                            "re_boss_huatuo": ["male", "qun", 6, ["chulao", "mazui", "boss_shengshou", "guizhen", "wuqin", "boss_jiguan"], ["zhu", "boss", "bossallowed"]],
+                            "re_boss_huatuo": ["male", "qun", 6, ["chulao", "mazui", "boss_shengshou", "guizhen", "wuqin", "神护"], ["zhu", "boss", "bossallowed"]],
+                            "re_boss_zhouyu": ["male", "wu", 10, ["huoshen", "boss_honglian", "boss_xianyin", "boss_zhaohuo", "boss_honglianx", "神护"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
-                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo"],
+                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu"],
                                 against7devil_fusion: ["re_shen_sunce"]
                             }
                         },
                         characterIntro: {
-                            "re_boss_caocao": "来源于挑战模式boss魏武大帝，只是加了一个不能成为延时锦囊目标的技能就可以大战七阴。<br> 【强度】★★★★",
-                            "re_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。<br> 【强度】★★★★★",
-                            "succubus": "绝代妖姬+神貂蝉，够得上魅魔了吧。<br>【强度】★★★★★",
-                            "re_boss_huatuo": "来源于挑战模式boss药坛圣手。<br>【强度】★★★★★"
+                            "re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上神护就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
+                            "re_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。<br> 【强度】★★★★★ <br> 【亮点】防御，过牌，激昂",
+                            "succubus": "绝代妖姬+神貂蝉，够得上魅魔了吧。<br>【强度】★★★★★ <br> 【亮点】防御，可玩性高",
+                            "re_boss_huatuo": "来源于挑战模式boss药坛圣手，加上技能神护。<br>【强度】★★★★★<br> 【亮点】全场空城",
+                            "re_boss_zhouyu": "来源于挑战模式boss赤壁火神，加上朱雀技能红莲，以及神护。<br>【强度】★★★★<br> 【亮点】防御，稳定"
                         },
                         skill: {
                             "神护": {
@@ -213,6 +215,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_shen_sunce": "界神孙策",
                             "succubus": "魅魔",
                             "re_boss_huatuo": "界药坛圣手",
+                            "re_boss_zhouyu": "朱雀星君",
 
                             //skill
                             "神护": "神护",
