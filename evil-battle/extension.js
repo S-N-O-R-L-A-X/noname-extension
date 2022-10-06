@@ -52,16 +52,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         connect: true,
 
                         character: {
-                            "re_boss_caocao": ["male", "wei", 12, ["boss_guixin", "xiongcai", "神护"], ["zhu", "boss", "bossallowed"]],
-                            "re_shen_sunce": ["male", "shen", "1/8", ["hunzi", "boss_jiang", "神护", "yingba", "scfuhai", "冯河"], ["zhu", "boss", "bossallowed"]],
-                            "succubus": ["female", "shen", 6, ["meihun", "rebiyue", "yuehun", "yunshen", "boss_guimei", "驭心"], ["zhu", "boss", "bossallowed"]],
-                            "re_boss_huatuo": ["male", "qun", 6, ["chulao", "mazui", "boss_shengshou", "guizhen", "wuqin", "神护"], ["zhu", "boss", "bossallowed"]],
-                            "re_boss_zhouyu": ["male", "wu", 10, ["huoshen", "boss_honglian", "boss_xianyin", "boss_zhaohuo", "boss_honglianx", "神护"], ["zhu", "boss", "bossallowed"]],
+                            "re_boss_caocao": ["male", "wei", 12, ["shenhu", "boss_guixin", "xiongcai"], ["zhu", "boss", "bossallowed"]],
+                            "re_shen_sunce": ["male", "shen", "1/8", ["shenhu", "hunzi", "boss_jiang", "yingba", "scfuhai", "repinghe"], ["zhu", "boss", "bossallowed"]],
+                            "succubus": ["female", "shen", 6, ["meihun", "rebiyue", "yuehun", "yunshen", "boss_guimei", "yuxin"], ["zhu", "boss", "bossallowed"]],
+                            "re_boss_huatuo": ["male", "qun", 6, ["shenhu", "chulao", "mazui", "boss_shengshou", "guizhen", "wuqin"], ["zhu", "boss", "bossallowed"]],
+                            "re_boss_zhouyu": ["male", "wu", 10, ["shenhu", "huoshen", "boss_honglian", "boss_xianyin", "boss_zhaohuo", "boss_honglianx"], ["zhu", "boss", "bossallowed"]],
+                            "yin_caojinyu": ["female", "wei", 10, ["shenhu", "yinyuqi", "yinshanshen", "yinxianjing"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu"],
-                                against7devil_fusion: ["re_shen_sunce"]
+                                against7devil_fusion: ["re_shen_sunce"],
+                                against7devil_yin: ["yin_caojinyu"],
                             }
                         },
                         characterIntro: {
@@ -69,19 +71,20 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。<br> 【强度】★★★★★ <br> 【亮点】防御，过牌，激昂",
                             "succubus": "绝代妖姬+神貂蝉，够得上魅魔了吧。<br>【强度】★★★★★ <br> 【亮点】防御，可玩性高",
                             "re_boss_huatuo": "来源于挑战模式boss药坛圣手，加上技能神护。<br>【强度】★★★★★<br> 【亮点】全场空城",
-                            "re_boss_zhouyu": "来源于挑战模式boss赤壁火神，加上朱雀技能红莲，以及神护。<br>【强度】★★★★<br> 【亮点】防御，稳定"
+                            "re_boss_zhouyu": "来源于挑战模式boss赤壁火神，加上朱雀技能红莲，以及神护。<br>【强度】★★★★<br> 【亮点】防御，稳定",
+                            "yin_caojinyu": "来源于曹金玉，无脑堆数字，还蛮好玩的。<br>【强度】★★★★<br> 【亮点】卖血，过牌"
                         },
                         skill: {
-                            "神护": {
+                            shenhu: {
                                 mod: {
                                     targetEnabled: function (card, player, target) {
-                                        if (get.type(card) == 'delay') {
+                                        if (get.type(card) == "delay") {
                                             return false;
                                         }
                                     },
                                 },
                             },
-                            "冯河": {
+                            repinghe: {
                                 audio: "ext:抗七阴:2",
                                 mod: {
                                     maxHandcardBase: function (player) {
@@ -129,7 +132,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
-                            "驭心": {
+                            yuxin: {
                                 audio: "ext:无名扩展:2",
                                 enable: "phaseUse",
                                 usable: 2,
@@ -200,6 +203,169 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
+
+                            yinyuqi: {
+                                // audio: 2,
+                                trigger: { global: 'damageEnd' },
+                                init: function (player) {
+                                    if (!player.storage.yinyuqi) player.storage.yinyuqi = [0, 3, 1, 1];
+                                },
+                                getInfo: function (player) {
+                                    if (!player.storage.yinyuqi) player.storage.yinyuqi = [0, 3, 1, 1];
+                                    return player.storage.yinyuqi;
+                                },
+                                onremove: true,
+                                filter: function (event, player) {
+                                    const list = lib.skill.yinyuqi.getInfo(player);
+                                    const times = player.getHistory('useSkill', function (evt) {
+                                        return evt.skill == 'yinyuqi';
+                                    }).length;
+                                    return (times < Math.max(...list)) && event.player.isIn() && get.distance(player, event.player) <= list[0];
+                                },
+                                logTarget: 'player',
+                                content: function () {
+                                    'step 0'
+                                    event.list = lib.skill.yinyuqi.getInfo(player);
+                                    var cards = get.cards(event.list[1]);
+                                    event.cards = cards;
+                                    game.cardsGotoOrdering(cards);
+                                    var next = player.chooseToMove(true, '隅泣（若对话框显示不完整，可下滑操作）');
+                                    next.set('list', [
+                                        ['牌堆顶的牌', cards],
+                                        ['交给' + get.translation(trigger.player) + '（至少一张' + (event.list[2] > 1 ? ('，至多' + get.cnNumber(event.list[2]) + '张') : '') + '）'],
+                                        ['交给自己（至多' + get.cnNumber(event.list[3]) + '张）'],
+                                    ]);
+                                    next.set('filterMove', function (from, to, moved) {
+                                        var info = lib.skill.yinyuqi.getInfo(_status.event.player);
+                                        if (to == 1) return moved[1].length < info[2];
+                                        if (to == 2) return moved[2].length < info[3];
+                                        return true;
+                                    });
+                                    next.set('processAI', function (list) {
+                                        var cards = list[0][1].slice(0).sort(function (a, b) {
+                                            return get.value(b, 'raw') - get.value(a, 'raw');
+                                        }), player = _status.event.player, target = _status.event.getTrigger().player;
+                                        var info = lib.skill.yinyuqi.getInfo(_status.event.player);
+                                        var cards1 = cards.splice(0, Math.min(info[3], cards.length - 1));
+                                        var card2;
+                                        if (get.attitude(player, target) > 0) card2 = cards.shift();
+                                        else card2 = cards.pop();
+                                        return [cards, [card2], cards1];
+                                    });
+                                    next.set('filterOk', function (moved) {
+                                        return moved[1].length > 0;
+                                    });
+                                    'step 1'
+                                    if (result.bool) {
+                                        var moved = result.moved;
+                                        cards.removeArray(moved[1]);
+                                        cards.removeArray(moved[2]);
+                                        while (cards.length) {
+                                            ui.cardPile.insertBefore(cards.pop().fix(), ui.cardPile.firstChild);
+                                        }
+                                        trigger.player.gain(moved[1], 'gain2');
+                                        if (moved[2].length) player.gain(moved[2], 'gain2');
+                                        game.updateRoundNumber();
+                                    }
+                                },
+                                mark: true,
+                                intro: {
+                                    content: function (storage, player) {
+                                        const info = lib.skill.yinyuqi.getInfo(player);
+                                        return '<div class="text center"><span class=thundertext>蓝色：' + info[0] + '</span>　<span class=firetext>红色：' + info[1] + '</span><br><span class=greentext>绿色：' + info[2] + '</span>　<span class=yellowtext>黄色：' + info[3] + '</span></div>'
+                                    },
+                                },
+                                ai: {
+                                    threaten: 8.8,
+                                },
+                            },
+                            yinshanshen: {
+                                // audio: 2,
+                                trigger: { global: 'die' },
+                                direct: true,
+                                content: function () {
+                                    const inf = Number.MAX_SAFE_INTEGER;
+                                    'step 0'
+                                    event.goon = !player.hasAllHistory('sourceDamage', function (evt) {
+                                        return evt.player == trigger.player;
+                                    });
+                                    player.chooseControl('<span class=thundertext>蓝色</span>', '<span class=firetext>红色</span>', '<span class=greentext>绿色</span>', '<span class=yellowtext>黄色</span>', 'cancel2').set('prompt', get.prompt('yinshanshen')).set('prompt2', '令〖隅泣〗中的一个数字+2' + (event.goon ? '并回复1点体力' : '')).set('ai', function () {
+                                        var player = _status.event.player, info = lib.skill.yinyuqi.getInfo(player);
+                                        game.log(info);
+                                        if (info[0] < info[3] && game.countPlayer(function (current) {
+                                            return get.distance(player, current) <= info[0];
+                                        }) < Math.min(3, game.countPlayer())) return 0;
+                                        if (info[3] < info[1] - 1) return 3;
+                                        if (info[1] < inf) return 1;
+                                        if (info[0] < inf && game.hasPlayer(function (current) {
+                                            return current != player && get.distance(player, current) > info[0];
+                                        })) return 0;
+                                        return 2;
+                                    });
+                                    'step 1'
+                                    if (result.control != 'cancel2') {
+                                        player.logSkill('yinshanshen', trigger.player);
+                                        var list = lib.skill.yinyuqi.getInfo(player);
+                                        list[result.index] += 2;
+                                        game.log(player, '将', result.control, '数字改为', '#y' + list[result.index])
+                                        player.markSkill('yinyuqi');
+                                        if (event.goon) player.recover();
+                                    }
+                                },
+                            },
+                            yinxianjing: {
+                                // audio: 2,
+                                trigger: { player: 'phaseZhunbeiBegin' },
+                                direct: true,
+                                content: function () {
+                                    const inf = Number.MAX_SAFE_INTEGER;
+                                    'step 0'
+                                    player.chooseControl('<span class=thundertext>蓝色</span>', '<span class=firetext>红色</span>', '<span class=greentext>绿色</span>', '<span class=yellowtext>黄色</span>', 'cancel2').set('prompt', get.prompt('yinxianjing')).set('prompt2', '令〖隅泣〗中的一个数字+1').set('ai', function () {
+                                        var player = _status.event.player, info = lib.skill.yinyuqi.getInfo(player);
+                                        console.log(info);
+                                        if (info[0] < info[3] && game.countPlayer(function (current) {
+                                            return get.distance(player, current) <= info[0];
+                                        }) < Math.min(3, game.countPlayer())) return 0;
+                                        if (info[3] < info[1] - 1) return 3;
+                                        if (info[1] < inf) return 1;
+                                        if (info[0] < inf && game.hasPlayer(function (current) {
+                                            return current != player && get.distance(player, current) > info[0];
+                                        })) return 0;
+                                        return 2;
+                                    });
+                                    'step 1'
+                                    if (result.control != 'cancel2') {
+                                        player.logSkill('yinxianjing');
+                                        var list = lib.skill.yinyuqi.getInfo(player);
+                                        console.log(list);
+                                        list[result.index] = list[result.index] + 1;
+                                        game.log(player, '将', result.control, '数字改为', '#y' + list[result.index])
+                                        player.markSkill('yinyuqi');
+                                        if (player.isDamaged()) event.finish();
+                                    }
+                                    else event.finish();
+                                    'step 2'
+                                    player.chooseControl('<span class=thundertext>蓝色</span>', '<span class=firetext>红色</span>', '<span class=greentext>绿色</span>', '<span class=yellowtext>黄色</span>', 'cancel2').set('prompt', '是否令〖隅泣〗中的一个数字+1？').set('ai', function () {
+                                        var player = _status.event.player, info = lib.skill.yinyuqi.getInfo(player);
+                                        if (info[0] < info[3] && game.countPlayer(function (current) {
+                                            return get.distance(player, current) <= info[0];
+                                        }) < Math.min(3, game.countPlayer())) return 0;
+                                        if (info[3] < info[1] - 1) return 3;
+                                        if (info[1] < inf) return 1;
+                                        if (info[0] < inf && game.hasPlayer(function (current) {
+                                            return current != player && get.distance(player, current) > info[0];
+                                        })) return 0;
+                                        return 2;
+                                    });
+                                    'step 3'
+                                    if (result.control != 'cancel2') {
+                                        var list = lib.skill.yinyuqi.getInfo(player);
+                                        list[result.index] = list[result.index] + 1;
+                                        game.log(player, '将', result.control, '数字改为', '#y' + list[result.index])
+                                        player.markSkill('yinyuqi');
+                                    }
+                                },
+                            },
                         },
                         translate: {
                             // config
@@ -209,6 +375,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             against7devil: "大战七阴",
                             against7devil_boss: "挑战boss加强包",
                             against7devil_fusion: "融包",
+                            against7devil_yin: "阴间包",
 
                             //character
                             "re_boss_caocao": "界魏武大帝",
@@ -216,14 +383,22 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "succubus": "魅魔",
                             "re_boss_huatuo": "界药坛圣手",
                             "re_boss_zhouyu": "朱雀星君",
+                            "yin_caojinyu": "阴间曹金玉",
 
                             //skill
-                            "神护": "神护",
-                            "神护_info": "锁定技，你不能成为延时类锦囊的目标",
-                            "冯河": "冯河",
-                            "冯河_info": "①锁定技，你的手牌上限基数等于你的体力上限。②当你受到其他角色造成的伤害时，若你有牌且你的体力上限大于1，则你防止此伤害，减一点体力上限并将一张手牌交给一名其他角色。然后若你拥有〖英霸〗，则伤害来源获得一个“平定”标记。",
-                            "驭心": "驭心",
-                            "驭心_info": "出牌阶段限两次，你可以展示两张花色相同的手牌并分别交给两名其他角色，然后令这两名角色拼点，没赢的角色获得1个“魅惑”标记。拥有2个或更多“魅惑”的角色回合即将开始时，该角色移去其所有“魅惑”，此回合改为由你操控。",
+                            shenhu: "神护",
+                            shenhu_info: "锁定技，你不能成为延时类锦囊的目标",
+                            repinghe: "冯河",
+                            repinghe_info: "①锁定技，你的手牌上限基数等于你的体力上限。②当你受到其他角色造成的伤害时，若你有牌且你的体力上限大于1，则你防止此伤害，减一点体力上限并将一张手牌交给一名其他角色。然后若你拥有〖英霸〗，则伤害来源获得一个“平定”标记。",
+                            yuxin: "驭心",
+                            yuxin_info: "出牌阶段限两次，你可以展示两张花色相同的手牌并分别交给两名其他角色，然后令这两名角色拼点，没赢的角色获得1个“魅惑”标记。拥有2个或更多“魅惑”的角色回合即将开始时，该角色移去其所有“魅惑”，此回合改为由你操控。",
+
+                            yinyuqi: '隅泣',
+                            yinyuqi_info: '每回合限X次。当有角色受到伤害后，若你至其的距离不大于<span class=thundertext>0</span>，则你可以观看牌堆顶的<span class=firetext>3</span>张牌。你将其中至多<span class=greentext>1</span>张牌交给受伤角色，然后可以获得剩余牌中的至多<span class=yellowtext>1</span>张牌，并将其余牌以原顺序放回牌堆顶。（X为所有数字中最大值）',
+                            yinshanshen: '善身',
+                            yinshanshen_info: '当有角色死亡时，你可令你的〖隅泣〗中的一个具有颜色的数字+2。然后若你未对该角色造成过伤害，则你回复1点体力。',
+                            yinxianjing: '娴静',
+                            yinxianjing_info: '准备阶段，你可令你的〖隅泣〗中的一个具有颜色的数字+1。若你的体力值等于体力上限，则你可以重复一次此流程。',
                         },
                     };
 
@@ -254,8 +429,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：3.1<font size="4px">▶▶▶</font></div>`,
-                version: 3.1,
+                name: `<div class=".update">扩展版本：3.2<font size="4px">▶▶▶</font></div>`,
+                version: 3.2,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
@@ -265,7 +440,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             '<li><span style="color:#006400">说明二</span>：<br>增加了github链接跳转功能<br>' +
                             '<li><span style="color:#006400">说明三</span>：<br>增加了武将分类功能<br>' +
                             '<li><span style="color:#006400">说明四</span>：<br>增加了武将评级<br>' +
-                            '<li><span style="color:#006400">说明五</span>：<br>更新了新武将：魅魔，药坛圣手，朱雀星君<br>'
+                            '<li><span style="color:#006400">说明五</span>：<br>更新了新武将：魅魔，药坛圣手，朱雀星君，曹金玉<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -274,7 +449,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：3.1<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：3.2<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
