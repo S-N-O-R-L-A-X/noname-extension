@@ -53,26 +53,30 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                         character: {
                             "re_boss_caocao": ["male", "wei", 12, ["shenhu", "boss_guixin", "xiongcai"], ["zhu", "boss", "bossallowed"]],
-                            "re_shen_sunce": ["male", "shen", "1/8", ["shenhu", "hunzi", "boss_jiang", "yingba", "scfuhai", "repinghe"], ["zhu", "boss", "bossallowed"]],
+                            "fusion_shen_sunce": ["male", "shen", "1/8", ["shenhu", "hunzi", "boss_jiang", "yingba", "scfuhai", "repinghe"], ["zhu", "boss", "bossallowed"]],
                             "succubus": ["female", "shen", 6, ["meihun", "rebiyue", "yuehun", "yunshen", "boss_guimei", "yuxin"], ["zhu", "boss", "bossallowed"]],
                             "re_boss_huatuo": ["male", "qun", 6, ["shenhu", "chulao", "mazui", "boss_shengshou", "guizhen", "wuqin"], ["zhu", "boss", "bossallowed"]],
                             "re_boss_zhouyu": ["male", "wu", 10, ["shenhu", "huoshen", "boss_honglian", "boss_xianyin", "boss_zhaohuo", "boss_honglianx"], ["zhu", "boss", "bossallowed"]],
                             "yin_caojinyu": ["female", "wei", 10, ["shenhu", "yinyuqi", "yinshanshen", "yinxianjing"], ["zhu", "boss", "bossallowed"]],
+                            "norecover": ["male", "shen", 20, ["boss_fudu", "boss_kujiu", "boss_duqu", "boss_echou", "zhaogao_haizhong"], ["zhu", "boss", "bossallowed"]],
+                            "fusion_xuhuang": ["male", "wei", 6, ["shenhu", "shipo", "famine", "olduanliang", "oljiezi"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu"],
-                                against7devil_fusion: ["re_shen_sunce"],
+                                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang"],
                                 against7devil_yin: ["yin_caojinyu"],
                             }
                         },
                         characterIntro: {
                             "re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上神护就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
-                            "re_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。<br> 【强度】★★★★★ <br> 【亮点】防御，过牌，激昂",
+                            "fusion_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。<br> 【强度】★★★★★ <br> 【亮点】防御，过牌，激昂",
                             "succubus": "绝代妖姬+神貂蝉，够得上魅魔了吧。<br>【强度】★★★★★ <br> 【亮点】防御，可玩性高",
                             "re_boss_huatuo": "来源于挑战模式boss药坛圣手，加上技能神护。<br>【强度】★★★★★<br> 【亮点】全场空城",
                             "re_boss_zhouyu": "来源于挑战模式boss赤壁火神，加上朱雀技能红莲，以及神护。<br>【强度】★★★★<br> 【亮点】防御，稳定",
-                            "yin_caojinyu": "来源于曹金玉，无脑堆数字，还蛮好玩的。<br>【强度】★★★★<br> 【亮点】卖血，过牌"
+                            "yin_caojinyu": "来源于曹金玉，无脑堆数字，还蛮好玩的。<br>【强度】★★★★<br> 【亮点】卖血，过牌",
+                            "norecover": "来源于泰山王【苦酒】【服毒】，相柳【毒躯】【恶臭】，赵高【害忠】（目前还未加），虽然毫无操作感，但是能看对面崩死还挺好玩的。<br>【强度】★★★★<br> 【亮点】无法回血",
+                            "fusion_xuhuang": "来源于徐晃和谋徐晃，将【断粮】升级为【饥荒】。<br>【强度】★★<br> 【亮点】谋弈",
                         },
                         skill: {
                             shenhu: {
@@ -366,6 +370,158 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
+                            "famine": {
+                                enable: "phaseUse",
+                                usable: 7,
+                                filterTarget: function (card, player, target) {
+                                    return player != target;
+                                },
+                                content: function () {
+                                    'step 0'
+                                    player.chooseControl('围城断粮', '擂鼓进军').set('prompt', '谋弈：请选择你的进攻策略').set('ai', function () {
+                                        if (target.hasJudge('bingliang')) return '擂鼓进军';
+                                        return ['围城断粮', '擂鼓进军'].randomGet();
+                                    });
+                                    'step 1'
+                                    event.res = result.control;
+                                    target.chooseControl('围城断粮', '擂鼓进军').set('prompt', '谋弈：请猜测' + get.translation(player) + '的进攻策略').set('ai', function () {
+                                        if (target.hasJudge('bingliang')) return '擂鼓进军';
+                                        return ['围城断粮', '擂鼓进军'].randomGet();
+                                    });
+                                    'step 2'
+                                    var str;
+                                    player.popup(event.res);
+                                    target.popup(result.control);
+                                    game.log(player, '谋弈', event.res == result.control ? '#y失败' : '#g成功');
+                                    if (event.res != result.control) {
+                                        game.playAudio('..', 'extension', '谋攻篇', 'mouduanliang3');
+                                        str = get.translation(player) + '谋弈成功';
+                                    }
+                                    else {
+                                        game.playAudio('..', 'extension', '谋攻篇', 'mouduanliang4');
+                                        str = get.translation(target) + '谋弈成功';
+                                    }
+                                    game.broadcastAll(function (str) {
+                                        var dialog = ui.create.dialog(str);
+                                        dialog.classList.add('center');
+                                        setTimeout(function () {
+                                            dialog.close();
+                                        }, 1000);
+                                    }, str);
+                                    game.delay(2);
+                                    if (event.res == result.control) event.finish();
+                                    'step 3'
+                                    if (event.res == '围城断粮') {
+                                        if (!target.hasJudge('bingliang')) { player.useCard({ name: 'bingliang' }, get.cards(), target); event.finish(); }
+                                        else if (target.countCards('he') > 0) event.goto(4);
+                                        else event.finish();
+                                    }
+                                    else { player.useCard({ name: 'juedou', isCard: true }, target, false); event.finish(); }
+                                    'step 4'
+                                    player.choosePlayerCard(target, 'he', true, '获得' + get.translation(target) + '的一张牌');
+
+                                    'step 5'
+                                    if (result.bool) {
+                                        player.gain(result.cards, target, 'giveAuto');
+                                    }
+                                },
+                                ai: {
+                                    order: 7,
+                                    result: {
+                                        target: function (player, target) {
+                                            if (target.hasJudge('bingliang')) return -0.5;
+                                            return -1.5;
+                                        },
+                                    },
+                                },
+                            },
+
+                            shipo: {
+                                trigger: {
+                                    player: "phaseJieshuBegin",
+                                },
+                                direct: true,
+                                filter: function (event, player) {
+                                    return game.hasPlayer(function (current) {
+                                        return (current.hp < player.hp || current.hasJudge('bingliang')) && current != player;
+                                    });
+                                },
+                                content: function () {
+                                    'step 0'
+                                    var choiceList = ['体力值小于你的一名角色',
+                                        '判定区中有【兵粮寸断】的所有其他角色'];
+                                    var list = [];
+                                    event.list_1 = game.filterPlayer(function (current) { return current.hp < player.hp && current != player })
+                                    if (event.list_1.length) list.push('选项一');
+                                    else choiceList[0] = '<span style="opacity:0.5">' + choiceList[0] + '</span>';
+                                    event.list_2 = game.filterPlayer(function (current) { return current.hasJudge('bingliang') && current != player })
+                                    if (event.list_2.length) list.push('选项二');
+                                    else choiceList[1] = '<span style="opacity:0.5">' + choiceList[1] + '</span>';
+                                    list.push('cancel2');
+                                    player.chooseControl(list).set('prompt', get.prompt('shipo')).set('choiceList', choiceList).set('ai', function () {
+                                        if (event.list_2.length > 1) return '选项二';
+                                        if (event.list_1.length) {
+                                            if (event.list_2.length != 0) {
+                                                var items = list.slice(0, list.length - 1);
+                                                return items[Math.floor(Math.random() * items.length)];
+                                            }
+                                        }
+                                        return 'cancel2';
+                                    });
+                                    'step 1'
+                                    if (result.control == '选项一') {
+                                        player.chooseTarget(1, '选取一名体力值小于你的角色', true, function (card, player, target) {
+                                            return event.list_1.contains(target);
+                                        }).set('ai', function (target) {
+                                            return -get.attitude(_status.event.player, target);
+                                        });
+                                    }
+                                    else if (result.control == '选项二') {
+                                        result.targets = event.list_2;
+                                    }
+                                    else {
+                                        event.finish();
+                                        return;
+                                    }
+                                    'step 2'
+                                    event.num = 0;
+                                    event.targets = result.targets;
+
+                                    'step 3'
+                                    var target = event.targets[event.num];
+
+                                    var choiceList2 = ['交给' + get.translation(player) + '一张牌',
+                                    '受到来自' + get.translation(player) + '的一点伤害'];
+                                    var list2 = [];
+                                    if (target.countCards('he') == 0) choiceList2[0] = '<span style="opacity:0.5">' + choiceList2[0] + '</span>'; //ban the choice
+                                    else list2.push('选项一');
+                                    list2.push('选项二');
+                                    target.chooseControl(list2).set('choiceList', choiceList2).set('ai', function () {
+                                        var player = _status.event.player, target = _status.event.getParent().player;
+                                        if (target.countCards('he') > 0 && get.attitude(target, player) < 0) return '选项一';
+                                        return '选项二';
+                                    });
+
+                                    'step 4'
+                                    var target = event.targets[event.num];
+                                    if (result.control == '选项一') {
+                                        target.chooseCard('he', 1, true);
+                                    }
+                                    else {
+                                        target.damage();
+                                    }
+
+                                    'step 5'
+                                    var target = event.targets[event.num];
+                                    if (result) {
+                                        target.give(result.cards, player);
+                                    }
+                                    event.num++;
+
+                                    if (event.num < event.targets.length)
+                                        event.goto(3);
+                                },
+                            },
                         },
                         translate: {
                             // config
@@ -379,11 +535,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                             //character
                             "re_boss_caocao": "界魏武大帝",
-                            "re_shen_sunce": "界神孙策",
+                            "fusion_shen_sunce": "界神孙策",
                             "succubus": "魅魔",
                             "re_boss_huatuo": "界药坛圣手",
                             "re_boss_zhouyu": "朱雀星君",
                             "yin_caojinyu": "阴间曹金玉",
+                            "norecover": "回血亡",
+                            "fusion_xuhuang": "融徐晃",
 
                             //skill
                             shenhu: "神护",
@@ -399,6 +557,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             yinshanshen_info: '当有角色死亡时，你可令你的〖隅泣〗中的一个具有颜色的数字+2。然后若你未对该角色造成过伤害，则你回复1点体力。',
                             yinxianjing: '娴静',
                             yinxianjing_info: '准备阶段，你可令你的〖隅泣〗中的一个具有颜色的数字+1。若你的体力值等于体力上限，则你可以重复一次此流程。',
+
+                            famine: '饥荒',
+                            famine_info: "出牌阶段限七次，你可以与一名其他角色进行“谋弈”：<br>围城断粮：若其判定区有【兵粮寸断】，获得其一张牌，否则你将一张牌堆顶的牌当做【兵粮寸断】对其使用且无距离限制。<br>擂鼓进军：你视为对其使用一张【决斗】。",
+                            shipo: '势迫',
+                            shipo_info: '结束阶段，你可以令一名体力值少于你的角色或所有判定区有【兵粮寸断】的其他角色依次选择一项：1. 弃置一张牌；2. 令你摸一张牌。',
                         },
                     };
 
@@ -429,18 +592,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：3.2<font size="4px">▶▶▶</font></div>`,
-                version: 3.2,
+                name: `<div class=".update">扩展版本：3.3<font size="4px">▶▶▶</font></div>`,
+                version: 3.3,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>增加了更新说明功能<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>增加了github链接跳转功能<br>' +
-                            '<li><span style="color:#006400">说明三</span>：<br>增加了武将分类功能<br>' +
-                            '<li><span style="color:#006400">说明四</span>：<br>增加了武将评级<br>' +
-                            '<li><span style="color:#006400">说明五</span>：<br>更新了新武将：魅魔，药坛圣手，朱雀星君，曹金玉<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：回血亡，融徐晃<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -449,7 +608,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：3.2<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：3.3<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
