@@ -254,17 +254,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：3.0<font size="4px">▶▶▶</font></div>`,
-                version: 3.0,
+                name: `<div class=".update">扩展版本：3.1<font size="4px">▶▶▶</font></div>`,
+                version: 3.1,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了更新说明功能<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>更新了新武将：魅魔<br>' +
-                            '<li><span style="color:#006400">说明三</span>：<br>增加了github链接跳转功能<br>' +
-                            '<li><span style="color:#006400">说明四</span>：<br>增加了武将分类功能<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>增加了更新说明功能<br>' +
+                            '<li><span style="color:#006400">说明二</span>：<br>增加了github链接跳转功能<br>' +
+                            '<li><span style="color:#006400">说明三</span>：<br>增加了武将分类功能<br>' +
+                            '<li><span style="color:#006400">说明四</span>：<br>增加了武将评级<br>' +
+                            '<li><span style="color:#006400">说明五</span>：<br>更新了新武将：魅魔，药坛圣手，朱雀星君<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -273,7 +274,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：3.0<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：3.1<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
@@ -300,7 +301,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
             },
             intro: "",
-            author: "无名玩家",
+            author: "SNORLAX",
             diskURL: "",
             forumURL: "",
             version: "1.0",
