@@ -18,7 +18,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 lib.storage.scene["大战七阴"] = {
                     name: "大战七阴",
                     intro: `主公可供玩家设定，其余七位ai玩家从阴间武将中随机选中一个。
-                    如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！<br>
+                    如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极~<br>
                      <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a>`,
                     players: [
                         { "name": "random", "name2": "none", "identity": "zhu", "position": 1, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": true, "handcards": [], "equips": [], "judges": [] },
@@ -60,10 +60,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "yin_caojinyu": ["female", "wei", 10, ["shenhu", "yinyuqi", "yinshanshen", "yinxianjing"], ["zhu", "boss", "bossallowed"]],
                             "norecover": ["male", "shen", 20, ["boss_fudu", "boss_kujiu", "boss_duqu", "boss_echou", "zhaogao_haizhong"], ["zhu", "boss", "bossallowed"]],
                             "fusion_xuhuang": ["male", "wei", 6, ["shenhu", "shipo", "famine", "olduanliang", "oljiezi"], ["zhu", "boss", "bossallowed"]],
+                            "liuxingyaodi": ["male", "shu", "8/10", ["shenhu", "renjun", "boss_rende"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
-                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu"],
+                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi"],
                                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang"],
                                 against7devil_yin: ["yin_caojinyu"],
                             }
@@ -77,6 +78,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "yin_caojinyu": "来源于曹金玉，无脑堆数字，还蛮好玩的。<br>【强度】★★★★<br> 【亮点】卖血，过牌",
                             "norecover": "来源于泰山王【苦酒】【服毒】，相柳【毒躯】【恶臭】，赵高【害忠】（目前还未加），虽然毫无操作感，但是能看对面崩死还挺好玩的。<br>【强度】★★★★<br> 【亮点】无法回血",
                             "fusion_xuhuang": "来源于徐晃和谋徐晃，将【断粮】升级为【饥荒】。<br>【强度】★★<br> 【亮点】谋弈",
+                            "liuxingyaodi": "将挑战模式boss魏武大帝的技能【雄才】换成【仁君】，加上自设计的【仁德】形成技能联动，和sp孙尚香的技能也有关系。<br> 【强度】★★★★★ <br> 【亮点】综合，可玩性高",
                         },
                         skill: {
                             shenhu: {
@@ -522,6 +524,102 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         event.goto(3);
                                 },
                             },
+
+                            renjun: {
+                                unique: true,
+                                trigger: { global: 'recoverAfter' },
+                                direct: true,
+                                init: function (player) {
+                                    player.storage.renjun = [];
+                                },
+                                intro: {
+                                    content: 'characters'
+                                },
+                                content: function () {
+                                    'step 0'
+                                    // if(player.storage.xiongcai2<1){
+                                    //		player.storage.xiongcai2++;
+                                    //		event.finish();
+                                    // }
+                                    // else{
+                                    //		player.storage.xiongcai2=0;
+                                    // }
+                                    'step 1'
+                                    player.logSkill('renjun');
+                                    var list = [];
+                                    var list2 = [];
+                                    var players = game.players.concat(game.dead);
+                                    for (var i = 0; i < players.length; i++) {
+                                        list2.add(players[i].name);
+                                        list2.add(players[i].name1);
+                                        list2.add(players[i].name2);
+                                    }
+                                    for (var i in lib.character) {
+                                        if (lib.character[i][1] != 'shu') continue;
+                                        if (lib.character[i][4].contains('boss')) continue;
+                                        if (lib.character[i][4].contains('minskin')) continue;
+                                        if (player.storage.renjun.contains(i)) continue;
+                                        if (list2.contains(i)) continue;
+                                        list.push(i);
+                                    }
+                                    var name = list.randomGet();
+                                    player.storage.renjun.push(name);
+                                    player.markSkill('renjun');
+                                    var skills = lib.character[name][3];
+                                    for (var i = 0; i < skills.length; i++) {
+                                        player.addSkill(skills[i]);
+                                    }
+                                    event.dialog = ui.create.dialog('<div class="text center">' + get.translation(player) + '发动了【雄才】', [[name], 'character']);
+                                    game.delay(2);
+                                    'step 2'
+                                    event.dialog.close();
+                                }
+                            },
+
+                            boss_rende: {
+                                enable: 'phaseUse',
+                                delay: false,
+                                filter: function (event, player) {
+                                    return player.countCards('h', 'sha');
+                                },
+                                content: function () {
+                                    'step 0'
+                                    player.showHandcards();
+                                    const cards = player.getCards('h', { name: 'sha' });
+                                    player.discard(cards);
+
+                                    'step 1'
+                                    player.chooseTarget('请选择角色，令这些角色恢复一点体力。', [1, 8], function (card, player, target) {
+                                        return target.isDamaged();
+                                    }).set('ai', function (target) {
+                                        return -get.attitude(_status.event.player, target) + 0.5;
+                                    });
+
+                                    'step 2'
+                                    if (result.bool && result.targets) {
+                                        event.targets = result.targets;
+                                        event.targets.sort(lib.sort.seat);
+                                    }
+                                    else {
+                                        event.finish();
+                                    }
+
+                                    'step 3'
+                                    if (player.isAlive() && event.targets.length) {
+                                        event.targets.shift().recover();
+                                    }
+                                    else event.finish();
+
+                                    'step 4'
+                                    if (result.bool) {
+                                        event.recovered++;
+                                    }
+                                    if (event.targets.length) event.goto(3);
+
+                                    'step 5'
+                                    player.draw(event.recovered);
+                                },
+                            }
                         },
                         translate: {
                             // config
@@ -542,6 +640,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "yin_caojinyu": "阴间曹金玉",
                             "norecover": "回血亡",
                             "fusion_xuhuang": "融徐晃",
+                            "liuxingyaodi": "六星耀帝",
 
                             //skill
                             shenhu: "神护",
@@ -562,6 +661,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             famine_info: "出牌阶段限七次，你可以与一名其他角色进行“谋弈”：<br>围城断粮：若其判定区有【兵粮寸断】，获得其一张牌，否则你将一张牌堆顶的牌当做【兵粮寸断】对其使用且无距离限制。<br>擂鼓进军：你视为对其使用一张【决斗】。",
                             shipo: '势迫',
                             shipo_info: '结束阶段，你可以令一名体力值少于你的角色或所有判定区有【兵粮寸断】的其他角色依次选择一项：1. 弃置一张牌；2. 令你摸一张牌。',
+                            renjun: '仁君',
+                            renjun_info: '锁定技，当一名角色回复体力时，你获得一个蜀势力角色的所有技能',
+                            boss_rende: '仁德',
+                            boss_rende_info: '出牌阶段，若你有杀，你可以展示所有手牌并弃置其中的杀，然后令任意名角色回复一点体力。然后你摸X张牌。（X为以此法恢复体力的角色数）',
+
                         },
                     };
 
@@ -585,21 +689,21 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         config: {
             intro: {
                 name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。
-                如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！<br>
+                如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极~<br>
                 <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a>
                 `,
                 clear: true,
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：3.3<font size="4px">▶▶▶</font></div>`,
-                version: 3.3,
+                name: `<div class=".update">扩展版本：3.4<font size="4px">▶▶▶</font></div>`,
+                version: 3.4,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：回血亡，融徐晃<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：六星耀帝<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -608,7 +712,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：3.3<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：3.4<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
