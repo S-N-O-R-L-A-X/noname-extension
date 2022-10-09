@@ -61,24 +61,26 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "norecover": ["male", "shen", 20, ["boss_fudu", "boss_kujiu", "boss_duqu", "boss_echou", "zhaogao_haizhong"], ["zhu", "boss", "bossallowed"]],
                             "fusion_xuhuang": ["male", "wei", 6, ["shenhu", "shipo", "famine", "olduanliang", "oljiezi"], ["zhu", "boss", "bossallowed"]],
                             "liuxingyaodi": ["male", "shu", "8/10", ["shenhu", "renjun", "boss_rende"], ["zhu", "boss", "bossallowed"]],
+                            "re_boss_zhenji": ["female", "wei", 6, ["shenhu", "tashui", "lingbo", "jiaoxia", "fanghua", "reluoshen"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
-                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi"],
+                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji"],
                                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang"],
                                 against7devil_yin: ["yin_caojinyu"],
                             }
                         },
                         characterIntro: {
-                            "re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上神护就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
+                            "re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上【神护】就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
                             "fusion_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。<br> 【强度】★★★★★ <br> 【亮点】防御，过牌，激昂",
                             "succubus": "绝代妖姬+神貂蝉，够得上魅魔了吧。<br>【强度】★★★★★ <br> 【亮点】防御，可玩性高",
-                            "re_boss_huatuo": "来源于挑战模式boss药坛圣手，加上技能神护。<br>【强度】★★★★★<br> 【亮点】全场空城",
-                            "re_boss_zhouyu": "来源于挑战模式boss赤壁火神，加上朱雀技能红莲，以及神护。<br>【强度】★★★★<br> 【亮点】防御，稳定",
+                            "re_boss_huatuo": "来源于挑战模式boss药坛圣手，加上技能【神护】。<br>【强度】★★★★★<br> 【亮点】全场空城",
+                            "re_boss_zhouyu": "来源于挑战模式boss赤壁火神，加上朱雀技能【红莲】，以及【神护】。<br>【强度】★★★★<br> 【亮点】防御，稳定",
                             "yin_caojinyu": "来源于曹金玉，无脑堆数字，还蛮好玩的。<br>【强度】★★★★<br> 【亮点】卖血，过牌",
                             "norecover": "来源于泰山王【苦酒】【服毒】，相柳【毒躯】【恶臭】，赵高【害忠】（目前还未加），虽然毫无操作感，但是能看对面崩死还挺好玩的。<br>【强度】★★★★<br> 【亮点】无法回血",
                             "fusion_xuhuang": "来源于徐晃和谋徐晃，将【断粮】升级为【饥荒】。<br>【强度】★★<br> 【亮点】谋弈",
                             "liuxingyaodi": "将挑战模式boss魏武大帝的技能【雄才】换成【仁君】，加上自设计的【仁德】形成技能联动，和sp孙尚香的技能也有关系。<br> 【强度】★★★★★ <br> 【亮点】综合，可玩性高",
+                            "re_boss_zhenji": "来源于挑战模式boss洛水仙子，加上界甄姬的【洛神】以及【神护】。<br> 【强度】★★★ <br> 【亮点】爆发，控制",
                         },
                         skill: {
                             shenhu: {
@@ -636,11 +638,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_shen_sunce": "界神孙策",
                             "succubus": "魅魔",
                             "re_boss_huatuo": "界药坛圣手",
-                            "re_boss_zhouyu": "朱雀星君",
+                            "re_boss_zhouyu": "界赤壁火神",
                             "yin_caojinyu": "阴间曹金玉",
                             "norecover": "回血亡",
                             "fusion_xuhuang": "融徐晃",
                             "liuxingyaodi": "六星耀帝",
+                            "re_boss_zhenji": "界洛水仙子",
 
                             //skill
                             shenhu: "神护",
@@ -696,14 +699,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：3.4<font size="4px">▶▶▶</font></div>`,
-                version: 3.4,
+                name: `<div class=".update">扩展版本：3.5<font size="4px">▶▶▶</font></div>`,
+                version: 3.5,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：六星耀帝<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：六星耀帝，界洛水仙子<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -712,7 +715,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：3.4<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：3.5<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
