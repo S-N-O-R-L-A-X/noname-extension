@@ -63,12 +63,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "liuxingyaodi": ["male", "shu", "8/10", ["shenhu", "renjun", "boss_rende"], ["zhu", "boss", "bossallowed"]],
                             "re_boss_zhenji": ["female", "wei", 6, ["shenhu", "tashui", "lingbo", "jiaoxia", "fanghua", "reluoshen"], ["zhu", "boss", "bossallowed"]],
                             "fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "boss_wangshi", "boss_didong", "boss_guimei", "boss_xuechi"], ["zhu", "boss", "bossallowed"]],
+                            "ex_diaochan": ["female", "qun", 3, ["shenhu", "ex_yuhun", "ex_kongshen"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji"],
                                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo"],
                                 against7devil_yin: ["yin_caojinyu"],
+                                against7devil_ex: ["ex_diaochan"],
                             }
                         },
                         characterIntro: {
@@ -83,6 +85,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "liuxingyaodi": "将挑战模式boss魏武大帝的技能【雄才】换成【仁君】，加上自设计的【仁德】形成技能联动，和sp孙尚香的技能也有关系。<br> 【强度】★★★★★ <br> 【亮点】综合，可玩性高",
                             "re_boss_zhenji": "来源于挑战模式boss洛水仙子，加上界甄姬的【洛神】以及【神护】。<br> 【强度】★★★ <br> 【亮点】爆发，控制",
                             "fusion_honglianpo": "来源于捉鬼boss孟婆，加上五官王的【血池】以及红鬼的【地动】。没错，就是经典的五官王+红鬼+孟婆，三个五阶也也胆寒。<br> 【强度】★★★ <br> 【亮点】恶心，回忆",
+                            "ex_diaochan": "来源于【假装无敌】扩展包貂蝉。由于非常喜欢这个傀儡机制，将她加入扩包第一将。<br> 【强度】★★★★ <br> 【亮点】机制",
                         },
                         skill: {
                             shenhu: {
@@ -623,17 +626,433 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     'step 5'
                                     player.draw(event.recovered);
                                 },
-                            }
+                            },
+                            ex_yuhun: {
+                                enable: "phaseUse",
+                                usable: 1,
+                                charlotte: true,
+                                fixed: true,
+                                audio: "lihun",
+                                locked: true,
+                                filterCard: function (card) {
+                                    var num = 4 - (_status['ex_yuhun_zuo'].length + _status['ex_yuhun_you'].length);
+                                    if (ui.selected.cards.length >= num) return false;
+                                    var suit = get.suit(card);
+                                    for (let i = 0; i < ui.selected.cards.length; i++) {
+                                        if (get.suit(ui.selected.cards[i]) == suit) return false;
+                                    }
+                                    return true;
+                                },
+                                selectCard: [1, 4],
+                                check: function (card) {
+                                    return 8 - get.value(card);
+                                },
+                                complexCard: true,
+                                prompt: "弃置任意张不同花色的牌后令场上增加等量名你的【傀儡】",
+                                init: function (player) {
+                                    if (!player.storage.ex_yuhun_kuilei) player.storage.ex_yuhun_kuilei = ['nan', 'nv'];
+                                    _status.ex_yuhun_zuo = [];
+                                    _status.ex_yuhun_you = [];
+                                    lib.translate['qy_qynvkuilei'] = '傀儡·女';
+                                    lib.translate['qy_qynankuilei'] = '傀儡·男';
+                                    lib.character.qy_qynvkuilei = ['female', 'qun', 3, ['ex_yuhun_init'], ['character:ns_nanhua_right', 'unseen']];
+                                    lib.character.qy_qynankuilei = ['male', 'qun', 3, ['ex_yuhun_init'], ['character:ns_nanhua_left', 'unseen']];
+                                },
+                                filter: function (event, player) {
+                                    return _status['ex_yuhun_zuo'].length + _status['ex_yuhun_you'].length < 4;
+                                },
+                                onremove: function () {
+                                    game.countPlayer(function (current) {
+                                        if ((_status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you'])).contains(current) && current.master && current.master == player) {
+                                            current.die()._triggered = null;
+                                            game.delay(2);
+                                            current.remove();
+                                            _status['ex_yuhun_zuo'].remove(current);
+                                            _status['ex_yuhun_you'].remove(current);
+                                        }
+                                    });
+                                },
+                                content: function () {
+                                    'step 0'
+                                    event.num = cards.length;
+                                    'step 1'
+                                    if (_status['ex_yuhun_zuo'].action === false) {
+                                        _status['ex_yuhun_zuo'].action = true;
+                                    } else {
+                                        _status['ex_yuhun_zuo'].action = false;
+                                    }
+                                    var action = _status['ex_yuhun_zuo'].action,
+                                        length = _status['ex_yuhun_you'].length + 1;
+                                    var fellow = game.addFellow(action ? 1 : game.players.length + game.dead.length - _status['ex_yuhun_you'].length, `qy_qy${player.storage.ex_yuhun_kuilei.randomGet()}kuilei`);
+                                    fellow.classList.add('minskin');
+                                    fellow.side = player.side;
+                                    fellow.master = player;
+                                    if (action) {
+                                        game.players.remove(fellow);
+                                        game.players.unshift(fellow);
+                                        game.arrangePlayers();
+                                    }
+                                    var left = 80;
+                                    if (action) {
+                                        left = 600;
+                                    }
+                                    if (_status[!action ? 'ex_yuhun_zuo' : 'ex_yuhun_you'].length > 0) left += 150;
+                                    fellow.css({
+                                        pointerEvents: 'auto',
+                                        top: '45vh',
+                                        left: left + 'px',
+                                    });
+                                    ui.arena.appendChild(fellow);
+                                    _status[!action ? 'ex_yuhun_zuo' : 'ex_yuhun_you'].add(fellow);
+                                    fellow.identity = player.identity;
+                                    if (fellow.identity === 'zhu') fellow.identity = 'zhong';
+                                    if (fellow.identity === 'nei') fellow.identity = '？';
+                                    fellow.setIdentity('傀儡');
+                                    fellow.node.identity.dataset.color = 'black';
+                                    if (get.mode() == 'doudizhu') {
+                                        fellow.identity = player.identity;
+                                        fellow.setIdentity('傀儡');
+                                    }
+                                    event.num--;
+                                    'step 2'
+                                    if (event.num > 0) event.goto(1);
+                                    else event.finish();
+                                },
+                                mod: {
+                                    globalFrom: function (from, to, distance) {
+                                        var players = _status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']);
+                                        if (players) return distance - players.length;
+                                    },
+                                    targetEnabled: function (card, player, target, now) {
+                                        var players = _status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']);
+                                        if (players && players.length) {
+                                            if (players.contains(player)) return false;
+                                        }
+                                    },
+                                    playerEnabled: function (card, player, target) {
+                                        if (_status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']).contains(target) && target.master && target.master == player) {
+                                            return false;
+                                        }
+                                    },
+                                },
+                                ai: {
+                                    order: 12,
+                                    result: {
+                                        player: 1,
+                                    },
+                                },
+                                group: ['ex_yuhun_die', 'ex_yuhun_equip', 'ex_yuhun_use', 'ex_yuhun_win'],
+                                subSkill: {
+                                    init: {
+                                        trigger: {
+                                            global: "roundStart",
+                                        },
+                                        silent: true,
+                                        forced: true,
+                                        popup: false,
+                                        charlotte: true,
+                                        init: function (player) {
+                                            player.addSkill('ex_yuhun_remove');
+                                        },
+                                        onremove: function (player) {
+                                            player.addSkill('ex_yuhun_remove');
+                                        },
+                                        content: function () {
+                                            const num = [1, 2].randomGet();
+                                            if (num == 1) player.gainMaxHp();
+                                            else player.recover();
+                                        },
+                                    },
+                                    remove: {
+                                        trigger: {
+                                            player: ["die", "phaseBefore"],
+                                        },
+                                        silent: true,
+                                        forced: true,
+                                        popup: false,
+                                        forceDie: true,
+                                        fixed: true,
+                                        charlotte: true,
+                                        group: 'huoxin_control',
+                                        init: function (player) {
+                                            player.addSkill('ex_yuhun_init');
+                                        },
+                                        onremove: function (player) {
+                                            player.addSkill('ex_yuhun_init');
+                                        },
+                                        filter: function (event, player) {
+                                            return _status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']).contains(player);
+                                        },
+                                        content: function () {
+                                            // if (event.triggername == 'phaseBefore') {
+                                            //     trigger.cancel();
+                                            //     player.draw(2);
+                                            // }
+                                            // else {
+                                            //     player.master.removeAdditionalSkill(player.name1)
+                                            //     player.remove();
+                                            //     _status['ex_yuhun_zuo'].remove(player);
+                                            //     _status['ex_yuhun_you'].remove(player);
+                                            // }
+                                        },
+                                        mod: {
+                                            playerEnabled: function (card, player, target) {
+                                                if (_status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']).contains(target) && target != player) {
+                                                    return false;
+                                                }
+                                            },
+                                            globalFrom: function (from, to, distance) {
+                                                return distance - _status['ex_yuhun_zuo'].length - _status['ex_yuhun_you'].length;
+                                            },
+                                        },
+                                    },
+                                    die: {
+                                        trigger: {
+                                            player: "die",
+                                        },
+                                        silent: true,
+                                        charlotte: true,
+                                        forced: true,
+                                        popup: false,
+                                        forceDie: true,
+                                        filter: function (event, player) {
+                                            var players = _status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']);
+                                            if (!players || !players.length) {
+                                                return false;
+                                            }
+                                            return true;
+                                        },
+                                        content: function () {
+                                            var players = _status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']);
+                                            game.countPlayer(function (current) {
+                                                if (players.contains(current) && current.master && current.master == player) {
+                                                    current.die();
+                                                    game.delay(2);
+                                                    current.remove();
+                                                    _status['ex_yuhun_zuo'].remove(current);
+                                                    _status['ex_yuhun_you'].remove(current);
+                                                }
+                                            });
+                                        },
+                                    },
+                                    equip: {
+                                        trigger: {
+                                            global: ["equipEnd", "loseEnd", "ex_yuhunAfter", "changeHp", "loseBegin"],
+                                        },
+                                        forced: true,
+                                        charlotte: true,
+                                        popup: false,
+                                        silent: true,
+                                        filter: function (event, player, name) {
+                                            var players = _status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']);
+                                            if (!players || !players.length) return false;
+                                            if (name == 'loseEnd') {
+                                                for (var i = 0; i < event.cards.length; i++) {
+                                                    if (event.cards[i].original == 'e') return true;
+                                                }
+                                            } else return true;
+                                        },
+                                        content: function () {
+                                            var info = [];
+                                            var es = player.getCards('e');
+                                            var equips = [];
+                                            for (var i = 0; i < es.length; i++) {
+                                                if (es[i].clearLose) continue;
+                                                equips.add(es[i].name);
+                                                var skill = lib.card[es[i].name].skills;
+                                                if (skill && skill.length > 0) info.addArray(skill);
+                                            }
+                                            var players = _status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']);
+                                            game.countPlayer(function (current) {
+                                                if (players.contains(current) && current.master && current.master == player) {
+                                                    current.storage.ex_yuhun_equip = equips;
+                                                    current.addSkill('ex_yuhun_equip');
+                                                    current.markSkill('ex_yuhun_equip');
+                                                    current.removeAdditionalSkill('ex_yuhun_equip');
+                                                    current.addAdditionalSkill('ex_yuhun_equip', info, true);
+                                                    current.master.addAdditionalSkill(current.name1, current.skills.filter(value => ['ymhuajing', 'ymdujie', 'ex_yuhun_init', 'ex_yuhun_remove',].contains(value) === false), true);
+                                                }
+                                            });
+                                        },
+                                        mod: {
+                                            globalFrom: function (from, to, distance) {
+                                                var num = 0;
+                                                if (!from.storage.ex_yuhun_equip) return;
+                                                for (var i = 0; i < from.storage.ex_yuhun_equip.length; i++) {
+                                                    var info = lib.card[from.storage.ex_yuhun_equip[i]];
+                                                    if (info && info.distance && info.distance.globalFrom) num += info.distance.globalFrom;
+                                                }
+                                                return distance + num;
+                                            },
+                                            globalTo: function (from, to, distance) {
+                                                var num = 0;
+                                                if (!to.storage.ex_yuhun_equip) return;
+                                                for (var i = 0; i < to.storage.ex_yuhun_equip.length; i++) {
+                                                    var info = lib.card[to.storage.ex_yuhun_equip[i]];
+                                                    if (info && info.distance && info.distance.globalTo) num += info.distance.globalTo;
+                                                }
+                                                return distance + num;
+                                            },
+                                            attackFrom: function (from, to, distance) {
+                                                var num = 0;
+                                                if (!from.storage.ex_yuhun_equip) return;
+                                                for (var i = 0; i < from.storage.ex_yuhun_equip.length; i++) {
+                                                    var info = lib.card[from.storage.ex_yuhun_equip[i]];
+                                                    if (info && info.distance && info.distance.attackFrom) num += info.distance.attackFrom;
+                                                }
+                                                return distance + num;
+                                            },
+                                            attackTo: function (from, to, distance) {
+                                                var num = 0;
+                                                if (!to.storage.ex_yuhun_equip) return;
+                                                for (var i = 0; i < to.storage.ex_yuhun_equip.length; i++) {
+                                                    var info = lib.card[to.storage.ex_yuhun_equip[i]];
+                                                    if (info && info.distance && info.distance.attackTo) num += info.distance.attackTo;
+                                                }
+                                                return distance + num;
+                                            },
+                                        },
+                                        marktext: "魂",
+                                        intro: {
+                                            content: function (storage, player, skill) {
+                                                var str = '<li>当前装备：' + get.translation(player.storage.ex_yuhun_equip) + '<br>–––––––––––––––––––––––';
+                                                for (var i = 0; i < player.storage.ex_yuhun_equip.length; i++) {
+                                                    str += '<br>*<span class="bluetext">【' + lib.translate[player.storage.ex_yuhun_equip[i]] + '】：' + lib.translate[player.storage.ex_yuhun_equip[i] + '_info'] + '</span>';
+                                                }
+                                                return str;
+                                            },
+                                            onunmark: function (storage, player) {
+                                                player.removeAdditionalSkill('ex_yuhun_equip');
+                                                delete player.storage.ex_yuhun_equip;
+                                                player.addEquipTrigger();
+                                            },
+                                        },
+                                    },
+                                    use: {
+                                        trigger: {
+                                            player: 'useCardAfter',
+                                        },
+                                        filter: function (event, player) {
+                                            if (!['trick', 'basic'].contains(get.type(event.card))) return false;
+                                            var players = _status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']);
+                                            return players && players.length;
+                                        },
+                                        forced: true,
+                                        content: function () {
+                                            'step 0'
+                                            var players = _status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']);
+                                            game.countPlayer(function (current) {
+                                                if (!players.contains(current) || !current.master || current.master != player) {
+                                                    players.remove(current);
+                                                }
+                                            });
+                                            event.num = 0;
+                                            event.kuilei = players;
+                                            'step 1'
+                                            event.targets = trigger.targets.slice(0);
+                                            for (var i = 0; i < event.targets.length; i++) {
+                                                if (!event.kuilei[event.num].canUse(trigger.card, event.targets[i], false, false) || !event.targets[i].isAlive()) {
+                                                    event.targets.remove(event.targets[i]);
+                                                }
+                                            }
+                                            var card = game.createCard(trigger.card);
+                                            if (trigger.targets.length == 1 && trigger.targets[0] == player) event.kuilei[event.num].useCard(card, event.kuilei[event.num], false);
+                                            else if (event.targets.length) event.kuilei[event.num].useCard(card, event.targets, false);
+                                            event.num++;
+                                            if (event.num < event.kuilei.length) event.redo();
+                                        },
+                                    },
+                                    win: {
+                                        trigger: {
+                                            global: ['dieBegin', 'die', 'phaseAfter'],
+                                        },
+                                        silent: true,
+                                        popup: false,
+                                        forced: true,
+                                        filter: function (event, player, name) {
+                                            var mode = get.mode();
+                                            var players = _status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']);
+                                            if (!players || !players.length) return false;
+                                            if (mode == 'identity' && name == 'dieBegin' && player.identity == 'nei') {
+                                                return game.players.length - players.length <= 2 && event.player != player;
+                                            }
+                                            else if (name == 'die' || name == 'phaseAfter') return player.getEnemies().length == 0;
+                                        },
+                                        content: function () {
+                                            'step 0'
+                                            game.delay();
+                                            'step 1'
+                                            if (game.showIdentity) {
+                                                game.showIdentity();
+                                            }
+                                            if (player.isUnderControl(true) || player.getFriends().contains(game.me)) {
+                                                game.over(true);
+                                            } else {
+                                                game.over(true);
+                                            }
+                                        },
+                                    },
+                                },
+                            },
+                            ex_kongshen: {
+                                trigger: {
+                                    player: 'phaseEnd',
+                                },
+                                audio: 'biyue',
+                                content: function () {
+                                    'step 0'
+
+                                    const puppets = _status['ex_yuhun_zuo'].length + _status['ex_yuhun_you'].length;
+                                    player.draw(puppets);
+                                    player.recover(4 - puppets);
+                                    player.chooseTarget(get.prompt2(event.name), '选择1名【傀儡】替换武将牌', function (card, player, target) {
+                                        var players = _status['ex_yuhun_zuo'].concat(_status['ex_yuhun_you']);
+                                        return players && players.contains(target) && target.master && target.master == _status.event.player;
+                                    }).set('ai', function (target) {
+                                        if (['qy_qynvkuilei', 'qy_qynankuilei'].contains(target.name1)) return target;
+                                        return Math.random();
+                                    });
+
+                                    'step 1'
+                                    if (result.bool) {
+                                        var list = [];
+                                        var list2 = [];
+                                        var players = game.players.concat(game.dead);
+                                        for (var i = 0; i < players.length; i++) {
+                                            list2.add(players[i].name);
+                                            list2.add(players[i].name1);
+                                            list2.add(players[i].name2);
+                                        }
+                                        for (var i in lib.character) {
+                                            if (lib.character[i][4].contains('qyboss')) continue;
+                                            if (lib.character[i][0] != result.targets[0].sex) continue;
+                                            if (lib.character[i][4].contains('minskin')) continue;
+                                            if (list2.contains(i)) continue;
+                                            list.push(i);
+                                        }
+                                        result.targets[0].master.removeAdditionalSkill(result.targets[0].name1);
+                                        var hp = result.targets[0].hp;
+                                        var maxHp = result.targets[0].maxHp;
+                                        result.targets[0].init(list.randomGet()).classList.add('minskin');
+                                        result.targets[0].hp = hp;
+                                        result.targets[0].maxHp = maxHp;
+                                        result.targets[0].update();
+                                        result.targets[0].master.addAdditionalSkill(result.targets[0].name1, result.targets[0].skills.filter(value => ['ymhuajing', 'ymdujie', 'ex_yuhun_init', 'ex_yuhun_remove'].contains(value) === false), true);
+                                    }
+                                },
+                            },
                         },
                         translate: {
                             // config
                             update: "更新情况",
+                            thanks: "鸣谢",
 
                             //classification
                             against7devil: "大战七阴",
                             against7devil_boss: "挑战boss加强包",
                             against7devil_fusion: "融包",
                             against7devil_yin: "阴间包",
+                            against7devil_ex: "扩包",
 
                             //character
                             "re_boss_caocao": "界魏武大帝",
@@ -647,6 +1066,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "liuxingyaodi": "六星耀帝",
                             "re_boss_zhenji": "界洛水仙子",
                             "fusion_honglianpo": "红脸婆",
+                            "ex_diaochan": "扩貂蝉",
 
                             //skill
                             shenhu: "神护",
@@ -671,7 +1091,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             renjun_info: '锁定技，当一名角色回复体力时，你获得一个蜀势力角色的所有技能',
                             boss_rende: '仁德',
                             boss_rende_info: '出牌阶段，若你有杀，你可以展示所有手牌并弃置其中的杀，然后令任意名角色回复一点体力。然后你摸X张牌。（X为以此法恢复体力的角色数）',
-
+                            ex_yuhun: "驭魂",
+                            ex_yuhun_info: "出牌阶段限一次，你可以弃置任意张不同花色的牌召唤等量阵营与你相同的【傀儡】随机成为你的下家或上家(场上数量不能超过4)。<br><b>【傀儡】</b>：①其初始体力值为3且每轮游戏随机增加一点体力上限或回复一点体力；②你与【傀儡】不能指定对方为目标且每名【傀儡】令你或其与其他角色计算距离-1；③其回合开始前改为摸两张牌，你使用牌后其对你指定的目标再次使用此牌(基本牌或普通锦囊牌)；④其视为拥有你装备区牌的效果，你视为拥有其的技能；⑤你死亡后所有【傀儡】立即死亡。",
+                            ex_kongshen: "控身",
+                            ex_kongshen_info: "你的回合结束阶段，你可以摸X张牌，并回复 4-X 点体力；然后你可以令一名【傀儡】将武将牌替换为场下随机同性别武将。(X为场上傀儡数)",
                         },
                     };
 
@@ -702,14 +1125,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：3.5<font size="4px">▶▶▶</font></div>`,
-                version: 3.5,
+                name: `<div class=".update">扩展版本：4.0<font size="4px">▶▶▶</font></div>`,
+                version: 4.0,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：六星耀帝，界洛水仙子，界孟婆<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：六星耀帝，界洛水仙子，界孟婆，扩貂蝉<br>' +
+                            '<li><span style="color:#006400">说明二</span>：<br>更新了新扩展包：扩包<br>' +
+                            '<li><span style="color:#006400">说明三</span>：<br>更新了鸣谢部分<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -718,8 +1143,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：3.5<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：4.0<font size="4px">▶▶▶</font></div>';
                     };
+                }
+            },
+            thanks: {
+                name: "鸣谢",
+                init: "1",
+                intro: "点击查看鸣谢名单",
+                item: {
+                    "1": "<font color=navy>鸣谢名单</font>",
+                    "2": "无名杀本体作者们，扩展包假装无敌作者们，扩展包阳光包作者们，扩展包合纵连横作者们"
                 }
             },
         },
