@@ -62,11 +62,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_xuhuang": ["male", "wei", 6, ["shenhu", "shipo", "famine", "olduanliang", "oljiezi"], ["zhu", "boss", "bossallowed"]],
                             "liuxingyaodi": ["male", "shu", "8/10", ["shenhu", "renjun", "boss_rende"], ["zhu", "boss", "bossallowed"]],
                             "re_boss_zhenji": ["female", "wei", 6, ["shenhu", "tashui", "lingbo", "jiaoxia", "fanghua", "reluoshen"], ["zhu", "boss", "bossallowed"]],
+                            "fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "boss_wangshi", "boss_didong", "boss_guimei", "boss_xuechi"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji"],
-                                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang"],
+                                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo"],
                                 against7devil_yin: ["yin_caojinyu"],
                             }
                         },
@@ -78,9 +79,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_boss_zhouyu": "来源于挑战模式boss赤壁火神，加上朱雀技能【红莲】，以及【神护】。<br>【强度】★★★★<br> 【亮点】防御，稳定",
                             "yin_caojinyu": "来源于曹金玉，无脑堆数字，还蛮好玩的。<br>【强度】★★★★<br> 【亮点】卖血，过牌",
                             "norecover": "来源于泰山王【苦酒】【服毒】，相柳【毒躯】【恶臭】，赵高【害忠】（目前还未加），虽然毫无操作感，但是能看对面崩死还挺好玩的。<br>【强度】★★★★<br> 【亮点】无法回血",
-                            "fusion_xuhuang": "来源于徐晃和谋徐晃，将【断粮】升级为【饥荒】。<br>【强度】★★<br> 【亮点】谋弈",
+                            "fusion_xuhuang": "来源于徐晃和谋徐晃，将【断粮】升级为【饥荒】。<br>【强度】★<br> 【亮点】谋弈",
                             "liuxingyaodi": "将挑战模式boss魏武大帝的技能【雄才】换成【仁君】，加上自设计的【仁德】形成技能联动，和sp孙尚香的技能也有关系。<br> 【强度】★★★★★ <br> 【亮点】综合，可玩性高",
                             "re_boss_zhenji": "来源于挑战模式boss洛水仙子，加上界甄姬的【洛神】以及【神护】。<br> 【强度】★★★ <br> 【亮点】爆发，控制",
+                            "fusion_honglianpo": "来源于捉鬼boss孟婆，加上五官王的【血池】以及红鬼的【地动】。没错，就是经典的五官王+红鬼+孟婆，三个五阶也也胆寒。<br> 【强度】★★★ <br> 【亮点】恶心，回忆",
                         },
                         skill: {
                             shenhu: {
@@ -644,6 +646,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_xuhuang": "融徐晃",
                             "liuxingyaodi": "六星耀帝",
                             "re_boss_zhenji": "界洛水仙子",
+                            "fusion_honglianpo": "红脸婆",
 
                             //skill
                             shenhu: "神护",
@@ -706,7 +709,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：六星耀帝，界洛水仙子<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：六星耀帝，界洛水仙子，界孟婆<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
