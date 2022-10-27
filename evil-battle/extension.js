@@ -64,11 +64,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_boss_zhenji": ["female", "wei", 6, ["shenhu", "tashui", "lingbo", "jiaoxia", "fanghua", "reluoshen"], ["zhu", "boss", "bossallowed"]],
                             "fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "boss_wangshi", "boss_didong", "boss_guimei", "boss_xuechi"], ["zhu", "boss", "bossallowed"]],
                             "ex_diaochan": ["female", "qun", 3, ["shenhu", "ex_yuhun", "ex_kongshen"], ["zhu", "boss", "bossallowed"]],
+                            "re_fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "rewangshi", "boss_didong", "boss_guimei", "rexuechi"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji"],
-                                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo"],
+                                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo"],
                                 against7devil_yin: ["yin_caojinyu"],
                                 against7devil_ex: ["ex_diaochan"],
                             }
@@ -84,8 +85,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_xuhuang": "来源于徐晃和谋徐晃，将【断粮】升级为【饥荒】。<br>【强度】★<br> 【亮点】谋弈",
                             "liuxingyaodi": "将挑战模式boss魏武大帝的技能【雄才】换成【仁君】，加上自设计的【仁德】形成技能联动，和sp孙尚香的技能也有关系。<br> 【强度】★★★★★ <br> 【亮点】综合，可玩性高",
                             "re_boss_zhenji": "来源于挑战模式boss洛水仙子，加上界甄姬的【洛神】以及【神护】。<br> 【强度】★★★ <br> 【亮点】爆发，控制",
-                            "fusion_honglianpo": "来源于捉鬼boss孟婆，加上五官王的【血池】以及红鬼的【地动】。没错，就是经典的五官王+红鬼+孟婆，三个五阶也也胆寒。<br> 【强度】★★★ <br> 【亮点】恶心，回忆",
+                            "fusion_honglianpo": "来源于捉鬼boss孟婆，加上五官王的【血池】以及红鬼的【地动】。没错，就是经典的五官王+红鬼+孟婆，三个五阶也也胆寒。<br> 【强度】★★ <br> 【亮点】恶心，回忆",
                             "ex_diaochan": "来源于【假装无敌】扩展包貂蝉。由于非常喜欢这个傀儡机制，将她加入扩包第一将。<br> 【强度】★★★★ <br> 【亮点】机制",
+                            "re_fusion_honglianpo": "来源于本包红脸婆。由于原版强度较低，完全打不过七阴。设计了增强版，单体爆破更加有效。<br> 【强度】★★★ <br> 【亮点】恶心，回忆",
                         },
                         skill: {
                             shenhu: {
@@ -1041,6 +1043,66 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
+                            "rewangshi": {
+                                trigger: { global: 'phaseZhunbeiBegin' },
+                                forced: true,
+                                audio: true,
+                                filter: function (event, player) {
+                                    if (player.getEnemies().contains(event.player)) { return true; }
+                                    return false;
+                                },
+                                logTarget: 'player',
+                                content: function () {
+                                    'step 0'
+                                    player.chooseControl('basic', 'trick', 'equip');
+
+                                    'step 1'
+                                    var list = result.control;
+                                    trigger.player.addTempSkill('boss_wangshi2');
+                                    trigger.player.storage.boss_wangshi2 = [list];
+                                    game.log(trigger.player, '本回合不能使用或打出', list, '牌');
+                                    trigger.player.markSkill('boss_wangshi2');
+                                },
+                            },
+                            "boss_wangshi2": {
+                                unique: true,
+                                charlotte: true,
+                                intro: {
+                                    content: function (storage) {
+                                        return '不能使用或打出' + get.translation(storage) + '牌';
+                                    }
+                                },
+                                init: function (player, skill) {
+                                    if (!player.storage[skill]) player.storage[skill] = [];
+                                },
+                                //mark:true,
+                                onremove: true,
+                                mod: {
+                                    cardEnabled2: function (card, player) {
+                                        if (player.storage.boss_wangshi2.contains(get.type(card, 'trick'))) return false;
+                                    },
+                                },
+                            },
+                            rexuechi: {
+                                trigger: { player: 'phaseJieshuBegin' },
+                                forced: true,
+                                content: function () {
+                                    "step 0"
+                                    player.chooseTarget('请选择一名其他角色，令该角色失去两点体力。', function () {
+                                        return target != player;
+                                    }).set('ai', function (target) {
+                                        var player = _status.event.player;
+                                        return get.damageEffect(target, player, player);
+                                    });
+
+                                    "step 1"
+                                    if (result.bool) {
+                                        const target = result.targets[0];
+                                        player.line(target);
+                                        target.loseHp(2);
+                                    }
+                                },
+                            },
                         },
                         translate: {
                             // config
@@ -1066,6 +1128,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "liuxingyaodi": "六星耀帝",
                             "re_boss_zhenji": "界洛水仙子",
                             "fusion_honglianpo": "红脸婆",
+                            "re_fusion_honglianpo": "界红脸婆",
                             "ex_diaochan": "扩貂蝉",
 
                             //skill
@@ -1095,6 +1158,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_yuhun_info: "出牌阶段限一次，你可以弃置任意张不同花色的牌召唤等量阵营与你相同的【傀儡】随机成为你的下家或上家(场上数量不能超过4)。<br><b>【傀儡】</b>：①其初始体力值为3且每轮游戏随机增加一点体力上限或回复一点体力；②你与【傀儡】不能指定对方为目标且每名【傀儡】令你或其与其他角色计算距离-1；③其回合开始前改为摸两张牌，你使用牌后其对你指定的目标再次使用此牌(基本牌或普通锦囊牌)；④其视为拥有你装备区牌的效果，你视为拥有其的技能；⑤你死亡后所有【傀儡】立即死亡。",
                             ex_kongshen: "控身",
                             ex_kongshen_info: "你的回合结束阶段，你可以摸X张牌，并回复 4-X 点体力；然后你可以令一名【傀儡】将武将牌替换为场下随机同性别武将。(X为场上傀儡数)",
+                            rewangshi: "往事",
+                            rewangshi_info: "锁定技，你存活时，敌方角色的回合开始时，你选择一项，令其于本回合不能使用或打出一种类型的牌（基本、锦囊、装备）。",
+                            rexuechi: '血池',
+                            rexuechi_info: '锁定技，你的回合结束时，令一名其他角色失去2点体力。',
                         },
                     };
 
@@ -1125,16 +1192,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：4.0<font size="4px">▶▶▶</font></div>`,
-                version: 4.0,
+                name: `<div class=".update">扩展版本：4.1<font size="4px">▶▶▶</font></div>`,
+                version: 4.1,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：六星耀帝，界洛水仙子，界孟婆，扩貂蝉<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：六星耀帝，界洛水仙子，红脸婆，界红脸婆，扩貂蝉<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>更新了新扩展包：扩包<br>' +
-                            '<li><span style="color:#006400">说明三</span>：<br>更新了鸣谢部分<br>'
+                            '<li><span style="color:#006400">说明三</span>：<br>更新了鸣谢部分<br>' +
+                            '<li><span style="color:#006400">说明四</span>：<br>万圣节没有鬼怎么行？但是红脸婆太弱，完全打不过七阴，给大家加个界红脸婆过节<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -1143,7 +1211,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：4.0<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：4.1<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
