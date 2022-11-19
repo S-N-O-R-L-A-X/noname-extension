@@ -65,11 +65,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "boss_wangshi", "boss_didong", "boss_guimei", "boss_xuechi"], ["zhu", "boss", "bossallowed"]],
                             "ex_diaochan": ["female", "qun", 3, ["shenhu", "ex_yuhun", "ex_kongshen"], ["zhu", "boss", "bossallowed"]],
                             "re_fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "rewangshi", "boss_didong", "boss_guimei", "rexuechi"], ["zhu", "boss", "bossallowed"]],
-                            "zhizunwudi": ["male", "wei", 6, ["shenhu", "wuye", "boss_zhiheng"], ["zhu", "boss", "bossallowed"]],
+                            "zhizunwudi": ["male", "wu", 6, ["shenhu", "wuye", "boss_zhiheng"], ["zhu", "boss", "bossallowed"]],
+                            "luanshizhuhou": ["male", "qun", 6, ["shenhu", "geju", "hunzhan"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
-                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi"],
+                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou"],
                                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo"],
                                 against7devil_yin: ["yin_caojinyu"],
                                 against7devil_ex: ["ex_diaochan"],
@@ -90,6 +91,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_diaochan": "来源于【假装无敌】扩展包貂蝉。由于非常喜欢这个傀儡机制，将她加入扩包第一将。<br> 【强度】★★★★ <br> 【亮点】机制",
                             "re_fusion_honglianpo": "来源于本包红脸婆。由于原版强度较低，完全打不过七阴。设计了增强版，单体爆破更加有效。<br> 【强度】★★★ <br> 【亮点】恶心，回忆",
                             "zhizunwudi": "将挑战模式boss魏武大帝的技能【雄才】换成【吴业】，加上自设计的【制衡】形成技能联动，也有吴国玩装备的传统。<br> 【强度】★★★★★ <br> 【亮点】综合，可玩性高",
+                            "luanshizhuhou": "群雄是乱世中最混乱的势力。将挑战模式boss魏武大帝的技能【雄才】换成【混战】，加上自设计的【割据】形成防御。进可攻，退可守。<br> 【强度】★★★★★ <br> 【亮点】综合，可玩性高",
                         },
                         skill: {
                             shenhu: {
@@ -1182,7 +1184,105 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     player.gain(randomEquip);
 
                                 },
-
+                            },
+                            hunzhan: {
+                                unique: true,
+                                trigger: {
+                                    source: 'damageSource',
+                                },
+                                filter: function (event, player) {
+                                    return player != event.player;
+                                },
+                                direct: true,
+                                init: function (player) {
+                                    player.storage.hunzhan = [];
+                                },
+                                intro: {
+                                    content: 'characters'
+                                },
+                                content: function () {
+                                    'step 0'
+                                    // if(player.storage.xiongcai2<1){
+                                    //		player.storage.xiongcai2++;
+                                    //		event.finish();
+                                    // }
+                                    // else{
+                                    //		player.storage.xiongcai2=0;
+                                    // }
+                                    'step 1'
+                                    player.logSkill('hunzhan');
+                                    var list = [];
+                                    var list2 = [];
+                                    var players = game.players.concat(game.dead);
+                                    for (var i = 0; i < players.length; i++) {
+                                        list2.add(players[i].name);
+                                        list2.add(players[i].name1);
+                                        list2.add(players[i].name2);
+                                    }
+                                    for (var i in lib.character) {
+                                        if (lib.character[i][1] != 'qun') continue;
+                                        if (lib.character[i][4].contains('boss')) continue;
+                                        if (lib.character[i][4].contains('minskin')) continue;
+                                        if (player.storage.hunzhan.contains(i)) continue;
+                                        if (list2.contains(i)) continue;
+                                        list.push(i);
+                                    }
+                                    var name = list.randomGet();
+                                    player.storage.hunzhan.push(name);
+                                    player.markSkill('hunzhan');
+                                    var skills = lib.character[name][3];
+                                    for (var i = 0; i < skills.length; i++) {
+                                        player.addSkill(skills[i]);
+                                    }
+                                    event.dialog = ui.create.dialog('<div class="text center">' + get.translation(player) + '发动了【雄才】', [[name], 'character']);
+                                    game.delay(2);
+                                    'step 2'
+                                    event.dialog.close();
+                                }
+                            },
+                            geju: {
+                                trigger: { player: 'phaseBegin' },
+                                forced: true,
+                                content: function () {
+                                    player.addSkill('geju_effect');
+                                },
+                            },
+                            geju_effect: {
+                                forced: true,
+                                trigger: { player: 'damageEnd' },
+                                // filter: function (event, player) {
+                                //     return event.source && event.source != player;
+                                // },
+                                mark: true,
+                                charlotte: true,
+                                intro: {
+                                    content: function (storage) {
+                                        if (storage > 0) {
+                                            return '其他角色计算与你的距离时+' + storage;
+                                        }
+                                        else if (storage < 0) {
+                                            return '其他角色计算与你的距离时' + storage;
+                                        }
+                                        else {
+                                            return '无距离变化';
+                                        }
+                                    }
+                                },
+                                init: function (player) {
+                                    if (typeof player.storage.geju_effect != 'number') player.storage.geju_effect = 0;
+                                },
+                                content: function () {
+                                    player.addSkill('geju_effect');
+                                    player.storage.geju_effect++;
+                                    player.markSkill('geju_effect');
+                                },
+                                mod: {
+                                    globalTo: function (from, to, distance) {
+                                        if (typeof to.storage.geju_effect == 'number') {
+                                            return distance + to.storage.geju_effect;
+                                        }
+                                    }
+                                }
                             }
                         },
                         translate: {
@@ -1212,6 +1312,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_fusion_honglianpo": "界红脸婆",
                             "ex_diaochan": "扩貂蝉",
                             "zhizunwudi": "至尊吴帝",
+                            "luanshizhuhou": "乱世诸侯",
 
                             //skill
                             shenhu: "神护",
@@ -1249,6 +1350,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             wuye_info: '锁定技，当你使用或失去装备牌导致装备区发生变化时，你随机获得一个吴势力角色的所有技能',
                             boss_zhiheng: '制衡',
                             boss_zhiheng_info: '出牌阶段限一次，你可以弃置所有手牌，然后从牌堆中随机获得一张装备牌',
+
+                            hunzhan: '混战',
+                            hunzhan_info: '锁定技，当你造成一点伤害后，你随机获得一个群势力角色的所有技能。',
+                            geju: '割据',
+                            geju_info: '锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。',
                         },
                     };
 
@@ -1286,7 +1392,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：至尊吴帝<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：至尊吴帝，乱世诸侯<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>增加武将回血亡血量和上限，减少武将六星耀帝血量和上限<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
