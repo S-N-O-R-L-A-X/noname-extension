@@ -58,17 +58,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_boss_huatuo": ["male", "qun", 6, ["shenhu", "chulao", "mazui", "boss_shengshou", "guizhen", "wuqin"], ["zhu", "boss", "bossallowed"]],
                             "re_boss_zhouyu": ["male", "wu", 10, ["shenhu", "huoshen", "boss_honglian", "boss_xianyin", "boss_zhaohuo", "boss_honglianx"], ["zhu", "boss", "bossallowed"]],
                             "yin_caojinyu": ["female", "wei", 10, ["shenhu", "yinyuqi", "yinshanshen", "yinxianjing"], ["zhu", "boss", "bossallowed"]],
-                            "norecover": ["male", "shen", 20, ["boss_fudu", "boss_kujiu", "boss_duqu", "boss_echou", "zhaogao_haizhong"], ["zhu", "boss", "bossallowed"]],
+                            "norecover": ["male", "shen", 25, ["boss_fudu", "boss_kujiu", "boss_duqu", "boss_echou", "zhaogao_haizhong"], ["zhu", "boss", "bossallowed"]],
                             "fusion_xuhuang": ["male", "wei", 6, ["shenhu", "shipo", "famine", "olduanliang", "oljiezi"], ["zhu", "boss", "bossallowed"]],
-                            "liuxingyaodi": ["male", "shu", "8/10", ["shenhu", "renjun", "boss_rende"], ["zhu", "boss", "bossallowed"]],
+                            "liuxingyaodi": ["male", "shu", "6/8", ["shenhu", "renjun", "boss_rende"], ["zhu", "boss", "bossallowed"]],
                             "re_boss_zhenji": ["female", "wei", 6, ["shenhu", "tashui", "lingbo", "jiaoxia", "fanghua", "reluoshen"], ["zhu", "boss", "bossallowed"]],
                             "fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "boss_wangshi", "boss_didong", "boss_guimei", "boss_xuechi"], ["zhu", "boss", "bossallowed"]],
                             "ex_diaochan": ["female", "qun", 3, ["shenhu", "ex_yuhun", "ex_kongshen"], ["zhu", "boss", "bossallowed"]],
                             "re_fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "rewangshi", "boss_didong", "boss_guimei", "rexuechi"], ["zhu", "boss", "bossallowed"]],
+                            "zhizunwudi": ["male", "wei", 6, ["shenhu", "wuye", "boss_zhiheng"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
-                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji"],
+                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi"],
                                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo"],
                                 against7devil_yin: ["yin_caojinyu"],
                                 against7devil_ex: ["ex_diaochan"],
@@ -88,6 +89,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_honglianpo": "来源于捉鬼boss孟婆，加上五官王的【血池】以及红鬼的【地动】。没错，就是经典的五官王+红鬼+孟婆，三个五阶也也胆寒。<br> 【强度】★★ <br> 【亮点】恶心，回忆",
                             "ex_diaochan": "来源于【假装无敌】扩展包貂蝉。由于非常喜欢这个傀儡机制，将她加入扩包第一将。<br> 【强度】★★★★ <br> 【亮点】机制",
                             "re_fusion_honglianpo": "来源于本包红脸婆。由于原版强度较低，完全打不过七阴。设计了增强版，单体爆破更加有效。<br> 【强度】★★★ <br> 【亮点】恶心，回忆",
+                            "zhizunwudi": "将挑战模式boss魏武大帝的技能【雄才】换成【吴业】，加上自设计的【制衡】形成技能联动，也有吴国玩装备的传统。<br> 【强度】★★★★★ <br> 【亮点】综合，可玩性高",
                         },
                         skill: {
                             shenhu: {
@@ -1103,6 +1105,85 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
+                            wuye: {
+                                unique: true,
+                                trigger: {
+                                    player: 'loseAfter',
+                                    global: ['equipAfter', 'addJudgeAfter', 'gainAfter', 'loseAsyncAfter', 'addToExpansionAfter'],
+                                },
+                                filter: function (event, player) {
+                                    var evt = event.getl(player);
+                                    if (event.name == 'equip' && event.player == player) return !evt || evt.cards.length != 1;
+                                    return evt && evt.es.length;
+                                },
+                                direct: true,
+                                init: function (player) {
+                                    player.storage.wuye = [];
+                                },
+                                intro: {
+                                    content: 'characters'
+                                },
+                                content: function () {
+                                    'step 0'
+                                    // if(player.storage.xiongcai2<1){
+                                    //		player.storage.xiongcai2++;
+                                    //		event.finish();
+                                    // }
+                                    // else{
+                                    //		player.storage.xiongcai2=0;
+                                    // }
+                                    'step 1'
+                                    player.logSkill('wuye');
+                                    var list = [];
+                                    var list2 = [];
+                                    var players = game.players.concat(game.dead);
+                                    for (var i = 0; i < players.length; i++) {
+                                        list2.add(players[i].name);
+                                        list2.add(players[i].name1);
+                                        list2.add(players[i].name2);
+                                    }
+                                    for (var i in lib.character) {
+                                        if (lib.character[i][1] != 'wu') continue;
+                                        if (lib.character[i][4].contains('boss')) continue;
+                                        if (lib.character[i][4].contains('minskin')) continue;
+                                        if (player.storage.wuye.contains(i)) continue;
+                                        if (list2.contains(i)) continue;
+                                        list.push(i);
+                                    }
+                                    var name = list.randomGet();
+                                    player.storage.wuye.push(name);
+                                    player.markSkill('wuye');
+                                    var skills = lib.character[name][3];
+                                    for (var i = 0; i < skills.length; i++) {
+                                        player.addSkill(skills[i]);
+                                    }
+                                    event.dialog = ui.create.dialog('<div class="text center">' + get.translation(player) + '发动了【雄才】', [[name], 'character']);
+                                    game.delay(2);
+                                    'step 2'
+                                    event.dialog.close();
+                                }
+                            },
+                            boss_zhiheng: {
+                                enable: 'phaseUse',
+                                usable: 1,
+                                delay: false,
+                                filter: function (event, player) {
+                                    return player.countCards('h');
+                                },
+                                content: function () {
+                                    'step 0'
+                                    const cards = player.getCards('h');
+                                    player.discard(cards);
+
+                                    'step 1'
+                                    const randomEquip = get.cardPile(function (card) {
+                                        return get.type(card) == 'equip';
+                                    });
+                                    player.gain(randomEquip);
+
+                                },
+
+                            }
                         },
                         translate: {
                             // config
@@ -1130,6 +1211,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_honglianpo": "红脸婆",
                             "re_fusion_honglianpo": "界红脸婆",
                             "ex_diaochan": "扩貂蝉",
+                            "zhizunwudi": "至尊吴帝",
 
                             //skill
                             shenhu: "神护",
@@ -1151,7 +1233,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             shipo: '势迫',
                             shipo_info: '结束阶段，你可以令一名体力值少于你的角色或所有判定区有【兵粮寸断】的其他角色依次选择一项：1. 弃置一张牌；2. 令你摸一张牌。',
                             renjun: '仁君',
-                            renjun_info: '锁定技，当一名角色回复体力时，你获得一个蜀势力角色的所有技能',
+                            renjun_info: '锁定技，当一名角色回复体力时，你随机获得一个蜀势力角色的所有技能',
                             boss_rende: '仁德',
                             boss_rende_info: '出牌阶段，若你有杀，你可以展示所有手牌并弃置其中的杀，然后令任意名角色回复一点体力。然后你摸X张牌。（X为以此法恢复体力的角色数）',
                             ex_yuhun: "驭魂",
@@ -1162,6 +1244,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             rewangshi_info: "锁定技，你存活时，敌方角色的回合开始时，你选择一项，令其于本回合不能使用或打出一种类型的牌（基本、锦囊、装备）。",
                             rexuechi: '血池',
                             rexuechi_info: '锁定技，你的回合结束时，令一名其他角色失去2点体力。',
+
+                            wuye: '吴业',
+                            wuye_info: '锁定技，当你使用或失去装备牌导致装备区发生变化时，你随机获得一个吴势力角色的所有技能',
+                            boss_zhiheng: '制衡',
+                            boss_zhiheng_info: '出牌阶段限一次，你可以弃置所有手牌，然后从牌堆中随机获得一张装备牌',
                         },
                     };
 
@@ -1192,17 +1279,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：4.1<font size="4px">▶▶▶</font></div>`,
-                version: 4.1,
+                name: `<div class=".update">扩展版本：4.2<font size="4px">▶▶▶</font></div>`,
+                version: 4.2,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：六星耀帝，界洛水仙子，红脸婆，界红脸婆，扩貂蝉<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>更新了新扩展包：扩包<br>' +
-                            '<li><span style="color:#006400">说明三</span>：<br>更新了鸣谢部分<br>' +
-                            '<li><span style="color:#006400">说明四</span>：<br>万圣节没有鬼怎么行？但是红脸婆太弱，完全打不过七阴，给大家加个界红脸婆过节<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：至尊吴帝<br>' +
+                            '<li><span style="color:#006400">说明二</span>：<br>增加武将回血亡血量和上限，减少武将六星耀帝血量和上限<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -1211,7 +1296,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：4.1<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：4.2<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
