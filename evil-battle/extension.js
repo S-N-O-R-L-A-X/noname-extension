@@ -1317,11 +1317,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             //skill
                             shenhu: "神护",
                             shenhu_info: "锁定技，你不能成为延时类锦囊的目标",
+
+                            // fusion_shen_sunce
                             repinghe: "冯河",
                             repinghe_info: "①锁定技，你的手牌上限基数等于你的体力上限。②当你受到其他角色造成的伤害时，若你有牌且你的体力上限大于1，则你防止此伤害，减一点体力上限并将一张手牌交给一名其他角色。然后若你拥有〖英霸〗，则伤害来源获得一个“平定”标记。",
+
+                            // succubus
                             yuxin: "驭心",
                             yuxin_info: "出牌阶段限两次，你可以展示两张花色相同的手牌并分别交给两名其他角色，然后令这两名角色拼点，没赢的角色获得1个“魅惑”标记。拥有2个或更多“魅惑”的角色回合即将开始时，该角色移去其所有“魅惑”，此回合改为由你操控。",
 
+                            // yin_caojinyu
                             yinyuqi: '隅泣',
                             yinyuqi_info: '每回合限X次。当有角色受到伤害后，若你至其的距离不大于<span class=thundertext>0</span>，则你可以观看牌堆顶的<span class=firetext>3</span>张牌。你将其中至多<span class=greentext>1</span>张牌交给受伤角色，然后可以获得剩余牌中的至多<span class=yellowtext>1</span>张牌，并将其余牌以原顺序放回牌堆顶。（X为所有数字中最大值）',
                             yinshanshen: '善身',
@@ -1329,11 +1334,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             yinxianjing: '娴静',
                             yinxianjing_info: '准备阶段，你可令你的〖隅泣〗中的一个具有颜色的数字+1。若你的体力值等于体力上限，则你可以重复一次此流程。',
 
+                            //fuxion_xuhuang
                             famine: '饥荒',
                             famine_info: "出牌阶段限七次，你可以与一名其他角色进行“谋弈”：<br>围城断粮：若其判定区有【兵粮寸断】，获得其一张牌，否则你将一张牌堆顶的牌当做【兵粮寸断】对其使用且无距离限制。<br>擂鼓进军：你视为对其使用一张【决斗】。",
                             shipo: '势迫',
                             shipo_info: '结束阶段，你可以令一名体力值少于你的角色或所有判定区有【兵粮寸断】的其他角色依次选择一项：1. 弃置一张牌；2. 令你摸一张牌。',
 
+                            // liuxingyaodi
                             renjun: '仁君',
                             renjun_info: '锁定技，当一名角色回复体力时，你随机获得一个蜀势力角色的所有技能',
                             boss_rende: '仁德',
@@ -1344,16 +1351,19 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_kongshen: "控身",
                             ex_kongshen_info: "你的回合结束阶段，你可以摸X张牌，并回复 4-X 点体力；然后你可以令一名【傀儡】将武将牌替换为场下随机同性别武将。(X为场上傀儡数)",
 
+                            // re_fusion_honglianpo
                             rewangshi: "往事",
                             rewangshi_info: "锁定技，你存活时，敌方角色的回合开始时，你选择一项，令其于本回合不能使用或打出一种类型的牌（基本、锦囊、装备）。",
                             rexuechi: '血池',
                             rexuechi_info: '锁定技，你的回合结束时，令一名其他角色失去2点体力。',
 
+                            // zhizunwudi
                             wuye: '吴业',
                             wuye_info: '锁定技，当你使用或失去装备牌导致装备区发生变化时，你随机获得一个吴势力角色的所有技能',
                             boss_zhiheng: '制衡',
                             boss_zhiheng_info: '出牌阶段限一次，你可以弃置所有手牌，然后从牌堆中随机获得一张装备牌',
 
+                            // luanshizhuhou
                             hunzhan: '混战',
                             hunzhan_info: '锁定技，当你造成一点伤害后，你随机获得一个群势力角色的所有技能。',
                             geju: '割据',
@@ -1382,23 +1392,22 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         config: {
             intro: {
                 name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。
-                如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极~<br>
+                如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极哦~<br>
                 <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a>
                 `,
                 clear: true,
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：4.2<font size="4px">▶▶▶</font></div>`,
-                version: 4.2,
+                name: `<div class=".update">扩展版本：4.3<font size="4px">▶▶▶</font></div>`,
+                version: 4.3,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：至尊吴帝，乱世诸侯<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>增加武将回血亡血量和上限，减少武将六星耀帝血量和上限<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>更新了一些武将描述<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：<br>' +
+                            '<li><span style="color:#006400">说明二</span>：<br>修复了武将乱世诸侯【割据】每轮距离没有重新计算的问题。<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -1407,7 +1416,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：4.2<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：4.3<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
