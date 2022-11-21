@@ -65,8 +65,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "boss_wangshi", "boss_didong", "boss_guimei", "boss_xuechi"], ["zhu", "boss", "bossallowed"]],
                             "ex_diaochan": ["female", "qun", 3, ["shenhu", "ex_yuhun", "ex_kongshen"], ["zhu", "boss", "bossallowed"]],
                             "re_fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "rewangshi", "boss_didong", "boss_guimei", "rexuechi"], ["zhu", "boss", "bossallowed"]],
-                            "zhizunwudi": ["male", "wu", 6, ["shenhu", "wuye", "boss_zhiheng"], ["zhu", "boss", "bossallowed"]],
-                            "luanshizhuhou": ["male", "qun", 6, ["shenhu", "geju", "hunzhan"], ["zhu", "boss", "bossallowed"]],
+                            "zhizunwudi": ["male", "wu", 8, ["shenhu", "wuye", "boss_zhiheng"], ["zhu", "boss", "bossallowed"]],
+                            "luanshizhuhou": ["male", "qun", 8, ["shenhu", "geju", "hunzhan"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -90,7 +90,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_honglianpo": "来源于捉鬼boss孟婆，加上五官王的【血池】以及红鬼的【地动】。没错，就是经典的五官王+红鬼+孟婆，三个五阶也也胆寒。<br> 【强度】★★ <br> 【亮点】恶心，回忆",
                             "ex_diaochan": "来源于【假装无敌】扩展包貂蝉。由于非常喜欢这个傀儡机制，将她加入扩包第一将。<br> 【强度】★★★★ <br> 【亮点】机制",
                             "re_fusion_honglianpo": "来源于本包红脸婆。由于原版强度较低，完全打不过七阴。设计了增强版，单体爆破更加有效。<br> 【强度】★★★ <br> 【亮点】恶心，回忆",
-                            "zhizunwudi": "吴国向来有玩装备的传统，因此将挑战模式boss魏武大帝的技能【雄才】换成【吴业】，加上自设计的【制衡】形成技能联动。<br> 【强度】★★★★★ <br> 【亮点】综合，可玩性高",
+                            "zhizunwudi": "吴国向来有玩装备的传统，因此将挑战模式boss魏武大帝的技能【雄才】换成【吴业】，加上自设计的【制衡】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
                             "luanshizhuhou": "群雄是乱世中最混乱的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【混战】，加上自设计的【割据】形成防御。进可攻，退可守。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
                         },
                         skill: {
@@ -1245,7 +1245,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 forced: true,
                                 content: function () {
                                     player.addSkill('geju_effect');
+                                    player.draw(player.storage.geju_effect);
+                                    player.storage.geju_effect = 0;
                                 },
+                                mod: {
+                                    globalTo: function (from, to, distance) {
+                                        if (typeof to.storage.geju_effect == 'number') {
+                                            return distance + to.storage.geju_effect;
+                                        }
+                                    }
+                                }
                             },
                             geju_effect: {
                                 forced: true,
@@ -1269,20 +1278,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                                 init: function (player) {
-                                    if (typeof player.storage.geju_effect != 'number') player.storage.geju_effect = 0;
+                                    player.storage.geju_effect = 0;
                                 },
                                 content: function () {
                                     player.addSkill('geju_effect');
                                     player.storage.geju_effect++;
                                     player.markSkill('geju_effect');
                                 },
-                                mod: {
-                                    globalTo: function (from, to, distance) {
-                                        if (typeof to.storage.geju_effect == 'number') {
-                                            return distance + to.storage.geju_effect;
-                                        }
-                                    }
-                                }
+
                             }
                         },
                         translate: {
@@ -1407,7 +1410,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
                             '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>修复了武将乱世诸侯【割据】每轮距离没有重新计算的问题。<br>'
+                            '<li><span style="color:#006400">说明二</span>：<br>修复了武将乱世诸侯【割据】每轮距离没有重新计算的问题。<br>' +
+                            '<li><span style="color:#006400">说明二</span>：<br>增加了至尊吴帝，乱世诸侯的血量。<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
