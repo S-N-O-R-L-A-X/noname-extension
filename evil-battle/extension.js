@@ -66,7 +66,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_diaochan": ["female", "qun", 3, ["shenhu", "ex_yuhun", "ex_kongshen"], ["zhu", "boss", "bossallowed"]],
                             "re_fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "rewangshi", "boss_didong", "boss_guimei", "rexuechi"], ["zhu", "boss", "bossallowed"]],
                             "zhizunwudi": ["male", "wu", 8, ["shenhu", "wuye", "boss_zhiheng"], ["zhu", "boss", "bossallowed"]],
-                            "luanshizhuhou": ["male", "qun", 8, ["shenhu", "geju", "hunzhan"], ["zhu", "boss", "bossallowed"]],
+                            "luanshizhuhou": ["male", "qun", 8, ["shenhu", "qibing", "hunzhan"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -91,7 +91,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_diaochan": "来源于【假装无敌】扩展包貂蝉。由于非常喜欢这个傀儡机制，将她加入扩包第一将。<br> 【强度】★★★★ <br> 【亮点】机制",
                             "re_fusion_honglianpo": "来源于本包红脸婆。由于原版强度较低，完全打不过七阴。设计了增强版，单体爆破更加有效。<br> 【强度】★★★ <br> 【亮点】恶心，回忆",
                             "zhizunwudi": "吴国向来有玩装备的传统，因此将挑战模式boss魏武大帝的技能【雄才】换成【吴业】，加上自设计的【制衡】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
-                            "luanshizhuhou": "群雄是乱世中最混乱的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【混战】，加上自设计的【割据】形成防御。进可攻，退可守。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
+                            "luanshizhuhou": "群雄是乱世中最混乱的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【混战】，加上自设计的【起兵】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
                         },
                         skill: {
                             shenhu: {
@@ -1240,6 +1240,29 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     event.dialog.close();
                                 }
                             },
+                            qibing: {
+                                audio: true,
+                                trigger: { player: 'phaseBegin' },
+                                direct: true,
+                                content: function () {
+                                    "step 0"
+                                    player.chooseTarget(get.prompt('qibing'), function (card, player, target) {
+                                        if (target.isFriendOf(player)) return false;
+                                        return lib.filter.targetEnabled({ name: 'sha' }, player, target);
+                                    }).ai = function (target) {
+                                        return get.effect(target, { name: 'sha' }, player);
+                                    }
+                                    "step 1"
+                                    if (result.bool) {
+                                        player.logSkill('qibing');
+                                        player.useCard({ name: 'sha' }, result.targets, false);
+                                    }
+                                },
+                                ai: {
+                                    expose: 0.2,
+                                    threaten: 1.3
+                                }
+                            },
                             geju: {
                                 trigger: { player: 'phaseBegin' },
                                 forced: true,
@@ -1369,6 +1392,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // luanshizhuhou
                             hunzhan: '混战',
                             hunzhan_info: '锁定技，当你造成一点伤害后，你随机获得一个群势力角色的所有技能。',
+                            qibing: '起兵',
+                            qibing_info: '准备阶段，你可以选择一名敌方角色，若如此做，视为对其使用了一张杀',
+
+                            //unused
                             geju: '割据',
                             geju_info: '锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。',
                             geju_effect: '割据效果',
@@ -1410,7 +1437,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
                             '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>修复了武将乱世诸侯【割据】每轮距离没有重新计算的问题。<br>' +
+                            '<li><span style="color:#006400">说明二</span>：<br>将武将乱世诸侯【割据】技能修改为【起兵】，增加强度。<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>增加了至尊吴帝，乱世诸侯的血量。<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
