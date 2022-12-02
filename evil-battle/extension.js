@@ -66,11 +66,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_diaochan": ["female", "qun", 3, ["shenhu", "ex_yuhun", "ex_kongshen"], ["zhu", "boss", "bossallowed"]],
                             "re_fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "rewangshi", "boss_didong", "boss_guimei", "rexuechi"], ["zhu", "boss", "bossallowed"]],
                             "zhizunwudi": ["male", "wu", 8, ["shenhu", "wuye", "boss_zhiheng"], ["zhu", "boss", "bossallowed"]],
-                            "luanshizhuhou": ["male", "qun", 8, ["shenhu", "qibing", "hunzhan"], ["zhu", "boss", "bossallowed"]],
+                            "luanshizhuhou": ["male", "qun", 10, ["shenhu", "qibing", "hunzhan"], ["zhu", "boss", "bossallowed"]],
+                            "yitongjindi": ["male", "jin", 4, ["shenhu", "yuquan", "chengnbing"], ['hiddenSkill', "zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
-                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou"],
+                                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi"],
                                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo"],
                                 against7devil_yin: ["yin_caojinyu"],
                                 against7devil_ex: ["ex_diaochan"],
@@ -91,7 +92,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_diaochan": "来源于【假装无敌】扩展包貂蝉。由于非常喜欢这个傀儡机制，将她加入扩包第一将。<br> 【强度】★★★★ <br> 【亮点】机制",
                             "re_fusion_honglianpo": "来源于本包红脸婆。由于原版强度较低，完全打不过七阴。设计了增强版，单体爆破更加有效。<br> 【强度】★★★ <br> 【亮点】恶心，回忆",
                             "zhizunwudi": "吴国向来有玩装备的传统，因此将挑战模式boss魏武大帝的技能【雄才】换成【吴业】，加上自设计的【制衡】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
-                            "luanshizhuhou": "群雄是乱世中最混乱的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【混战】，加上自设计的【起兵】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
+                            "luanshizhuhou": "群雄是乱世中最混乱的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【混战】，加上自设计的【起兵】形成技能联动。<br> 【强度】★★★ <br> 【亮点】综合，可玩性高",
+                            "yitongjindi": "晋国是乱世中隐藏最深的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【驭权】，加上自设计的【称病】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
                         },
                         skill: {
                             shenhu: {
@@ -1309,7 +1311,63 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     player.markSkill('geju_effect');
                                 },
 
-                            }
+                            },
+                            yuquan: {
+                                unique: true,
+                                trigger: { player: 'showCharacterAfter' },
+                                logTarget: function () {
+                                    return _status.currentPhase;
+                                },
+                                filter: function (event, player) {
+                                    return player.isAlive();
+                                },
+                                direct: true,
+                                init: function (player) {
+                                    player.storage.yuquan = [];
+                                },
+                                intro: {
+                                    content: 'characters'
+                                },
+                                content: function () {
+                                    'step 0'
+                                    // if(player.storage.xiongcai2<1){
+                                    //		player.storage.xiongcai2++;
+                                    //		event.finish();
+                                    // }
+                                    // else{
+                                    //		player.storage.xiongcai2=0;
+                                    // }
+                                    'step 1'
+                                    player.logSkill('yuquan');
+                                    var list = [];
+                                    var list2 = [];
+                                    var players = game.players.concat(game.dead);
+                                    for (var i = 0; i < players.length; i++) {
+                                        list2.add(players[i].name);
+                                        list2.add(players[i].name1);
+                                        list2.add(players[i].name2);
+                                    }
+                                    for (var i in lib.character) {
+                                        if (lib.character[i][1] != 'jin') continue;
+                                        if (lib.character[i][4].contains('boss')) continue;
+                                        if (lib.character[i][4].contains('minskin')) continue;
+                                        if (player.storage.yuquan.contains(i)) continue;
+                                        if (list2.contains(i)) continue;
+                                        list.push(i);
+                                    }
+                                    var name = list.randomGet();
+                                    player.storage.yuquan.push(name);
+                                    player.markSkill('yuquan');
+                                    var skills = lib.character[name][3];
+                                    for (var i = 0; i < skills.length; i++) {
+                                        player.addSkill(skills[i]);
+                                    }
+                                    event.dialog = ui.create.dialog('<div class="text center">' + get.translation(player) + '发动了【雄才】', [[name], 'character']);
+                                    game.delay(2);
+                                    'step 2'
+                                    event.dialog.close();
+                                }
+                            },
                         },
                         translate: {
                             // config
@@ -1339,6 +1397,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_diaochan": "扩貂蝉",
                             "zhizunwudi": "至尊吴帝",
                             "luanshizhuhou": "乱世诸侯",
+                            "yitongjindi": "一统晋帝",
 
                             //skill
                             shenhu: "神护",
@@ -1395,6 +1454,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             qibing: '起兵',
                             qibing_info: '准备阶段，你可以选择一名敌方角色，若如此做，视为对其使用了一张杀',
 
+                            // yitongjindi
+                            yuquan: '驭权',
+                            yuquan_info: '隐匿技，锁定技，当你登场后，你随机获得一个晋势力角色的所有技能。',
+                            chengbing: '称病',
+                            chengbing_info: '当你受到伤害后，你进入隐匿状态。',
+
                             //unused
                             geju: '割据',
                             geju_info: '锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。',
@@ -1436,7 +1501,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：一统晋帝<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>将武将乱世诸侯【割据】技能修改为【起兵】，增加强度。<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>增加了至尊吴帝，乱世诸侯的血量。<br>'
                         );
