@@ -67,12 +67,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_fusion_honglianpo": ["female", "shen", 8, ["boss_shiyou", "rewangshi", "boss_didong", "boss_guimei", "rexuechi"], ["zhu", "boss", "bossallowed"]],
                             "zhizunwudi": ["male", "wu", 8, ["shenhu", "wuye", "boss_zhiheng"], ["zhu", "boss", "bossallowed"]],
                             "luanshizhuhou": ["male", "qun", 10, ["shenhu", "qibing", "hunzhan"], ["zhu", "boss", "bossallowed"]],
-                            "yitongjindi": ["male", "jin", 4, ["shenhu", "yuquan", "chengnbing"], ['hiddenSkill', "zhu", "boss", "bossallowed"]],
+                            // "yitongjindi": ["male", "jin", 4, ["shenhu", "yuquan", "chengbing"], ['hiddenSkill', "zhu", "boss", "bossallowed"]],
+                            "fusion_nianshou": ["male", "shen", 4, ['boss_nianrui', 'boss_mengtai', 'boss_jingjue', 'boss_renxing', 'boss_ruizhi', 'boss_nbaonu', , 'boss_shouyi'], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi"],
-                                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo"],
+                                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "fusion_nianshou"],
                                 against7devil_yin: ["yin_caojinyu"],
                                 against7devil_ex: ["ex_diaochan"],
                             }
@@ -93,7 +94,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_fusion_honglianpo": "来源于本包红脸婆。由于原版强度较低，完全打不过七阴。设计了增强版，单体爆破更加有效。<br> 【强度】★★★ <br> 【亮点】恶心，回忆",
                             "zhizunwudi": "吴国向来有玩装备的传统，因此将挑战模式boss魏武大帝的技能【雄才】换成【吴业】，加上自设计的【制衡】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
                             "luanshizhuhou": "群雄是乱世中最混乱的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【混战】，加上自设计的【起兵】形成技能联动。<br> 【强度】★★★ <br> 【亮点】综合，可玩性高",
-                            "yitongjindi": "晋国是乱世中隐藏最深的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【驭权】，加上自设计的【称病】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
+                            // "yitongjindi": "晋国是乱世中隐藏最深的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【驭权】，加上自设计的【称病】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
+                            "fusion_nianshou": "来源于挑战模式boss四大年兽。<br>【强度】★★★★<br> 【亮点】综合"
                         },
                         skill: {
                             shenhu: {
@@ -1368,6 +1370,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     event.dialog.close();
                                 }
                             },
+                            chengbing: {
+                                forced: true,
+                                trigger: { player: 'damageEnd' },
+                                content: function () {
+                                    game.log(player.info);
+                                    if (!player.hiddenSkills) player.hiddenSkills = [];
+                                    // player.hiddenSkills.addArray(info2[3]);
+                                    player.classList.add(_status.video ? 'unseen2_v' : 'unseen2');
+                                    player.storage.nohp = true;
+                                    player.skills.add('g_hidden_ai');
+                                }
+                            }
                         },
                         translate: {
                             // config
@@ -1397,7 +1411,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_diaochan": "扩貂蝉",
                             "zhizunwudi": "至尊吴帝",
                             "luanshizhuhou": "乱世诸侯",
-                            "yitongjindi": "一统晋帝",
+                            // "yitongjindi": "一统晋帝",
+                            "fusion_nianshou": "融年兽",
 
                             //skill
                             shenhu: "神护",
@@ -1501,7 +1516,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：一统晋帝<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融年兽<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>将武将乱世诸侯【割据】技能修改为【起兵】，增加强度。<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>增加了至尊吴帝，乱世诸侯的血量。<br>'
                         );
