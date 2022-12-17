@@ -12,7 +12,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 // if (!lib.storage.scene["大战七阴"]) {
                 const list = ['xushao', 'puyuan', 'guozhao', 'guansuo', 'zhaoxiang', 'xin_lingtong',
                     're_liuzan', "caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
-                    "zhouyi", "re_nanhualaoxian", "liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
+                    "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
                     "tenggongzhu", "caomao"];
                 const characters = initList(list);
                 lib.storage.scene["大战七阴"] = {
@@ -1512,16 +1512,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：4.3<font size="4px">▶▶▶</font></div>`,
+                name: `<div class=".update">扩展版本：4.3.1<font size="4px">▶▶▶</font></div>`,
                 version: 4.3,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：界年兽，蛮王<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：界年兽，蛮王。<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>将武将乱世诸侯【割据】技能修改为【起兵】，增加强度。<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>增加了至尊吴帝，乱世诸侯的血量。<br>'
+                            '<li><span style="color:#006400">说明三</span>：<br>增加了至尊吴帝，乱世诸侯的血量。<br>' +
+                            '<li><span style="color:#006400">说明四</span>：<br>修复了刘巴不是十周年刘巴的问题。<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
