@@ -8,32 +8,37 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 return arr.randomSort().slice(0, 7);
             }
             if (lib.config.mode == "brawl") {
-                if (!lib.storage.scene) lib.storage.scene = {};
-                // if (!lib.storage.scene["大战七阴"]) {
-                const list = ['xushao', 'puyuan', 'guozhao', 'guansuo', 'zhaoxiang', 'xin_lingtong',
+                if (!lib.storage.stage) lib.storage.stage = {};
+
+                const dc_list = ['xushao', 'puyuan', 'guozhao', 'guansuo', 'zhaoxiang', 'xin_lingtong',
                     're_liuzan', "caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
                     "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
                     "tenggongzhu", "caomao"];
-                const characters = initList(list);
-                lib.storage.scene["大战七阴"] = {
+                const characters = initList(dc_list);
+                lib.storage.stage["大战七阴"] = {
                     name: "大战七阴",
                     intro: `主公可供玩家设定，其余七位ai玩家从阴间武将中随机选中一个。
                     如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极~<br>
                      <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a>`,
-                    players: [
-                        { "name": "random", "name2": "none", "identity": "zhu", "position": 1, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": true, "handcards": [], "equips": [], "judges": [] },
-                        { "name": characters[0], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
-                        { "name": characters[1], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
-                        { "name": characters[2], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
-                        { "name": characters[3], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
-                        { "name": characters[4], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
-                        { "name": characters[5], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
-                        { "name": characters[6], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] }
-                    ],
-                    cardPileTop: [],
-                    cardPileBottom: [],
-                    discardPile: [],
-                    gameDraw: true,
+                    scenes: [{
+                        name: "十周年阴间",
+                        intro: "十周年阴间乱斗",
+                        players: [
+                            { "name": "random", "name2": "none", "identity": "zhu", "position": 1, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": true, "handcards": [], "equips": [], "judges": [] },
+                            { "name": characters[0], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+                            { "name": characters[1], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+                            { "name": characters[2], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+                            { "name": characters[3], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+                            { "name": characters[4], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+                            { "name": characters[5], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+                            { "name": characters[6], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] }
+                        ],
+                        cardPileTop: [],
+                        cardPileBottom: [],
+                        discardPile: [],
+                        gameDraw: true,
+
+                    }],
                 };
                 _status.extensionscene = true;
                 // }
@@ -1512,17 +1517,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：4.3.1<font size="4px">▶▶▶</font></div>`,
-                version: 4.3,
+                name: `<div class=".update">扩展版本：4.4<font size="4px">▶▶▶</font></div>`,
+                version: 4.4,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：界年兽，蛮王。<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>将武将乱世诸侯【割据】技能修改为【起兵】，增加强度。<br>' +
-                            '<li><span style="color:#006400">说明三</span>：<br>增加了至尊吴帝，乱世诸侯的血量。<br>' +
-                            '<li><span style="color:#006400">说明四</span>：<br>修复了刘巴不是十周年刘巴的问题。<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：。<br>' +
+                            '<li><span style="color:#006400">说明二</span>：<br>调整了布局，方便日后扩展<br>' +
+                            '<li><span style="color:#006400">说明三</span>：<br><br>' +
+                            '<li><span style="color:#006400">说明四</span>：<br><br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -1531,7 +1536,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：4.3<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：4.4<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
