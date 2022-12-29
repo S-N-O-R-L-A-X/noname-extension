@@ -96,6 +96,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // "yitongjindi": ["male", "jin", 4, ["shenhu", "yuquan", "chengbing"], ["hiddenSkill", "zhu", "boss", "bossallowed"]],
                             "re_nianshou": ["male", "shen", 4, ["boss_nianrui", "boss_mengtai", "boss_jingjue", "boss_renxing", "boss_ruizhi", "boss_nbaonu", "boss_shouyi"], ["zhu", "boss", "bossallowed"]],
                             "barbarian_king": ["male", "qun", 10, ["shenhu", "equan", "manji", "manyi", "mansi", "xiangzhen", "huoshou", "zaiqi", "juxiang", "hanyong"], ["zhu", "boss", "bossallowed"]],
+                            "ex_yingzheng": ["male", "daqin", 6, ["shenhu", "ex_yitong", "ex_shihuang", "ex_zulong", "ex_fenshu", "shangyang_kencao"], ["zhu", "boss", "bossallowed", "zhenlongchangjian"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -1409,7 +1410,120 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     player.storage.nohp = true;
                                     player.skills.add('g_hidden_ai');
                                 }
-                            }
+                            },
+
+                            "ex_yitong": {
+                                audio: 'ext:合纵抗秦:true',
+                                mod: {
+                                    targetInRange: function (card) {
+                                        if (card.name == 'sha' || card.name == 'shunshou') return true;
+                                    },
+                                },
+                                trigger: {
+                                    player: 'useCard2',
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    if (!['shunshou', 'guohe', 'sha', 'huogong', 'juedou'].contains(event.card.name)) return false;
+                                    return game.hasPlayer(function (current) {
+                                        return current.group != 'daqin' && !event.targets.contains(current) && player.canUse(event.card, current);
+                                    });
+                                },
+                                content: function () {
+                                    trigger.targets.addArray(game.filterPlayer(function (current) {
+                                        return current.group != 'daqin' && !trigger.targets.contains(current) && player.canUse(trigger.card, current);
+                                    }));
+                                    player.line(trigger.targets);
+                                },
+                            },
+                            "shihuang": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    global: "phaseAfter",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    var num = game.roundNumber / 100 * 6;
+                                    if (num > 1) num = 1;
+                                    return event.player != player && Math.random() <= num;
+                                },
+                                content: function () {
+                                    player.insertPhase();
+                                },
+                            },
+
+                            "ex_zulong": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    global: 'phaseBefore',
+                                    player: 'enterGame',
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return (event.name != 'phase' || game.phaseNumber == 0) && !lib.inpile.contains('zhenlongchangjian');
+                                },
+                                content: function () {
+                                    game.log("hi")
+                                    if (player) {
+                                        player.equip(game.createCard('chuanguoyuxi', 'diamond', 1))._triggered = null;
+                                        player.equip(game.createCard('zhenlongchangjian', 'diamond', 1))._triggered = null;
+                                    } else {
+                                        lib.inpile.addArray(['zhenlongchangjian', 'chuanguoyuxi']);
+                                        ui.cardPile.insertBefore(game.createCard('chuanguoyuxi', 'diamond', 1), ui.cardPile.childNodes[get.rand(ui
+                                            .cardPile.childElementCount)]);
+                                        ui.cardPile.insertBefore(game.createCard('zhenlongchangjian', 'diamond', 1), ui.cardPile.childNodes[get.rand(
+                                            ui.cardPile.childElementCount)]);
+                                    }
+
+                                },
+                            },
+                            "ex_fenshu": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    global: "useCard",
+                                },
+                                usable: 1,
+                                filter: function (event, player) {
+                                    return event.player == _status.currentPhase && event.player.group != 'daqin' && get.type(event.card) == 'trick';
+                                },
+                                content: function () {
+                                    trigger.targets.length = 0;
+                                    trigger.all_excluded = true;
+                                },
+                            },
+                            "zhenlongchangjian_skill": {
+                                trigger: {
+                                    player: "useCard1",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return get.type(event.card) == 'trick' && player.getHistory('useCard', function (card) {
+                                        return get.type(card.card) == 'trick';
+                                    }).indexOf(event) == 0;
+                                },
+                                content: function () {
+                                    trigger.nowuxie = true;
+                                },
+                            },
+                            "chuanguoyuxi_skill": {
+                                trigger: {
+                                    player: "phaseUseBegin",
+                                },
+                                direct: true,
+                                content: function () {
+                                    'step 0'
+                                    var list = ["nanman", "wanjian", "taoyuan", "wugu"];
+                                    player.chooseButton([get.prompt(event.name), [list, 'vcard']]).ai = function (button) {
+                                        return _status.event.player.getUseValue({
+                                            name: button.link[2]
+                                        });
+                                    }
+                                    'step 1'
+                                    if (result.bool) {
+                                        player.chooseUseTarget(result.links[0][2], true, false).logSkill = event.name;
+                                    }
+                                },
+                            },
                         },
                         translate: {
                             // config
@@ -1442,6 +1556,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // "yitongjindi": "一统晋帝",
                             "re_nianshou": "界年兽",
                             "barbarian_king": "蛮王",
+                            "ex_yingzheng": "扩嬴政",
 
                             //skill
                             shenhu: "神护",
@@ -1504,6 +1619,21 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             chengbing: '称病',
                             chengbing_info: '当你受到伤害后，你进入隐匿状态。',
 
+                            // qinshihuang
+                            ex_yitong: "一统",
+                            ex_yitong_info: "锁定技，当你使用【杀】、【过河拆桥】、【顺手牵羊】、【火攻】、【决斗】时，你令所有不为此牌目标的非秦势力角色也成为此牌的目标。你使用【杀】和【顺手牵羊】无距离限制。",
+                            ex_shihuang: "始皇",
+                            ex_shihuang_info: "锁定技，其他角色的回合结束后，你有X%的几率进行一个额外的回合（X为当前轮数*6，且X最大为100）。",
+                            ex_zulong: "祖龙",
+                            ex_zulong_info: "锁定技，游戏开始时，你获得并装备【传国玉玺】和【真龙长剑】。",
+                            ex_fenshu: "焚书",
+                            ex_fenshu_info: "每回合限一次，非秦势力角色使用普通锦囊牌时，你可以取消此牌的所有目标。",
+                            "zhenlongchangjian_skill": "真龙长剑",
+                            "zhenlongchangjian_skill_info": "锁定技，你于一回合内使用的第一张普通锦囊牌不是【无懈可击】的合法目标。",
+                            "chuanguoyuxi_skill": "传国玉玺",
+                            "chuanguoyuxi_skill_info": "出牌阶段开始时，你可以视为使用一张【南蛮入侵】【万箭齐发】/【桃园结义】/【五谷丰登】。",
+
+
                             //unused
                             geju: '割据',
                             geju_info: '锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。',
@@ -1538,14 +1668,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：4.4<font size="4px">▶▶▶</font></div>`,
-                version: 4.4,
+                name: `<div class=".update">扩展版本：5.0<font size="4px">▶▶▶</font></div>`,
+                version: 5.0,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：。<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩嬴政。<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>调整了布局，方便日后扩展<br>' +
                             '<li><span style="color:#006400">说明三</span>：<br><br>' +
                             '<li><span style="color:#006400">说明四</span>：<br><br>'
@@ -1557,7 +1687,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：4.4<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：5.0<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
