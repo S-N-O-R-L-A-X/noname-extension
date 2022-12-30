@@ -96,14 +96,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // "yitongjindi": ["male", "jin", 4, ["shenhu", "yuquan", "chengbing"], ["hiddenSkill", "zhu", "boss", "bossallowed"]],
                             "re_nianshou": ["male", "shen", 4, ["boss_nianrui", "boss_mengtai", "boss_jingjue", "boss_renxing", "boss_ruizhi", "boss_nbaonu", "boss_shouyi"], ["zhu", "boss", "bossallowed"]],
                             "barbarian_king": ["male", "qun", 10, ["shenhu", "equan", "manji", "manyi", "mansi", "xiangzhen", "huoshou", "zaiqi", "juxiang", "hanyong"], ["zhu", "boss", "bossallowed"]],
-                            "ex_yingzheng": ["male", "daqin", 6, ["shenhu", "ex_yitong", "ex_shihuang", "ex_zulong", "ex_fenshu", "shangyang_kencao"], ["zhu", "boss", "bossallowed", "zhenlongchangjian"]],
+                            "ex_yingzheng": ["male", "daqin", 8, ["shenhu", "ex_yitong", "ex_shihuang", "ex_zulong", "ex_fenshu", "shangyang_kencao"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou"],
                                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king"],
                                 against7devil_yin: ["yin_caojinyu"],
-                                against7devil_ex: ["ex_diaochan"],
+                                against7devil_ex: ["ex_diaochan", "ex_yingzheng"],
                             }
                         },
                         characterIntro: {
@@ -125,6 +125,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // "yitongjindi": "晋国是乱世中隐藏最深的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【驭权】，加上自设计的【称病】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
                             "re_nianshou": "来源于挑战模式boss四大年兽。<br>【强度】★★★★<br> 【亮点】综合",
                             "barbarian_king": "将少数民族部落武将的技能进行融合。<br>【强度】★★★★★<br> 【亮点】进攻",
+                            "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】进攻，防御",
                         },
                         skill: {
                             shenhu: {
@@ -1436,7 +1437,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     player.line(trigger.targets);
                                 },
                             },
-                            "shihuang": {
+                            "ex_shihuang": {
                                 audio: 'ext:合纵抗秦:true',
                                 trigger: {
                                     global: "phaseAfter",
@@ -1628,10 +1629,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_zulong_info: "锁定技，游戏开始时，你获得并装备【传国玉玺】和【真龙长剑】。",
                             ex_fenshu: "焚书",
                             ex_fenshu_info: "每回合限一次，非秦势力角色使用普通锦囊牌时，你可以取消此牌的所有目标。",
-                            "zhenlongchangjian_skill": "真龙长剑",
-                            "zhenlongchangjian_skill_info": "锁定技，你于一回合内使用的第一张普通锦囊牌不是【无懈可击】的合法目标。",
-                            "chuanguoyuxi_skill": "传国玉玺",
-                            "chuanguoyuxi_skill_info": "出牌阶段开始时，你可以视为使用一张【南蛮入侵】【万箭齐发】/【桃园结义】/【五谷丰登】。",
+                            zhenlongchangjian_skill: "真龙长剑",
+                            zhenlongchangjian_skill_info: "锁定技，你于一回合内使用的第一张普通锦囊牌不是【无懈可击】的合法目标。",
+                            chuanguoyuxi_skill: "传国玉玺",
+                            chuanguoyuxi_skill_info: "出牌阶段开始时，你可以视为使用一张【南蛮入侵】【万箭齐发】/【桃园结义】/【五谷丰登】。",
 
 
                             //unused
