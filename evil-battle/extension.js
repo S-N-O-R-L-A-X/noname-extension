@@ -7,6 +7,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             function initList(arr) {
                 return arr.randomSort().slice(0, 7);
             }
+            lib.group.push('daqin');
+            lib.translate.daqin = '秦';
+            lib.groupnature.daqin = 'thunder';
             if (lib.config.mode == "brawl") {
                 if (!lib.storage.stage) lib.storage.stage = {};
 
@@ -15,9 +18,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
                     "tenggongzhu", "caomao", "zhangxuan"];
                 const mobile_list = ["shen_xunyu", "yangbiao", "sp_duyu"];
-                const ol_list = ["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu"];
+                const ol_list = ["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
+                const other_list = ["sp_xiahoushi", "tw_dongzhao"];
                 const dc_characters = initList(dc_list);
-                const all_characters = initList(dc_list.concat(mobile_list).concat(ol_list));
+                const all_characters = initList(dc_list.concat(mobile_list).concat(ol_list).concat(other_list));
                 lib.storage.stage["大战七阴"] = {
                     name: "大战七阴",
                     intro: `主公可供玩家设定，其余七位ai玩家从阴间武将中随机选中一个。
@@ -1677,7 +1681,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
                             '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩嬴政。<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>调整了布局，方便日后扩展<br>' +
+                            '<li><span style="color:#006400">说明二</span>：<br>调整了布局，以及加入了其他服强将，方便日后扩展<br>' +
                             '<li><span style="color:#006400">说明三</span>：<br><br>' +
                             '<li><span style="color:#006400">说明四</span>：<br><br>'
                         );
