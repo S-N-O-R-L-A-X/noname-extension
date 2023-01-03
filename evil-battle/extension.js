@@ -100,7 +100,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // "yitongjindi": ["male", "jin", 4, ["shenhu", "yuquan", "chengbing"], ["hiddenSkill", "zhu", "boss", "bossallowed"]],
                             "re_nianshou": ["male", "shen", 4, ["boss_nianrui", "boss_mengtai", "boss_jingjue", "boss_renxing", "boss_ruizhi", "boss_nbaonu", "boss_shouyi"], ["zhu", "boss", "bossallowed"]],
                             "barbarian_king": ["male", "qun", 10, ["shenhu", "equan", "manji", "manyi", "mansi", "xiangzhen", "huoshou", "zaiqi", "juxiang", "hanyong"], ["zhu", "boss", "bossallowed"]],
-                            "ex_yingzheng": ["male", "daqin", 8, ["shenhu", "ex_yitong", "ex_shihuang", "ex_zulong", "ex_fenshu", "shangyang_kencao"], ["zhu", "boss", "bossallowed"]],
+                            "ex_yingzheng": ["male", "daqin", 8, ["shenhu", "ex_yitong", "ex_shihuang", "ex_liuhe", "ex_zulong", "ex_fenshu", "shangyang_kencao"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -1456,7 +1456,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     player.insertPhase();
                                 },
                             },
-
+                            "ex_liuhe": {
+                                trigger: { player: 'phaseDrawBegin' },
+                                forced: true,
+                                content: function () {
+                                    trigger.num = 6;
+                                },
+                                ai: {
+                                    threaten: 4
+                                }
+                            },
                             "ex_zulong": {
                                 audio: 'ext:合纵抗秦:true',
                                 trigger: {
@@ -1468,7 +1477,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     return (event.name != 'phase' || game.phaseNumber == 0) && !lib.inpile.contains('zhenlongchangjian');
                                 },
                                 content: function () {
-                                    game.log("hi")
                                     if (player) {
                                         player.equip(game.createCard('chuanguoyuxi', 'diamond', 1))._triggered = null;
                                         player.equip(game.createCard('zhenlongchangjian', 'diamond', 1))._triggered = null;
@@ -1629,6 +1637,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_yitong_info: "锁定技，当你使用【杀】、【过河拆桥】、【顺手牵羊】、【火攻】、【决斗】时，你令所有不为此牌目标的非秦势力角色也成为此牌的目标。你使用【杀】和【顺手牵羊】无距离限制。",
                             ex_shihuang: "始皇",
                             ex_shihuang_info: "锁定技，其他角色的回合结束后，你有X%的几率进行一个额外的回合（X为当前轮数*6，且X最大为100）。",
+                            ex_liuhe: "六合",
+                            ex_liuhe_info: "锁定技，摸牌阶段，你改为摸6张牌。",
                             ex_zulong: "祖龙",
                             ex_zulong_info: "锁定技，游戏开始时，你获得并装备【传国玉玺】和【真龙长剑】。",
                             ex_fenshu: "焚书",
