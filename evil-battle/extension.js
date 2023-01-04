@@ -101,13 +101,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_nianshou": ["male", "shen", 4, ["boss_nianrui", "boss_mengtai", "boss_jingjue", "boss_renxing", "boss_ruizhi", "boss_nbaonu", "boss_shouyi"], ["zhu", "boss", "bossallowed"]],
                             "barbarian_king": ["male", "qun", 10, ["shenhu", "equan", "manji", "manyi", "mansi", "xiangzhen", "huoshou", "zaiqi", "juxiang", "hanyong"], ["zhu", "boss", "bossallowed"]],
                             "ex_yingzheng": ["male", "daqin", 8, ["shenhu", "ex_yitong", "ex_shihuang", "ex_liuhe", "ex_zulong", "ex_fenshu", "shangyang_kencao"], ["zhu", "boss", "bossallowed"]],
+                            "ex_zhaoji": ["female", "daqin", 3, ["zhaoji_shanwu", "ex_daqi", "zhaoji_xianji", "zhaoji_huoluan", "shangyang_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
+
                         },
                         characterSort: {
                             against7devil: {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou"],
                                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king"],
                                 against7devil_yin: ["yin_caojinyu"],
-                                against7devil_ex: ["ex_diaochan", "ex_yingzheng"],
+                                against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji"],
                             }
                         },
                         characterIntro: {
@@ -130,6 +132,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_nianshou": "来源于挑战模式boss四大年兽。<br>【强度】★★★★<br> 【亮点】综合",
                             "barbarian_king": "将少数民族部落武将的技能进行融合。<br>【强度】★★★★★<br> 【亮点】进攻",
                             "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】进攻，防御",
+                            "ex_zhaoji": "来源于【合纵抗秦】扩展包赵姬。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】进攻，防御",
                         },
                         skill: {
                             shenhu: {
@@ -1537,6 +1540,201 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
+
+                            "zhaoji_shanwu": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    player: "useCardToPlayered",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return event.card.name == 'sha';
+                                },
+                                content: function () {
+                                    "step 0"
+                                    player.judge(function (card) {
+                                        return (get.color(card) == 'black') ? 2 : 0;
+                                    });
+                                    "step 1"
+                                    if (result.judge > 0) {
+                                        trigger.getParent().directHit.add(trigger.target);
+                                    }
+                                },
+                                ai: {
+                                    effect: {
+                                        player: function (card, player, target, current) {
+                                            if (get.name(card) != 'sha' || get.attitude(player, target) > 0) return;
+                                            if (target.hasSkillTag('respondShan')) return [1.2, 0];
+                                        }
+                                    },
+                                },
+                                group: ["zhaoji_shanwu_judge"],
+                                subSkill: {
+                                    judge: {
+                                        audio: 'zhaoji_shanwu',
+                                        trigger: {
+                                            target: "useCardToTargeted",
+                                        },
+                                        filter: function (event, player) {
+                                            if (event.player == player) return false;
+                                            if (event.card.name == 'sha') return true;
+                                            return false;
+                                        },
+                                        forced: true,
+                                        content: function () {
+                                            "step 0"
+                                            player.judge(function (card) {
+                                                return (get.color(card) == 'red') ? 2 : 0;
+                                            });
+                                            "step 1"
+                                            if (result.judge > 0) {
+                                                trigger.getParent().excluded.add(player);
+                                            }
+                                        },
+                                        sub: true,
+                                        ai: {
+                                            effect: {
+                                                target: function (card, player, target, current) {
+                                                    if (get.name(card) == 'sha') return [0.5, 0];
+                                                }
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                            "ex_daqi": {
+                                audio: 'ext:合纵抗秦:true',
+                                init: function (player) {
+                                    if (!player.storage.ex_daqi) player.storage.ex_daqi = 0;
+                                },
+                                marktext: "期",
+                                intro: {
+                                    content: "当前有#个“期”标记",
+                                },
+                                trigger: {
+                                    source: "damageSource",
+                                    player: ["damageAfter", "useCard", "respond"],
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return player.storage.ex_daqi != Infinity && player.storage.ex_daqi >= 10;
+                                },
+                                content: function () {
+                                    game.log(player, '失去了', player.storage.ex_daqi, '个“期”标记');
+                                    player.storage.ex_daqi = 0;
+                                    player.syncStorage('ex_daqi');
+                                    player.unmarkSkill('ex_daqi');
+                                    var hp = player.maxHp - player.hp;
+                                    var card = player.maxHp - player.countCards('h');
+                                    if (hp > 0) player.recover(hp);
+                                    if (card > 0) player.draw(card);
+                                    player.storage.zhaoji_huoluan = true;
+                                },
+                                group: ["ex_daqi_damage", "ex_daqi_card"],
+                                subSkill: {
+                                    damage: {
+                                        trigger: {
+                                            player: "damageAfter",
+                                            source: "damageSource",
+                                        },
+                                        audio: 'ex_daqi',
+                                        forced: true,
+                                        content: function () {
+                                            player.storage.ex_daqi += trigger.num;
+                                            player.markSkill('ex_daqi');
+                                            game.log(player, '获得了', trigger.num, '个“期”标记');
+                                            player.syncStorage('ex_daqi');
+                                        },
+                                        sub: true,
+                                    },
+                                    card: {
+                                        audio: 'ex_daqi',
+                                        trigger: {
+                                            player: ["useCard", "respond"],
+                                        },
+                                        forced: true,
+                                        content: function () {
+                                            player.storage.ex_daqi++;
+                                            player.markSkill('ex_daqi');
+                                            game.log(player, '获得了1个“期”标记');
+                                            player.syncStorage('ex_daqi');
+                                        },
+                                        sub: true,
+                                    },
+                                },
+                            },
+                            "zhaoji_xianji": {
+                                audio: 'ext:合纵抗秦:true',
+                                init: function (player) {
+                                    player.storage.nzry_dinghuo = false;
+                                },
+                                intro: {
+                                    content: "limited",
+                                },
+                                unique: true,
+                                mark: true,
+                                skillAnimation: true,
+                                animationColor: "thunder",
+                                enable: "phaseUse",
+                                filter: function (event, player) {
+                                    return !player.storage.zhaoji_xianji && player.storage.ex_daqi > 0;
+                                },
+                                check: function (event, player) {
+                                    var hp = player.maxHp - player.hp;
+                                    var card = 3 - player.countCards('he');
+                                    if ((hp + card) > 0) return true;
+                                    return false;
+                                },
+                                content: function () {
+                                    'step 0'
+                                    player.awakenSkill('zhaoji_xianji');
+                                    player.storage.zhaoji_xianji = true;
+                                    'step 1'
+                                    var hs = player.getCards('he');
+                                    if (hs.length) player.discard(hs);
+                                    game.log(player, '失去了', player.storage.ex_daqi, '个“期”标记');
+                                    player.storage.ex_daqi = 0;
+                                    player.syncStorage('ex_daqi');
+                                    player.unmarkSkill('ex_daqi');
+                                    player.loseMaxHp();
+                                    'step 2'
+                                    var hp = player.maxHp - player.hp;
+                                    var card = player.maxHp - player.countCards('h');
+                                    if (hp > 0) player.recover(hp);
+                                    if (card > 0) player.draw(card);
+                                    player.storage.zhaoji_huoluan = true;
+                                },
+                                ai: {
+                                    order: 1,
+                                    result: {
+                                        player: function (player, target) {
+                                            var hp = player.maxHp - player.hp;
+                                            var card = player.maxHp - player.countCards('h');
+                                            return 0 + hp + card;
+                                        },
+                                    },
+                                },
+                            },
+                            "zhaoji_huoluan": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    player: ["ex_daqiAfter", "zhaoji_xianjiAfter"],
+                                },
+                                forced: true,
+                                content: function () {
+                                    'step 0'
+                                    event.targets = game.filterPlayer();
+                                    event.targets.remove(player);
+                                    event.targets.sort(lib.sort.seat);
+                                    player.line(event.targets);
+                                    event.targets2 = event.targets.slice(0);
+                                    'step 1'
+                                    if (event.targets2.length) {
+                                        event.targets2.shift().damage('nocard');
+                                        event.redo();
+                                    }
+                                },
+                            },
                         },
                         translate: {
                             // config
@@ -1570,6 +1768,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_nianshou": "界年兽",
                             "barbarian_king": "蛮王",
                             "ex_yingzheng": "扩嬴政",
+                            "ex_zhaoji": "扩赵姬",
 
                             //skill
                             shenhu: "神护",
@@ -1648,6 +1847,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             chuanguoyuxi_skill: "传国玉玺",
                             chuanguoyuxi_skill_info: "出牌阶段开始时，你可以视为使用一张【南蛮入侵】【万箭齐发】/【桃园结义】/【五谷丰登】。",
 
+                            //zhaoji
+                            "zhaoji_shanwu": "善舞",
+                            "zhaoji_shanwu_info": "锁定技，你使用【杀】指定目标后，你进行判定，若为黑色则敌方不能打出【闪】；当你成为【杀】的目标后，你进行判定，若为红色此杀无效。",
+                            "ex_daqi": "大期",
+                            "ex_daqi_info": "锁定技，你每使用或打出一张手牌、造成1点伤害、受到1点伤害，均会得到一个“期”标记。若你拥有的“期”标记大于等于10，则弃置所有“期”，体力回复至体力上限，并将手牌补至体力上限。",
+                            "zhaoji_xianji": "献姬",
+                            "zhaoji_xianji_info": "限定技，出牌阶段，你可以弃置所有手牌、装备牌和“期”标记，失去1点体力上限，然后立即发动大期的回复体力和补牌效果。",
+                            "zhaoji_huoluan": "祸乱",
+                            "zhaoji_huoluan_info": "锁定技，你每次发动大期的回复体力和补牌效果后，你对所有其他角色造成1点伤害。",
+
 
                             //unused
                             geju: '割据',
@@ -1657,12 +1866,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     };
 
                     for (let i in against7devil.character) {
-                        console.log(i);
                         const path = 'ext:大战七阴/image/' + i + '.jpg';
-                        console.log(path);
                         //game.js will convert ext to different path in different devices
                         against7devil.character[i][4].push(path);
-                        console.log(against7devil.character[i]);
                     }
                     return against7devil;
                 })
