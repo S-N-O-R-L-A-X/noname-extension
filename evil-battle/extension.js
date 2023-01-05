@@ -101,7 +101,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_nianshou": ["male", "shen", 4, ["boss_nianrui", "boss_mengtai", "boss_jingjue", "boss_renxing", "boss_ruizhi", "boss_nbaonu", "boss_shouyi"], ["zhu", "boss", "bossallowed"]],
                             "barbarian_king": ["male", "qun", 10, ["shenhu", "equan", "manji", "manyi", "mansi", "xiangzhen", "huoshou", "zaiqi", "juxiang", "hanyong"], ["zhu", "boss", "bossallowed"]],
                             "ex_yingzheng": ["male", "daqin", 8, ["shenhu", "ex_yitong", "ex_shihuang", "ex_liuhe", "ex_zulong", "ex_fenshu", "shangyang_kencao"], ["zhu", "boss", "bossallowed"]],
-                            "ex_zhaoji": ["female", "daqin", 3, ["zhaoji_shanwu", "ex_daqi", "zhaoji_xianji", "zhaoji_huoluan", "shangyang_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
+                            "ex_zhaoji": ["female", "daqin", 4, ["zhaoji_shanwu", "ex_daqi", "zhaoji_xianji", "zhaoji_huoluan"], ["zhu", "boss", "bossallowed", "forbidai"]],
 
                         },
                         characterSort: {
@@ -132,7 +132,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_nianshou": "来源于挑战模式boss四大年兽。<br>【强度】★★★★<br> 【亮点】综合",
                             "barbarian_king": "将少数民族部落武将的技能进行融合。<br>【强度】★★★★★<br> 【亮点】进攻",
                             "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】进攻，防御",
-                            "ex_zhaoji": "来源于【合纵抗秦】扩展包赵姬。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】进攻，防御",
+                            "ex_zhaoji": "来源于【合纵抗秦】扩展包赵姬。对【大期】进行了修改。<br>【强度】★★★★★<br> 【亮点】进攻",
                         },
                         skill: {
                             shenhu: {
@@ -1850,8 +1850,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             //zhaoji
                             "zhaoji_shanwu": "善舞",
                             "zhaoji_shanwu_info": "锁定技，你使用【杀】指定目标后，你进行判定，若为黑色则敌方不能打出【闪】；当你成为【杀】的目标后，你进行判定，若为红色此杀无效。",
-                            "ex_daqi": "大期",
-                            "ex_daqi_info": "锁定技，你每使用或打出一张手牌、造成1点伤害、受到1点伤害，均会得到一个“期”标记。若你拥有的“期”标记大于等于10，则弃置所有“期”，体力回复至体力上限，并将手牌补至体力上限。",
+                            ex_daqi: "大期",
+                            ex_daqi_info: "锁定技，你每使用或打出一张手牌、造成1点伤害、受到1点伤害，均会得到一个“期”标记。若你拥有的“期”标记大于等于10，则弃置所有“期”，体力回复至体力上限，并将手牌补至体力上限。",
                             "zhaoji_xianji": "献姬",
                             "zhaoji_xianji_info": "限定技，出牌阶段，你可以弃置所有手牌、装备牌和“期”标记，失去1点体力上限，然后立即发动大期的回复体力和补牌效果。",
                             "zhaoji_huoluan": "祸乱",
@@ -1896,7 +1896,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩嬴政。<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩嬴政，扩赵姬。<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>调整了布局，以及加入了其他服强将，方便日后扩展<br>' +
                             '<li><span style="color:#006400">说明三</span>：<br><br>' +
                             '<li><span style="color:#006400">说明四</span>：<br><br>'
