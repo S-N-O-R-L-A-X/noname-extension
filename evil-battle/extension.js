@@ -102,14 +102,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "barbarian_king": ["male", "qun", 10, ["shenhu", "equan", "manji", "manyi", "mansi", "xiangzhen", "huoshou", "zaiqi", "juxiang", "hanyong"], ["zhu", "boss", "bossallowed"]],
                             "ex_yingzheng": ["male", "daqin", 8, ["shenhu", "ex_yitong", "ex_shihuang", "ex_liuhe", "ex_zulong", "ex_fenshu", "shangyang_kencao"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhaoji": ["female", "daqin", 4, ["zhaoji_shanwu", "ex_daqi", "zhaoji_xianji", "zhaoji_huoluan"], ["zhu", "boss", "bossallowed", "forbidai"]],
-
+                            "ex_baiqi": ["male", "daqin", 8, ["shenhu", "baiqi_wuan", "baiqi_shashen", "baiqi_fachu", "baiqi_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "shangyang_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou"],
                                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king"],
                                 against7devil_yin: ["yin_caojinyu"],
-                                against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji"],
+                                against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi"],
                             }
                         },
                         characterIntro: {
@@ -131,8 +131,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // "yitongjindi": "晋国是乱世中隐藏最深的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【驭权】，加上自设计的【称病】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
                             "re_nianshou": "来源于挑战模式boss四大年兽。<br>【强度】★★★★<br> 【亮点】综合",
                             "barbarian_king": "将少数民族部落武将的技能进行融合。<br>【强度】★★★★★<br> 【亮点】进攻",
-                            "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】进攻，防御",
+                            "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。作为一统六国的秦始皇，加入技能【六合】，并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】进攻，防御",
                             "ex_zhaoji": "来源于【合纵抗秦】扩展包赵姬。对【大期】进行了修改。<br>【强度】★★★★★<br> 【亮点】进攻",
+                            "ex_baiqi": "来源于【合纵抗秦】扩展包白起。白起作为秦军统帅，加入秦军士兵的技能。<br>【强度】★★★★★<br> 【亮点】进攻",
                         },
                         skill: {
                             shenhu: {
@@ -1735,6 +1736,275 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
+
+                            "baiqi_wuan": {
+                                audio: 'ext:合纵抗秦:true',
+                                locked: true,
+                                global: "baiqi_wuan_buff",
+                                subSkill: {
+                                    buff: {
+                                        mod: {
+                                            cardUsable: function (card, player, num) {
+                                                if (player.group == 'daqin' && card.name == 'sha') {
+                                                    return num + game.countPlayer(function (current) {
+                                                        return current.hasSkill('baiqi_wuan')
+                                                    });
+                                                }
+                                            },
+                                        },
+                                        sub: true,
+                                    },
+                                },
+                            },
+                            "baiqi_shashen": {
+                                audio: 'ext:合纵抗秦:true',
+                                enable: ["chooseToRespond", "chooseToUse"],
+                                filterCard: true,
+                                viewAs: {
+                                    name: "sha",
+                                },
+                                viewAsFilter: function (player) {
+                                    if (!player.countCards('h')) return false;
+                                },
+                                prompt: "将一张手牌当作【杀】使用或打出",
+                                check: function (card) {
+                                    return 4 - get.value(card);
+                                },
+                                group: ["baiqi_shashen_i"],
+                                subSkill: {
+                                    i: {
+                                        audio: 'baiqi_shashen',
+                                        trigger: {
+                                            source: "damageEnd",
+                                        },
+                                        forced: true,
+                                        sub: true,
+                                        filter: function (event, player) {
+                                            return event.card && event.card.name == 'sha' && player.getHistory('useCard', function (evt) {
+                                                return evt.card.name == 'sha';
+                                            }).indexOf(event.getParent('useCard')) == 0;
+                                        },
+                                        content: function () {
+                                            player.draw();
+                                        },
+                                    },
+                                },
+                                ai: {
+                                    skillTagFilter: function (player) {
+                                        if (!player.countCards('h')) return false;
+                                    },
+                                    respondSha: true,
+                                },
+                            },
+                            "baiqi_fachu": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    source: "dying",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return event.getParent().name == 'damage' && event.player.group != 'daqin';
+                                },
+                                content: function () {
+                                    var list = [];
+                                    for (var i = 1; i <= 5; i++) {
+                                        if (trigger.player.isDisabled(i)) continue;
+                                        list.add('equip' + ((i == 3 || i == 4) ? 6 : i));
+                                    }
+                                    if (list.length) {
+                                        player.line(trigger.player);
+                                        var num = list.randomGet();
+                                        trigger.player.disableEquip(num);
+                                        if (num == 'equip6') {
+                                            trigger.player.disableEquip(3);
+                                            trigger.player.disableEquip(4);
+                                        }
+                                    } else {
+                                        trigger.player.loseMaxHp().source = player;
+                                    }
+                                },
+                            },
+                            "baiqi_changsheng": {
+                                audio: 'ext:合纵抗秦:true',
+                                mod: {
+                                    targetInRange: function (card) {
+                                        if (card.name == 'sha') return true;
+                                    },
+                                },
+                                trigger: {
+                                    player: "useCardToTargeted",
+                                },
+                                filter: function (event, player) {
+                                    return event.card && event.card.name == 'sha' && !player.inRange(event.target);
+                                },
+                                forced: true,
+                                content: function () { },
+                            },
+
+                            "bubing_fangzhen": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    target: "useCardToTargeted",
+                                },
+                                filter: function (event, player) {
+                                    if (event.player.group == 'daqin' || event.player == player || !player.canUse({
+                                        name: 'sha'
+                                    }, event.player)) return false;
+                                    if ((event.card.name == 'sha' || get.type(event.card) == 'trick') && get.distance(event.player, player,
+                                        'attack') <= 1) return true;
+                                    return false;
+                                },
+                                forced: true,
+                                content: function () {
+                                    "step 0"
+                                    player.judge(function (card) {
+                                        return (get.color(card) == 'black') ? 2 : -1;
+                                    });
+                                    "step 1"
+                                    if (result.judge > 0) {
+                                        player.useCard({
+                                            name: 'sha'
+                                        }, trigger.player, false);
+                                    }
+                                },
+                                ai: {
+                                    effect: {
+                                        target: function (card, player, target) {
+                                            if (!target.inRange(player)) return;
+                                            if (player.group == 'daqin') return;
+                                            if (card.name != 'sha' && get.type(card) != 'trick') return;
+                                            var maixie = (player.hasSkillTag('maixie') || player.hasSkillTag('maixie_hp'));
+                                            var shan = player.countCards('h', 'shan');
+                                            var taojiu = (player.countCards('h', 'tao') + player.countCards('h', 'jiu'));
+                                            var hp = player.hp;
+                                            if (player.getEquip('tengjia') && get.attitude(player, target) <= 0) {
+                                                if (get.itemtype(_status.pileTop) == 'card') {
+                                                    if (get.color(_status.pileTop) != 'black' && get.attitude(player, target) <= 0) return 3;
+                                                } else {
+                                                    return;
+                                                }
+                                                if (target.getEquip('zhuque') || target.getEquip('qinggang')) {
+                                                    if (shan == 0) {
+                                                        if (maixie && (hp > 1 || taojiu > 0) && !game.players.hasSkill('daqin_wuan')) return 2;
+                                                        return -2;
+                                                    } else {
+                                                        return 0.2;
+                                                    }
+                                                }
+                                                return 1;
+                                            }
+                                            if (player.getEquip('bagua') && get.attitude(player, target) <= 0) {
+                                                if (get.itemtype(_status.pileTop) == 'card') {
+                                                    if (get.color(_status.pileTop) != 'black' && get.attitude(player, target) <= 0) return 3;
+                                                } else {
+                                                    return;
+                                                }
+                                                if (target.getEquip('qinggang')) {
+                                                    if (shan == 0) {
+                                                        if (maixie && (hp > 1 || taojiu > 0) && !game.players.hasSkill('daqin_wuan')) return 2;
+                                                        return -1;
+                                                    } else {
+                                                        return 0.2;
+                                                    }
+                                                }
+                                                return 0.5;
+                                            }
+                                        },
+                                    },
+                                },
+                            },
+                            "bubing_changbing": {
+                                audio: 'ext:合纵抗秦:true',
+                                mod: {
+                                    attackFrom: function (from, to, distance) {
+                                        return distance - 2;
+                                    },
+                                },
+                            },
+                            "qibing_changjian": {
+                                audio: 'ext:合纵抗秦:true',
+                                mod: {
+                                    attackFrom: function (from, to, distance) {
+                                        return distance - 1;
+                                    },
+                                },
+                                trigger: {
+                                    player: "useCard2",
+                                },
+                                filter: function (event, player) {
+                                    return event.card && event.card.name == 'sha';
+                                },
+                                forced: true,
+                                content: function () {
+                                    'step 0'
+                                    player.chooseTarget(get.prompt('qibing_changjian'), '为' + get.translation(trigger.card) + '增加一个目标，或取消并令' +
+                                        get.translation(trigger.card) + '伤害＋1',
+                                        function (card, player, target) {
+                                            return !_status.event.sourcex.contains(target) && player.canUse('sha', target);
+                                        }).set('sourcex', trigger.targets).set('ai', function (target) {
+                                            var player = _status.event.player;
+                                            return get.effect(target, {
+                                                name: 'sha'
+                                            }, player, player);
+                                        });
+                                    'step 1'
+                                    if (result.bool) {
+                                        if (!event.isMine() && !_status.connectMode) game.delayx();
+                                        event.target = result.targets[0];
+                                        player.line(event.target);
+                                        trigger.targets.push(event.target);
+                                    } else {
+                                        if (!trigger.baseDamage) ttrigger.baseDamage = 1;
+                                        trigger.baseDamage++;
+                                    }
+                                },
+                            },
+                            "qibing_liangju": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    player: "useCardToPlayered",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return event.card.name == 'sha';
+                                },
+                                content: function () {
+                                    "step 0"
+                                    trigger.target.judge(function (card) {
+                                        return (get.suit(card) == 'spade') ? -2 : 0;
+                                    });
+                                    "step 1"
+                                    if (result.judge < 0) {
+                                        trigger.getParent().directHit.add(trigger.target);
+                                    }
+                                },
+                                group: ["qibing_liangju_judge"],
+                                subSkill: {
+                                    judge: {
+                                        audio: 'qibing_liangju',
+                                        trigger: {
+                                            target: "useCardToTargeted",
+                                        },
+                                        filter: function (event, player) {
+                                            if (event.player == player) return false;
+                                            if (event.card.name == 'sha') return true;
+                                            return false;
+                                        },
+                                        forced: true,
+                                        content: function () {
+                                            "step 0"
+                                            player.judge(function (card) {
+                                                return (get.suit(card) == 'heart') ? 2 : -1;
+                                            });
+                                            "step 1"
+                                            if (result.judge > 0) {
+                                                trigger.getParent().excluded.add(player);
+                                            }
+                                        },
+                                        sub: true,
+                                    },
+                                },
+                            },
                         },
                         translate: {
                             // config
@@ -1769,6 +2039,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "barbarian_king": "蛮王",
                             "ex_yingzheng": "扩嬴政",
                             "ex_zhaoji": "扩赵姬",
+                            "ex_baiqi": "扩白起",
 
                             //skill
                             shenhu: "神护",
@@ -1856,6 +2127,25 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "zhaoji_xianji_info": "限定技，出牌阶段，你可以弃置所有手牌、装备牌和“期”标记，失去1点体力上限，然后立即发动大期的回复体力和补牌效果。",
                             "zhaoji_huoluan": "祸乱",
                             "zhaoji_huoluan_info": "锁定技，你每次发动大期的回复体力和补牌效果后，你对所有其他角色造成1点伤害。",
+
+                            "qibing_changjian": "长剑",
+                            "qibing_changjian_info": "锁定技，你的攻击范围+1，你使用【杀】指定目标后，可额外选择一名目标，或令此杀伤害+1。",
+                            "qibing_liangju": "良驹",
+                            "qibing_liangju_info": "锁定技，你使用【杀】指定目标后，令目标进行判定，若为黑桃则此杀不可被闪避；当你成为【杀】的目标后，你进行判定，若为红桃则此杀对你无效。",
+                            "bubing_fangzhen": "方阵",
+                            "bubing_fangzhen_info": "锁定技，当你成为非秦势力角色使用普通锦囊或【杀】的目标后，若其在你的攻击范围内，你进行判定，若为黑色，则视为你对其使用一张【杀】。",
+                            "bubing_changbing": "长兵",
+                            "bubing_changbing_info": "锁定技，你的攻击范围+2。",
+
+                            //baiqi
+                            "baiqi_wuan": "武安",
+                            "baiqi_wuan_info": "锁定技，你存活时，所有秦势力角色使用【杀】的上限+1。",
+                            "baiqi_shashen": "杀神",
+                            "baiqi_shashen_info": "你可以将手牌中的任意一张牌当【杀】使用或打出。每回合你使用的第一张【杀】造成伤害后，摸一张牌。",
+                            "baiqi_fachu": "伐楚",
+                            "baiqi_fachu_info": "锁定技，当你因对非秦势力角色造成伤害而导致其进入濒死状态后，你随机废除其一个装备栏。若其没有装备栏可废除，其改为失去一点体力上限。之后若其死亡，视为被你击杀",
+                            "baiqi_changsheng": "常胜",
+                            "baiqi_changsheng_info": "锁定技，你使用【杀】无距离限制。",
 
 
                             //unused
