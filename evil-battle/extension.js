@@ -2005,6 +2005,24 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
+                            qinnu: {
+                                vanish: true,
+                                type: "equip",
+                                subtype: "equip1",
+                                skills: ["qinnu_skill"],
+                                destroy: "daqin_nushou",
+                                distance: {
+                                    attackFrom: -8
+                                },
+                                enable: true,
+                                ai: {
+                                    basic: {
+                                        useful: 2,
+                                        equipValue: 1,
+                                    },
+                                },
+                                fullimage: true,
+                            },
                         },
                         translate: {
                             // config
@@ -2186,7 +2204,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩嬴政，扩赵姬。<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩嬴政，扩赵姬，扩白起。<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>调整了布局，以及加入了其他服强将，方便日后扩展<br>' +
                             '<li><span style="color:#006400">说明三</span>：<br><br>' +
                             '<li><span style="color:#006400">说明四</span>：<br><br>'
