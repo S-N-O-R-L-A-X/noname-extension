@@ -1494,6 +1494,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                             ui.cardPile.childElementCount)]);
                                     }
 
+
                                 },
                             },
                             "ex_fenshu": {
@@ -2007,25 +2008,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "qinnu": {
-                                vanish: true,
-                                type: "equip",
-                                subtype: "equip1",
-                                skills: ["qinnu_skill"],
-                                destroy: "daqin_nushou",
-                                distance: {
-                                    attackFrom: -8
-                                },
-                                enable: true,
-                                ai: {
-                                    basic: {
-                                        useful: 2,
-                                        equipValue: 1,
-                                    },
-                                },
-                                fullimage: true,
-                            },
 
+                            //zhangyi
                             "ex_lianheng": {
                                 audio: 'ext:合纵抗秦:true',
                                 trigger: {
@@ -2273,6 +2257,53 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                         },
+                        card: {
+                            "zhenlongchangjian": {
+                                type: "equip",
+                                subtype: "equip1",
+                                distance: {
+                                    attackFrom: -1,
+                                },
+                                ai: {
+                                    basic: {
+                                        equipValue: 2,
+                                    },
+                                },
+                                skills: ["zhenlongchangjian_skill"],
+                                enable: true,
+                                fullimage: true,
+                            },
+                            "chuanguoyuxi": {
+                                type: "equip",
+                                subtype: "equip5",
+                                ai: {
+                                    basic: {
+                                        equipValue: 7.5,
+                                    },
+                                },
+                                skills: ["chuanguoyuxi_skill"],
+                                enable: true,
+                                fullimage: true,
+                            },
+                            "qinnu": {
+                                vanish: true,
+                                type: "equip",
+                                subtype: "equip1",
+                                skills: ["qinnu_skill"],
+                                destroy: "daqin_nushou",
+                                distance: {
+                                    attackFrom: -8
+                                },
+                                enable: true,
+                                ai: {
+                                    basic: {
+                                        useful: 2,
+                                        equipValue: 1,
+                                    },
+                                },
+                                fullimage: true,
+                            },
+                        },
                         translate: {
                             // config
                             update: "更新情况",
@@ -2433,10 +2464,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         },
                     };
 
-                    for (let i in against7devil.character) {
-                        const path = 'ext:大战七阴/image/' + i + '.jpg';
+                    for (let character_name in against7devil.character) {
+                        const path = 'ext:大战七阴/image/' + character_name + '.jpg';
                         //game.js will convert ext to different path in different devices
-                        against7devil.character[i][4].push(path);
+                        against7devil.character[character_name][4].push(path);
+                    }
+
+                    for (let card_name in against7devil.card) {
+                        console.log(i);
+
+                        const path = 'ext:大战七阴/image/card/' + card_name + '.jpg';
+                        //game.js will convert ext to different path in different devices
+                        against7devil.card[card_name].image = path;
                     }
                     return against7devil;
                 })
