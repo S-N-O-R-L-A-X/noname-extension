@@ -2304,6 +2304,30 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
+                            "nushou_jinnu": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    player: "phaseBefore",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return !player.getEquip('qinnu');
+                                },
+                                content: function () {
+                                    var card = game.createCard('qinnu', Math.random() < 0.5 ? 'diamond' : 'club', 1);
+                                    player.chooseUseTarget(card, true);
+                                },
+                            },
+                            "qinnu_skill": {
+                                mod: {
+                                    cardUsable: function (card, player, num) {
+                                        if (card.name == 'sha') {
+                                            return num + 1;
+                                        }
+                                    },
+                                },
+                                inherit: 'qinggang_skill',
+                            },
                         },
                         card: {
                             "zhenlongchangjian": {
