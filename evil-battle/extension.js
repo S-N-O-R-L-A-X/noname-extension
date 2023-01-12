@@ -103,6 +103,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_yingzheng": ["male", "daqin", 8, ["shenhu", "ex_yitong", "ex_shihuang", "ex_liuhe", "ex_zulong", "ex_fenshu", "shangyang_kencao"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhaoji": ["female", "daqin", 4, ["zhaoji_shanwu", "ex_daqi", "zhaoji_xianji", "zhaoji_huoluan"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "ex_baiqi": ["male", "daqin", 8, ["shenhu", "baiqi_wuan", "baiqi_shashen", "baiqi_fachu", "baiqi_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "shangyang_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
+                            "ex_zhangyi": ["male", "daqin", 8, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -2005,7 +2006,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            qinnu: {
+                            "qinnu": {
                                 vanish: true,
                                 type: "equip",
                                 subtype: "equip1",
@@ -2022,6 +2023,211 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                                 fullimage: true,
+                            },
+
+                            "ex_lianheng": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    player: 'phaseBegin',
+                                },
+                                forced: true,
+                                content: function () {
+                                    var list = game.filterPlayer(function (current) {
+                                        current.removeSkill('zhangyi_lianheng_mark');
+                                        return current.group != 'daqin';
+                                    });
+                                    if (list.length > 1) {
+                                        var target = list.randomGet();
+                                        player.line(target);
+                                        target.addSkill('zhangyi_lianheng_mark');
+                                    }
+                                },
+                                group: ['zhangyi_lianheng_init', 'zhangyi_lianheng_die'],
+                                subSkill: {
+                                    mark: {
+                                        charlotte: true,
+                                        mod: {
+                                            playerEnabled: function (card, player, target) {
+                                                if (target.group == 'daqin' || _status.kangqinEvent == '合纵连横' && target.isLinked()) return false;
+                                            }
+                                        },
+                                        marktext: '横',
+                                        mark: true,
+                                        intro: {
+                                            content: function () {
+                                                if (_status.kangqinEvent == '合纵连横') return '不能对秦势力角色和已横置的角色使用牌';
+                                                return '不能对秦势力角色使用牌';
+                                            },
+                                        },
+                                    },
+                                    init: {
+                                        trigger: {
+                                            global: 'gameDrawAfter'
+                                        },
+                                        forced: true,
+                                        content: function () {
+                                            var list = game.filterPlayer(function (current) {
+                                                return current.group != 'daqin';
+                                            });
+                                            if (list.length) {
+                                                var target = list.randomGet();
+                                                player.line(target);
+                                                target.addSkill('zhangyi_lianheng_mark');
+                                            }
+                                        },
+                                    },
+                                    die: {
+                                        trigger: {
+                                            player: 'die'
+                                        },
+                                        forceDie: true,
+                                        forced: true,
+                                        content: function () {
+                                            var list = game.filterPlayer(function (current) {
+                                                return target.hasSkill('zhangyi_lianheng_mark');
+                                            });
+                                            for (var i = 0; i < list.length; i++) {
+                                                var target = list[i];
+                                                player.line(target);
+                                                target.removeSkill('zhangyi_lianheng_mark');
+                                            }
+                                        },
+                                    },
+                                },
+                            },
+                            "ex_xichu": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    target: 'useCardToTarget'
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return event.card.name == 'sha' && game.hasPlayer(function (current) {
+                                        return current != player && current != event.player && lib.filter.targetInRange(event.card, event.player,
+                                            current);
+                                    });
+                                },
+                                content: function () {
+                                    'step 0'
+                                    trigger.player.chooseToDiscard('戏楚：弃置一张点数为6的牌，或令' + get.translation(player) + '将此【杀】转移', function (card) {
+                                        return get.number(card) == 6;
+                                    }).ai = function (card) {
+                                        return 100 - get.value(card)
+                                    };
+                                    'step 1'
+                                    if (!result.bool) {
+                                        player.chooseTarget(true, '将此【杀】转移给' + get.translation(trigger.player) + '攻击范围内的一名角色', true, function (card,
+                                            player, target) {
+                                            var trigger = _status.event.getTrigger();
+                                            return target != player && target != trigger.player && !trigger.targets.contains(target) && lib.filter.targetInRange(
+                                                trigger.card, trigger.player, target)
+                                        }).ai = function (target) {
+                                            var trigger = _status.event.getTrigger();
+                                            return get.effect(target, trigger.card, trigger.player, _status.event.player);
+                                        };
+                                    } else event.finish();
+                                    'step 2'
+                                    if (result.bool) {
+                                        player.line(result.targets[0]);
+                                        trigger.targets[trigger.targets.indexOf(player)] = result.targets[0];
+                                    }
+                                },
+                                ai: {
+                                    effect: {
+                                        target: function (card, player, target) {
+                                            if (card.name == 'sha' && !player.countCards('h', {
+                                                number: '6'
+                                            }) && game.hasPlayer(function (current) {
+                                                return current != player && current != target && lib.filter.targetInRange(card, player, current);
+                                            })) return 'zeroplayertarget';
+                                        },
+                                    },
+                                },
+                                // group: ["ex_xichu_mad"],
+                                // subskill: {
+                                //     mad: {
+                                //         trigger: { player: 'phaseJieshuBegin' },
+                                //         frequent: true,
+                                //         content: function () {
+                                //             var list = game.filterPlayer(function (target) {
+                                //                 return target != player && !target.isMad();
+                                //             });
+                                //             if (list.length) {
+                                //                 var target = list.randomGet();
+                                //                 player.line(target, 'green');
+                                //                 target.goMad({ player: 'phaseAfter' });
+                                //             }
+                                //         }
+                                //     },
+                                // }
+                            },
+                            "ex_xiongbian": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    target: 'useCardToTarget'
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return get.type(event.card) == 'trick';
+                                },
+                                content: function () {
+                                    'step 0'
+                                    player.judge(function (result) {
+                                        if (result.number == 6) return 1;
+                                        return -1;
+                                    }).set('no6', get.attitude(player, trigger.player) > 0);
+                                    'step 1'
+                                    if (result.bool) {
+                                        trigger.getParent().targets.length = 0;
+                                        trigger.getParent().all_excluded = true;
+                                        player.gain(result.card, 'gain2');
+                                    }
+                                },
+                            },
+                            "ex_qiaoshe": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    global: 'judge',
+                                },
+                                direct: true,
+                                content: function () {
+                                    'step 0'
+                                    var card = trigger.player.judging[0];
+                                    var judge0 = trigger.judge(card);
+                                    var judge1 = 0;
+                                    var choice = trigger.no6 && card.number == 6 ? '+1' : 'cancel2';
+                                    var attitude = get.attitude(player, trigger.player);
+                                    var list = [];
+                                    for (var i = -4; i <= 4; i++) {
+                                        if (i == 0) continue;
+                                        list.push((i > 0 ? '+' : '') + i);
+                                        if (!trigger.no6) {
+                                            var judge2 = (trigger.judge({
+                                                name: get.name(card),
+                                                suit: get.suit(card),
+                                                number: get.number(card) + i,
+                                                nature: get.nature(card),
+                                            }) - judge0) * attitude;
+                                            if (judge2 > judge1) {
+                                                choice = (i > 0 ? '+' : '') + i;
+                                                judge1 = judge2;
+                                            }
+                                        }
+                                    }
+                                    list.push('cancel2');
+                                    player.chooseControl(list).set('ai', function () {
+                                        return _status.event.choice;
+                                    }).set('choice', choice).prompt = get.prompt2(event.name);
+                                    'step 1'
+                                    if (result.control != 'cancel2') {
+                                        player.logSkill(event.name, trigger.player);
+                                        game.log(trigger.player, '判定结果点数', '#g' + result.control);
+                                        player.popup(result.control, 'fire');
+                                        if (!trigger.fixedResult) trigger.fixedResult = {};
+                                        if (!trigger.fixedResult.number) trigger.fixedResult.number = get.number(trigger.player.judging[0]);
+                                        trigger.fixedResult.number += parseInt(result.control);
+                                    }
+                                },
                             },
                         },
                         translate: {
@@ -2058,6 +2264,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_yingzheng": "扩嬴政",
                             "ex_zhaoji": "扩赵姬",
                             "ex_baiqi": "扩白起",
+                            "ex_zhangyi": "扩张仪",
 
                             //skill
                             shenhu: "神护",
@@ -2136,7 +2343,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             chuanguoyuxi_skill: "传国玉玺",
                             chuanguoyuxi_skill_info: "出牌阶段开始时，你可以视为使用一张【南蛮入侵】【万箭齐发】/【桃园结义】/【五谷丰登】。",
 
-                            //zhaoji
+                            // zhaoji
                             "zhaoji_shanwu": "善舞",
                             "zhaoji_shanwu_info": "锁定技，你使用【杀】指定目标后，你进行判定，若为黑色则敌方不能打出【闪】；当你成为【杀】的目标后，你进行判定，若为红色此杀无效。",
                             ex_daqi: "大期",
@@ -2155,7 +2362,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "bubing_changbing": "长兵",
                             "bubing_changbing_info": "锁定技，你的攻击范围+2。",
 
-                            //baiqi
+                            // baiqi
                             "baiqi_wuan": "武安",
                             "baiqi_wuan_info": "锁定技，你存活时，所有秦势力角色使用【杀】的上限+1。",
                             "baiqi_shashen": "杀神",
@@ -2165,8 +2372,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "baiqi_changsheng": "常胜",
                             "baiqi_changsheng_info": "锁定技，你使用【杀】无距离限制。",
 
+                            // zhangyi
+                            ex_lianheng: "连横",
+                            ex_lianheng_info: "锁定技，游戏开始时，你令随机一名非秦势力的角色获得“横”标记。拥有“横”标记的角色使用的牌不能指定秦势力角色为目标。你的回合开始时，场上所有角色弃置“横”标记。若非秦势力角色数大于等于2，则你令随机一名非秦势力角色获得“横”标记。",
+                            ex_xichu: "戏楚",
+                            ex_xichu_info: "锁定技，当你成为【杀】的目标时，若其攻击范围内有其他角色，则该角色需弃置一张点数为6的牌，否则此【杀】的目标转移给其攻击范围内你指定的另一名角色。",
+                            ex_xiongbian: "雄辩",
+                            ex_xiongbian_info: "锁定技，当你成为普通锦囊牌的目标后，你判定。若结果点数为6，你取消此牌的所有目标。",
+                            ex_qiaoshe: "巧舌",
+                            ex_qiaoshe_info: "当一名角色进行判定时，你可以令判定结果的点数加减3以内的任意值。",
 
-                            //unused
+
+                            // unused
                             geju: '割据',
                             geju_info: '锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。',
                             geju_effect: '割据效果',
