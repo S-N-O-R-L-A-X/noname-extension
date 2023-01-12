@@ -135,6 +135,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。作为一统六国的秦始皇，加入技能【六合】，并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】进攻，防御",
                             "ex_zhaoji": "来源于【合纵抗秦】扩展包赵姬。对【大期】进行了修改。<br>【强度】★★★★★<br> 【亮点】进攻",
                             "ex_baiqi": "来源于【合纵抗秦】扩展包白起。白起作为秦军统帅，加入秦军士兵的技能。<br>【强度】★★★★★<br> 【亮点】进攻",
+                            "ex_zhangyi": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】防御",
                         },
                         skill: {
                             shenhu: {
@@ -2033,30 +2034,28 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 forced: true,
                                 content: function () {
                                     var list = game.filterPlayer(function (current) {
-                                        current.removeSkill('zhangyi_lianheng_mark');
+                                        current.removeSkill('ex_lianheng_mark');
+                                        if (current !== player) {
+                                            current.link(true);
+                                        }
                                         return current.group != 'daqin';
                                     });
                                     if (list.length > 1) {
                                         var target = list.randomGet();
                                         player.line(target);
-                                        target.addSkill('zhangyi_lianheng_mark');
+                                        target.addSkill('ex_lianheng_mark');
                                     }
                                 },
-                                group: ['zhangyi_lianheng_init', 'zhangyi_lianheng_die'],
+                                group: ['ex_lianheng_init', 'ex_lianheng_die', 'ex_lianheng_draw', 'ex_lianheng_protect'],
                                 subSkill: {
                                     mark: {
                                         charlotte: true,
-                                        mod: {
-                                            playerEnabled: function (card, player, target) {
-                                                if (target.group == 'daqin' || _status.kangqinEvent == '合纵连横' && target.isLinked()) return false;
-                                            }
-                                        },
                                         marktext: '横',
                                         mark: true,
                                         intro: {
                                             content: function () {
-                                                if (_status.kangqinEvent == '合纵连横') return '不能对秦势力角色和已横置的角色使用牌';
-                                                return '不能对秦势力角色使用牌';
+                                                if (_status.kangqinEvent == '合纵连横') return '不能对秦势力角色和已横置的角色造成伤害且回合开始阶段与秦势力角色各摸两张牌';
+                                                return '不能对秦势力角色造成伤害且回合开始阶段与秦势力角色各摸两张牌';
                                             },
                                         },
                                     },
@@ -2072,7 +2071,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                             if (list.length) {
                                                 var target = list.randomGet();
                                                 player.line(target);
-                                                target.addSkill('zhangyi_lianheng_mark');
+                                                target.addSkill('ex_lianheng_mark');
                                             }
                                         },
                                     },
@@ -2084,13 +2083,57 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         forced: true,
                                         content: function () {
                                             var list = game.filterPlayer(function (current) {
-                                                return target.hasSkill('zhangyi_lianheng_mark');
+                                                return target.hasSkill('ex_lianheng_mark');
                                             });
                                             for (var i = 0; i < list.length; i++) {
                                                 var target = list[i];
                                                 player.line(target);
-                                                target.removeSkill('zhangyi_lianheng_mark');
+                                                target.removeSkill('ex_lianheng_mark');
                                             }
+                                        },
+                                    },
+                                    draw: {
+                                        trigger: { global: 'phaseBegin' },
+                                        forced: true,
+                                        filter: function (event, player) {
+                                            return event.player.hasSkill('ex_lianheng_mark');
+                                        },
+                                        content: function () {
+                                            const list = game.filterPlayer(function (current) {
+                                                return current.hasSkill('ex_lianheng_mark') || current.group == "daqin";
+                                            });
+
+                                            list.forEach((person) => {
+                                                person.draw(2);
+                                            })
+                                        },
+                                    },
+                                    protect: {
+                                        trigger: { player: 'damageBegin4' },
+                                        forced: true,
+                                        charlotte: true,
+                                        filter: function (event, player) {
+                                            return event.source && event.source.hasSkill('ex_lianheng_mark') && (player.group == "daqin" || (_status.kangqinEvent == '合纵连横' && target.isLinked()))
+                                        },
+                                        content: function () {
+                                            trigger.cancel();
+                                        },
+                                        mark: true,
+                                        aiCheck: function (target) {
+                                            if (target.group == "daqin") return 0;
+                                            var player = _status.event.player;
+                                            var att = get.attitude(player, target);
+                                            if (target.countCards('e', function (card) {
+                                                return get.value(card, target) <= 0;
+                                            })) att *= 2;
+                                            return att / Math.sqrt(Math.max(1, target.hp));
+                                        },
+                                        ai: {
+                                            effect: {
+                                                target: function (card, player, target, current) {
+                                                    if (get.tag(card, 'damage') && !player.hasSkillTag('jueqing', false, target)) return 'zerotarget';
+                                                }
+                                            },
                                         },
                                     },
                                 },
@@ -2143,23 +2186,23 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         },
                                     },
                                 },
-                                // group: ["ex_xichu_mad"],
-                                // subskill: {
-                                //     mad: {
-                                //         trigger: { player: 'phaseJieshuBegin' },
-                                //         frequent: true,
-                                //         content: function () {
-                                //             var list = game.filterPlayer(function (target) {
-                                //                 return target != player && !target.isMad();
-                                //             });
-                                //             if (list.length) {
-                                //                 var target = list.randomGet();
-                                //                 player.line(target, 'green');
-                                //                 target.goMad({ player: 'phaseAfter' });
-                                //             }
-                                //         }
-                                //     },
-                                // }
+                                group: ["ex_xichu_mad"],
+                                subSkill: {
+                                    mad: {
+                                        trigger: { player: 'phaseJieshuBegin' },
+                                        forced: true,
+                                        content: function () {
+                                            var list = game.filterPlayer(function (target) {
+                                                return target != player && !target.isMad();
+                                            });
+                                            if (list.length) {
+                                                var target = list.randomGet();
+                                                player.line(target, 'green');
+                                                target.goMad({ player: 'phaseAfter' });
+                                            }
+                                        },
+                                    },
+                                }
                             },
                             "ex_xiongbian": {
                                 audio: 'ext:合纵抗秦:true',
@@ -2374,13 +2417,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                             // zhangyi
                             ex_lianheng: "连横",
-                            ex_lianheng_info: "锁定技，游戏开始时，你令随机一名非秦势力的角色获得“横”标记。拥有“横”标记的角色使用的牌不能指定秦势力角色为目标。你的回合开始时，场上所有角色弃置“横”标记。若非秦势力角色数大于等于2，则你令随机一名非秦势力角色获得“横”标记。",
+                            ex_lianheng_info: "锁定技，游戏开始时，你令随机一名非秦势力的角色获得“横”标记。拥有“横”标记的角色使用的牌无法对秦势力角色造成伤害。你的回合开始时，场上所有角色弃置“横”标记并进入横置状态。若非秦势力角色数大于等于2，则你令随机一名非秦势力角色获得“横”标记。拥有“横”的角色回合开始时，你与其各摸两张牌。",
                             ex_xichu: "戏楚",
-                            ex_xichu_info: "锁定技，当你成为【杀】的目标时，若其攻击范围内有其他角色，则该角色需弃置一张点数为6的牌，否则此【杀】的目标转移给其攻击范围内你指定的另一名角色。",
+                            ex_xichu_info: "锁定技，当你成为【杀】的目标时，若其攻击范围内有其他角色，则该角色需弃置一张点数为6的牌，否则此【杀】的目标转移给其攻击范围内你指定的另一名角色。回合结束阶段，你可以令一名随机的其他角色进入混乱状态直到其下一回合结束。",
                             ex_xiongbian: "雄辩",
-                            ex_xiongbian_info: "锁定技，当你成为普通锦囊牌的目标后，你判定。若结果点数为6，你取消此牌的所有目标。",
+                            ex_xiongbian_info: "锁定技，当你成为普通锦囊牌的目标后，你判定。若结果点数为6，你取消此牌的所有目标，且你获得此判定牌。",
                             ex_qiaoshe: "巧舌",
-                            ex_qiaoshe_info: "当一名角色进行判定时，你可以令判定结果的点数加减3以内的任意值。",
+                            ex_qiaoshe_info: "当一名角色进行判定时，你可以令判定结果的点数加减4以内的任意值。",
 
 
                             // unused
@@ -2422,9 +2465,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
                             '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩嬴政，扩赵姬，扩白起。<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>调整了布局，以及加入了其他服强将，方便日后扩展<br>' +
-                            '<li><span style="color:#006400">说明三</span>：<br><br>' +
-                            '<li><span style="color:#006400">说明四</span>：<br><br>'
+                            '<li><span style="color:#006400">说明二</span>：<br>调整了布局，以及加入了其他服强将，方便日后扩展<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
