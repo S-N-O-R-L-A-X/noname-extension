@@ -1424,7 +1424,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
 
                             "ex_yitong": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 mod: {
                                     targetInRange: function (card) {
                                         if (card.name == 'sha' || card.name == 'shunshou') return true;
@@ -1448,7 +1448,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_shihuang": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     global: "phaseAfter",
                                 },
@@ -1473,7 +1473,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 }
                             },
                             "ex_zulong": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     global: 'phaseBefore',
                                     player: 'enterGame',
@@ -1498,7 +1498,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_fenshu": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     global: "useCard",
                                 },
@@ -1546,7 +1546,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
 
                             "zhaoji_shanwu": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     player: "useCardToPlayered",
                                 },
@@ -1607,7 +1607,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_daqi": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 init: function (player) {
                                     if (!player.storage.ex_daqi) player.storage.ex_daqi = 0;
                                 },
@@ -1668,7 +1668,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "zhaoji_xianji": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 init: function (player) {
                                     player.storage.nzry_dinghuo = false;
                                 },
@@ -1720,7 +1720,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "zhaoji_huoluan": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     player: ["ex_daqiAfter", "zhaoji_xianjiAfter"],
                                 },
@@ -1741,7 +1741,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
 
                             "baiqi_wuan": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 locked: true,
                                 global: "baiqi_wuan_buff",
                                 subSkill: {
@@ -1760,7 +1760,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "baiqi_shashen": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 enable: ["chooseToRespond", "chooseToUse"],
                                 filterCard: true,
                                 viewAs: {
@@ -1800,7 +1800,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "baiqi_fachu": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     source: "dying",
                                 },
@@ -1828,7 +1828,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "baiqi_changsheng": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 mod: {
                                     targetInRange: function (card) {
                                         if (card.name == 'sha') return true;
@@ -1845,7 +1845,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
 
                             "bubing_fangzhen": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     target: "useCardToTargeted",
                                 },
@@ -1917,7 +1917,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "bubing_changbing": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 mod: {
                                     attackFrom: function (from, to, distance) {
                                         return distance - 2;
@@ -1925,7 +1925,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "qibing_changjian": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 mod: {
                                     attackFrom: function (from, to, distance) {
                                         return distance - 1;
@@ -1963,7 +1963,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "qibing_liangju": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     player: "useCardToPlayered",
                                 },
@@ -2011,7 +2011,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                             //zhangyi
                             "ex_lianheng": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     player: 'phaseBegin',
                                 },
@@ -2123,7 +2123,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_xichu": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     target: 'useCardToTarget'
                                 },
@@ -2189,7 +2189,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 }
                             },
                             "ex_xiongbian": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     target: 'useCardToTarget'
                                 },
@@ -2212,7 +2212,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_qiaoshe": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     global: 'judge',
                                 },
@@ -2253,6 +2253,54 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         if (!trigger.fixedResult) trigger.fixedResult = {};
                                         if (!trigger.fixedResult.number) trigger.fixedResult.number = get.number(trigger.player.judging[0]);
                                         trigger.fixedResult.number += parseInt(result.control);
+                                    }
+                                },
+                            },
+                            "shangyang_kencao": {
+                                audio: 'ext:大战七阴/audio:true',
+                                init: function (player) {
+                                    if (!player.storage.shangyang_kencao) player.storage.shangyang_kencao = 0;
+                                },
+                                marktext: "功",
+                                intro: {
+                                    content: "当前有#个“功”标记",
+                                },
+                                trigger: {
+                                    global: "damageAfter",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return event.source && event.source.group == 'daqin' && event.source.isAlive();
+                                },
+                                content: function () {
+                                    if (trigger.source == player) {
+                                        player.markSkill('shangyang_kencao');
+                                        player.storage.shangyang_kencao += trigger.num;
+                                        player.syncStorage('shangyang_kencao');
+                                        game.log(player, '获得了', trigger.num, '个“功”标记');
+                                        if (player.storage.shangyang_kencao >= 3) {
+                                            game.log(player, '移去了', player.storage.shangyang_kencao, '个“功”标记');
+                                            player.storage.shangyang_kencao = 0;
+                                            player.syncStorage('shangyang_kencao');
+                                            if (player.storage.shangyang_kencao <= 0) player.unmarkSkill('shangyang_kencao');
+                                            player.gainMaxHp();
+                                            player.recover();
+                                        }
+                                    } else {
+                                        player.line(trigger.source);
+                                        if (trigger.source.storage.shangyang_kencao == undefined) trigger.source.storage.shangyang_kencao = 0;
+                                        trigger.source.markSkill('shangyang_kencao');
+                                        trigger.source.storage.shangyang_kencao += trigger.num;
+                                        trigger.source.syncStorage('shangyang_kencao');
+                                        game.log(trigger.source, '获得了', trigger.num, '个“功”标记');
+                                        if (trigger.source.storage.shangyang_kencao >= 3) {
+                                            game.log(trigger.source, '移去了', trigger.source.storage.shangyang_kencao, '个“功”标记');
+                                            trigger.source.storage.shangyang_kencao = 0;
+                                            trigger.source.syncStorage('shangyang_kencao');
+                                            if (trigger.source.storage.shangyang_kencao <= 0) trigger.source.unmarkSkill('shangyang_kencao');
+                                            trigger.source.gainMaxHp();
+                                            trigger.source.recover();
+                                        }
                                     }
                                 },
                             },
@@ -2416,6 +2464,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             zhenlongchangjian_skill_info: "锁定技，你于一回合内使用的第一张普通锦囊牌不是【无懈可击】的合法目标。",
                             chuanguoyuxi_skill: "传国玉玺",
                             chuanguoyuxi_skill_info: "出牌阶段开始时，你可以视为使用一张【南蛮入侵】【万箭齐发】/【桃园结义】/【五谷丰登】。",
+                            zhenlongchangjian: "真龙长剑",
+                            zhenlongchangjian_info: "锁定技，你于一回合内使用的第一张普通锦囊牌不是【无懈可击】的合法目标。",
+                            chuanguoyuxi: "传国玉玺",
+                            chuanguoyuxi_info: "出牌阶段开始时，你可以视为使用一张【南蛮入侵】【万箭齐发】/【桃园结义】/【五谷丰登】。",
+
 
                             // zhaoji
                             "zhaoji_shanwu": "善舞",
@@ -2435,6 +2488,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "bubing_fangzhen_info": "锁定技，当你成为非秦势力角色使用普通锦囊或【杀】的目标后，若其在你的攻击范围内，你进行判定，若为黑色，则视为你对其使用一张【杀】。",
                             "bubing_changbing": "长兵",
                             "bubing_changbing_info": "锁定技，你的攻击范围+2。",
+                            qinnu: "秦弩",
+                            qinnu_info: "当你使用【杀】指定一个目标后，你令其防具无效，你的出牌阶段内，可使用的【杀】数量+1；当你失去装备区里的【秦弩】，你令此牌销毁。",
+
 
                             // baiqi
                             "baiqi_wuan": "武安",
@@ -2457,6 +2513,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_qiaoshe_info: "当一名角色进行判定时，你可以令判定结果的点数加减4以内的任意值。",
 
 
+                            "shangyang_kencao": "垦草",
+                            "shangyang_kencao_info": "锁定技，你存活时，秦势力角色每造成1点伤害，可获得一个“功”标记。若秦势力角色拥有大于等于3个“功”标记，则弃置所有“功”标记，增加1点体力上限，并回复1点体力。",
+                            //     shangyangbianfa: "商鞅变法",
+                            //     "shangyangbianfa_info": "出牌阶段，对一名其他角色使用。你对目标角色造成随机1~2点伤害，若该角色以此法进入濒死状态，则其进行判定，若判定结果为黑色，则所有角色角色不能使用【桃】直到此濒死事件结算结束。",
+
+
                             // unused
                             geju: '割据',
                             geju_info: '锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。',
@@ -2471,8 +2533,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     }
 
                     for (let card_name in against7devil.card) {
-                        console.log(i);
-
                         const path = 'ext:大战七阴/image/card/' + card_name + '.jpg';
                         //game.js will convert ext to different path in different devices
                         against7devil.card[card_name].image = path;
