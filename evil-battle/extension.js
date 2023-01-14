@@ -103,7 +103,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_yingzheng": ["male", "daqin", 8, ["shenhu", "ex_yitong", "ex_shihuang", "ex_liuhe", "ex_zulong", "ex_fenshu", "shangyang_kencao"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhaoji": ["female", "daqin", 4, ["zhaoji_shanwu", "ex_daqi", "zhaoji_xianji", "zhaoji_huoluan"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "ex_baiqi": ["male", "daqin", 8, ["shenhu", "baiqi_wuan", "baiqi_shashen", "baiqi_fachu", "baiqi_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "shangyang_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
-                            "ex_zhangyi": ["male", "daqin", 8, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
+                            "ex_zhangyi": ["male", "daqin", 6, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -132,7 +132,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // "yitongjindi": "晋国是乱世中隐藏最深的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【驭权】，加上自设计的【称病】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
                             "re_nianshou": "来源于挑战模式boss四大年兽。<br>【强度】★★★★<br> 【亮点】综合",
                             "barbarian_king": "将少数民族部落武将的技能进行融合。<br>【强度】★★★★★<br> 【亮点】进攻",
-                            "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。作为一统六国的秦始皇，加入技能【六合】，并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】进攻，防御",
+                            "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。作为一统六国的秦始皇，加入技能【六合】，并对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】进攻，防御",
                             "ex_zhaoji": "来源于【合纵抗秦】扩展包赵姬。对【大期】进行了修改。<br>【强度】★★★★★<br> 【亮点】进攻",
                             "ex_baiqi": "来源于【合纵抗秦】扩展包白起。白起作为秦军统帅，加入秦军士兵的技能。<br>【强度】★★★★★<br> 【亮点】进攻",
                             "ex_zhangyi": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
@@ -2380,6 +2380,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // config
                             update: "更新情况",
                             thanks: "鸣谢",
+                            warning: "警告",
 
                             //classification
                             against7devil: "大战七阴",
@@ -2576,6 +2577,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极哦~<br>
                 <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a>
                 `,
+                clear: true,
+                nopointer: true,
+            },
+            warning: {
+                name: `<div style="color: red">本扩展可能与一些其他扩展冲突，如有冲突，请禁用本扩展或其他扩展！<br>
+                目前已知冲突：活动武将和活动武将配件（导致关卡内人物变化）
+                    </div>`,
                 clear: true,
                 nopointer: true,
             },
