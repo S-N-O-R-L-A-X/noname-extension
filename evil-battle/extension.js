@@ -65,8 +65,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                     },],
                 };
-                _status.extensionscene = true;
-                // }
+                _status.extensionstage = true;
+
                 if (!_status.extensionmade) _status.extensionmade = [];
                 _status.extensionmade.push("大战七阴");
             }
@@ -100,10 +100,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // "yitongjindi": ["male", "jin", 4, ["shenhu", "yuquan", "chengbing"], ["hiddenSkill", "zhu", "boss", "bossallowed"]],
                             "re_nianshou": ["male", "shen", 4, ["boss_nianrui", "boss_mengtai", "boss_jingjue", "boss_renxing", "boss_ruizhi", "boss_nbaonu", "boss_shouyi"], ["zhu", "boss", "bossallowed"]],
                             "barbarian_king": ["male", "qun", 10, ["shenhu", "equan", "manji", "manyi", "mansi", "xiangzhen", "huoshou", "zaiqi", "juxiang", "hanyong"], ["zhu", "boss", "bossallowed"]],
-                            "ex_yingzheng": ["male", "daqin", 8, ["shenhu", "ex_yitong", "ex_shihuang", "ex_liuhe", "ex_zulong", "ex_fenshu", "shangyang_kencao"], ["zhu", "boss", "bossallowed"]],
+                            "ex_yingzheng": ["male", "daqin", 8, ["shenhu", "ex_yitong", "ex_shihuang", "ex_liuhe", "ex_zulong", "ex_fenshu", "ex_kencao"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhaoji": ["female", "daqin", 4, ["zhaoji_shanwu", "ex_daqi", "zhaoji_xianji", "zhaoji_huoluan"], ["zhu", "boss", "bossallowed", "forbidai"]],
-                            "ex_baiqi": ["male", "daqin", 8, ["shenhu", "baiqi_wuan", "baiqi_shashen", "baiqi_fachu", "baiqi_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "shangyang_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
+                            "ex_baiqi": ["male", "daqin", 8, ["shenhu", "baiqi_wuan", "baiqi_shashen", "baiqi_fachu", "baiqi_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "ex_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhangyi": ["male", "daqin", 6, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
+                            "ex_shangyang": ["male", "daqin", 6, ["ex_bianfa", "ex_limu", "ex_kencao", "shangyangbianfa_dying", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -132,10 +133,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // "yitongjindi": "晋国是乱世中隐藏最深的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【驭权】，加上自设计的【称病】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
                             "re_nianshou": "来源于挑战模式boss四大年兽。<br>【强度】★★★★<br> 【亮点】综合",
                             "barbarian_king": "将少数民族部落武将的技能进行融合。<br>【强度】★★★★★<br> 【亮点】进攻",
-                            "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。作为一统六国的秦始皇，加入技能【六合】，并对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】进攻，防御",
+                            "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。作为一统六国的秦始皇，加入技能【六合】，并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】进攻，防御",
                             "ex_zhaoji": "来源于【合纵抗秦】扩展包赵姬。对【大期】进行了修改。<br>【强度】★★★★★<br> 【亮点】进攻",
                             "ex_baiqi": "来源于【合纵抗秦】扩展包白起。白起作为秦军统帅，加入秦军士兵的技能。<br>【强度】★★★★★<br> 【亮点】进攻",
                             "ex_zhangyi": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
+                            "ex_shangyang": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
                         },
                         skill: {
                             shenhu: {
@@ -2256,54 +2258,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
-                            "shangyang_kencao": {
-                                audio: 'ext:大战七阴/audio:true',
-                                init: function (player) {
-                                    if (!player.storage.shangyang_kencao) player.storage.shangyang_kencao = 0;
-                                },
-                                marktext: "功",
-                                intro: {
-                                    content: "当前有#个“功”标记",
-                                },
-                                trigger: {
-                                    global: "damageAfter",
-                                },
-                                forced: true,
-                                filter: function (event, player) {
-                                    return event.source && event.source.group == 'daqin' && event.source.isAlive();
-                                },
-                                content: function () {
-                                    if (trigger.source == player) {
-                                        player.markSkill('shangyang_kencao');
-                                        player.storage.shangyang_kencao += trigger.num;
-                                        player.syncStorage('shangyang_kencao');
-                                        game.log(player, '获得了', trigger.num, '个“功”标记');
-                                        if (player.storage.shangyang_kencao >= 3) {
-                                            game.log(player, '移去了', player.storage.shangyang_kencao, '个“功”标记');
-                                            player.storage.shangyang_kencao = 0;
-                                            player.syncStorage('shangyang_kencao');
-                                            if (player.storage.shangyang_kencao <= 0) player.unmarkSkill('shangyang_kencao');
-                                            player.gainMaxHp();
-                                            player.recover();
-                                        }
-                                    } else {
-                                        player.line(trigger.source);
-                                        if (trigger.source.storage.shangyang_kencao == undefined) trigger.source.storage.shangyang_kencao = 0;
-                                        trigger.source.markSkill('shangyang_kencao');
-                                        trigger.source.storage.shangyang_kencao += trigger.num;
-                                        trigger.source.syncStorage('shangyang_kencao');
-                                        game.log(trigger.source, '获得了', trigger.num, '个“功”标记');
-                                        if (trigger.source.storage.shangyang_kencao >= 3) {
-                                            game.log(trigger.source, '移去了', trigger.source.storage.shangyang_kencao, '个“功”标记');
-                                            trigger.source.storage.shangyang_kencao = 0;
-                                            trigger.source.syncStorage('shangyang_kencao');
-                                            if (trigger.source.storage.shangyang_kencao <= 0) trigger.source.unmarkSkill('shangyang_kencao');
-                                            trigger.source.gainMaxHp();
-                                            trigger.source.recover();
-                                        }
-                                    }
-                                },
-                            },
+
                             "nushou_jinnu": {
                                 audio: 'ext:合纵抗秦:true',
                                 trigger: {
@@ -2328,6 +2283,176 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                                 inherit: 'qinggang_skill',
                             },
+
+                            // shangyang
+                            "ex_bianfa": {
+                                audio: 'ext:合纵抗秦:true',
+                                mod: {
+                                    // selectTarget: function (card, player, range) {
+                                    //     if (_status.kangqinEvent == '变法图强' && card.name == 'shangyangbianfa' && range[1] != -1) range[1]++;
+                                    // },
+                                },
+                                enable: "chooseToUse",
+                                filterCard: function (card) {
+                                    return get.type(card) == 'trick';
+                                },
+                                viewAs: {
+                                    name: "shangyangbianfa",
+                                },
+                                viewAsFilter: function (player) {
+                                    if (!player.countCards('h', {
+                                        type: 'trick'
+                                    })) return false;
+                                },
+                                prompt: "将一张普通锦囊牌当作【商鞅变法】使用",
+                                check: function (card) {
+                                    return 9 - get.value(card);
+                                },
+                                ai: {
+                                    basic: {
+                                        order: 10,
+                                        useful: 1,
+                                        value: 5.5,
+                                    },
+                                    result: {
+                                        target: -1.5,
+                                    },
+                                    tag: {
+                                        damage: 1,
+                                    },
+                                },
+                            },
+                            "ex_limu": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    player: "useCard",
+                                },
+                                forced: true,
+                                filter: function (event) {
+                                    return get.type(event.card) == 'trick';
+                                },
+                                content: function () {
+                                    trigger.nowuxie = true;
+                                },
+                            },
+                            "ex_kencao": {
+                                audio: 'ext:合纵抗秦:true',
+                                init: function (player) {
+                                    if (!player.storage.ex_kencao) player.storage.ex_kencao = 0;
+                                },
+                                marktext: "功",
+                                intro: {
+                                    content: "当前有#个“功”标记",
+                                },
+                                trigger: {
+                                    global: "damageAfter",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return event.source && event.source.group == 'daqin' && event.source.isAlive();
+                                },
+                                content: function () {
+                                    if (trigger.source == player) {
+                                        player.markSkill('ex_kencao');
+                                        player.storage.ex_kencao += trigger.num;
+                                        player.syncStorage('ex_kencao');
+                                        game.log(player, '获得了', trigger.num, '个“功”标记');
+                                        if (player.storage.ex_kencao >= 3) {
+                                            game.log(player, '移去了', player.storage.ex_kencao, '个“功”标记');
+                                            player.storage.ex_kencao = 0;
+                                            player.syncStorage('ex_kencao');
+                                            if (player.storage.ex_kencao <= 0) player.unmarkSkill('ex_kencao');
+                                            player.gainMaxHp();
+                                            player.recover();
+                                        }
+                                    } else {
+                                        player.line(trigger.source);
+                                        if (trigger.source.storage.ex_kencao == undefined) trigger.source.storage.ex_kencao = 0;
+                                        trigger.source.markSkill('ex_kencao');
+                                        trigger.source.storage.ex_kencao += trigger.num;
+                                        trigger.source.syncStorage('ex_kencao');
+                                        game.log(trigger.source, '获得了', trigger.num, '个“功”标记');
+                                        if (trigger.source.storage.ex_kencao >= 3) {
+                                            game.log(trigger.source, '移去了', trigger.source.storage.ex_kencao, '个“功”标记');
+                                            trigger.source.storage.ex_kencao = 0;
+                                            trigger.source.syncStorage('ex_kencao');
+                                            if (trigger.source.storage.ex_kencao <= 0) trigger.source.unmarkSkill('ex_kencao');
+                                            trigger.source.gainMaxHp();
+                                            trigger.source.recover();
+                                        }
+                                    }
+                                },
+                            },
+                            "shangyangbianfa_dying": {
+                                trigger: {
+                                    player: "dying",
+                                },
+                                forced: true,
+                                popup: false,
+                                direct: true,
+                                charlotte: true,
+                                locked: true,
+                                filter: function (event, player) {
+                                    return event.getParent().type == 'shangyangbianfa';
+                                },
+                                content: function () {
+                                    'step 0'
+                                    player.judge(function (card) {
+                                        return get.color(card) == 'black' ? -1 : 0;
+                                    })
+                                    'step 1'
+                                    if (result.color == 'black') {
+                                        game.countPlayer(function (current) {
+                                            if (current != player) current.addTempSkill('shangyangbianfa_dying_nosave', '_saveAfter');
+                                        });
+                                    }
+                                },
+                                subSkill: {
+                                    nosave: {
+                                        mod: {
+                                            cardSavable: function () {
+                                                return false
+                                            }
+                                        },
+                                    },
+                                },
+                            },
+                            "ex_lianzuo": {
+                                trigger: { source: 'damageSource' },
+                                filter: function (event) {
+                                    if (event._notrigger.contains(event.player)) return false;
+                                    return event.card && event.card.name === 'shangyangbianfa';
+                                },
+                                logSkill: 'source',
+                                content: function () {
+                                    const damage = trigger.num;
+                                    "step 0"
+                                    player.chooseTarget(`请选择一名其他角色，对该角色造成${damage}点伤害。`, function () {
+                                        return target != player && target != trigger.player;
+                                    }).set('ai', function (target) {
+                                        var player = _status.event.player;
+                                        return get.damageEffect(target, player, player);
+                                    });
+
+                                    "step 1"
+                                    if (result.bool && result.targets && result.targets.length) {
+                                        player.logSkill('ex_lianzuo', result.targets);
+                                        player.line(result.targets[0], 'green');
+                                        result.targets[0].damage(damage);
+                                    }
+                                },
+                                ai: {
+                                    threaten: 0.6,
+                                    maixie: true,
+                                    effect: {
+                                        target: function (card, player, target) {
+                                            if (player.hasSkillTag('jueqing', false, target)) return [1, -1.5];
+                                            if (!target.hasFriend()) return;
+                                            if (get.tag(card, 'damage')) return [1, 0, 0, -0.7];
+                                        },
+                                    },
+                                },
+                            }
                         },
                         card: {
                             "zhenlongchangjian": {
@@ -2375,6 +2500,35 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                                 fullimage: true,
                             },
+                            "shangyangbianfa": {
+                                audio: true,
+                                global: 'shangyangbianfa_dying',
+                                type: "trick",
+                                enable: true,
+                                filterTarget: function (card, player, target) {
+                                    return target != player;
+                                },
+                                selectTarget: 1,
+                                content: function () {
+                                    'step 0'
+                                    var num = [1, 2, 3].randomGet();
+                                    target.damage(num).type = 'shangyangbianfa';
+                                },
+                                ai: {
+                                    basic: {
+                                        order: 5,
+                                        useful: 1,
+                                        value: 5.5,
+                                    },
+                                    result: {
+                                        target: -1.5,
+                                    },
+                                    tag: {
+                                        damage: 1,
+                                    },
+                                },
+                                fullimage: true,
+                            },
                         },
                         translate: {
                             // config
@@ -2412,6 +2566,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhaoji": "扩赵姬",
                             "ex_baiqi": "扩白起",
                             "ex_zhangyi": "扩张仪",
+                            "ex_shangyang": "扩商鞅",
 
                             //skill
                             shenhu: "神护",
@@ -2537,12 +2692,19 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_qiaoshe: "巧舌",
                             ex_qiaoshe_info: "当一名角色进行判定时，你可以令判定结果的点数加减4以内的任意值。",
 
-
-                            "shangyang_kencao": "垦草",
-                            "shangyang_kencao_info": "锁定技，你存活时，秦势力角色每造成1点伤害，可获得一个“功”标记。若秦势力角色拥有大于等于3个“功”标记，则弃置所有“功”标记，增加1点体力上限，并回复1点体力。",
-                            //     shangyangbianfa: "商鞅变法",
-                            //     "shangyangbianfa_info": "出牌阶段，对一名其他角色使用。你对目标角色造成随机1~2点伤害，若该角色以此法进入濒死状态，则其进行判定，若判定结果为黑色，则所有角色角色不能使用【桃】直到此濒死事件结算结束。",
-
+                            // shangyang
+                            "ex_bianfa": "变法",
+                            "ex_bianfa_info": "出牌阶段限一次，你可以将一张普通锦囊牌当作【商鞅变法】使用。",
+                            "ex_limu": "立木",
+                            "ex_limu_info": "锁定技，你使用的普通锦囊牌不是【无懈可击】的合法目标。",
+                            "ex_kencao": "垦草",
+                            "ex_kencao_info": "锁定技，你存活时，秦势力角色每造成1点伤害，可获得一个“功”标记。若秦势力角色拥有大于等于3个“功”标记，则弃置所有“功”标记，增加1点体力上限，并回复1点体力。",
+                            "shangyangbianfa_dying": "商鞅变法",
+                            "shangyangbianfa_dying_info": "造成随机1~3点伤害，若该角色进入濒死状态，则进行判定，若判定结果为黑色，则该角色本次濒死状态无法向其他角色求桃。",
+                            shangyangbianfa: "商鞅变法",
+                            "shangyangbianfa_info": "出牌阶段，对一名其他角色使用。你对目标角色造成随机1~2点伤害，若该角色以此法进入濒死状态，则其进行判定，若判定结果为黑色，则所有角色角色不能使用【桃】直到此濒死事件结算结束。",
+                            ex_lianzuo: "连坐",
+                            ex_lianzuo_info: "当你使用【商鞅变法】对其他角色造成伤害时，你可以对令一名其他角色造成等量伤害。",
 
                             // unused
                             geju: '割据',
@@ -2588,15 +2750,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：5.0<font size="4px">▶▶▶</font></div>`,
-                version: 5.0,
+                name: `<div class=".update">扩展版本：5.1<font size="4px">▶▶▶</font></div>`,
+                version: 5.1,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩嬴政，扩赵姬，扩白起，扩张仪。<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>调整了布局，以及加入了其他服强将，方便日后扩展<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩商鞅。<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -2605,7 +2766,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：5.0<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：5.1<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
