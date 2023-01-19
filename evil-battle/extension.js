@@ -104,7 +104,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhaoji": ["female", "daqin", 4, ["zhaoji_shanwu", "ex_daqi", "zhaoji_xianji", "zhaoji_huoluan"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "ex_baiqi": ["male", "daqin", 8, ["shenhu", "baiqi_wuan", "baiqi_shashen", "baiqi_fachu", "baiqi_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "ex_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhangyi": ["male", "daqin", 6, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
-                            "ex_shangyang": ["male", "daqin", 6, ["ex_bianfa", "ex_limu", "ex_kencao", "shangyangbianfa_dying", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
+                            "ex_shangyang": ["male", "daqin", 6, ["shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "shangyangbianfa_dying", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -2421,20 +2421,22 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 trigger: { source: 'damageSource' },
                                 filter: function (event) {
                                     if (event._notrigger.contains(event.player)) return false;
-                                    return event.card && event.card.name === 'shangyangbianfa';
+                                    return event.getParent().name != 'ex_lianzuo';
                                 },
                                 logSkill: 'source',
                                 content: function () {
-                                    const damage = trigger.num;
+                                    const damage = trigger.num, target1 = trigger.player;
+
                                     "step 0"
-                                    player.chooseTarget(`请选择一名其他角色，对该角色造成${damage}点伤害。`, function () {
-                                        return target != player && target != trigger.player;
+                                    player.chooseTarget(`请选择一名其他角色，对该角色造成${damage}点伤害。`, function (card, player, target) {
+                                        return target != player && target != target1;
                                     }).set('ai', function (target) {
                                         var player = _status.event.player;
                                         return get.damageEffect(target, player, player);
                                     });
 
                                     "step 1"
+                                    game.log(result.targets)
                                     if (result.bool && result.targets && result.targets.length) {
                                         player.logSkill('ex_lianzuo', result.targets);
                                         player.line(result.targets[0], 'green');
