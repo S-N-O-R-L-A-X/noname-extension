@@ -137,7 +137,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhaoji": "来源于【合纵抗秦】扩展包赵姬。对【大期】进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击",
                             "ex_baiqi": "来源于【合纵抗秦】扩展包白起。白起作为秦军统帅，加入秦军士兵的技能。<br>【强度】★★★★★<br> 【亮点】攻击",
                             "ex_zhangyi": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
-                            "ex_shangyang": "来源于【合纵抗秦】扩展包商鞅。加入技能【连坐】并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】攻击",
+                            "ex_shangyang": "来源于【合纵抗秦】扩展包商鞅。加入技能【连坐】并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】攻击，爆发",
                         },
                         skill: {
                             shenhu: {
@@ -2421,8 +2421,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_lianzuo": {
                                 trigger: { source: 'damageSource' },
                                 filter: function (event) {
-                                    if (event._notrigger.contains(event.player)) return false;
-                                    return event.getParent().name != 'ex_lianzuo';
+                                    // old version: any damage can trigger ex_lianzuo
+                                    // if (event._notrigger.contains(event.player)) return false;
+                                    // return event.getParent().name != 'ex_lianzuo';
+                                    return event.card && event.card.name == "shangyangbianfa";
                                 },
                                 logSkill: 'source',
                                 content: function () {
@@ -2703,7 +2705,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_kencao": "垦草",
                             "ex_kencao_info": "锁定技，你存活时，秦势力角色每造成1点伤害，可获得一个“功”标记。若秦势力角色拥有大于等于3个“功”标记，则弃置所有“功”标记，增加1点体力上限，并回复1点体力。",
                             shangyangbianfa: "商鞅变法",
-                            shangyangbianfa_info: "出牌阶段，对一名其他角色使用。你对目标角色造成随机1~3点伤害，若该角色以此法进入濒死状态，则其进行判定，若判定结果为黑色，则该角色本次濒死状态无法向其他角色求桃。。",
+                            shangyangbianfa_info: "出牌阶段，对一名其他角色使用。你对目标角色造成随机1~3点伤害，若该角色以此法进入濒死状态，则其进行判定，若判定结果为黑色，则该角色本次濒死状态无法向其他角色求桃。",
+                            shangyangbianfa_dying: "商鞅变法",
+                            shangyangbianfa_dying_info: "出牌阶段，对一名其他角色使用。你对目标角色造成随机1~3点伤害，若该角色以此法进入濒死状态，则其进行判定，若判定结果为黑色，则该角色本次濒死状态无法向其他角色求桃。",
                             ex_lianzuo: "连坐",
                             ex_lianzuo_info: "当你使用【商鞅变法】对其他角色造成伤害时，你可以对令一名其他角色造成等量伤害。",
 
