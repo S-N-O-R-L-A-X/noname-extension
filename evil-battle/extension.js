@@ -88,7 +88,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_boss_huatuo": ["male", "qun", 6, ["shenhu", "chulao", "mazui", "boss_shengshou", "guizhen", "wuqin"], ["zhu", "boss", "bossallowed"]],
                             "re_boss_zhouyu": ["male", "wu", 10, ["shenhu", "huoshen", "boss_honglian", "boss_xianyin", "boss_zhaohuo", "boss_honglianx"], ["zhu", "boss", "bossallowed"]],
                             "yin_caojinyu": ["female", "wei", 10, ["shenhu", "yinyuqi", "yinshanshen", "yinxianjing"], ["zhu", "boss", "bossallowed"]],
-                            "norecover": ["male", "shen", 25, ["boss_fudu", "boss_kujiu", "boss_duqu", "boss_echou", "zhaogao_haizhong"], ["zhu", "boss", "bossallowed"]],
+                            "norecover": ["male", "shen", 25, ["boss_fudu", "boss_kujiu", "boss_duqu", "boss_echou", "ex_haizhong"], ["zhu", "boss", "bossallowed"]],
                             "fusion_xuhuang": ["male", "wei", 6, ["shenhu", "shipo", "famine", "olduanliang", "oljiezi"], ["zhu", "boss", "bossallowed"]],
                             "liuxingyaodi": ["male", "shu", "6/8", ["shenhu", "renjun", "boss_rende"], ["zhu", "boss", "bossallowed"]],
                             "re_boss_zhenji": ["female", "wei", 6, ["shenhu", "tashui", "lingbo", "jiaoxia", "fanghua", "reluoshen"], ["zhu", "boss", "bossallowed"]],
@@ -105,6 +105,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_baiqi": ["male", "daqin", 8, ["shenhu", "baiqi_wuan", "baiqi_shashen", "baiqi_fachu", "baiqi_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "ex_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhangyi": ["male", "daqin", 6, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
                             "ex_shangyang": ["male", "daqin", 6, ["shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
+                            "ex_zhaogao": ["male", "daqin", 4, ["ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili"], ["zhu", "boss", "bossallowed", "forbidai"]],
+
                         },
                         characterSort: {
                             against7devil: {
@@ -2534,6 +2536,202 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                                 fullimage: true,
                             },
+
+                            //zhaogao
+                            ex_zhilu: {
+                                audio: 'ext:合纵抗秦:true',
+                                group: 'ex_zhilu2',
+                                enable: ['chooseToUse', 'chooseToRespond'],
+                                viewAs: {
+                                    name: 'sha'
+                                },
+                                filterCard: {
+                                    color: 'black'
+                                },
+                                check: function (card) {
+                                    return 1 / (get.value(card) || 0.5)
+                                },
+                                viewAsFilter: function (player) {
+                                    return player.countCards('h', {
+                                        color: 'black'
+                                    }) > 0;
+                                },
+                                ai: {
+                                    respondSha: true,
+                                    skillTagFilter: function (player) {
+                                        return player.countCards('h', {
+                                            color: 'black'
+                                        }) > 0;
+                                    },
+                                },
+                            },
+                            ex_zhilu2: {
+                                audio: 'ex_zhilu',
+                                enable: ['chooseToUse', 'chooseToRespond'],
+                                viewAs: {
+                                    name: 'shan'
+                                },
+                                filterCard: {
+                                    color: 'red'
+                                },
+                                check: function (card) {
+                                    return 1 / (get.value(card) || 0.5)
+                                },
+                                viewAsFilter: function (player) {
+                                    return player.countCards('h', {
+                                        color: 'red'
+                                    }) > 0;
+                                },
+                                ai: {
+                                    respondShan: true,
+                                    skillTagFilter: function (player) {
+                                        return player.countCards('h', {
+                                            color: 'red'
+                                        }) > 0;
+                                    },
+                                },
+                            },
+                            ex_gaizhao: {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    target: 'useCardToTarget'
+                                },
+                                direct: true,
+                                filter: function (event, player) {
+                                    if (get.info(event.card).multitarget) return false;
+                                    var type = get.type(event.card);
+                                    var name = get.name(event.card);
+                                    if (name != 'sha' && type != 'trick') return false;
+                                    return game.hasPlayer(function (current) {
+                                        return current != player && current.group == 'daqin' && !event.targets.contains(current);
+                                    });
+                                },
+                                content: function () {
+                                    'step 0'
+                                    player.chooseTarget(get.prompt(event.name), '将' + get.translation(trigger.card) + '转移给其他秦势力角色', function (card,
+                                        player, target) {
+                                        var trigger = _status.event.getTrigger();
+                                        return target.group == 'daqin' && !trigger.targets.contains(target) && lib.filter.targetEnabled2(trigger.card,
+                                            trigger.player, target);
+                                    }).set('rawEffect', get.effect(player, trigger.card, trigger.player, player))
+                                        .ai = function (target) {
+                                            var trigger = _status.event.getTrigger();
+                                            var rawEffect = _status.event.rawEffect;
+                                            var effectTarget = 0.1 + get.effect(target, trigger.card, trigger.player, _status.event.player);
+                                            return effectTarget - rawEffect;
+                                        };
+                                    'step 1'
+                                    if (result.bool) {
+                                        var target = result.targets[0];
+                                        player.logSkill(event.name, target);
+                                        trigger.targets[trigger.targets.indexOf(player)] = target;
+                                    }
+                                },
+                                ai: {
+                                    effect: {
+                                        target: function (card, player, target) {
+                                            if (get.attitude(player, target) > 0 || _status.gaizhaoEffect) return;
+                                            if (get.name(card) != 'sha' && get.type(card) != 'trick') return;
+                                            if (get.info(card).multitarget || get.info(card).selectTarget == -1) return;
+                                            var players = game.filterPlayer(function (current) {
+                                                return current != target && current.group == 'daqin';
+                                            });
+                                            if (!players.length) return;
+                                            _status.gaizhaoEffect = true;
+                                            for (var i = 0; i < players.length; i++) {
+                                                if (get.effect(players[i], card, player, player) <= 0) {
+                                                    delete _status.gaizhaoEffect;
+                                                    return 'zeroplayertarget';
+                                                }
+                                            }
+                                            delete _status.gaizhaoEffect;
+                                        }
+                                    },
+                                }
+                            },
+                            ex_haizhong: {
+                                global: 'ex_haizhong_debuff',
+                                audio: 'ext:合纵抗秦:true',
+                                intro: {
+                                    content: 'mark',
+                                },
+                                trigger: {
+                                    global: 'recoverAfter'
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return event.player.group != 'daqin' && event.player.isAlive();
+                                },
+                                logTarget: 'player',
+                                content: function () {
+                                    'step 0'
+                                    if (!trigger.player.storage[event.name]) trigger.player.storage[event.name] = 0;
+                                    trigger.player.storage[event.name]++;
+                                    event.num = Math.max(1, trigger.player.storage[event.name]);
+                                    trigger.player.markSkill(event.name);
+                                    if (_status.dying.length) return event.finish();
+                                    trigger.player.chooseToDiscard('he', '害忠：弃置一张红色牌，或受到' + event.num + '点伤害', {
+                                        color: 'red'
+                                    }).ai = function (card) {
+                                        var trigger = _status.event.getTrigger();
+                                        var value = get.value(card);
+                                        if (card.name == 'du' && trigger.player.hp <= 1) return -1;
+                                        if (10 - value < 0) return 0.5;
+                                        return 10 - value;
+                                    };
+                                    'step 1'
+                                    if (!result.bool) {
+                                        if (trigger.player.hp <= num) trigger.player.addTempSkill('ex_haizhong_dying', 'damageAfter');
+                                        trigger.player.damage(num);
+                                    }
+                                },
+                                subSkill: {
+                                    dying: {
+                                        charlotte: true,
+                                        ai: {
+                                            effect: {
+                                                target: function (card, player, target) {
+                                                    if (get.tag(card, 'recover') && player != target) return 'zeroplayertarget';
+                                                },
+                                            },
+                                        },
+                                    },
+                                    debuff: {
+                                        ai: {
+                                            effect: {
+                                                player: function (card, player, target) {
+                                                    if (player.group == 'daqin' || !get.tag(card, 'recover') || target != player) return;
+                                                    if (get.name(card) == 'jiu' && !player.isDying()) return;
+                                                    if (!player.hasCard(function (otherCard) {
+                                                        return otherCard != card && get.color(otherCard) == 'red' && (get.value(card) < 10 || player.storage.ex_haizhong >= player.hp);
+                                                    })) return 'zeroplayertarget';
+                                                },
+                                                target: function (card, player, target) {
+                                                    if (target.group == 'daqin' || !get.tag(card, 'recover') || player == target) return;
+                                                    if (!target.countCards('h')) return 'zeroplayertarget';
+                                                },
+                                            },
+                                        },
+                                    },
+                                }
+                            },
+                            ex_aili: {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    player: 'phaseUseBegin'
+                                },
+                                forced: true,
+                                content: function () {
+                                    var list = [];
+                                    for (var i = 0; i < 2; i++) {
+                                        var cardx = get.cardPile2(function (card) {
+                                            return get.type(card) == 'trick' && !list.contains(card)
+                                        });
+                                        if (cardx) list.push(cardx);
+                                    }
+                                    if (list.length) player.gain(list, 'draw');
+                                },
+                            },
                         },
                         translate: {
                             // config
@@ -2572,6 +2770,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_baiqi": "扩白起",
                             "ex_zhangyi": "扩张仪",
                             "ex_shangyang": "扩商鞅",
+                            "ex_zhaogao": "扩赵高",
 
                             //skill
                             shenhu: "神护",
@@ -2710,6 +2909,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             shangyangbianfa_dying_info: "出牌阶段，对一名其他角色使用。你对目标角色造成随机1~3点伤害，若该角色以此法进入濒死状态，则其进行判定，若判定结果为黑色，则该角色本次濒死状态无法向其他角色求桃。",
                             ex_lianzuo: "连坐",
                             ex_lianzuo_info: "当你使用【商鞅变法】对其他角色造成伤害时，你可以对令一名其他角色造成等量伤害。",
+
+                            //zhaogao
+                            "ex_zhilu": '指鹿',
+                            "ex_zhilu2": '指鹿',
+                            "ex_zhilu_info": '你可以将红色手牌当【闪】使用或打出；将黑色手牌当【杀】使用或打出。',
+                            "ex_zhilu2_info": '你可以将红色手牌当【闪】使用或打出；将黑色手牌当【杀】使用或打出。',
+                            "ex_gaizhao": '改诏',
+                            "ex_gaizhao_info": '当你成为【杀】或普通锦囊牌的目标后（借刀杀人除外），若场上有其他秦势力角色存活，你可以将此牌的目标改为其他不是该牌目标的秦势力角色。',
+                            "ex_haizhong": '害忠',
+                            "ex_haizhong_info": '锁定技，非秦势力角色回复体力后，该角色获得一个“害”标记。然后若场上没有处于濒死阶段的角色，其需要选择：1.弃置一张红色牌，2.受到你造成的X点伤害（X为该角色拥有的“害”标记）。',
+                            "ex_aili": '爰历',
+                            "ex_aili_info": '锁定技，你的出牌阶段开始时，你额外获得2张普通锦囊。',
 
                             // unused
                             geju: '割据',
