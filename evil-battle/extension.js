@@ -105,7 +105,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_baiqi": ["male", "daqin", 8, ["shenhu", "baiqi_wuan", "baiqi_shashen", "baiqi_fachu", "baiqi_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "ex_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhangyi": ["male", "daqin", 6, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
                             "ex_shangyang": ["male", "daqin", 6, ["shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
-                            "ex_zhaogao": ["male", "daqin", 4, ["ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili"], ["zhu", "boss", "bossallowed", "forbidai"]],
+                            "ex_zhaogao": ["male", "daqin", 4, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili"], ["zhu", "boss", "bossallowed", "forbidai"]],
 
                         },
                         characterSort: {
@@ -140,6 +140,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_baiqi": "来源于【合纵抗秦】扩展包白起。白起作为秦军统帅，加入秦军士兵的技能。<br>【强度】★★★★★<br> 【亮点】攻击",
                             "ex_zhangyi": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
                             "ex_shangyang": "来源于【合纵抗秦】扩展包商鞅。加入技能【连坐】并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】攻击，爆发",
+                            "ex_zhaogao": "来源于【合纵抗秦】扩展包赵高。加入技能【载棺】并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】防御",
                         },
                         skill: {
                             shenhu: {
@@ -2459,84 +2460,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         },
                                     },
                                 },
-                            }
-                        },
-                        card: {
-                            "zhenlongchangjian": {
-                                type: "equip",
-                                subtype: "equip1",
-                                distance: {
-                                    attackFrom: -1,
-                                },
-                                ai: {
-                                    basic: {
-                                        equipValue: 2,
-                                    },
-                                },
-                                skills: ["zhenlongchangjian_skill"],
-                                enable: true,
-                                fullimage: true,
                             },
-                            "chuanguoyuxi": {
-                                type: "equip",
-                                subtype: "equip5",
-                                ai: {
-                                    basic: {
-                                        equipValue: 7.5,
-                                    },
-                                },
-                                skills: ["chuanguoyuxi_skill"],
-                                enable: true,
-                                fullimage: true,
-                            },
-                            "qinnu": {
-                                vanish: true,
-                                type: "equip",
-                                subtype: "equip1",
-                                skills: ["qinnu_skill"],
-                                destroy: "daqin_nushou",
-                                distance: {
-                                    attackFrom: -8
-                                },
-                                enable: true,
-                                ai: {
-                                    basic: {
-                                        useful: 2,
-                                        equipValue: 1,
-                                    },
-                                },
-                                fullimage: true,
-                            },
-                            "shangyangbianfa": {
-                                audio: true,
-                                global: 'shangyangbianfa_dying',
-                                type: "trick",
-                                enable: true,
-                                filterTarget: function (card, player, target) {
-                                    return target != player;
-                                },
-                                selectTarget: 1,
-                                content: function () {
-                                    'step 0'
-                                    var num = [1, 2, 3].randomGet();
-                                    target.damage(num).type = 'shangyangbianfa';
-                                },
-                                ai: {
-                                    basic: {
-                                        order: 5,
-                                        useful: 1,
-                                        value: 5.5,
-                                    },
-                                    result: {
-                                        target: -1.5,
-                                    },
-                                    tag: {
-                                        damage: 1,
-                                    },
-                                },
-                                fullimage: true,
-                            },
-
                             //zhaogao
                             ex_zhilu: {
                                 audio: 'ext:合纵抗秦:true',
@@ -2596,23 +2520,20 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 trigger: {
                                     target: 'useCardToTarget'
                                 },
+                                usable: 1,
                                 direct: true,
                                 filter: function (event, player) {
                                     if (get.info(event.card).multitarget) return false;
-                                    var type = get.type(event.card);
-                                    var name = get.name(event.card);
-                                    if (name != 'sha' && type != 'trick') return false;
+                                    if (get.name(event.card) != 'sha' && get.type(event.card) != 'trick') return false;
                                     return game.hasPlayer(function (current) {
-                                        return current != player && current.group == 'daqin' && !event.targets.contains(current);
+                                        return current != player && !event.targets.contains(current);
                                     });
                                 },
                                 content: function () {
                                     'step 0'
-                                    player.chooseTarget(get.prompt(event.name), '将' + get.translation(trigger.card) + '转移给其他秦势力角色', function (card,
-                                        player, target) {
+                                    player.chooseTarget(get.prompt(event.name), '将' + get.translation(trigger.card) + '转移给其他角色', function (card, player, target) {
                                         var trigger = _status.event.getTrigger();
-                                        return target.group == 'daqin' && !trigger.targets.contains(target) && lib.filter.targetEnabled2(trigger.card,
-                                            trigger.player, target);
+                                        return !trigger.targets.contains(target) && lib.filter.targetEnabled2(trigger.card, trigger.player, target);
                                     }).set('rawEffect', get.effect(player, trigger.card, trigger.player, player))
                                         .ai = function (target) {
                                             var trigger = _status.event.getTrigger();
@@ -2634,17 +2555,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                             if (get.name(card) != 'sha' && get.type(card) != 'trick') return;
                                             if (get.info(card).multitarget || get.info(card).selectTarget == -1) return;
                                             var players = game.filterPlayer(function (current) {
-                                                return current != target && current.group == 'daqin';
+                                                return current != target;
                                             });
                                             if (!players.length) return;
-                                            _status.gaizhaoEffect = true;
-                                            for (var i = 0; i < players.length; i++) {
-                                                if (get.effect(players[i], card, player, player) <= 0) {
-                                                    delete _status.gaizhaoEffect;
-                                                    return 'zeroplayertarget';
-                                                }
-                                            }
-                                            delete _status.gaizhaoEffect;
+                                            // _status.gaizhaoEffect = true;
+                                            // for (var i = 0; i < players.length; i++) {
+                                            //     if (get.effect(players[i], card, player, player) <= 0) {
+                                            //         delete _status.gaizhaoEffect;
+                                            //         return 'zeroplayertarget';
+                                            //     }
+                                            // }
+                                            // delete _status.gaizhaoEffect;
                                         }
                                     },
                                 }
@@ -2732,6 +2653,86 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     if (list.length) player.gain(list, 'draw');
                                 },
                             },
+                            ex_zaiguan: {
+
+                            }
+                        },
+                        card: {
+                            "zhenlongchangjian": {
+                                type: "equip",
+                                subtype: "equip1",
+                                distance: {
+                                    attackFrom: -1,
+                                },
+                                ai: {
+                                    basic: {
+                                        equipValue: 2,
+                                    },
+                                },
+                                skills: ["zhenlongchangjian_skill"],
+                                enable: true,
+                                fullimage: true,
+                            },
+                            "chuanguoyuxi": {
+                                type: "equip",
+                                subtype: "equip5",
+                                ai: {
+                                    basic: {
+                                        equipValue: 7.5,
+                                    },
+                                },
+                                skills: ["chuanguoyuxi_skill"],
+                                enable: true,
+                                fullimage: true,
+                            },
+                            "qinnu": {
+                                vanish: true,
+                                type: "equip",
+                                subtype: "equip1",
+                                skills: ["qinnu_skill"],
+                                destroy: "daqin_nushou",
+                                distance: {
+                                    attackFrom: -8
+                                },
+                                enable: true,
+                                ai: {
+                                    basic: {
+                                        useful: 2,
+                                        equipValue: 1,
+                                    },
+                                },
+                                fullimage: true,
+                            },
+                            "shangyangbianfa": {
+                                audio: true,
+                                global: 'shangyangbianfa_dying',
+                                type: "trick",
+                                enable: true,
+                                filterTarget: function (card, player, target) {
+                                    return target != player;
+                                },
+                                selectTarget: 1,
+                                content: function () {
+                                    'step 0'
+                                    var num = [1, 2, 3].randomGet();
+                                    target.damage(num).type = 'shangyangbianfa';
+                                },
+                                ai: {
+                                    basic: {
+                                        order: 5,
+                                        useful: 1,
+                                        value: 5.5,
+                                    },
+                                    result: {
+                                        target: -1.5,
+                                    },
+                                    tag: {
+                                        damage: 1,
+                                    },
+                                },
+                                fullimage: true,
+                            },
+
                         },
                         translate: {
                             // config
@@ -2772,7 +2773,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_shangyang": "扩商鞅",
                             "ex_zhaogao": "扩赵高",
 
-                            //skill
+                            // skill
                             shenhu: "神护",
                             shenhu_info: "锁定技，你不能成为延时类锦囊的目标",
 
@@ -2910,17 +2911,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_lianzuo: "连坐",
                             ex_lianzuo_info: "当你使用【商鞅变法】对其他角色造成伤害时，你可以对令一名其他角色造成等量伤害。",
 
-                            //zhaogao
+                            // zhaogao
                             "ex_zhilu": '指鹿',
                             "ex_zhilu2": '指鹿',
                             "ex_zhilu_info": '你可以将红色手牌当【闪】使用或打出；将黑色手牌当【杀】使用或打出。',
                             "ex_zhilu2_info": '你可以将红色手牌当【闪】使用或打出；将黑色手牌当【杀】使用或打出。',
-                            "ex_gaizhao": '改诏',
-                            "ex_gaizhao_info": '当你成为【杀】或普通锦囊牌的目标后（借刀杀人除外），若场上有其他秦势力角色存活，你可以将此牌的目标改为其他不是该牌目标的秦势力角色。',
-                            "ex_haizhong": '害忠',
-                            "ex_haizhong_info": '锁定技，非秦势力角色回复体力后，该角色获得一个“害”标记。然后若场上没有处于濒死阶段的角色，其需要选择：1.弃置一张红色牌，2.受到你造成的X点伤害（X为该角色拥有的“害”标记）。',
-                            "ex_aili": '爰历',
-                            "ex_aili_info": '锁定技，你的出牌阶段开始时，你额外获得2张普通锦囊。',
+                            ex_gaizhao: '改诏',
+                            ex_gaizhao_info: '每回合限一次，当你成为【杀】或普通锦囊牌的目标后（借刀杀人除外），若场上有其他角色存活，你可以将此牌的目标改为其他不是该牌目标的角色。',
+                            ex_haizhong: '害忠',
+                            ex_haizhong_info: '锁定技，非秦势力角色回复体力后，该角色获得一个“害”标记。然后若场上没有处于濒死阶段的角色，其需要选择：1.弃置一张红色牌，2.受到你造成的X点伤害（X为该角色拥有的“害”标记）。',
+                            ex_aili: '爰历',
+                            ex_aili_info: '锁定技，你的出牌阶段开始时，你额外获得2张普通锦囊。',
 
                             // unused
                             geju: '割据',
