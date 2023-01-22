@@ -105,7 +105,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_baiqi": ["male", "daqin", 8, ["shenhu", "baiqi_wuan", "baiqi_shashen", "baiqi_fachu", "baiqi_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "ex_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhangyi": ["male", "daqin", 6, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
                             "ex_shangyang": ["male", "daqin", 6, ["shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
-                            "ex_zhaogao": ["male", "daqin", 4, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili"], ["zhu", "boss", "bossallowed", "forbidai"]],
+                            "ex_zhaogao": ["male", "daqin", 4, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili", "ex_zaiguan", "ex_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
 
                         },
                         characterSort: {
@@ -272,6 +272,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
 
+                            // caojinyu
                             yinyuqi: {
                                 // audio: 2,
                                 trigger: { global: 'damageEnd' },
@@ -434,6 +435,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
+
+                            //
                             "famine": {
                                 enable: "phaseUse",
                                 usable: 7,
@@ -2521,8 +2524,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     target: 'useCardToTarget'
                                 },
                                 usable: 1,
-                                direct: true,
+
                                 filter: function (event, player) {
+                                    game.log("gaizhao_filter")
                                     if (get.info(event.card).multitarget) return false;
                                     if (get.name(event.card) != 'sha' && get.type(event.card) != 'trick') return false;
                                     return game.hasPlayer(function (current) {
@@ -2530,6 +2534,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     });
                                 },
                                 content: function () {
+                                    game.log("gaizhao")
                                     'step 0'
                                     player.chooseTarget(get.prompt(event.name), '将' + get.translation(trigger.card) + '转移给其他角色', function (card, player, target) {
                                         var trigger = _status.event.getTrigger();
@@ -2654,8 +2659,65 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             ex_zaiguan: {
+                                trigger: { global: 'dieBefore' },
+                                frequent: true,
+                                marktext: "尸",
+                                intro: {
+                                    content: "下个回合开始时，将受到赵高控制。回合结束时死亡。",
+                                },
+                                content: function () {
+                                    trigger.cancel();
+                                    const person = trigger.player;
 
-                            }
+                                    if (!person.hasMark("corpse"))
+                                        person.addMark("corpse", 1);
+                                },
+                                group: 'ex_zaiguan_control',
+                            },
+                            ex_zaiguan_control: {
+                                forced: true,
+                                trigger: { global: 'phaseBeginStart' },
+                                filter: function (event, player) {
+                                    return player != event.player && !event.player._trueMe && event.player.countMark('corpse') === 1;
+                                },
+                                logTarget: 'player',
+                                skillAnimation: true,
+                                animationColor: 'key',
+                                content: function () {
+                                    trigger.player._trueMe = player;
+                                    game.addGlobalSkill('autoswap');
+                                    if (trigger.player == game.me) {
+                                        game.notMe = true;
+                                        if (!_status.auto) ui.click.auto();
+                                    }
+                                    trigger.player.addSkill('ex_zaiguan_control2');
+                                },
+                            },
+                            ex_zaiguan_control2: {
+                                trigger: {
+                                    player: ['phaseAfter', 'dieAfter'],
+                                    global: 'phaseBefore',
+                                },
+                                lastDo: true,
+                                charlotte: true,
+                                forceDie: true,
+                                forced: true,
+                                silent: true,
+                                content: function () {
+                                    player.die();
+                                    player.removeSkill('ex_zaiguan_control2');
+
+                                },
+                                onremove: function (player) {
+                                    if (player == game.me) {
+                                        if (!game.notMe) game.swapPlayerAuto(player._trueMe)
+                                        else delete game.notMe;
+                                        if (_status.auto) ui.click.auto();
+                                    }
+                                    delete player._trueMe;
+                                    player.die();
+                                },
+                            },
                         },
                         card: {
                             "zhenlongchangjian": {
@@ -2922,6 +2984,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_haizhong_info: '锁定技，非秦势力角色回复体力后，该角色获得一个“害”标记。然后若场上没有处于濒死阶段的角色，其需要选择：1.弃置一张红色牌，2.受到你造成的X点伤害（X为该角色拥有的“害”标记）。',
                             ex_aili: '爰历',
                             ex_aili_info: '锁定技，你的出牌阶段开始时，你额外获得2张普通锦囊。',
+                            ex_zaiguan: "载棺",
+                            ex_zaiguan_info: "一名其他角色死亡时，你可用其对应的【尸体】替换之。【尸体】：尸体继承原先武将技能，尸体回合结束时，可将所有牌交给一名其他角色，然后其死亡。",
 
                             // unused
                             geju: '割据',
