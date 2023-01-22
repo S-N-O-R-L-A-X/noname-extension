@@ -1099,6 +1099,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
+
+                            // mengpo
                             "rewangshi": {
                                 trigger: { global: 'phaseZhunbeiBegin' },
                                 forced: true,
@@ -2526,7 +2528,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 usable: 1,
 
                                 filter: function (event, player) {
-                                    game.log("gaizhao_filter")
                                     if (get.info(event.card).multitarget) return false;
                                     if (get.name(event.card) != 'sha' && get.type(event.card) != 'trick') return false;
                                     return game.hasPlayer(function (current) {
@@ -2534,7 +2535,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     });
                                 },
                                 content: function () {
-                                    game.log("gaizhao")
                                     'step 0'
                                     player.chooseTarget(get.prompt(event.name), '将' + get.translation(trigger.card) + '转移给其他角色', function (card, player, target) {
                                         var trigger = _status.event.getTrigger();
@@ -2659,16 +2659,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             ex_zaiguan: {
-                                trigger: { global: 'dieBefore' },
-                                frequent: true,
+                                trigger: { global: 'dieAfter' },
+                                // frequent: true,
+                                mark: true,
                                 marktext: "尸",
                                 intro: {
                                     content: "下个回合开始时，将受到赵高控制。回合结束时死亡。",
                                 },
                                 content: function () {
-                                    trigger.cancel();
                                     const person = trigger.player;
-
+                                    person.revive(Infinity);
                                     if (!person.hasMark("corpse"))
                                         person.addMark("corpse", 1);
                                 },
@@ -2704,9 +2704,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 forced: true,
                                 silent: true,
                                 content: function () {
+                                    game.log(player)
                                     player.die();
                                     player.removeSkill('ex_zaiguan_control2');
-
                                 },
                                 onremove: function (player) {
                                     if (player == game.me) {
@@ -2715,6 +2715,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         if (_status.auto) ui.click.auto();
                                     }
                                     delete player._trueMe;
+                                    game.log(player)
                                     player.die();
                                 },
                             },
@@ -2985,7 +2986,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_aili: '爰历',
                             ex_aili_info: '锁定技，你的出牌阶段开始时，你额外获得2张普通锦囊。',
                             ex_zaiguan: "载棺",
-                            ex_zaiguan_info: "一名其他角色死亡时，你可用其对应的【尸体】替换之。【尸体】：尸体继承原先武将技能，尸体回合结束时，可将所有牌交给一名其他角色，然后其死亡。",
+                            ex_zaiguan_info: "一名其他角色死亡时，你可用其对应的【尸体】替换之。【尸体】：尸体继承原先武将技能，任何伤害对其无效，其不能使用或打出牌直到其下个回合开始。尸体回合结束时，可将所有牌交给一名其他角色，然后其死亡。",
 
                             // unused
                             geju: '割据',
