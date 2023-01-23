@@ -2661,20 +2661,24 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_zaiguan: {
                                 trigger: { global: 'dieAfter' },
                                 // frequent: true,
-                                mark: true,
-                                marktext: "尸",
-                                intro: {
-                                    content: "下个回合开始时，将受到赵高控制。回合结束时死亡。",
+                                filter: function (event, player) {
+                                    return !player.hasMark("corpse");
                                 },
                                 content: function () {
                                     const person = trigger.player;
                                     person.revive(Infinity);
-                                    if (!person.hasMark("corpse"))
+                                    if (!person.hasMark("corpse")) {
+                                        person.addTempSkill("ex_zaiguan_control");
                                         person.addMark("corpse", 1);
+                                    }
                                 },
                                 group: 'ex_zaiguan_control',
                             },
                             ex_zaiguan_control: {
+                                marktext: "尸",
+                                intro: {
+                                    content: "下个回合开始时，将受到赵高控制。回合结束时死亡。",
+                                },
                                 forced: true,
                                 trigger: { global: 'phaseBeginStart' },
                                 filter: function (event, player) {
@@ -2704,8 +2708,42 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 forced: true,
                                 silent: true,
                                 content: function () {
-                                    game.log(player)
-                                    player.die();
+                                    "step 0"
+                                    player.chooseCardTarget({
+                                        position: 'he',
+                                        filterCard: true,
+                                        selectCard: [1, Infinity],
+                                        filterTarget: function (card, player, target) {
+                                            return player != target;
+                                        },
+                                        ai1: function (card) {
+                                            if (get.attitude(_status.event.player, _status.currentPhase) < 0 && _status.currentPhase.needsToDiscard() && card.name != 'du') return -1;
+                                            for (var i = 0; i < ui.selected.cards.length; i++) {
+                                                if (get.type(ui.selected.cards[i]) == get.type(card) || (ui.selected.cards[i].name == 'du' && card.name != 'du')) return -1;
+                                            };
+                                            if (card.name == 'du') return 20;
+                                            return (_status.event.player.countCards('h') - _status.event.player.hp);
+                                        },
+                                        ai2: function (target) {
+                                            if (get.attitude(_status.event.player, _status.currentPhase) < 0) return -1;
+                                            var att = get.attitude(_status.event.player, target);
+                                            if (ui.selected.cards.length && ui.selected.cards[0].name == 'du') {
+                                                if (target.hasSkillTag('nodu')) return 0;
+                                                return 1 - att;
+                                            }
+                                            if (target.countCards('h') > _status.event.player.countCards('h')) return 0;
+                                            return att - 4;
+                                        },
+                                    });
+
+                                    "step 1"
+                                    if (result.bool) {
+                                        var target = result.targets[0];
+                                        var cards = result.cards;
+                                        target.gain(cards, player, 'give');
+                                    }
+
+                                    "step 2"
                                     player.removeSkill('ex_zaiguan_control2');
                                 },
                                 onremove: function (player) {
@@ -2715,7 +2753,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         if (_status.auto) ui.click.auto();
                                     }
                                     delete player._trueMe;
-                                    game.log(player)
                                     player.die();
                                 },
                             },
