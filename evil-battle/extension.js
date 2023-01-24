@@ -2662,19 +2662,21 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 trigger: { global: 'dieAfter' },
                                 // frequent: true,
                                 filter: function (event, player) {
-                                    return !player.hasMark("corpse");
+                                    return !event.player.hasMark("ex_zaiguan_control");
                                 },
                                 content: function () {
                                     const person = trigger.player;
                                     person.revive(Infinity);
-                                    if (!person.hasMark("corpse")) {
+                                    person.style = person.style + ";filter:grayscale(100%)";
+                                    if (!person.hasMark("ex_zaiguan_control")) {
                                         person.addTempSkill("ex_zaiguan_control");
-                                        person.addMark("corpse", 1);
+                                        person.addMark("ex_zaiguan_control", 1, false);
                                     }
                                 },
                                 group: 'ex_zaiguan_control',
                             },
                             ex_zaiguan_control: {
+                                charlotte: true,
                                 marktext: "尸",
                                 intro: {
                                     content: "下个回合开始时，将受到赵高控制。回合结束时死亡。",
@@ -2682,7 +2684,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 forced: true,
                                 trigger: { global: 'phaseBeginStart' },
                                 filter: function (event, player) {
-                                    return player != event.player && !event.player._trueMe && event.player.countMark('corpse') === 1;
+                                    return player != event.player && !event.player._trueMe && event.player.countMark('ex_zaiguan_control') === 1;
                                 },
                                 logTarget: 'player',
                                 skillAnimation: true,
@@ -2734,6 +2736,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                             if (target.countCards('h') > _status.event.player.countCards('h')) return 0;
                                             return att - 4;
                                         },
+                                        prompt: "请选择交出的牌和交给的对象"
                                     });
 
                                     "step 1"
@@ -3024,6 +3027,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_aili_info: '锁定技，你的出牌阶段开始时，你额外获得2张普通锦囊。',
                             ex_zaiguan: "载棺",
                             ex_zaiguan_info: "一名其他角色死亡时，你可用其对应的【尸体】替换之。【尸体】：尸体继承原先武将技能，任何伤害对其无效，其不能使用或打出牌直到其下个回合开始。尸体回合结束时，可将所有牌交给一名其他角色，然后其死亡。",
+                            ex_zaiguan_control: "载棺",
 
                             // unused
                             geju: '割据',
