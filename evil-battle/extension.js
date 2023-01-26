@@ -105,7 +105,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_baiqi": ["male", "daqin", 8, ["shenhu", "baiqi_wuan", "baiqi_shashen", "baiqi_fachu", "baiqi_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "ex_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhangyi": ["male", "daqin", 6, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
                             "ex_shangyang": ["male", "daqin", 6, ["shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
-                            "ex_zhaogao": ["male", "daqin", 4, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili", "ex_zaiguan", "ex_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
+                            "ex_zhaogao": ["male", "daqin", 6, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili", "ex_zaiguan", "ex_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
 
                         },
                         characterSort: {
@@ -590,6 +590,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
 
+                            // liuxingyaodi
                             renjun: {
                                 unique: true,
                                 trigger: { global: 'recoverAfter' },
@@ -685,6 +686,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     player.draw(event.recovered);
                                 },
                             },
+
+                            //
                             ex_yuhun: {
                                 enable: "phaseUse",
                                 usable: 1,
@@ -2667,8 +2670,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 content: function () {
                                     const person = trigger.player;
                                     person.revive(Infinity);
-                                    person.style = person.style + ";filter:grayscale(100%)";
+                                    person.style = person.style + ";filter:grayscale(100%);";
                                     if (!person.hasMark("ex_zaiguan_control")) {
+                                        person.identity = player.identity;
+                                        if (person.identity === 'zhu') person.identity = 'zhong';
+                                        if (person.identity === 'nei') person.identity = '？';
+                                        person.setIdentity('尸体');
+                                        person.node.identity.dataset.color = 'black';
+                                        if (get.mode() == 'doudizhu') {
+                                            person.identity = player.identity;
+                                            person.setIdentity('尸体');
+                                        }
                                         person.addTempSkill("ex_zaiguan_control");
                                         person.addMark("ex_zaiguan_control", 1, false);
                                     }
