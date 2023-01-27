@@ -2662,15 +2662,21 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             ex_zaiguan: {
-                                trigger: { global: 'dieAfter' },
+                                trigger: { global: 'die' },
                                 // frequent: true,
                                 filter: function (event, player) {
                                     return !event.player.hasMark("ex_zaiguan_control");
                                 },
                                 content: function () {
                                     const person = trigger.player;
+                                    const hands = person.getCards('h'), equips = person.getCards('e');
                                     person.revive(Infinity);
                                     person.style = person.style + ";filter:grayscale(100%);";
+                                    person.gain(hands, person, "giveAuto");
+                                    equips.forEach((equip) => {
+                                        person.equip(equip);
+                                    })
+
                                     if (!person.hasMark("ex_zaiguan_control")) {
                                         person.identity = player.identity;
                                         if (person.identity === 'zhu') person.identity = 'zhong';
