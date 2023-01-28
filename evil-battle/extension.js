@@ -2678,20 +2678,32 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     })
 
                                     if (!person.hasMark("ex_zaiguan_control")) {
-                                        person.identity = player.identity;
-                                        if (person.identity === 'zhu') person.identity = 'zhong';
-                                        if (person.identity === 'nei') person.identity = '？';
-                                        person.setIdentity('尸体');
-                                        person.node.identity.dataset.color = 'black';
-                                        if (get.mode() == 'doudizhu') {
-                                            person.identity = player.identity;
-                                            person.setIdentity('尸体');
-                                        }
+
                                         person.addTempSkill("ex_zaiguan_control");
                                         person.addMark("ex_zaiguan_control", 1, false);
                                     }
                                 },
-                                group: 'ex_zaiguan_control',
+                                group: ["ex_zaiguan_identity", 'ex_zaiguan_control',]
+                            },
+                            ex_zaiguan_identity: {
+                                trigger: { global: 'dieAfter' },
+                                forced: true,
+                                // frequent: true,
+                                filter: function (event, player) {
+                                    return event.player.hasMark("ex_zaiguan_control");
+                                },
+                                content: function () {
+                                    const person = trigger.player;
+                                    person.identity = player.identity;
+                                    if (person.identity === 'zhu') person.identity = 'zhong';
+                                    if (person.identity === 'nei') person.identity = '？';
+                                    person.setIdentity('尸体');
+                                    person.node.identity.dataset.color = 'black';
+                                    if (get.mode() == 'doudizhu') {
+                                        person.identity = player.identity;
+                                        person.setIdentity('尸体');
+                                    }
+                                }
                             },
                             ex_zaiguan_control: {
                                 charlotte: true,
@@ -2715,6 +2727,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         if (!_status.auto) ui.click.auto();
                                     }
                                     trigger.player.addSkill('ex_zaiguan_control2');
+                                },
+                                mod: {
+                                    targetEnabled: function (card, player, target) {
+                                        if (get.type(card) == "delay") {
+                                            return false;
+                                        }
+                                    },
                                 },
                             },
                             ex_zaiguan_control2: {
@@ -2776,6 +2795,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     delete player._trueMe;
                                     player.die();
                                 },
+
                             },
                         },
                         card: {
