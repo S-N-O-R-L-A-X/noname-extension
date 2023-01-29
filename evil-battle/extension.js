@@ -2678,12 +2678,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     })
 
                                     if (!person.hasMark("ex_zaiguan_control")) {
-
                                         person.addTempSkill("ex_zaiguan_control");
+                                        person.addTempSkill("shenhu");
                                         person.addMark("ex_zaiguan_control", 1, false);
                                     }
                                 },
-                                group: ["ex_zaiguan_identity", 'ex_zaiguan_control',]
+                                group: ["ex_zaiguan_identity", 'ex_zaiguan_control']
                             },
                             ex_zaiguan_identity: {
                                 trigger: { global: 'dieAfter' },
@@ -2727,13 +2727,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         if (!_status.auto) ui.click.auto();
                                     }
                                     trigger.player.addSkill('ex_zaiguan_control2');
-                                },
-                                mod: {
-                                    targetEnabled: function (card, player, target) {
-                                        if (get.type(card) == "delay") {
-                                            return false;
-                                        }
-                                    },
                                 },
                             },
                             ex_zaiguan_control2: {
@@ -3064,7 +3057,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_aili: '爰历',
                             ex_aili_info: '锁定技，你的出牌阶段开始时，你额外获得2张普通锦囊。',
                             ex_zaiguan: "载棺",
-                            ex_zaiguan_info: "一名其他角色死亡时，你可用其对应的【尸体】替换之。【尸体】：尸体继承原先武将技能，任何伤害对其无效，其不能使用或打出牌直到其下个回合开始。尸体回合结束时，可将所有牌交给一名其他角色，然后其死亡。",
+                            ex_zaiguan_info: "一名其他角色死亡时，你可用其对应的【尸体】替换之。【尸体】：尸体继承原先武将技能，体力回复至体力上限，不能成为延时锦囊的目标。尸体回合结束时，可将所有牌交给一名其他角色，然后其死亡。",
+                            // ex_zaiguan_info: "一名其他角色死亡时，你可用其对应的【尸体】替换之。【尸体】：尸体继承原先武将技能，不能成为延时锦囊的目标，其不能使用或打出牌直到其下个回合开始。尸体回合结束时，可将所有牌交给一名其他角色，然后其死亡。",
                             ex_zaiguan_control: "载棺",
 
                             // unused
