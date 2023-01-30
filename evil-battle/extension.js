@@ -106,7 +106,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhangyi": ["male", "daqin", 6, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
                             "ex_shangyang": ["male", "daqin", 6, ["shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhaogao": ["male", "daqin", 6, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili", "ex_zaiguan", "ex_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
-
+                            "ex_miyue": ["male", "daqin", 6, ["shenhu", "miyue_zhangzheng", "ex_taihou", "ex_youmie", "miyue_yintui"], ["zhu", "boss", "bossallowed", "forbidai"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -2790,6 +2790,282 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
 
                             },
+
+                            // miyue
+                            "miyue_zhangzheng": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    player: "phaseBefore",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return game.hasPlayer(function (current) {
+                                        return current != player && current.group != 'daqin';
+                                    });
+                                },
+                                content: function () {
+                                    'step 0'
+                                    event.players = game.filterPlayer(function (current) {
+                                        return current != player && current.group != 'daqin';
+                                    }).sortBySeat();
+                                    'step 1'
+                                    if (event.players.length) {
+                                        event.current = event.players.shift();
+                                        player.line(event.current);
+                                        if (event.current.countCards('h')) {
+                                            event.current.chooseToDiscard('h', '弃置一张手牌或失去一点体力').set('ai', function (card) {
+                                                return 7 - get.value(card);
+                                            });
+                                            event.tempbool = false;
+                                        } else {
+                                            event.tempbool = true;
+                                        }
+                                    } else {
+                                        event.finish();
+                                    }
+                                    'step 2'
+                                    if (event.tempbool || result.bool == false) {
+                                        event.current.loseHp();
+                                    }
+                                    event.goto(1);
+                                },
+                            },
+                            "ex_taihou": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    target: "useCardToTargeted",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return event.player != player &&
+                                        event.player.sex == 'male' &&
+                                        event.card &&
+                                        (event.card.name == 'sha' || get.type(event.card) == 'trick');
+                                },
+                                content: function () {
+                                    'step 0'
+                                    player.line(trigger.player);
+                                    var type = get.type(trigger.card);
+                                    var eff = get.effect(player, trigger.card, trigger.player, trigger.player);
+                                    trigger.player.chooseToDiscard('弃置一张' + get.translation(type) + '牌，否则' + get.translation(trigger.card) + '对' +
+                                        get.translation(player) + '无效',
+                                        function (card) {
+                                            return get.type(card) == _status.event.cardType;
+                                        }).set('ai', function (card) {
+                                            if (_status.event.eff > 0) {
+                                                return 10 - get.value(card);
+                                            }
+                                            return 0;
+                                        }).set('cardType', type).set('eff', eff);
+                                    'step 1'
+                                    if (!result.bool) {
+                                        trigger.getParent().excluded.add(player);
+                                    }
+                                },
+                                ai: {
+                                    effect: {
+                                        target: function (card, player, target) {
+                                            if (player.sex != "male") return;
+                                            var type = get.type(card);
+                                            if (get.name(card) != 'sha' && type != 'trick') return;
+                                            if (!player.hasCard(function (otherCard) {
+                                                return otherCard != card && get.type(otherCard) == type &&
+                                                    get.value(otherCard) < 10;
+                                            })) return 'zeroplayertarget';
+                                        },
+                                    },
+                                },
+                                group: ["ex_taihou_others"],
+                                subSkill: {
+                                    others: {
+                                        trigger: {
+                                            player: 'phaseBeginStart'
+                                        },
+                                        forced: true,
+                                        popup: false,
+                                        charlotte: true,
+                                        filter: function (event, player) {
+                                            game.log("enter");
+                                            return player.sex == 'male' && game.hasPlayer(function (current) {
+                                                return current.name == 'ex_miyue';
+                                            });
+                                        },
+                                        content: function () {
+                                            'step 0'
+                                            var target = game.findPlayer(function (current) {
+                                                return current.name == 'ex_miyue';
+                                            });
+                                            event.target = target;
+                                            if (target.isHealthy()) event._result = {
+                                                control: '摸牌'
+                                            };
+                                            else player.chooseControl('摸牌', '回血').set('prompt', '始称太后：令芈月回复1点体力或摸一张牌').ai = function () {
+                                                if (get.attitude(player, target) > 0) return '回血';
+                                                return '摸牌';
+                                            };
+                                            'step 1'
+                                            player.line(target);
+                                            target[result.control == '摸牌' ? 'draw' : 'recover']();
+                                        },
+                                    },
+                                }
+                            },
+
+                            "ex_youmie": {
+                                audio: 'ext:合纵抗秦:true',
+                                global: 'ex_youmie_ai',
+                                prompt: "出牌阶段限一次，你可以将一张牌交给一名其他角色，若如此做，直到你的下个回合开始，该角色于其回合外无法使用或打出牌。",
+                                enable: "phaseUse",
+                                usable: 1,
+                                filter: function (event, player) {
+                                    return player.countCards('he') > 0;
+                                },
+                                discard: false,
+                                line: true,
+                                prepare: "give",
+                                position: "he",
+                                filterCard: true,
+                                filterTarget: true,
+                                check: function (card) {
+                                    if (get.position(card) == 'e') return -1;
+                                    return 5 - get.value(card);
+                                },
+                                content: function () {
+                                    'step 0'
+                                    target.gain(cards, player);
+                                    'step 1'
+                                    if (player.isAlive()) {
+                                        target.loseMaxHp(true);
+                                        target.addSkill('ex_youmie_debuff');
+                                    }
+                                },
+                                ai: {
+                                    order: 9,
+                                    result: {
+                                        target: function (player, target) {
+                                            return -1;
+                                        },
+                                    },
+                                },
+                                group: ["ex_youmie_delete"],
+                                subSkill: {
+                                    ai: {
+                                        directHit_ai: true,
+                                        skillTagFilter: function (player, tag, arg) {
+                                            if (tag == 'directHit_ai') {
+                                                if (!arg.target.hasSkillTag('ex_youmie_debuff') || _status.currentPhase == arg.target) return false;
+                                            }
+                                        },
+                                    },
+                                    debuff: {
+                                        charlotte: true,
+                                        mark: true,
+                                        marktext: "灭",
+                                        mod: {
+                                            cardEnabled: function (card, player, target) {
+                                                if (_status.currentPhase != player) return false;
+                                            },
+                                            cardEnabled2: function (card, player, target) {
+                                                if (_status.currentPhase != player) return false;
+                                            },
+                                            cardUsable: function (card, player, target) {
+                                                if (_status.currentPhase != player) return false;
+                                            },
+                                            cardRespondable: function (card, player, target) {
+                                                if (_status.currentPhase != player) return false;
+                                            },
+                                            cardSavable: function (card, player, target) {
+                                                if (_status.currentPhase != player) return false;
+                                            },
+                                        },
+                                        intro: {
+                                            content: "回合外不能使用或打出卡牌",
+                                        },
+                                        sub: true,
+                                    },
+                                    delete: {
+                                        trigger: {
+                                            player: ["phaseBefore", "die"],
+                                        },
+                                        forceDie: true,
+                                        forced: true,
+                                        popup: false,
+                                        filter: function (event, player) {
+                                            return game.hasPlayer(function (current) {
+                                                return current.hasSkill('ex_youmie_debuff');
+                                            });
+                                        },
+                                        content: function () {
+                                            for (var i = 0; i < game.players.length; i++) {
+                                                if (game.players[i].hasSkill('ex_youmie_debuff')) {
+                                                    player.line(game.players[i]);
+                                                    game.players[i].removeSkill('ex_youmie_debuff');
+                                                }
+                                            }
+                                        },
+                                        sub: true,
+                                    },
+                                },
+                            },
+                            "miyue_yintui": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    player: "loseEnd",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    if (player.countCards('h')) return false;
+                                    for (var i = 0; i < event.cards.length; i++) {
+                                        if (event.cards[i].original == 'h') return true;
+                                    }
+                                    return false;
+                                },
+                                content: function () {
+                                    player.turnOver();
+                                },
+                                ai: {
+                                    noh: true,
+                                    skillTagFilter: function (player, tag) {
+                                        if (tag == 'noh') {
+                                            if (player.countCards('h') != 1 || player.isTurnedOver()) return false;
+                                        }
+                                    },
+                                },
+                                group: ["miyue_yintui_damage"],
+                                subSkill: {
+                                    damage: {
+                                        audio: 'miyue_yintui',
+                                        trigger: {
+                                            player: "damageBegin3",
+                                        },
+                                        forced: true,
+                                        filter: function (event, player) {
+                                            return player.isTurnedOver();
+                                        },
+                                        content: function () {
+                                            trigger.num--;
+                                            player.draw();
+                                        },
+                                        ai: {
+                                            "maixie": true,
+                                            skillTagFilter: function (player, tag) {
+                                                if (tag == 'maixie') {
+                                                    if (!player.isTurnedOver()) return false;
+                                                }
+                                            },
+                                            effect: {
+                                                target: function (card, player, target) {
+                                                    if (player.hasSkillTag('jueqing')) return;
+                                                    if (target.hujia) return;
+                                                    if (!target.isTurnedOver()) return;
+                                                    if (get.tag(card, 'damage')) return [1, 2];
+                                                },
+                                            },
+                                        },
+                                        sub: true,
+                                    },
+                                },
+                            },
                         },
                         card: {
                             "zhenlongchangjian": {
@@ -2906,6 +3182,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhangyi": "扩张仪",
                             "ex_shangyang": "扩商鞅",
                             "ex_zhaogao": "扩赵高",
+                            "ex_miyue": "扩芈月",
 
                             // skill
                             shenhu: "神护",
@@ -3060,6 +3337,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_zaiguan_info: "一名其他角色死亡时，你可用其对应的【尸体】替换之。【尸体】：尸体继承原先武将技能，体力回复至体力上限，不能成为延时锦囊的目标。尸体回合结束时，可将所有牌交给一名其他角色，然后其死亡。",
                             // ex_zaiguan_info: "一名其他角色死亡时，你可用其对应的【尸体】替换之。【尸体】：尸体继承原先武将技能，不能成为延时锦囊的目标，其不能使用或打出牌直到其下个回合开始。尸体回合结束时，可将所有牌交给一名其他角色，然后其死亡。",
                             ex_zaiguan_control: "载棺",
+
+                            // miyue
+                            "miyue_zhangzheng": "掌政",
+                            "miyue_zhangzheng_info": "锁定技，你的回合开始时，所有非秦势力角色依次选择：1.弃置一张手牌；2.失去1点体力。",
+                            "ex_taihou": "太后",
+                            "ex_taihou_info": "锁定技，男性角色对你使用【杀】或普通锦囊牌时，需要额外弃置一张同种类型的牌，否则此牌无效。",
+                            "ex_youmie": "诱灭",
+                            "ex_youmie_info": "出牌阶段限一次，你可以将一张牌交给一名角色，若如此做，该角色减少一点体力上限且直到你的下个回合开始，该角色于其回合外无法使用或打出牌。",
+                            "miyue_yintui": "隐退",
+                            "miyue_yintui_info": "锁定技，当你失去最后一张手牌时，你翻面。你的武将牌背面朝上时，若受到伤害，令此伤害-1，然后摸一张牌。",
+
 
                             // unused
                             geju: '割据',
