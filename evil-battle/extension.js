@@ -106,7 +106,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhangyi": ["male", "daqin", 6, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
                             "ex_shangyang": ["male", "daqin", 6, ["shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhaogao": ["male", "daqin", 6, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili", "ex_zaiguan", "ex_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
-                            "ex_miyue": ["male", "daqin", 6, ["shenhu", "miyue_zhangzheng", "ex_taihou", "ex_youmie", "miyue_yintui"], ["zhu", "boss", "bossallowed", "forbidai"]],
+                            "ex_miyue": ["female", "daqin", 6, ["shenhu", "ex_zhangzheng", "ex_taihou", "ex_youmie", "ex_yintui"], ["zhu", "boss", "bossallowed", "forbidai"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -2792,7 +2792,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
 
                             // miyue
-                            "miyue_zhangzheng": {
+                            "ex_zhangzheng": {
                                 audio: 'ext:合纵抗秦:true',
                                 trigger: {
                                     player: "phaseBefore",
@@ -2879,37 +2879,58 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 subSkill: {
                                     others: {
                                         trigger: {
-                                            player: 'phaseBeginStart'
+                                            global: 'phaseBeginStart'
                                         },
                                         forced: true,
                                         popup: false,
                                         charlotte: true,
                                         filter: function (event, player) {
-                                            game.log("enter");
-                                            return player.sex == 'male' && game.hasPlayer(function (current) {
-                                                return current.name == 'ex_miyue';
-                                            });
+                                            return event.player != player;
                                         },
                                         content: function () {
                                             'step 0'
                                             var target = game.findPlayer(function (current) {
                                                 return current.name == 'ex_miyue';
                                             });
+
                                             event.target = target;
-                                            if (target.isHealthy()) event._result = {
-                                                control: '摸牌'
-                                            };
-                                            else player.chooseControl('摸牌', '回血').set('prompt', '始称太后：令芈月回复1点体力或摸一张牌').ai = function () {
-                                                if (get.attitude(player, target) > 0) return '回血';
-                                                return '摸牌';
-                                            };
+                                            if (target.isHealthy()) {
+                                                event._result = {
+                                                    control: '摸牌'
+                                                };
+                                            }
+                                            else if (target.countCards('he') === 0) {
+                                                event._result = {
+                                                    control: '回血'
+                                                };
+                                            }
+                                            else {
+                                                trigger.player.chooseControl('摸牌', '回血').set('prompt', '始称太后：令芈月回复1点体力或交给其一张牌并令其摸一张牌').ai = function () {
+                                                    if (get.attitude(trigger.player, target) > 0) return '回血';
+                                                    return '摸牌';
+                                                };
+                                            }
                                             'step 1'
-                                            player.line(target);
-                                            target[result.control == '摸牌' ? 'draw' : 'recover']();
+                                            if (result.control === "摸牌") {
+                                                trigger.player.line(target);
+                                                target.draw();
+                                                if (trigger.player.sex == "male")
+                                                    trigger.player.chooseCard('he', true, '太后：将一张牌交给' + get.translation(target));
+                                            }
+                                            else {
+                                                trigger.player.line(target);
+                                                target.recover();
+                                                event.finish();
+                                            }
+                                            'step 2'
+                                            trigger.player.give(result.cards, target, true);
+
                                         },
                                     },
                                 }
+
                             },
+
 
                             "ex_youmie": {
                                 audio: 'ext:合纵抗秦:true',
@@ -3007,7 +3028,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "miyue_yintui": {
+                            "ex_yintui": {
                                 audio: 'ext:合纵抗秦:true',
                                 trigger: {
                                     player: "loseEnd",
@@ -3031,10 +3052,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         }
                                     },
                                 },
-                                group: ["miyue_yintui_damage"],
+                                group: ["ex_yintui_damage"],
                                 subSkill: {
                                     damage: {
-                                        audio: 'miyue_yintui',
+                                        audio: 'ex_yintui',
                                         trigger: {
                                             player: "damageBegin3",
                                         },
@@ -3339,14 +3360,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_zaiguan_control: "载棺",
 
                             // miyue
-                            "miyue_zhangzheng": "掌政",
-                            "miyue_zhangzheng_info": "锁定技，你的回合开始时，所有非秦势力角色依次选择：1.弃置一张手牌；2.失去1点体力。",
-                            "ex_taihou": "太后",
-                            "ex_taihou_info": "锁定技，男性角色对你使用【杀】或普通锦囊牌时，需要额外弃置一张同种类型的牌，否则此牌无效。",
+                            ex_zhangzheng: "掌政",
+                            ex_zhangzheng_info: "锁定技，你的回合开始时，所有非秦势力角色依次选择：1.弃置一张手牌；2.失去1点体力。",
+                            ex_taihou: "太后",
+                            ex_taihou_info: "锁定技，男性角色对你使用【杀】或普通锦囊牌时，需要额外弃置一张同种类型的牌，否则此牌无效。男性角色回合开始时，需令你回复1点体力或摸一张牌。",
                             "ex_youmie": "诱灭",
                             "ex_youmie_info": "出牌阶段限一次，你可以将一张牌交给一名角色，若如此做，该角色减少一点体力上限且直到你的下个回合开始，该角色于其回合外无法使用或打出牌。",
-                            "miyue_yintui": "隐退",
-                            "miyue_yintui_info": "锁定技，当你失去最后一张手牌时，你翻面。你的武将牌背面朝上时，若受到伤害，令此伤害-1，然后摸一张牌。",
+                            "ex_yintui": "隐退",
+                            "ex_yintui_info": "锁定技，当你失去最后一张手牌时，你翻面。你的武将牌背面朝上时，若受到伤害，你可以选择令此伤害-1，然后摸一张牌。",
 
 
                             // unused
@@ -3401,7 +3422,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩商鞅。<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩商鞅，扩赵高，扩芈月。<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
