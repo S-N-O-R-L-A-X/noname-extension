@@ -101,8 +101,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "re_nianshou": ["male", "shen", 4, ["boss_nianrui", "boss_mengtai", "boss_jingjue", "boss_renxing", "boss_ruizhi", "boss_nbaonu", "boss_shouyi"], ["zhu", "boss", "bossallowed"]],
                             "barbarian_king": ["male", "qun", 10, ["shenhu", "equan", "manji", "manyi", "mansi", "xiangzhen", "huoshou", "zaiqi", "juxiang", "hanyong"], ["zhu", "boss", "bossallowed"]],
                             "ex_yingzheng": ["male", "daqin", 8, ["shenhu", "ex_yitong", "ex_shihuang", "ex_liuhe", "ex_zulong", "ex_fenshu", "ex_kencao"], ["zhu", "boss", "bossallowed"]],
-                            "ex_zhaoji": ["female", "daqin", 4, ["zhaoji_shanwu", "ex_daqi", "zhaoji_xianji", "zhaoji_huoluan"], ["zhu", "boss", "bossallowed", "forbidai"]],
-                            "ex_baiqi": ["male", "daqin", 8, ["shenhu", "baiqi_wuan", "baiqi_shashen", "baiqi_fachu", "baiqi_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "ex_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
+                            "ex_zhaoji": ["female", "daqin", 4, ["ex_shanwu", "ex_daqi", "ex_xianji", "ex_huoluan"], ["zhu", "boss", "bossallowed", "forbidai"]],
+                            "ex_baiqi": ["male", "daqin", 8, ["shenhu", "ex_wuan", "ex_shashen", "ex_fachu", "ex_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "ex_kencao", "nushou_jinnu"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhangyi": ["male", "daqin", 6, ["shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu"], ["zhu", "boss", "bossallowed"]],
                             "ex_shangyang": ["male", "daqin", 6, ["shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhaogao": ["male", "daqin", 6, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili", "ex_zaiguan", "ex_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
@@ -1558,7 +1558,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
 
-                            "zhaoji_shanwu": {
+                            "ex_shanwu": {
                                 audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     player: "useCardToPlayered",
@@ -1585,10 +1585,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         }
                                     },
                                 },
-                                group: ["zhaoji_shanwu_judge"],
+                                group: ["ex_shanwu_judge"],
                                 subSkill: {
                                     judge: {
-                                        audio: 'zhaoji_shanwu',
+                                        audio: 'ex_shanwu',
                                         trigger: {
                                             target: "useCardToTargeted",
                                         },
@@ -1645,7 +1645,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     var card = player.maxHp - player.countCards('h');
                                     if (hp > 0) player.recover(hp);
                                     if (card > 0) player.draw(card);
-                                    player.storage.zhaoji_huoluan = true;
+                                    player.storage.ex_huoluan = true;
                                 },
                                 group: ["ex_daqi_damage", "ex_daqi_card"],
                                 subSkill: {
@@ -1680,7 +1680,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "zhaoji_xianji": {
+                            "ex_xianji": {
                                 audio: 'ext:大战七阴/audio:true',
                                 init: function (player) {
                                     player.storage.nzry_dinghuo = false;
@@ -1694,7 +1694,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 animationColor: "thunder",
                                 enable: "phaseUse",
                                 filter: function (event, player) {
-                                    return !player.storage.zhaoji_xianji && player.storage.ex_daqi > 0;
+                                    return !player.storage.ex_xianji && player.storage.ex_daqi > 0;
                                 },
                                 check: function (event, player) {
                                     var hp = player.maxHp - player.hp;
@@ -1704,8 +1704,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                                 content: function () {
                                     'step 0'
-                                    player.awakenSkill('zhaoji_xianji');
-                                    player.storage.zhaoji_xianji = true;
+                                    player.awakenSkill('ex_xianji');
+                                    player.storage.ex_xianji = true;
                                     'step 1'
                                     var hs = player.getCards('he');
                                     if (hs.length) player.discard(hs);
@@ -1719,7 +1719,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     var card = player.maxHp - player.countCards('h');
                                     if (hp > 0) player.recover(hp);
                                     if (card > 0) player.draw(card);
-                                    player.storage.zhaoji_huoluan = true;
+                                    player.storage.ex_huoluan = true;
                                 },
                                 ai: {
                                     order: 1,
@@ -1732,10 +1732,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "zhaoji_huoluan": {
+                            "ex_huoluan": {
                                 audio: 'ext:大战七阴/audio:true',
                                 trigger: {
-                                    player: ["ex_daqiAfter", "zhaoji_xianjiAfter"],
+                                    player: ["ex_daqiAfter", "ex_xianjiAfter"],
                                 },
                                 forced: true,
                                 content: function () {
@@ -1753,17 +1753,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
 
-                            "baiqi_wuan": {
+                            "ex_wuan": {
                                 audio: 'ext:大战七阴/audio:true',
                                 locked: true,
-                                global: "baiqi_wuan_buff",
+                                global: "ex_wuan_buff",
                                 subSkill: {
                                     buff: {
                                         mod: {
                                             cardUsable: function (card, player, num) {
                                                 if (player.group == 'daqin' && card.name == 'sha') {
                                                     return num + game.countPlayer(function (current) {
-                                                        return current.hasSkill('baiqi_wuan')
+                                                        return current.hasSkill('ex_wuan')
                                                     });
                                                 }
                                             },
@@ -1772,7 +1772,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "baiqi_shashen": {
+                            "ex_shashen": {
                                 audio: 'ext:大战七阴/audio:true',
                                 enable: ["chooseToRespond", "chooseToUse"],
                                 filterCard: true,
@@ -1786,10 +1786,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 check: function (card) {
                                     return 4 - get.value(card);
                                 },
-                                group: ["baiqi_shashen_i"],
+                                group: ["ex_shashen_i"],
                                 subSkill: {
                                     i: {
-                                        audio: 'baiqi_shashen',
+                                        audio: 'ex_shashen',
                                         trigger: {
                                             source: "damageEnd",
                                         },
@@ -1812,7 +1812,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     respondSha: true,
                                 },
                             },
-                            "baiqi_fachu": {
+                            "ex_fachu": {
                                 audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     source: "dying",
@@ -1840,7 +1840,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
-                            "baiqi_changsheng": {
+                            "ex_changsheng": {
                                 audio: 'ext:大战七阴/audio:true',
                                 mod: {
                                     targetInRange: function (card) {
@@ -3297,14 +3297,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
 
                             // zhaoji
-                            "zhaoji_shanwu": "善舞",
-                            "zhaoji_shanwu_info": "锁定技，你使用【杀】指定目标后，你进行判定，若为黑色则敌方不能打出【闪】；当你成为【杀】的目标后，你进行判定，若为红色此杀无效。",
+                            "ex_shanwu": "善舞",
+                            "ex_shanwu_info": "锁定技，你使用【杀】指定目标后，你进行判定，若为黑色则敌方不能打出【闪】；当你成为【杀】的目标后，你进行判定，若为红色此杀无效。",
                             ex_daqi: "大期",
                             ex_daqi_info: "锁定技，你每使用或打出一张手牌、造成1点伤害、受到1点伤害，均会得到一个“期”标记。若你拥有的“期”标记大于等于10，则弃置所有“期”，体力回复至体力上限，并将手牌补至体力上限。",
-                            "zhaoji_xianji": "献姬",
-                            "zhaoji_xianji_info": "限定技，出牌阶段，你可以弃置所有手牌、装备牌和“期”标记，失去1点体力上限，然后立即发动大期的回复体力和补牌效果。",
-                            "zhaoji_huoluan": "祸乱",
-                            "zhaoji_huoluan_info": "锁定技，你每次发动大期的回复体力和补牌效果后，你对所有其他角色造成1点伤害。",
+                            "ex_xianji": "献姬",
+                            "ex_xianji_info": "限定技，出牌阶段，你可以弃置所有手牌、装备牌和“期”标记，失去1点体力上限，然后立即发动大期的回复体力和补牌效果。",
+                            "ex_huoluan": "祸乱",
+                            "ex_huoluan_info": "锁定技，你每次发动大期的回复体力和补牌效果后，你对所有其他角色造成1点伤害。",
 
                             "qibing_changjian": "长剑",
                             "qibing_changjian_info": "锁定技，你的攻击范围+1，你使用【杀】指定目标后，可额外选择一名目标，或令此杀伤害+1。",
@@ -3319,14 +3319,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
 
                             // baiqi
-                            "baiqi_wuan": "武安",
-                            "baiqi_wuan_info": "锁定技，你存活时，所有秦势力角色使用【杀】的上限+1。",
-                            "baiqi_shashen": "杀神",
-                            "baiqi_shashen_info": "你可以将手牌中的任意一张牌当【杀】使用或打出。每回合你使用的第一张【杀】造成伤害后，摸一张牌。",
-                            "baiqi_fachu": "伐楚",
-                            "baiqi_fachu_info": "锁定技，当你因对非秦势力角色造成伤害而导致其进入濒死状态后，你随机废除其一个装备栏。若其没有装备栏可废除，其改为失去一点体力上限。之后若其死亡，视为被你击杀",
-                            "baiqi_changsheng": "常胜",
-                            "baiqi_changsheng_info": "锁定技，你使用【杀】无距离限制。",
+                            "ex_wuan": "武安",
+                            "ex_wuan_info": "锁定技，你存活时，所有秦势力角色使用【杀】的上限+1。",
+                            "ex_shashen": "杀神",
+                            "ex_shashen_info": "你可以将手牌中的任意一张牌当【杀】使用或打出。每回合你使用的第一张【杀】造成伤害后，摸一张牌。",
+                            "ex_fachu": "伐楚",
+                            "ex_fachu_info": "锁定技，当你因对非秦势力角色造成伤害而导致其进入濒死状态后，你随机废除其一个装备栏。若其没有装备栏可废除，其改为失去一点体力上限。之后若其死亡，视为被你击杀",
+                            "ex_changsheng": "常胜",
+                            "ex_changsheng_info": "锁定技，你使用【杀】无距离限制。",
 
                             // zhangyi
                             ex_lianheng: "连横",
