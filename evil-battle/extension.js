@@ -113,7 +113,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou"],
                                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king"],
                                 against7devil_yin: ["yin_caojinyu"],
-                                against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi", "ex_shangyang"],
+                                against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi", "ex_shangyang", "ex_zhaogao", "ex_miyue"],
                             }
                         },
                         characterIntro: {
@@ -141,6 +141,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhangyi": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
                             "ex_shangyang": "来源于【合纵抗秦】扩展包商鞅。加入技能【连坐】并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】攻击，爆发",
                             "ex_zhaogao": "来源于【合纵抗秦】扩展包赵高。加入技能【载棺】并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】防御",
+                            "ex_miyue": "来源于【合纵抗秦】扩展包赵高。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】防御",
                         },
                         skill: {
                             shenhu: {
