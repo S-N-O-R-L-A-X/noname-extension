@@ -2679,7 +2679,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                                     if (!person.hasMark("ex_zaiguan_control")) {
                                         person.addTempSkill("ex_zaiguan_control");
-                                        person.addTempSkill("shenhu");
+                                        person.addSkill("corpse");
                                         person.addMark("ex_zaiguan_control", 1, false);
                                     }
                                 },
@@ -2705,11 +2705,20 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 }
                             },
+                            "corpse": {
+                                mod: {
+                                    targetEnabled: function (card, player, target) {
+                                        if (get.type(card) == "delay") {
+                                            return false;
+                                        }
+                                    },
+                                }
+                            },
                             ex_zaiguan_control: {
                                 charlotte: true,
                                 marktext: "尸",
                                 intro: {
-                                    content: "下个回合开始时，将受到赵高控制。回合结束时死亡。",
+                                    content: "无法成为延时类锦囊目标。下个回合开始时，将受到赵高控制。回合结束时死亡。",
                                 },
                                 forced: true,
                                 trigger: { global: 'phaseBeginStart' },
