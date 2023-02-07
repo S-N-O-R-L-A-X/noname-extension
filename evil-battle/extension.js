@@ -107,6 +107,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_shangyang": ["male", "daqin", 6, ["shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhaogao": ["male", "daqin", 6, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili", "ex_zaiguan", "ex_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "ex_miyue": ["female", "daqin", 6, ["shenhu", "ex_zhangzheng", "ex_taihou", "ex_youmie", "ex_yintui"], ["zhu", "boss", "bossallowed", "forbidai"]],
+                            "daqin_lvbuwei": ["male", "daqin", 4, ["ex_jugu", "ex_qihuo", "ex_chunqiu", "ex_baixiang"], ['forbidai']],
+
                         },
                         characterSort: {
                             against7devil: {
@@ -3097,6 +3099,132 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
+
+                            "ex_jugu": {
+                                audio: 'ext:合纵抗秦:true',
+                                mod: {
+                                    maxHandcard: function (player, num) {
+                                        return num + player.maxHp;
+                                    },
+                                },
+                                trigger: {
+                                    global: "gameDrawAfter",
+                                    player: "enterGame",
+                                },
+                                forced: true,
+                                content: function () {
+                                    player.draw(player.maxHp);
+                                },
+                            },
+                            "ex_qihuo": {
+                                audio: 'ext:合纵抗秦:true',
+                                enable: "phaseUse",
+                                usable: 1,
+                                delay: 0,
+                                filter: function (event, player) {
+                                    return player.countCards('h') > 0;
+                                },
+                                content: function () {
+                                    'step 0'
+                                    event.list = [];
+                                    event.cardNum = [];
+                                    var hs = player.getCards('h');
+                                    for (var i = 0; i < hs.length; i++) {
+                                        var card = hs[i];
+                                        if (event.list.contains(get.type(card, 'trick'))) {
+                                            event.cardNum[event.list.indexOf(get.type(card, 'trick'))]++;
+                                            continue;
+                                        }
+                                        event.list.push(get.type(card, 'trick'));
+                                        event.cardNum.push(1);
+                                    }
+                                    'step 1'
+                                    player.chooseControl(event.list, function (event, player) {
+                                        return event.list[event.cardNum.indexOf(Math.max.apply(null, event.cardNum))] || event.list.randomGet();
+                                    }).prompt = "奇货：请选择一种类别";
+                                    'step 2'
+                                    var cards = player.getCards('h', function (card) {
+                                        return get.type(card, 'trick') == result.control;
+                                    });
+                                    player.discard(cards);
+                                    player.draw(cards.length * 2);
+                                },
+                                ai: {
+                                    order: 1,
+                                    result: {
+                                        player: 4,
+                                    },
+                                    threaten: 1.55,
+                                },
+                            },
+                            "ex_chunqiu": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    player: ['useCard', 'respond']
+                                },
+                                filter: function (event, player) {
+                                    var list = ['useCard', 'respond'];
+                                    list.remove(event.name);
+                                    return player.getHistory(event.name)[0] == event && !player.getHistory(list[0].length);
+                                },
+                                content: function () {
+                                    player.draw();
+                                },
+                            },
+                            "ex_baixiang": {
+                                audio: 'ext:合纵抗秦:true',
+                                skillAnimation: true,
+                                animationColor: "thunfer",
+                                unique: true,
+                                trigger: {
+                                    player: "phaseZhunbeiBegin",
+                                },
+                                forced: true,
+                                filter: function (event, player) {
+                                    return player.countCards('h') >= player.hp * 3 && !player.storage.ex_baixiang;
+                                },
+                                derivation: ["lvbuwei_zhongfu"],
+                                content: function () {
+                                    'step 0'
+                                    player.storage.ex_baixiang = true;
+                                    player.awakenSkill('ex_baixiang');
+                                    'step 1'
+                                    var num = player.maxHp - player.hp;
+                                    if (num > 0) player.recover(num);
+                                    player.addSkill('lvbuwei_zhongfu');
+                                    game.log(player, '获得了技能〖仲父〗')
+                                },
+                                ai: {
+                                    maixie: true,
+                                    skillTagFilter: function (player, tag) {
+                                        if (tag == 'maixie') {
+                                            if (player.storage.ex_baixiang || player.countCards('h') < player.hp * 3 || player.hp < 3) return false;
+                                        }
+                                    },
+                                    effect: {
+                                        target: function (card, player, target) {
+                                            if (target.storage.ex_baixiang || !get.tag(card, 'damage')) return;
+                                            var num = (target.hp - get.tag(card, 'damage')) * 3;
+                                            if (num > 0 && target.countCards('h') >= num) return [0.5, 1];
+                                        },
+                                    },
+                                },
+                            },
+                            "lvbuwei_zhongfu": {
+                                audio: 'ext:合纵抗秦:true',
+                                trigger: {
+                                    player: "phaseBefore",
+                                },
+                                forced: true,
+                                content: function () {
+                                    var skill = ['new_rejianxiong', 'rerende', 'rezhiheng'].randomGet();
+                                    player.addTempSkill(skill, {
+                                        player: "phaseBefore"
+                                    });
+                                    game.log(player, '获得了技能', '〖', skill, '〗');
+                                },
+                            },
+
                         },
                         card: {
                             "zhenlongchangjian": {
@@ -3378,6 +3506,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_youmie_info": "出牌阶段限一次，你可以将一张牌交给一名角色，若如此做，该角色减少一点体力上限且直到你的下个回合开始，该角色于其回合外无法使用或打出牌。",
                             "ex_yintui": "隐退",
                             "ex_yintui_info": "锁定技，当你失去最后一张手牌时，你翻面。你的武将牌背面朝上时，若受到伤害，你可以选择令此伤害-1，然后摸一张牌。",
+
+                            "ex_jugu": "巨贾",
+                            "ex_jugu_info": "锁定技，你的手牌上限+X；游戏开始时，你多摸X张牌（X为你的体力上限）。",
+                            "ex_qihuo": "奇货",
+                            "ex_qihuo_info": "出牌阶段限一次，你可以弃置一种类型的牌，并摸等同于你弃置牌数量2倍的牌。",
+                            "ex_chunqiu": "春秋",
+                            "ex_chunqiu_info": "锁定技，当你于一回合内首次使用或打出牌时，你摸一张牌。",
+                            "ex_baixiang": "拜相",
+                            "ex_baixiang_info": "觉醒技，你的回合开始时，若你的手牌数大于等于你当前体力的3倍，则你将体力恢复至体力上限，并获得“仲父”技能。",
+                            "lvbuwei_zhongfu": "仲父",
+                            "lvbuwei_zhongfu_info": "锁定技，你的回合开始时，直到你的下个回合开始为止，你随机获得“界奸雄”、“界仁德”、“界制衡”中的一个。",
 
 
                             // unused
