@@ -107,7 +107,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_shangyang": ["male", "daqin", 6, ["shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhaogao": ["male", "daqin", 6, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili", "ex_zaiguan", "ex_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "ex_miyue": ["female", "daqin", 6, ["shenhu", "ex_zhangzheng", "ex_taihou", "ex_youmie", "ex_yintui"], ["zhu", "boss", "bossallowed", "forbidai"]],
-                            "daqin_lvbuwei": ["male", "daqin", 4, ["ex_jugu", "ex_qihuo", "ex_chunqiu", "ex_baixiang"], ['forbidai']],
+                            "ex_lvbuwei": ["male", "daqin", 4, ["shenhu", "ex_jugu", "ex_qihuo", "ex_chunqiu", "ex_baixiang"], ['forbidai']],
 
                         },
                         characterSort: {
@@ -3212,17 +3212,20 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
                             "lvbuwei_zhongfu": {
                                 audio: 'ext:合纵抗秦:true',
-                                trigger: {
-                                    player: "phaseBefore",
+                                filter: function (event, player) {
+                                    return trigger.num <= player.countCards('he');
                                 },
-                                forced: true,
+                                trigger: { player: 'damageBegin' },
                                 content: function () {
-                                    var skill = ['new_rejianxiong', 'rerende', 'rezhiheng'].randomGet();
-                                    player.addTempSkill(skill, {
-                                        player: "phaseBefore"
-                                    });
-                                    game.log(player, '获得了技能', '〖', skill, '〗');
-                                },
+                                    'step 0'
+                                    target.chooseToDiscard('he', trigger.num, '弃置等量的牌').ai = function (card) {
+                                        return 6 - get.value(card);
+                                    }
+                                    'step 1'
+                                    if (result.bool) {
+                                        trigger.num = 0;
+                                    }
+                                }
                             },
 
                         },
@@ -3342,6 +3345,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_shangyang": "扩商鞅",
                             "ex_zhaogao": "扩赵高",
                             "ex_miyue": "扩芈月",
+                            "ex_lvbuwei": "扩吕不韦",
 
                             // skill
                             shenhu: "神护",
@@ -3510,13 +3514,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_jugu": "巨贾",
                             "ex_jugu_info": "锁定技，你的手牌上限+X；游戏开始时，你多摸X张牌（X为你的体力上限）。",
                             "ex_qihuo": "奇货",
-                            "ex_qihuo_info": "出牌阶段限一次，你可以弃置一种类型的牌，并摸等同于你弃置牌数量2倍的牌。",
+                            "ex_qihuo_info": "出牌阶段各限一次，你可以①弃置一种类型的牌，②弃置所有牌名不同的牌，并摸等同于你弃置牌数量2倍的牌。",
                             "ex_chunqiu": "春秋",
-                            "ex_chunqiu_info": "锁定技，当你于一回合内首次使用或打出牌时，你摸一张牌。",
+                            "ex_chunqiu_info": "锁定技，当你于一回合内首次使用或打出牌时，你摸两张牌。",
                             "ex_baixiang": "拜相",
-                            "ex_baixiang_info": "觉醒技，你的回合开始时，若你的手牌数大于等于你当前体力的3倍，则你将体力恢复至体力上限，并获得“仲父”技能。",
+                            "ex_baixiang_info": "觉醒技，你的回合开始时，若你的手牌数大于等于你当前体力的2倍，则你将体力恢复至体力上限，并获得“仲父”技能。",
                             "lvbuwei_zhongfu": "仲父",
-                            "lvbuwei_zhongfu_info": "锁定技，你的回合开始时，直到你的下个回合开始为止，你随机获得“界奸雄”、“界仁德”、“界制衡”中的一个。",
+                            "lvbuwei_zhongfu_info": "当你受到伤害时，你可以弃置等量手牌，令此伤害无效。",
 
 
                             // unused
