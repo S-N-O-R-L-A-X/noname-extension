@@ -3108,8 +3108,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                                 trigger: {
-                                    global: "gameDrawAfter",
-                                    player: "enterGame",
+                                    player: "phaseZhunbeiBegin",
                                 },
                                 forced: true,
                                 content: function () {
@@ -3512,9 +3511,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_yintui_info": "锁定技，当你失去最后一张手牌时，你翻面。你的武将牌背面朝上时，若受到伤害，你可以选择令此伤害-1，然后摸一张牌。",
 
                             "ex_jugu": "巨贾",
-                            "ex_jugu_info": "锁定技，你的手牌上限+X；游戏开始时，你多摸X张牌（X为你的体力上限）。",
+                            "ex_jugu_info": "锁定技，你的手牌上限+X；回合开始时，你额外摸X张牌（X为你的体力上限）。",
                             "ex_qihuo": "奇货",
-                            "ex_qihuo_info": "出牌阶段各限一次，你可以①弃置一种类型的牌，②弃置所有牌名不同的牌，并摸等同于你弃置牌数量2倍的牌。",
+                            "ex_qihuo_info": "出牌阶段各限一次，你可以弃置一种类型的牌，并摸等同于你弃置牌数量2倍的牌。",
                             "ex_chunqiu": "春秋",
                             "ex_chunqiu_info": "锁定技，当你于一回合内首次使用或打出牌时，你摸两张牌。",
                             "ex_baixiang": "拜相",
