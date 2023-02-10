@@ -2275,7 +2275,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
 
                             "nushou_jinnu": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     player: "phaseBefore",
                                 },
@@ -2301,8 +2301,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                             // shangyang
                             "ex_bianfa": {
-                                audio: 'ext:合纵抗秦:true',
-
+                                audio: 'ext:大战七阴/audio:true',
                                 mod: {
                                     // selectTarget: function (card, player, range) {
                                     //     if (_status.kangqinEvent == '变法图强' && card.name == 'shangyangbianfa' && range[1] != -1) range[1]++;
@@ -2339,7 +2338,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_limu": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     player: "useCard",
                                 },
@@ -2352,7 +2351,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_kencao": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 init: function (player) {
                                     if (!player.storage.ex_kencao) player.storage.ex_kencao = 0;
                                 },
@@ -2475,7 +2474,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
                             //zhaogao
                             ex_zhilu: {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 group: 'ex_zhilu2',
                                 enable: ['chooseToUse', 'chooseToRespond'],
                                 viewAs: {
@@ -2528,7 +2527,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             ex_gaizhao: {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     target: 'useCardToTarget'
                                 },
@@ -2584,7 +2583,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
                             ex_haizhong: {
                                 global: 'ex_haizhong_debuff',
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 intro: {
                                     content: 'mark',
                                 },
@@ -2649,7 +2648,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 }
                             },
                             ex_aili: {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     player: 'phaseUseBegin'
                                 },
@@ -2806,7 +2805,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                             // miyue
                             "ex_zhangzheng": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     player: "phaseBefore",
                                 },
@@ -2844,7 +2843,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_taihou": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     target: "useCardToTargeted",
                                 },
@@ -2946,7 +2945,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
 
                             "ex_youmie": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 global: 'ex_youmie_ai',
                                 prompt: "出牌阶段限一次，你可以将一张牌交给一名其他角色，若如此做，直到你的下个回合开始，该角色于其回合外无法使用或打出牌。",
                                 enable: "phaseUse",
@@ -3042,7 +3041,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_yintui": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     player: "loseEnd",
                                 },
@@ -3102,7 +3101,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
 
                             "ex_jugu": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 mod: {
                                     maxHandcard: function (player, num) {
                                         return num + player.maxHp;
@@ -3117,7 +3116,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_qihuo": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 enable: "phaseUse",
                                 usable: 1,
                                 delay: 0,
@@ -3158,7 +3157,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_chunqiu": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 trigger: {
                                     player: ['useCard', 'respond']
                                 },
@@ -3172,7 +3171,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_baixiang": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 skillAnimation: true,
                                 animationColor: "thunfer",
                                 unique: true,
@@ -3211,7 +3210,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
                             "ex_zhongfu": {
-                                audio: 'ext:合纵抗秦:true',
+                                audio: 'ext:大战七阴/audio:true',
                                 filter: function (event, player) {
                                     return event.num <= player.countCards('he');
                                 },
@@ -3514,7 +3513,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_jugu": "巨贾",
                             "ex_jugu_info": "锁定技，你的手牌上限+X；回合开始时，你额外摸X张牌（X为你的体力上限）。",
                             "ex_qihuo": "奇货",
-                            "ex_qihuo_info": "出牌阶段各限一次，你可以弃置一种类型的牌，并摸等同于你弃置牌数量2倍的牌。",
+                            "ex_qihuo_info": "出牌阶段各限一次，你可以弃置一种类型的手牌，并摸等同于你弃置牌数量2倍的牌。",
                             "ex_chunqiu": "春秋",
                             "ex_chunqiu_info": "锁定技，当你于一回合内首次使用或打出牌时，你摸两张牌。",
                             "ex_baixiang": "拜相",
@@ -3575,7 +3574,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩商鞅，扩赵高，扩芈月。<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩商鞅，扩赵高，扩芈月，扩吕不韦。<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
