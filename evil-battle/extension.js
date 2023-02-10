@@ -3168,7 +3168,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     return player.getHistory(event.name)[0] == event && !player.getHistory(list[0].length);
                                 },
                                 content: function () {
-                                    player.draw();
+                                    player.draw(2);
                                 },
                             },
                             "ex_baixiang": {
@@ -3177,13 +3177,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 animationColor: "thunfer",
                                 unique: true,
                                 trigger: {
-                                    player: "phaseZhunbeiBegin",
+                                    player: ['phaseZhunbeiBegin', 'phaseJieshuBegin']
                                 },
                                 forced: true,
                                 filter: function (event, player) {
-                                    return player.countCards('h') >= player.hp * 3 && !player.storage.ex_baixiang;
+                                    return player.countCards('h') >= player.hp * 2 && !player.storage.ex_baixiang;
                                 },
-                                derivation: ["lvbuwei_zhongfu"],
+                                derivation: ["ex_zhongfu"],
                                 content: function () {
                                     'step 0'
                                     player.storage.ex_baixiang = true;
@@ -3191,7 +3191,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     'step 1'
                                     var num = player.maxHp - player.hp;
                                     if (num > 0) player.recover(num);
-                                    player.addSkill('lvbuwei_zhongfu');
+                                    player.addSkill('ex_zhongfu');
                                     game.log(player, '获得了技能〖仲父〗')
                                 },
                                 ai: {
@@ -3210,15 +3210,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     },
                                 },
                             },
-                            "lvbuwei_zhongfu": {
+                            "ex_zhongfu": {
                                 audio: 'ext:合纵抗秦:true',
                                 filter: function (event, player) {
-                                    return trigger.num <= player.countCards('he');
+                                    return event.num <= player.countCards('he');
                                 },
                                 trigger: { player: 'damageBegin' },
                                 content: function () {
                                     'step 0'
-                                    target.chooseToDiscard('he', trigger.num, '弃置等量的牌').ai = function (card) {
+                                    player.chooseToDiscard('he', trigger.num, '弃置等量的牌').ai = function (card) {
                                         return 6 - get.value(card);
                                     }
                                     'step 1'
@@ -3518,9 +3518,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_chunqiu": "春秋",
                             "ex_chunqiu_info": "锁定技，当你于一回合内首次使用或打出牌时，你摸两张牌。",
                             "ex_baixiang": "拜相",
-                            "ex_baixiang_info": "觉醒技，你的回合开始时，若你的手牌数大于等于你当前体力的2倍，则你将体力恢复至体力上限，并获得“仲父”技能。",
-                            "lvbuwei_zhongfu": "仲父",
-                            "lvbuwei_zhongfu_info": "当你受到伤害时，你可以弃置等量手牌，令此伤害无效。",
+                            "ex_baixiang_info": "觉醒技，你的回合开始或回合结束时，若你的手牌数大于等于你当前体力的2倍，则你将体力恢复至体力上限，并获得“仲父”技能。",
+                            "ex_zhongfu": "仲父",
+                            "ex_zhongfu_info": "当你受到伤害时，你可以弃置等量手牌，令此伤害无效。",
 
 
                             // unused
