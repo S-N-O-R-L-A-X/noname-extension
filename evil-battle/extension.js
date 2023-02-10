@@ -115,7 +115,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou"],
                                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king"],
                                 against7devil_yin: ["yin_caojinyu"],
-                                against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi", "ex_shangyang", "ex_zhaogao", "ex_miyue"],
+                                against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi", "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
                             }
                         },
                         characterIntro: {
@@ -3553,7 +3553,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             intro: {
                 name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。
                 如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极哦~<br>
-                <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a>
+                <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a><br>
                 如果想要加群的话，目前群号是214685856，请备注下从哪得知这个扩展的哈。
                 `,
                 clear: true,
@@ -3593,7 +3593,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 intro: "点击查看鸣谢名单",
                 item: {
                     "1": "<font color=navy>鸣谢名单</font>",
-                    "2": "无名杀本体作者们，扩展包假装无敌作者们，扩展包阳光包作者们，扩展包合纵抗秦作者们"
+                    "2": "无名杀本体作者们，扩展包假装无敌作者们，扩展包阳光包作者们，扩展包合纵抗秦作者们，无名杀代码群群内大佬们"
                 }
             },
         },
