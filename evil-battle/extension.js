@@ -2917,7 +2917,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                                 };
                                             }
                                             else {
-                                                trigger.player.chooseControl('摸牌', '回血').set('prompt', '始称太后：令芈月回复1点体力或交给其一张牌并令其摸一张牌').ai = function () {
+                                                trigger.player.chooseControl('摸牌', '回血').set('prompt', trigger.player.sex == "male" ? '始称太后：令芈月回复1点体力或交给其一张牌并令其摸一张牌' : '始称太后：令芈月回复1点体力或弃置一张牌并令其摸一张牌').ai = function () {
                                                     if (get.attitude(trigger.player, target) > 0) return '回血';
                                                     return '摸牌';
                                                 };
@@ -2928,6 +2928,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                                 target.draw();
                                                 if (trigger.player.sex == "male")
                                                     trigger.player.chooseCard('he', true, '太后：将一张牌交给' + get.translation(target));
+                                                else {
+                                                    trigger.player.chooseToDiscard('he', true, '太后：弃置一张牌');
+                                                    event.finish();
+                                                }
                                             }
                                             else {
                                                 trigger.player.line(target);
@@ -3504,7 +3508,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             ex_zhangzheng: "掌政",
                             ex_zhangzheng_info: "锁定技，你的回合开始时，所有非秦势力角色依次选择：1.弃置一张手牌；2.失去1点体力。",
                             ex_taihou: "太后",
-                            ex_taihou_info: "锁定技，男性角色对你使用【杀】或普通锦囊牌时，需要额外弃置一张同种类型的牌，否则此牌无效。男性角色回合开始时，需令你回复1点体力或摸一张牌。",
+                            ex_taihou_info: "锁定技，男性角色对你使用【杀】或普通锦囊牌时，需要额外弃置一张同种类型的牌，否则此牌无效。其他角色回合开始时，若其为男性，其需令你回复1点体力或令你摸一张牌并交给你一张牌；若其为女性，其需令你回复1点体力或令你摸一张牌并弃一张牌。",
                             "ex_youmie": "诱灭",
                             "ex_youmie_info": "出牌阶段限一次，你可以将一张牌交给一名角色，若如此做，该角色减少一点体力上限且直到你的下个回合开始，该角色于其回合外无法使用或打出牌。",
                             "ex_yintui": "隐退",
@@ -3567,14 +3571,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：5.1<font size="4px">▶▶▶</font></div>`,
-                version: 5.1,
+                name: `<div class=".update">扩展版本：5.2<font size="4px">▶▶▶</font></div>`,
+                version: 5.2,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：扩商鞅，扩赵高，扩芈月，扩吕不韦。<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：。<br>' +
+                            '<li><span style="color:#006400">说明二</span>：<br>修改了武将：扩芈月，扩吕不韦。<br>'
+
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -3583,7 +3589,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：5.1<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：5.2<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
