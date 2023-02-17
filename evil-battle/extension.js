@@ -137,13 +137,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // "yitongjindi": "晋国是乱世中隐藏最深的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【驭权】，加上自设计的【称病】形成技能联动。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
                             "re_nianshou": "来源于挑战模式boss四大年兽。<br>【强度】★★★★<br> 【亮点】综合",
                             "barbarian_king": "将少数民族部落武将的技能进行融合。<br>【强度】★★★★★<br> 【亮点】攻击",
-                            "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。作为一统六国的秦始皇，加入技能【六合】，并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】攻击，防御",
+                            "ex_yingzheng": "来源于【合纵抗秦】扩展包嬴政。作为一统六国的秦始皇，加入技能【六合】，并对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击，防御",
                             "ex_zhaoji": "来源于【合纵抗秦】扩展包赵姬。对【大期】进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击",
                             "ex_baiqi": "来源于【合纵抗秦】扩展包白起。白起作为秦军统帅，加入秦军士兵的技能。<br>【强度】★★★★★<br> 【亮点】攻击",
                             "ex_zhangyi": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
-                            "ex_shangyang": "来源于【合纵抗秦】扩展包商鞅。加入技能【连坐】并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】攻击，爆发",
-                            "ex_zhaogao": "来源于【合纵抗秦】扩展包赵高。加入技能【载棺】并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】防御",
-                            "ex_miyue": "来源于【合纵抗秦】扩展包赵高。对其技能进行了修改。<br>【强度】★★★<br> 【亮点】防御",
+                            "ex_shangyang": "来源于【合纵抗秦】扩展包商鞅。加入技能【连坐】并对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击，爆发",
+                            "ex_zhaogao": "来源于【合纵抗秦】扩展包赵高。加入技能【载棺】并对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
+                            "ex_miyue": "来源于【合纵抗秦】扩展包芈月。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
                             "ex_lvbuwei": "来源于【合纵抗秦】扩展包吕不韦。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】过牌",
                         },
                         skill: {
@@ -3191,6 +3191,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     'step 0'
                                     player.storage.ex_baixiang = true;
                                     player.awakenSkill('ex_baixiang');
+                                    player.maxHp++;
                                     'step 1'
                                     var num = player.maxHp - player.hp;
                                     if (num > 0) player.recover(num);
@@ -3521,7 +3522,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_chunqiu": "春秋",
                             "ex_chunqiu_info": "锁定技，当你于一回合内首次使用或打出牌时，你摸两张牌。",
                             "ex_baixiang": "拜相",
-                            "ex_baixiang_info": "觉醒技，你的回合开始或回合结束时，若你的手牌数大于等于你当前体力的2倍，则你将体力恢复至体力上限，并获得“仲父”技能。",
+                            "ex_baixiang_info": "觉醒技，你的回合开始或回合结束时，若你的手牌数大于等于你当前体力的2倍，则你增加一点体力上限，将体力恢复至体力上限，并获得“仲父”技能。",
                             "ex_zhongfu": "仲父",
                             "ex_zhongfu_info": "当你受到伤害时，你可以弃置等量手牌，令此伤害无效。",
 
