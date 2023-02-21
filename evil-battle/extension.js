@@ -107,8 +107,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_shangyang": ["male", "daqin", 6, ["shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "ex_lianzuo"], ["zhu", "boss", "bossallowed"]],
                             "ex_zhaogao": ["male", "daqin", 6, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili", "ex_zaiguan", "ex_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "ex_miyue": ["female", "daqin", 8, ["shenhu", "ex_zhangzheng", "ex_taihou", "ex_youmie", "ex_yintui"], ["zhu", "boss", "bossallowed", "forbidai"]],
-                            "ex_lvbuwei": ["male", "daqin", 4, ["shenhu", "ex_jugu", "ex_qihuo", "ex_chunqiu", "ex_baixiang"], ['forbidai']],
-
+                            "ex_lvbuwei": ["male", "daqin", 4, ["shenhu", "ex_jugu", "ex_qihuo", "ex_chunqiu", "ex_baixiang"], ["forbidai"]],
+                            "fusion_jiaxu": ["male", "qun", 8, ["rewansha", "reluanwu", "reweimu", "zhenlue", "fusion_jianshu", "yongdi"], ["zhu", "boss", "bossallowed", "forbidai"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -3232,6 +3232,68 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 }
                             },
 
+                            fusion_jianshu: {
+                                audio: 2,
+                                unique: true,
+                                enable: 'phaseUse',
+                                usable: 1,
+                                animationColor: 'thunder',
+                                skillAnimation: 'epic',
+                                filter: function (event, player) {
+                                    return player.countCards('h', { color: 'black' }) > 0;
+                                },
+                                filterTarget: function (card, player, target) {
+                                    if (target == player) return false;
+                                    if (ui.selected.targets.length) {
+                                        return ui.selected.targets[0] != target && !ui.selected.targets[0].hasSkillTag('noCompareSource') && target.countCards('h')
+                                            && !target.hasSkillTag('noCompareTarget');
+                                    }
+                                    return true;
+                                },
+                                filterCard: { color: 'black' },
+
+                                discard: false,
+                                lose: false,
+                                delay: false,
+                                check: function (card) {
+                                    if (_status.event.player.hp == 1) return 8 - get.value(card);
+                                    return 6 - get.value(card);
+                                },
+                                selectTarget: 2,
+                                multitarget: true,
+                                content: function () {
+                                    'step 0'
+                                    targets[0].gain(cards, player, 'give');
+                                    'step 1'
+                                    targets[0].chooseToCompare(targets[1]);
+                                    'step 2'
+                                    if (result.bool) {
+                                        targets[0].chooseToDiscard('he', 2, true);
+                                        targets[1].loseHp();
+                                    }
+                                    else if (result.tie) {
+                                        targets[0].loseHp()
+                                        targets[1].loseHp()
+                                    }
+                                    else {
+                                        targets[1].chooseToDiscard('he', 2, true);
+                                        targets[0].loseHp();
+                                    }
+                                },
+
+                                ai: {
+                                    expose: 0.4,
+                                    order: 4,
+                                    result: {
+                                        target: function (player, target) {
+                                            if (player.hasUnknown()) return 0;
+                                            if (ui.selected.targets.length) return -1;
+                                            return -0.5;
+                                        }
+                                    }
+                                }
+                            },
+
                         },
                         card: {
                             "zhenlongchangjian": {
@@ -3350,6 +3412,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhaogao": "扩赵高",
                             "ex_miyue": "扩芈月",
                             "ex_lvbuwei": "扩吕不韦",
+                            "fusion_jiaxu": "融贾诩",
+                            "fusion_liru": "融李儒",
 
                             // skill
                             shenhu: "神护",
@@ -3526,6 +3590,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhongfu": "仲父",
                             "ex_zhongfu_info": "当你受到伤害时，你可以弃置等量手牌，令此伤害无效。",
 
+                            // fusion_jiaxu
+                            "fusion_jianshu": "间书",
+                            "fusion_jianshu_info": "出牌阶段，你可以将一张黑色手牌交给一名其他角色，并选择另一名其他角色，然后令这两名角色拼点。赢的角色弃置两张牌，没赢的角色失去一点体力。",
 
                             // unused
                             geju: '割据',
