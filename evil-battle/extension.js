@@ -108,7 +108,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhaogao": ["male", "daqin", 6, ["shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili", "ex_zaiguan", "ex_kencao"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "ex_miyue": ["female", "daqin", 8, ["shenhu", "ex_zhangzheng", "ex_taihou", "ex_youmie", "ex_yintui"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "ex_lvbuwei": ["male", "daqin", 4, ["shenhu", "ex_jugu", "ex_qihuo", "ex_chunqiu", "ex_baixiang"], ["forbidai"]],
-                            "fusion_jiaxu": ["male", "qun", 8, ["rewansha", "reluanwu", "reweimu", "zhenlue", "fusion_jianshu", "yongdi"], ["zhu", "boss", "bossallowed", "forbidai"]],
+                            "fusion_jiaxu": ["male", "qun", 8, ["rewansha", "reluanwu", "reweimu", "zhenlue", "fusion_jianshu", "fusion_yongdi"], ["zhu", "boss", "bossallowed", "forbidai"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -3293,7 +3293,83 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 }
                             },
+                            fusion_yongdi: {
+                                audio: 2,
+                                audioname: ['xinping'],
+                                unique: true,
+                                limited: true,
+                                trigger: { player: 'phaseZhunbeiBegin' },
+                                animationColor: 'thunder',
+                                skillAnimation: 'legend',
+                                filter: function (event, player) {
+                                    return !player.storage.yongdi;
+                                },
+                                init: function (player) {
+                                    player.storage.yongdi = false;
+                                },
+                                mark: true,
+                                intro: {
+                                    content: 'limited'
+                                },
+                                direct: true,
+                                content: function () {
+                                    'step 0'
+                                    player.chooseTarget(get.prompt2('yongdi'), function (card, player, target) {
+                                        return (target.hasSex('male') || target.name == 'key_yuri');
+                                    }).set('ai', function (target) {
+                                        if (!_status.event.goon) return 0;
+                                        var player = _status.event.player;
+                                        var att = get.attitude(player, target);
+                                        if (att <= 1) return 0;
+                                        var mode = get.mode();
+                                        if (mode == 'identity' || (mode == 'versus' && _status.mode == 'four')) {
+                                            if (target.name && lib.character[target.name]) {
+                                                for (var i = 0; i < lib.character[target.name][3].length; i++) {
+                                                    if (lib.skill[lib.character[target.name][3][i]].zhuSkill) {
+                                                        return att * 2;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        return att;
+                                    }).set('goon', !player.hasUnknown());
+                                    'step 1'
+                                    if (result.bool) {
+                                        player.awakenSkill('yongdi');
+                                        player.storage.yongdi = true;
+                                        player.logSkill('yongdi', result.targets);
+                                        var target = result.targets[0];
+                                        target.gainMaxHp(true);
+                                        target.recover();
+                                        var mode = get.mode();
+                                        if (mode == 'identity' || (mode == 'versus' && _status.mode == 'four')) {
+                                            if (target.name && lib.character[target.name]) {
+                                                var skills = lib.character[target.name][3];
+                                                target.storage.zhuSkill_yongdi = [];
+                                                for (var i = 0; i < skills.length; i++) {
+                                                    var info = lib.skill[skills[i]];
+                                                    if (info.zhuSkill) {
+                                                        target.storage.zhuSkill_yongdi.push(skills[i]);
+                                                        if (info.init) {
+                                                            info.init(target);
+                                                        }
+                                                        if (info.init2) {
+                                                            info.init2(target);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
 
+                                        if (target == player) {
+                                            player.draw();
+                                        }
+                                    }
+                                },
+                                ai: {
+                                    expose: 0.2
+                                }
+                            },
                         },
                         card: {
                             "zhenlongchangjian": {
@@ -3593,6 +3669,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // fusion_jiaxu
                             "fusion_jianshu": "间书",
                             "fusion_jianshu_info": "出牌阶段，你可以将一张黑色手牌交给一名其他角色，并选择另一名其他角色，然后令这两名角色拼点。赢的角色弃置两张牌，没赢的角色失去一点体力。",
+                            "fusion_yongdi": "拥嫡",
+                            "fusion_yongdi_info": "限定技，准备阶段开始时，你可令一名男性角色增加一点体力上限并回复1点体力，然后若该角色的武将牌上有主公技且其不为主公，其获得此主公技。若该角色为你，则你摸一张牌。",
 
                             // unused
                             geju: '割据',
