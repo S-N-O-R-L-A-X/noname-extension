@@ -3337,7 +3337,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     if (result.bool) {
                                         player.awakenSkill('yongdi');
                                         player.storage.yongdi = true;
-                                        player.logSkill('yongdi', result.targets);
+                                        player.logSkill('re_yongdi', result.targets);
                                         var target = result.targets[0];
                                         target.gainMaxHp(true);
                                         target.recover();
@@ -3362,7 +3362,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                         }
 
                                         if (target == player) {
-                                            player.draw();
+                                            player.addSkill('fusion_dushi');
                                         }
                                     }
                                 },
@@ -3370,6 +3370,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     expose: 0.2
                                 }
                             },
+                            fusion_dushi: {
+                                trigger: { source: 'dieAfter' },
+                                forced: true,
+                                content: function () {
+                                    player.restoreSkill("reluanwu");
+                                }
+                            }
                         },
                         card: {
                             "zhenlongchangjian": {
@@ -3670,7 +3677,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_jianshu": "间书",
                             "fusion_jianshu_info": "出牌阶段，你可以将一张黑色手牌交给一名其他角色，并选择另一名其他角色，然后令这两名角色拼点。赢的角色弃置两张牌，没赢的角色失去一点体力。",
                             "fusion_yongdi": "拥嫡",
-                            "fusion_yongdi_info": "限定技，准备阶段开始时，你可令一名男性角色增加一点体力上限并回复1点体力，然后若该角色的武将牌上有主公技且其不为主公，其获得此主公技。若该角色为你，则你摸一张牌。",
+                            "fusion_yongdi_info": "限定技，准备阶段开始时，你可令一名男性角色增加一点体力上限并回复1点体力，然后若该角色的武将牌上有主公技且其不为主公，其获得此主公技。若该角色为你，则你获得技能【毒士】。",
+                            "fusion_dushi": "毒士",
+                            "fusion_dushi_info": "锁定技，每当你杀死一名角色时，你令【乱武】视为未发动过。",
+
 
                             // unused
                             geju: '割据',
