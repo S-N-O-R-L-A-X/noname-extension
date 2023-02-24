@@ -3314,7 +3314,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 direct: true,
                                 content: function () {
                                     'step 0'
-                                    player.chooseTarget(get.prompt2('yongdi'), function (card, player, target) {
+                                    player.chooseTarget(get.prompt2('fusion_yongdi'), function (card, player, target) {
                                         return (target.hasSex('male') || target.name == 'key_yuri');
                                     }).set('ai', function (target) {
                                         if (!_status.event.goon) return 0;
@@ -3335,9 +3335,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }).set('goon', !player.hasUnknown());
                                     'step 1'
                                     if (result.bool) {
-                                        player.awakenSkill('yongdi');
-                                        player.storage.yongdi = true;
-                                        player.logSkill('re_yongdi', result.targets);
+                                        player.awakenSkill('yongdi'); // watch anime
+                                        player.storage.fusion_yongdi = true;
+                                        player.logSkill('fusion_yongdi', result.targets);
                                         var target = result.targets[0];
                                         target.gainMaxHp(true);
                                         target.recover();
