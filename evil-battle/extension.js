@@ -109,6 +109,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_miyue": ["female", "daqin", 8, ["shenhu", "ex_zhangzheng", "ex_taihou", "ex_youmie", "ex_yintui"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "ex_lvbuwei": ["male", "daqin", 4, ["shenhu", "ex_jugu", "ex_qihuo", "ex_chunqiu", "ex_baixiang"], ["forbidai"]],
                             "fusion_jiaxu": ["male", "qun", 6, ["rewansha", "reluanwu", "reweimu", "zhenlue", "fusion_jianshu", "fusion_yongdi"], ["zhu", "boss", "bossallowed", "forbidai"]],
+                            "fusion_liru": ["male", "qun", 4, ["shenhu", "juece", "mieji", "fencheng", "xinjuece", "xinmieji", "xinfencheng", "rejuece", "remieji", "fusion_zhudong"], ["zhu", "boss", "bossallowed", "forbidai"]],
+
                         },
                         characterSort: {
                             against7devil: {
@@ -3378,8 +3380,49 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 content: function () {
                                     player.restoreSkill("reluanwu");
                                 }
+                            },
+
+                            fusion_zhudong: {
+                                audio: 2,
+                                unique: true,
+                                zhuSkill: true,
+                                trigger: { global: 'damageSource' },
+                                filter: function (event, player) {
+                                    return player == event.source;
+                                },
+                                direct: true,
+                                content: function () {
+                                    'step 0'
+                                    event.count = trigger.num;
+                                    'step 1'
+                                    event.count--;
+                                    player.chooseBool('是否发动【助董】？').set('choice', true);
+                                    'step 2'
+                                    if (result.bool) {
+                                        player.logSkill('fusion_zhudong', trigger.source);
+                                        player.judge(function (card) {
+                                            if (get.suit(card) == 'spade') return 4;
+                                            else if (get.suit(card) == 'club') return 1;
+                                            return 0;
+                                        }).judge2 = function (result) {
+                                            return result.bool ? true : false;
+                                        };
+                                    }
+                                    else {
+                                        event.finish();
+                                    }
+                                    'step 3'
+                                    if (result.suit == 'spade') {
+                                        player.gainMaxHp();
+                                    }
+                                    else if (result.suit == 'club') {
+                                        player.recover();
+                                    }
+                                    if (event.count) event.goto(1);
+                                }
                             }
                         },
+
                         card: {
                             "zhenlongchangjian": {
                                 type: "equip",
@@ -3457,6 +3500,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             },
 
                         },
+
                         translate: {
                             // config
                             update: "更新情况",
@@ -3683,6 +3727,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_dushi": "毒士",
                             "fusion_dushi_info": "锁定技，每当你杀死一名角色时，你令【乱武】视为未发动过。",
 
+                            // fusion_liru
+                            "fusion_zhudong": "助董",
+                            "fusion_zhudong_info": "当你造成1点伤害后，你可进行判定，若为♠，你增加一点体力上限，若为♣，你回复1点体力。",
 
                             // unused
                             geju: '割据',
