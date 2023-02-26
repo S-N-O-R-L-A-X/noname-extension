@@ -3411,13 +3411,47 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     else {
                                         event.finish();
                                     }
+
                                     'step 3'
+                                    event.suit = result.suit;
                                     if (result.suit == 'spade') {
-                                        player.gainMaxHp();
+                                        player.chooseTarget('请选择一名其他角色，令该角色失去一点体力。', function () {
+                                            return target != player;
+                                        }).set('ai', function (target) {
+                                            var player = _status.event.player;
+                                            return get.damageEffect(target, player, player);
+                                        });
                                     }
                                     else if (result.suit == 'club') {
-                                        player.recover();
+                                        player.chooseTarget(get.prompt('fusion_zhudong'), '请选择一名其他角色，然后弃置其一张牌。', function (card, player, target) {
+                                            return target != player && target.hasCard(function (card) {
+                                                return lib.filter.canBeDiscarded(card, player, target);
+                                            }, 'he');
+                                        }).set('ai', function (target) {
+                                            var player = _status.event.player;
+                                            return get.effect(target, { name: 'guohe_copy2' }, player, player)
+                                        });
+
                                     }
+                                    else {
+                                        if (event.count) event.goto(1);
+                                        else event.finish();
+                                    }
+
+                                    'step 4'
+                                    if (result.bool) {
+                                        const target = result.targets[0];
+                                        player.logSkill('fusion_zhudong', target);
+                                        if (event.suit == "spade") {
+                                            player.line(target);
+                                            target.loseHp(1);
+                                        }
+                                        else if (event.suit == "club") {
+                                            player.line(target);
+                                            player.discardPlayerCard(target, true, 'he');
+                                        }
+                                    }
+
                                     if (event.count) event.goto(1);
                                 }
                             }
@@ -3729,7 +3763,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                             // fusion_liru
                             "fusion_zhudong": "助董",
-                            "fusion_zhudong_info": "当你造成1点伤害后，你可进行判定，若为♠，你增加一点体力上限，若为♣，你回复1点体力。",
+                            "fusion_zhudong_info": "当你造成1点伤害后，你可进行判定，若为♠，你令一名角色失去一点体力，若为♣，你令一名角色弃置一张牌。",
 
                             // unused
                             geju: '割据',
@@ -3783,7 +3817,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：。<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融贾诩，融李儒。<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>修改了武将：扩芈月，扩吕不韦。<br>'
 
                         );
