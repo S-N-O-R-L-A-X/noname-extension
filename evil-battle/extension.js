@@ -115,7 +115,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         characterSort: {
                             against7devil: {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou"],
-                                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu"],
+                                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru"],
                                 against7devil_yin: ["yin_caojinyu"],
                                 against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi", "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
                             }
@@ -148,7 +148,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_miyue": "来源于【合纵抗秦】扩展包芈月。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
                             "ex_lvbuwei": "来源于【合纵抗秦】扩展包吕不韦。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】过牌",
                             "fusion_jiaxu": "来源于界贾诩和sp贾诩。对其技能进行了修改。<br>【强度】★★★<br> 【亮点】爆发，防御",
-
+                            "fusion_liru": "来源于手杀界李儒，老李儒，和李儒。加入新技能【助董】。<br>【强度】★★★<br> 【亮点】攻击",
                         },
                         skill: {
                             shenhu: {
