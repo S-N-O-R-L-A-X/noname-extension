@@ -3496,15 +3496,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     target.gain(result.cards, player, 'giveAuto').gaintag.add('fusion_cidu');
                                     player.line(target, 'green');
 
-                                    target.chooseControl("弃置此牌并受到一点伤害", "弃置所有牌").set("prompt", "弃置此牌并受到一点伤害或弃置所有牌").ai = function () {
-                                        if (target.hp === 1) return "弃置所有牌";
+                                    target.chooseControl("弃置此牌并受到一点伤害", "弃置除此牌外的其他牌").set("prompt", "弃置此牌并受到一点伤害或弃置除此牌外的其他牌").ai = function () {
+                                        if (target.hp === 1) return "弃置除此牌外的其他牌";
                                         if (target.countCards("he") > 4) return "弃置此牌并受到一点伤害";
-                                        return "弃置所有牌";
+                                        return "弃置除此牌外的其他牌";
                                     };
 
                                     'step 3'
-                                    if (result.control === "弃置所有牌") {
-                                        event.target.discard(event.target.getCards("he"));
+                                    if (result.control === "弃置除此牌外的其他牌") {
+                                        event.target.discard(event.target.getCards('he', function (card) {
+                                            return !card.hasGaintag('fusion_cidu') && lib.filter.cardDiscardable(card, event.target, 'fusion_cidu');
+                                        }));
                                     }
                                     else {
                                         event.target.discard(event.poisonousCard);
