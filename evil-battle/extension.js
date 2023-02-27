@@ -109,7 +109,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_miyue": ["female", "daqin", 8, ["shenhu", "ex_zhangzheng", "ex_taihou", "ex_youmie", "ex_yintui"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "ex_lvbuwei": ["male", "daqin", 4, ["shenhu", "ex_jugu", "ex_qihuo", "ex_chunqiu", "ex_baixiang"], ["forbidai"]],
                             "fusion_jiaxu": ["male", "qun", 6, ["rewansha", "reluanwu", "reweimu", "zhenlue", "fusion_jianshu", "fusion_yongdi"], ["zhu", "boss", "bossallowed", "forbidai"]],
-                            "fusion_liru": ["male", "qun", 4, ["shenhu", "juece", "mieji", "fencheng", "xinjuece", "xinmieji", "xinfencheng", "rejuece", "remieji", "fusion_zhudong"], ["zhu", "boss", "bossallowed", "forbidai"]],
+                            "fusion_liru": ["male", "qun", 4, ["shenhu", "juece", "mieji", "fencheng", "xinjuece", "xinmieji", "xinfencheng", "rejuece", "remieji", "fusion_zhudong", "fusion_cidu"], ["zhu", "boss", "bossallowed", "forbidai"]],
 
                         },
                         characterSort: {
@@ -3454,7 +3454,76 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                                     if (event.count) event.goto(1);
                                 }
-                            }
+                            },
+                            fusion_cidu: {
+                                audio: 2,
+                                enable: 'phaseUse',
+                                usable: 1,
+                                discard: false,
+                                delay: false,
+                                content: function () {
+                                    "step 0"
+                                    player.draw();
+                                    'step 1'
+                                    var filterTarget = function (card, player, target) {
+                                        return target != player;
+                                    };
+                                    if (!player.countCards('h') || !game.hasPlayer(function (current) {
+                                        return filterTarget(null, player, current);
+                                    })) event.finish();
+                                    else player.chooseCardTarget({
+                                        forced: true,
+                                        prompt: '将一张手牌交给其他角色',
+                                        filterTarget: filterTarget,
+                                        filterCard: true,
+                                        position: 'h',
+                                        ai1: function (card) {
+                                            if (get.type(card, false) == 'equip') return 1 - get.value(card);
+                                            return 7 - get.value(card);
+                                        },
+                                        ai2: function (target) {
+                                            var player = _status.event.player;
+                                            var att = get.attitude(player, target);
+                                            if (att > 0) return -att;
+                                            return -att / get.distance(player, target, 'absolute');
+                                        },
+                                    });
+
+                                    'step 2'
+                                    const target = result.targets[0];
+                                    event.target = target;
+                                    event.poisonousCard = result.cards;
+                                    target.gain(result.cards, player, 'giveAuto').gaintag.add('fusion_cidu');
+                                    player.line(target, 'green');
+
+                                    target.chooseControl("弃置此牌并受到一点伤害", "弃置所有牌").set("prompt", "弃置此牌并受到一点伤害或弃置所有牌").ai = function () {
+                                        if (target.hp === 1) return "弃置所有牌";
+                                        if (target.countCards("he") > 4) return "弃置此牌并受到一点伤害";
+                                        return "弃置所有牌";
+                                    };
+
+                                    'step 3'
+                                    if (result.control === "弃置所有牌") {
+                                        event.target.discard(event.target.getCards("he"));
+                                    }
+                                    else {
+                                        event.target.discard(event.poisonousCard);
+                                        event.target.damage('nocard');
+                                    }
+                                    event.finish();
+                                },
+                                check: function (card) {
+                                    return 6 - get.value(card);
+                                },
+                                ai: {
+                                    order: 2,
+                                    result: {
+                                        target: function (player, target) {
+                                            return get.attitude(player, target) < 0;
+                                        }
+                                    }
+                                },
+                            },
                         },
 
                         card: {
@@ -3764,6 +3833,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // fusion_liru
                             "fusion_zhudong": "助董",
                             "fusion_zhudong_info": "当你造成1点伤害后，你可进行判定，若为♠，你令一名角色失去一点体力，若为♣，你令一名角色弃置一张牌。",
+                            "fusion_cidu": "赐毒",
+                            "fusion_cidu_info": "出牌阶段每名角色限一次，你可以将一张手牌交给一名其他角色，此牌视为【毒】直至离开其区域。然后当一名角色使用“毒”牌结算结束后，你摸一张牌。",
 
                             // unused
                             geju: '割据',
