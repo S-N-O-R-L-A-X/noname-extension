@@ -147,7 +147,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhaogao": "来源于【合纵抗秦】扩展包赵高。加入技能【载棺】并对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
                             "ex_miyue": "来源于【合纵抗秦】扩展包芈月。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
                             "ex_lvbuwei": "来源于【合纵抗秦】扩展包吕不韦。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】过牌",
-                            "fusion_jiaxu": "来源于界贾诩和sp贾诩。对其技能进行了修改。<br>【强度】★★★<br> 【亮点】爆发，防御",
+                            "fusion_jiaxu": "来源于界贾诩和sp贾诩。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】爆发，防御",
                             "fusion_liru": "来源于手杀界李儒，老李儒，和李儒。加入新技能【助董】，【赐毒】。<br>【强度】★★★★<br> 【亮点】攻击",
                         },
                         skill: {
@@ -3877,7 +3877,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         },
         config: {
             intro: {
-                name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。
+                name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。如果发现技能缺失，请在“扩展-诸神降临”中选择“开启”。
                 如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极哦~<br>
                 <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a><br>
                 如果想要加群的话，目前群号是214685856，请备注下从哪得知这个扩展的哈。
@@ -3893,7 +3893,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：5.2<font size="4px">▶▶▶</font></div>`,
+                name: `<div class=".update">扩展版本：5.2.1<font size="4px">▶▶▶</font></div>`,
                 version: 5.2,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
@@ -3901,8 +3901,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
                             '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融贾诩，融李儒。<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>修改了武将：扩芈月，扩吕不韦。<br>'
-
+                            '<li><span style="color:#006400">说明二</span>：<br>修改了武将：扩芈月，扩吕不韦。<br>' +
+                            '<li><span style="color:#006400">说明三</span>：<br>增加了技能缺失时的提示。<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -3911,7 +3911,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：5.2<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：5.2.1<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
