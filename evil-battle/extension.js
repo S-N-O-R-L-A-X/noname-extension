@@ -3381,6 +3381,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     player.restoreSkill("reluanwu");
                                 }
                             },
+                            // fusion_dushi: {
+                            //     trigger: { global: 'dieAfter' },
+                            //     forced: true,
+                            //     filter: function (event, player) {
+                            //         return _status.currentPhase == player || event.source == player;
+                            //     },
+                            //     content: function () {
+                            //         player.restoreSkill("reluanwu");
+                            //     }
+                            // },
 
                             fusion_zhudong: {
                                 audio: 2,
