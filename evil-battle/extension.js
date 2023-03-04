@@ -143,12 +143,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_zhaoji": "来源于【合纵抗秦】扩展包赵姬。对【大期】进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击",
                             "ex_baiqi": "来源于【合纵抗秦】扩展包白起。白起作为秦军统帅，加入秦军士兵的技能。<br>【强度】★★★★★<br> 【亮点】攻击",
                             "ex_zhangyi": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
-                            "ex_shangyang": "来源于【合纵抗秦】扩展包商鞅。加入技能【连坐】并对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击，爆发",
+                            "ex_shangyang": "来源于【合纵抗秦】扩展包商鞅。商鞅变法建立连坐制，因此加入技能【连坐】并对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击，爆发",
                             "ex_zhaogao": "来源于【合纵抗秦】扩展包赵高。加入技能【载棺】并对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
                             "ex_miyue": "来源于【合纵抗秦】扩展包芈月。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
                             "ex_lvbuwei": "来源于【合纵抗秦】扩展包吕不韦。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】过牌",
                             "fusion_jiaxu": "来源于界贾诩和sp贾诩。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】爆发，防御",
-                            "fusion_liru": "来源于手杀界李儒，老李儒，和李儒。加入新技能【助董】，【赐毒】。<br>【强度】★★★★<br> 【亮点】攻击",
+                            "fusion_liru": "来源于手杀界李儒，老李儒，和李儒。李儒是董卓首席谋士，因此加入新技能【助董】。并且受董卓命令毒杀刘辩，因此加入新技能【赐毒】。<br>【强度】★★★★<br> 【亮点】攻击",
                         },
                         skill: {
                             shenhu: {
@@ -444,7 +444,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                 },
                             },
 
-                            //
+                            // fusion_xuhuang
                             "famine": {
                                 enable: "phaseUse",
                                 usable: 7,
@@ -3691,6 +3691,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             boss_rende: '仁德',
                             boss_rende_info: '出牌阶段，若你有杀，你可以展示所有手牌并弃置其中的杀，然后令任意名角色回复一点体力。然后你摸X张牌。（X为以此法恢复体力的角色数）',
 
+                            // ex_diaochan
                             ex_yuhun: "驭魂",
                             ex_yuhun_info: "出牌阶段限一次，你可以弃置任意张不同花色的牌召唤等量阵营与你相同的【傀儡】随机成为你的下家或上家(场上数量不能超过4)。<br><b>【傀儡】</b>：①其初始体力值为3且每轮游戏随机增加一点体力上限或回复一点体力；②你与【傀儡】不能指定对方为目标且每名【傀儡】令你或其与其他角色计算距离-1；③其回合开始前改为摸两张牌，你使用牌后其对你指定的目标再次使用此牌(基本牌或普通锦囊牌)；④其视为拥有你装备区牌的效果，你视为拥有其的技能；⑤你死亡后所有【傀儡】立即死亡。",
                             ex_kongshen: "控身",
@@ -3893,16 +3894,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：5.2.1<font size="4px">▶▶▶</font></div>`,
-                version: 5.2,
+                name: `<div class=".update">扩展版本：5.3<font size="4px">▶▶▶</font></div>`,
+                version: 5.3,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融贾诩，融李儒。<br>' +
-                            '<li><span style="color:#006400">说明二</span>：<br>修改了武将：扩芈月，扩吕不韦。<br>' +
-                            '<li><span style="color:#006400">说明三</span>：<br>增加了技能缺失时的提示。<br>'
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：。<br>' +
+                            '<li><span style="color:#006400">说明二</span>：<br><br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
                         this.updateContent = more;
@@ -3911,7 +3911,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：5.2.1<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：5.3<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
