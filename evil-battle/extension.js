@@ -111,11 +111,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_jiaxu": ["male", "qun", 7, ["rewansha", "reluanwu", "reweimu", "zhenlue", "fusion_jianshu", "fusion_yongdi"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "fusion_liru": ["male", "qun", 5, ["shenhu", "juece", "mieji", "fencheng", "xinjuece", "xinmieji", "xinfencheng", "rejuece", "remieji", "fusion_zhudong", "fusion_cidu"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "fusion_weiguojixie": ["none", "wei", 15, ["boss_jiguan", "boss_nailuo", "boss_didongjg", "boss_lianyujg", "boss_tunshi", "boss_tanshi"], ["zhu", "boss", "bossallowed"]],
+                            "fusion_shuguojixie": ["none", "shu", 15, ["boss_jiguan", "boss_yuhuojg", "boss_tianyun", "boss_zhenwei", "yizhong", "boss_lingyu", "boss_mojianjg"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
                                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou"],
-                                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie"],
+                                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie", "fusion_shuguojixie"],
                                 against7devil_yin: ["yin_caojinyu"],
                                 against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi", "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
                             }
@@ -149,7 +150,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_lvbuwei": "来源于【合纵抗秦】扩展包吕不韦。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】过牌",
                             "fusion_jiaxu": "来源于界贾诩和sp贾诩。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】爆发，防御",
                             "fusion_liru": "来源于手杀界李儒，老李儒，和李儒。李儒是董卓首席谋士，因此加入新技能【助董】。并且受董卓命令毒杀刘辩，因此加入新技能【赐毒】。<br>【强度】★★★★<br> 【亮点】攻击",
-                            "fusion_weiguojixie": "来源于剑阁模式魏国所有机械，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】综合",
+                            "fusion_weiguojixie": "来源于剑阁模式魏国所有机械，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】控制，输出",
+                            "fusion_shuguojixie": "来源于剑阁模式蜀国所有机械，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】输出",
                         },
                         skill: {
                             shenhu: {
@@ -3660,6 +3662,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_jiaxu": "融贾诩",
                             "fusion_liru": "融李儒",
                             "fusion_weiguojixie": "魏国机械",
+                            "fusion_shuguojixie": "蜀国机械",
 
                             // skill
                             shenhu: "神护",
