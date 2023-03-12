@@ -110,8 +110,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_lvbuwei": ["male", "daqin", 4, ["shenhu", "ex_jugu", "ex_qihuo", "ex_chunqiu", "ex_baixiang"], ["forbidai"]],
                             "fusion_jiaxu": ["male", "qun", 7, ["rewansha", "reluanwu", "reweimu", "zhenlue", "fusion_jianshu", "fusion_yongdi"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "fusion_liru": ["male", "qun", 5, ["shenhu", "juece", "mieji", "fencheng", "xinjuece", "xinmieji", "xinfencheng", "rejuece", "remieji", "fusion_zhudong", "fusion_cidu"], ["zhu", "boss", "bossallowed", "forbidai"]],
-                            "fusion_weiguojixie": ["none", "wei", 15, ["boss_jiguan", "boss_nailuo", "boss_didongjg", "boss_lianyujg", "boss_tunshi", "boss_tanshi"], ["zhu", "boss", "bossallowed"]],
-                            "fusion_shuguojixie": ["none", "shu", 15, ["boss_jiguan", "boss_yuhuojg", "boss_tianyun", "boss_zhenwei", "yizhong", "boss_lingyu", "boss_mojianjg"], ["zhu", "boss", "bossallowed"]],
+                            "fusion_weiguojixie": ["none", "wei", 10, ["boss_jiguan", "boss_nailuo", "boss_didongjg", "boss_lianyujg", "boss_tunshi", "boss_tanshi"], ["zhu", "boss", "bossallowed"]],
+                            "fusion_shuguojixie": ["none", "shu", 12, ["boss_jiguan", "boss_yuhuojg", "boss_tianyun", "boss_zhenwei", "fusion_benlei", "yizhong", "boss_lingyu", "boss_mojianjg"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -150,8 +150,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_lvbuwei": "来源于【合纵抗秦】扩展包吕不韦。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】过牌",
                             "fusion_jiaxu": "来源于界贾诩和sp贾诩。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】爆发，防御",
                             "fusion_liru": "来源于手杀界李儒，老李儒，和李儒。李儒是董卓首席谋士，因此加入新技能【助董】。并且受董卓命令毒杀刘辩，因此加入新技能【赐毒】。<br>【强度】★★★★<br> 【亮点】攻击",
-                            "fusion_weiguojixie": "来源于剑阁模式魏国所有机械，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】控制，输出",
-                            "fusion_shuguojixie": "来源于剑阁模式蜀国所有机械，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】输出",
+                            "fusion_weiguojixie": "来源于剑阁模式魏国所有机械，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】控制，攻击",
+                            "fusion_shuguojixie": "来源于剑阁模式蜀国所有机械，将其技能进行融合。<br>【强度】★★★★<br> 【亮点】攻击，防御",
                         },
                         skill: {
                             shenhu: {
@@ -3539,6 +3539,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
+                            fusion_benlei: {
+                                trigger: { player: 'phaseBegin' },
+                                forced: true,
+                                content: function () {
+                                    var list = game.players.slice(0);
+                                    list.remove(player);
+                                    var target = list.randomGet();
+                                    player.line(target);
+                                    target.damage(2, "thunder");
+                                },
+                            }
                         },
 
                         card: {
@@ -3853,6 +3864,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             fusion_zhudong_info: "当你造成1点伤害后，你可进行判定，若为♠，你令一名角色失去一点体力，若为♣，你令一名角色弃置一张牌。",
                             fusion_cidu: "赐毒",
                             fusion_cidu_info: "出牌阶段限一次，你可以摸一张牌，将一张手牌交给一名其他角色，该角色选择一项：弃置此牌并受到一点伤害或弃置除此牌外的其他牌。",
+
+                            // fusion_shuguojixie
+                            fusion_benlei: "奔雷",
+                            fusion_benlei_info: "锁定技，回合开始时，你随机对一名其他角色造成两点雷属性伤害。",
 
                             // unused
                             geju: '割据',
