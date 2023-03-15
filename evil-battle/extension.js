@@ -111,7 +111,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_jiaxu": ["male", "qun", 7, ["rewansha", "reluanwu", "reweimu", "zhenlue", "fusion_jianshu", "fusion_yongdi"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "fusion_liru": ["male", "qun", 5, ["shenhu", "juece", "mieji", "fencheng", "xinjuece", "xinmieji", "xinfencheng", "rejuece", "remieji", "fusion_zhudong", "fusion_cidu"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "fusion_weiguojixie": ["none", "wei", 10, ["boss_jiguan", "boss_nailuo", "boss_didongjg", "boss_lianyujg", "boss_tunshi", "boss_tanshi"], ["zhu", "boss", "bossallowed"]],
-                            "fusion_shuguojixie": ["none", "shu", 12, ["boss_jiguan", "boss_yuhuojg", "boss_tianyun", "boss_zhenwei", "fusion_benlei", "yizhong", "boss_lingyu", "boss_mojianjg"], ["zhu", "boss", "bossallowed"]],
+                            "fusion_shuguojixie": ["none", "shu", 15, ["boss_jiguan", "boss_yuhuojg", "boss_tianyun", "fusion_zhenwei", "fusion_benlei", "yizhong", "boss_lingyu", "boss_mojianjg"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -3539,6 +3539,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
+
+                            // fusion_shuguojixie
                             fusion_benlei: {
                                 trigger: { player: 'phaseBegin' },
                                 forced: true,
@@ -3549,7 +3551,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     player.line(target);
                                     target.damage(2, "thunder");
                                 },
-                            }
+                            },
+                            fusion_zhenwei: {
+                                inherit: "feiying",
+                            },
                         },
 
                         card: {
@@ -3868,6 +3873,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             // fusion_shuguojixie
                             fusion_benlei: "奔雷",
                             fusion_benlei_info: "锁定技，回合开始时，你随机对一名其他角色造成两点雷属性伤害。",
+                            fusion_zhenwei: "镇卫",
+                            fusion_zhenwei_info: "锁定技，其他角色计算与你的距离时+1。",
 
                             // unused
                             geju: '割据',
