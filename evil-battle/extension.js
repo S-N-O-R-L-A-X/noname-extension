@@ -152,8 +152,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "ex_lvbuwei": "来源于【合纵抗秦】扩展包吕不韦。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】过牌",
                             "fusion_jiaxu": "来源于界贾诩和sp贾诩。对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】爆发，防御",
                             "fusion_liru": "来源于手杀界李儒，老李儒，和李儒。李儒是董卓首席谋士，因此加入新技能【助董】。并且受董卓命令毒杀刘辩，因此加入新技能【赐毒】。<br>【强度】★★★★<br> 【亮点】攻击",
-                            "fusion_weiguojixie": "来源于剑阁模式魏国所有机械，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】控制，攻击",
-                            "fusion_shuguojixie": "来源于剑阁模式蜀国所有机械，将其技能进行融合。<br>【强度】★★★★<br> 【亮点】攻击，防御",
+                            "fusion_weiguojixie": "来源于剑阁模式魏国所有机械，将其技能进行融合。<br>【强度】★★★★<br> 【亮点】控制，攻击",
+                            "fusion_shuguojixie": "来源于剑阁模式蜀国所有机械，将其技能进行融合，并对其部分技能进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击，防御",
+                            "fusion_weiguoyinghun": "来源于剑阁模式魏国所有英魂，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】综合",
+                            "fusion_shuguoyinghun": "来源于剑阁模式蜀国所有英魂，将其技能进行融合，并对其部分技能进行了修改。。<br>【强度】★★★★<br> 【亮点】综合",
                         },
                         skill: {
                             shenhu: {
@@ -3932,7 +3934,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：魏国机械，蜀国机械。<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：魏国机械、蜀国机械、魏国英魂、蜀国英魂。<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>更新了说明内容<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
