@@ -112,7 +112,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_liru": ["male", "qun", 5, ["shenhu", "juece", "mieji", "fencheng", "xinjuece", "xinmieji", "xinfencheng", "rejuece", "remieji", "fusion_zhudong", "fusion_cidu"], ["zhu", "boss", "bossallowed", "forbidai"]],
                             "fusion_weiguojixie": ["none", "wei", 10, ["boss_jiguan", "boss_nailuo", "boss_didongjg", "boss_lianyujg", "boss_tunshi", "boss_tanshi"], ["zhu", "boss", "bossallowed"]],
                             "fusion_shuguojixie": ["none", "shu", 15, ["boss_jiguan", "boss_yuhuojg", "boss_tianyun", "fusion_zhenwei", "fusion_benlei", "yizhong", "boss_lingyu", "boss_mojianjg"], ["zhu", "boss", "bossallowed"]],
-                            "fusion_shuguoyinghun": ["none", "shu", 8, ["shenhu", "boss_gongshenjg", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_lingfeng", "boss_jizhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg", "boss_xiaorui", "boss_huchen", "boss_fengjian", "boss_keding"], ["zhu", "boss", "bossallowed"]],
+                            "fusion_shuguoyinghun": ["none", "shu", "1/2", ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_lingfeng", "boss_jizhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg", "boss_xiaorui", "boss_huchen", "boss_fengjian", "boss_keding"], ["zhu", "boss", "bossallowed"]],
                             "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "boss_jiaoxie"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
@@ -155,7 +155,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_weiguojixie": "来源于剑阁模式魏国所有机械，将其技能进行融合。<br>【强度】★★★★<br> 【亮点】控制，攻击",
                             "fusion_shuguojixie": "来源于剑阁模式蜀国所有机械，将其技能进行融合，并对其部分技能进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击，防御",
                             "fusion_weiguoyinghun": "来源于剑阁模式魏国所有英魂，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】综合",
-                            "fusion_shuguoyinghun": "来源于剑阁模式蜀国所有英魂，将其技能进行融合，并对其部分技能进行了修改。。<br>【强度】★★★★<br> 【亮点】综合",
+                            "fusion_shuguoyinghun": "来源于剑阁模式蜀国所有英魂，将其技能进行融合，并对其部分技能进行了修改。。<br>【强度】★★★★★<br> 【亮点】综合",
                         },
                         skill: {
                             shenhu: {
@@ -3559,6 +3559,24 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             fusion_zhenwei: {
                                 inherit: "feiying",
                             },
+
+                            // shuguoyinghun
+                            fusion_gongshen: {
+                                audio: 2,
+                                trigger: { player: 'phaseEnd' },
+                                content: function () {
+                                    if (player.hp < player.maxHp) {
+                                        player.recover();
+                                    }
+                                    else {
+                                        const list = game.players.slice(0);
+                                        list.remove(player);
+                                        const target = list.randomGet();
+                                        player.line(target, 'fire');
+                                        target.damage('fire');
+                                    }
+                                },
+                            },
                         },
 
                         card: {
@@ -3881,6 +3899,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             fusion_benlei_info: "锁定技，回合开始时，你随机对一名其他角色造成两点雷属性伤害。",
                             fusion_zhenwei: "镇卫",
                             fusion_zhenwei_info: "锁定技，其他角色计算与你的距离时+1。",
+
+                            // fusion_shuguoyinghun
+                            fusion_gongshen: "工神",
+                            fusion_gongshen_info: "回合结束阶段，若你已受伤，你回复一点体力；否则你对其他角色随机造成一点火焰伤害。",
 
                             // unused
                             geju: '割据',
