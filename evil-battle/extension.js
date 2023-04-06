@@ -113,7 +113,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_weiguojixie": ["none", "wei", 10, ["boss_jiguan", "boss_nailuo", "boss_didongjg", "boss_lianyujg", "boss_tunshi", "boss_tanshi"], ["zhu", "boss", "bossallowed"]],
                             "fusion_shuguojixie": ["none", "shu", 15, ["boss_jiguan", "boss_yuhuojg", "boss_tianyun", "fusion_zhenwei", "fusion_benlei", "yizhong", "boss_lingyu", "boss_mojianjg"], ["zhu", "boss", "bossallowed"]],
                             "fusion_shuguoyinghun": ["none", "shu", "1/2", ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_lingfeng", "boss_jizhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg", "boss_xiaorui", "boss_huchen", "boss_fengjian", "boss_keding"], ["zhu", "boss", "bossallowed"]],
-                            "fusion_shuguoyinghun2": ["none", "shu", 3, ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg"], ["zhu", "boss", "bossallowed"]],
+                            "fusion_shuguoyinghun2": ["none", "shu", "3/5", ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg"], ["zhu", "boss", "bossallowed"]],
                             "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "boss_jiaoxie"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
@@ -157,7 +157,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_shuguojixie": "来源于剑阁模式蜀国所有机械，将其技能进行融合，并对其部分技能进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击，防御",
                             "fusion_weiguoyinghun": "来源于剑阁模式魏国所有英魂，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】综合",
                             "fusion_shuguoyinghun": "来源于剑阁模式蜀国所有英魂，将其技能进行融合，并对其部分技能进行了修改。。<br>【强度】★★★★★<br> 【亮点】综合",
-                            "fusion_shuguoyinghun2": "来源于剑阁模式蜀国英魂中的智囊型武将（其实就是蜀国英魂强度过高出个限制版），将其技能进行融合，并对其部分技能进行了修改。。<br>【强度】★★★★<br> 【亮点】综合",
+                            "fusion_shuguoyinghun2": "来源于剑阁模式蜀国英魂中的智囊型武将（其实就是蜀国英魂强度过高出个限制版），将其技能进行融合，并对其部分技能进行了修改。<br>【强度】★★★<br> 【亮点】综合",
                         },
                         skill: {
                             shenhu: {
@@ -1871,7 +1871,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     return event.card && event.card.name == 'sha' && !player.inRange(event.target);
                                 },
                                 forced: true,
-                                content: function () { },
+                                content: function () {},
                             },
 
                             "bubing_fangzhen": {
