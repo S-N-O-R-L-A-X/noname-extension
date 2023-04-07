@@ -114,7 +114,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_shuguojixie": ["none", "shu", 15, ["boss_jiguan", "boss_yuhuojg", "boss_tianyun", "fusion_zhenwei", "fusion_benlei", "yizhong", "boss_lingyu", "boss_mojianjg"], ["zhu", "boss", "bossallowed"]],
                             "fusion_shuguoyinghun": ["none", "shu", "1/2", ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_lingfeng", "boss_jizhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg", "boss_xiaorui", "boss_huchen", "boss_fengjian", "boss_keding"], ["zhu", "boss", "bossallowed"]],
                             "fusion_shuguoyinghun2": ["none", "shu", "3/5", ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg"], ["zhu", "boss", "bossallowed"]],
-                            "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "boss_jiaoxie"], ["zhu", "boss", "bossallowed"]],
+                            "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "fusion_jiaoxie"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -3579,6 +3579,63 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                                     }
                                 },
                             },
+
+                            fusion_jiaoxie: {
+                                enable: 'phaseUse',
+                                usable: 1,
+                                filter: function (event, player) {
+                                    return game.hasPlayer(function (current) {
+                                        return current != player && current.countCards('he');
+                                    });
+                                },
+                                content: function () {
+                                    'step 0'
+                                    event.num = 0;
+                                    player.chooseTarget(get.prompt2('fusion_jiaoxie'), [1, 2], function (card, player, target) {
+                                        return target != player && target.countCards('he') > 0;
+                                    }, function (target) {
+                                        var att = get.attitude(_status.event.player, target);
+                                        if (target.hasSkill('tuntian')) return att / 10;
+                                        return 1 - att;
+                                    }).set('ai', function (target) {
+                                        if (target.countCards('e', function (card) {
+                                            return get.value(card, target) <= 0;
+                                        }) > 0) return 1;
+                                        return -1;
+                                    });
+                                    'step 1'
+                                    if (result.bool) {
+                                        event.target = result.targets;
+                                    }
+                                    else {
+                                        event.finish();
+                                    }
+                                    'step 2'
+                                    event.target[event.num].chooseCard('he', true, '缴械：将一张牌交给' + get.translation(player));
+
+                                    'step 3'
+                                    game.log(result.cards);
+                                    if (result.bool) {
+                                        event.target[event.num].give(result.cards[0], player, true);
+                                        if (event.num < event.target.length - 1) {
+                                            ++event.num;
+                                            event.goto(2);
+                                        }
+                                    }
+
+                                },
+                                ai: {
+                                    order: 9,
+                                    result: {
+                                        target: function (player, target) {
+                                            if (target.countCards('e', function (card) {
+                                                return get.value(card, target) <= 0;
+                                            }) > 0) return 1;
+                                            return -1;
+                                        },
+                                    },
+                                },
+                            },
                         },
 
                         card: {
@@ -3907,6 +3964,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             fusion_gongshen: "工神",
                             fusion_gongshen_info: "回合结束阶段，若你已受伤，你回复一点体力；否则你对其他角色随机造成一点火焰伤害。",
 
+                            // fuxion_weiguoyinghun
+                            fusion_jiaoxie: '缴械',
+                            fusion_jiaoxie_info: '出牌阶段限一次，你可令两名其他角色各交给你一张牌。',
+
                             // unused
                             geju: '割据',
                             geju_info: '锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。',
@@ -3952,7 +4013,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：5.3<font size="4px">▶▶▶</font></div>`,
+                name: `<div class=".update">扩展版本：5.3.2<font size="4px">▶▶▶</font></div>`,
                 version: 5.3,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
@@ -3969,7 +4030,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：5.3<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：5.3.2<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
