@@ -115,6 +115,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_shuguoyinghun": ["none", "shu", "1/2", ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_lingfeng", "boss_jizhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg", "boss_xiaorui", "boss_huchen", "boss_fengjian", "boss_keding"], ["zhu", "boss", "bossallowed"]],
                             "fusion_shuguoyinghun2": ["none", "shu", "3/5", ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg"], ["zhu", "boss", "bossallowed"]],
                             "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "fusion_jiaoxie"], ["zhu", "boss", "bossallowed"]],
+                            "fusion_puyuan": ["male", "shu", 10, ["shenhu", "olshengong", "olqisi", "pytianjiang", "pyzhuren"], ["zhu", "boss", "bossallowed"]],
                         },
                         characterSort: {
                             against7devil: {
@@ -3763,6 +3764,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             "fusion_shuguoyinghun": "蜀国英魂",
                             "fusion_weiguoyinghun": "魏国英魂",
                             "fusion_shuguoyinghun2": "蜀国智囊团",
+                            "fusion_puyuan": "融蒲元",
 
                             // skill
                             shenhu: "神护",
@@ -4013,14 +4015,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 nopointer: true,
             },
             update: {
-                name: `<div class=".update">扩展版本：5.3.2<font size="4px">▶▶▶</font></div>`,
-                version: 5.3,
+                name: `<div class=".update">扩展版本：5.4.0<font size="4px">▶▶▶</font></div>`,
+                version: 5.4,
                 clear: true,
                 intro: "点击查看此版本的更新内容",
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：魏国机械、蜀国机械、魏国英魂、蜀国英魂、蜀国智囊团。<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：。<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>更新了说明内容<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
@@ -4030,7 +4032,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else {
                         this.parentNode.removeChild(this.updateContent);
                         delete this.updateContent;
-                        this.innerHTML = '<div class=".update">扩展版本：5.3.2<font size="4px">▶▶▶</font></div>';
+                        this.innerHTML = '<div class=".update">扩展版本：5.4.0<font size="4px">▶▶▶</font></div>';
                     };
                 }
             },
