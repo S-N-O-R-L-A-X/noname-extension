@@ -3970,6 +3970,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                             fusion_jiaoxie: '缴械',
                             fusion_jiaoxie_info: '出牌阶段限一次，你可令两名其他角色各交给你一张牌。',
 
+                            // fusion_puyuan
+                            fusion_bianshui: "辨水",
+                            fusion_bianshui_info: "出牌阶段开始时，你可以预测本回合你铸造成功的装备数。此阶段结束时，若你猜对，你摸一张牌并视为使用一张【冰杀】。",
+
                             // unused
                             geju: '割据',
                             geju_info: '锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。',
@@ -4022,7 +4026,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onclick: function () {
                     if (this.updateContent === undefined) {
                         const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：。<br>' +
+                            '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融蒲元。<br>' +
                             '<li><span style="color:#006400">说明二</span>：<br>更新了说明内容<br>'
                         );
                         this.parentNode.insertBefore(more, this.nextSibling);
