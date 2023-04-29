@@ -3679,14 +3679,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     },
                     logTarget: 'player',
                     content: function () {
-                      game.log("===============")
-                      game.log(player.storage.success);
-                      game.log(player.storage.times);
-
                       if (player.storage.success === player.storage.times) {
                         player.draw();
                         player.chooseUseTarget({ name: 'sha', nature: 'ice' }, get.prompt('fusion_bianshui'), '视为使用一张【冰杀】').logSkill = 'fusion_bianshui';
                       }
+                      player.storage.success = 0;
                     },
 
                   },
