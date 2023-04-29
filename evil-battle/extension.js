@@ -115,7 +115,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shuguoyinghun": ["none", "shu", "1/2", ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_lingfeng", "boss_jizhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg", "boss_xiaorui", "boss_huchen", "boss_fengjian", "boss_keding"], ["zhu", "boss", "bossallowed"]],
               "fusion_shuguoyinghun2": ["none", "shu", "3/5", ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg"], ["zhu", "boss", "bossallowed"]],
               "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "fusion_jiaoxie"], ["zhu", "boss", "bossallowed"]],
-              "fusion_puyuan": ["male", "shu", 10, ["shenhu", "olshengong", "olqisi", "pytianjiang", "fusion_zhuren", "bianshui"], ["zhu", "boss", "bossallowed"]],
+              "fusion_puyuan": ["male", "shu", 10, ["shenhu", "olshengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -3640,7 +3640,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // fusion_puyuan
 
-              bianshui: {
+              fusion_bianshui: {
                 trigger: { player: 'phaseUseBegin' },
                 direct: true,
                 init: function (player) {
@@ -3649,7 +3649,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                 content: function () {
                   'step 0'
-                  player.addTempSkill('bianshui_effect', 'phaseUseAfter');
+                  player.addTempSkill('fusion_bianshui_effect', 'phaseUseAfter');
                   var choice = "0次";
                   var list = [];
                   for (let i = 0; i <= 9; i++) {
@@ -3660,7 +3660,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }).set('choice', choice).prompt = get.prompt2(event.name);
 
                   'step 1'
-                  player.storage.bianshui_times = parseInt(result.control);
+                  player.storage.times = parseInt(result.control);
 
                 },
                 ai: { expose: 0.35 },
@@ -3685,7 +3685,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                       if (player.storage.success === player.storage.times) {
                         player.draw();
-                        player.chooseUseTarget({ name: 'sha', nature: 'ice' }, get.prompt('bianshui'), '视为使用一张【冰杀】').logSkill = 'bianshui';
+                        player.chooseUseTarget({ name: 'sha', nature: 'ice' }, get.prompt('fusion_bianshui'), '视为使用一张【冰杀】').logSkill = 'fusion_bianshui';
                       }
                     },
 
