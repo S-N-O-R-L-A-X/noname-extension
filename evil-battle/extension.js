@@ -4037,22 +4037,29 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       }
                       game.cardsGotoSpecial(cards);
                       game.log(cards, '被移出了游戏');
-                      player.addTempSkill('fusion_shengong_draw');
-                      player.addMark('fusion_shengong_draw', cards.length, false);
+                      player.addTempSkill('fusion_shengong_loss');
+                      player.addMark('fusion_shengong_loss', cards.length, false);
                       if (!storage.length) player.removeSkill('fusion_shengong_destroy');
                     },
                   },
-                  draw: {
-                    audio: 'fusion_shengong',
+                  loss: {
+                    audio: 'shengong',
                     trigger: { global: 'phaseJieshuBegin' },
                     forced: true,
                     charlotte: true,
                     onremove: true,
                     filter: function (event, player) {
-                      return player.countMark('fusion_shengong_draw') > 0;
+                      return player.countMark('fusion_shengong_loss') > 0;
                     },
                     content: function () {
-                      player.draw(player.countMark('fusion_shengong_draw'));
+                      const loss = player.countMark('fusion_shengong_loss');
+                      player.draw(loss);
+                      if (player != trigger.player) {
+                        for (let i = 0; i < loss; ++i) {
+                          player.useCard(get.autoViewAs({ name: 'sha', nature: 'ice' }, result.cards), result.cards, false, trigger.player, 'fusion_shengong');
+                        }
+
+                      }
                     },
                   },
                 },
@@ -4394,11 +4401,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // fusion_puyuan
               fusion_bianshui: "辨水",
-              fusion_bianshui_info: "出牌阶段开始时，你可以预测本回合你铸造成功的装备数。此阶段结束时，若你猜对，你摸一张牌并视为使用一张【冰杀】。",
+              fusion_bianshui_info: "出牌阶段开始时，你可以预测本回合你锻造成功的次数。此阶段结束时，你视为使用X张【冰杀】。若你猜对，你回复X+Y点体力并摸Y张牌。（X为锻造失败的次数，Y为锻造成功的次数）",
               fusion_shengong: "神工",
               fusion_shengong_info: "出牌阶段每项限一次。你可以弃置一张武器牌/防具牌/其他装备牌，并发起一次“锻造”。然后你从锻造结果中选择一张牌，置于一名角色的装备区内（可替换原装备）。当有因你发动〖神工〗而加入游戏的牌进入弃牌堆后，你将此牌移出游戏，然后你于当前回合结束后摸一张牌。",
               fusion_zhuren: "铸刃",
-              fusion_zhuren_info: "出牌阶段限一次，你可以弃置一张手牌。根据此牌的花色点数，你有一定概率打造成功并获得一张武器牌（若打造失败或武器已有则改为摸一张【杀】，花色决定武器名称，点数决定成功率）。此武器牌进入弃牌堆时，将其移出游戏。",
+              fusion_zhuren_info: "出牌阶段限一次，你可以弃置一张手牌。根据此牌的花色点数，你有一定概率锻造成功并获得一张武器牌（若打造失败或武器已有则改为摸一张【杀】，花色决定武器名称，点数决定成功率）。此武器牌进入弃牌堆时，将其移出游戏。",
 
 
               // unused
