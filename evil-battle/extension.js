@@ -3680,14 +3680,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     },
                     logTarget: 'player',
                     content: function () {
-                      game.log(player.storage.times);
-                      player.draw(player.storage.times);
-                      if (player.storage.success === player.storage.times) {
-                        for (let i = 0; i < player.storage.times; ++i) {
+                      if (player.storage.failure > 0) {
+                        player.loseHp();
+                        for (let i = 0; i < player.storage.failure; ++i) {
                           player.chooseUseTarget({ name: 'sha', nature: 'ice' }, get.prompt('fusion_bianshui'), '视为使用一张【冰杀】').logSkill = 'fusion_bianshui';
                         }
                       }
+                      if (player.storage.success === player.storage.times) {
+                        player.recover(player.storage.success + player.storage.failure);
+                        player.draw(player.storage.success);
+                      }
                       player.storage.success = 0;
+                      player.storage.failure = 0;
                     },
 
                   },
