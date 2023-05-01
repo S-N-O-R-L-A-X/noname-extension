@@ -120,7 +120,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             characterSort: {
               against7devil: {
                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou"],
-                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie", "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2"],
+                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie", "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2", "fusion_puyuan"],
                 against7devil_yin: ["yin_caojinyu"],
                 against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi", "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
               }
@@ -159,6 +159,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_weiguoyinghun": "来源于剑阁模式魏国所有英魂，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】综合",
               "fusion_shuguoyinghun": "来源于剑阁模式蜀国所有英魂，将其技能进行融合，并对其部分技能进行了修改。。<br>【强度】★★★★★<br> 【亮点】综合",
               "fusion_shuguoyinghun2": "来源于剑阁模式蜀国英魂中的智囊型武将（其实就是蜀国英魂强度过高出个限制版），将其技能进行融合，并对其部分技能进行了修改。<br>【强度】★★★<br> 【亮点】综合",
+              "fusion_puyuan": "来源于十周年武将蒲元与OL蒲元，将其技能进行融合和修改，并加入新技能【辨水】。<br>【强度】★★★★<br> 【亮点】铸造",
+
             },
             skill: {
               shenhu: {
@@ -4403,7 +4405,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_bianshui: "辨水",
               fusion_bianshui_info: "出牌阶段开始时，你可以预测本回合你锻造成功的次数。此阶段结束时，你视为使用X张【冰杀】。若你猜对，你回复X+Y点体力并摸Y张牌。（X为锻造失败的次数，Y为锻造成功的次数）",
               fusion_shengong: "神工",
-              fusion_shengong_info: "出牌阶段每项限一次。你可以弃置一张武器牌/防具牌/其他装备牌，并发起一次“锻造”。然后你从锻造结果中选择一张牌，置于一名角色的装备区内（可替换原装备）。当有因你发动〖神工〗而加入游戏的牌进入弃牌堆后，你将此牌移出游戏，然后你于当前回合结束后摸一张牌。",
+              fusion_shengong_info: "出牌阶段每项限一次。你可以弃置一张武器牌/防具牌/其他装备牌，并发起一次“锻造”。然后你从锻造结果中选择一张牌，置于一名角色的装备区内（可替换原装备）。当有因你发动〖神工〗而加入游戏的牌进入弃牌堆后，你将此牌移出游戏，然后你于当前回合结束后摸X张牌。若该回合不为你的回合，你视为对当前角色使用X张【冰杀】。（X为本回合移出游戏的神工装备牌数）",
               fusion_zhuren: "铸刃",
               fusion_zhuren_info: "出牌阶段限一次，你可以弃置一张手牌。根据此牌的花色点数，你有一定概率锻造成功并获得一张武器牌（若打造失败或武器已有则改为摸一张【杀】，花色决定武器名称，点数决定成功率）。此武器牌进入弃牌堆时，将其移出游戏。",
 
