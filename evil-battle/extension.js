@@ -4069,6 +4069,51 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
 
+              // fusion_shen_jiangwei
+              fusion_tiaoxin: {
+                audio: 'tiaoxin',
+                audioname: ['sp_jiangwei', 'xiahouba', 're_jiangwei', 'gz_jiangwei', 'ol_jiangwei'],
+                enable: 'phaseUse',
+                usable: 2,
+                filter: function (event, player) {
+                  if (player.getStat('skill').fusion_tiaoxin) return !player.hasSkill('fusion_tiaoxin2');
+                  return true;
+                },
+                filterTarget: function (card, player, target) {
+                  return target != player && target.countCards('he') > 0;
+                },
+                content: function () {
+                  "step 0"
+                  target.chooseToUse(function (card, player, event) {
+                    if (get.name(card) != 'sha') return false;
+                    return lib.filter.filterCard.apply(this, arguments);
+                  }, '挑衅：对' + get.translation(player) + '使用一张杀，或令其弃置你的一张牌').set('targetRequired', true).set('complexSelect', true).set('filterTarget', function (card, player, target) {
+                    if (target != _status.event.sourcex && !ui.selected.targets.contains(_status.event.sourcex)) return false;
+                    return lib.filter.filterTarget.apply(this, arguments);
+                  }).set('sourcex', player);
+                  "step 1"
+                  if (result.bool && player.getHistory('damage', function (evt) {
+                    return evt.getParent().type == 'card' && evt.getParent(4) == event;
+                  }).length > 0) player.addTempSkill('fusion_tiaoxin2', 'phaseUseEnd');
+                  else if (target.countDiscardableCards(player, 'he') > 0) player.discardPlayerCard(target, 'he', true).boolline = true;
+                },
+                ai: {
+                  order: 4,
+                  expose: 0.2,
+                  result: {
+                    target: -1,
+                    player: function (player, target) {
+                      if (target.countCards('h') == 0) return 0;
+                      if (target.countCards('h') == 1) return -0.1;
+                      if (player.hp <= 2) return -2;
+                      if (player.countCards('h', 'shan') == 0) return -1;
+                      return -0.5;
+                    }
+                  },
+                  threaten: 1.1
+                }
+              },
+              fusion_tiaoxin2: {},
 
             },
 
