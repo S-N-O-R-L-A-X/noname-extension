@@ -4114,6 +4114,56 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
               fusion_tiaoxin2: {},
+              fusion_tianren: {
+                audio: 2,
+                trigger: { global: ['loseAfter', 'cardsDiscardAfter', 'loseAsyncAfter'] },
+                forced: true,
+                filter: function (event, player) {
+                  if (event.name.indexOf('lose') == 0) {
+                    if (event.getlx === false || event.position != ui.discardPile) return false;
+                  }
+                  else {
+                    var evt = event.getParent();
+                    if (evt.relatedEvent && evt.relatedEvent.name == 'useCard') return false;
+                  }
+                  for (var i of event.cards) {
+                    var owner = false;
+                    if (event.hs && event.hs.contains(i)) owner = event.player;
+                    var type = get.type(i, null, owner);
+                    if (type == 'basic' || type == 'trick') return true;
+                  }
+                  return false;
+                },
+                content: function () {
+                  var num = 0;
+                  for (var i of trigger.cards) {
+                    var owner = false;
+                    if (trigger.hs && trigger.hs.contains(i)) owner = trigger.player;
+                    var type = get.type(i, null, owner);
+                    if (type == 'basic' || type == 'trick') num++;
+                  }
+                  player.addMark('tianren', num);
+                },
+                group: 'tianren_maxHp',
+                intro: { content: 'mark' },
+                subSkill: {
+                  maxHp: {
+                    trigger: { player: ['tianrenAfter', 'gainMaxHpAfter', 'loseMaxHpAfter'] },
+                    forced: true,
+                    filter: function (event, player) {
+                      return player.countMark('tianren') >= player.maxHp;
+                    },
+                    content: function () {
+                      player.removeMark('tianren', player.maxHp);
+                      player.gainMaxHp();
+                      player.draw(2);
+                      if (player.maxHp > player.hp + 1) {
+                        player.recover();
+                      }
+                    },
+                  },
+                },
+              },
 
             },
 
