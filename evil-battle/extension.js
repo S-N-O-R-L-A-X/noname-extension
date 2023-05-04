@@ -116,7 +116,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shuguoyinghun2": ["none", "shu", "3/5", ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg"], ["zhu", "boss", "bossallowed"]],
               "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "fusion_jiaoxie"], ["zhu", "boss", "bossallowed"]],
               "fusion_puyuan": ["male", "shu", 10, ["shenhu", "fusion_shengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui"], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "tianren", "pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
 
             },
             characterSort: {
@@ -4144,11 +4144,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
                   player.addMark('tianren', num);
                 },
-                group: 'tianren_maxHp',
+                group: 'fusion_tianren_maxHp',
                 intro: { content: 'mark' },
                 subSkill: {
                   maxHp: {
-                    trigger: { player: ['tianrenAfter', 'gainMaxHpAfter', 'loseMaxHpAfter'] },
+                    trigger: { player: ['fusion_tianrenAfter', 'gainMaxHpAfter', 'loseMaxHpAfter'] },
                     forced: true,
                     filter: function (event, player) {
                       return player.countMark('tianren') >= player.maxHp;
@@ -4156,10 +4156,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     content: function () {
                       player.removeMark('tianren', player.maxHp);
                       player.gainMaxHp();
+                      player.recover();
                       player.draw(2);
-                      if (player.maxHp > player.hp + 1) {
-                        player.recover();
-                      }
                     },
                   },
                 },
