@@ -116,7 +116,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shuguoyinghun2": ["none", "shu", "3/5", ["shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg"], ["zhu", "boss", "bossallowed"]],
               "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "fusion_jiaoxie"], ["zhu", "boss", "bossallowed"]],
               "fusion_puyuan": ["male", "shu", 10, ["shenhu", "fusion_shengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui"], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
 
             },
             characterSort: {
@@ -4162,7 +4162,49 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   },
                 },
               },
-
+              fusion_pingxiang: {
+                audio: 2,
+                enable: 'phaseUse',
+                skillAnimation: true,
+                animationColor: 'ice',
+                filter: function (event, player) {
+                  return player.maxHp > 9;
+                },
+                content: function () {
+                  'step 0'
+                  // player.awakenSkill('fusion_pingxiang');
+                  player.loseMaxHp(9);
+                  event.num = 0;
+                  'step 1'
+                  event.num++;
+                  player.chooseUseTarget({
+                    name: 'sha',
+                    nature: 'fire',
+                    isCard: true,
+                  }, '请选择火【杀】的目标（' + (event.num == 9 ? '⑨' : event.num) + '/9）', false);
+                  'step 2'
+                  if (result.bool && event.num < 9) event.goto(1);
+                },
+                ai: {
+                  order: function () {
+                    return get.order({
+                      name: 'sha',
+                      nature: 'fire',
+                      isCard: true,
+                    });
+                  },
+                  result: {
+                    player: function (player) {
+                      if (player.hasValueTarget({
+                        name: 'sha',
+                        nature: 'fire',
+                        isCard: true,
+                      })) return 1;
+                      return 0;
+                    },
+                  },
+                },
+              },
             },
 
             card: {
@@ -4510,6 +4552,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_tiaoxin_info: "出牌阶段限一次，你可以选择一名有牌的角色。然后除非该角色对你使用一张【杀】且此【杀】对你造成伤害，否则你弃置其一张牌，然后将此技能于此出牌阶段内修改为出牌阶段限两次。",
               fusion_tianren: '天任',
               fusion_tianren_info: '锁定技。①当有一张基本牌或普通锦囊牌不因使用而进入弃牌堆后，你获得一枚“天任”标记。②当你获得“天任”标记或体力上限变化后，若你的“天任”数不小于X，则你移去X枚“天任”，加1点体力上限回复一点体力并摸两张牌（X为你的体力上限）。',
+              fusion_pingxiang: '平襄',
+              fusion_pingxiang_info: '限定技。出牌阶段，若你的体力上限大于⑨，则你可减⑨点体力上限，视为使用至多⑨张火【杀】，然后失去〖九伐〗，并将手牌上限基数改为体力上限直到游戏结束。',
 
               // unused
               geju: '割据',
