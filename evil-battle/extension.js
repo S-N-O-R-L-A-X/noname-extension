@@ -4291,6 +4291,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_weiguoyinghun": "魏国英魂",
               "fusion_shuguoyinghun2": "蜀国智囊团",
               "fusion_puyuan": "融蒲元",
+              "fusion_shen_jiangwei": "融神姜维",
 
               // skill
               shenhu: "神护",
@@ -4506,7 +4507,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // fusion_shen_jiangwei
               fusion_tiaoxin: "挑衅",
-              fusion_tiaoxin_info: "出牌阶段限一次，你可以选择一名攻击范围内包含你的角色。然后除非该角色对你使用一张【杀】且此【杀】对你造成伤害，否则你弃置其一张牌，然后将此技能于此出牌阶段内修改为出牌阶段限两次。",
+              fusion_tiaoxin_info: "出牌阶段限一次，你可以选择一名有牌的角色。然后除非该角色对你使用一张【杀】且此【杀】对你造成伤害，否则你弃置其一张牌，然后将此技能于此出牌阶段内修改为出牌阶段限两次。",
+              fusion_tianren: '天任',
+              fusion_tianren_info: '锁定技。①当有一张基本牌或普通锦囊牌不因使用而进入弃牌堆后，你获得一枚“天任”标记。②当你获得“天任”标记或体力上限变化后，若你的“天任”数不小于X，则你移去X枚“天任”，加1点体力上限回复一点体力并摸两张牌（X为你的体力上限）。',
 
               // unused
               geju: '割据',
@@ -4560,7 +4563,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融蒲元。<br>' +
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融蒲元、融神姜维。<br>' +
               '<li><span style="color:#006400">说明二</span>：<br>更新了说明内容<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
