@@ -3717,6 +3717,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
                   return 7 - get.value(card);
                 },
+                group: ["fusion_zhuren_effect"],
                 content: function () {
                   player.addSkill('pyzhuren_destroy');
                   if (!_status.pyzhuren) _status.pyzhuren = {};
@@ -3739,6 +3740,25 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     player.storage.success++;
                     _status.pyzhuren[name] = true;
                     player.gain(game.createCard(name, cards[0].name == 'shandian' ? 'spade' : cards[0].suit, 1), 'gain2')
+                  }
+                },
+                subSkill: {
+                  effect: {
+                    trigger: { player: 'useCard' },
+                    forced: true,
+                    filter: function (event, player) {
+                      return event.card && event.card.name == 'sha' && player.getEquip(1) && player.getEquip(1).name.startsWith("pyzhuren");
+                    },
+                    content: function () {
+                      player.addTempSkill("qinggang2");
+                    },
+                    ai: {
+                      directHit_ai: true,
+                      skillTagFilter: function (player, tag, arg) {
+                        return arg.card.name == 'sha' && player.getEquip(1) && player.getEquip(1).name.startsWith("pyzhuren");
+                      },
+                    },
+
                   }
                 },
                 ai: {
