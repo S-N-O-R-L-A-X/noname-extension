@@ -15,11 +15,10 @@ const App: React.FC = () => {
   return (
     <Layout className="layout">
       <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%', display: 'flex', alignItems: 'center', }}      >
-        <div className="demo-logo" />
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['2']}
+          defaultSelectedKeys={['1']}
           items={route_info[0].children.map((val, index) => {
             const key = index + 1;
             return {
@@ -36,10 +35,10 @@ const App: React.FC = () => {
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
         <div className="site-layout-content" style={{ background: colorBgContainer }}>
-          Content
+          <Layout />
         </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
+      <Footer style={{ textAlign: 'center' }}>Use Ant Design to construct this page.</Footer>
     </Layout>
   );
 };
