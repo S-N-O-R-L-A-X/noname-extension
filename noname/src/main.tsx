@@ -4,6 +4,7 @@ import { createHashRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import ShowAllSKills from './Views/Skills';
+import UpdateLog from './Views/UpdateLog/UpdateLog';
 
 
 export const route_info = [
@@ -34,7 +35,7 @@ export const route_info = [
       {
         path: "/log",
         title: "更新日志",
-        element: <ShowAllSKills />
+        element: <UpdateLog />
       },
     ],
   },
