@@ -1,0 +1,27 @@
+name: noname-extension
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+        
+    - name: Install and Build
+      run: |
+        cd noname
+        npm install
+        npm run build
+     
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.NONAME }}
+        BRANCH: gh-pages
+        FOLDER: noname/dist
