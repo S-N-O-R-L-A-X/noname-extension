@@ -1,28 +1,21 @@
-import { Timeline } from "antd";
+import { Card, Timeline } from "antd";
+
+import log from "./update.json";
+import "./UpdateLog.css";
+
 export default function UpdateLog() {
   return (
     <>
       <Timeline
         mode="left"
         items={
-
-          [
-            {
-              label: '2015-09-01',
-              children: 'Create a services',
-            },
-            {
-              label: '2015-09-01 09:12:11',
-              children: 'Solve initial network problems',
-            },
-            {
-              children: 'Technical testing',
-            },
-            {
-              label: '2015-09-01 09:12:11',
-              children: 'Network problems being solved',
-            },
-          ]}
+          log.update.map((val) => {
+            return {
+              label: val.time,
+              children: <Card size="small" className="timeline-card" title={val.version}><p>{val.content}</p></Card>
+            }
+          })
+        }
       />
     </>
   );
