@@ -1,6 +1,6 @@
 import React from 'react';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
-
+import { Link, Outlet } from "react-router-dom";
 const { Header, Content, Footer } = Layout;
 
 import { route_info } from './main';
@@ -8,22 +8,17 @@ import { route_info } from './main';
 import "./App.css";
 
 const App: React.FC = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  const { token: { colorBgContainer }, } = theme.useToken();
 
   return (
     <Layout className="layout">
       <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%', display: 'flex', alignItems: 'center', }}      >
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['1']}
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}
           items={route_info[0].children.map((val, index) => {
             const key = index + 1;
             return {
               key,
-              label: val.title,
+              label: <Link to={val.path}>{val.title}</Link>,
             };
           })}
         />
@@ -35,11 +30,11 @@ const App: React.FC = () => {
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
         <div className="site-layout-content" style={{ background: colorBgContainer }}>
-          <Layout />
+          <Outlet />
         </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>Use Ant Design to construct this page.</Footer>
-    </Layout>
+    </Layout >
   );
 };
 

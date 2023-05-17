@@ -15,7 +15,6 @@ export const route_info = [
       {
         path: "/",
         title: "首页",
-        element: <App />
       },
       {
         path: "/skills",
