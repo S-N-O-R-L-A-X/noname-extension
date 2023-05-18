@@ -1,6 +1,8 @@
 import { Table, Tag } from 'antd';
+import { ColumnsType } from 'antd/es/table';
 
 import characters from "./characters.json";
+
 export default function ShowAllCharacters() {
   const skillColors = ["magenta", "red", "volcano", "orange", "gold", "lime", "green", "cyan", "blue", "geekblue", "purple"];
   const columns = [
@@ -8,12 +10,56 @@ export default function ShowAllCharacters() {
       title: '武将名',
       dataIndex: 'name',
       key: 'name',
-      sorter: (a: string, b: string) => a < b,
+      sorter: (a: any, b: any) => a.name < b.name ? 1 : -1,
     },
     {
       title: '国家',
       dataIndex: 'nationality',
       key: 'nationality',
+      filters: [
+        {
+          text: "蜀",
+          value: "shu",
+        },
+        {
+          text: "魏",
+          value: "wei",
+        },
+        {
+          text: "吴",
+          value: "wu",
+        },
+        {
+          text: "群",
+          value: "qun",
+        },
+        {
+          text: "晋",
+          value: "jin",
+        },
+        {
+          text: "秦",
+          value: "qin",
+        },
+        {
+          text: "神",
+          value: "shen",
+        },
+      ],
+      onFilter: (value: any, record: any) => record.nationality.indexOf(value) === 0,
+      render: (nationality: string) => (
+        <>
+          {nationality === "shu" ? <Tag color="red">蜀</Tag> : nationality === "wei" ? <Tag color="blue">魏</Tag>
+            : nationality === "wu" ? <Tag color="green">吴</Tag> : nationality === "qun" ? <Tag>群</Tag>
+              : nationality === "jin" ? <Tag color="purple">晋</Tag> : nationality === "daqin" ? <Tag color="lime">秦</Tag>
+                : <Tag color="gold">神</Tag>}
+        </>)
+
+    },
+    {
+      title: "扩展包",
+      dataIndex: "ex_package",
+      key: "ex_package"
     },
     {
       title: '性别',
@@ -45,7 +91,7 @@ export default function ShowAllCharacters() {
       title: "血量",
       dataIndex: "hp",
       key: "hp",
-      sorter: (a: string, b: string) => Number(a) - Number(b),
+      sorter: (a: any, b: any) => Number(a) - Number(b),
 
     },
     {
@@ -58,47 +104,14 @@ export default function ShowAllCharacters() {
         </>)
     },
     {
-      title: "做题情况",
-      dataIndex: "situation",
-      key: "situation",
-      filters: [
-        {
-          text: "自己做出",
-          value: "自己做出",
-        },
-        {
-          text: "看思路写出",
-          value: "看思路写出",
-        },
-        {
-          text: "看懂答案",
-          value: "看懂答案",
-        },
-        {
-          text: "没看懂答案",
-          value: "没看懂答案",
-        },
-      ],
-      onFilter: (value: any, record: any) => record.situation.indexOf(value) === 0,
-      render: (situation: string) => (
-        <>
-          {situation === "自己做出" ? <Tag color="green">自己做出 ✅</Tag> : situation === "看思路写出" ? <Tag color="yellow">看思路写出 ⚡</Tag> : situation === "看懂答案" ? <Tag color="blue">看懂答案 🆗</Tag> : <Tag color="red">没看懂答案 ❌</Tag>}
-        </>)
+      title: "强度",
+      dataIndex: "strength",
+      key: "strength"
     },
     {
-      title: "算法和数据结构",
-      dataIndex: "method",
-      key: "method"
-    },
-    {
-      title: "学到的内容",
-      dataIndex: "learn",
-      key: "learn"
-    },
-    {
-      title: "没看懂的内容",
-      dataIndex: "unknown",
-      key: "unknown"
+      title: "详细信息",
+      dataIndex: "details",
+      key: "details"
     }
   ];
 
