@@ -2,53 +2,60 @@ import { Table, Tag } from 'antd';
 
 import characters from "./characters.json";
 export default function ShowAllCharacters() {
+  const skillColors = ["magenta", "red", "volcano", "orange", "gold", "lime", "green", "cyan", "blue", "geekblue", "purple"];
   const columns = [
     {
       title: '武将名',
       dataIndex: 'name',
       key: 'name',
-      sorter: (a: any, b: any) => Number(a.date.split("/")[2]) - Number(b.date.split("/")[2]),
+      sorter: (a: string, b: string) => a < b,
     },
     {
-      title: '题号',
-      dataIndex: 'no',
-      key: 'no',
+      title: '国家',
+      dataIndex: 'nationality',
+      key: 'nationality',
     },
     {
-      title: '题目名称',
-      dataIndex: 'name',
-      key: "name",
-    },
-    {
-      title: "难度",
-      dataIndex: "difficulty",
-      key: "difficulty",
+      title: '性别',
+      dataIndex: 'gender',
+      key: "gender",
       filters: [
         {
-          text: "简单",
-          value: "简单",
+          text: "男",
+          value: "male",
         },
         {
-          text: "中等",
-          value: "中等",
+          text: "女",
+          value: "female",
         },
         {
-          text: "困难",
-          value: "困难",
+          text: "无性别",
+          value: "none",
         },
       ],
-      onFilter: (value: any, record: any) => record.difficulty.indexOf(value) === 0,
+      onFilter: (value: any, record: any) => record.gender.indexOf(value) === 0,
 
-      render: (difficulty: string) => (
+      render: (gender: string) => (
         <>
-          {difficulty === "困难" ? <Tag color="red">困难</Tag> : difficulty === "中等" ? <Tag color="yellow">中等</Tag> : <Tag color="green">简单</Tag>}
+          {gender === "male" ? <Tag color="blue">男</Tag> : gender === "female" ? <Tag color="pink">女</Tag> : <Tag color="green">无性别</Tag>}
         </>)
+
     },
     {
-      title: "rating",
-      dataIndex: "rating",
-      key: "rating",
-      sorter: (a: any, b: any) => a.rating - b.rating,
+      title: "血量",
+      dataIndex: "hp",
+      key: "hp",
+      sorter: (a: string, b: string) => Number(a) - Number(b),
+
+    },
+    {
+      title: "技能",
+      dataIndex: "skills",
+      key: "skills",
+      render: (skills: string[]) => (
+        <>
+          {skills.map((val, idx) => <Tag color={skillColors[idx % 11]}>{val}</Tag>)}
+        </>)
     },
     {
       title: "做题情况",
