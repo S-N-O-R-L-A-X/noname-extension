@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import './index.css';
+import ShowAllCharacters from './Views/Characters/ShowAllCharacters';
 import ShowAllSKills from './Views/Skills';
 import UpdateLog from './Views/UpdateLog/UpdateLog';
 
@@ -25,7 +26,7 @@ export const route_info = [
       {
         path: "/characters",
         title: "武将展示",
-        element: <ShowAllSKills />
+        element: <ShowAllCharacters />
       },
       {
         path: "/thoughts",
