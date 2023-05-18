@@ -1,15 +1,21 @@
-import { Table, Tag } from 'antd';
+import { Table, Tag, Space } from 'antd';
+import { ProfileOutlined } from '@ant-design/icons'
 
 import characters from "./characters.json";
 
 export default function ShowAllCharacters() {
   const skillColors = ["magenta", "red", "volcano", "orange", "gold", "lime", "green", "cyan", "blue", "geekblue", "purple"];
+  function handleProfileClick() {
+    alert("此部分还没有完成！")
+  }
+
   const columns = [
     {
       title: '武将名',
       dataIndex: 'name',
       key: 'name',
       sorter: (a: any, b: any) => a.name < b.name ? 1 : -1,
+      render: (name: string) => (<><Space>{name}<ProfileOutlined onClick={handleProfileClick} /></Space></>)
     },
     {
       title: '国家',
@@ -107,16 +113,11 @@ export default function ShowAllCharacters() {
       dataIndex: "strength",
       key: "strength"
     },
-    {
-      title: "详细信息",
-      dataIndex: "details",
-      key: "details"
-    }
   ];
 
   return (
     <>
-      <Table dataSource={characters.details} columns={columns} pagination={{ pageSize: 31 }}></Table>
+      <Table dataSource={characters.details} columns={columns} pagination={{ pageSize: 10 }}></Table>
     </>
   )
 }
