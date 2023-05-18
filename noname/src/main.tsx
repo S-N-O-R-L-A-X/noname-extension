@@ -4,6 +4,7 @@ import { createHashRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import ShowAllCharacters from './Views/Characters/ShowAllCharacters';
+import Future from './Views/Future/Future';
 import ShowAllSKills from './Views/Skills';
 import UpdateLog from './Views/UpdateLog/UpdateLog';
 
@@ -31,7 +32,7 @@ export const route_info = [
       {
         path: "/thoughts",
         title: "一些想法",
-        element: <ShowAllSKills />
+        element: <Future />
       },
       {
         path: "/log",
