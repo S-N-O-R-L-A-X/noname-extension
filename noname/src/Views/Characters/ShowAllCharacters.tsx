@@ -1,5 +1,4 @@
 import { Table, Tag } from 'antd';
-import { ColumnsType } from 'antd/es/table';
 
 import characters from "./characters.json";
 
