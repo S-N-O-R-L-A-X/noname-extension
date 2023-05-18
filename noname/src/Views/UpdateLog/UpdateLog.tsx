@@ -12,7 +12,7 @@ export default function UpdateLog() {
           log.update.map((val) => {
             return {
               label: val.time,
-              children: <Card size="small" className="timeline-card" title={val.version}><p>{val.content}</p></Card>
+              children: <Card size="small" className="timeline-card" title={"version " + val.version}><p>{val.content.map((v) => <li>{v}</li>)}</p></Card>
             }
           })
         }

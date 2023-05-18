@@ -3,12 +3,12 @@
     {
       "time": "In the past",
       "version": 0,
-      "content": "筹备阶段"
+      "content": [ "筹备阶段" ]
     },
     {
       "time": "2023-05-17",
       "version": 5.4,
-      "content": "更新了融蒲元，融神姜维"
+      "content": [ "更新了融蒲元，融神姜维", "初始化展示网站" ]
     }
   ]
 }
