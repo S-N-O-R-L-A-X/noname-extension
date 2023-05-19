@@ -5,6 +5,7 @@ import App from './App';
 import './index.css';
 import ShowAllCharacters from './Views/Characters/ShowAllCharacters';
 import Future from './Views/Future/Future';
+import Home from './Views/Home/Home';
 import ShowAllSKills from './Views/Skills';
 import UpdateLog from './Views/UpdateLog/UpdateLog';
 
@@ -18,6 +19,7 @@ export const route_info = [
       {
         path: "/",
         title: "首页",
+        element: <Home />
       },
       {
         path: "/skills",
