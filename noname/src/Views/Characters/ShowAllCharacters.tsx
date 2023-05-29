@@ -1,6 +1,6 @@
 import { Table, Tag, Space } from 'antd';
 import { ProfileOutlined } from '@ant-design/icons'
-
+import { Link } from 'react-router-dom';
 import characters from "./characters.json";
 import Search from '../../Components/Search';
 
@@ -106,7 +106,7 @@ export default function ShowAllCharacters() {
       key: "skills",
       render: (skills: string[]) => (
         <>
-          {skills.map((val, idx) => <Tag color={skillColors[idx % 11]}>{val}</Tag>)}
+          {skills.map((val, idx) => <Link to="/skills" state={{ name: val }}><Tag color={skillColors[idx % 11]}>{val}</Tag></Link>)}
         </>)
     },
     {
