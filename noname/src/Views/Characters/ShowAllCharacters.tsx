@@ -2,6 +2,7 @@ import { Table, Tag, Space } from 'antd';
 import { ProfileOutlined } from '@ant-design/icons'
 
 import characters from "./characters.json";
+import Search from '../../Components/Search';
 
 export default function ShowAllCharacters() {
   const skillColors = ["magenta", "red", "volcano", "orange", "gold", "lime", "green", "cyan", "blue", "geekblue", "purple"];
@@ -117,6 +118,7 @@ export default function ShowAllCharacters() {
 
   return (
     <>
+      <Search searchArea={characters.names} />
       <Table dataSource={characters.details} columns={columns} pagination={{ pageSize: 10 }}></Table>
     </>
   )
