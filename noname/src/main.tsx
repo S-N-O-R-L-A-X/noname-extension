@@ -6,7 +6,7 @@ import './index.css';
 import ShowAllCharacters from './Views/Characters/ShowAllCharacters';
 import Future from './Views/Future/Future';
 import Home from './Views/Home/Home';
-import ShowAllSKills from './Views/Skills';
+import ShowAllSKills from './Views/Skills/Skills';
 import UpdateLog from './Views/UpdateLog/UpdateLog';
 
 
