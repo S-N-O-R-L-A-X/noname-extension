@@ -11,7 +11,7 @@ interface SearchProps extends AntSearchProps {
 export default function Search(props: SearchProps) {
   // called when clicking search
   const { searchArea, value, getSearchResults, } = props;
-  let { onSearch = (val: string) => { console.log(val) } } = props;
+  let { onSearch } = props;
   const searchResult = (query: string) => {
     const arr = searchArea.filter(item => item.indexOf(query) !== -1);
     return arr.map((val) => {

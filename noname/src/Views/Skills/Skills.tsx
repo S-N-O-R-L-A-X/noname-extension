@@ -18,7 +18,6 @@ export default function ShowAllSKills() {
   let { state } = useLocation();
 
   const getSearchResults = useCallback((res: any[]) => {
-    console.log(res);
     if (res) {
       const ret: any[] = [];
       res.forEach((skill) => {
