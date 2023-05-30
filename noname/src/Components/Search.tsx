@@ -1,4 +1,4 @@
-import { AutoComplete, Input, InputProps, SelectProps } from "antd";
+import { AutoComplete, Input, SelectProps } from "antd";
 import { SearchProps as AntSearchProps } from "antd/es/input";
 import { useState } from "react";
 const { Search: AntSearch } = Input;
