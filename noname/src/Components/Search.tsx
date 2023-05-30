@@ -1,13 +1,17 @@
 import { AutoComplete, Input, InputProps, SelectProps } from "antd";
+import { SearchProps as AntSearchProps } from "antd/es/input";
 import { useState } from "react";
 const { Search: AntSearch } = Input;
 
-interface SearchProps extends InputProps {
+interface SearchProps extends AntSearchProps {
   searchArea: any[];
+  getSearchResults?: Function;
 }
 
 export default function Search(props: SearchProps) {
-  const { searchArea, value } = props;
+  // called when clicking search
+  const { searchArea, value, getSearchResults, } = props;
+  let { onSearch = (val: string) => { console.log(val) } } = props;
   const searchResult = (query: string) => {
     const arr = searchArea.filter(item => item.indexOf(query) !== -1);
     return arr.map((val) => {
@@ -21,10 +25,12 @@ export default function Search(props: SearchProps) {
     setOptions(value ? searchResult(value) : []);
   };
 
-  // called when clicking search
-  function onSearch(value: string) {
-    console.log(value);
+  if (getSearchResults) {
+    onSearch = (val) => {
+      getSearchResults(searchArea.filter(item => item && item.indexOf(val) !== -1));
+    }
   }
+
   return (
     <AutoComplete options={options} value={value} onSearch={handleSearch}>
       <AntSearch placeholder="search" onSearch={onSearch} allowClear enterButton />
