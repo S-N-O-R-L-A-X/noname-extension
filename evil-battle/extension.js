@@ -4604,6 +4604,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
     config: {
       intro: {
         name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。如果发现技能缺失，请尝试将无名杀本体更新为最新版本，并在“扩展-诸神降临”中选择“开启”。
+                这是本扩展的官方网站：<a class="github" href="https://s-n-o-r-l-a-x.github.io/noname-extension/">https://s-n-o-r-l-a-x.github.io/noname-extension</a><br>
                 如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极哦~<br>
                 <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a><br>
                 如果想要加群的话，目前群号是214685856，请备注下从哪得知这个扩展的哈。
@@ -4619,14 +4620,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：5.4.0<font size="4px">▶▶▶</font></div>`,
-        version: 5.4,
+        name: `<div class=".update">扩展版本：6.0<font size="4px">▶▶▶</font></div>`,
+        version: 6.0,
         clear: true,
         intro: "点击查看此版本的更新内容",
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融蒲元、融神姜维。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融蒲元、融神姜维。<br>',
+              '<li><span style="color:#006400">说明二</span>：<br>更新了说明。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
@@ -4635,7 +4637,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：5.4.0<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：6.0<font size="4px">▶▶▶</font></div>';
           };
         }
       },
