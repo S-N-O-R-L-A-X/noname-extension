@@ -117,7 +117,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "fusion_jiaoxie"], ["zhu", "boss", "bossallowed"]],
               "fusion_puyuan": ["male", "shu", 10, ["shenhu", "fusion_shengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_yingzhao": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu", "boss_sipu_switch"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_yingzhao": ["male", "shen", "20/25", ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu2"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -4233,8 +4233,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 usable: 1,
                 filter: function (event, player) {
                   if (event.re_boss_yaoshou_buff || !event.targets.length || !player.isPhaseUsing() || player.hasSkill('re_boss_yaoshou_buff')) return false;
-                  var type = get.type(event.card, false);
-                  if (type == 'basic' && type != 'trick') return false;
+                  const type = get.type(event.card, false);
+                  if (type != 'basic' && type != 'trick') return false;
                   return true;
                 },
                 content: function () {
@@ -4610,6 +4610,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_tianren_info: '锁定技。①当有一张基本牌或普通锦囊牌不因使用而进入弃牌堆后，你获得一枚“天任”标记。②当你获得“天任”标记或体力上限变化后，若你的“天任”数不小于X，则你移去X枚“天任”，加1点体力上限，回复1点体力并摸两张牌（X为你的体力上限）。',
               fusion_pingxiang: '平襄',
               fusion_pingxiang_info: '出牌阶段，若你的体力上限大于⑨，则你可减⑨点体力上限，视为使用至多⑨张火【杀】。',
+
+              // re_boss_yingzhao
+              re_boss_yaoshou: "妖兽",
+              re_boss_yaoshou_info: "锁定技，你计算与其他角色的距离-2；你于回合内首次使用的基本牌或普通锦囊牌结算两次。",
+
 
               // unused
               geju: '割据',
