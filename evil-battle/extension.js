@@ -117,6 +117,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "fusion_jiaoxie"], ["zhu", "boss", "bossallowed"]],
               "fusion_puyuan": ["male", "shu", 10, ["shenhu", "fusion_shengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_yingzhao": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu", "boss_sipu_switch"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -4223,6 +4224,43 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   },
                 },
               },
+
+              // re_boss_yingzhao
+              re_boss_yaoshou: {
+                inherit: "boss_yaoshou",
+                trigger: { player: 'useCard' },
+                direct: true,
+                usable: 1,
+                filter: function (event, player) {
+                  if (event.re_boss_yaoshou_buff || !event.targets.length || !player.isPhaseUsing() || player.hasSkill('re_boss_yaoshou_buff')) return false;
+                  var type = get.type(event.card, false);
+                  if (type == 'basic' && type != 'trick') return false;
+                  return true;
+                },
+                content: function () {
+                  player.addTempSkill('re_boss_yaoshou_buff', 'phaseUseAfter');
+                  trigger.re_boss_yaoshou_buff = player;
+                },
+                subSkill: {
+                  buff: {
+                    trigger: { global: 'useCardToTargeted' },
+                    forced: true,
+                    charlotte: true,
+                    popup: false,
+                    lastDo: true,
+                    filter: function (event, player) {
+                      return (event.parent.re_boss_yaoshou_buff == player && event.targets.length == event.parent.triggeredTargets4.length);
+                    },
+                    content: function () {
+                      trigger.getParent().targets = trigger.getParent().targets.concat(trigger.targets);
+                      trigger.getParent().triggeredTargets4 = trigger.getParent().triggeredTargets4.concat(trigger.targets);
+                    },
+                    onremove: function (player) {
+                      delete player.storage.counttrigger.re_boss_yaoshou;
+                    },
+                  },
+                },
+              }
             },
 
             card: {
