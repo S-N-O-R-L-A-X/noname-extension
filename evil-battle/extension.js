@@ -117,11 +117,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "fusion_jiaoxie"], ["zhu", "boss", "bossallowed"]],
               "fusion_puyuan": ["male", "shu", 10, ["shenhu", "fusion_shengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_yingzhao": ["male", "shen", "20/25", ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu2"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_yingzhao": ["male", "shen", "20/25", ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
-                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou"],
+                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou", "re_boss_yingzhao"],
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie", "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2", "fusion_puyuan", "fusion_shen_jiangwei"],
                 against7devil_math: ["math_caojinyu"],
                 against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi", "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
@@ -163,6 +163,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shuguoyinghun2": "来源于剑阁模式蜀国英魂中的智囊型武将（其实就是蜀国英魂强度过高出个限制版），将其技能进行融合，并对其部分技能进行了修改。<br>【强度】★★★<br> 【亮点】综合",
               "fusion_puyuan": "来源于十周年武将蒲元与OL蒲元，将其技能进行融合和修改，并加入新技能【辨水】。<br>【强度】★★★★<br> 【亮点】铸造",
               "fusion_shen_jiangwei": "来源于神姜维与OL界姜维，将其技能进行融合和修改。<br>【强度】★★★★<br> 【亮点】综合",
+              "re_boss_yingzhao": "来源于英招，将其技能修改为最新的【妖兽】。<br>【强度】★★★★<br> 【亮点】综合",
             },
             skill: {
               shenhu: {
@@ -4390,6 +4391,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shuguoyinghun2": "蜀国智囊团",
               "fusion_puyuan": "融蒲元",
               "fusion_shen_jiangwei": "融神姜维",
+              "re_boss_yingzhao": "界英招",
 
               // skill
               shenhu: "神护",
