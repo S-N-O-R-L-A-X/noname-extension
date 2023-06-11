@@ -118,6 +118,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_puyuan": ["male", "shu", 10, ["shenhu", "fusion_shengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
               "re_boss_yingzhao": ["male", "shen", "20/25", ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_xiangliu": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "boss_echou"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -4392,6 +4393,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_puyuan": "融蒲元",
               "fusion_shen_jiangwei": "融神姜维",
               "re_boss_yingzhao": "界英招",
+              "re_boss_xiangliu": "界相柳",
 
               // skill
               shenhu: "神护",
@@ -4671,7 +4673,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融蒲元、融神姜维。<br>',
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：界英招、界相柳。<br>',
               '<li><span style="color:#006400">说明二</span>：<br>更新了说明。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
