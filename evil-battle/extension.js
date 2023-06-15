@@ -118,7 +118,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_puyuan": ["male", "shu", 10, ["shenhu", "fusion_shengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
               "re_boss_yingzhao": ["male", "shen", "20/25", ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_xiangliu": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "boss_echou"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_xiangliu": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -4262,6 +4262,41 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     },
                   },
                 },
+              },
+
+              // re_boss_xiangliu
+              "re_boss_echou": {
+                audio: 2,
+                group: ["re_boss_echou_recover", "re_boss_echou_end"],
+                subSkill: {
+                  "recover": {
+                    trigger: { global: "recoverAfter" },
+                    direct: true,
+                    content: function () {
+                      var target = trigger.player;
+                      player.line(target);
+                      if (!target.storage.boss_shedu) target.storage.boss_shedu = 0;
+                      target.storage.boss_shedu++;
+                      target.markSkill('boss_shedu');
+                    }
+                  },
+                  "end": {
+                    trigger: { global: "phaseJieshuBegin" },
+                    direct: true,
+                    filter: function (event, player) {
+                      return event.player.isAlive();
+                    },
+                    content: function () {
+                      const list = game.players.slice(0);
+                      list.remove(player);
+                      const target = list.randomGet();
+                      player.line(target);
+                      if (!target.storage.boss_shedu) target.storage.boss_shedu = 0;
+                      target.storage.boss_shedu++;
+                      target.markSkill('boss_shedu');
+                    },
+                  }
+                }
               }
             },
 
