@@ -87,7 +87,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "succubus": ["female", "shen", 6, ["meihun", "rebiyue", "yuehun", "yunshen", "boss_guimei", "yuxin"], ["zhu", "boss", "bossallowed"]],
               "re_boss_huatuo": ["male", "qun", 6, ["shenhu", "chulao", "mazui", "boss_shengshou", "guizhen", "wuqin"], ["zhu", "boss", "bossallowed"]],
               "re_boss_zhouyu": ["male", "wu", 10, ["shenhu", "huoshen", "boss_honglian", "boss_xianyin", "boss_zhaohuo", "boss_honglianx"], ["zhu", "boss", "bossallowed"]],
-              "math_caojinyu": ["female", "wei", 10, ["shenhu", "yinyuqi", "yinshanshen", "yinxianjing"], ["zhu", "boss", "bossallowed"]],
+              "math_caojinyu": ["female", "wei", 10, ["shenhu", "math_yuqi", "math_shanshen", "math_xianjing"], ["zhu", "boss", "bossallowed"]],
               "norecover": ["male", "shen", 25, ["boss_fudu", "boss_kujiu", "boss_duqu", "boss_echou", "ex_haizhong"], ["zhu", "boss", "bossallowed"]],
               "fusion_xuhuang": ["male", "wei", 6, ["shenhu", "shipo", "famine", "olduanliang", "oljiezi"], ["zhu", "boss", "bossallowed"]],
               "liuxingyaodi": ["male", "shu", "6/8", ["shenhu", "renjun", "boss_rende"], ["zhu", "boss", "bossallowed"]],
@@ -297,28 +297,28 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               // caojinyu
-              yinyuqi: {
-                // audio: 2,
+              math_yuqi: {
+                audio: "yuqi",
                 trigger: { global: 'damageEnd' },
                 init: function (player) {
-                  if (!player.storage.yinyuqi) player.storage.yinyuqi = [0, 3, 1, 1];
+                  if (!player.storage.math_yuqi) player.storage.math_yuqi = [0, 3, 1, 1];
                 },
                 getInfo: function (player) {
-                  if (!player.storage.yinyuqi) player.storage.yinyuqi = [0, 3, 1, 1];
-                  return player.storage.yinyuqi;
+                  if (!player.storage.math_yuqi) player.storage.math_yuqi = [0, 3, 1, 1];
+                  return player.storage.math_yuqi;
                 },
                 onremove: true,
                 filter: function (event, player) {
-                  const list = lib.skill.yinyuqi.getInfo(player);
+                  const list = lib.skill.math_yuqi.getInfo(player);
                   const times = player.getHistory('useSkill', function (evt) {
-                    return evt.skill == 'yinyuqi';
+                    return evt.skill == 'math_yuqi';
                   }).length;
                   return (times < Math.max(...list)) && event.player.isIn() && get.distance(player, event.player) <= list[0];
                 },
                 logTarget: 'player',
                 content: function () {
                   'step 0'
-                  event.list = lib.skill.yinyuqi.getInfo(player);
+                  event.list = lib.skill.math_yuqi.getInfo(player);
                   var cards = get.cards(event.list[1]);
                   event.cards = cards;
                   game.cardsGotoOrdering(cards);
@@ -329,7 +329,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     ['交给自己（至多' + get.cnNumber(event.list[3]) + '张）'],
                   ]);
                   next.set('filterMove', function (from, to, moved) {
-                    var info = lib.skill.yinyuqi.getInfo(_status.event.player);
+                    var info = lib.skill.math_yuqi.getInfo(_status.event.player);
                     if (to == 1) return moved[1].length < info[2];
                     if (to == 2) return moved[2].length < info[3];
                     return true;
@@ -338,7 +338,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     var cards = list[0][1].slice(0).sort(function (a, b) {
                       return get.value(b, 'raw') - get.value(a, 'raw');
                     }), player = _status.event.player, target = _status.event.getTrigger().player;
-                    var info = lib.skill.yinyuqi.getInfo(_status.event.player);
+                    var info = lib.skill.math_yuqi.getInfo(_status.event.player);
                     var cards1 = cards.splice(0, Math.min(info[3], cards.length - 1));
                     var card2;
                     if (get.attitude(player, target) > 0) card2 = cards.shift();
@@ -364,7 +364,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 mark: true,
                 intro: {
                   content: function (storage, player) {
-                    const info = lib.skill.yinyuqi.getInfo(player);
+                    const info = lib.skill.math_yuqi.getInfo(player);
                     return '<div class="text center"><span class=thundertext>蓝色：' + info[0] + '</span>　<span class=firetext>红色：' + info[1] + '</span><br><span class=greentext>绿色：' + info[2] + '</span>　<span class=yellowtext>黄色：' + info[3] + '</span></div>'
                   },
                 },
@@ -372,8 +372,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   threaten: 8.8,
                 },
               },
-              yinshanshen: {
-                // audio: 2,
+              math_shanshen: {
+                audio: "shanshen",
                 trigger: { global: 'die' },
                 direct: true,
                 content: function () {
@@ -382,8 +382,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   event.goon = !player.hasAllHistory('sourceDamage', function (evt) {
                     return evt.player == trigger.player;
                   });
-                  player.chooseControl('<span class=thundertext>蓝色</span>', '<span class=firetext>红色</span>', '<span class=greentext>绿色</span>', '<span class=yellowtext>黄色</span>', 'cancel2').set('prompt', get.prompt('yinshanshen')).set('prompt2', '令〖隅泣〗中的一个数字+2' + (event.goon ? '并回复1点体力' : '')).set('ai', function () {
-                    var player = _status.event.player, info = lib.skill.yinyuqi.getInfo(player);
+                  player.chooseControl('<span class=thundertext>蓝色</span>', '<span class=firetext>红色</span>', '<span class=greentext>绿色</span>', '<span class=yellowtext>黄色</span>', 'cancel2').set('prompt', get.prompt('math_shanshen')).set('prompt2', '令〖隅泣〗中的一个数字+2' + (event.goon ? '并回复1点体力' : '')).set('ai', function () {
+                    var player = _status.event.player, info = lib.skill.math_yuqi.getInfo(player);
                     game.log(info);
                     if (info[0] < info[3] && game.countPlayer(function (current) {
                       return get.distance(player, current) <= info[0];
@@ -397,24 +397,24 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   });
                   'step 1'
                   if (result.control != 'cancel2') {
-                    player.logSkill('yinshanshen', trigger.player);
-                    var list = lib.skill.yinyuqi.getInfo(player);
+                    player.logSkill('math_shanshen', trigger.player);
+                    var list = lib.skill.math_yuqi.getInfo(player);
                     list[result.index] += 2;
                     game.log(player, '将', result.control, '数字改为', '#y' + list[result.index])
-                    player.markSkill('yinyuqi');
+                    player.markSkill('math_yuqi');
                     if (event.goon) player.recover();
                   }
                 },
               },
-              yinxianjing: {
-                // audio: 2,
+              math_xianjing: {
+                audio: "xianjing",
                 trigger: { player: 'phaseZhunbeiBegin' },
                 direct: true,
                 content: function () {
                   const inf = Number.MAX_SAFE_INTEGER;
                   'step 0'
-                  player.chooseControl('<span class=thundertext>蓝色</span>', '<span class=firetext>红色</span>', '<span class=greentext>绿色</span>', '<span class=yellowtext>黄色</span>', 'cancel2').set('prompt', get.prompt('yinxianjing')).set('prompt2', '令〖隅泣〗中的一个数字+1').set('ai', function () {
-                    var player = _status.event.player, info = lib.skill.yinyuqi.getInfo(player);
+                  player.chooseControl('<span class=thundertext>蓝色</span>', '<span class=firetext>红色</span>', '<span class=greentext>绿色</span>', '<span class=yellowtext>黄色</span>', 'cancel2').set('prompt', get.prompt('math_xianjing')).set('prompt2', '令〖隅泣〗中的一个数字+1').set('ai', function () {
+                    var player = _status.event.player, info = lib.skill.math_yuqi.getInfo(player);
                     console.log(info);
                     if (info[0] < info[3] && game.countPlayer(function (current) {
                       return get.distance(player, current) <= info[0];
@@ -428,18 +428,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   });
                   'step 1'
                   if (result.control != 'cancel2') {
-                    player.logSkill('yinxianjing');
-                    var list = lib.skill.yinyuqi.getInfo(player);
+                    player.logSkill('math_xianjing');
+                    var list = lib.skill.math_yuqi.getInfo(player);
                     console.log(list);
                     list[result.index] = list[result.index] + 1;
                     game.log(player, '将', result.control, '数字改为', '#y' + list[result.index])
-                    player.markSkill('yinyuqi');
+                    player.markSkill('math_yuqi');
                     if (player.isDamaged()) event.finish();
                   }
                   else event.finish();
                   'step 2'
                   player.chooseControl('<span class=thundertext>蓝色</span>', '<span class=firetext>红色</span>', '<span class=greentext>绿色</span>', '<span class=yellowtext>黄色</span>', 'cancel2').set('prompt', '是否令〖隅泣〗中的一个数字+1？').set('ai', function () {
-                    var player = _status.event.player, info = lib.skill.yinyuqi.getInfo(player);
+                    var player = _status.event.player, info = lib.skill.math_yuqi.getInfo(player);
                     if (info[0] < info[3] && game.countPlayer(function (current) {
                       return get.distance(player, current) <= info[0];
                     }) < Math.min(3, game.countPlayer())) return 0;
@@ -452,10 +452,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   });
                   'step 3'
                   if (result.control != 'cancel2') {
-                    var list = lib.skill.yinyuqi.getInfo(player);
+                    var list = lib.skill.math_yuqi.getInfo(player);
                     list[result.index] = list[result.index] + 1;
                     game.log(player, '将', result.control, '数字改为', '#y' + list[result.index])
-                    player.markSkill('yinyuqi');
+                    player.markSkill('math_yuqi');
                   }
                 },
               },
@@ -4397,7 +4397,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "succubus": "魅魔",
               "re_boss_huatuo": "界药坛圣手",
               "re_boss_zhouyu": "界赤壁火神",
-              "math_caojinyu": "阴间曹金玉",
+              "math_caojinyu": "数曹金玉",
               "norecover": "回血亡",
               "fusion_xuhuang": "融徐晃",
               "liuxingyaodi": "六星耀帝",
@@ -4443,12 +4443,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               yuxin_info: "出牌阶段限两次，你可以展示两张花色相同的手牌并分别交给两名其他角色，然后令这两名角色拼点，没赢的角色获得1个“魅惑”标记。拥有2个或更多“魅惑”的角色回合即将开始时，该角色移去其所有“魅惑”，此回合改为由你操控。",
 
               // math_caojinyu
-              yinyuqi: '隅泣',
-              yinyuqi_info: '每回合限X次。当有角色受到伤害后，若你至其的距离不大于<span class=thundertext>0</span>，则你可以观看牌堆顶的<span class=firetext>3</span>张牌。你将其中至多<span class=greentext>1</span>张牌交给受伤角色，然后可以获得剩余牌中的至多<span class=yellowtext>1</span>张牌，并将其余牌以原顺序放回牌堆顶。（X为所有数字中最大值）',
-              yinshanshen: '善身',
-              yinshanshen_info: '当有角色死亡时，你可令你的〖隅泣〗中的一个具有颜色的数字+2。然后若你未对该角色造成过伤害，则你回复1点体力。',
-              yinxianjing: '娴静',
-              yinxianjing_info: '准备阶段，你可令你的〖隅泣〗中的一个具有颜色的数字+1。若你的体力值等于体力上限，则你可以重复一次此流程。',
+              math_yuqi: '隅泣',
+              math_yuqi_info: '每回合限X次。当有角色受到伤害后，若你至其的距离不大于<span class=thundertext>0</span>，则你可以观看牌堆顶的<span class=firetext>3</span>张牌。你将其中至多<span class=greentext>1</span>张牌交给受伤角色，然后可以获得剩余牌中的至多<span class=yellowtext>1</span>张牌，并将其余牌以原顺序放回牌堆顶。（X为所有数字中最大值）',
+              math_shanshen: '善身',
+              math_shanshen_info: '当有角色死亡时，你可令你的〖隅泣〗中的一个具有颜色的数字+2。然后若你未对该角色造成过伤害，则你回复1点体力。',
+              math_xianjing: '娴静',
+              math_xianjing_info: '准备阶段，你可令你的〖隅泣〗中的一个具有颜色的数字+1。若你的体力值等于体力上限，则你可以重复一次此流程。',
 
               //fuxion_xuhuang
               famine: '饥荒',
@@ -4711,8 +4711,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：界英招、界相柳。<br>',
-              '<li><span style="color:#006400">说明二</span>：<br>更新了说明。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：界英招、界相柳。<br>' +
+              '<li><span style="color:#006400">说明二</span>：<br>更新了说明。<br>' +
+              '<li><span style="color:#006400">说明三</span>：<br>修改了扩展包名字，将阴包修改为数包。<br>'
+
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
