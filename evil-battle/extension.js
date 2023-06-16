@@ -118,11 +118,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_puyuan": ["male", "shu", 10, ["shenhu", "fusion_shengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
               "re_boss_yingzhao": ["male", "shen", "20/25", ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_xiangliu": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_xiangliu": ["male", "shen", 20, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
-                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou", "re_boss_yingzhao"],
+                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou", "re_boss_yingzhao", "re_boss_xiangliu"],
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie", "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2", "fusion_puyuan", "fusion_shen_jiangwei"],
                 against7devil_math: ["math_caojinyu"],
                 against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi", "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
@@ -4654,6 +4654,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               re_boss_yaoshou: "妖兽",
               re_boss_yaoshou_info: "锁定技，你计算与其他角色的距离-2；你于回合内首次使用的基本牌或普通锦囊牌结算两次。",
 
+              // re_boss_xiangliu
+              re_boss_echou: "恶臭",
+              re_boss_echou_info: "锁定技，当敌方角色回复体力时，其获得1枚【蛇毒】；每个结束阶段，你令随机地方角色获得1枚【蛇毒】。",
 
               // unused
               geju: '割据',
