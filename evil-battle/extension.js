@@ -17,13 +17,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         const dc_list = ["xushao", "puyuan", "guozhao", "guansuo", "zhaoxiang", "xin_lingtong",
           "re_liuzan", "caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
           "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
-          "tenggongzhu", "caomao", "zhangxuan"];
+          "tenggongzhu", "caomao", "zhangxuan", "dc_zhouxuan", "xuelingyun", "shen_zhangfei",
+          "shen_zhangjiao", "luyi"];
         const mobile_list = ["shen_xunyu", "yangbiao", "sp_duyu"];
         const ol_list = ["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
         const other_list = ["sp_xiahoushi", "tw_dongzhao"];
         const old_dc_characters = initList(old_dc_list);
-        const dc_characters = initList(dc_list);
-        const all_characters = initList(dc_list.concat(mobile_list).concat(ol_list).concat(other_list));
+        const dc_characters = initList(old_dc_list.concat(dc_list));
+        const all_characters = initList(old_dc_list.concat(dc_list).concat(mobile_list).concat(ol_list).concat(other_list));
         lib.storage.stage["大战七阴"] = {
           name: "大战七阴",
           intro: `主公可供玩家设定，其余七位ai玩家从阴间武将中随机选中一个。
@@ -4707,7 +4708,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
     },
     config: {
       intro: {
-        name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。如果发现技能缺失，请尝试将无名杀本体更新为最新版本，并在“扩展-诸神降临”中选择“开启”。
+        name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。如果发现技能或武将缺失，请尝试将无名杀本体更新为最新版本，并在“扩展-诸神降临”中选择“开启”。
                 这是本扩展的官方网站：<a class="github" href="https://s-n-o-r-l-a-x.github.io/noname-extension/">https://s-n-o-r-l-a-x.github.io/noname-extension</a><br>
                 如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极哦~<br>
                 <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a><br>
