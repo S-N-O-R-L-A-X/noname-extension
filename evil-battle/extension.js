@@ -12,7 +12,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
       lib.groupnature.daqin = 'thunder';
       if (lib.config.mode == "brawl") {
         if (!lib.storage.stage) lib.storage.stage = {};
-
+        const old_dc_list = ["xushao", "puyuan", "guozhao", "guansuo", "zhaoxiang", "xin_lingtong",
+          "re_liuzan"];
         const dc_list = ["xushao", "puyuan", "guozhao", "guansuo", "zhaoxiang", "xin_lingtong",
           "re_liuzan", "caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
           "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
@@ -20,6 +21,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         const mobile_list = ["shen_xunyu", "yangbiao", "sp_duyu"];
         const ol_list = ["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
         const other_list = ["sp_xiahoushi", "tw_dongzhao"];
+        const old_dc_characters = initList(old_dc_list);
         const dc_characters = initList(dc_list);
         const all_characters = initList(dc_list.concat(mobile_list).concat(ol_list).concat(other_list));
         lib.storage.stage["大战七阴"] = {
@@ -28,6 +30,24 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极~<br>
                      <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a>`,
           scenes: [{
+            name: "十周年老阴间",
+            intro: "十周年老阴间乱斗",
+            players: [
+              { "name": "random", "name2": "none", "identity": "zhu", "position": 1, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": true, "handcards": [], "equips": [], "judges": [] },
+              { "name": old_dc_characters[0], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": old_dc_characters[1], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": old_dc_characters[2], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": old_dc_characters[3], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": old_dc_characters[4], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": old_dc_characters[5], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": old_dc_characters[6], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] }
+            ],
+            cardPileTop: [],
+            cardPileBottom: [],
+            discardPile: [],
+            gameDraw: true,
+
+          }, {
             name: "十周年阴间",
             intro: "十周年阴间乱斗",
             players: [
