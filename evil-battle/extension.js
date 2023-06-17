@@ -197,8 +197,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   },
                 },
               },
+
+              // sunce
               repinghe: {
-                audio: "ext:抗七阴:2",
+                audio: "pinghe",
                 mod: {
                   maxHandcardBase: function (player) {
                     return player.maxHp;
@@ -245,8 +247,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
                 },
               },
+
+              // succubus
               yuxin: {
-                audio: "ext:无名扩展:2",
+                audio: "huoxin",
                 enable: "phaseUse",
                 usable: 2,
                 filter: function (event, player) {
@@ -483,6 +487,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // fusion_xuhuang
               "famine": {
+                audio: "sbduanliang",
                 enable: "phaseUse",
                 usable: 7,
                 filterTarget: function (card, player, target) {
@@ -637,6 +642,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // liuxingyaodi
               renjun: {
+                audio: "rende",
                 unique: true,
                 trigger: { global: 'recoverAfter' },
                 direct: true,
@@ -688,6 +694,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               boss_rende: {
+                audio: "rerende",
                 enable: 'phaseUse',
                 delay: false,
                 filter: function (event, player) {
@@ -732,7 +739,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
 
-              //
+              // ex_diaochan
               ex_yuhun: {
                 enable: "phaseUse",
                 usable: 1,
@@ -1150,6 +1157,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // mengpo
               "rewangshi": {
+                audio: "boss_wangshi",
                 trigger: { global: 'phaseZhunbeiBegin' },
                 forced: true,
                 audio: true,
@@ -1171,6 +1179,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
               "boss_wangshi2": {
+                audio: "boss_wangshi",
                 unique: true,
                 charlotte: true,
                 intro: {
@@ -1190,6 +1199,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
               rexuechi: {
+                audio: "boss_xuechi",
                 trigger: { player: 'phaseJieshuBegin' },
                 forced: true,
                 content: function () {
@@ -1209,7 +1219,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
                 },
               },
+
+              // boss_dongwudadi
               wuye: {
+                audio: "zhiheng",
                 unique: true,
                 trigger: {
                   player: 'loseAfter',
@@ -1268,6 +1281,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
               boss_zhiheng: {
+                audio: "rezhiheng",
                 enable: 'phaseUse',
                 usable: 1,
                 delay: false,
@@ -1287,6 +1301,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                 },
               },
+
+              // boss_luanshizhuhou
               hunzhan: {
                 unique: true,
                 trigger: {
@@ -2513,7 +2529,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   },
                 },
               },
-              //zhaogao
+
+              // zhaogao
               ex_zhilu: {
                 audio: 'ext:大战七阴/audio:true',
                 group: 'ex_zhilu2',
@@ -3145,6 +3162,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
 
+              // ex_lvbuwei
               "ex_jugu": {
                 audio: 'ext:大战七阴/audio:true',
                 mod: {
@@ -3273,8 +3291,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
 
+              // fusion_jiaxu
               fusion_jianshu: {
-                audio: 2,
+                audio: "jianshu",
                 unique: true,
                 enable: 'phaseUse',
                 usable: 1,
@@ -3335,7 +3354,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
               fusion_yongdi: {
-                audio: 2,
+                audio: "yongdi",
                 audioname: ['xinping'],
                 unique: true,
                 limited: true,
@@ -3430,7 +3449,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // },
 
               fusion_zhudong: {
-                audio: 2,
+                audio: "olbaonue",
                 unique: true,
                 zhuSkill: true,
                 trigger: { global: 'damageSource' },
@@ -3503,7 +3522,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
               fusion_cidu: {
-                audio: 2,
+                audio: "zhendu",
                 enable: 'phaseUse',
                 usable: 1,
                 discard: false,
@@ -3666,7 +3685,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               // fusion_puyuan
-
               fusion_bianshui: {
                 trigger: { player: 'phaseUseBegin' },
                 direct: true,
@@ -3726,7 +3744,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               fusion_zhuren: {
-                audio: 2,
+                audio: "pyzhuren",
                 enable: 'phaseUse',
                 usable: 1,
                 filterCard: true,
@@ -3793,7 +3811,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               fusion_shengong: {
-                audio: 2,
+                audio: "olshengong",
                 enable: 'phaseUse',
                 usable: 3,
                 filter: function (event, player) {
@@ -4158,7 +4176,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
               fusion_tiaoxin2: {},
               fusion_tianren: {
-                audio: 2,
+                audio: "tianren",
                 trigger: { global: ['loseAfter', 'cardsDiscardAfter', 'loseAsyncAfter'] },
                 forced: true,
                 filter: function (event, player) {
@@ -4206,7 +4224,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
               fusion_pingxiang: {
-                audio: 2,
+                audio: "pingxiang",
                 enable: 'phaseUse',
                 skillAnimation: true,
                 animationColor: 'ice',
