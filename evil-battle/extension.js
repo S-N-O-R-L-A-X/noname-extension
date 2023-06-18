@@ -185,7 +185,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shuguoyinghun2": "来源于剑阁模式蜀国英魂中的智囊型武将（其实就是蜀国英魂强度过高出个限制版），将其技能进行融合，并对其部分技能进行了修改。<br>【强度】★★★<br> 【亮点】综合",
               "fusion_puyuan": "来源于十周年武将蒲元与OL蒲元，将其技能进行融合和修改，并加入新技能【辨水】。<br>【强度】★★★★<br> 【亮点】铸造",
               "fusion_shen_jiangwei": "来源于神姜维与OL界姜维，将其技能进行融合和修改。<br>【强度】★★★★<br> 【亮点】综合",
-              "re_boss_yingzhao": "来源于英招，将其技能修改为最新的【妖兽】。<br>【强度】★★★★<br> 【亮点】综合",
+              "re_boss_yingzhao": "来源于英招，将其技能修改为最新的【妖兽】，甚至都没有加上最新的巡游就已经足够强。<br>【强度】★★★★<br> 【亮点】综合",
+              "re_boss_xiangliu": "来源于新版相柳，将其技能修改为最新的【妖兽】【恶臭】。<br>【强度】★★★★★<br> 【亮点】恶心",
             },
             skill: {
               shenhu: {
@@ -4751,9 +4752,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
               '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：界英招、界相柳。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>更新了说明。<br>' +
-              '<li><span style="color:#006400">说明三</span>：<br>修改了扩展包名字，将阴包修改为数包。<br>'
-
+              '<li><span style="color:#006400">说明二</span>：<br>更新了新关卡：老七阴。同时七阴武将库更新。<br>' +
+              '<li><span style="color:#006400">说明三</span>：<br>更新了说明。<br>' +
+              '<li><span style="color:#006400">说明四</span>：<br>修改了扩展包名字，将阴包修改为数包。<br>' +
+              '<li><span style="color:#006400">说明五</span>：<br>修复了一些武将没有配音的问题。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
