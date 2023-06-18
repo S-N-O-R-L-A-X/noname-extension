@@ -14,10 +14,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         if (!lib.storage.stage) lib.storage.stage = {};
         const old_dc_list = ["xushao", "puyuan", "guozhao", "guansuo", "zhaoxiang", "xin_lingtong",
           "re_liuzan"];
-        const dc_list = ["xushao", "puyuan", "guozhao", "guansuo", "zhaoxiang", "xin_lingtong",
-          "re_liuzan", "caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
+        const dc_list = ["caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
           "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
-          "tenggongzhu", "caomao", "zhangxuan", "dc_zhouxuan", "xuelingyun", "shen_zhangfei",
+          "tenggongzhu", "caomao", "zhangxuan", "dc_zhouxuān", "xuelingyun", "shen_zhangfei",
           "shen_zhangjiao", "luyi"];
         const mobile_list = ["shen_xunyu", "yangbiao", "sp_duyu"];
         const ol_list = ["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
