@@ -137,7 +137,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_weiguoyinghun": ["none", "wei", 10, ["shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "fusion_jiaoxie"], ["zhu", "boss", "bossallowed"]],
               "fusion_puyuan": ["male", "shu", 10, ["shenhu", "fusion_shengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_yingzhao": ["male", "shen", "20/25", ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_yingzhao": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xiangliu": ["male", "shen", 20, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
@@ -4482,24 +4482,24 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               yuxin_info: "出牌阶段限两次，你可以展示两张花色相同的手牌并分别交给两名其他角色，然后令这两名角色拼点，没赢的角色获得1个“魅惑”标记。拥有2个或更多“魅惑”的角色回合即将开始时，该角色移去其所有“魅惑”，此回合改为由你操控。",
 
               // math_caojinyu
-              math_yuqi: '隅泣',
-              math_yuqi_info: '每回合限X次。当有角色受到伤害后，若你至其的距离不大于<span class=thundertext>0</span>，则你可以观看牌堆顶的<span class=firetext>3</span>张牌。你将其中至多<span class=greentext>1</span>张牌交给受伤角色，然后可以获得剩余牌中的至多<span class=yellowtext>1</span>张牌，并将其余牌以原顺序放回牌堆顶。（X为所有数字中最大值）',
-              math_shanshen: '善身',
-              math_shanshen_info: '当有角色死亡时，你可令你的〖隅泣〗中的一个具有颜色的数字+2。然后若你未对该角色造成过伤害，则你回复1点体力。',
-              math_xianjing: '娴静',
-              math_xianjing_info: '准备阶段，你可令你的〖隅泣〗中的一个具有颜色的数字+1。若你的体力值等于体力上限，则你可以重复一次此流程。',
+              math_yuqi: "隅泣",
+              math_yuqi_info: "每回合限X次。当有角色受到伤害后，若你至其的距离不大于<span class=thundertext>0</span>，则你可以观看牌堆顶的<span class=firetext>3</span>张牌。你将其中至多<span class=greentext>1</span>张牌交给受伤角色，然后可以获得剩余牌中的至多<span class=yellowtext>1</span>张牌，并将其余牌以原顺序放回牌堆顶。（X为所有数字中最大值）",
+              math_shanshen: "善身",
+              math_shanshen_info: "当有角色死亡时，你可令你的〖隅泣〗中的一个具有颜色的数字+2。然后若你未对该角色造成过伤害，则你回复1点体力。",
+              math_xianjing: "娴静",
+              math_xianjing_info: "准备阶段，你可令你的〖隅泣〗中的一个具有颜色的数字+1。若你的体力值等于体力上限，则你可以重复一次此流程。",
 
               //fuxion_xuhuang
-              famine: '饥荒',
+              famine: "饥荒",
               famine_info: "出牌阶段限七次，你可以与一名其他角色进行“谋弈”：<br>围城断粮：若其判定区有【兵粮寸断】，获得其一张牌，否则你将一张牌堆顶的牌当做【兵粮寸断】对其使用且无距离限制。<br>擂鼓进军：你视为对其使用一张【决斗】。",
-              shipo: '势迫',
-              shipo_info: '结束阶段，你可以令一名体力值少于你的角色或所有判定区有【兵粮寸断】的其他角色依次选择一项：1. 弃置一张牌；2. 令你摸一张牌。',
+              shipo: "势迫",
+              shipo_info: "结束阶段，你可以令一名体力值少于你的角色或所有判定区有【兵粮寸断】的其他角色依次选择一项：1. 弃置一张牌；2. 令你摸一张牌。",
 
               // liuxingyaodi
-              renjun: '仁君',
-              renjun_info: '锁定技，当一名角色回复体力时，你随机获得一个蜀势力角色的所有技能',
-              boss_rende: '仁德',
-              boss_rende_info: '出牌阶段，若你有杀，你可以展示所有手牌并弃置其中的杀，然后令任意名角色回复一点体力。然后你摸X张牌。（X为以此法恢复体力的角色数）',
+              renjun: "仁君",
+              renjun_info: "锁定技，当一名角色回复体力时，你随机获得一个蜀势力角色的所有技能",
+              boss_rende: "仁德",
+              boss_rende_info: "出牌阶段，若你有杀，你可以展示所有手牌并弃置其中的杀，然后令任意名角色回复一点体力。然后你摸X张牌。（X为以此法恢复体力的角色数）",
 
               // ex_diaochan
               ex_yuhun: "驭魂",
@@ -4510,26 +4510,26 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // re_fusion_honglianpo
               rewangshi: "往事",
               rewangshi_info: "锁定技，你存活时，敌方角色的回合开始时，你选择一项，令其于本回合不能使用或打出一种类型的牌（基本、锦囊、装备）。",
-              rexuechi: '血池',
-              rexuechi_info: '锁定技，你的回合结束时，令一名其他角色失去2点体力。',
+              rexuechi: "血池",
+              rexuechi_info: "锁定技，你的回合结束时，令一名其他角色失去2点体力。",
 
               // zhizunwudi
-              wuye: '吴业',
-              wuye_info: '锁定技，当你使用或失去装备牌导致装备区发生变化时，你随机获得一个吴势力角色的所有技能',
-              boss_zhiheng: '制衡',
-              boss_zhiheng_info: '出牌阶段限一次，你可以弃置所有手牌，然后从牌堆中随机获得一张装备牌',
+              wuye: "吴业",
+              wuye_info: "锁定技，当你使用或失去装备牌导致装备区发生变化时，你随机获得一个吴势力角色的所有技能",
+              boss_zhiheng: "制衡",
+              boss_zhiheng_info: "出牌阶段限一次，你可以弃置所有手牌，然后从牌堆中随机获得一张装备牌",
 
               // luanshizhuhou
-              hunzhan: '混战',
-              hunzhan_info: '锁定技，当你造成一点伤害后，你随机获得一个群势力角色的所有技能。',
-              qibing: '起兵',
-              qibing_info: '准备阶段，你可以选择一名敌方角色，若如此做，视为对其使用了一张杀',
+              hunzhan: "混战",
+              hunzhan_info: "锁定技，当你造成一点伤害后，你随机获得一个群势力角色的所有技能。",
+              qibing: "起兵",
+              qibing_info: "准备阶段，你可以选择一名敌方角色，若如此做，视为对其使用了一张杀",
 
               // yitongjindi
-              yuquan: '驭权',
-              yuquan_info: '隐匿技，锁定技，当你登场后，你随机获得一个晋势力角色的所有技能。',
-              chengbing: '称病',
-              chengbing_info: '当你受到伤害后，你进入隐匿状态。',
+              yuquan: "驭权",
+              yuquan_info: "隐匿技，锁定技，当你登场后，你随机获得一个晋势力角色的所有技能。",
+              chengbing: "称病",
+              chengbing_info: "当你受到伤害后，你进入隐匿状态。",
 
               // qinshihuang
               ex_yitong: "一统",
@@ -4573,7 +4573,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               qinnu: "秦弩",
               qinnu_info: "当你使用【杀】指定一个目标后，你令其防具无效，你的出牌阶段内，可使用的【杀】数量+1；当你失去装备区里的【秦弩】，你令此牌销毁。",
 
-
               // baiqi
               ex_wuan: "武安",
               ex_wuan_info: "锁定技，你存活时，所有秦势力角色使用【杀】的上限+1。",
@@ -4609,16 +4608,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               ex_lianzuo_info: "当你使用【商鞅变法】对其他角色造成伤害时，你可以对令一名其他角色造成等量伤害。",
 
               // zhaogao
-              ex_zhilu: '指鹿',
-              ex_zhilu2: '指鹿',
-              ex_zhilu_info: '你可以将红色手牌当【闪】使用或打出；将黑色手牌当【杀】使用或打出。',
-              ex_zhilu2_info: '你可以将红色手牌当【闪】使用或打出；将黑色手牌当【杀】使用或打出。',
-              ex_gaizhao: '改诏',
-              ex_gaizhao_info: '每回合限一次，当你成为【杀】或普通锦囊牌的目标后（借刀杀人除外），若场上有其他角色存活，你可以将此牌的目标改为其他不是该牌目标的角色。',
-              ex_haizhong: '害忠',
-              ex_haizhong_info: '锁定技，非秦势力角色回复体力后，该角色获得一个“害”标记。然后若场上没有处于濒死阶段的角色，其需要选择：1.弃置一张红色牌，2.受到你造成的X点伤害（X为该角色拥有的“害”标记）。',
-              ex_aili: '爰历',
-              ex_aili_info: '锁定技，你的出牌阶段开始时，你额外获得2张普通锦囊。',
+              ex_zhilu: "指鹿",
+              ex_zhilu2: "指鹿",
+              ex_zhilu_info: "你可以将红色手牌当【闪】使用或打出；将黑色手牌当【杀】使用或打出。",
+              ex_zhilu2_info: "你可以将红色手牌当【闪】使用或打出；将黑色手牌当【杀】使用或打出。",
+              ex_gaizhao: "改诏",
+              ex_gaizhao_info: "每回合限一次，当你成为【杀】或普通锦囊牌的目标后（借刀杀人除外），若场上有其他角色存活，你可以将此牌的目标改为其他不是该牌目标的角色。",
+              ex_haizhong: "害忠",
+              ex_haizhong_info: "锁定技，非秦势力角色回复体力后，该角色获得一个“害”标记。然后若场上没有处于濒死阶段的角色，其需要选择：1.弃置一张红色牌，2.受到你造成的X点伤害（X为该角色拥有的“害”标记）。",
+              ex_aili: "爰历",
+              ex_aili_info: "锁定技，你的出牌阶段开始时，你额外获得2张普通锦囊。",
               ex_zaiguan: "载棺",
               ex_zaiguan_info: "一名其他角色死亡时，你可用其对应的【尸体】替换之。【尸体】：尸体继承原先武将技能，体力回复至体力上限，不能成为延时锦囊的目标。尸体回合结束时，可将所有牌交给一名其他角色，然后其死亡。",
               // ex_zaiguan_info: "一名其他角色死亡时，你可用其对应的【尸体】替换之。【尸体】：尸体继承原先武将技能，不能成为延时锦囊的目标，其不能使用或打出牌直到其下个回合开始。尸体回合结束时，可将所有牌交给一名其他角色，然后其死亡。",
@@ -4670,8 +4669,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_gongshen_info: "回合结束阶段，若你已受伤，你回复一点体力；否则你对其他角色随机造成一点火焰伤害。",
 
               // fuxion_weiguoyinghun
-              fusion_jiaoxie: '缴械',
-              fusion_jiaoxie_info: '出牌阶段限一次，你可令两名其他角色各交给你一张牌。',
+              fusion_jiaoxie: "缴械",
+              fusion_jiaoxie_info: "出牌阶段限一次，你可令两名其他角色各交给你一张牌。",
 
               // fusion_puyuan
               fusion_bianshui: "辨水",
@@ -4684,10 +4683,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // fusion_shen_jiangwei
               fusion_tiaoxin: "挑衅",
               fusion_tiaoxin_info: "出牌阶段限一次，你可以选择一名有牌的角色。然后除非该角色对你使用一张【杀】且此【杀】对你造成伤害，否则你弃置其一张牌，然后将此技能于此出牌阶段内修改为出牌阶段限两次。",
-              fusion_tianren: '天任',
-              fusion_tianren_info: '锁定技。①当有一张基本牌或普通锦囊牌不因使用而进入弃牌堆后，你获得一枚“天任”标记。②当你获得“天任”标记或体力上限变化后，若你的“天任”数不小于X，则你移去X枚“天任”，加1点体力上限，回复1点体力并摸两张牌（X为你的体力上限）。',
-              fusion_pingxiang: '平襄',
-              fusion_pingxiang_info: '出牌阶段，若你的体力上限大于⑨，则你可减⑨点体力上限，视为使用至多⑨张火【杀】。',
+              fusion_tianren: "天任",
+              fusion_tianren_info: "锁定技。①当有一张基本牌或普通锦囊牌不因使用而进入弃牌堆后，你获得一枚“天任”标记。②当你获得“天任”标记或体力上限变化后，若你的“天任”数不小于X，则你移去X枚“天任”，加1点体力上限，回复1点体力并摸两张牌（X为你的体力上限）。",
+              fusion_pingxiang: "平襄",
+              fusion_pingxiang_info: "出牌阶段，若你的体力上限大于⑨，则你可减⑨点体力上限，视为使用至多⑨张火【杀】。",
 
               // re_boss_yingzhao
               re_boss_yaoshou: "妖兽",
@@ -4695,12 +4694,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // re_boss_xiangliu
               re_boss_echou: "恶臭",
-              re_boss_echou_info: "锁定技，当敌方角色回复体力时，其获得1枚【蛇毒】；每个结束阶段，你令随机地方角色获得1枚【蛇毒】。",
+              re_boss_echou_info: "锁定技，当敌方角色回复体力时，其获得1枚【蛇毒】；每个结束阶段，你令随机一名敌方角色获得1枚【蛇毒】。",
 
               // unused
-              geju: '割据',
-              geju_info: '锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。',
-              geju_effect: '割据效果',
+              geju: "割据",
+              geju_info: "锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。",
+              geju_effect: "割据效果",
             },
           };
 
@@ -4743,7 +4742,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：6.0<font size="4px">▶▶▶</font></div>`,
+        name: `<div class=".update">扩展版本：6.0.1<font size="4px">▶▶▶</font></div>`,
         version: 6.0,
         clear: true,
         intro: "点击查看此版本的更新内容",
@@ -4763,7 +4762,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：6.0<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：6.0.1<font size="4px">▶▶▶</font></div>';
           };
         }
       },
