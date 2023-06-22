@@ -10,7 +10,7 @@
     { "name": "succubus", "gender": "female", "nationality": "shen", "hp": 6, "skills": [ "meihun", "rebiyue", "yuehun", "yunshen", "boss_guimei", "yuxin" ], "ex_package": "against7devil_boss", "strength": "", "details": { } },
     { "name": "re_boss_huatuo", "gender": "male", "nationality": "qun", "hp": 6, "skills": [ "shenhu", "chulao", "mazui", "boss_shengshou", "guizhen", "wuqin" ], "ex_package": "against7devil_boss", "strength": "", "details": { } },
     { "name": "re_boss_zhouyu", "gender": "male", "nationality": "wu", "hp": 10, "skills": [ "shenhu", "huoshen", "boss_honglian", "boss_xianyin", "boss_zhaohuo", "boss_honglianx" ], "ex_package": "against7devil_boss", "strength": "", "details": { } },
-    { "name": "yin_caojinyu", "gender": "female", "nationality": "wei", "hp": 10, "skills": [ "shenhu", "yinyuqi", "yinshanshen", "yinxianjing" ], "ex_package": "", "strength": "", "details": { } },
+    { "name": "yin_caojinyu", "gender": "female", "nationality": "wei", "hp": 10, "skills": [ "shenhu", "yinyuqi", "yinshanshen", "yinxianjing" ], "ex_package": "against7devil_math", "strength": "", "details": { } },
     { "name": "norecover", "gender": "male", "nationality": "shen", "hp": 25, "skills": [ "boss_fudu", "boss_kujiu", "boss_duqu", "boss_echou", "ex_haizhong" ], "ex_package": "against7devil_fusion", "strength": "", "details": { } },
     { "name": "fusion_xuhuang", "gender": "male", "nationality": "wei", "hp": 6, "skills": [ "shenhu", "shipo", "famine", "olduanliang", "oljiezi" ], "ex_package": "against7devil_fusion", "strength": "", "details": { } },
     { "name": "liuxingyaodi", "gender": "male", "nationality": "shu", "hp": "6/8", "skills": [ "shenhu", "renjun", "boss_rende" ], "ex_package": "against7devil_boss", "strength": "", "details": { } },
@@ -38,6 +38,8 @@
     { "name": "fusion_shuguoyinghun2", "gender": "none", "nationality": "shu", "hp": "3/5", "skills": [ "shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg" ], "ex_package": "against7devil_fusion", "strength": "", "details": { } },
     { "name": "fusion_weiguoyinghun", "gender": "none", "nationality": "wei", "hp": 10, "skills": [ "shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "fusion_jiaoxie" ], "ex_package": "against7devil_fusion", "strength": "", "details": { } },
     { "name": "fusion_puyuan", "gender": "male", "nationality": "shu", "hp": 10, "skills": [ "shenhu", "fusion_shengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui" ], "ex_package": "against7devil_fusion", "strength": "", "details": { } },
-    { "name": "fusion_shen_jiangwei", "gender": "male", "nationality": "shen", "hp": 10, "skills": [ "shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji" ], "ex_package": "against7devil_fusion", "strength": "", "details": { } }
+    { "name": "fusion_shen_jiangwei", "gender": "male", "nationality": "shen", "hp": 10, "skills": [ "shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji" ], "ex_package": "against7devil_fusion", "strength": "", "details": { } },
+    { "name": "re_boss_yingzhao", "gender": "male", "nationality": "shen", "hp": 25, "skills": [ "shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu" ], "ex_package": "against7devil_boss", "strength": "", "details": { } },
+    { "name": "re_boss_xiangliu", "gender": "male", "nationality": "shen", "hp": 20, "skills": [ "shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou" ], "ex_package": "against7devil_boss", "strength": "", "details": { } }
   ]
 }

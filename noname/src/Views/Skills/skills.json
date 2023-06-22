@@ -114,6 +114,9 @@
     { "name": "fusion_pingxiang", "translation": "平襄", "info": "出牌阶段，若你的体力上限大于⑨，则你可减⑨点体力上限，视为使用至多⑨张火【杀】。" },
 
 
+    { "name": "re_boss_yaoshou", "translation": "妖兽", "info": "锁定技，你计算与其他角色的距离-2；你于回合内首次使用的基本牌或普通锦囊牌结算两次。" },
+    { "name": "re_boss_echou", "translation": "恶臭", "info": "锁定技，当敌方角色回复体力时，其获得1枚【蛇毒】；每个结束阶段，你令随机一名敌方角色获得1枚【蛇毒】。" },
+
     { "name": "geju", "translation": "割据", "info": "锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。" },
     { "geju_effect": "割据效果" }
 
