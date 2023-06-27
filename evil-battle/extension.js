@@ -139,6 +139,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
               "re_boss_yingzhao": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xiangliu": ["male", "shen", 20, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou"], ["zhu", "boss", "bossallowed"]],
+              "fusion_lingtong": ["male", "wu", 20, ["shenhu", "fusion_xuanfeng", "yongjin"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -4336,7 +4337,103 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     },
                   }
                 }
-              }
+              },
+
+              // fusion_xuanfeng
+              fusion_xuanfeng: {
+                audio: 'xuanfeng',
+                audioname: ['boss_lvbu3', 're_heqi', 'xin_lingtong'],
+                trigger: {
+                  player: ['loseAfter', 'phaseDiscardEnd'],
+                  global: ['equipAfter', 'addJudgeAfter', 'gainAfter', 'loseAsyncAfter', 'addToExpansionAfter'],
+                },
+                direct: true,
+                filter: function (event, player) {
+                  if (_status.dying.length) return false;
+                  if (event.name == 'phaseDiscard') {
+                    var cards = [];
+                    player.getHistory('lose', function (evt) {
+                      if (evt && evt.type == 'discard' && evt.getParent('phaseDiscard') == event && evt.hs) cards.addArray(evt.hs);
+                    });
+                    return cards.length > 1;
+                  }
+                  else {
+                    var evt = event.getl(player);
+                    return evt && evt.es && evt.es.length > 0;
+                  }
+                },
+                content: function () {
+                  "step 0"
+                  event.count = 2;
+                  event.targets = [];
+                  event.logged = false;
+                  "step 1"
+                  event.count--;
+                  player.chooseTarget(get.prompt('fusion_xuanfeng'), '弃置一名其他角色的一张牌', function (card, player, target) {
+                    if (player == target) return false;
+                    return target.countDiscardableCards(player, 'he');
+                  }).set('ai', function (target) {
+                    return -get.attitude(_status.event.player, target);
+                  });
+                  "step 2"
+                  if (result.bool) {
+                    if (!event.logged) {
+                      player.logSkill('fusion_xuanfeng', result.targets);
+                      event.logged = true;
+                    }
+                    else player.line(result.targets[0], 'green');
+                    targets.add(result.targets[0]);
+                    player.discardPlayerCard(result.targets[0], 'he', true);
+                  }
+                  else if (!targets.length) event.finish();
+                  "step 3"
+                  if (event.count) event.goto(1);
+                  else if (player == _status.currentPhase) {
+                    player.chooseTarget('是否对一名目标角色造成1点伤害', function (card, player, target) {
+                      return _status.event.targets.contains(target);
+                    }).set('targets', targets).set('ai', function (target) {
+                      var player = _status.event.player;
+                      return get.damageEffect(target, player, player);
+                    });
+                  }
+                  else event.finish();
+                  "step 4"
+                  if (result.bool) {
+                    player.line(result.targets[0], 'thunder');
+                    result.targets[0].damage();
+                  }
+                },
+                ai: {
+                  effect: {
+                    player_use: function (card, player, target) {
+                      if (player == target && get.type(card) == 'equip' && player.countCards('hes', function (cardx) {
+                        return card != cardx && (!card.cards || !card.cards.contains(cardx)) && (player.hasSkill('yongjin') || get.subtype(card) == get.subtype(cardx)) && (get.position(cardx) == 'e' || player.canUse(cardx, player));
+                      }) > 0) return;
+                      if (!game.hasPlayer(function (current) {
+                        return get.attitude(player, current) < 0 && current.countDiscardableCards(player, 'he') > 0 && get.damageEffect(current, player, player) > 0;
+                      })) return;
+                      if (typeof card == 'object' && player.isPhaseUsing() &&
+                        player.needsToDiscard() == 2 && card.cards && card.cards.filter(function (i) {
+                          return get.position(i) == 'h';
+                        }).length > 0 && !get.tag(card, 'draw') && !get.tag(card, 'gain') && !(get.tag(card, 'discard') && target == player && player.countCards('e') > 0)) return 'zeroplayertarget';
+                    },
+                    target: function (card, player, target, current) {
+                      if (get.type(card) == 'equip' && !get.cardtag(card, 'gifts')) return [1, 3];
+                      if (get.tag(card, 'damage') && target.hp > 2) {
+                        var num1 = target.countCards('h'), num2 = target.getHandcardLimit();
+                        if (num1 > num2) return [1, 1];
+                        if (num1 == num2) return [1.1, _status.event.player == target ? 3 : 0.5];
+                        if (num1 == num2 - 1) return [0.1, _status.event.player == target ? 4.5 : 0.1];
+                      }
+                      if (typeof card == 'object' && (card.name == 'shunshou' || card.name == 'guohe' || card.name == 'zhujinqiyuan') && target.countCards('h') > 0 && get.attitude(player, target) < 0) return [1, -1];
+                    }
+                  },
+                  reverseEquip: true,
+                  noe: true,
+                  expose: 0.2,
+                }
+              },
+
             },
 
             card: {
@@ -4742,18 +4839,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：6.0.1<font size="4px">▶▶▶</font></div>`,
-        version: 6.0,
+        name: `<div class=".update">扩展版本：6.1<font size="4px">▶▶▶</font></div>`,
+        version: 6.1,
         clear: true,
         intro: "点击查看此版本的更新内容",
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：界英招、界相柳。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>更新了新关卡：老七阴。同时七阴武将库更新。<br>' +
-              '<li><span style="color:#006400">说明三</span>：<br>更新了说明。<br>' +
-              '<li><span style="color:#006400">说明四</span>：<br>修改了扩展包名字，将阴包修改为数包。<br>' +
-              '<li><span style="color:#006400">说明五</span>：<br>修复了一些武将没有配音的问题。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融凌统。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
@@ -4762,7 +4855,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：6.0.1<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：6.1<font size="4px">▶▶▶</font></div>';
           };
         }
       },
