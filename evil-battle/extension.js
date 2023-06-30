@@ -4400,7 +4400,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                   "step 4"// use sha
                   game.log("4");
-                  player.chooseTarget(get.prompt('fusion_xuanfeng'), function (card, player, target) {
+                  player.chooseTarget("是否使用一张杀", function (card, player, target) {
                     if (target.isFriendOf(player)) return false;
                     return lib.filter.targetEnabled({ name: 'sha' }, player, target);
                   }).ai = function (target) {
@@ -4591,6 +4591,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_jiangwei": "融神姜维",
               "re_boss_yingzhao": "界英招",
               "re_boss_xiangliu": "界相柳",
+              "fusion_lingtong": "融凌统",
 
               // skill
               shenhu: "神护",
@@ -4818,6 +4819,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // re_boss_xiangliu
               re_boss_echou: "恶臭",
               re_boss_echou_info: "锁定技，当敌方角色回复体力时，其获得1枚【蛇毒】；每个结束阶段，你令随机一名敌方角色获得1枚【蛇毒】。",
+
+              // fusion_lingtong
+              fusion_xuanfeng: "旋风",
+              fusion_xuanfeng_info: "当你失去装备区内的牌时，或于弃牌阶段弃置了两张或更多的手牌后，你可以依次弃置一至两名其他角色的共计两张牌，然后可以移动场上装备区内的一张牌，视为使用一张杀并对你弃置牌的角色造成一点伤害。",
 
               // unused
               geju: "割据",
