@@ -4367,6 +4367,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   event.count = 2;
                   event.targets = [];
                   event.logged = false;
+                  event.discardTargets = new Set();
+
                   "step 1"
                   event.count--;
                   player.chooseTarget(get.prompt('fusion_xuanfeng'), '弃置一名其他角色的一张牌', function (card, player, target) {
@@ -4375,6 +4377,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }).set('ai', function (target) {
                     return -get.attitude(_status.event.player, target);
                   });
+
                   "step 2"
                   if (result.bool) {
                     if (!event.logged) {
@@ -4382,22 +4385,45 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       event.logged = true;
                     }
                     else player.line(result.targets[0], 'green');
-                    targets.add(result.targets[0]);
+                    // targets.add(result.targets[0]);
+                    event.discardTargets.add(result.targets[0]);
                     player.discardPlayerCard(result.targets[0], 'he', true);
                   }
                   else if (!targets.length) event.finish();
-                  "step 3"
+
                   if (event.count) event.goto(1);
-                  else if (player == _status.currentPhase) {
-                    player.chooseTarget('是否对一名目标角色造成1点伤害', function (card, player, target) {
-                      return _status.event.targets.contains(target);
-                    }).set('targets', targets).set('ai', function (target) {
-                      var player = _status.event.player;
-                      return get.damageEffect(target, player, player);
-                    });
+
+                  "step 3"
+                  game.log("3")
+                  // move
+                  player.moveCard().nojudge = true;
+
+                  "step 4"// use sha
+                  game.log("4");
+                  player.chooseTarget(get.prompt('fusion_xuanfeng'), function (card, player, target) {
+                    if (target.isFriendOf(player)) return false;
+                    return lib.filter.targetEnabled({ name: 'sha' }, player, target);
+                  }).ai = function (target) {
+                    return get.effect(target, { name: 'sha' }, player);
                   }
-                  else event.finish();
-                  "step 4"
+
+                  "step 5"
+                  game.log("5");
+                  if (result.bool) {
+                    player.logSkill('fusion_xuanfeng');
+                    player.useCard({ name: 'sha' }, result.targets, false);
+                  }
+
+                  "step 6"
+                  game.log(event.discardTargets)
+                  player.chooseTarget('是否对一名目标角色造成1点伤害', function (card, player, target) {
+                    return event.discardTargets.has(target);
+                  }).set('targets', targets).set('ai', function (target) {
+                    var player = _status.event.player;
+                    return get.damageEffect(target, player, player);
+                  });
+
+                  "step 7"
                   if (result.bool) {
                     player.line(result.targets[0], 'thunder');
                     result.targets[0].damage();
