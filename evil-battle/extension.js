@@ -139,7 +139,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
               "re_boss_yingzhao": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xiangliu": ["male", "shen", 20, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou"], ["zhu", "boss", "bossallowed"]],
-              "fusion_lingtong": ["male", "wu", 20, ["shenhu", "fusion_xuanfeng", "yongjin"], ["zhu", "boss", "bossallowed"]],
+              "fusion_lingtong": ["male", "wu", 6, ["shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -4459,6 +4459,28 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   expose: 0.2,
                 }
               },
+              "fusion_yinshi": {
+                trigger: { player: 'phaseDrawBegin' },
+                forced: true,
+                content: function () {
+                  const old_dc_list = ["xushao", "puyuan", "guozhao", "guansuo", "zhaoxiang", "xin_lingtong",
+                    "re_liuzan"];
+                  const dc_list = ["caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
+                    "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
+                    "tenggongzhu", "caomao", "zhangxuan", "dc_zhouxuān", "xuelingyun", "shen_zhangfei",
+                    "shen_zhangjiao", "luyi"];
+                  const mobile_list = ["shen_xunyu", "yangbiao", "sp_duyu"];
+                  const ol_list = ["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
+                  const other_list = ["sp_xiahoushi", "tw_dongzhao"];
+                  const all_list = old_dc_list.concat(dc_list).concat(mobile_list).concat(ol_list).concat(other_list);
+                  trigger.num += game.countPlayer(function (current) {
+                    return all_list.contains(current.name) || all_list.contains(current.name2);
+                  });
+                },
+                ai: {
+                  threaten: 4
+                }
+              }
 
             },
 
