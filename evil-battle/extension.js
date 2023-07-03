@@ -143,10 +143,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             },
             characterSort: {
               against7devil: {
-                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu", "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou", "re_boss_yingzhao", "re_boss_xiangliu"],
-                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo", "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie", "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2", "fusion_puyuan", "fusion_shen_jiangwei"],
+                against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu",
+                  "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou",
+                  "re_boss_yingzhao", "re_boss_xiangliu"],
+                against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
+                  "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
+                  "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
+                  "fusion_puyuan", "fusion_shen_jiangwei", "fusion_lingtong"],
                 against7devil_math: ["math_caojinyu"],
-                against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi", "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
+                against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi",
+                  "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
               }
             },
             characterIntro: {
@@ -187,6 +193,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_jiangwei": "来源于神姜维与OL界姜维，将其技能进行融合和修改。<br>【强度】★★★★<br> 【亮点】综合",
               "re_boss_yingzhao": "来源于英招，将其技能修改为最新的【妖兽】，甚至都没有加上最新的巡游就已经足够强。<br>【强度】★★★★<br> 【亮点】综合",
               "re_boss_xiangliu": "来源于新版相柳，将其技能修改为最新的【妖兽】【恶臭】。<br>【强度】★★★★★<br> 【亮点】恶心",
+              "fusion_lingtong": "来源于十周年界凌统，手杀界凌统，旧凌统，ol凌统。界凌统打开了十周年阴间的大门，增加技能【阴始】<br>【强度】★★★★<br> 【亮点】攻击",
             },
             skill: {
               shenhu: {
@@ -4845,6 +4852,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // fusion_lingtong
               fusion_xuanfeng: "旋风",
               fusion_xuanfeng_info: "当你失去装备区内的牌时，或于弃牌阶段弃置了两张或更多的手牌后，你可以依次弃置一至两名其他角色的共计两张牌，然后可以移动场上装备区内的一张牌，视为使用一张杀并对你弃置牌的角色造成一点伤害。",
+              fusion_yinshi: "阴始",
+              fusion_yinshi_info: "锁定技，摸牌阶段，你多摸X张牌。（X为场上阴间武将数量）",
 
               // unused
               geju: "割据",
