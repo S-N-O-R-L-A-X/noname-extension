@@ -140,6 +140,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_yingzhao": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xiangliu": ["male", "shen", 20, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou"], ["zhu", "boss", "bossallowed"]],
               "fusion_lingtong": ["male", "wu", 6, ["shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi"], ["zhu", "boss", "bossallowed"]],
+              "fusion_liuzan": ["male", "wu", 8, ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "liji"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -149,7 +150,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
-                  "fusion_puyuan", "fusion_shen_jiangwei", "fusion_lingtong"],
+                  "fusion_puyuan", "fusion_shen_jiangwei", "fusion_lingtong", "fusion_liuzan"],
                 against7devil_math: ["math_caojinyu"],
                 against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi",
                   "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
