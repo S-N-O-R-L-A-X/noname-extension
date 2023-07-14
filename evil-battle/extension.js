@@ -140,7 +140,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_yingzhao": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xiangliu": ["male", "shen", 20, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou"], ["zhu", "boss", "bossallowed"]],
               "fusion_lingtong": ["male", "wu", 6, ["shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi"], ["zhu", "boss", "bossallowed"]],
-              "fusion_liuzan": ["male", "wu", 8, ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "liji"], ["zhu", "boss", "bossallowed"]],
+              "fusion_liuzan": ["male", "wu", 8, ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -4488,8 +4488,46 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 ai: {
                   threaten: 4
                 }
-              }
+              },
 
+              "fusion_liji": {
+                enable: 'phaseUse',
+                audio: "liji",
+                filter: function (event, player) {
+                  return (player.getStat().skill.fusion_liji || 0) < (event.fusion_liji_num || 0);
+                },
+                onChooseToUse: function (event) {
+                  if (game.online) return;
+                  var num = 0;
+                  var evt2 = event.getParent();
+                  if (!evt2.fusion_liji_all) evt2.fusion_liji_all = 4;
+                  game.getGlobalHistory('cardMove', function (evt) {
+                    if (evt.name == 'cardsDiscard' || (evt.name == 'lose' && evt.position == ui.discardPile)) num += evt.cards.length;
+                  });
+                  event.set('fusion_liji_num', Math.floor(num / evt2.fusion_liji_all));
+                },
+                filterCard: true,
+                position: 'he',
+                check: function (card) {
+                  var val = get.value(card);
+                  if (!_status.event.player.getStorage('refenyin_mark').contains(get.suit(card))) return 12 - val;
+                  return 8 - val;
+                },
+                filterTarget: lib.filter.notMe,
+                content: function () {
+                  target.damage('nocard');
+                },
+                ai: {
+                  order: 1,
+                  result: {
+                    target: -1.5
+                  },
+                  tag: {
+                    damage: 1
+                  },
+                },
+
+              }
             },
 
             card: {
