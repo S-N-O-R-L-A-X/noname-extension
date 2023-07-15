@@ -160,13 +160,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上【神护】就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
               "fusion_shen_sunce": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。<br> 【强度】★★★★★ <br> 【亮点】防御，过牌，激昂",
               "succubus": "绝代妖姬+神貂蝉，够得上魅魔了吧。<br>【强度】★★★★★ <br> 【亮点】防御，可玩性高",
-              "re_boss_huatuo": "来源于挑战模式boss药坛圣手，加上技能【神护】。<br>【强度】★★★★★<br> 【亮点】全场空城",
+              "re_boss_huatuo": "来源于挑战模式boss药坛圣手，加上技能【神护】。<br>【强度】★★★<br> 【亮点】全场空城",
               "re_boss_zhouyu": "来源于挑战模式boss赤壁火神，加上朱雀技能【红莲】，以及【神护】，真正的火神就此诞生。<br>【强度】★★★★<br> 【亮点】防御，稳定",
               "math_caojinyu": "来源于曹金玉，无脑堆数字，还蛮好玩的。<br>【强度】★★★★<br> 【亮点】卖血，过牌",
               "norecover": "来源于泰山王【苦酒】【服毒】，相柳【毒躯】【恶臭】，赵高【害忠】，虽然毫无操作感，但是能看对面崩死还挺好玩的。<br>【强度】★★★★<br> 【亮点】无法回血",
               "fusion_xuhuang": "来源于徐晃和谋徐晃，将【断粮】升级为【饥荒】。<br>【强度】★<br> 【亮点】谋弈",
               "liuxingyaodi": "桃园结义是有关刘备的典故，因此将挑战模式boss魏武大帝的技能【雄才】换成【仁君】，加上自设计的【仁德】形成技能联动，和sp孙尚香的技能也有关系。<br> 【强度】★★★★★ <br> 【亮点】综合，可玩性高",
-              "re_boss_zhenji": "来源于挑战模式boss洛水仙子，加上界甄姬的【洛神】以及【神护】。<br> 【强度】★★★ <br> 【亮点】爆发，控制",
+              "re_boss_zhenji": "来源于挑战模式boss洛水仙子，加上界甄姬的【洛神】以及【神护】。<br> 【强度】★★★★ <br> 【亮点】爆发，控制",
               "fusion_honglianpo": "来源于捉鬼boss孟婆，加上五官王的【血池】以及红鬼的【地动】。没错，就是经典的五官王+红鬼+孟婆，三个五阶也也胆寒。<br> 【强度】★★ <br> 【亮点】恶心，回忆",
               "ex_diaochan": "来源于【假装无敌】扩展包貂蝉。由于非常喜欢这个傀儡机制，将她加入扩包第一将。<br> 【强度】★★★★ <br> 【亮点】机制",
               "re_fusion_honglianpo": "来源于本包红脸婆。由于原版强度较低，完全打不过七阴。设计了增强版，单体爆破更加有效。<br> 【强度】★★★ <br> 【亮点】恶心，回忆",
@@ -194,7 +194,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_jiangwei": "来源于神姜维与OL界姜维，将其技能进行融合和修改。<br>【强度】★★★★<br> 【亮点】综合",
               "re_boss_yingzhao": "来源于英招，将其技能修改为最新的【妖兽】，甚至都没有加上最新的巡游就已经足够强。<br>【强度】★★★★<br> 【亮点】综合",
               "re_boss_xiangliu": "来源于新版相柳，将其技能修改为最新的【妖兽】【恶臭】。<br>【强度】★★★★★<br> 【亮点】恶心",
-              "fusion_lingtong": "来源于十周年界凌统，手杀界凌统，旧凌统，ol凌统。界凌统打开了十周年阴间的大门，增加技能【阴始】<br>【强度】★★★★<br> 【亮点】攻击",
+              "fusion_lingtong": "来源于十周年界凌统，手杀界凌统，旧凌统，ol凌统。界凌统打开了十周年阴间的大门，增加技能【阴始】。<br>【强度】★★★★<br> 【亮点】攻击",
+              "fusion_liuzan": "来源于十周年留赞，手杀留赞，diy留赞。现在是成为真正的歌王。<br>【强度】★★★★<br> 【亮点】攻击，过牌",
             },
             skill: {
               shenhu: {
@@ -4660,6 +4661,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_yingzhao": "界英招",
               "re_boss_xiangliu": "界相柳",
               "fusion_lingtong": "融凌统",
+              "fusion_liuzan": "融留赞",
 
               // skill
               shenhu: "神护",
@@ -4947,7 +4949,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融凌统。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融凌统，融留赞。<br>' +
+              '<li><span style="color:#006400">说明二</span>：<br>更新了界洛水仙子，界药坛圣手的评级。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
