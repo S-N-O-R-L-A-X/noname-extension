@@ -139,8 +139,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_jiangwei": ["male", "shen", 10, ["shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji"], ["zhu", "boss", "bossallowed"]],
               "re_boss_yingzhao": ["male", "shen", 25, ["shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xiangliu": ["male", "shen", 20, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou"], ["zhu", "boss", "bossallowed"]],
-              "fusion_lingtong": ["male", "wu", 6, ["shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi"], ["zhu", "boss", "bossallowed"]],
-              "fusion_liuzan": ["male", "wu", 8, ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji"], ["zhu", "boss", "bossallowed"]],
+              "fusion_lingtong": ["male", "wu", 4, ["shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi"], ["zhu", "boss", "bossallowed"]],
+              "fusion_liuzan": ["male", "wu", 4, ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -194,8 +194,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_jiangwei": "来源于神姜维与OL界姜维，将其技能进行融合和修改。<br>【强度】★★★★<br> 【亮点】综合",
               "re_boss_yingzhao": "来源于英招，将其技能修改为最新的【妖兽】，甚至都没有加上最新的巡游就已经足够强。<br>【强度】★★★★<br> 【亮点】综合",
               "re_boss_xiangliu": "来源于新版相柳，将其技能修改为最新的【妖兽】【恶臭】。<br>【强度】★★★★★<br> 【亮点】恶心",
-              "fusion_lingtong": "来源于十周年界凌统，手杀界凌统，旧凌统，ol凌统。界凌统打开了十周年阴间的大门，增加技能【阴始】。<br>【强度】★★★★<br> 【亮点】攻击",
-              "fusion_liuzan": "来源于十周年留赞，手杀留赞，diy留赞。现在是成为真正的歌王。<br>【强度】★★★★<br> 【亮点】攻击，过牌",
+              "fusion_lingtong": "来源于十周年界凌统，手杀界凌统，旧凌统，ol凌统。界凌统打开了十周年阴间的大门，增加技能【阴始】。<br>【强度】★★★★★<br> 【亮点】攻击",
+              "fusion_liuzan": "来源于十周年留赞，手杀留赞，diy留赞，增强后的力激加上斗地主的跋扈技能，现在是真正的歌王。<br>【强度】★★★★★<br> 【亮点】攻击，过牌",
             },
             skill: {
               shenhu: {
@@ -4895,6 +4895,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_xuanfeng_info: "当你失去装备区内的牌时，或于弃牌阶段弃置了两张或更多的手牌后，你可以依次弃置一至两名其他角色的共计两张牌，然后可以移动场上装备区内的一张牌，视为使用一张杀并对你弃置牌的角色造成一点伤害。",
               fusion_yinshi: "阴始",
               fusion_yinshi_info: "锁定技，摸牌阶段，你多摸X张牌。（X为场上阴间武将数量）",
+
+              // fusion_liuzan
+              fusion_liji: "力激",
+              fusion_liji_info: "出牌阶段限X次，你可以弃置一张牌并对一名其他角色造成1点伤害。（X为本回合内进入过弃牌堆的卡牌数除以4，向下取整）。",
 
               // unused
               geju: "割据",
