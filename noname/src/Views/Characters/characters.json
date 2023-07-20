@@ -42,7 +42,7 @@
     { "name": "fusion_shen_jiangwei", "gender": "male", "nationality": "shen", "hp": 10, "skills": [ "shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji" ], "ex_package": "融包", "strength": "", "details": { } },
     { "name": "re_boss_yingzhao", "gender": "male", "nationality": "shen", "hp": 25, "skills": [ "shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
     { "name": "re_boss_xiangliu", "gender": "male", "nationality": "shen", "hp": 20, "skills": [ "shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "fusion_lingtong", "gender": "male", "nationality":"wu","hp":4,"skills":["shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi"],"ex_package":"融包", "strength":"","details":{}},
-    { "name": "fusion_liuzan", "gender": "male", "nationality":"wu","hp":4,"skills": ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji"],"ex_package":"融包", "strength":"","details":{}}
+    { "name": "fusion_lingtong", "gender": "male", "nationality":"wu", "hp":4,"skills":["shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi"],"ex_package":"融包", "strength":"","details":{}},
+    { "name": "fusion_liuzan", "gender": "male", "nationality":"wu", "hp":4,"skills": ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji"],"ex_package":"融包", "strength":"","details":{}}
   ]
 }
