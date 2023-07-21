@@ -45,7 +45,7 @@ export default function ShowAllCharacters() {
         },
         {
           text: "秦",
-          value: "qin",
+          value: "daqin",
         },
         {
           text: "神",
@@ -65,7 +65,26 @@ export default function ShowAllCharacters() {
     {
       title: "扩展包",
       dataIndex: "ex_package",
-      key: "ex_package"
+      key: "ex_package",
+      filters: [
+        {
+          text: "挑战boss加强包",
+          value: "挑战boss加强包",
+        },
+        {
+          text: "融包",
+          value: "融包",
+        },
+        {
+          text: "数包",
+          value: "数包",
+        },
+        {
+          text: "扩包",
+          value: "扩包",
+        },
+      ],
+      onFilter: (value: any, record: any) => record.ex_package.indexOf(value) === 0,
     },
     {
       title: '性别',
