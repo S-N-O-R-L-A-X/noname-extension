@@ -141,7 +141,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_xiangliu": ["male", "shen", 20, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou"], ["zhu", "boss", "bossallowed"]],
               "fusion_lingtong": ["male", "wu", 4, ["shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi"], ["zhu", "boss", "bossallowed"]],
               "fusion_liuzan": ["male", "wu", 4, ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji"], ["zhu", "boss", "bossallowed"]],
-              "fusion_xiahoujie": ["male", "wei", 8, ["shenhu", "math_liedan", "math_zhuangdan"], ["zhu", "boss", "bossallowed"]],
+              "math_xiahoujie": ["male", "wei", 8, ["shenhu", "math_liedan", "math_zhuangdan"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -152,7 +152,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
                   "fusion_puyuan", "fusion_shen_jiangwei", "fusion_lingtong", "fusion_liuzan"],
-                against7devil_math: ["math_caojinyu"],
+                against7devil_math: ["math_caojinyu", "math_xiahoujie"],
                 against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi",
                   "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
               }
@@ -4545,9 +4545,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     return;
                   }
                   var num = 0;
-                  if (player.hp > trigger.player.hp) num++;
-                  if (player.countCards('h') > trigger.player.countCards('h')) num++;
-                  if (player.countCards('e') > trigger.player.countCards('e')) num++;
+                  if (player.hp >= trigger.player.hp) num++;
+                  if (player.countCards('h') >= trigger.player.countCards('h')) num++;
+                  if (player.countCards('e') >= trigger.player.countCards('e')) num++;
                   if (num) {
                     player.draw(num);
                     if (num == 3) {
@@ -4707,6 +4707,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_xiangliu": "界相柳",
               "fusion_lingtong": "融凌统",
               "fusion_liuzan": "融留赞",
+              "math_xiahoujie": "数夏侯杰",
+              "math_xushao": "数许邵",
 
               // skill
               shenhu: "神护",
