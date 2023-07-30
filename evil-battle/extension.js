@@ -141,7 +141,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_xiangliu": ["male", "shen", 20, ["shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou"], ["zhu", "boss", "bossallowed"]],
               "fusion_lingtong": ["male", "wu", 4, ["shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi"], ["zhu", "boss", "bossallowed"]],
               "fusion_liuzan": ["male", "wu", 4, ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji"], ["zhu", "boss", "bossallowed"]],
-              "fusion_xiahoujie": ["male", "wei", 8, ["shenhu", "liedan", "zhuangdan"], ["zhu", "boss", "bossallowed"]],
+              "fusion_xiahoujie": ["male", "wei", 8, ["shenhu", "math_liedan", "zhuangdan"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -4531,12 +4531,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               // math_xiahoujie
-              liedan: {
+              math_liedan: {
                 audio: 2,
                 trigger: { global: 'phaseZhunbeiBegin' },
                 forced: true,
                 filter: function (event, player) {
-                  return (player != event.player || player.countMark('liedan') > 4) && !player.hasSkill('zhuangdan_mark');
+                  return (player != event.player || player.countMark('math_liedan') > 4) && !player.hasSkill('zhuangdan_mark');
                 },
                 logTarget: 'player',
                 content: function () {
@@ -4550,10 +4550,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   if (player.countCards('e') > trigger.player.countCards('e')) num++;
                   if (num) {
                     player.draw(num);
-                    if (num == 3 && player.maxHp < 8) player.gainMaxHp();
+                    if (num == 3) {
+                      player.gainMaxHp();
+                      player.recover();
+                    }
                   }
                   else {
-                    player.addMark('liedan', 1);
+                    player.addMark('math_liedan', 1);
                     player.loseHp();
                   }
                 },
@@ -4948,8 +4951,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_liji_info: "出牌阶段限X次，你可以弃置一张牌并对一名其他角色造成1点伤害。（X为本回合内进入过弃牌堆的卡牌数除以4，向下取整）。",
 
               // math_xiahoujie
-              liedan: '裂胆',
-              liedan_info: '锁定技，其他角色的准备阶段开始时，若X大于0，则你摸X张牌。若X等于3，则你加1点体力上限（至多加到8）。若X为0，则你失去1点体力并获得一枚“裂”（X为你的手牌数，体力值，装备区牌数中大于其的数量）。准备阶段，若“裂”数大于4，则你死亡。',
+              math_liedan: '裂胆',
+              math_liedan_info: '锁定技，其他角色的准备阶段开始时，若X大于0，则你摸X张牌。若X等于3，则你加1点体力上限（至多加到8）。若X为0，则你失去1点体力并获得一枚“裂”（X为你的手牌数，体力值，装备区牌数中大于其的数量）。准备阶段，若“裂”数大于4，则你死亡。',
               zhuangdan: '壮胆',
               zhuangdan_mark: '壮胆',
               zhuangdan_info: '锁定技，其他角色的回合结束时，若你的手牌数为全场唯一最多，则你令〖裂胆〗失效直到你下回合结束。',
