@@ -4599,8 +4599,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   });
                   _status.characterlist = list;
                 },
-                getSkills: function (event, player) {
-                  function checkSkills(phase, info) {
+                /**
+                 * 
+                 * @param {*} event event name
+                 * @param {*} player player name
+                 * @param {*} phase phase name
+                 * @returns void
+                 */
+                getSkills: function (event, player, phase) {
+                  function checkSkills(info) {
                     game.log(phase);
                     switch (phase) {
                       case "phaseJieshuBegin":
@@ -4624,7 +4631,23 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                           break;
                         }
                         else return;
-                      case "": break;
+                      case "phaseUse":
+                        if (!info || !info.enable || info.viewAs || info.limited || info.juexingji || info.zhuanhuanji || info.hiddenSkill || info.dutySkill)
+                          return;
+                        if (info.enable == 'phaseUse' || Array.isArray(info.enable) && info.enable.contains('phaseUse')) {
+                          if (info.init || info.onChooseToUse || info.ai && (info.ai.combo || info.ai.notemp || info.ai.neg)) return;
+                          if (info.filter) {
+                            try {
+                              var bool = info.filter(event.getParent(2), player);
+                              if (!bool) return;
+                            }
+                            catch (e) {
+                              return;
+                            }
+                          }
+                          break;
+                        }
+                        else return;
                       default: break;
                     }
                     list.add(name);
@@ -4640,7 +4663,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   var skills = []; // store usable skills
                   var map = [];
                   _status.characterlist.randomSort();
-                  var name2 = event.triggername;
+
                   /**
                    * get all characters from available list and choose skill meeting demands
                    */
@@ -4652,7 +4675,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       if (player.storage.math_pingjian.contains(skills2[j]))
                         continue; // have used
                       var info = lib.skill[skills2[j]];
-                      checkSkills(name2, info);
+                      checkSkills(info);
                     }
                     if (list.length > 2) break;
                   }
@@ -4665,7 +4688,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   event._result = { bool: true };
                   'step 1'
                   if (result.bool) {
-                    const { skills, list } = lib.skill.math_pingjian.getSkills(event, player);
+                    const { skills, list } = lib.skill.math_pingjian.getSkills(event, player, event.triggername);
                     if (!skills.length) {
                       event.finish();
                     }
@@ -4696,52 +4719,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   event._result = { bool: true };
                   'step 1'
                   if (result.bool) {
-                    var list = [];
-                    var skills = [];
-                    var map = [];
-                    if (!_status.characterlist) {
-                      lib.skill.math_pingjian.initList();
-                    }
-                    _status.characterlist.randomSort();
-                    for (var i = 0; i < _status.characterlist.length; i++) {
-                      var name = _status.characterlist[i];
-                      if (name.indexOf('zuoci') != -1 || name.indexOf('xushao') != -1) continue;
-                      var skills2 = lib.character[name][3];
-                      for (var j = 0; j < skills2.length; j++) {
-                        if (player.storage.math_pingjian.contains(skills2[j])) continue;
-                        if (skills.contains(skills2[j]) || lib.skill.math_pingjian.phaseUse_special.contains(skills2[j])) {
-                          list.add(name);
-                          if (!map[name]) map[name] = [];
-                          map[name].push(skills2[j]);
-                          skills.add(skills2[j]);
-                          continue;
-                        }
-                        var list2 = [skills2[j]];
-                        game.expandSkills(list2);
-                        for (var k = 0; k < list2.length; k++) {
-                          var info = lib.skill[list2[k]];
-                          if (!info || !info.enable || info.viewAs || info.limited || info.juexingji || info.zhuanhuanji || info.hiddenSkill || info.dutySkill) continue;
-                          if (info.enable == 'phaseUse' || Array.isArray(info.enable) && info.enable.contains('phaseUse')) {
-                            if (info.init || info.onChooseToUse || info.ai && (info.ai.combo || info.ai.notemp || info.ai.neg)) continue;
-                            if (info.filter) {
-                              try {
-                                var bool = info.filter(event.getParent(2), player);
-                                if (!bool) continue;
-                              }
-                              catch (e) {
-                                continue;
-                              }
-                            }
-                            list.add(name);
-                            if (!map[name]) map[name] = [];
-                            map[name].push(skills2[j]);
-                            skills.add(skills2[j]);
-                            break;
-                          }
-                        }
-                      }
-                      if (list.length > 2) break;
-                    }
+                    const { skills, list } = lib.skill.math_pingjian.getSkills(event, player, "phaseUse");
                     if (!skills.length) {
                       event.finish();
                     }
