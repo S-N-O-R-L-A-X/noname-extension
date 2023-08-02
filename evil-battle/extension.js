@@ -4600,41 +4600,44 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   _status.characterlist = list;
                 },
                 getSkills: function (event, player) {
-                  // function checkSkills(phase, info) {
-                  //   game.log(phase);
-                  //   switch (phase) {
-                  //     case "phaseJieshuBegin":
-                  //     case "damage":
-                  //       if (!info || !info.trigger || !info.trigger.player || info.silent || info.limited || info.juexingji || info.zhuanhuanji || info.hiddenSkill || info.dutySkill)
-                  //         return;
-                  //       if (info.trigger.player == phase || Array.isArray(info.trigger.player) && info.trigger.player.contains(phase)) {
-                  //         if (info.init || info.ai && (info.ai.combo || info.ai.notemp || info.ai.neg)) return;
-                  //         if (info.filter) {
-                  //           try {
-                  //             var bool = info.filter(phase, player, phase);
-                  //             if (!bool) return;
-                  //           }
-                  //           catch (e) {
-                  //             return;
-                  //           }
-                  //         }
-                  //       }
-                  //       break;
-                  //     case "": break;
-                  //     default: break;
-                  //   }
-                  //   game.log("add skill now")
-                  //   list.add(name);
-                  //   if (!map[name]) map[name] = [];
-                  //   map[name].push(skills2[j]);
-                  //   skills.add(skills2[j]);
-                  // }
+                  function checkSkills(phase, info) {
+                    game.log(phase);
+                    switch (phase) {
+                      case "phaseJieshuBegin":
+                      case "damageEnd":
+                        if (!info || !info.trigger || !info.trigger.player || info.silent || info.limited || info.juexingji || info.zhuanhuanji || info.hiddenSkill || info.dutySkill)
+                          return;
+                        /**
+                         * these 3 conditions check phase
+                         */
+                        if (info.trigger.player == phase || Array.isArray(info.trigger.player) && info.trigger.player.contains(phase)) {
+                          if (info.init || info.ai && (info.ai.combo || info.ai.notemp || info.ai.neg)) return;
+                          if (info.filter) {
+                            try {
+                              var bool = info.filter(phase, player, phase);
+                              if (!bool) return;
+                            }
+                            catch (e) {
+                              return;
+                            }
+                          }
+                          break;
+                        }
+                        else return;
+                      case "": break;
+                      default: break;
+                    }
+                    list.add(name);
+                    if (!map[name]) map[name] = [];
+                    map[name].push(skills2[j]);
+                    skills.add(skills2[j]);
+                  }
 
                   if (!_status.characterlist) {
                     lib.skill.math_pingjian.initList();
                   }
-                  var list = [];
-                  var skills = [];
+                  var list = []; // store characters
+                  var skills = []; // store usable skills
                   var map = [];
                   _status.characterlist.randomSort();
                   var name2 = event.triggername;
@@ -4649,25 +4652,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       if (player.storage.math_pingjian.contains(skills2[j]))
                         continue; // have used
                       var info = lib.skill[skills2[j]];
-                      if (!info || !info.trigger || !info.trigger.player || info.silent || info.limited || info.juexingji || info.zhuanhuanji || info.hiddenSkill || info.dutySkill)
-                        continue;
-                      if (info.trigger.player == name2 || Array.isArray(info.trigger.player) && info.trigger.player.contains(name2)) {
-                        if (info.init || info.ai && (info.ai.combo || info.ai.notemp || info.ai.neg))
-                          continue;
-                        if (info.filter) {
-                          try {
-                            var bool = info.filter(trigger, player, name2);
-                            if (!bool) continue;
-                          }
-                          catch (e) {
-                            continue;
-                          }
-                        }
-                        list.add(name);
-                        if (!map[name]) map[name] = [];
-                        map[name].push(skills2[j]);
-                        skills.add(skills2[j]);
-                      }
+                      checkSkills(name2, info);
                     }
                     if (list.length > 2) break;
                   }
