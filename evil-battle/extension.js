@@ -4677,7 +4677,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       var info = lib.skill[skills2[j]];
                       checkSkills(info);
                     }
-                    if (list.length > 2) break;
+                    if (list.length >= 5) break; // show 5 skills
                   }
                   return { skills, list };
                 },
@@ -4711,7 +4711,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               math_pingjian_use: {
                 audio: 'math_pingjian',
                 enable: 'phaseUse',
-                usable: 1,
+                filter: function (event, player) {
+                  game.log(player.getStat().skill.math_pingjian_use || 0);
+                  game.log(player.getDamagedHp())
+                  return (player.getStat().skill.math_pingjian_use || 0) < Math.max(1, player.getDamagedHp());
+                },
                 position: 'he',
                 content: function () {
                   'step 0'
@@ -5185,15 +5189,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：6.1<font size="4px">▶▶▶</font></div>`,
-        version: 6.1,
+        name: `<div class=".update">扩展版本：6.2.0<font size="4px">▶▶▶</font></div>`,
+        version: 6.2,
         clear: true,
         intro: "点击查看此版本的更新内容",
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融凌统，融留赞。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>更新了界洛水仙子，界药坛圣手的评级。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：数夏侯杰、数许邵。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
@@ -5202,7 +5205,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：6.1<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：6.2.0<font size="4px">▶▶▶</font></div>';
           };
         }
       },
