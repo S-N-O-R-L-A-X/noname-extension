@@ -4578,7 +4578,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               math_pingjian: {
                 audio: 2,
                 trigger: {
-                  player: ['damageEnd', 'phaseJieshuBegin'],
+                  player: ['damageEnd', 'phaseJieshuBegin', "phaseZhunbeiBegin",],
+                  // global: ['judge']
                 },
                 // initialize skill pools
                 initList: function () {
@@ -4608,8 +4609,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                  */
                 getSkills: function (event, player, phase) {
                   function checkSkills(info) {
-                    game.log(phase);
                     switch (phase) {
+                      case "phaseZhunbeiBegin":
                       case "phaseJieshuBegin":
                       case "damageEnd":
                         if (!info || !info.trigger || !info.trigger.player || info.silent || info.limited || info.juexingji || info.zhuanhuanji || info.hiddenSkill || info.dutySkill)
@@ -4712,8 +4713,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 audio: 'math_pingjian',
                 enable: 'phaseUse',
                 filter: function (event, player) {
-                  game.log(player.getStat().skill.math_pingjian_use || 0);
-                  game.log(player.getDamagedHp())
                   return (player.getStat().skill.math_pingjian_use || 0) < Math.max(1, player.getDamagedHp());
                 },
                 position: 'he',
