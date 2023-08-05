@@ -4686,6 +4686,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 content: function () {
                   'step 0'
                   if (!player.storage.math_pingjian) player.storage.math_pingjian = [];
+                  if (!player.storage.math_pingjian_damage) {
+                    player.storage.math_pingjian_damage = 0;
+                  }
                   event._result = { bool: true };
                   'step 1'
                   if (result.bool) {
@@ -4705,6 +4708,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
                   player.storage.math_pingjian.add(result.control);
                   player.addTempSkill(result.control, event.triggername == 'damageEnd' ? 'damageAfter' : 'phaseJieshu');
+
+                  ++player.storage.math_pingjian_damage;
+                  if (event.triggername == 'damageEnd' && player.storage.math_pingjian_damage < player.getDamagedHp()) {
+                    event.goto(0);
+                  }
+                  else {
+                    player.storage.math_pingjian_damage = null;
+                  }
                 },
                 group: 'math_pingjian_use',
                 phaseUse_special: ['xinfu_lingren'],
