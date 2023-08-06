@@ -4579,7 +4579,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 audio: 2,
                 trigger: {
                   player: ['damageEnd', 'phaseJieshuBegin', "phaseZhunbeiBegin",],
-                  // global: ['judge']
                 },
                 // initialize skill pools
                 initList: function () {
@@ -4686,8 +4685,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 content: function () {
                   'step 0'
                   if (!player.storage.math_pingjian) player.storage.math_pingjian = [];
-                  if (!player.storage.math_pingjian_damage) {
-                    player.storage.math_pingjian_damage = 0;
+                  if (!player.storage.math_pingjian_times) {
+                    player.storage.math_pingjian_times = 0;
                   }
                   event._result = { bool: true };
                   'step 1'
@@ -4708,13 +4707,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
                   player.storage.math_pingjian.add(result.control);
                   player.addTempSkill(result.control, event.triggername == 'damageEnd' ? 'damageAfter' : 'phaseJieshu');
-
-                  ++player.storage.math_pingjian_damage;
-                  if (event.triggername == 'damageEnd' && player.storage.math_pingjian_damage < player.getDamagedHp()) {
+                  ++player.storage.math_pingjian_times;
+                  if (event.triggername == 'damageEnd' && player.storage.math_pingjian_times < player.getDamagedHp()) {
                     event.goto(0);
                   }
                   else {
-                    player.storage.math_pingjian_damage = null;
+                    player.storage.math_pingjian_times = null;
                   }
                 },
                 group: 'math_pingjian_use',
@@ -4724,7 +4722,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 audio: 'math_pingjian',
                 enable: 'phaseUse',
                 filter: function (event, player) {
-                  return (player.getStat().skill.math_pingjian_use || 0) < Math.max(1, player.getDamagedHp());
+                  return (player.getStat().skill.math_pingjian_use || 0) < player.hp;
                 },
                 position: 'he',
                 content: function () {
@@ -5152,6 +5150,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               math_zhuangdan: '壮胆',
               math_zhuangdan_mark: '壮胆',
               math_zhuangdan_info: '锁定技，其他角色的回合结束时，若你的手牌数为全场唯一最多，则你令〖裂胆〗失效直到你下回合结束。',
+
+              // math_xushao
+              math_pingjian: "评荐",
+              math_pingjian_use: "评荐",
+              math_pingjian_info: "回合开始时/结束阶段开始时/当你受到伤害后/出牌阶段限X次，你可以令系统随机从剩余武将牌堆中检索出三张拥有发动时机为结束阶段开始时/当你受到伤害后/出牌阶段的技能的武将牌。然后你可以选择尝试发动其中一个技能。每个技能只能选择一次。",
 
               // unused
               geju: "割据",
