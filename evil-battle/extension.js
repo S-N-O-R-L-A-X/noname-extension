@@ -142,7 +142,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_lingtong": ["male", "wu", 4, ["shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi"], ["zhu", "boss", "bossallowed"]],
               "fusion_liuzan": ["male", "wu", 4, ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji"], ["zhu", "boss", "bossallowed"]],
               "math_xiahoujie": ["male", "wei", 8, ["shenhu", "math_liedan", "math_zhuangdan"], ["zhu", "boss", "bossallowed"]],
-              "math_xushao": ["male", "qun", 8, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
+              "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -198,6 +198,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_xiangliu": "来源于新版相柳，将其技能修改为最新的【妖兽】【恶臭】。<br>【强度】★★★★★<br> 【亮点】恶心",
               "fusion_lingtong": "来源于十周年界凌统，手杀界凌统，旧凌统，ol凌统。界凌统打开了十周年阴间的大门，增加技能【阴始】。<br>【强度】★★★★★<br> 【亮点】攻击",
               "fusion_liuzan": "来源于十周年留赞，手杀留赞，diy留赞，增强后的力激加上斗地主的跋扈技能，现在是真正的歌王。<br>【强度】★★★★★<br> 【亮点】攻击，过牌",
+              "math_xiahoujie": "来源于十周年夏侯杰，去掉了技能负面效果。人越多越强。<br>【强度】★★★★<br> 【亮点】攻击，过牌",
+              "math_xushao": "来源于十周年许邵，增加了技能发动的时机和次数，一个技能加【神护】照样杀七阴。<br>【强度】★★★★★<br> 【亮点】综合",
             },
             skill: {
               shenhu: {
@@ -5154,7 +5156,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // math_xushao
               math_pingjian: "评荐",
               math_pingjian_use: "评荐",
-              math_pingjian_info: "回合开始时/结束阶段开始时/当你受到伤害后/出牌阶段限X次，你可以令系统随机从剩余武将牌堆中检索出三张拥有发动时机为结束阶段开始时/当你受到伤害后/出牌阶段的技能的武将牌。然后你可以选择尝试发动其中一个技能。每个技能只能选择一次。",
+              math_pingjian_info: "回合开始时/结束阶段开始时/当你受到伤害后限X次/出牌阶段限Y次，你可以令系统随机从剩余武将牌堆中检索出五张拥有发动时机为回合开始时/结束阶段开始时/当你受到伤害后/出牌阶段的技能的武将牌。然后你可以选择尝试发动其中一个技能。每个技能只能选择一次。（X为你已损失的体力值，Y为你当前体力值）",
 
               // unused
               geju: "割据",
