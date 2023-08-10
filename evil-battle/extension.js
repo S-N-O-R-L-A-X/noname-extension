@@ -4539,7 +4539,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 trigger: { global: 'phaseZhunbeiBegin' },
                 forced: true,
                 filter: function (event, player) {
-                  return (player != event.player || player.countMark('math_liedan') > 4) && !player.hasSkill('math_zhuangdan_mark');
+                  return (player != event.player || player.countMark('math_liedan') > 4);
                 },
                 logTarget: 'player',
                 content: function () {
@@ -4563,7 +4563,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     player.loseHp();
                   }
                 },
-                intro: { content: 'mark' },
               },
               math_zhuangdan: {
                 audio: 2,
@@ -5147,11 +5146,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_liji_info: "出牌阶段限X次，你可以弃置一张牌并对一名其他角色造成1点伤害。（X为本回合内进入过弃牌堆的卡牌数除以4，向下取整）。",
 
               // math_xiahoujie
-              math_liedan: '裂胆',
-              math_liedan_info: '锁定技，其他角色的准备阶段开始时，若X大于0，则你摸X张牌。若X等于3，则你加1点体力上限（至多加到8）。若X为0，则你失去1点体力并获得一枚“裂”（X为你的手牌数，体力值，装备区牌数中大于其的数量）。准备阶段，若“裂”数大于4，则你死亡。',
-              math_zhuangdan: '壮胆',
-              math_zhuangdan_mark: '壮胆',
-              math_zhuangdan_info: '锁定技，其他角色的回合结束时，若你的手牌数为全场唯一最多，则你令〖裂胆〗失效直到你下回合结束。',
+              math_liedan: "裂胆",
+              math_liedan_info: "锁定技，其他角色的准备阶段开始时，若X大于0，则你摸X张牌。若X等于3，则你加1点体力上限并回复1点体力。若X为0，则你失去1点体力并获得一枚“裂”（X为你的手牌数，体力值，装备区牌数中大于等于其的数量）。准备阶段，若“裂”数大于4，则你死亡。",
+              math_zhuangdan: "壮胆",
+              math_zhuangdan_info: "锁定技，其他角色的回合结束时，若你若你的手牌数为全场唯一最多，则你对其造成1点伤害。",
 
               // math_xushao
               math_pingjian: "评荐",
