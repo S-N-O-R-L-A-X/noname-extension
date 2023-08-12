@@ -4535,7 +4535,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // math_xiahoujie
               math_liedan: {
-                audio: 2,
+                audio: "liedan",
                 trigger: { global: 'phaseZhunbeiBegin' },
                 forced: true,
                 filter: function (event, player) {
@@ -4565,7 +4565,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
               math_zhuangdan: {
-                audio: 2,
+                audio: "zhuangdan",
                 trigger: { global: 'phaseEnd' },
                 forced: true,
                 filter: function (event, player) {
@@ -4577,7 +4577,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
               math_pingjian: {
-                audio: 2,
+                audio: "pingjian",
                 trigger: {
                   player: ['damageEnd', 'phaseJieshuBegin', "phaseZhunbeiBegin",],
                 },
@@ -4608,7 +4608,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                  * @returns void
                  */
                 getSkills: function (event, player, phase) {
-                  function checkSkills(info) {
+                  function checkSkills(skill) {
+                    const info = lib.skill[skill];
+
                     switch (phase) {
                       case "phaseZhunbeiBegin":
                       case "phaseJieshuBegin":
@@ -4618,8 +4620,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         /**
                          * these 3 conditions check phase
                          */
+                        game.log(name);
+                        game.log(Object.entries(info.trigger))
                         if (info.trigger.player == phase || Array.isArray(info.trigger.player) && info.trigger.player.contains(phase)) {
+                          game.log("still exist1")
                           if (info.init || info.ai && (info.ai.combo || info.ai.notemp || info.ai.neg)) return;
+                          game.log("still exist2")
                           if (info.filter) {
                             try {
                               var bool = info.filter(phase, player, phase);
@@ -4651,10 +4657,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         else return;
                       default: break;
                     }
-                    list.add(name);
+                    list.add(name); // name is the character name
                     if (!map[name]) map[name] = [];
-                    map[name].push(skills2[j]);
-                    skills.add(skills2[j]);
+                    map[name].push(skill);
+                    skills.add(skill);
                   }
 
                   if (!_status.characterlist) {
@@ -4675,8 +4681,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     for (var j = 0; j < skills2.length; j++) {
                       if (player.storage.math_pingjian.contains(skills2[j]))
                         continue; // have used
-                      var info = lib.skill[skills2[j]];
-                      checkSkills(info);
+                      checkSkills(skills2[j]);
                     }
                     if (list.length >= 5) break; // show 5 skills
                   }
@@ -4720,7 +4725,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 phaseUse_special: ['xinfu_lingren'],
               },
               math_pingjian_use: {
-                audio: 'math_pingjian',
+                audio: 'pingjian',
                 enable: 'phaseUse',
                 filter: function (event, player) {
                   return (player.getStat().skill.math_pingjian_use || 0) < player.hp;
