@@ -4610,7 +4610,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 getSkills: function (event, player, phase) {
                   function checkSkills(skill) {
                     const info = lib.skill[skill];
-
                     switch (phase) {
                       case "phaseZhunbeiBegin":
                       case "phaseJieshuBegin":
@@ -4620,12 +4619,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         /**
                          * these 3 conditions check phase
                          */
-                        game.log(name);
-                        game.log(Object.entries(info.trigger))
                         if (info.trigger.player == phase || Array.isArray(info.trigger.player) && info.trigger.player.contains(phase)) {
-                          game.log("still exist1")
                           if (info.init || info.ai && (info.ai.combo || info.ai.notemp || info.ai.neg)) return;
-                          game.log("still exist2")
                           if (info.filter) {
                             try {
                               var bool = info.filter(phase, player, phase);
@@ -4682,8 +4677,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       if (player.storage.math_pingjian.contains(skills2[j]))
                         continue; // have used
                       checkSkills(skills2[j]);
+
+                      // check sub skills
+                      if (lib.skill[skills2[j]].group) {
+                        const list2 = [skills2[j]];
+                        game.expandSkills(list2);
+                        for (const sub_skill of list2) {
+                          checkSkills(sub_skill);
+                        }
+                      }
                     }
                     if (list.length >= 5) break; // show 5 skills
+
                   }
                   return { skills, list };
                 },
