@@ -153,7 +153,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
                   "fusion_puyuan", "fusion_shen_jiangwei", "fusion_lingtong", "fusion_liuzan"],
-                against7devil_math: ["math_caojinyu", "math_xiahoujie"],
+                against7devil_math: ["math_caojinyu", "math_xiahoujie", "math_xushao"],
                 against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi",
                   "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
               }
@@ -198,7 +198,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_xiangliu": "来源于新版相柳，将其技能修改为最新的【妖兽】【恶臭】。<br>【强度】★★★★★<br> 【亮点】恶心",
               "fusion_lingtong": "来源于十周年界凌统，手杀界凌统，旧凌统，ol凌统。界凌统打开了十周年阴间的大门，增加技能【阴始】。<br>【强度】★★★★★<br> 【亮点】攻击",
               "fusion_liuzan": "来源于十周年留赞，手杀留赞，diy留赞，增强后的力激加上斗地主的跋扈技能，现在是真正的歌王。<br>【强度】★★★★★<br> 【亮点】攻击，过牌",
-              "math_xiahoujie": "来源于十周年夏侯杰，去掉了技能负面效果。人越多越强。<br>【强度】★★★★<br> 【亮点】攻击，过牌",
+              "math_xiahoujie": "来源于十周年夏侯杰，去掉了技能负面效果，增加了摸牌机会。人越多越强。<br>【强度】★★★★<br> 【亮点】攻击，过牌",
               "math_xushao": "来源于十周年许邵，增加了技能发动的时机和次数，一个技能加【神护】照样杀七阴。<br>【强度】★★★★★<br> 【亮点】综合",
             },
             skill: {
@@ -4948,7 +4948,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               renjun: "仁君",
               renjun_info: "锁定技，当一名角色回复体力时，你随机获得一个蜀势力角色的所有技能",
               boss_rende: "仁德",
-              boss_rende_info: "出牌阶段，若你有杀，你可以展示所有手牌并弃置其中的杀，然后令任意名角色回复一点体力。然后你摸X张牌。（X为以此法恢复体力的角色数）",
+              boss_rende_info: "出牌阶段，若你有杀，你可以展示所有手牌并弃置其中的杀，令任意名角色各回复一点体力。然后你摸X张牌。（X为以此法恢复体力的角色数）",
 
               // ex_diaochan
               ex_yuhun: "驭魂",
@@ -5054,7 +5054,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               shangyangbianfa_dying: "商鞅变法",
               shangyangbianfa_dying_info: "出牌阶段，对一名其他角色使用。你对目标角色造成随机1~3点伤害，若该角色以此法进入濒死状态，则其进行判定，若判定结果为黑色，则该角色本次濒死状态无法向其他角色求桃。",
               ex_lianzuo: "连坐",
-              ex_lianzuo_info: "当你使用【商鞅变法】对其他角色造成伤害时，你可以对令一名其他角色造成等量伤害。",
+              ex_lianzuo_info: "当你使用【商鞅变法】对其他角色造成伤害时，你可以对一名其他角色造成等量伤害。",
 
               // zhaogao
               ex_zhilu: "指鹿",
@@ -5105,7 +5105,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_zhudong: "助董",
               fusion_zhudong_info: "当你造成1点伤害后，你可进行判定，若为♠，你令一名角色失去一点体力，若为♣，你令一名角色弃置一张牌。",
               fusion_cidu: "赐毒",
-              fusion_cidu_info: "出牌阶段限一次，你可以摸一张牌，将一张手牌交给一名其他角色，该角色选择一项：弃置此牌并受到一点伤害或弃置除此牌外的其他牌。",
+              fusion_cidu_info: "出牌阶段限一次，你可以摸一张牌，然后将一张手牌交给一名其他角色，该角色选择一项：弃置此牌并受到一点伤害或弃置除此牌外的其他牌。",
 
               // fusion_shuguojixie
               fusion_benlei: "奔雷",
@@ -5127,7 +5127,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_shengong: "神工",
               fusion_shengong_info: "出牌阶段每项限一次。你可以弃置一张武器牌/防具牌/其他装备牌，并发起一次“锻造”。然后你从锻造结果中选择一张牌，置于一名角色的装备区内（可替换原装备）。当有因你发动〖神工〗而加入游戏的牌进入弃牌堆后，你将此牌移出游戏，然后你于当前回合结束后摸X张牌。若该回合不为你的回合，你视为对当前角色使用X张【冰杀】。（X为本回合移出游戏的神工装备牌数）",
               fusion_zhuren: "铸刃",
-              fusion_zhuren_info: "出牌阶段限一次，你可以弃置一张手牌。根据此牌的花色点数，你有一定概率锻造成功并获得一张武器牌（若打造失败或武器已有则改为摸一张【杀】，花色决定武器名称，点数决定成功率）。此武器牌进入弃牌堆时，将其移出游戏。当你装备铸刃打造的武器时，你使用的杀无视防具且不可被相应。",
+              fusion_zhuren_info: "出牌阶段限一次，你可以弃置一张手牌。根据此牌的花色点数，你有一定概率锻造成功并获得一张武器牌（若打造失败或武器已有则改为摸一张【杀】，花色决定武器名称，点数决定成功率）。此武器牌进入弃牌堆时，将其移出游戏。当你装备铸刃打造的武器时，你使用的杀无视防具且不可被响应。",
 
               // fusion_shen_jiangwei
               fusion_tiaoxin: "挑衅",
@@ -5159,7 +5159,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               math_liedan: "裂胆",
               math_liedan_info: "锁定技，其他角色的准备阶段开始时，若X大于0，则你摸X张牌。若X等于3，则你加1点体力上限并回复1点体力。若X为0，则你失去1点体力并获得一枚“裂”（X为你的手牌数，体力值，装备区牌数中大于等于其的数量）。准备阶段，若“裂”数大于4，则你死亡。",
               math_zhuangdan: "壮胆",
-              math_zhuangdan_info: "锁定技，其他角色的回合结束时，若你若你的手牌数为全场唯一最多，则你对其造成1点伤害。",
+              math_zhuangdan_info: "锁定技，其他角色的回合结束时，若你的手牌数为全场唯一最多，则你对其造成1点伤害。",
 
               // math_xushao
               math_pingjian: "评荐",
