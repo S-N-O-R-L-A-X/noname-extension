@@ -3,7 +3,7 @@
     "六星耀帝", "界洛水仙子", "红脸婆", "界红脸婆", "扩貂蝉", "至尊吴帝", "乱世诸侯", "界年兽", "蛮王",
     "扩嬴政", "扩赵姬", "扩白起", "扩张仪", "扩商鞅", "扩赵高", "扩芈月", "扩吕不韦", "融贾诩", "融李儒",
     "魏国机械", "蜀国机械", "蜀国英魂", "魏国英魂", "蜀国智囊团", "融蒲元", "融神姜维", "界英招", "界相柳",
-    "融凌统","融留赞"
+    "融凌统", "融留赞", "数夏侯杰", "数许邵"
   ],
   "details": [
     { "name": "re_boss_caocao", "gender": "male", "nationality": "wei", "hp": 12, "skills": [ "shenhu", "boss_guixin", "xiongcai" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
@@ -42,7 +42,9 @@
     { "name": "fusion_shen_jiangwei", "gender": "male", "nationality": "shen", "hp": 10, "skills": [ "shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji" ], "ex_package": "融包", "strength": "", "details": { } },
     { "name": "re_boss_yingzhao", "gender": "male", "nationality": "shen", "hp": 25, "skills": [ "shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
     { "name": "re_boss_xiangliu", "gender": "male", "nationality": "shen", "hp": 20, "skills": [ "shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "fusion_lingtong", "gender": "male", "nationality":"wu", "hp":4,"skills":["shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi"],"ex_package":"融包", "strength":"","details":{}},
-    { "name": "fusion_liuzan", "gender": "male", "nationality":"wu", "hp":4,"skills": ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji"],"ex_package":"融包", "strength":"","details":{}}
+    { "name": "fusion_lingtong", "gender": "male", "nationality": "wu", "hp": 4, "skills": [ "shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi" ], "ex_package": "融包", "strength": "", "details": { } },
+    { "name": "fusion_liuzan", "gender": "male", "nationality": "wu", "hp": 4, "skills": [ "shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji" ], "ex_package": "融包", "strength": "", "details": { } },
+    { "name": "math_xiahoujie", "gender": "male", "nationality": "wei", "hp": 8, "skills": [ "shenhu", "math_liedan", "math_zhuangdan" ], "ex_package": "数包", "strength": "★★★★", "details": { } },
+    { "name": "math_xushao", "gender": "male", "nationality": "qun", "hp": 6, "skills": [ "shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji" ], "ex_package": "数包", "strength": "★★★★★", "details": { } }
   ]
 }
