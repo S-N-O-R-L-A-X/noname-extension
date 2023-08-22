@@ -143,7 +143,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_liuzan": ["male", "wu", 4, ["shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji"], ["zhu", "boss", "bossallowed"]],
               "math_xiahoujie": ["male", "wei", 8, ["shenhu", "math_liedan", "math_zhuangdan"], ["zhu", "boss", "bossallowed"]],
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
-              "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
+              "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -4784,186 +4784,95 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               // math_zhangchangpu
-              yanjiao: {
+              math_yanjiao: {
                 audio: 2,
-                ai: {
-                  order: 10,
-                  result: {
-                    player: 1,
-                    target: 1.1,
+                zhuanhuanji: true,
+                marktext: '☯',
+
+                intro: {
+                  content: function (storage, player, skill) {
+                    if (player.storage.nzry_juzhan == true) return '当你使用【杀】指定一名角色为目标后，你可以获得其一张牌，然后你本回合内不能再对其使用牌';
+                    return '当你成为其他角色【杀】的目标后，你可以与其各摸一张牌，然后其本回合内不能再对你使用牌';
                   },
                 },
-                enable: "phaseUse",
-                usable: 1,
-                filterTarget: function (card, player, target) {
-                  return target != player;
-                },
-                content: function () {
-                  "step 0"
-                  var num = 4;
-                  if (player.storage.xingshen) {
-                    num += player.storage.xingshen;
-                    player.storage.xingshen = 0;
-                    player.unmarkSkill('xingshen');
-                  }
-                  if (player.storage.olxingshen) {
-                    num += player.storage.olxingshen;
-                    player.storage.olxingshen = 0;
-                    player.unmarkSkill('olxingshen');
-                  }
-                  num = Math.min(10, num);
-                  event.cards = get.cards(num);
-                  game.cardsGotoOrdering(event.cards);
-                  player.showCards(event.cards);
-                  "step 1"
-                  event.getedResult = lib.skill.yanjiao.getResult(cards);
-                  if (!event.getedResult.length) {
-                    player.addTempSkill('yanjiao2');
-                    event.finish();
-                  }
-                  "step 2"
-                  target.chooseControl("自动分配", "手动分配").set("prompt", "【严教】：是否让系统自动分配方案？").ai = function () {
-                    return 0;
-                  };
-                  "step 3"
-                  if (result.control == "手动分配") {
-                    event.goto(8);
-                  }
-                  else if (!_status.connectMode) {
-                    var choiceList = ui.create.dialog('请选择一种方案', 'hidden', 'forcebutton');
-                    for (var i = 0; i < event.getedResult.length; i++) {
-                      var str = '<div class="popup text" style="width:calc(100% - 10px);display:inline-block">方案' + get.cnNumber(i + 1, true);
-                      str += '<br>第一组：';
-                      var current = event.getedResult[i];
-                      str += get.translation(current[0]);
-                      str += '<br>第二组：';
-                      str += get.translation(current[1]);
-                      if (current[2].length) {
-                        str += '<br>剩余：';
-                        str += get.translation(current[2]);
+                group: ["math_yanjiao_1", "math_yanjiao_2", "math_yanjiao_effect"],
+
+                subSkill: {
+                  "math_yanjiao_1": {
+                    audio: "",
+                    enable: "phaseUse",
+                    usable: 1,
+                    filterTarget: function (card, player, target) {
+                      return target != player;
+                    },
+                    content: function () {
+                      "step 0"
+                      var num = player.storage.math_xingshen;
+                      // if (player.storage.xingshen) {
+                      //   num += player.storage.xingshen;
+                      //   player.storage.xingshen = 0;
+                      //   player.unmarkSkill('xingshen');
+                      // }
+                      // if (player.storage.olxingshen) {
+                      //   num += player.storage.olxingshen;
+                      //   player.storage.olxingshen = 0;
+                      //   player.unmarkSkill('olxingshen');
+                      // }
+                      // num = Math.min(10, num);
+                      event.cards = get.cards(num);
+                      game.cardsGotoOrdering(event.cards);
+                      player.showCards(event.cards);
+                      "step 1"
+                      event.getedResult = lib.skill.yanjiao.getResult(cards);
+                      if (!event.getedResult.length) {
+                        player.addTempSkill('math_yanjiao_effect');
+                        event.finish();
                       }
-                      str += '</div>';
-                      var next = choiceList.add(str);
-                      next.firstChild.addEventListener(lib.config.touchscreen ? 'touchend' : 'click', ui.click.button);
-                      next.firstChild.link = i;
-                      for (var j in lib.element.button) {
-                        next[j] = lib.element.button[j];
+                      "step 2"
+                      var next = target.chooseToMove('严教：分出点数相等的两组牌');
+                      next.set('chooseTime', (cards.length * 4).toString());
+                      next.set('list', [
+                        ['未分配', cards, function (list) {
+                          var num = 0;
+                          for (var i of list) num += i.number;
+                          return '未分配（点数和' + num + '）';
+                        }],
+                        ['第一组', [], function (list) {
+                          var num = 0;
+                          for (var i of list) num += i.number;
+                          return '第一组（点数和' + num + '）';
+                        }],
+                        ['第二组', [], function (list) {
+                          var num = 0;
+                          for (var i of list) num += i.number;
+                          return '第二组（点数和' + num + '）';
+                        }],
+                      ]);
+                      next.set('filterOk', function (moved) {
+                        var num1 = 0;
+                        for (var i of moved[1]) num1 += i.number;
+                        if (num1 == 0) return false;
+                        var num2 = 0;
+                        for (var i of moved[2]) num2 += i.number;
+                        return num1 == num2;
+                      })
+                      next.set('processAI', () => false);
+                      "step 3"
+                      if (result.bool) {
+                        var moved = result.moved;
+                        event.getedResult = [[moved[1], moved[2], moved[0]]];
+                        event.goto(4);
                       }
-                      choiceList.buttons.add(next.firstChild);
-                    }
-                    event.choiceList = choiceList;
-                    target.chooseButton(choiceList, true);
-                  }
-                  "step 4"
-                  if (result.bool && result.links) event.index = result.links[0];
-                  else event.index = 0;
-                  event.togain = event.getedResult[event.index];
-                  target.showCards(event.togain[0], get.translation(target) + '分出的第一份牌');
-                  "step 5"
-                  target.showCards(event.togain[1], get.translation(target) + '分出的第二份牌');
-                  "step 6"
-                  target.chooseControl().set('choiceList', [
-                    '获得' + get.translation(event.togain[0]),
-                    '获得' + get.translation(event.togain[1])
-                  ]).ai = function () { return Math.random() < 0.5 ? 1 : 0 };
-                  "step 7"
-                  var list = [
-                    [target, event.togain[result.index]],
-                    [player, event.togain[1 - result.index]]
-                  ];
-                  game.loseAsync({
-                    gain_list: list,
-                    giver: target,
-                    animate: 'gain2',
-                  }).setContent('gaincardMultiple');
-                  if (event.togain[2].length > 1) player.addTempSkill('yanjiao2');
-                  event.finish();
-                  "step 8"
-                  var next = target.chooseToMove('严教：分出点数相等的两组牌');
-                  next.set('chooseTime', (cards.length * 4).toString());
-                  next.set('list', [
-                    ['未分配', cards, function (list) {
-                      var num = 0;
-                      for (var i of list) num += i.number;
-                      return '未分配（点数和' + num + '）';
-                    }],
-                    ['第一组', [], function (list) {
-                      var num = 0;
-                      for (var i of list) num += i.number;
-                      return '第一组（点数和' + num + '）';
-                    }],
-                    ['第二组', [], function (list) {
-                      var num = 0;
-                      for (var i of list) num += i.number;
-                      return '第二组（点数和' + num + '）';
-                    }],
-                  ]);
-                  next.set('filterOk', function (moved) {
-                    var num1 = 0;
-                    for (var i of moved[1]) num1 += i.number;
-                    if (num1 == 0) return false;
-                    var num2 = 0;
-                    for (var i of moved[2]) num2 += i.number;
-                    return num1 == num2;
-                  })
-                  next.set('processAI', () => false);
-                  "step 9"
-                  if (result.bool) {
-                    var moved = result.moved;
-                    event.getedResult = [[moved[1], moved[2], moved[0]]];
-                    event.goto(4);
-                  }
-                  else {
-                    player.addTempSkill('yanjiao2');
+                      else {
+                        player.addTempSkill('math_yanjiao_effect');
+                      }
+                    },
+
                   }
                 },
-                getResult: function (cards) {
-                  var cl = cards.length;
-                  var maxmium = Math.pow(3, cl);
-                  var filter = function (list) {
-                    if (!list[1].length || !list[0].length) return false;
-                    var num1 = 0;
-                    for (var i = 0; i < list[1].length; i++) {
-                      num1 += list[1][i].number;
-                    }
-                    var num2 = 0;
-                    for (var j = 0; j < list[0].length; j++) {
-                      num2 += list[0][j].number;
-                    }
-                    return num1 == num2
-                  };
-                  var results = [];
-                  for (var i = 0; i < maxmium; i++) {
-                    var result = [[], [], []];
-                    for (var j = 0; j < cl; j++) {
-                      result[Math.floor((i % Math.pow(3, j + 1)) / Math.pow(3, j))].push(cards[j]);
-                    }
-                    if (filter(result)) results.push(result);
-                  }
-                  var filterSame = function (list1, list2) {
-                    if (list1[1].length == list2[0].length && list1[0].length == list2[1].length) {
-                      for (var i = 0; i < list1[0].length; i++) {
-                        if (!list2[1].contains(list1[0][i])) return false;
-                      }
-                      for (var i = 0; i < list1[1].length; i++) {
-                        if (!list2[0].contains(list1[1][i])) return false;
-                      }
-                      return true;
-                    }
-                    return false;
-                  }
-                  for (var i = 0; i < results.length; i++) {
-                    for (var j = i + 1; j < results.length; j++) {
-                      if (filterSame(results[i], results[j])) results.splice(j--, 1);
-                    }
-                  }
-                  results.sort(function (a, b) {
-                    return a[2].length - b[2].length;
-                  });
-                  return results.slice(0, 50);
-                },
+
               },
-              "yanjiao2": {
+              "math_yanjiao_effect": {
                 marktext: "教",
                 mark: true,
                 intro: {
