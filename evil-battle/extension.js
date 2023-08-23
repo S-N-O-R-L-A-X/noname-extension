@@ -4788,26 +4788,22 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 audio: 2,
                 zhuanhuanji: true,
                 marktext: '☯',
-
                 intro: {
                   content: function (storage, player, skill) {
                     if (player.storage.nzry_juzhan == true) return '当你使用【杀】指定一名角色为目标后，你可以获得其一张牌，然后你本回合内不能再对其使用牌';
                     return '当你成为其他角色【杀】的目标后，你可以与其各摸一张牌，然后其本回合内不能再对你使用牌';
                   },
                 },
-                group: ["math_yanjiao_1", "math_yanjiao_2", "math_yanjiao_effect"],
+                group: ["math_yanjiao_1", "math_yanjiao_2"],
 
                 subSkill: {
-                  "math_yanjiao_1": {
+                  "1": {
                     audio: "",
                     enable: "phaseUse",
                     usable: 1,
-                    filterTarget: function (card, player, target) {
-                      return target != player;
-                    },
                     content: function () {
                       "step 0"
-                      var num = player.storage.math_xingshen;
+                      var num = 4 + (player.storage.math_xingshen || 0);
                       // if (player.storage.xingshen) {
                       //   num += player.storage.xingshen;
                       //   player.storage.xingshen = 0;
@@ -4826,10 +4822,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       event.getedResult = lib.skill.yanjiao.getResult(cards);
                       if (!event.getedResult.length) {
                         player.addTempSkill('math_yanjiao_effect');
-                        event.finish();
+                        player.loseHp();
                       }
                       "step 2"
-                      var next = target.chooseToMove('严教：分出点数相等的两组牌');
+                      var next = player.chooseToMove('严教：分出点数相等的两组牌');
                       next.set('chooseTime', (cards.length * 4).toString());
                       next.set('list', [
                         ['未分配', cards, function (list) {
@@ -4866,9 +4862,69 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       else {
                         player.addTempSkill('math_yanjiao_effect');
                       }
-                    },
 
-                  }
+                      "step 4"
+                      if (result.bool && result.links) event.index = result.links[0];
+                      else event.index = 0;
+                      event.togain = event.getedResult[event.index];
+                      player.showCards(event.togain[0], get.translation(player) + '分出的第一份牌');
+                      "step 5"
+                      player.showCards(event.togain[1], get.translation(player) + '分出的第二份牌');
+                      "step 6"
+                      player.chooseControl().set('choiceList', [
+                        '获得' + get.translation(event.togain[0]),
+                        '获得' + get.translation(event.togain[1])
+                      ]).ai = function () { return Math.random() < 0.5 ? 1 : 0 };
+                      "step 7"
+                      var list = [
+                        [player, event.togain[result.index]],
+                        [player, event.togain[1 - result.index]]
+                      ];
+                      game.loseAsync({
+                        gain_list: list,
+                        giver: target,
+                        animate: 'gain2',
+                      }).setContent('gaincardMultiple');
+
+                      if (event.togain[2].length > 1) {
+                        player.loseHp();
+                      }
+
+                      event.discardCards = event.togain[result.index].length;
+
+                      // discard cards
+                      "step 8"
+                      if (game.hasPlayer(function (current) {
+                        return current.hasCard(function (card) {
+                          return lib.filter.canBeDiscarded(card, player, current);
+                        }, 'ej');
+                      })) {
+                        player.chooseTarget('是否弃置场上的一张牌？', function (card, player, target) {
+                          return target.hasCard(function (card) {
+                            return lib.filter.canBeDiscarded(card, player, target);
+                          }, 'ej');
+                        });
+                      }
+                      else event.finish();
+
+                      "step 9"
+                      if (result.bool) {
+                        var target = result.targets[0];
+                        player.line(target, 'thunder');
+                        player.discardPlayerCard(target, true, 'ej');
+
+                        if (--event.discardCards > 0) {
+                          event.goto(8);
+                        }
+                      }
+
+                    },
+                  },
+                  "2": {
+                    trigger: {
+                      player: 'damageEnd',
+                    },
+                  },
                 },
 
               },
