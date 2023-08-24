@@ -4861,17 +4861,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       player.showCards(event.togain[1], get.translation(player) + '分出的第二份牌');
                       "step 6"
                       player.chooseControl().set('choiceList', [
-                        '获得' + get.translation(event.togain[0]),
-                        '获得' + get.translation(event.togain[1])
+                        `获得${get.translation(event.togain[0])},并弃置场上${event.togain[1].length}张牌`,
+                        `获得${get.translation(event.togain[1])},并弃置场上${event.togain[0].length}张牌`
                       ]).ai = function () { return Math.random() < 0.5 ? 1 : 0 };
                       "step 7"
                       var list = [
-                        [player, event.togain[result.index]],
-                        [player, event.togain[1 - result.index]]
+                        [player, event.togain[result.index]], // get
                       ];
                       game.loseAsync({
                         gain_list: list,
-                        giver: target,
+                        giver: player,
                         animate: 'gain2',
                       }).setContent('gaincardMultiple');
 
@@ -4879,19 +4878,22 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         player.loseHp();
                       }
 
-                      event.discardCards = event.togain[result.index].length;
+                      event.discardCards = event.togain[1 ^ result.index].length;
 
                       // discard cards
                       "step 8"
+                      if (event.discardCards === 0) {
+                        event.finish();
+                      }
                       if (game.hasPlayer(function (current) {
                         return current.hasCard(function (card) {
                           return lib.filter.canBeDiscarded(card, player, current);
-                        }, 'ej');
+                        }, 'hej');
                       })) {
                         player.chooseTarget('是否弃置场上的一张牌？', function (card, player, target) {
                           return target.hasCard(function (card) {
                             return lib.filter.canBeDiscarded(card, player, target);
-                          }, 'ej');
+                          }, 'hej');
                         });
                       }
                       else event.finish();
@@ -4900,11 +4902,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       if (result.bool) {
                         var target = result.targets[0];
                         player.line(target, 'thunder');
-                        player.discardPlayerCard(target, true, 'ej');
+                        player.discardPlayerCard(target, true, 'hej');
 
-                        if (--event.discardCards > 0) {
-                          event.goto(8);
-                        }
+                        --event.discardCards;
+                        event.goto(8);
                       }
 
                     },
