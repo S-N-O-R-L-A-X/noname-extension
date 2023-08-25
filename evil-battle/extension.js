@@ -5165,6 +5165,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_liuzan": "融留赞",
               "math_xiahoujie": "数夏侯杰",
               "math_xushao": "数许邵",
+              "math_zhangchangpu": "数张菖蒲",
 
               // skill
               shenhu: "神护",
@@ -5413,6 +5414,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               math_pingjian: "评荐",
               math_pingjian_use: "评荐",
               math_pingjian_info: "回合开始时/结束阶段开始时/当你受到伤害后限X次/出牌阶段限Y次，你可以令系统随机从剩余武将牌堆中检索出五张拥有发动时机为回合开始时/结束阶段开始时/当你受到伤害后/出牌阶段的技能的武将牌。然后你可以选择尝试发动其中一个技能。每个技能只能选择一次。（X为你已损失的体力值，Y为你当前体力值）",
+
+              // math_zhangchangpu
+              "math_yanjiao": "严教",
 
               // unused
               geju: "割据",
