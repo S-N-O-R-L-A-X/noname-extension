@@ -4790,8 +4790,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 marktext: '☯',
                 intro: {
                   content: function (storage, player, skill) {
-                    if (player.storage.nzry_juzhan == true) return '当你使用【杀】指定一名角色为目标后，你可以获得其一张牌，然后你本回合内不能再对其使用牌';
-                    return '当你成为其他角色【杀】的目标后，你可以与其各摸一张牌，然后其本回合内不能再对你使用牌';
+                    if (player.storage.math_yanjiao == true) return '你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你失去一点体力。然后你弃置场上X张牌（X为另一组的数量）。';
+                    return '你可以选择一名其他角色并从牌堆顶亮出四张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组，然后将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数一半，向下取整）';
                   },
                 },
                 group: ["math_yanjiao_1", "math_yanjiao_2"],
@@ -4803,6 +4803,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     usable: 1,
                     content: function () {
                       "step 0"
+                      player.changeZhuanhuanji("math_yanjiao");
                       var num = 4 + (player.storage.math_xingshen || 0);
                       event.cards = get.cards(num);
                       game.cardsGotoOrdering(event.cards);
@@ -4879,12 +4880,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       }
 
                       event.discardCards = event.togain[1 ^ result.index].length;
-
-                      // discard cards
-                      "step 8"
+                      game.log(event.discardCards);
                       if (event.discardCards === 0) {
                         event.finish();
                       }
+                      // discard cards
+                      "step 8"
                       if (game.hasPlayer(function (current) {
                         return current.hasCard(function (card) {
                           return lib.filter.canBeDiscarded(card, player, current);
@@ -4904,8 +4905,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         player.line(target, 'thunder');
                         player.discardPlayerCard(target, true, 'hej');
 
-                        --event.discardCards;
-                        event.goto(8);
+                        if (--event.discardCards > 0) {
+                          event.goto(8);
+                        }
                       }
 
                     },
@@ -4919,6 +4921,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     },
                     content: function () {
                       "step 0"
+                      player.changeZhuanhuanji("math_yanjiao");
                       var num = 4 + (player.storage.math_xingshen || 0);
                       event.cards = get.cards(num);
                       game.cardsGotoOrdering(event.cards);
@@ -4966,9 +4969,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         event.getedResult = [[moved[1], moved[2], moved[0]]];
                         event.goto(4);
                       }
-                      else {
-                        player.addTempSkill('yanjiao2');
-                      }
 
                       "step 4"
                       if (result.bool && result.links) event.index = result.links[0];
@@ -4992,26 +4992,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         giver: target,
                         animate: 'gain2',
                       }).setContent('gaincardMultiple');
-                      if (event.togain[2].length > 1) player.addTempSkill('yanjiao2');
-                      event.finish();
 
+                      target.loseHp(event.togain[2].length >> 1);
                     }
                   },
                 },
 
               },
-              "math_yanjiao_effect": {
-                marktext: "教",
-                mark: true,
-                intro: {
-                  content: "本回合手牌上限-1",
-                },
-                mod: {
-                  maxHandcard: function (player, num) {
-                    return num - 1;
-                  },
-                },
-              },
+
               xingshen: {
                 audio: 2,
                 intro: {
