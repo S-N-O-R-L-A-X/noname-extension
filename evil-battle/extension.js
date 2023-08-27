@@ -4808,12 +4808,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       event.cards = get.cards(num);
                       game.cardsGotoOrdering(event.cards);
                       player.showCards(event.cards);
+
                       "step 1"
                       event.getedResult = lib.skill.yanjiao.getResult(cards);
                       if (!event.getedResult.length) {
-                        player.addTempSkill('math_yanjiao_effect');
                         player.loseHp();
+                        event.finish();
                       }
+
                       "step 2"
                       var next = player.chooseToMove('严教：分出点数相等的两组牌');
                       next.set('chooseTime', (cards.length * 4).toString());
@@ -4843,6 +4845,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         return num1 == num2;
                       })
                       next.set('processAI', () => false);
+
                       "step 3"
                       if (result.bool) {
                         var moved = result.moved;
@@ -4850,12 +4853,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         event.goto(4);
                       }
                       else {
-                        player.addTempSkill('math_yanjiao_effect');
+                        // no moving
+                        player.loseHp();
+                        event.finish();
                       }
 
                       "step 4"
                       if (result.bool && result.links) event.index = result.links[0];
                       else event.index = 0;
+
                       event.togain = event.getedResult[event.index];
                       player.showCards(event.togain[0], get.translation(player) + '分出的第一份牌');
                       "step 5"
@@ -4916,26 +4922,91 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     trigger: {
                       player: 'damageEnd',
                     },
-                    filterTarget: function (card, player, target) {
-                      return target != player;
-                    },
                     content: function () {
                       "step 0"
                       player.changeZhuanhuanji("math_yanjiao");
+                      player.chooseTarget('选择一名其他角色', true, function (card, player, target) {
+                        return target != player;
+                      }).set('ai', function (target) {
+                        return -get.attitude(_status.event.player, target);
+                      });
+
+                      "step 1"
+                      event.target = result.targets[0];
                       var num = 4 + (player.storage.math_xingshen || 0);
                       event.cards = get.cards(num);
                       game.cardsGotoOrdering(event.cards);
                       player.showCards(event.cards);
 
-                      "step 1"
+                      "step 2"
                       event.getedResult = lib.skill.yanjiao.getResult(cards);
                       if (!event.getedResult.length) {
-                        player.addTempSkill('yanjiao2');
                         event.finish();
                       }
 
-                      "step 2"
-                      var next = target.chooseToMove('严教：分出点数相等的两组牌');
+                      "step 3"
+                      event.target.chooseControl("自动分配", "手动分配").set("prompt", "【严教】：是否让系统自动分配方案？").ai = function () {
+                        return 0;
+                      };
+
+                      "step 4"
+                      if (result.control == "手动分配") {
+                        event.goto(9);
+                      }
+                      else if (!_status.connectMode) {
+                        var choiceList = ui.create.dialog('请选择一种方案', 'hidden', 'forcebutton');
+                        for (var i = 0; i < event.getedResult.length; i++) {
+                          var str = '<div class="popup text" style="width:calc(100% - 10px);display:inline-block">方案' + get.cnNumber(i + 1, true);
+                          str += '<br>第一组：';
+                          var current = event.getedResult[i];
+                          str += get.translation(current[0]);
+                          str += '<br>第二组：';
+                          str += get.translation(current[1]);
+                          if (current[2].length) {
+                            str += '<br>剩余：';
+                            str += get.translation(current[2]);
+                          }
+                          str += '</div>';
+                          var next = choiceList.add(str);
+                          next.firstChild.addEventListener(lib.config.touchscreen ? 'touchend' : 'click', ui.click.button);
+                          next.firstChild.link = i;
+                          for (var j in lib.element.button) {
+                            next[j] = lib.element.button[j];
+                          }
+                          choiceList.buttons.add(next.firstChild);
+                        }
+                        event.choiceList = choiceList;
+                        event.target.chooseButton(choiceList, true);
+                      }
+
+                      "step 5"
+                      if (result.bool && result.links) event.index = result.links[0];
+                      else event.index = 0;
+                      event.togain = event.getedResult[event.index];
+                      event.target.showCards(event.togain[0], get.translation(event.target) + '分出的第一份牌');
+                      "step 6"
+                      event.target.showCards(event.togain[1], get.translation(event.target) + '分出的第二份牌');
+                      "step 7"
+                      player.chooseControl().set('choiceList', [
+                        '获得' + get.translation(event.togain[0]),
+                        '获得' + get.translation(event.togain[1])
+                      ]).ai = function () { return event.togain[0].length > event.togain[1].length ? 1 : 0 };
+                      "step 8"
+                      var list = [
+                        [player, event.togain[result.index]],
+                        [event.target, event.togain[1 - result.index]]
+                      ];
+                      game.loseAsync({
+                        gain_list: list,
+                        giver: event.target,
+                        animate: 'gain2',
+                      }).setContent('gaincardMultiple');
+
+                      player.line(event.target, 'green');
+                      event.target.damage(event.togain[2].length >> 1);
+
+                      "step 9"
+                      var next = event.target.chooseToMove('严教：分出点数相等的两组牌');
                       next.set('chooseTime', (cards.length * 4).toString());
                       next.set('list', [
                         ['未分配', cards, function (list) {
@@ -4963,37 +5034,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         return num1 == num2;
                       })
                       next.set('processAI', () => false);
-                      "step 3"
+
+                      "step 10"
                       if (result.bool) {
                         var moved = result.moved;
                         event.getedResult = [[moved[1], moved[2], moved[0]]];
-                        event.goto(4);
+                        event.goto(5);
                       }
-
-                      "step 4"
-                      if (result.bool && result.links) event.index = result.links[0];
-                      else event.index = 0;
-                      event.togain = event.getedResult[event.index];
-                      target.showCards(event.togain[0], get.translation(target) + '分出的第一份牌');
-                      "step 5"
-                      target.showCards(event.togain[1], get.translation(target) + '分出的第二份牌');
-                      "step 6"
-                      player.chooseControl().set('choiceList', [
-                        '获得' + get.translation(event.togain[0]),
-                        '获得' + get.translation(event.togain[1])
-                      ]).ai = function () { return event.togain[0].length > event.togain[1].length ? 1 : 0 };
-                      "step 7"
-                      var list = [
-                        [target, event.togain[result.index]],
-                        [player, event.togain[1 - result.index]]
-                      ];
-                      game.loseAsync({
-                        gain_list: list,
-                        giver: target,
-                        animate: 'gain2',
-                      }).setContent('gaincardMultiple');
-
-                      target.loseHp(event.togain[2].length >> 1);
                     }
                   },
                 },
