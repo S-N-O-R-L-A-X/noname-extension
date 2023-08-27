@@ -5000,7 +5000,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               },
 
-              xingshen: {
+              math_xingshen: {
                 audio: 2,
                 intro: {
                   content: "下一次发动【严教】时多展示#张牌",
@@ -5405,6 +5405,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // math_zhangchangpu
               "math_yanjiao": "严教",
+              "math_yanjiao_info": "转换技，出牌阶段限一次，阴：你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你失去一点体力。然后你弃置场上X张牌（X为另一组的数量）。阳：你可以选择一名其他角色并从牌堆顶亮出4张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组，然后将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数一半，向下取整）",
+              "math_xingshen": "省身",
+              "math_xingshen_info": "当【严教】完成一次阴阳转换后，【严教】亮出牌数+1。当你受到伤害后，你可以发动一次〖严教〗。",
 
               // unused
               geju: "割据",
