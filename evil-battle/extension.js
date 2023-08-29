@@ -4799,24 +4799,37 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 group: ["math_yanjiao_1", "math_yanjiao_2"],
                 content: function () {
+                  "step 0"
+                  if (!player.storage.math_yanjiao_extracards) {
+                    player.storage.math_yanjiao_extracards = 0;
+                  }
+                  game.log(player.storage.math_yanjiao);
                   player.changeZhuanhuanji("math_yanjiao");
+
+                  "step 1"
+                  game.log(player.storage.math_yanjiao_extracards)
+
                   if (player.storage.math_yanjiao) {
                     player.useSkill("math_yanjiao_1");
                   }
                   else {
                     player.useSkill("math_yanjiao_2");
                   };
+
+                  "step 2"
+                  if (player.storage.math_yanjiao) {
+                    player.storage.math_yanjiao_extracards++;
+                  }
                 },
                 subSkill: {
                   "1": {
                     audio: "",
                     content: function () {
                       "step 0"
-                      var num = 4 + (player.storage.math_xingshen || 0);
+                      var num = 4 + player.storage.math_yanjiao_extracards;
                       event.cards = get.cards(num);
                       game.cardsGotoOrdering(event.cards);
                       player.showCards(event.cards);
-                      game.log("enter");
                       "step 1"
                       event.getedResult = lib.skill.yanjiao.getResult(cards);
                       if (!event.getedResult.length) {
@@ -4932,7 +4945,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     // },
                     // content: function () {
                     //   "step 0"
-                    //   var num = 4 + (player.storage.math_xingshen || 0);
+                    //   var num = 4 + (player.storage.math_yanjiao_extracards || 0);
                     //   event.cards = get.cards(num);
                     //   game.cardsGotoOrdering(event.cards);
                     //   player.showCards(event.cards);
@@ -5007,7 +5020,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                     content: function () {
                       "step 0"
-                      player.changeZhuanhuanji("math_yanjiao");
                       player.chooseTarget('选择一名其他角色', true, function (card, player, target) {
                         return target != player;
                       }).set('ai', function (target) {
@@ -5016,7 +5028,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                       "step 1"
                       event.target = result.targets[0];
-                      var num = 4 + (player.storage.math_xingshen || 0);
+                      var num = 4 + player.storage.math_yanjiao_extracards;
                       event.cards = get.cards(num);
                       game.cardsGotoOrdering(event.cards);
                       player.showCards(event.cards);
@@ -5084,6 +5096,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         giver: event.target,
                         animate: 'gain2',
                       }).setContent('gaincardMultiple');
+
+                      game.log(event.togain[2])
 
                       player.line(event.target, 'green');
                       event.target.damage(event.togain[2].length >> 1);
