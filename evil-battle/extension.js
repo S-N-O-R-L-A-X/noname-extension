@@ -4813,6 +4813,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   else {
                     player.useSkill("math_yanjiao_2");
                   };
+
+                  "step 2"
+                  game.log(player.hasSkill("math_yanjiao"));
+                  game.log(player.storage.math_yanjiao_cards)
+                  if (player.hasSkill("math_yanjiao") && player.storage.math_yanjiao_cards > 10) {
+                    player.removeSkill("math_yanjiao");
+                    player.addSkill("math_yanjiao_upgrade");
+                  }
                 },
                 subSkill: {
                   "1": {
@@ -4896,7 +4904,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       }
 
                       event.discardCards = event.togain[1 ^ result.index].length;
-                      game.log(event.discardCards);
                       if (event.discardCards === 0) {
                         event.finish();
                       }
@@ -5008,8 +5015,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         animate: 'gain2',
                       }).setContent('gaincardMultiple');
 
-                      game.log(event.togain[2])
-
                       player.line(event.target, 'green');
                       event.target.damage(event.togain[2].length);
 
@@ -5057,6 +5062,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               math_yanjiao_upgrade: {
                 audio: "yanjiao",
+                enable: "phaseUse",
+                usable: 1,
                 content: function () {
                   "step 0"
                   player.chooseTarget('选择一名其他角色', true, function (card, player, target) {
@@ -5067,8 +5074,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                   "step 1"
                   event.target = result.targets[0];
-                  var num = player.storage.math_yanjiao_cards;
-                  event.cards = get.cards(num);
+                  event.cards = get.cards(10);
                   game.cardsGotoOrdering(event.cards);
                   player.showCards(event.cards);
 
@@ -5164,6 +5170,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     event.getedResult = [[moved[1], moved[2], moved[0]]];
                     event.goto(5);
                   }
+
                   "step 11"
                   var list = [
                     [player, event.togain[result.index]],
@@ -5175,21 +5182,22 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     animate: 'gain2',
                   }).setContent('gaincardMultiple');
 
-                  event.target.chooseCard('he', event.togain[1 - result.index].length, '严教：将' + event.togain[1 - result.index].length + '张牌交给' + get.translation(player))
+                  const num = event.togain[1 - result.index].length;
+                  game.log(num);
+
+                  event.target.chooseCard('he', num, '严教：将' + num + '张牌交给' + get.translation(player))
                     .set('ai', function (card) {
-                      if (_status.event.att) {
-                        return 11 - get.value(card);
-                      }
-                      return 0;
+                      return 11 - get.value(card);
                     });
 
+                  "step 12"
+                  game.log(result.cards);
+                  target.give(result.cards, player, 'give');
+                  game.log("如给");
+
+                  "step 13"
                   player.line(event.target, 'green');
                   event.target.damage(event.togain[2].length);
-
-                  "step 12"
-                  if (result.bool) {
-                    target.give(result.cards, player, 'give');
-                  }
                 }
               },
 
@@ -5206,10 +5214,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     player.useSkill("math_yanjiao_upgrade");
                   }
 
-                  if (player.hasSkill("math_yanjiao") && player.storage.math_yanjiao_cards > 10) {
-                    player.removeSkill("math_yanjiao");
-                    player.addSkill("math_yanjiao_upgrade");
-                  }
                 },
               },
 
@@ -5601,6 +5605,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // math_zhangchangpu
               "math_yanjiao": "严教",
               "math_yanjiao_info": "转换技，出牌阶段限一次，阴：你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你失去一点体力。然后你弃置场上X张牌（X为另一组的数量）。阳：你可以选择一名其他角色并从牌堆顶亮出4张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组，然后将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数一半，向下取整）",
+              "math_yanjiao_upgrade": "严教",
+              "math_yanjiao_upgrade_info": "出牌阶段限一次，你可以选择一名其他角色并从牌堆顶亮出10张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组并将等量手牌交给你，将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数一半，向下取整）",
               "math_xingshen": "省身",
               "math_xingshen_info": "当【严教】完成一次阴阳转换后，【严教】亮出牌数+1。当你受到伤害后，你可以发动一次〖严教〗。",
 
