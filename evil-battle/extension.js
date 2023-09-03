@@ -424,7 +424,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   });
                   player.chooseControl('<span class=thundertext>蓝色</span>', '<span class=firetext>红色</span>', '<span class=greentext>绿色</span>', '<span class=yellowtext>黄色</span>', 'cancel2').set('prompt', get.prompt('math_shanshen')).set('prompt2', '令〖隅泣〗中的一个数字+2' + (event.goon ? '并回复1点体力' : '')).set('ai', function () {
                     var player = _status.event.player, info = lib.skill.math_yuqi.getInfo(player);
-                    game.log(info);
                     if (info[0] < info[3] && game.countPlayer(function (current) {
                       return get.distance(player, current) <= info[0];
                     }) < Math.min(3, game.countPlayer())) return 0;
@@ -4408,12 +4407,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   if (event.count) event.goto(1);
 
                   "step 3"
-                  game.log("3")
                   // move
                   player.moveCard().nojudge = true;
 
                   "step 4"// use sha
-                  game.log("4");
                   player.chooseTarget("是否使用一张杀", function (card, player, target) {
                     if (target.isFriendOf(player)) return false;
                     return lib.filter.targetEnabled({ name: 'sha' }, player, target);
@@ -4422,14 +4419,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
 
                   "step 5"
-                  game.log("5");
                   if (result.bool) {
                     player.logSkill('fusion_xuanfeng');
                     player.useCard({ name: 'sha' }, result.targets, false);
                   }
 
                   "step 6"
-                  game.log(event.discardTargets)
                   player.chooseTarget('是否对一名目标角色造成1点伤害', function (card, player, target) {
                     return event.discardTargets.has(target);
                   }).set('targets', targets).set('ai', function (target) {
@@ -4793,7 +4788,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 marktext: '☯',
                 intro: {
                   content: function (storage, player, skill) {
-                    if (player.storage.math_yanjiao == true) return '你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你失去一点体力。然后你弃置场上X张牌（X为另一组的数量）。';
+                    if (!player.storage.math_yanjiao) return '你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你失去一点体力。然后你弃置场上X张牌（X为另一组的数量）。';
                     return '你可以选择一名其他角色并从牌堆顶亮出四张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组，然后将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数一半，向下取整）';
                   },
                 },
@@ -4815,9 +4810,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   };
 
                   "step 2"
-                  game.log(player.hasSkill("math_yanjiao"));
-                  game.log(player.storage.math_yanjiao_cards)
-                  if (player.hasSkill("math_yanjiao") && player.storage.math_yanjiao_cards > 10) {
+                  if (player.hasSkill("math_yanjiao") && player.storage.math_yanjiao_cards > 9) {
                     player.removeSkill("math_yanjiao");
                     player.addSkill("math_yanjiao_upgrade");
                   }
@@ -5183,7 +5176,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }).setContent('gaincardMultiple');
 
                   const num = event.togain[1 - result.index].length;
-                  game.log(num);
 
                   event.target.chooseCard('he', num, '严教：将' + num + '张牌交给' + get.translation(player))
                     .set('ai', function (card) {
@@ -5191,9 +5183,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     });
 
                   "step 12"
-                  game.log(result.cards);
                   target.give(result.cards, player, 'give');
-                  game.log("如给");
 
                   "step 13"
                   player.line(event.target, 'green');
@@ -5604,11 +5594,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // math_zhangchangpu
               "math_yanjiao": "严教",
-              "math_yanjiao_info": "转换技，出牌阶段限一次，阴：你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你失去一点体力。然后你弃置场上X张牌（X为另一组的数量）。阳：你可以选择一名其他角色并从牌堆顶亮出4张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组，然后将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数一半，向下取整）",
+              "math_yanjiao_info": "转换技，出牌阶段限一次，阴：你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你失去一点体力。然后你弃置场上X张牌（X为另一组的数量）。阳：你可以选择一名其他角色并从牌堆顶亮出4张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组，然后将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数）",
               "math_yanjiao_upgrade": "严教",
-              "math_yanjiao_upgrade_info": "出牌阶段限一次，你可以选择一名其他角色并从牌堆顶亮出10张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组并将等量手牌交给你，将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数一半，向下取整）",
+              "math_yanjiao_upgrade_info": "出牌阶段限一次，你可以选择一名其他角色并从牌堆顶亮出10张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组并将等量手牌交给你，将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数）",
               "math_xingshen": "省身",
-              "math_xingshen_info": "当【严教】完成一次阴阳转换后，【严教】亮出牌数+1。当你受到伤害后，你可以发动一次〖严教〗。",
+              "math_xingshen_info": "当【严教】发动后，【严教】亮出牌数+1。当【严教】亮出牌数大于等于10张时，你修改【严教】。当你受到伤害后，你可以发动一次〖严教〗。",
 
               // unused
               geju: "割据",
