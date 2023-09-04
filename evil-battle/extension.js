@@ -201,6 +201,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_liuzan": "来源于十周年留赞，手杀留赞，diy留赞，增强后的力激加上斗地主的跋扈技能，现在是真正的歌王。<br>【强度】★★★★★<br> 【亮点】攻击，过牌",
               "math_xiahoujie": "来源于十周年夏侯杰，去掉了技能负面效果，增加了摸牌机会。人越多越强。<br>【强度】★★★★<br> 【亮点】攻击，过牌",
               "math_xushao": "来源于十周年许邵，增加了技能发动的时机和次数，一个技能加【神护】照样杀七阴。<br>【强度】★★★★★<br> 【亮点】综合",
+              "math_zhangchangpu": "终于可以在小学数学中玩三国杀了！来源于ol张菖蒲，修改了【严教】和【省身】，不用再担心愚蠢的队友不会小学数学了！现在你可以自己计算【严教】。设计思路：【严教】改为了转换技，体现了教学中老师示范与学生练习的过程，且数字逐渐增大，体现难度由浅入深。难度最大时学生把老师教的全都还给老师（不是）。<br>【强度】★★★★★<br> 【亮点】数学+卖血",
             },
             skill: {
               shenhu: {
@@ -4810,7 +4811,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   };
 
                   "step 2"
-                  if (player.hasSkill("math_yanjiao") && player.storage.math_yanjiao_cards > 9) {
+                  if (player.hasSkill("math_yanjiao") && player.storage.math_yanjiao_cards >= 10) {
                     player.removeSkill("math_yanjiao");
                     player.addSkill("math_yanjiao_upgrade");
                   }
@@ -5646,14 +5647,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：6.2.0<font size="4px">▶▶▶</font></div>`,
-        version: 6.2,
+        name: `<div class=".update">扩展版本：6.3.0<font size="4px">▶▶▶</font></div>`,
+        version: 6.3,
         clear: true,
         intro: "点击查看此版本的更新内容",
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：数夏侯杰、数许邵。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：数张菖蒲。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
@@ -5662,7 +5663,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：6.2.0<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：6.3.0<font size="4px">▶▶▶</font></div>';
           };
         }
       },
