@@ -144,6 +144,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xiahoujie": ["male", "wei", 8, ["shenhu", "math_liedan", "math_zhuangdan"], ["zhu", "boss", "bossallowed"]],
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
+              "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "boss_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "boss_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -5341,6 +5342,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xiahoujie": "数夏侯杰",
               "math_xushao": "数许邵",
               "math_zhangchangpu": "数张菖蒲",
+              "fusion_zhuanlundizang": "转轮地藏",
 
               // skill
               shenhu: "神护",
