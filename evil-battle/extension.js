@@ -144,7 +144,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xiahoujie": ["male", "wei", 8, ["shenhu", "math_liedan", "math_zhuangdan"], ["zhu", "boss", "bossallowed"]],
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
-              "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "boss_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
+              "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -3627,7 +3627,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // shuguoyinghun
               fusion_gongshen: {
-                audio: 2,
+                audio: "gongshen",
                 trigger: { player: 'phaseEnd' },
                 content: function () {
                   if (player.hp < player.maxHp) {
@@ -4321,7 +4321,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // re_boss_xiangliu
               "re_boss_echou": {
-                audio: 2,
+                audio: "boss_echou",
                 group: ["re_boss_echou_recover", "re_boss_echou_end"],
                 subSkill: {
                   "recover": {
@@ -4782,7 +4782,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // math_zhangchangpu
               math_yanjiao: {
-                audio: 2,
+                audio: "yanjiao",
                 enable: "phaseUse",
                 usable: 1,
                 zhuanhuanji: true,
@@ -4819,7 +4819,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 subSkill: {
                   "1": {
-                    audio: "",
+                    audio: "yanjiao",
                     content: function () {
                       "step 0"
                       var num = player.storage.math_yanjiao_cards;
@@ -4931,6 +4931,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     },
                   },
                   "2": {
+                    audio: "yanjiao",
                     content: function () {
                       "step 0"
                       player.chooseTarget('选择一名其他角色', true, function (card, player, target) {
@@ -5191,7 +5192,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               math_xingshen: {
-                audio: 2,
+                audio: "xingshen",
                 trigger: {
                   player: "damageEnd",
                 },
@@ -5225,17 +5226,51 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 content: function () {
                   var name = event.triggername;
                   if (name == 'phaseZhunbeiBegin') {
-                    game.log("enter");
                     const list = game.filterPlayer(function (current) {
                       return current.isAlive();
                     });
-                    game.log(list);
                     for (const character of list) {
                       character.gainMaxHp();
                     }
                   }
                   else {
                     player.draw((name == 'gameDrawAfter' || name == 'enterGame') ? 3 : 2);
+                  }
+                },
+              },
+              "fusion_lunhui": {
+                trigger: { player: 'phaseZhunbeiBegin' },
+                forced: true,
+                filter: function (event, player) {
+                  return game.hasPlayer(function (current) {
+                    return current != player && current.hp > player.hp;
+                  });
+                },
+                content: function () {
+                  const candidates = game.filterPlayer(function (current) {
+                    return current.hp > player.hp;
+                  });
+                  let maxHp = 0, list = [];
+                  candidates.forEach((candidate) => {
+                    if (candidate.hp > maxHp) {
+                      maxHp = candidate.hp;
+                      list = [candidate];
+                    }
+                    else if (candidate.hp === maxHp) {
+                      list.push(candidate);
+                    }
+                  })
+
+                  if (list.length) {
+                    var target = list.randomGet();
+                    player.line(target);
+                    const tmp = player.hp;
+                    player.hp = target.hp;
+                    target.hp = tmp;
+
+                    player.update();
+                    target.update();
+                    game.log(player, '和', target, '交换了体力值')
                   }
                 },
               },
@@ -5628,11 +5663,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // math_zhangchangpu
               "math_yanjiao": "严教",
-              "math_yanjiao_info": "转换技，出牌阶段限一次，阴：你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你失去一点体力。然后你弃置场上X张牌（X为另一组的数量）。阳：你可以选择一名其他角色并从牌堆顶亮出4张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组，然后将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数）",
+              "math_yanjiao_info": "转换技，出牌阶段限一次，阴：你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你失去一点体力。然后你弃置场上X张牌（X为另一组的数量）。阳：你可以选择一名其他角色并从牌堆顶亮出4张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组，然后将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数）<br>【严教·改】<br>出牌阶段限一次，你可以选择一名其他角色并从牌堆顶亮出10张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组并将等量手牌交给你，将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数）",
               "math_yanjiao_upgrade": "严教",
               "math_yanjiao_upgrade_info": "出牌阶段限一次，你可以选择一名其他角色并从牌堆顶亮出10张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组并将等量手牌交给你，将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数）",
               "math_xingshen": "省身",
-              "math_xingshen_info": "当【严教】发动后，【严教】亮出牌数+1。当【严教】亮出牌数大于等于10张时，你修改【严教】。当你受到伤害后，你可以发动一次〖严教〗。",
+              "math_xingshen_info": "当【严教】发动后，【严教】亮出牌数+1。当【严教】亮出牌数大于等于10张时，你修改【严教】。当你受到伤害后，你可以发动一次【严教】。",
 
               // unused
               geju: "割据",
