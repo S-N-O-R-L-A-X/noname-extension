@@ -144,7 +144,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xiahoujie": ["male", "wei", 8, ["shenhu", "math_liedan", "math_zhuangdan"], ["zhu", "boss", "bossallowed"]],
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
-              "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "boss_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "boss_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
+              "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "boss_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -5203,6 +5203,40 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     player.useSkill("math_yanjiao_upgrade");
                   }
 
+                },
+              },
+
+
+              // fusion_zhuanlundizang
+              "fusion_wuliang": {
+                forced: true,
+                audio: true,
+                trigger: {
+                  global: "gameDrawAfter",
+                  player: ['phaseZhunbeiBegin', 'phaseJieshuBegin', 'enterGame'],
+                },
+                filter: function (event, player, name) {
+                  if (name == 'gameDrawAfter' || name == 'enterGame' || name == 'phaseZhunbeiBegin') {
+                    return true;
+                  }
+
+                  return true;
+                },
+                content: function () {
+                  var name = event.triggername;
+                  if (name == 'phaseZhunbeiBegin') {
+                    game.log("enter");
+                    const list = game.filterPlayer(function (current) {
+                      return current.isAlive();
+                    });
+                    game.log(list);
+                    for (const character of list) {
+                      character.gainMaxHp();
+                    }
+                  }
+                  else {
+                    player.draw((name == 'gameDrawAfter' || name == 'enterGame') ? 3 : 2);
+                  }
                 },
               },
 
