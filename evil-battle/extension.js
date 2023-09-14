@@ -5670,6 +5670,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xingshen": "省身",
               "math_xingshen_info": "当【严教】发动后，【严教】亮出牌数+1。当【严教】亮出牌数大于等于10张时，你修改【严教】。当你受到伤害后，你可以发动一次【严教】。",
 
+              // fusion_zhuanlundizang
+              "fusion_lunhui": "轮回",
+              "fusion_lunhui_info": "锁定技，准备阶段，若你的体力值不为全场最多，你与场上除你以外体力最多的角色交换体力值。",
+              "boss_wuliang": "无量",
+              "boss_wuliang_info": "锁定技，你登场时额外摸3张牌；回合开始阶段，所有角色增加一点体力上限，结束阶段开始时，你摸两张牌。",
+
               // unused
               geju: "割据",
               geju_info: "锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。",
