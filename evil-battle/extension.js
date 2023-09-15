@@ -5226,18 +5226,27 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 content: function () {
                   var name = event.triggername;
-                  if (name == 'phaseZhunbeiBegin') {
+                  if (name == "entergame") {
+                    player.draw(3);
+                  }
+                  else {
                     const list = game.filterPlayer(function (current) {
                       return current.isAlive();
                     });
+
+
                     for (const character of list) {
-                      character.gainMaxHp();
+                      if (name == 'phaseZhunbeiBegin') {
+                        character.gainMaxHp();
+                      }
+                      else {
+                        character.recover();
+                      }
                     }
+                    player.draw(2);
+
                   }
-                  else {
-                    player.draw((name == 'gameDrawAfter' || name == 'enterGame') ? 3 : 2);
-                  }
-                },
+                }
               },
               "fusion_lunhui": {
                 trigger: { player: 'phaseZhunbeiBegin' },
@@ -5674,7 +5683,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_lunhui": "轮回",
               "fusion_lunhui_info": "锁定技，准备阶段，若你的体力值不为全场最多，你与场上除你以外体力最多的角色交换体力值。",
               "boss_wuliang": "无量",
-              "boss_wuliang_info": "锁定技，你登场时额外摸3张牌；回合开始阶段，所有角色增加一点体力上限，结束阶段开始时，你摸两张牌。",
+              "boss_wuliang_info": "锁定技，你登场时额外摸3张牌；回合开始阶段，所有角色增加一点体力上限，你摸两张牌；结束阶段开始时，所有角色回复一点体力，你摸两张牌。",
 
               // unused
               geju: "割据",
