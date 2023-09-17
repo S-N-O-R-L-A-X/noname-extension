@@ -45,6 +45,8 @@
     { "name": "fusion_lingtong", "gender": "male", "nationality": "wu", "hp": 4, "skills": [ "shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi" ], "ex_package": "融包", "strength": "", "details": { } },
     { "name": "fusion_liuzan", "gender": "male", "nationality": "wu", "hp": 4, "skills": [ "shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji" ], "ex_package": "融包", "strength": "", "details": { } },
     { "name": "math_xiahoujie", "gender": "male", "nationality": "wei", "hp": 8, "skills": [ "shenhu", "math_liedan", "math_zhuangdan" ], "ex_package": "数包", "strength": "★★★★", "details": { } },
-    { "name": "math_xushao", "gender": "male", "nationality": "qun", "hp": 6, "skills": [ "shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji" ], "ex_package": "数包", "strength": "★★★★★", "details": { } }
+    { "name": "math_xushao", "gender": "male", "nationality": "qun", "hp": 6, "skills": [ "shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji" ], "ex_package": "数包", "strength": "★★★★★", "details": { } },
+    { "name": "math_zhangchangpu", "gender": "female", "nationality": "wei", "hp": 6, "skills": [ "shenhu", "math_yanjiao", "math_xingshen" ], "ex_package": "数包", "strength": "★★★★★", "details": { } },
+    { "name": "fusion_zhuanlundizang", "gender": "male", "nationality": "shen", "hp": 8, "skills": [ "boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting" ], "ex_package": "融包", "strength": "★★★", "details": { } }
   ]
 }
