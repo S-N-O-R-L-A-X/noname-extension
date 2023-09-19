@@ -4954,7 +4954,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         event.target.damage(cards.length);
                         event.finish();
                       }
-
                       if (event.target.isOnline()) {
                         event.goto(8);
                       }
@@ -5011,6 +5010,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
                       player.line(event.target, 'green');
                       event.target.damage(event.togain[2].length);
+                      event.finish();
 
                       "step 8"
                       var next = event.target.chooseToMove('严教：分出点数相等的两组牌');
@@ -5051,7 +5051,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     }
                   },
                 },
-
               },
 
               math_yanjiao_upgrade: {
@@ -5150,6 +5149,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   "step 9"
                   player.line(event.target, 'green');
                   event.target.damage(event.togain[2].length);
+                  event.finish();
 
                   "step 10"
                   var next = event.target.chooseToMove('严教：分出点数相等的两组牌');
@@ -5732,15 +5732,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：6.3.0<font size="4px">▶▶▶</font></div>`,
-        version: 6.3,
+        name: `<div class=".update">扩展版本：6.4.0<font size="4px">▶▶▶</font></div>`,
+        version: 6.4,
         clear: true,
         intro: "点击查看此版本的更新内容",
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：数张菖蒲、转轮地藏。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>修复了一些武将没有配音的问题。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：。<br>' +
+              '<li><span style="color:#006400">说明二</span>：<br>修复了张菖蒲在对方时发牌卡死的问题。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
@@ -5749,7 +5749,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：6.3.0<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：6.4.0<font size="4px">▶▶▶</font></div>';
           };
         }
       },
