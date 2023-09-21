@@ -145,6 +145,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_xunyu": ["male", "shen", 4, ["quhu", "oljieming", "rejieming", "tianzuo", "lingce", "dinghan"], ["zhu", "boss", "bossallowed"]],
+
             },
             characterSort: {
               against7devil: {
@@ -5285,6 +5287,152 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
                 },
               },
+
+              // fusion_shen_xunyu
+              quhu: {
+                audio: 2,
+                audioname: ['re_xunyu', 'ol_xunyu'],
+                enable: 'phaseUse',
+                usable: 1,
+                filter: function (event, player) {
+                  if (player.countCards('h') == 0) return false;
+                  return game.hasPlayer(function (current) {
+                    return current.hp > player.hp && player.canCompare(current);
+                  });
+                },
+                filterTarget: function (card, player, target) {
+                  return target.hp > player.hp && player.canCompare(target);
+                },
+                content: function () {
+                  "step 0"
+                  player.chooseToCompare(target);
+                  "step 1"
+                  if (result.bool) {
+                    if (game.hasPlayer(function (player) {
+                      return player != target && target.inRange(player);
+                    })) {
+                      player.chooseTarget(function (card, player, target) {
+                        var source = _status.event.source;
+                        return target != source && source.inRange(target);
+                      }, true).set('ai', function (target) {
+                        return get.damageEffect(target, _status.event.source, player);
+                      }).set('source', target);
+                    }
+                    else {
+                      event.finish();
+                    }
+                  }
+                  else {
+                    player.damage(target);
+                    event.finish();
+                  }
+                  "step 2"
+                  if (result.bool && result.targets && result.targets.length) {
+                    target.line(result.targets[0], 'green');
+                    result.targets[0].damage(target);
+                  }
+                },
+                ai: {
+                  order: 0.5,
+                  result: {
+                    target: function (player, target) {
+                      var att = get.attitude(player, target);
+                      var oc = (target.countCards('h') == 1);
+                      if (att > 0 && oc) return 0;
+                      var players = game.filterPlayer();
+                      for (var i = 0; i < players.length; i++) {
+                        if (players[i] != target && players[i] != player &&
+                          target.inRange(players[i])) {
+                          if (get.damageEffect(players[i], target, player) > 0) {
+                            return att > 0 ? att / 2 : att - (oc ? 5 : 0);
+                          }
+                        }
+                      }
+                      return 0;
+                    },
+                    player: function (player, target) {
+                      if (target.hasSkillTag('jueqing', false, target)) return -10;
+                      var mn = 1;
+                      var hs = player.getCards('h');
+                      for (var i = 0; i < hs.length; i++) {
+                        mn = Math.max(mn, get.number(hs[i]));
+                      }
+                      if (mn <= 11 && player.hp < 2) return -20;
+                      var max = player.maxHp - hs.length;
+                      var players = game.filterPlayer();
+                      for (var i = 0; i < players.length; i++) {
+                        if (get.attitude(player, players[i]) > 2) {
+                          max = Math.max(Math.min(5, players[i].hp) - players[i].countCards('h'), max);
+                        }
+                      }
+                      switch (max) {
+                        case 0: return mn == 13 ? 0 : -20;
+                        case 1: return mn >= 12 ? 0 : -15;
+                        case 2: return 0;
+                        case 3: return 1;
+                        default: return max;
+                      }
+                    }
+                  },
+                  expose: 0.2
+                }
+              },
+              jieming: {
+                audio: 2,
+                trigger: { player: 'damageEnd' },
+                direct: true,
+                content: function () {
+                  "step 0"
+                  event.count = trigger.num;
+                  "step 1"
+                  event.count--;
+                  player.chooseTarget(get.prompt2('jieming'), function (card, player, target) {
+                    return true;//target.countCards('h')<Math.min(target.maxHp,5);
+                  }).set('ai', function (target) {
+                    var att = get.attitude(_status.event.player, target);
+                    if (target.hasSkillTag('nogain')) att /= 6;
+                    if (att > 2) {
+                      return Math.max(0, Math.min(5, target.maxHp) - target.countCards('h'));
+                    }
+                    return att / 3;
+                  });
+                  "step 2"
+                  if (result.bool) {
+                    player.logSkill('jieming', result.targets);
+                    for (var i = 0; i < result.targets.length; i++) {
+                      result.targets[i].drawTo(Math.min(5, result.targets[i].maxHp));
+                    }
+                    if (event.count && player.hasSkill('jieming')) event.goto(1);
+                  }
+                },
+                ai: {
+                  maixie: true,
+                  maixie_hp: true,
+                  effect: {
+                    target: function (card, player, target, current) {
+                      if (get.tag(card, 'damage') && target.hp > 1) {
+                        if (player.hasSkillTag('jueqing', false, target)) return [1, -2];
+                        var max = 0;
+                        var players = game.filterPlayer();
+                        for (var i = 0; i < players.length; i++) {
+                          if (get.attitude(target, players[i]) > 0) {
+                            max = Math.max(Math.min(5, players[i].hp) - players[i].countCards('h'), max);
+                          }
+                        }
+                        switch (max) {
+                          case 0: return 2;
+                          case 1: return 1.5;
+                          case 2: return [1, 2];
+                          default: return [0, max];
+                        }
+                      }
+                      if ((card.name == 'tao' || card.name == 'caoyao') &&
+                        target.hp > 1 && target.countCards('h') <= target.hp) return [0, 0];
+                    }
+                  },
+                }
+              },
+
 
             },
 
