@@ -145,7 +145,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_xunyu": ["male", "shen", 4, ["quhu", "oljieming", "rejieming", "tianzuo", "lingce", "dinghan"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_xunyu": ["male", "shen", 4, ["fusion_quhu", "oljieming", "rejieming", "tianzuo", "lingce", "dinghan"], ["zhu", "boss", "bossallowed"]],
 
             },
             characterSort: {
@@ -5289,7 +5289,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               // fusion_shen_xunyu
-              quhu: {
+              fusion_quhu: {
                 audio: 2,
                 audioname: ['re_xunyu', 'ol_xunyu'],
                 enable: 'phaseUse',
@@ -5297,21 +5297,22 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 filter: function (event, player) {
                   if (player.countCards('h') == 0) return false;
                   return game.hasPlayer(function (current) {
-                    return current.hp > player.hp && player.canCompare(current);
+                    return player.canCompare(current);
                   });
                 },
                 filterTarget: function (card, player, target) {
-                  return target.hp > player.hp && player.canCompare(target);
+                  return player.canCompare(target);
                 },
                 content: function () {
                   "step 0"
                   player.chooseToCompare(target);
                   "step 1"
                   if (result.bool) {
+                    const delta = result.num1 - result.num2;
                     if (game.hasPlayer(function (player) {
                       return player != target && target.inRange(player);
                     })) {
-                      player.chooseTarget(function (card, player, target) {
+                      player.chooseTarget([1, delta], "请选择至多" + delta + "名角色，对其造成1点伤害", function (card, player, target) {
                         var source = _status.event.source;
                         return target != source && source.inRange(target);
                       }, true).set('ai', function (target) {
@@ -5328,8 +5329,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
                   "step 2"
                   if (result.bool && result.targets && result.targets.length) {
-                    target.line(result.targets[0], 'green');
-                    result.targets[0].damage(target);
+                    result.targets.forEach((tg) => {
+                      target.line(tg, 'green');
+                      tg.damage(target);
+                    })
                   }
                 },
                 ai: {
@@ -5571,6 +5574,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": "数许邵",
               "math_zhangchangpu": "数张菖蒲",
               "fusion_zhuanlundizang": "转轮地藏",
+              "fusion_shenxunyu": "融神荀彧",
 
               // skill
               "shenhu": "神护",
@@ -5887,8 +5891,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>修复了张菖蒲在对方时发牌卡死的问题。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融神荀彧。<br>' +
+              '<li><span style="color:#006400">说明二</span>：<br>修复了数张菖蒲在对方时发牌卡死的问题。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
