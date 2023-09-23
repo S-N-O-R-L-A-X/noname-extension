@@ -156,7 +156,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
-                  "fusion_puyuan", "fusion_shen_jiangwei", "fusion_lingtong", "fusion_liuzan", "fusion_zhuanlundizang"],
+                  "fusion_puyuan", "fusion_shen_jiangwei", "fusion_lingtong", "fusion_liuzan", "fusion_zhuanlundizang", "fusion_shen_xunyu"],
                 against7devil_math: ["math_caojinyu", "math_xiahoujie", "math_xushao", "math_zhangchangpu"],
                 against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi",
                   "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
@@ -206,6 +206,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": "来源于十周年许邵，增加了技能发动的时机和次数，一个技能加【神护】照样杀七阴。<br>【强度】★★★★★<br> 【亮点】综合",
               "math_zhangchangpu": "终于可以在小学数学中玩三国杀了！来源于ol张菖蒲，修改了【严教】和【省身】，不用再担心愚蠢的队友不会小学数学了！现在你可以自己计算【严教】。设计思路：【严教】改为了转换技，体现了教学中老师示范与学生练习的过程，且数字逐渐增大，体现难度由浅入深。难度最大时学生把老师教的全都还给老师（不是）。<br>【强度】★★★★★<br> 【亮点】数学+卖血",
               "fusion_zhuanlundizang": "来源于转轮王和地藏王，面对七阴，需要两大boss强强联手才有一线希望。修改了技能【轮回】和【无量】。【无量】既可以指无限制无止境，也可以指佛教中的无量寿佛，因此增加了带领全体增加体力上限和体力的设定。<br>【强度】★★★<br> 【亮点】综合+回忆",
+              "fusion_shen_xunyu": "来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的【驱虎】历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对【驱虎】的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。<br>【强度】★★★★★<br> 【亮点】综合",
             },
             skill: {
               shenhu: {
@@ -5574,7 +5575,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": "数许邵",
               "math_zhangchangpu": "数张菖蒲",
               "fusion_zhuanlundizang": "转轮地藏",
-              "fusion_shenxunyu": "融神荀彧",
+              "fusion_shen_xunyu": "融神荀彧",
 
               // skill
               "shenhu": "神护",
@@ -5838,6 +5839,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_wuliang": "无量",
               "fusion_wuliang_info": "锁定技，你登场时额外摸3张牌；回合开始阶段，所有角色增加一点体力上限，你摸两张牌；结束阶段开始时，所有角色回复一点体力，你摸两张牌。",
 
+              // fusion_shen_xunyu
+              "fusion_quhu": "驱虎",
+              "fusion_quhu_info": "出牌阶段限一次，你可以与一名体力值大于你的角色拼点，若你赢，则该角色对其攻击范围内另X名由你指定的角色各造成1点伤害。若你没赢，该角色对你造成一点伤害。(X为点数之差)",
+
               // unused
               "geju": "割据",
               "geju_info": "锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。",
@@ -5940,7 +5945,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
       author: "SNORLAX",
       diskURL: "",
       forumURL: "",
-      version: "1.0",
+      version: "6.4",
     },
     files: { "character": [], "card": [], "skill": [] }
   }
