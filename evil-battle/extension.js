@@ -145,7 +145,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_xunyu": ["male", "shen", 4, ["fusion_quhu", "oljieming", "rejieming", "tianzuo", "lingce", "dinghan"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_xunyu": ["male", "shen", 4, ["fusion_quhu", "oljieming", "rejieming", "tianzuo", "fusion_lingce", "dinghan"], ["zhu", "boss", "bossallowed"]],
 
             },
             characterSort: {
@@ -5437,6 +5437,21 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
 
+              fusion_lingce: {
+                audio: "lingce",
+                trigger: { global: 'useCardToTargeted' },
+                forced: true,
+                filter: function (event, player) {
+                  return (event.card.name == 'qizhengxiangsheng' || get.zhinangs().contains(event.card.name) || player.getStorage('dinghan').contains(event.card.name));
+                },
+                content: function () {
+                  if (player.getStorage('dinghan').contains(trigger.card.name)) {
+                    player.unmarkAuto('dinghan', [trigger.card.name]);
+                    game.log(player, '从定汉记录中移除了', '#y' + get.translation(trigger.card.name));
+                  }
+                  player.draw();
+                },
+              },
 
             },
 
