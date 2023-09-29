@@ -145,7 +145,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_xunyu": ["male", "shen", 4, ["fusion_quhu", "oljieming", "rejieming", "tianzuo", "fusion_lingce", "dinghan"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_xunyu": ["male", "shen", 4, ["fusion_quhu", "oljieming", "rejieming", "fusion_tianzuo", "fusion_lingce", "dinghan"], ["zhu", "boss", "bossallowed"]],
 
             },
             characterSort: {
@@ -5437,6 +5437,124 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
 
+              fusion_tianzuo: {
+                audio: 2,
+                trigger: {
+                  global: 'phaseBefore',
+                  player: 'enterGame',
+                },
+                forced: true,
+                filter: function (event, player) {
+                  return (event.name != 'phase' || game.phaseNumber == 0) && !lib.inpile.contains('qizhengxiangsheng');
+                },
+                content: function () {
+                  game.addGlobalSkill('fusion_tianzuo_global');
+                  for (var i = 2; i < 10; i++) {
+                    var card = game.createCard2('qizhengxiangsheng', i % 2 ? 'club' : 'spade', i);
+                    ui.cardPile.insertBefore(card, ui.cardPile.childNodes[get.rand(0, ui.cardPile.childNodes.length)]);
+                  }
+                  game.broadcastAll(function () { lib.inpile.add('qizhengxiangsheng') });
+                  game.updateRoundNumber();
+                },
+                group: 'fusion_tianzuo_remove',
+                subSkill: {
+                  remove: {
+                    audio: 2,
+                    trigger: { target: 'useCardToBefore' },
+                    forced: true,
+                    priority: 15,
+                    filter: function (event, player) {
+                      return event.card && event.card.name == 'qizhengxiangsheng';
+                    },
+                    content: function () {
+                      trigger.cancel();
+                    },
+                    ai: {
+                      effect: {
+                        target: function (card, player, target) {
+                          if (card && card.name == 'qizhengxiangsheng') return 'zerotarget';
+                        },
+                      }
+                    },
+                  },
+                  global: {
+                    trigger: { player: 'useCardToPlayered' },
+                    forced: true,
+                    popup: false,
+                    filter: function (event, player) {
+                      return event.card.name == 'qizhengxiangsheng';
+                    },
+                    content: function () {
+                      'step 0'
+                      var target = trigger.target;
+                      event.target = target;
+                      player.chooseControl('奇兵', '正兵').set('prompt', '请选择' + get.translation(target) + '的标记').set('choice', function () {
+                        var e1 = 1.5 * get.sgn(get.damageEffect(target, player, target));
+                        var e2 = 0;
+                        if (target.countGainableCards(player, 'h') > 0 && !target.hasSkillTag('noh')) e2 = -1;
+                        var es = target.getGainableCards(player, 'e');
+                        if (es.length) e2 = Math.min(e2, function () {
+                          var max = 0;
+                          for (var i of es) max = Math.max(max, get.value(i, target))
+                          return -max / 4;
+                        }());
+                        if (Math.abs(e1 - e2) <= 0.3) return Math.random() < 0.5 ? '奇兵' : '正兵';
+                        if (e1 < e2) return '奇兵';
+                        return '正兵';
+                      }()).set('ai', function () {
+                        return _status.event.choice;
+                      });
+                      'step 1'
+                      var map = trigger.getParent().customArgs, id = target.playerid;
+                      if (!map[id]) map[id] = {};
+                      map[id].qizheng_name = result.control;
+                    },
+                  },
+                  rewrite: {
+                    audio: 'tianzuo',
+                    trigger: { global: 'useCardToTargeted' },
+                    filter: function (event, player) {
+                      return event.card.name == 'qizhengxiangsheng';
+                    },
+                    logTarget: 'target',
+                    prompt2: '观看其手牌并修改“奇正相生”标记',
+                    content: function () {
+                      'step 0'
+                      var target = trigger.target;
+                      event.target = target;
+                      if (player != target && target.countCards('h') > 0) player.viewHandcards(target);
+                      player.chooseControl('奇兵', '正兵').set('prompt', '请选择' + get.translation(target) + '的标记').set('choice', function () {
+                        var shas = target.getCards('h', 'sha'), shans = target.getCards('h', 'shan');
+                        var e1 = 1.5 * get.sgn(get.damageEffect(target, player, target));
+                        var e2 = 0;
+                        if (target.countGainableCards(player, 'h') > 0 && !target.hasSkillTag('noh')) e2 = -1;
+                        var es = target.getGainableCards(player, 'e');
+                        if (es.length) e2 = Math.min(e2, function () {
+                          var max = 0;
+                          for (var i of es) max = Math.max(max, get.value(i, target))
+                          return -max / 4;
+                        }());
+                        if (get.attitude(player, target) > 0) {
+                          if (shas.length >= Math.max(1, shans.length)) return '奇兵';
+                          if (shans.length > shas.length) return '正兵';
+                          return e1 > e2 ? '奇兵' : '正兵';
+                        }
+                        if (shas.length) e1 = -0.5;
+                        if (shans.length) e2 = -0.7;
+                        if (Math.abs(e1 - e2) <= 0.3) return Math.random() < 0.5 ? '奇兵' : '正兵';
+                        var rand = Math.random();
+                        if (e1 < e2) return rand < 0.1 ? '奇兵' : '正兵';
+                        return rand < 0.1 ? '正兵' : '奇兵';
+                      }()).set('ai', () => (_status.event.choice));
+                      'step 1'
+                      var map = trigger.getParent().customArgs, id = target.playerid;
+                      if (!map[id]) map[id] = {};
+                      map[id].qizheng_name = result.control;
+                      map[id].qizheng_aibuff = get.attitude(player, target) > 0;
+                    },
+                  },
+                },
+              },
               fusion_lingce: {
                 audio: "lingce",
                 trigger: { global: 'useCardToTargeted' },
