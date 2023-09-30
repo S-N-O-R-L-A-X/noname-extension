@@ -5381,62 +5381,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   expose: 0.2
                 }
               },
-              jieming: {
+              fusion_jieming: {
                 audio: 2,
                 trigger: { player: 'damageEnd' },
-                direct: true,
                 content: function () {
                   "step 0"
-                  event.count = trigger.num;
+                  player.useSkill(oljieming);
                   "step 1"
-                  event.count--;
-                  player.chooseTarget(get.prompt2('jieming'), function (card, player, target) {
-                    return true;//target.countCards('h')<Math.min(target.maxHp,5);
-                  }).set('ai', function (target) {
-                    var att = get.attitude(_status.event.player, target);
-                    if (target.hasSkillTag('nogain')) att /= 6;
-                    if (att > 2) {
-                      return Math.max(0, Math.min(5, target.maxHp) - target.countCards('h'));
-                    }
-                    return att / 3;
-                  });
-                  "step 2"
-                  if (result.bool) {
-                    player.logSkill('jieming', result.targets);
-                    for (var i = 0; i < result.targets.length; i++) {
-                      result.targets[i].drawTo(Math.min(5, result.targets[i].maxHp));
-                    }
-                    if (event.count && player.hasSkill('jieming')) event.goto(1);
-                  }
+                  player.useSkill(rejieming);
                 },
-                ai: {
-                  maixie: true,
-                  maixie_hp: true,
-                  effect: {
-                    target: function (card, player, target, current) {
-                      if (get.tag(card, 'damage') && target.hp > 1) {
-                        if (player.hasSkillTag('jueqing', false, target)) return [1, -2];
-                        var max = 0;
-                        var players = game.filterPlayer();
-                        for (var i = 0; i < players.length; i++) {
-                          if (get.attitude(target, players[i]) > 0) {
-                            max = Math.max(Math.min(5, players[i].hp) - players[i].countCards('h'), max);
-                          }
-                        }
-                        switch (max) {
-                          case 0: return 2;
-                          case 1: return 1.5;
-                          case 2: return [1, 2];
-                          default: return [0, max];
-                        }
-                      }
-                      if ((card.name == 'tao' || card.name == 'caoyao') &&
-                        target.hp > 1 && target.countCards('h') <= target.hp) return [0, 0];
-                    }
-                  },
-                }
               },
-
               fusion_tianzuo: {
                 audio: 2,
                 trigger: {
@@ -5444,12 +5398,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   player: ["enterGame", "phaseBegin"],
                 },
                 forced: true,
-                filter: function (event, player) {
-                  return (event.name != 'phase' || game.phaseNumber == 0);
-                },
                 content: function () {
-                  var name = event.triggername;
-                  if (name == "enterGame") {
+                  if (event.triggername == "enterGame") {
                     game.addGlobalSkill('fusion_tianzuo_global');
                     for (var i = 2; i < 10; i++) {
                       var card = game.createCard2('qizhengxiangsheng', i % 2 ? 'club' : 'spade', i);
@@ -5458,7 +5408,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     game.broadcastAll(function () { lib.inpile.add('qizhengxiangsheng') });
                     game.updateRoundNumber();
                   }
-                  else {
+                  else if (event.triggername === "phaseBegin") {
                     const suit = Math.ceil(Math.random() * 4);
                     const rank = Math.ceil(Math.random() * 13);
                     var card = game.createCard2('qizhengxiangsheng', ["club", "diamond", "heart", "spade"][suit], rank);
