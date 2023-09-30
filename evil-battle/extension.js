@@ -5440,21 +5440,30 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_tianzuo: {
                 audio: 2,
                 trigger: {
-                  global: 'phaseBefore',
-                  player: 'enterGame',
+                  global: "phaseBefore",
+                  player: ["enterGame", "phaseBegin"],
                 },
                 forced: true,
                 filter: function (event, player) {
-                  return (event.name != 'phase' || game.phaseNumber == 0) && !lib.inpile.contains('qizhengxiangsheng');
+                  return (event.name != 'phase' || game.phaseNumber == 0);
                 },
                 content: function () {
-                  game.addGlobalSkill('fusion_tianzuo_global');
-                  for (var i = 2; i < 10; i++) {
-                    var card = game.createCard2('qizhengxiangsheng', i % 2 ? 'club' : 'spade', i);
-                    ui.cardPile.insertBefore(card, ui.cardPile.childNodes[get.rand(0, ui.cardPile.childNodes.length)]);
+                  var name = event.triggername;
+                  if (name == "enterGame") {
+                    game.addGlobalSkill('fusion_tianzuo_global');
+                    for (var i = 2; i < 10; i++) {
+                      var card = game.createCard2('qizhengxiangsheng', i % 2 ? 'club' : 'spade', i);
+                      ui.cardPile.insertBefore(card, ui.cardPile.childNodes[get.rand(0, ui.cardPile.childNodes.length)]);
+                    }
+                    game.broadcastAll(function () { lib.inpile.add('qizhengxiangsheng') });
+                    game.updateRoundNumber();
                   }
-                  game.broadcastAll(function () { lib.inpile.add('qizhengxiangsheng') });
-                  game.updateRoundNumber();
+                  else {
+                    const suit = Math.ceil(Math.random() * 4);
+                    const rank = Math.ceil(Math.random() * 13);
+                    var card = game.createCard2('qizhengxiangsheng', ["club", "diamond", "heart", "spade"][suit], rank);
+                    player.gain(card, 'gain2', 'log');
+                  }
                 },
                 group: 'fusion_tianzuo_remove',
                 subSkill: {
