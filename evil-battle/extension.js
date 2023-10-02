@@ -5529,6 +5529,40 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   player.draw();
                 },
               },
+              fusion_liuxiang: {
+                trigger: { player: "useCard" },
+                forced: true,
+                content: function () {
+                  target.addToExpansion(cards, player, 'give').gaintag.add('fusion_liuxiang_effect');
+                  player.line(target, 'green');
+                  target.addSkill("fusion_liuxiang_effect");
+                },
+              },
+
+              "fusion_liuxiang_effect": {
+                marktext: '香',
+                intro: {
+                  content: 'expansion',
+                  markcount: 'expansion',
+                },
+                charlotte: true,
+                onremove: function (player, skill) {
+                  var cards = player.getExpansions(skill);
+                  if (cards.length) player.loseToDiscardpile(cards);
+                },
+                trigger: {
+                  player: ['useCard'],
+                },
+                forced: true,
+                filter: function (event, player) {
+                  var storage = player.getExpansions("fusion_liuxiang");
+                  return get.type(event.card) == get.type(storage[0])
+                },
+                content: function () {
+                  game.log(player.getExpansions("fusion_liuxiang"))
+                  player.useCard(get.autoViewAs(player.getExpansions("fusion_liuxiang")[0]), false, trigger.player, 'fusion_liuxiang');
+                },
+              },
 
             },
 
@@ -5934,6 +5968,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // fusion_shen_xunyu
               "fusion_quhu": "驱虎",
               "fusion_quhu_info": "出牌阶段限一次，你可以与一名体力值大于你的角色拼点，若你赢，则该角色对其攻击范围内另X名由你指定的角色各造成1点伤害。若你没赢，该角色对你造成一点伤害。(X为点数之差)",
+
+              "fusion_liuxiang": "",
+              "fusion_liuxiang_info": "",
 
               // unused
               "geju": "割据",
