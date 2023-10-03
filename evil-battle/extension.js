@@ -145,7 +145,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_xunyu": ["male", "shen", 4, ["fusion_quhu", "oljieming", "rejieming", "fusion_tianzuo", "fusion_lingce", "dinghan"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_xunyu": ["male", "shen", 4, ["fusion_quhu", "oljieming", "rejieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
 
             },
             characterSort: {
@@ -5530,38 +5530,42 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
               fusion_liuxiang: {
-                trigger: { player: "useCard" },
+                trigger: { player: "useCardToTargeted" },
                 forced: true,
                 content: function () {
-                  target.addToExpansion(cards, player, 'give').gaintag.add('fusion_liuxiang_effect');
+                  trigger.target.addToExpansion(trigger.cards, player, 'give').gaintag.add('fusion_liuxiang_effect');
                   player.line(target, 'green');
-                  target.addSkill("fusion_liuxiang_effect");
+                  trigger.target.addSkill("fusion_liuxiang_effect");
                 },
-              },
-
-              "fusion_liuxiang_effect": {
-                marktext: '香',
-                intro: {
-                  content: 'expansion',
-                  markcount: 'expansion',
-                },
-                charlotte: true,
-                onremove: function (player, skill) {
-                  var cards = player.getExpansions(skill);
-                  if (cards.length) player.loseToDiscardpile(cards);
-                },
-                trigger: {
-                  player: ['useCard'],
-                },
-                forced: true,
-                filter: function (event, player) {
-                  var storage = player.getExpansions("fusion_liuxiang");
-                  return get.type(event.card) == get.type(storage[0])
-                },
-                content: function () {
-                  game.log(player.getExpansions("fusion_liuxiang"))
-                  player.useCard(get.autoViewAs(player.getExpansions("fusion_liuxiang")[0]), false, trigger.player, 'fusion_liuxiang');
-                },
+                subSkill: {
+                  effect: {
+                    marktext: '香',
+                    intro: {
+                      content: 'expansion',
+                      markcount: 'expansion',
+                    },
+                    charlotte: true,
+                    /**
+                     * remove after 3 rounds
+                     */
+                    onremove: function (player, skill) {
+                      var cards = player.getExpansions(skill);
+                      if (cards.length) player.loseToDiscardpile(cards);
+                    },
+                    trigger: {
+                      player: ['useCard'],
+                    },
+                    forced: true,
+                    filter: function (event, player) {
+                      var storage = player.getExpansions("fusion_liuxiang");
+                      return get.type(event.card) == get.type(storage[0])
+                    },
+                    content: function () {
+                      game.log(player.getExpansions("fusion_liuxiang"))
+                      player.useCard(get.autoViewAs(player.getExpansions("fusion_liuxiang")[0]), false, trigger.player, 'fusion_liuxiang');
+                    },
+                  },
+                }
               },
 
             },
