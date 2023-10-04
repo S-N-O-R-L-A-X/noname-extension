@@ -5533,20 +5533,26 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 trigger: { player: "useCardToTargeted" },
                 forced: true,
                 filter: function (event, player) {
+                  // game.log(Object.keys(event));
+                  game.log(event.trigger);
+                  game.log(event.name);
+                  game.log(event.skill);
                   return event.target != player;
                 },
                 content: function () {
-                  trigger.target.addToExpansion(trigger.cards, player, 'give').gaintag.add('fusion_liuxiang_effect');
                   player.line(target, 'green');
                   trigger.target.storage.fusion_liuxiang_target = player;
+                  trigger.target.storage.fusion_liuxiang_card = trigger.cards;
                   trigger.target.addSkill("fusion_liuxiang_effect");
                 },
                 subSkill: {
                   effect: {
+                    mark: true,
                     marktext: '香',
                     intro: {
-                      content: 'expansion',
-                      markcount: 'expansion',
+                      content: function (storage, player, skill) {
+                        return "留香内容：" + get.translation(player.storage.fusion_liuxiang_card[0].name);
+                      },
                     },
                     charlotte: true,
                     forced: true,
@@ -5554,20 +5560,21 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                      * remove after 3 rounds
                      */
                     onremove: function (player, skill) {
-                      var cards = player.getExpansions(skill);
-                      if (cards.length) player.loseToDiscardpile(cards);
+                      player.storage.fusion_liuxiang_card = [];
+                      // var cards = player.getExpansions(skill);
+                      // if (cards.length) player.loseToDiscardpile(cards);
                     },
                     trigger: {
                       player: 'useCardToTargeted',
                     },
                     forced: true,
                     filter: function (event, player) {
-                      var storage = player.getExpansions("fusion_liuxiang_effect");
+                      var storage = player.storage.fusion_liuxiang_card;
                       return get.type(event.card) == get.type(storage[0]);
                     },
                     content: function () {
-                      game.log("use card!")
-                      player.storage.fusion_liuxiang_target.useCard(get.autoViewAs(player.getExpansions("fusion_liuxiang_effect")[0]), false, player, 'fusion_liuxiang');
+                      player.storage.fusion_liuxiang_target.useCard(get.autoViewAs(player.storage.fusion_liuxiang_card[0]), player, 'fusion_liuxiang');
+                      player.removeSkill("fusion_liuxiang_effect");
                     },
                   },
                 }
