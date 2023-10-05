@@ -5533,11 +5533,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 trigger: { player: "useCardToTargeted" },
                 forced: true,
                 filter: function (event, player) {
-                  // game.log(Object.keys(event));
-                  game.log(event.trigger);
-                  game.log(event.name);
-                  game.log(event.skill);
-                  return event.target != player;
+                  return event.target != player && event.skill != "fusion_liuxiang";
                 },
                 content: function () {
                   player.line(target, 'green');
@@ -5557,12 +5553,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     charlotte: true,
                     forced: true,
                     /**
-                     * remove after 3 rounds
+                     * maybe should be removed after 3 rounds
                      */
                     onremove: function (player, skill) {
                       player.storage.fusion_liuxiang_card = [];
-                      // var cards = player.getExpansions(skill);
-                      // if (cards.length) player.loseToDiscardpile(cards);
                     },
                     trigger: {
                       player: 'useCardToTargeted',
@@ -5984,9 +5978,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // fusion_shen_xunyu
               "fusion_quhu": "驱虎",
               "fusion_quhu_info": "出牌阶段限一次，你可以与一名体力值大于你的角色拼点，若你赢，则该角色对其攻击范围内另X名由你指定的角色各造成1点伤害。若你没赢，该角色对你造成一点伤害。(X为点数之差)",
-
-              "fusion_liuxiang": "",
-              "fusion_liuxiang_info": "",
+              "fusion_tianzuo": "天佐",
+              "fusion_tianzuo_info": "锁定技。①游戏开始时，你将8张【奇正相生】加入牌堆。②【奇正相生】对你无效。③你的回合开始时，你获得一张【奇正相生】。",
+              "fusion_lingce": "灵策",
+              "fusion_lingce_info": "锁定技。当有【奇正相生】或智囊或〖定汉①〗记录过的锦囊牌被使用时，若此牌不为转化牌且对应实体牌数量为1，则你摸一张牌，然后将此牌移出【定汉①】记录。",
+              "fusion_liuxiang": "留香",
+              "fusion_liuxiang_info": "锁定技，若其他角色使用的牌类型与你上一次非因此对其使用的牌相同，则视为你对其再次使用此牌。",
 
               // unused
               "geju": "割据",
