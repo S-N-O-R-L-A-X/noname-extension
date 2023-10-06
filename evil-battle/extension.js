@@ -145,7 +145,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_xunyu": ["male", "shen", 4, ["fusion_quhu", "oljieming", "rejieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_xunyu": ["male", "shen", 3, ["fusion_quhu", "fusion_jieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
 
             },
             characterSort: {
@@ -206,7 +206,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": "来源于十周年许邵，增加了技能发动的时机和次数，一个技能加【神护】照样杀七阴。<br>【强度】★★★★★<br> 【亮点】综合",
               "math_zhangchangpu": "终于可以在小学数学中玩三国杀了！来源于ol张菖蒲，修改了【严教】和【省身】，不用再担心愚蠢的队友不会小学数学了！现在你可以自己计算【严教】。设计思路：【严教】改为了转换技，体现了教学中老师示范与学生练习的过程，且数字逐渐增大，体现难度由浅入深。难度最大时学生把老师教的全都还给老师（不是）。<br>【强度】★★★★★<br> 【亮点】数学+卖血",
               "fusion_zhuanlundizang": "来源于转轮王和地藏王，面对七阴，需要两大boss强强联手才有一线希望。修改了技能【轮回】和【无量】。【无量】既可以指无限制无止境，也可以指佛教中的无量寿佛，因此增加了带领全体增加体力上限和体力的设定。<br>【强度】★★★<br> 【亮点】综合+回忆",
-              "fusion_shen_xunyu": "来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的【驱虎】历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对【驱虎】的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。<br>【强度】★★★★★<br> 【亮点】综合",
+              "fusion_shen_xunyu": "来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的【驱虎】历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对【驱虎】的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。【天佐】【灵策】均为纯增强，加强进攻和防御能力。【留香】技能直接源于荀令留香的典故，技能内容也非常贴合。<br>【强度】★★★★★<br> 【亮点】综合",
             },
             skill: {
               shenhu: {
@@ -5382,14 +5382,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
               fusion_jieming: {
-                audio: 2,
-                trigger: { player: 'damageEnd' },
-                content: function () {
-                  "step 0"
-                  player.useSkill(oljieming);
-                  "step 1"
-                  player.useSkill(rejieming);
-                },
+                group: ["oljieming", "rejieming"]
               },
               fusion_tianzuo: {
                 audio: 2,
