@@ -146,7 +146,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_xunyu": ["male", "shen", 3, ["fusion_quhu", "fusion_jieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
-
+              "fusion_panshu": ["female", "wu", 3, ['weiyi', 'jinzhi', 'zhiren', 'yaner'], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -5565,6 +5565,49 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     },
                   },
                 }
+              },
+
+              // fusion_panshu
+              weiyi: {
+                trigger: { global: 'damageEnd' },
+                filter: function (event, player) {
+                  if (player.getStorage('weiyi').contains(event.player) || !event.player.isIn()) return false;
+                  return event.player.hp >= player.hp || event.player.isDamaged();
+                },
+                direct: true,
+                content: function () {
+                  'step 0'
+                  var list = [];
+                  if (trigger.player.hp >= player.hp) list.push('失去体力');
+                  if (trigger.player.hp <= player.hp && trigger.player.isDamaged()) list.push('回复体力');
+                  list.push('cancel2')
+                  player.chooseControl(list).set('prompt', get.prompt2('weiyi', trigger.player)).set('ai', function () {
+                    var player = _status.event.player, target = _status.event.getTrigger().player;
+                    var att = get.attitude(player, target), eff = get.recoverEffect(target, player, player);
+                    if (target.hp <= player.hp && target.isDamaged() && att > 2 && eff > 0) {
+                      if (player == target) {
+                        var storage = player.getStorage('weiyi');
+                        if (player.hp >= 2 && game.hasPlayer(function (current) {
+                          return current.hp == player.hp + 1 && !storage.contains(current) && get.attitude(player, current) < 0;
+                        })) return 'cancel2';
+                      }
+                      return '回复体力';
+                    }
+                    if (target.hp >= player.hp && att < -2 && eff < 0) return '失去体力';
+                    return 'cancel2';
+                  });
+                  'step 1'
+                  if (result.control != 'cancel2') {
+                    var target = trigger.player;
+                    player.logSkill('weiyi', target);
+                    player.markAuto('weiyi', [target]);
+                    target[result.control == '失去体力' ? 'loseHp' : 'recover']();
+                  }
+                },
+                onremove: true,
+                intro: {
+                  content: '已令$对汝威服',
+                },
               },
 
             },
