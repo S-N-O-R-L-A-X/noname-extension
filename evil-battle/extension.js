@@ -5616,6 +5616,54 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   },
                 },
               },
+              yaner:{
+                audio:2,
+                trigger:{
+                  global:['equipAfter','addJudgeAfter','loseAfter','gainAfter','loseAsyncAfter','addToExpansionAfter'],
+                },
+                filter:function(event,player){
+                  var current=_status.currentPhase;
+                  if(!current||!current.isIn()||!current.isPhaseUsing()) return false;
+                  var evt=event.getl(current);
+                  return evt&&evt.hs&&evt.hs.length&&current.countCards('h')==0||(player.coundCards("h")==0);
+                },
+                usable:1,
+                logTarget:function(){
+                  return _status.currentPhase;
+                },
+                prompt2:'与该角色各摸两张牌',
+                check:function(event,player){
+                  return get.attitude(player,_status.currentPhase)>0;
+                },
+                content:function(){
+                  'step 0'
+                  game.asyncDraw([_status.currentPhase,player],2);
+                  'step 1'
+                  var e1=player.getHistory('gain',function(evt){
+                    return evt.getParent(2)==event;
+                  })[0];
+                  if(e1&&e1.cards&&e1.cards.length==2&&get.type(e1.cards[0])==get.type(e1.cards[1])){
+                    player.addTempSkill('yaner_zhiren',{player:'phaseBegin'});
+                    game.log(player,'修改了技能','#g【织纴】');
+                  }
+                  var target=_status.currentPhase;
+                  if(target.isIn()&&target.isDamaged()){
+                    var e2=target.getHistory('gain',function(evt){
+                      return evt.getParent(2)==event;
+                    })[0];
+                    if(e2&&e2.cards&&e2.cards.length==2&&get.type(e2.cards[0])==get.type(e2.cards[1])) target.recover();
+                  }
+                  'step 2'
+                  game.delayx();
+                },
+                subSkill:{
+                  zhiren:{charlotte:true},
+                },
+                ai:{
+                  expose:0.5,
+                },
+              },
+        
 
             },
 
