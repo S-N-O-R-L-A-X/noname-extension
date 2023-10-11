@@ -146,7 +146,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_xunyu": ["male", "shen", 3, ["fusion_quhu", "fusion_jieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
-              "fusion_panshu": ["female", "wu", 3, ['fusion_weiyi', 'jinzhi', 'zhiren', 'yaner'], ["zhu", "boss", "bossallowed"]],
+              "fusion_panshu": ["female", "wu", 3, ['fusion_weiyi', 'jinzhi', 'zhiren', 'fusion_yaner'], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -5605,7 +5605,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     target[result.control == '失去体力' ? 'loseHp' : 'recover']();
                   }
                 },
-                onremove:true,
+                onremove: true,
                 subSkill: {
                   used: {
                     intro: {
@@ -5616,54 +5616,59 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   },
                 },
               },
-              yaner:{
-                audio:2,
-                trigger:{
-                  global:['equipAfter','addJudgeAfter','loseAfter','gainAfter','loseAsyncAfter','addToExpansionAfter'],
+              fusion_yaner: {
+                audio: 2,
+                trigger: {
+                  global: ['equipAfter', 'addJudgeAfter', 'loseAfter', 'gainAfter', 'loseAsyncAfter', 'addToExpansionAfter'],
+                  player: 'loseAfter',
                 },
-                filter:function(event,player){
-                  var current=_status.currentPhase;
-                  if(!current||!current.isIn()||!current.isPhaseUsing()) return false;
-                  var evt=event.getl(current);
-                  return evt&&evt.hs&&evt.hs.length&&current.countCards('h')==0||(player.coundCards("h")==0);
+                filter: function (event, player) {
+                  var current = _status.currentPhase;
+                  if (!current || !current.isIn() || !current.isPhaseUsing()) return false;
+                  if (event.player == player) {
+                    return event && event.hs && event.hs.length && player.countCards('h') == 0;
+                  }
+
+                  var evt = event.getl(current);
+                  return evt && evt.hs && evt.hs.length && current.countCards('h') == 0;
                 },
-                usable:1,
-                logTarget:function(){
+                usable: 1,
+                logTarget: function () {
                   return _status.currentPhase;
                 },
-                prompt2:'与该角色各摸两张牌',
-                check:function(event,player){
-                  return get.attitude(player,_status.currentPhase)>0;
+                prompt2: '与该角色各摸两张牌',
+                check: function (event, player) {
+                  return get.attitude(player, _status.currentPhase) > 0;
                 },
-                content:function(){
+                content: function () {
                   'step 0'
-                  game.asyncDraw([_status.currentPhase,player],2);
+                  game.asyncDraw([_status.currentPhase, player], 2);
                   'step 1'
-                  var e1=player.getHistory('gain',function(evt){
-                    return evt.getParent(2)==event;
+                  var e1 = player.getHistory('gain', function (evt) {
+                    return evt.getParent(2) == event;
                   })[0];
-                  if(e1&&e1.cards&&e1.cards.length==2&&get.type(e1.cards[0])==get.type(e1.cards[1])){
-                    player.addTempSkill('yaner_zhiren',{player:'phaseBegin'});
-                    game.log(player,'修改了技能','#g【织纴】');
+                  if (e1 && e1.cards && e1.cards.length == 2 && get.type(e1.cards[0]) == get.type(e1.cards[1])) {
+                    player.addTempSkill('yaner_zhiren', { player: 'phaseBegin' });
+                    game.log(player, '修改了技能', '#g【织纴】');
                   }
-                  var target=_status.currentPhase;
-                  if(target.isIn()&&target.isDamaged()){
-                    var e2=target.getHistory('gain',function(evt){
-                      return evt.getParent(2)==event;
+                  var target = _status.currentPhase;
+                  if (target.isIn() && target.isDamaged()) {
+                    var e2 = target.getHistory('gain', function (evt) {
+                      return evt.getParent(2) == event;
                     })[0];
-                    if(e2&&e2.cards&&e2.cards.length==2&&get.type(e2.cards[0])==get.type(e2.cards[1])) target.recover();
+                    if (e2 && e2.cards && e2.cards.length == 2 && get.type(e2.cards[0]) == get.type(e2.cards[1])) target.recover();
                   }
                   'step 2'
                   game.delayx();
                 },
-                subSkill:{
-                  zhiren:{charlotte:true},
+                subSkill: {
+                  zhiren: { charlotte: true },
                 },
-                ai:{
-                  expose:0.5,
+                ai: {
+                  expose: 0.5,
                 },
               },
-        
+
 
             },
 
