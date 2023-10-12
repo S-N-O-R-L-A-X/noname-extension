@@ -3377,6 +3377,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_yongdi: {
                 audio: "yongdi",
                 audioname: ['xinping'],
+                derivation: ["fusion_dushi"],
                 unique: true,
                 limited: true,
                 trigger: { player: 'phaseZhunbeiBegin' },
@@ -5383,6 +5384,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
               fusion_jieming: {
+                derivation: ["oljieming", "rejieming"],
                 group: ["oljieming", "rejieming"]
               },
               fusion_tianzuo: {
@@ -6077,7 +6079,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_quhu": "驱虎",
               "fusion_quhu_info": "出牌阶段限一次，你可以与一名体力值大于你的角色拼点，若你赢，则该角色对其攻击范围内另X名由你指定的角色各造成1点伤害。若你没赢，该角色对你造成一点伤害。(X为点数之差)",
               "fusion_jieming": "节命",
-              "fusion_jieming_info": "锁定技，你拥有〖手杀界节命〗和〖ol界节命〗。",
+              "fusion_jieming_info": "锁定技，你拥有〖ol界节命〗和〖手杀界节命〗。",
               "fusion_tianzuo": "天佐",
               "fusion_tianzuo_info": "锁定技。①游戏开始时，你将8张【奇正相生】加入牌堆。②【奇正相生】对你无效。③你的回合开始时，你获得一张【奇正相生】。",
               "fusion_lingce": "灵策",
@@ -6139,7 +6141,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
               '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融神荀彧。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>修复了数张菖蒲在对方时发牌卡死的问题。<br>'
+              '<li><span style="color:#006400">说明二</span>：<br>修复了数张菖蒲在对方时发牌卡死的问题。<br>' +
+              '<li><span style="color:#006400">说明三</span>：<br>修改了一些武将的技能描述以支持更好的了解技能。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
