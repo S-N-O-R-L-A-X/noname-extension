@@ -145,7 +145,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_xunyu": ["male", "shen", 3, ["fusion_quhu", "fusion_jieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
-              "fusion_panshu": ["female", "wu", 3, ["shenhu", "fusion_weiyi", "jinzhi", "zhiren", "fusion_yaner"], ["zhu", "boss", "bossallowed"]],
+              // "fusion_panshu": ["female", "wu", 3, ["shenhu", "fusion_weiyi", "jinzhi", "zhiren", "fusion_yaner"], ["zhu", "boss", "bossallowed"]],
+              "fusion_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin","re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -5671,6 +5672,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
 
+              // re_boss_dongzhuo
+              
+
 
             },
 
@@ -5811,6 +5815,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_zhuanlundizang": "转轮地藏",
               "fusion_shen_xunyu": "融神荀彧",
               "fusion_panshu": "融潘淑",
+              "re_boss_dongzhuo":"界乱世魔王",
 
               // skill
               "shenhu": "神护",
@@ -6139,7 +6144,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融神荀彧。<br>' +
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融神荀彧，界乱世魔王。<br>' +
               '<li><span style="color:#006400">说明二</span>：<br>修复了数张菖蒲在对方时发牌卡死的问题。<br>' +
               '<li><span style="color:#006400">说明三</span>：<br>修改了一些武将的技能描述以支持更好的了解技能。<br>' +
               '<li><span style="color:#006400">说明四</span>：<br>修复了乱斗模式关卡不出现的问题。<br>'
