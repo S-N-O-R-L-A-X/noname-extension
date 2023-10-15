@@ -146,7 +146,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_xunyu": ["male", "shen", 3, ["fusion_quhu", "fusion_jieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
               // "fusion_panshu": ["female", "wu", 3, ["shenhu", "fusion_weiyi", "jinzhi", "zhiren", "fusion_yaner"], ["zhu", "boss", "bossallowed"]],
-              "fusion_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin","re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
+              "fusion_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -5673,7 +5673,59 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               // re_boss_dongzhuo
-              
+              re_boss_qiangzheng: {
+                audio: "boss_qiangzheng",
+                trigger: { player: 'phaseEnd' },
+                direct: true,
+                forced: true,
+                filter: function (event, player) {
+                  return game.hasPlayer(function (current) {
+                    return current != player;
+                  });
+                },
+                content: function () {
+                  "step 0"
+                  var targets = game.filterPlayer();
+                  targets.remove(player);
+                  targets.sort(lib.sort.seat);
+                  event.targets = targets;
+                  event.num = 0;
+                  player.line(targets, 'green');
+                  "step 1"
+                  if (num < event.targets.length) {
+                    if (event.targets[num].countCards('hej')) {
+                      player.gainPlayerCard(event.targets[num], 'hej', true);
+                    }
+                    else {
+                      event.targets[num].damage('nocard');
+                    }
+                    event.num++;
+                    event.redo();
+                  }
+                },
+                ai: {
+                  threaten: 2
+                }
+              },
+              re_boss_hengzheng: {
+                audio: "boss_qiangzheng",
+                enable: 'phaseUse',
+                usable: 1,
+                unique: true,
+                filter: function (event, player) {
+                  return game.hasPlayer(function (current) {
+                    return current != player;
+                  });
+                },
+                prompt2: function (event, player) {
+                  return '你可以减少一半体力上限（向下取整），然后获得其他每名角色区域内一张牌？';
+                },
+                content: function () {
+                  "step 0"
+                  player.loseMaxHp(Math.floor(player.maxHp / 2));
+                  player.useSkill("re_boss_qiangzheng");
+                },
+              },
 
 
             },
@@ -5815,7 +5867,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_zhuanlundizang": "转轮地藏",
               "fusion_shen_xunyu": "融神荀彧",
               "fusion_panshu": "融潘淑",
-              "re_boss_dongzhuo":"界乱世魔王",
+              "re_boss_dongzhuo": "界乱世魔王",
 
               // skill
               "shenhu": "神护",
