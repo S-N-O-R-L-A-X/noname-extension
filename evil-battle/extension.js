@@ -5690,14 +5690,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   targets.sort(lib.sort.seat);
                   event.targets = targets;
                   event.num = 0;
-                  player.line(targets, 'green');
+                  player.line(targets, "green");
                   "step 1"
                   if (num < event.targets.length) {
-                    if (event.targets[num].countCards('hej')) {
-                      player.gainPlayerCard(event.targets[num], 'hej', true);
+                    if (event.targets[num].countCards("he")) {
+                      player.gainPlayerCard(event.targets[num], "he", true);
                     }
                     else {
-                      event.targets[num].damage('nocard');
+                      event.targets[num].damage("nocard");
                     }
                     event.num++;
                     event.redo();
@@ -5709,7 +5709,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
               re_boss_hengzheng: {
                 audio: "boss_qiangzheng",
-                enable: 'phaseUse',
+                enable: "phaseUse",
                 usable: 1,
                 unique: true,
                 filter: function (event, player) {
@@ -5718,11 +5718,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   });
                 },
                 prompt2: function (event, player) {
-                  return '你可以减少一半体力上限（向下取整），然后获得其他每名角色区域内一张牌？';
+                  return "是否减少一半体力上限（向下取整），然后发动一次〖强征〗？";
                 },
                 content: function () {
                   "step 0"
-                  player.loseMaxHp(Math.floor(player.maxHp / 2));
+                  player.loseMaxHp(player.maxHp >> 1);
                   player.useSkill("re_boss_qiangzheng");
                 },
               },
@@ -6143,6 +6143,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_liuxiang": "留香",
               "fusion_liuxiang_info": "锁定技，若其他角色使用的牌类型与你上一次非因此对其使用的牌相同，则视为你对其再次使用此牌。",
 
+              // fusion_boss_dianwei
+              "re_boss_qiangzheng":"强征",
+              "boss_qiangzheng_info":"锁定技，结束阶段，你获得每个敌方角色一张牌，若其没有牌，则你对其造成一点伤害。",
+              "re_boss_hengzheng":"横征",
+              "boss_qiangzheng_info":"出牌阶段限一次，若你的体力上限大于1，你可以失去一半体力上限，发动一次〖强征〗。",
+                         
               // unused
               "geju": "割据",
               "geju_info": "锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。",
