@@ -146,13 +146,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_xunyu": ["male", "shen", 3, ["fusion_quhu", "fusion_jieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
               // "fusion_panshu": ["female", "wu", 3, ["shenhu", "fusion_weiyi", "jinzhi", "zhiren", "fusion_yaner"], ["zhu", "boss", "bossallowed"]],
-              "fusion_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu",
                   "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou",
-                  "re_boss_yingzhao", "re_boss_xiangliu"],
+                  "re_boss_yingzhao", "re_boss_xiangliu", "re_boss_dongzhuo"],
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
@@ -208,6 +208,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_zhuanlundizang": "来源于转轮王和地藏王，面对七阴，需要两大boss强强联手才有一线希望。修改了技能【轮回】和【无量】。【无量】既可以指无限制无止境，也可以指佛教中的无量寿佛，因此增加了带领全体增加体力上限和体力的设定。<br>【强度】★★★<br> 【亮点】综合+回忆",
               "fusion_shen_xunyu": "来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的【驱虎】历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对【驱虎】的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。【天佐】【灵策】均为纯增强，加强进攻和防御能力。【留香】技能直接源于荀令留香的典故，技能内容也非常贴合。<br>【强度】★★★★★<br> 【亮点】综合",
               "fusion_panshu": "来源于ol潘淑和十周年潘淑。【威仪】改为每轮每名角色限一次，【燕尔】改为出牌阶段自己没牌也可发动。<br>【强度】★★★<br> 【亮点】综合",
+              "re_boss_dongzhuo": "来源于挑战模式boss乱世魔王。〖强征〗从手牌改为牌，历史上董卓横征暴敛最终为吕布所杀，因此增加技能〖横征〗，通过缩短自己寿命（体力上限）来发动暴征。<br>【强度】★★★★★<br> 【亮点】攻击",
             },
             skill: {
               shenhu: {
@@ -6182,7 +6183,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 这是本扩展的官方网站：<a class="github" href="https://s-n-o-r-l-a-x.github.io/noname-extension/">https://s-n-o-r-l-a-x.github.io/noname-extension</a><br>
                 如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极哦~<br>
                 <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a><br>
-                如果想要加群的话，目前群号是214685856，请备注下从哪得知这个扩展的哈。
+                如果想要加群的话，目前QQ群号是一群：214685856，二群：939494042，请优先加二群！请备注下从哪得知这个扩展的哈，如果是下载到的整合包包含，回答整合包即可。
                 `,
         clear: true,
         nopointer: true,
