@@ -144,7 +144,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_xunyu": ["male", "shen", 3, ["fusion_quhu", "fusion_jieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_xunyu": ["male", "shen", 4, ["fusion_quhu", "fusion_jieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
               // "fusion_panshu": ["female", "wu", 3, ["shenhu", "fusion_weiyi", "jinzhi", "zhiren", "fusion_yaner"], ["zhu", "boss", "bossallowed"]],
               "re_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
             },
@@ -5530,7 +5530,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 trigger: { player: "useCardToTargeted" },
                 forced: true,
                 filter: function (event, player) {
-                  return event.target != player && event.skill != "fusion_liuxiang";
+                  return event.target != player && event.skill != "fusion_liuxiang" && get.type(event.card) != "delay";
                 },
                 content: function () {
                   player.line(target, 'green');
@@ -5565,7 +5565,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     },
                     content: function () {
                       player.storage.fusion_liuxiang_target.useCard(get.autoViewAs(player.storage.fusion_liuxiang_card[0]), player, 'fusion_liuxiang');
-                      player.removeSkill("fusion_liuxiang_effect");
                     },
                   },
                 }
@@ -6145,11 +6144,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_liuxiang_info": "锁定技，若其他角色使用的牌类型与你上一次非因此对其使用的牌相同，则视为你对其再次使用此牌。",
 
               // re_boss_dongzhuo
-              "re_boss_qiangzheng":"强征",
-              "re_boss_qiangzheng_info":"锁定技，结束阶段，你获得每个敌方角色一张牌，若其没有牌，则你对其造成一点伤害。",
-              "re_boss_hengzheng":"横征",
-              "re_boss_hengzheng_info":"出牌阶段限一次，若你的体力上限大于1，你可以失去一半体力上限，发动一次〖强征〗。",
-                         
+              "re_boss_qiangzheng": "强征",
+              "re_boss_qiangzheng_info": "锁定技，结束阶段，你获得每个敌方角色一张牌，若其没有牌，则你对其造成一点伤害。",
+              "re_boss_hengzheng": "横征",
+              "re_boss_hengzheng_info": "出牌阶段限一次，若你的体力上限大于1，你可以失去一半体力上限，发动一次〖强征〗。",
+
               // unused
               "geju": "割据",
               "geju_info": "锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。",
