@@ -5386,7 +5386,83 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
               fusion_jieming: {
                 derivation: ["oljieming", "rejieming"],
-                group: ["oljieming", "rejieming"]
+                group: ["oljieming", "rejieming"],
+                trigger: { player: ['damageEnd'] },
+                direct: true,
+                forceDie: true,
+                filter: function (event, player) {
+                  return player.isIn();
+                },
+                prompt2: function (event, player) {
+                  return "当你受到1点伤害后，你可令一名角色摸X张牌。然后若其手牌数大于X，则其将手牌弃置至X张（X为其体力值且至多为5）。";
+                },
+                content: function () {
+                  'step 0'
+                  event.count = trigger.num || 1;
+                  'step 1'
+                  event.count--;
+                  player.chooseTarget(get.prompt2('fusion_jieming'), function (card, player, target) {
+                    return target.hp > 0;
+                  }).set('ai', function (target) {
+                    var att = get.attitude(_status.event.player, target);
+                    var draw = Math.min(5, target.hp) - target.countCards('h');
+                    if (draw >= 0) {
+                      if (target.hasSkillTag('nogain')) att /= 6;
+                      if (att > 2) {
+                        return Math.sqrt(draw + 1) * att;
+                      }
+                      return att / 3;
+                    }
+                    if (draw < -1) {
+                      if (target.hasSkillTag('nogain')) att *= 6;
+                      if (att < -2) {
+                        return -Math.sqrt(1 - draw) * att;
+                      }
+                    }
+                    return 0;
+                  });
+                  'step 2'
+                  if (result.bool) {
+                    var target = result.targets[0];
+                    event.target = target;
+                    player.logSkill('fusion_jieming', target);
+                    target.draw(Math.min(5, target.hp));
+                  }
+                  else event.finish();
+                  'step 3'
+                  var num = target.countCards('h') - Math.min(5, target.hp);
+                  if (num > 0) target.chooseToDiscard('h', true, num);
+                  'step 4'
+                  if (event.count > 0 && player.isIn() && player.hasSkill('fusion_jieming')) event.goto(1);
+                },
+                ai: {
+                  expose: 0.2,
+                  maixie: true,
+                  maixie_hp: true,
+                  effect: {
+                    target: function (card, player, target, current) {
+                      if (get.tag(card, 'damage') && target.hp > 1) {
+                        if (player.hasSkillTag('jueqing', false, target)) return [1, -2];
+                        var max = 0;
+                        var players = game.filterPlayer();
+                        for (var i = 0; i < players.length; i++) {
+                          if (get.attitude(target, players[i]) > 0) {
+                            max = Math.max(Math.min(5, players[i].hp) - players[i].countCards('h'), max);
+                          }
+                        }
+                        switch (max) {
+                          case 0: return 2;
+                          case 1: return 1.5;
+                          case 2: return [1, 2];
+                          default: return [0, max];
+                        }
+                      }
+                      if ((card.name == 'tao' || card.name == 'caoyao') &&
+                        target.hp > 1 && target.countCards('h') <= target.hp) return [0, 0];
+                    }
+                  },
+                }
+
               },
               fusion_tianzuo: {
                 audio: "tianzuo",
@@ -6131,7 +6207,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_quhu": "驱虎",
               "fusion_quhu_info": "出牌阶段限一次，你可以与一名体力值大于你的角色拼点，若你赢，则该角色对其攻击范围内另X名由你指定的角色各造成1点伤害。若你没赢，该角色对你造成一点伤害。(X为点数之差)",
               "fusion_jieming": "节命",
-              "fusion_jieming_info": "锁定技，你拥有〖ol界节命〗和〖手杀界节命〗。",
+              "fusion_jieming_info": "①锁定技，你拥有〖ol界节命〗和〖手杀界节命〗。②当你受到1点伤害后，你可令一名角色摸X张牌。然后若其手牌数大于X，则其将手牌弃置至X张（X为其体力值且至多为5）。",
               "fusion_tianzuo": "天佐",
               "fusion_tianzuo_info": "锁定技。①游戏开始时，你将8张【奇正相生】加入牌堆。②【奇正相生】对你无效。③你的回合开始时，你获得一张【奇正相生】。",
               "fusion_lingce": "灵策",
