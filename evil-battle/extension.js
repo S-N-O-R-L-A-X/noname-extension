@@ -144,7 +144,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_xunyu": ["male", "shen", 3, ["fusion_quhu", "fusion_jieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_xunyu": ["male", "shen", 3, ["fusion_quhu", "fusion_jieming_all", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
               // "fusion_panshu": ["female", "wu", 3, ["shenhu", "fusion_weiyi", "jinzhi", "zhiren", "fusion_yaner"], ["zhu", "boss", "bossallowed"]],
               "re_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
             },
@@ -206,7 +206,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": "来源于十周年许邵，增加了技能发动的时机和次数，一个技能加〖神护〗照样杀七阴。<br>【强度】★★★★★<br> 【亮点】综合",
               "math_zhangchangpu": "终于可以在小学数学中玩三国杀了！来源于ol张菖蒲，修改了【严教】和【省身】，不用再担心愚蠢的队友不会小学数学了！现在你可以自己计算【严教】。设计思路：【严教】改为了转换技，体现了教学中老师示范与学生练习的过程，且数字逐渐增大，体现难度由浅入深。难度最大时学生把老师教的全都还给老师（不是）。<br>【强度】★★★★★<br> 【亮点】数学+卖血",
               "fusion_zhuanlundizang": "来源于转轮王和地藏王，面对七阴，需要两大boss强强联手才有一线希望。修改了技能【轮回】和【无量】。【无量】既可以指无限制无止境，也可以指佛教中的无量寿佛，因此增加了带领全体增加体力上限和体力的设定。<br>【强度】★★★<br> 【亮点】综合+回忆",
-              "fusion_shen_xunyu": "来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的〖驱虎〗历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对〖驱虎〗的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。〖天佐〗〖灵策〗均为纯增强，加强进攻和防御能力。〖留香〗技能直接源于荀令留香的典故，技能内容也非常贴合。<br>【强度】★★★★★<br> 【亮点】综合",
+              "fusion_shen_xunyu": "来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的〖驱虎〗历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对〖驱虎〗的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。〖天佐〗〖灵策〗均为纯增强，加强进攻和防御能力。〖节命〗技能则是来自于手杀界节命和ol界节命，还加上了一个控制更强的节命效果。〖留香〗技能直接源于荀令留香的典故，技能内容也非常贴合。<br>【强度】★★★★★<br> 【亮点】综合",
               "fusion_panshu": "来源于ol潘淑和十周年潘淑。〖威仪〗改为每轮每名角色限一次，〖燕尔〗改为出牌阶段自己没牌也可发动。<br>【强度】★★★<br> 【亮点】综合",
               "re_boss_dongzhuo": "来源于挑战模式boss乱世魔王，加上技能〖神护〗。〖强征〗从手牌改为牌，历史上董卓横征暴敛最终为吕布所杀，因此增加技能〖横征〗，通过缩短自己寿命（体力上限）来发动〖强征〗。<br>【强度】★★★★<br> 【亮点】攻击",
             },
@@ -5294,7 +5294,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // fusion_shen_xunyu
               fusion_quhu: {
-                audio: 2,
+                audio: "quhu",
                 audioname: ['re_xunyu', 'ol_xunyu'],
                 enable: 'phaseUse',
                 usable: 1,
@@ -5384,17 +5384,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   expose: 0.2
                 }
               },
-              fusion_jieming: {
+              fusion_jieming_all: {
                 derivation: ["oljieming", "rejieming"],
-                group: ["oljieming", "rejieming"],
+                group: ["oljieming", "rejieming", "fusion_jieming"],
+              },
+              fusion_jieming: {
+                audio: "oljieming",
                 trigger: { player: ['damageEnd'] },
                 direct: true,
                 forceDie: true,
                 filter: function (event, player) {
                   return player.isIn();
-                },
-                prompt2: function (event, player) {
-                  return "当你受到1点伤害后，你可令一名角色摸X张牌。然后若其手牌数大于X，则其将手牌弃置至X张（X为其体力值且至多为5）。";
                 },
                 content: function () {
                   'step 0'
@@ -5589,7 +5589,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
               fusion_lingce: {
                 audio: "lingce",
-                trigger: { global: 'useCardToTargeted' },
+                trigger: { global: 'useCard' },
                 forced: true,
                 filter: function (event, player) {
                   return (event.card.name == 'qizhengxiangsheng' || get.zhinangs().contains(event.card.name) || player.getStorage('dinghan').contains(event.card.name));
@@ -5628,7 +5628,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       player.storage.fusion_liuxiang_card = [];
                     },
                     trigger: {
-                      player: 'useCardToTargeted',
+                      player: 'useCard',
                     },
                     forced: true,
                     filter: function (event, player) {
@@ -6206,14 +6206,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // fusion_shen_xunyu
               "fusion_quhu": "驱虎",
               "fusion_quhu_info": "出牌阶段限一次，你可以与一名体力值大于你的角色拼点，若你赢，则该角色对其攻击范围内另X名由你指定的角色各造成1点伤害。若你没赢，该角色对你造成一点伤害。(X为点数之差)",
+              "fusion_jieming_all": "节命",
+              "fusion_jieming_all_info": "①锁定技，你拥有〖ol界节命〗和〖手杀界节命〗。②当你受到1点伤害后，你可令一名角色摸X张牌。然后若其手牌数大于X，则其将手牌弃置至X张（X为其体力值且至多为5）。",
               "fusion_jieming": "节命",
-              "fusion_jieming_info": "①锁定技，你拥有〖ol界节命〗和〖手杀界节命〗。②当你受到1点伤害后，你可令一名角色摸X张牌。然后若其手牌数大于X，则其将手牌弃置至X张（X为其体力值且至多为5）。",
+              "fusion_jieming_info": "当你受到1点伤害后，你可令一名角色摸X张牌。然后若其手牌数大于X，则其将手牌弃置至X张（X为其体力值且至多为5）。",
               "fusion_tianzuo": "天佐",
               "fusion_tianzuo_info": "锁定技。①游戏开始时，你将8张【奇正相生】加入牌堆。②【奇正相生】对你无效。③你的回合开始时，你获得一张【奇正相生】。",
               "fusion_lingce": "灵策",
               "fusion_lingce_info": "锁定技。当有【奇正相生】或智囊或〖定汉①〗记录过的锦囊牌被使用时，你摸一张牌。",
               "fusion_liuxiang": "留香",
-              "fusion_liuxiang_info": "锁定技，若其他角色使用的牌类型与你上一次非因此对其使用的牌相同，则视为你对其再次使用此牌。",
+              "fusion_liuxiang_info": "锁定技，当其他角色使用的牌类型与你上一次非因此对其使用的牌相同，则视为你对其再次使用此牌。",
 
               // re_boss_dongzhuo
               "re_boss_qiangzheng": "强征",
