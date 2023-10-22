@@ -144,7 +144,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_xushao": ["male", "qun", 6, ["shenhu", "math_pingjian"], ["zhu", "boss", "bossallowed"]],
               "math_zhangchangpu": ["female", "wei", 6, ["shenhu", "math_yanjiao", "math_xingshen"], ["zhu", "boss", "bossallowed"]],
               "fusion_zhuanlundizang": ["male", "shen", 8, ["boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting"], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_xunyu": ["male", "shen", 4, ["fusion_quhu", "fusion_jieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_xunyu": ["male", "shen", 3, ["fusion_quhu", "fusion_jieming", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
               // "fusion_panshu": ["female", "wu", 3, ["shenhu", "fusion_weiyi", "jinzhi", "zhiren", "fusion_yaner"], ["zhu", "boss", "bossallowed"]],
               "re_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
             },
@@ -5519,10 +5519,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   return (event.card.name == 'qizhengxiangsheng' || get.zhinangs().contains(event.card.name) || player.getStorage('dinghan').contains(event.card.name));
                 },
                 content: function () {
-                  if (player.getStorage('dinghan').contains(trigger.card.name)) {
-                    player.unmarkAuto('dinghan', [trigger.card.name]);
-                    game.log(player, '从定汉记录中移除了', '#y' + get.translation(trigger.card.name));
-                  }
                   player.draw();
                 },
               },
@@ -6139,7 +6135,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_tianzuo": "天佐",
               "fusion_tianzuo_info": "锁定技。①游戏开始时，你将8张【奇正相生】加入牌堆。②【奇正相生】对你无效。③你的回合开始时，你获得一张【奇正相生】。",
               "fusion_lingce": "灵策",
-              "fusion_lingce_info": "锁定技。当有【奇正相生】或智囊或〖定汉①〗记录过的锦囊牌被使用时，若此牌不为转化牌且对应实体牌数量为1，则你摸一张牌，然后将此牌移出【定汉①】记录。",
+              "fusion_lingce_info": "锁定技。当有【奇正相生】或智囊或〖定汉①〗记录过的锦囊牌被使用时，你摸一张牌。",
               "fusion_liuxiang": "留香",
               "fusion_liuxiang_info": "锁定技，若其他角色使用的牌类型与你上一次非因此对其使用的牌相同，则视为你对其再次使用此牌。",
 
@@ -6195,7 +6191,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：6.4.0<font size="4px">▶▶▶</font></div>`,
+        name: `<div class=".update">扩展版本：6.4.1<font size="4px">▶▶▶</font></div>`,
         version: 6.4,
         clear: true,
         intro: "点击查看此版本的更新内容",
@@ -6204,8 +6200,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
               '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融神荀彧，界乱世魔王。<br>' +
               '<li><span style="color:#006400">说明二</span>：<br>修复了数张菖蒲在对方时发牌卡死的问题。<br>' +
-              '<li><span style="color:#006400">说明三</span>：<br>修改了一些武将的技能描述以支持更好的了解技能。<br>' +
-              '<li><span style="color:#006400">说明四</span>：<br>修复了乱斗模式关卡不出现的问题。<br>'
+              '<li><span style="color:#006400">说明三</span>：<br>修改了衍生技的技能描述方式以支持玩家更好的了解技能。<br>' +
+              '<li><span style="color:#006400">说明四</span>：<br>修复了乱斗模式关卡不出现的问题。<br>' +
+              '<li><span style="color:#006400">说明五</span>：<br>规范了一些武将的描述。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
@@ -6214,7 +6211,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：6.4.0<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：6.4.1<font size="4px">▶▶▶</font></div>';
           };
         }
       },
