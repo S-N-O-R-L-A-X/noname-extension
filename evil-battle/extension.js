@@ -148,7 +148,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // "fusion_panshu": ["female", "wu", 3, ["shenhu", "fusion_weiyi", "jinzhi", "zhiren", "fusion_yaner"], ["zhu", "boss", "bossallowed"]],
               "re_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
               // "re_boss_huangyueying": ["female", "qun", 4, ["shenhu", 'boss_gongshen', 'boss_jizhi', 'qicai', 'boss_guiyin'], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_zhangfei": ["male", "shen", 20, ["shenhu", "shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -5802,13 +5802,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               // fusion_shen_zhangfei
-              shencai: {
-                audio: 2,
+              fusion_shencai: {
+                audio: "shencai",
                 enable: 'phaseUse',
-                usable: 5,
                 filter: function (event, player) {
-                  var count = player.getStat('skill').shencai;
-                  if (count && count > player.countMark('shencai')) return false;
+                  var count = player.getStat('skill').fusion_shencai;
+                  if (count && count > player.countMark('fusion_shencai')) return false;
                   return true;
                 },
                 filterTarget: lib.filter.notMe,
@@ -5816,7 +5815,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 prompt: '选择一名其他角色进行地狱审判',
                 content: function () {
                   var next = target.judge();
-                  next.callback = lib.skill.shencai.contentx;
+                  next.callback = lib.skill.fusion_shencai.contentx;
                 },
                 ai: {
                   order: 8,
@@ -5827,18 +5826,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   var player = event.getParent(2).player;
                   var target = event.getParent(2).target;
                   if (get.position(card, true) == 'o') player.gain(card, 'gain2');
-                  var list = [], str = lib.skill.shencai.getStr(card);
-                  for (var i in lib.skill.shencai.filterx) {
-                    if (str.indexOf(lib.skill.shencai.filterx[i]) != -1) list.push('shencai_' + i);
+                  var list = [], str = lib.skill.fusion_shencai.getStr(card);
+                  for (var i in lib.skill.fusion_shencai.filterx) {
+                    if (str.indexOf(lib.skill.fusion_shencai.filterx[i]) != -1) list.push('fusion_shencai_' + i);
                   }
                   if (list.length) {
-                    for (var i in lib.skill.shencai.filterx) {
-                      var num = target.countMark('shencai_' + i);
-                      if (num > 0) {
-                        target.removeMark('shencai_' + i, num);
-                        target.removeSkill('shencai_' + i);
-                      }
-                    }
                     if (target.isIn()) {
                       for (var i of list) {
                         target.addSkill(i);
@@ -5848,8 +5840,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
                   else if (target.isIn()) {
                     player.gainPlayerCard(target, true, 'hej');
-                    target.addMark('shencai_death', 1);
-                    target.addSkill('shencai_death');
+                    target.addMark('fusion_shencai_death', 1);
+                    target.addSkill('fusion_shencai_death');
                   }
                 },
                 filterx: {
@@ -5939,14 +5931,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       content: '锁定技。当你成为【杀】的目标后，你不能使用牌响应此【杀】。',
                       onunmark: true,
                     },
-                    global: 'shencai_weapon_ai',
+                    global: 'fusion_shencai_weapon_ai',
                   },
                   ai: {
                     ai: {
                       directHit_ai: true,
                       skillTagFilter: function (player, tag, arg) {
                         if (!arg || !arg.card || arg.card.name != 'sha') return false;
-                        if (!arg.target || !arg.target.hasSkill('shencai_weapon')) return false;
+                        if (!arg.target || !arg.target.hasSkill('fusion_shencai_weapon')) return false;
                         return true;
                       },
                     },
@@ -5961,16 +5953,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     forced: true,
                     filter: function (event, player) {
                       if (!player.hasCard(function (card) {
-                        return lib.filter.cardDiscardable(card, player, 'shencai_respond');
+                        return lib.filter.cardDiscardable(card, player, 'fusion_shencai_respond');
                       }, 'h')) return false;
-                      var evt = event.getParent('shencai_respond');
+                      var evt = event.getParent('fusion_shencai_respond');
                       if (evt && evt.player == player) return false;
                       evt = event.getl(player);
                       return evt && evt.hs && evt.hs.length > 0;
                     },
                     content: function () {
                       var cards = player.getCards('h', function (card) {
-                        return lib.filter.cardDiscardable(card, player, 'shencai_respond');
+                        return lib.filter.cardDiscardable(card, player, 'fusion_shencai_respond');
                       });
                       if (cards.length > 0) player.discard(cards.randomGet());
                     },
@@ -6001,13 +5993,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     marktext: '死',
                     mod: {
                       maxHandcard: function (player, num) {
-                        return num - player.countMark('shencai_death');
+                        return num - player.countMark('fusion_shencai_death');
                       },
                     },
                     trigger: { player: 'phaseEnd' },
                     forced: true,
                     filter: function (event, player) {
-                      return player.countMark('shencai_death') > game.countPlayer();
+                      return player.countMark('fusion_shencai_death') > game.countPlayer();
                     },
                     content: function () {
                       player.die();
@@ -6066,7 +6058,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 content: function () {
                   'step 0'
-                  if (player.countMark('shencai') < 4 && player.hasSkill('shencai', null, null, false)) player.addMark('shencai', 1, false);
+                  if (player.hasSkill('fusion_shencai', null, null, false)) player.addMark('fusion_shencai', 1, false);
                   if (trigger.addCount !== false) {
                     trigger.addCount = false;
                     var stat = player.getStat().card, name = trigger.card.name;
