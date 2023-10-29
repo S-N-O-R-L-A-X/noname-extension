@@ -149,6 +149,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
               // "re_boss_huangyueying": ["female", "qun", 4, ["shenhu", 'boss_gongshen', 'boss_jizhi', 'qicai', 'boss_guiyin'], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
+              "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", 'fusion_luochong', 'dc_luochong', 'dcaichen'], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -6095,6 +6096,194 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     player.line(event.targets, 'fire');
                     trigger.targets.addArray(event.targets);
                   }
+                },
+              },
+
+              // fusion_tengfanglan
+              fusion_luochong: {
+                audio: 2,
+                trigger: { player: ['phaseZhunbeiBegin', 'damageEnd'] },
+                direct: true,
+                filter: function (event, player) {
+                  if (event.name == 'damage') {
+                    var history = player.getHistory('damage');
+                    if (history.indexOf(event) != 0) return false;
+                  }
+                  var storage1 = player.storage.fusion_luochong_round, storage2 = player.getStorage('fusion_luochong');
+                  if (!storage1) storage1 = [[], []];
+                  for (var i = 0; i < 4; i++) {
+                    if (!storage1[0].contains(i) && !storage2.contains(i) && game.hasPlayer(function (current) {
+                      return !storage1[1].contains(current) && lib.skill.fusion_luochong.filterx[i](current);
+                    })) return true;
+                  }
+                  return false;
+                },
+                filterx: [
+                  (target) => target.isDamaged(),
+                  () => true,
+                  (target) => target.countCards('he') > 0,
+                  () => true,
+                ],
+                onremove: true,
+                content: function () {
+                  'step 0'
+                  var list = [];
+                  var choiceList = [
+                    '令一名角色回复1点体力。',
+                    '令一名角色失去1点体力。',
+                    '令一名角色弃置两张牌。',
+                    '令一名角色摸两张牌。',
+                  ];
+                  var storage1 = player.storage.fusion_luochong_round, storage2 = player.getStorage('fusion_luochong');
+                  if (!storage1) storage1 = [[], []];
+                  for (var i = 0; i < 4; i++) {
+                    if (storage2.contains(i)) {
+                      choiceList[i] = ('<span style="text-decoration: line-through; opacity:0.5; ">' + choiceList[i] + '</span>');
+                    }
+                    else if (storage1[0].contains(i) || !game.hasPlayer(function (current) {
+                      return !storage1[1].contains(current) && lib.skill.fusion_luochong.filterx[i](current);
+                    })) {
+                      choiceList[i] = ('<span style="opacity:0.5;">' + choiceList[i] + '</span>');
+                    }
+                    else list.push('选项' + get.cnNumber(i + 1, true))
+                  }
+                  list.push('cancel2');
+                  player.chooseControl(list).set('prompt', get.prompt('fusion_luochong')).set('choiceList', choiceList).set('ai', function () {
+                    var player = _status.event.player;
+                    var list = _status.event.controls.slice(0);
+                    var listx = (player.storage.fusion_luochong_round || [[], []])[1];
+                    var gett = function (choice) {
+                      if (choice == 'cancel2') return 0.1;
+                      var max = 0, func = {
+                        选项一: function (current) {
+                          if (current.isDamaged()) max = Math.max(max, get.recoverEffect(current, player, player));
+                        },
+                        选项二: function (target) {
+                          max = Math.max(max, get.effect(target, { name: 'losehp' }, player, player));
+                        },
+                        选项三: function (target) {
+                          var num = target.countDiscardableCards(player, 'he');
+                          if (num > 0) max = Math.max(max, Math.sqrt(Math.min(2, num)) * get.effect(target, { name: 'guohe_copy2' }, player, player));
+                        },
+                        选项四: function (target) {
+                          max = Math.max(max, get.effect(target, { name: 'wuzhong' }, player, player));
+                        },
+                      }[choice];
+                      game.countPlayer(function (current) {
+                        if (!listx.contains(current)) func(current);
+                      });
+                      return max;
+                    };
+                    return list.sort(function (a, b) {
+                      return gett(b) - gett(a);
+                    })[0];
+                  });
+                  'step 1'
+                  if (result.control != 'cancel2') {
+                    var index = ['选项一', '选项二', '选项三', '选项四'].indexOf(result.control);
+                    event.index = index;
+                    var listx = (player.storage.fusion_luochong_round || [[], []])[1];
+                    var list = [
+                      ['选择一名角色，令其回复1点体力', function (target) {
+                        var player = _status.event.player;
+                        return get.recoverEffect(target, player, player);
+                      }],
+                      ['选择一名角色，令其失去1点体力', function (target) {
+                        return get.effect(target, { name: 'losehp' }, player, player);
+                      }],
+                      ['选择一名角色，令其弃置两张牌', function (target) {
+                        var player = _status.event.player;
+                        return get.effect(target, { name: 'guohe_copy2' }, player, player) * Math.sqrt(Math.min(2, target.countCards('he')));
+                      }],
+                      ['选择一名角色，令其摸两张牌', function (target) {
+                        var player = _status.event.player;
+                        return get.effect(target, { name: 'wuzhong' }, player, player);
+                      }]
+                    ][index];
+                    var targets = game.filterPlayer(function (current) {
+                      return !listx.contains(current) && lib.skill.fusion_luochong.filterx[event.index](current);
+                    })
+                    var next = player.chooseTarget(list[0], true, function (card, player, target) {
+                      return _status.event.targets.contains(target);
+                    });
+                    next.set('targets', targets);
+                    next.set('ai', list[1]);
+                  }
+                  else event.finish();
+                  'step 2'
+                  if (result.bool) {
+                    var target = result.targets[0];
+                    player.logSkill('fusion_luochong', target);
+                    if (player != target) player.addExpose(0.2);
+                    player.addTempSkill('fusion_luochong_round', 'roundStart');
+                    if (!player.storage.fusion_luochong_round) player.storage.fusion_luochong_round = [[], []];
+                    player.storage.fusion_luochong_round[0].push(event.index);
+                    player.storage.fusion_luochong_round[1].push(target);
+                    switch (event.index) {
+                      case 0:
+                        target.recover();
+                        break;
+                      case 1:
+                        target.loseHp();
+                        break;
+                      case 2:
+                        target.chooseToDiscard(true, 'he', 2);
+                        break;
+                      case 3:
+                        target.draw(2);
+                        break;
+                    }
+                  }
+                },
+                subSkill: {
+                  round: {
+                    charlotte: true,
+                    onremove: true,
+                  },
+                },
+              },
+              aichen: {
+                audio: 2,
+                trigger: { player: 'dying' },
+                forced: true,
+                filter: function (event, player) {
+                  return player.hasSkill('fusion_luochong', null, null, false) && player.getStorage('fusion_luochong').length < 3;
+                },
+                content: function () {
+                  'step 0'
+                  //var num=1-player.hp;
+                  //if(num>0) player.recover(num);
+                  var list = [];
+                  var choiceList = [
+                    '令一名角色回复1点体力。',
+                    '令一名角色失去1点体力。',
+                    '令一名角色弃置两张牌。',
+                    '令一名角色摸两张牌。',
+                  ];
+                  var storage2 = player.getStorage('fusion_luochong');
+                  for (var i = 0; i < 4; i++) {
+                    if (storage2.contains(i)) {
+                      choiceList[i] = ('<span style="text-decoration: line-through; opacity:0.5; ">' + choiceList[i] + '</span>');
+                    }
+                    else list.push('选项' + get.cnNumber(i + 1, true))
+                  }
+                  player.chooseControl(list).set('prompt', '哀尘：选择移去一个〖落宠〗的选项').set('choiceList', choiceList).set('ai', function () {
+                    var controls = _status.event.controls.slice(0);
+                    var list = ['选项三', '选项四', '选项二', '选项一'];
+                    for (var i of list) {
+                      if (controls.contains(i)) return i;
+                    }
+                    return 0;
+                  });
+                  'step 1'
+                  var index = ['选项一', '选项二', '选项三', '选项四'].indexOf(result.control);
+                  player.markAuto('fusion_luochong', [index]);
+                  game.log(player, '移去了', '#g【落宠】', '的', '#y' + [
+                    '令一名角色回复1点体力',
+                    '令一名角色失去1点体力',
+                    '令一名角色弃置两张牌',
+                    '令一名角色摸两张牌',
+                  ][index], '的选项');
                 },
               },
 
