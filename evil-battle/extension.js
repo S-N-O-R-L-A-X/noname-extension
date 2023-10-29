@@ -6105,15 +6105,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 trigger: { player: ['phaseZhunbeiBegin', 'damageEnd'] },
                 direct: true,
                 filter: function (event, player) {
+                  var storage1 = player.storage.fusion_luochong_turn, storage2 = player.getStorage('fusion_luochong');
+                  if (!storage1) storage1 = [];
                   if (event.name == 'damage') {
-                    var history = player.getHistory('damage');
-                    if (history.indexOf(event) != 0) return false;
+                    game.log("enter luochong damage");
+                    return (storage2.length||0)+storage1.length<4;
                   }
-                  var storage1 = player.storage.fusion_luochong_round, storage2 = player.getStorage('fusion_luochong');
-                  if (!storage1) storage1 = [[], []];
                   for (var i = 0; i < 4; i++) {
-                    if (!storage1[0].contains(i) && !storage2.contains(i) && game.hasPlayer(function (current) {
-                      return !storage1[1].contains(current) && lib.skill.fusion_luochong.filterx[i](current);
+                    if (!storage1.contains(i) && !storage2.contains(i) && game.hasPlayer(function (current) {
+                      return lib.skill.fusion_luochong.filterx[i](current);
                     })) return true;
                   }
                   return false;
@@ -6134,14 +6134,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     '令一名角色弃置两张牌。',
                     '令一名角色摸两张牌。',
                   ];
-                  var storage1 = player.storage.fusion_luochong_round, storage2 = player.getStorage('fusion_luochong');
-                  if (!storage1) storage1 = [[], []];
+                  var storage1 = player.storage.fusion_luochong_turn, storage2 = player.getStorage('fusion_luochong');
+                  if (!storage1) storage1 = [];
                   for (var i = 0; i < 4; i++) {
                     if (storage2.contains(i)) {
                       choiceList[i] = ('<span style="text-decoration: line-through; opacity:0.5; ">' + choiceList[i] + '</span>');
                     }
-                    else if (storage1[0].contains(i) || !game.hasPlayer(function (current) {
-                      return !storage1[1].contains(current) && lib.skill.fusion_luochong.filterx[i](current);
+                    else if (storage1.contains(i) || !game.hasPlayer(function (current) {
+                      return lib.skill.fusion_luochong.filterx[i](current);
                     })) {
                       choiceList[i] = ('<span style="opacity:0.5;">' + choiceList[i] + '</span>');
                     }
@@ -6151,7 +6151,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   player.chooseControl(list).set('prompt', get.prompt('fusion_luochong')).set('choiceList', choiceList).set('ai', function () {
                     var player = _status.event.player;
                     var list = _status.event.controls.slice(0);
-                    var listx = (player.storage.fusion_luochong_round || [[], []])[1];
+                    var listx = player.storage.fusion_luochong_turn || [];
                     var gett = function (choice) {
                       if (choice == 'cancel2') return 0.1;
                       var max = 0, func = {
@@ -6182,7 +6182,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   if (result.control != 'cancel2') {
                     var index = ['选项一', '选项二', '选项三', '选项四'].indexOf(result.control);
                     event.index = index;
-                    var listx = (player.storage.fusion_luochong_round || [[], []])[1];
+                    var listx = player.storage.fusion_luochong_turn || [];
                     var list = [
                       ['选择一名角色，令其回复1点体力', function (target) {
                         var player = _status.event.player;
@@ -6215,10 +6215,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     var target = result.targets[0];
                     player.logSkill('fusion_luochong', target);
                     if (player != target) player.addExpose(0.2);
-                    player.addTempSkill('fusion_luochong_round', 'roundStart');
-                    if (!player.storage.fusion_luochong_round) player.storage.fusion_luochong_round = [[], []];
-                    player.storage.fusion_luochong_round[0].push(event.index);
-                    player.storage.fusion_luochong_round[1].push(target);
+                    player.addTempSkill('fusion_luochong_turn', 'phaseBegin');
+                    if (!player.storage.fusion_luochong_turn) player.storage.fusion_luochong_turn = [];
+                    player.storage.fusion_luochong_turn.push(event.index);
                     switch (event.index) {
                       case 0:
                         target.recover();
@@ -6236,7 +6235,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
                 },
                 subSkill: {
-                  round: {
+                  turn: {
                     charlotte: true,
                     onremove: true,
                   },
