@@ -149,7 +149,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
               // "re_boss_huangyueying": ["female", "qun", 4, ["shenhu", 'boss_gongshen', 'boss_jizhi', 'qicai', 'boss_guiyin'], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
-              "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", 'fusion_luochong', 'dc_luochong', 'dcaichen'], ["zhu", "boss", "bossallowed"]],
+              // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", 'fusion_luochong_all', 'dcaichen'], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -6100,6 +6100,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               // fusion_tengfanglan
+              "fusion_luochong_all":{
+                  derivation: ["fusion_luochong","dcluochong" ],
+                  group: ["fusion_luochong","dcluochong"],
+              },
               fusion_luochong: {
                 audio: 2,
                 trigger: { player: ['phaseZhunbeiBegin', 'damageEnd'] },
@@ -6108,7 +6112,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   var storage1 = player.storage.fusion_luochong_turn, storage2 = player.getStorage('fusion_luochong');
                   if (!storage1) storage1 = [];
                   if (event.name == 'damage') {
-                    game.log("enter luochong damage");
                     return (storage2.length||0)+storage1.length<4;
                   }
                   for (var i = 0; i < 4; i++) {
@@ -6708,6 +6711,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_qiangzheng_info": "锁定技，结束阶段，你获得每个敌方角色一张牌，若其没有牌，则你对其造成一点伤害。",
               "re_boss_hengzheng": "横征",
               "re_boss_hengzheng_info": "出牌阶段限一次，若你的体力上限大于1，你可以失去一半体力上限，发动一次〖强征〗。",
+
+
+              // fusion_shen_zhangfei
+
+              // fusion_tengfanglan
+
 
               // unused
               "geju": "割据",
