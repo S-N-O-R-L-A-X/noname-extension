@@ -150,6 +150,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // "re_boss_huangyueying": ["female", "qun", 4, ["shenhu", 'boss_gongshen', 'boss_jizhi', 'qicai', 'boss_guiyin'], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
               // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", 'fusion_luochong_all', 'dcaichen'], ["zhu", "boss", "bossallowed"]],
+              "math_beimihu": ["female", "qun", 4, ["shenhu", 'zongkui', 'guju', 'baijia'], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -6100,9 +6101,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               // fusion_tengfanglan
-              "fusion_luochong_all":{
-                  derivation: ["fusion_luochong","dcluochong" ],
-                  group: ["fusion_luochong","dcluochong"],
+              "fusion_luochong_all": {
+                derivation: ["fusion_luochong", "dcluochong"],
+                group: ["fusion_luochong", "dcluochong"],
               },
               fusion_luochong: {
                 audio: 2,
@@ -6112,7 +6113,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   var storage1 = player.storage.fusion_luochong_turn, storage2 = player.getStorage('fusion_luochong');
                   if (!storage1) storage1 = [];
                   if (event.name == 'damage') {
-                    return (storage2.length||0)+storage1.length<4;
+                    return (storage2.length || 0) + storage1.length < 4;
                   }
                   for (var i = 0; i < 4; i++) {
                     if (!storage1.contains(i) && !storage2.contains(i) && game.hasPlayer(function (current) {
@@ -6288,6 +6289,131 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   ][index], '的选项');
                 },
               },
+
+
+              // math_beimihu
+              guju: {
+                audio: 2,
+                audioname: ['tw_beimihu'],
+                init: function (player) {
+                  if (!player.storage.guju) player.storage.guju = 0;
+                },
+                intro: {
+                  content: '已因此技能得到#张牌'
+                },
+                trigger: { global: 'damageEnd' },
+                forced: true,
+                filter: function (event, player) {
+                  return event.player != player && event.player.isIn() && event.player.hasMark('zongkui_mark');
+                },
+                content: function () {
+                  'step 0'
+                  player.draw();
+                  player.storage.guju++;
+                  player.markSkill('guju');
+                  'step 1'
+                  if (player.hasZhuSkill('bingzhao', trigger.player) && trigger.player.group == player.storage.bingzhao && trigger.player.isIn()) {
+                    trigger.player.chooseBool('是否对' + get.translation(player) + '发动【秉诏】？').ai = function () {
+                      return get.attitude(trigger.player, player) > 1;
+                    };
+                  }
+                  else event.finish();
+                  'step 2'
+                  if (result.bool) {
+                    trigger.player.logSkill('bingzhao', player);
+                    player.draw();
+                    player.storage.guju++;
+                    player.markSkill('guju');
+                  }
+                },
+                ai: {
+                  combo: 'zongkui'
+                }
+              },
+              zongkui: {
+                trigger: { player: 'phaseBefore', global: 'roundStart' },
+                direct: true,
+                audio: 2,
+                audioname: ['tw_beimihu'],
+                filter: function (event, player, name) {
+                  return game.hasPlayer(function (current) {
+                    if (name == 'roundStart' && !current.isMinHp()) return false;
+                    return current != player && !current.hasMark('zongkui_mark');
+                  });
+                },
+                content: function () {
+                  'step 0'
+                  var targets = game.filterPlayer(function (current) {
+                    if (event.triggername == 'roundStart' && !current.isMinHp()) return false;
+                    return current != player && !current.hasMark('zongkui_mark');
+                  });
+                  if (event.triggername == 'roundStart' && targets.length == 1) {
+                    event._result = { bool: true, targets: targets };
+                  }
+                  else {
+                    var next = player.chooseTarget(get.prompt('zongkui'), '令一名' + (event.triggername == 'roundStart' ? '体力值最小的' : '') + '其他角色获得“傀”标记', function (card, player, target) {
+                      if (_status.event.round && !target.isMinHp()) return false;
+                      return target != player && !target.hasMark('zongkui_mark');
+                    }).set('ai', function (target) {
+                      var num = target.isMinHp() ? 0.5 : 1;
+                      return num * get.threaten(target);
+                    }).set('round', event.triggername == 'roundStart');
+                    if (event.triggername == 'roundStart') next.set('forced', true);
+                  }
+                  'step 1'
+                  if (result.bool) {
+                    var target = result.targets[0];
+                    player.logSkill('zongkui', target);
+                    target.addMark('zongkui_mark', 1);
+                    game.delayx();
+                  }
+                },
+                subSkill: {
+                  mark: {
+                    marktext: '傀',
+                    intro: {
+                      name2: '傀',
+                      content: 'mark'
+                    }
+                  }
+                },
+                ai: {
+                  combo: 'guju',
+                  threaten: 1.4
+                }
+              },
+              baijia: {
+                audio: 2,
+                audioname: ['tw_beimihu'],
+                unique: true,
+                derivation: 'bmcanshi',
+                juexingji: true,
+                ai: {
+                  combo: 'guju'
+                },
+                trigger: { player: 'phaseZhunbeiBegin' },
+                forced: true,
+                skillAnimation: true,
+                animationColor: 'thunder',
+                filter: function (event, player) {
+                  return player.hasSkill('guju') && player.storage.guju >= 7;
+                },
+                content: function () {
+                  player.awakenSkill('baijia');
+                  player.gainMaxHp();
+                  player.recover();
+                  var list = game.filterPlayer();
+                  for (var i = 0; i < list.length; i++) {
+                    if (list[i] != player && !list[i].hasMark('zongkui_mark')) {
+                      list[i].addMark('zongkui_mark', 1);
+                      player.line(list[i], 'green');
+                    }
+                  }
+                  player.removeSkill('guju');
+                  player.addSkill('bmcanshi');
+                }
+              },
+
 
             },
 
