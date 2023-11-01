@@ -6380,17 +6380,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       return (event.player == player || event.source == player) && event.player.isIn();
                     },
                     content: function () {
-                      const victim=trigger.player, attacker=trigger.player;
-                      if(damaged==player) {
-                        if(!attacker.hasMark('zongkui_mark')) {
+                      const victim = trigger.player, attacker = trigger.source;
+                      if (victim == player) {
+                        if (!attacker.hasMark('zongkui_mark')) {
                           player.logSkill('math_zongkui', attacker);
                           attacker.addMark('zongkui_mark', 1);
                         }
                       }
-                      if(attacker==player){
-                        if(!damaged.hasMark('zongkui_mark')) {
-                          player.logSkill('math_zongkui', damaged);
-                          damaged.addMark('zongkui_mark', 1);
+                      if (attacker == player) {
+                        if (!victim.hasMark('zongkui_mark')) {
+                          player.logSkill('math_zongkui', victim);
+                          victim.addMark('zongkui_mark', 1);
                         }
                       }
                     }
