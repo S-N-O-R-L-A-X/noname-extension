@@ -150,7 +150,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // "re_boss_huangyueying": ["female", "qun", 4, ["shenhu", 'boss_gongshen', 'boss_jizhi', 'qicai', 'boss_guiyin'], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
               // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", 'fusion_luochong_all', 'dcaichen'], ["zhu", "boss", "bossallowed"]],
-              "math_beimihu": ["female", "qun", 4, ["shenhu", 'zongkui', 'guju', 'baijia'], ["zhu", "boss", "bossallowed"]],
+              "math_beimihu": ["female", "qun", 4, ["shenhu", 'zongkui', 'guju', 'math_baijia', "bmcanshi"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -6382,7 +6382,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   threaten: 1.4
                 }
               },
-              baijia: {
+              math_baijia: {
                 audio: 2,
                 audioname: ['tw_beimihu'],
                 unique: true,
@@ -6399,7 +6399,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   return player.hasSkill('guju') && player.storage.guju >= 7;
                 },
                 content: function () {
-                  player.awakenSkill('baijia');
+                  player.awakenSkill('math_baijia');
                   player.gainMaxHp();
                   player.recover();
                   var list = game.filterPlayer();
@@ -6409,8 +6409,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       player.line(list[i], 'green');
                     }
                   }
-                  player.removeSkill('guju');
-                  player.addSkill('bmcanshi');
                 }
               },
 
