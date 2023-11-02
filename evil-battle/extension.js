@@ -6331,8 +6331,42 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
               math_zongkui: {
-                group: ["math_zongkui_normal", "math_zongkui_marking"],
+                group: ["math_zongkui_init", "math_zongkui_normal", "math_zongkui_marking"],
                 subSkill: {
+                  init: {
+                    trigger: {
+                      global: 'phaseBefore',
+                      player: 'enterGame',
+                    },
+                    forced: true,
+                    locked: false,
+                    // filter: function (event, player) {
+                    //   return (event.name != 'phase' || game.phaseNumber == 0);
+                    // },
+                    content: function () {
+                      "step 0"
+                      event.num = 2;
+
+                      "step 1"
+                      var next = player.chooseTarget(get.prompt('math_zongkui'), '令一名其他角色获得“傀”标记', function (card, player, target) {
+                        return target != player && !target.hasMark('zongkui_mark');
+                      }).set('ai', function (target) {
+                        var num = target.isMinHp() ? 0.5 : 1;
+                        return num * get.threaten(target);
+                      });
+
+                      "step 2"
+                      if (result.bool) {
+                        var target = result.targets[0];
+                        player.logSkill('math_zongkui', target);
+                        target.addMark('zongkui_mark', 1);
+                        game.delayx();
+                      }
+                      if (--event.num > 0) {
+                        event.goto(1);
+                      }
+                    }
+                  },
                   normal: {
                     trigger: { player: 'phaseBefore', global: 'roundStart' },
                     direct: true,
