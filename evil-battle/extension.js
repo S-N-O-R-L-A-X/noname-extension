@@ -6308,7 +6308,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 content: function () {
                   'step 0'
-                  player.draw();
+                  player.draw(Math.ceil(player.storage.guju / 7));
                   player.storage.guju++;
                   player.markSkill('guju');
                   'step 1'
@@ -6321,7 +6321,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   'step 2'
                   if (result.bool) {
                     trigger.player.logSkill('bingzhao', player);
-                    player.draw(Math.ceil(player.storage.guju / 7));
+                    player.draw();
                     player.storage.guju++;
                     player.markSkill('guju');
                   }
@@ -6331,18 +6331,19 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
               math_zongkui: {
+                audio: "zongkui",
                 group: ["math_zongkui_init", "math_zongkui_normal", "math_zongkui_marking"],
                 subSkill: {
                   init: {
                     trigger: {
-                      global: 'phaseBefore',
-                      player: 'enterGame',
+                      global: "phaseBefore",
+                      player: "enterGame",
                     },
                     forced: true,
                     locked: false,
-                    // filter: function (event, player) {
-                    //   return (event.name != 'phase' || game.phaseNumber == 0);
-                    // },
+                    filter: function (event, player) {
+                      return (event.name != "phase" || game.phaseNumber == 0);
+                    },
                     content: function () {
                       "step 0"
                       event.num = 2;
@@ -6370,7 +6371,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   normal: {
                     trigger: { player: 'phaseBefore', global: 'roundStart' },
                     direct: true,
-                    audio: 2,
                     audioname: ['tw_beimihu'],
                     filter: function (event, player, name) {
                       return game.hasPlayer(function (current) {
@@ -6449,7 +6449,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 skillAnimation: true,
                 animationColor: 'thunder',
                 filter: function (event, player) {
-                  return player.hasSkill('guju') && player.storage.guju >= 7;
+                  return player.hasSkill('math_guju') && player.storage.guju >= 7;
                 },
                 content: function () {
                   player.awakenSkill('math_baijia');
