@@ -6346,7 +6346,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     },
                     content: function () {
                       "step 0"
-                      event.num = 2;
+                      event.num = game.players.length >> 1;
 
                       "step 1"
                       var next = player.chooseTarget(get.prompt('math_zongkui'), '令一名其他角色获得“傀”标记', function (card, player, target) {
@@ -6374,22 +6374,25 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     audioname: ['tw_beimihu'],
                     filter: function (event, player, name) {
                       return game.hasPlayer(function (current) {
-                        if (name == 'roundStart' && !current.isMinHp()) return false;
+                        if (name == 'roundStart' && (!current.isMinHp() || !current.isMaxHp)) return false;
+                        if (name == 'roundStart' && (!current.isMinHandcard() || !current.isMaxHandcard)) return false;
                         return current != player && !current.hasMark('zongkui_mark');
                       });
                     },
+
                     content: function () {
                       'step 0'
                       var targets = game.filterPlayer(function (current) {
-                        if (event.triggername == 'roundStart' && !current.isMinHp()) return false;
+                        if (event.triggername == 'roundStart' && (!current.isMinHp() || !current.isMaxHp)) return false;
                         return current != player && !current.hasMark('zongkui_mark');
                       });
+
                       if (event.triggername == 'roundStart' && targets.length == 1) {
                         event._result = { bool: true, targets: targets };
                       }
                       else {
-                        var next = player.chooseTarget(get.prompt('math_zongkui'), '令一名' + (event.triggername == 'roundStart' ? '体力值最小的' : '') + '其他角色获得“傀”标记', function (card, player, target) {
-                          if (_status.event.round && !target.isMinHp()) return false;
+                        var next = player.chooseTarget(get.prompt('math_zongkui'), '令一名' + (event.triggername == 'roundStart' ? '体力值最小或最大的' : '') + '其他角色获得“傀”标记', function (card, player, target) {
+                          if (_status.event.round && (!target.isMinHp() || !current.isMaxHp)) return false;
                           return target != player && !target.hasMark('zongkui_mark');
                         }).set('ai', function (target) {
                           var num = target.isMinHp() ? 0.5 : 1;
@@ -6404,10 +6407,41 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         target.addMark('zongkui_mark', 1);
                         game.delayx();
                       }
+
+                      'step 2'
+                      var targets1 = game.filterPlayer(function (current) {
+                        if (event.triggername == 'roundStart' && (!current.isMinHandcard() || !current.isMaxHandcard)) return false;
+                        return current != player && !current.hasMark('zongkui_mark');
+                      });
+
+                      if (event.triggername == 'roundStart' && targets.length == 1) {
+                        event._result = { bool: true, targets: targets };
+                      }
+                      else {
+                        var next = player.chooseTarget(get.prompt('math_zongkui'), '令一名' + (event.triggername == 'roundStart' ? '手牌数最小或最多的' : '') + '其他角色获得“傀”标记', function (card, player, target) {
+                          if (_status.event.round && (!current.isMinHandcard() || !current.isMaxHandcard)) return false;
+                          return target != player && !target.hasMark('zongkui_mark');
+                        }).set('ai', function (target) {
+                          var num = target.isMinHp() ? 0.5 : 1;
+                          return num * get.threaten(target);
+                        }).set('round', event.triggername == 'roundStart');
+                        if (event.triggername == 'roundStart') next.set('forced', true);
+                      }
+                      'step 3'
+                      if (result.bool) {
+                        var target = result.targets[0];
+                        player.logSkill('math_zongkui', target);
+                        target.addMark('zongkui_mark', 1);
+                        game.delayx();
+                      }
+                      var targets2 = game.filterPlayer(function (current) {
+                        if (event.triggername == 'roundStart' && (!current.isMinHandcard() || !current.isMaxHandcard)) return false;
+                        return current != player && !current.hasMark('zongkui_mark');
+                      });
                     },
                   },
                   marking: {
-                    trigger: { global: 'damageEnd' },
+                    trigger: { global: 'damageAfter' },
                     direct: true,
                     forced: true,
                     filter: function (event, player) {
@@ -6419,6 +6453,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                         if (!attacker.hasMark('zongkui_mark')) {
                           player.logSkill('math_zongkui', attacker);
                           attacker.addMark('zongkui_mark', 1);
+                        }
+                        else {
+                          player.draw();
                         }
                       }
                       if (attacker == player) {
