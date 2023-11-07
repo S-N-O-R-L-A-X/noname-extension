@@ -6670,6 +6670,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_xunyu": "融神荀彧",
               "fusion_panshu": "融潘淑",
               "re_boss_dongzhuo": "界乱世魔王",
+              "fusion_shen_zhangfei": "融神张飞",
 
               // skill
               "shenhu": "神护",
@@ -6955,6 +6956,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
 
               // fusion_shen_zhangfei
+              "fusion_shencai": "神裁",
+              "fusion_shencai_info": "出牌阶段限一次，你可以令一名其他角色进行判定。你获得此判定牌，然后若此判定牌：包含以下要素中的任意一个，则其获得对应的效果：{⒈体力：当其受到伤害后，其失去等量的体力、⒉武器：其不能使用牌响应【杀】、⒊打出：当其失去手牌后，其再随机弃置一张手牌（不嵌套触发）、⒋距离：其结束阶段开始时，其翻面}；若均不包含，你获得其区域里的一张牌，其获得一枚“死”并获得如下效果：其的角色手牌上限-X、其回合结束时，若X大于场上存活人数，则其死亡（X为其“死”标记数）。",
 
               // fusion_tengfanglan
 
