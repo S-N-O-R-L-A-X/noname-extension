@@ -2,6 +2,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
   return {
     name: "大战七阴",
     content: function (config, pack) {
+      if(!game.utils) {
+        game.utils = {};
+      }
+      game.utils.giveMarkToOthers= (player) => {
+        var list = game.filterPlayer();
+        for (var i = 0; i < list.length; i++) {
+          if (list[i] != player) {
+            list[i].addMark('zongkui_mark', 1);
+            player.line(list[i], 'green');
+          }
+        }
+      }
       lib.init.css(lib.assetURL + "extension/大战七阴", "extension");
       lib.group.push("daqin");
       lib.translate.daqin = "秦";
@@ -150,7 +162,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // "re_boss_huangyueying": ["female", "qun", 4, ["shenhu", 'boss_gongshen', 'boss_jizhi', 'qicai', 'boss_guiyin'], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
               // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", 'fusion_luochong_all', 'dcaichen'], ["zhu", "boss", "bossallowed"]],
-              "math_beimihu": ["female", "qun", 4, ["shenhu", 'math_zongkui', 'math_guju', 'math_baijia', "bmcanshi"], ["zhu", "boss", "bossallowed"]],
+              "math_beimihu": ["female", "qun", 8, ["shenhu", 'math_zongkui', 'math_guju', 'math_baijia', "bmcanshi"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -6519,13 +6531,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   player.awakenSkill('math_baijia');
                   player.gainMaxHp();
                   player.recover();
-                  var list = game.filterPlayer();
-                  for (var i = 0; i < list.length; i++) {
-                    if (list[i] != player && !list[i].hasMark('zongkui_mark')) {
-                      list[i].addMark('zongkui_mark', 1);
-                      player.line(list[i], 'green');
-                    }
-                  }
+                  game.utils.giveMarkToOthers(player);
                 }
               },
 
