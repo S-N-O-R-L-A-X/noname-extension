@@ -6293,7 +6293,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // math_beimihu
               math_guju: {
-                audio: 2,
+                audio: "guju",
                 audioname: ['tw_beimihu'],
                 init: function (player) {
                   if (!player.storage.guju) player.storage.guju = 0;
@@ -6308,8 +6308,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 content: function () {
                   'step 0'
-                  player.draw(Math.ceil(player.storage.guju / 7));
-                  player.storage.guju++;
+                  var cards = trigger.player.countMark("zongkui_mark");
+                  player.draw(cards);
+                  player.storage.guju += cards;
                   player.markSkill('guju');
                   'step 1'
                   if (player.hasZhuSkill('bingzhao', trigger.player) && trigger.player.group == player.storage.bingzhao && trigger.player.isIn()) {
@@ -6500,15 +6501,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
               math_baijia: {
-                audio: 2,
+                audio: "baijia",
                 audioname: ['tw_beimihu'],
+                forced: true,
                 unique: true,
-                derivation: 'bmcanshi',
-                juexingji: true,
                 ai: {
                   combo: 'guju'
                 },
-                trigger: { player: 'phaseZhunbeiBegin' },
+                trigger: { global: 'phaseBegin' },
                 forced: true,
                 skillAnimation: true,
                 animationColor: 'thunder',
