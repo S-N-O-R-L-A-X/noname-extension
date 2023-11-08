@@ -2,10 +2,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
   return {
     name: "大战七阴",
     content: function (config, pack) {
-      if(!game.utils) {
+      if (!game.utils) {
         game.utils = {};
       }
-      game.utils.giveMarkToOthers= (player) => {
+      game.utils.giveMarkToOthers = (player) => {
         var list = game.filterPlayer();
         for (var i = 0; i < list.length; i++) {
           if (list[i] != player) {
@@ -6358,27 +6358,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       return (event.name != "phase" || game.phaseNumber == 0);
                     },
                     content: function () {
-                      "step 0"
-                      event.num = game.players.length >> 1;
-
-                      "step 1"
-                      var next = player.chooseTarget(get.prompt('math_zongkui'), '令一名其他角色获得“傀”标记', function (card, player, target) {
-                        return target != player;
-                      }).set('ai', function (target) {
-                        var num = target.isMinHp() ? 0.5 : 1;
-                        return num * get.threaten(target);
-                      });
-
-                      "step 2"
-                      if (result.bool) {
-                        var target = result.targets[0];
-                        player.logSkill('math_zongkui', target);
-                        target.addMark('zongkui_mark', 1);
-                        game.delayx();
-                      }
-                      if (--event.num > 0) {
-                        event.goto(1);
-                      }
+                      game.utils.giveMarkToOthers(player);
                     }
                   },
                   phase: {
@@ -6391,29 +6371,27 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       });
                     },
                     content: function () {
-                      'step 0'
-                      var targets = game.filterPlayer(function (current) {
-                        return current != player;
+                      "step 0"
+                      event.num = game.players.length >> 1;
+
+                      "step 1"
+                      var next = player.chooseTarget(get.prompt('math_zongkui'), '令一名其他角色获得“傀”标记', function (card, player, target) {
+                        return target != player;
+                      }).set('ai', function (target) {
+                        return get.threaten(target);
                       });
 
-                      if (targets.length == 1) {
-                        event._result = { bool: true, targets: targets };
-                      }
-                      else {
-                        var next = player.chooseTarget(get.prompt('math_zongkui'), '令一名其他角色获得“傀”标记', function (card, player, target) {
-                          return target != player;
-                        }).set('ai', function (target) {
-                          return get.threaten(target);
-                        })
-                      }
-
-                      'step 1'
+                      "step 2"
                       if (result.bool) {
                         var target = result.targets[0];
                         player.logSkill('math_zongkui', target);
                         target.addMark('zongkui_mark', 1);
                         game.delayx();
                       }
+                      if (--event.num > 0) {
+                        event.goto(1);
+                      }
+
                     }
                   },
                   round: {
