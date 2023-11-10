@@ -159,10 +159,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_xunyu": ["male", "shen", 3, ["fusion_quhu", "fusion_jieming_all", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang"], ["zhu", "boss", "bossallowed"]],
               // "fusion_panshu": ["female", "wu", 3, ["shenhu", "fusion_weiyi", "jinzhi", "zhiren", "fusion_yaner"], ["zhu", "boss", "bossallowed"]],
               "re_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
-              // "re_boss_huangyueying": ["female", "qun", 4, ["shenhu", 'boss_gongshen', 'boss_jizhi', 'qicai', 'boss_guiyin'], ["zhu", "boss", "bossallowed"]],
+              // "re_boss_huangyueying": ["female", "qun", 4, ["shenhu", "boss_gongshen", "boss_jizhi", "qicai", "boss_guiyin"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
-              // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", 'fusion_luochong_all', 'dcaichen'], ["zhu", "boss", "bossallowed"]],
-              "math_beimihu": ["female", "qun", 8, ["shenhu", 'math_zongkui', 'math_guju', 'math_baijia', "bmcanshi"], ["zhu", "boss", "bossallowed"]],
+              // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]],
+              "math_beimihu": ["female", "qun", 8, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "bmcanshi"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -6655,6 +6655,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_panshu": "融潘淑",
               "re_boss_dongzhuo": "界乱世魔王",
               "fusion_shen_zhangfei": "融神张飞",
+              "math_beimihu": "数卑弥呼",
 
               // skill
               "shenhu": "神护",
@@ -6942,6 +6943,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // fusion_shen_zhangfei
               "fusion_shencai": "神裁",
               "fusion_shencai_info": "出牌阶段限一次，你可以令一名其他角色进行判定。你获得此判定牌，然后若此判定牌：包含以下要素中的任意一个，则其获得对应的效果：{⒈体力：当其受到伤害后，其失去等量的体力、⒉武器：其不能使用牌响应【杀】、⒊打出：当其失去手牌后，其再随机弃置一张手牌（不嵌套触发）、⒋距离：其结束阶段开始时，其翻面}；若均不包含，你获得其区域里的一张牌，其获得一枚“死”并获得如下效果：其的角色手牌上限-X、其回合结束时，若X大于场上存活人数，则其死亡（X为其“死”标记数）。",
+
+              // math_beimihu
+              "math_zongkui": "纵傀",
+              "math_zongkui_info": "游戏开始时，你令所有角色获得1枚“傀”标记。回合开始前，你可以指定X名角色，令其获得一枚“傀”标记。一轮游戏开始时，你可以分别指定一名体力值最少或最多和一名手牌数最少或最多的其他角色，令其获得一枚“傀”标记。当你对其他角色造成伤害/受到其他角色造成的伤害时，你令除你外受到伤害的角色/伤害来源获得1枚“傀”标记。",
+              "math_guju": "骨疽",
+              "math_guju_info": "锁定技，拥有“傀”标记的角色受到伤害后，你摸X张牌。（X为其拥有的“傀”标记数量）",
+              "math_baijia": "拜假",
+              "math_baijia_info": "锁定技，准备阶段，若你因〖骨疽〗得到的牌不少于7张，则你增加1点体力上限，回复1点体力，然后令所有其他角色获得1枚“傀”标记。",
 
               // fusion_tengfanglan
 
