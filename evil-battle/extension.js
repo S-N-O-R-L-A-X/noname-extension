@@ -7001,18 +7001,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：6.4.1<font size="4px">▶▶▶</font></div>`,
-        version: 6.4,
+        name: `<div class=".update">扩展版本：6.5<font size="4px">▶▶▶</font></div>`,
+        version: 6.5,
         clear: true,
         intro: "点击查看此版本的更新内容",
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融神荀彧，界乱世魔王。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>修复了数张菖蒲在对方时发牌卡死的问题。<br>' +
-              '<li><span style="color:#006400">说明三</span>：<br>修改了衍生技的技能描述方式以支持玩家更好的了解技能。<br>' +
-              '<li><span style="color:#006400">说明四</span>：<br>修复了乱斗模式关卡不出现的问题。<br>' +
-              '<li><span style="color:#006400">说明五</span>：<br>规范了一些武将的描述。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融神张飞，数卑弥呼。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
@@ -7021,7 +7017,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：6.4.1<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：6.5<font size="4px">▶▶▶</font></div>';
           };
         }
       },
