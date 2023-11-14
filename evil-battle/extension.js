@@ -172,8 +172,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
-                  "fusion_puyuan", "fusion_shen_jiangwei", "fusion_lingtong", "fusion_liuzan", "fusion_zhuanlundizang", "fusion_shen_xunyu"],
-                against7devil_math: ["math_caojinyu", "math_xiahoujie", "math_xushao", "math_zhangchangpu"],
+                  "fusion_puyuan", "fusion_shen_jiangwei", "fusion_lingtong", "fusion_liuzan", "fusion_zhuanlundizang",
+                  "fusion_shen_xunyu", "fusion_shen_zhangfei"],
+                against7devil_math: ["math_caojinyu", "math_xiahoujie", "math_xushao", "math_zhangchangpu", "math_beimihu"],
                 against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi",
                   "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
               }
@@ -225,6 +226,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_xunyu": "来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的〖驱虎〗历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对〖驱虎〗的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。〖天佐〗〖灵策〗均为纯增强，加强进攻和防御能力。〖节命〗技能则是来自于手杀界节命和ol界节命，还加上了一个控制更强的节命效果。〖留香〗技能直接源于荀令留香的典故，技能内容也非常贴合。<br>【强度】★★★★★<br> 【亮点】综合",
               "fusion_panshu": "来源于ol潘淑和十周年潘淑。〖威仪〗改为每轮每名角色限一次，〖燕尔〗改为出牌阶段自己没牌也可发动。<br>【强度】★★★<br> 【亮点】综合",
               "re_boss_dongzhuo": "来源于挑战模式boss乱世魔王，加上技能〖神护〗。〖强征〗从手牌改为牌，历史上董卓横征暴敛最终为吕布所杀，因此增加技能〖横征〗，通过缩短自己寿命（体力上限）来发动〖强征〗。<br>【强度】★★★★<br> 【亮点】攻击",
+              "fusion_shen_zhangfei": "来源于十周年神张飞和ol界张飞，加上技能〖神护〗。〖神裁〗取消了发动次数上限，且标记可以叠加。<br>【强度】★★★★<br> 【亮点】攻击",
+              "math_beimihu": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒，修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。<br>【强度】★★★★<br> 【亮点】防御",
             },
             skill: {
               shenhu: {
@@ -7056,7 +7059,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
       author: "SNORLAX",
       diskURL: "",
       forumURL: "",
-      version: "6.4",
+      version: "6.5",
     },
     files: { "character": [], "card": [], "skill": [] }
   }
