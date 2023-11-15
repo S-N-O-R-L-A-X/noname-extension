@@ -162,7 +162,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // "re_boss_huangyueying": ["female", "qun", 4, ["shenhu", "boss_gongshen", "boss_jizhi", "qicai", "boss_guiyin"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
               // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]],
-              "math_beimihu": ["female", "qun", 8, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "bmcanshi"], ["zhu", "boss", "bossallowed"]],
+              "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "bmcanshi"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -227,7 +227,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_panshu": "来源于ol潘淑和十周年潘淑。〖威仪〗改为每轮每名角色限一次，〖燕尔〗改为出牌阶段自己没牌也可发动。<br>【强度】★★★<br> 【亮点】综合",
               "re_boss_dongzhuo": "来源于挑战模式boss乱世魔王，加上技能〖神护〗。〖强征〗从手牌改为牌，历史上董卓横征暴敛最终为吕布所杀，因此增加技能〖横征〗，通过缩短自己寿命（体力上限）来发动〖强征〗。<br>【强度】★★★★<br> 【亮点】攻击",
               "fusion_shen_zhangfei": "来源于十周年神张飞和ol界张飞，加上技能〖神护〗。〖神裁〗取消了发动次数上限，且标记可以叠加。<br>【强度】★★★★<br> 【亮点】攻击",
-              "math_beimihu": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒，修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。<br>【强度】★★★★<br> 【亮点】防御",
+              "math_beimihu": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒，修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。<br>【强度】★★★★★<br> 【亮点】防御",
             },
             skill: {
               shenhu: {
@@ -6498,6 +6498,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 audioname: ['tw_beimihu'],
                 forced: true,
                 unique: true,
+                init: function (player) {
+                  if (!player.storage.math_baijia_last) player.storage.math_baijia_last = 0;
+                },
                 ai: {
                   combo: 'guju'
                 },
@@ -6506,12 +6509,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 skillAnimation: true,
                 animationColor: 'thunder',
                 filter: function (event, player) {
-                  return player.hasSkill('math_guju') && player.storage.guju >= 7;
+                  return player.hasSkill('math_guju') && player.storage.guju - player.storage.math_baijia_last >= 7;
                 },
                 content: function () {
-                  player.awakenSkill('math_baijia');
-                  player.gainMaxHp();
-                  player.recover();
+                  player.storage.math_baijia_last = player.storage.guju;
                   game.utils.giveMarkToOthers(player);
                 }
               },
@@ -6953,7 +6954,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_guju": "骨疽",
               "math_guju_info": "锁定技，拥有“傀”标记的角色受到伤害后，你摸X张牌。（X为其拥有的“傀”标记数量）",
               "math_baijia": "拜假",
-              "math_baijia_info": "锁定技，准备阶段，若你因〖骨疽〗得到的牌不少于7张，则你增加1点体力上限，回复1点体力，然后令所有其他角色获得1枚“傀”标记。",
+              "math_baijia_info": "锁定技，一名角色的回合开始阶段，若你距离上次〖拜假〗后因〖骨疽〗得到的牌不少于7张，你令所有其他角色获得1枚“傀”标记。",
 
               // fusion_tengfanglan
 
