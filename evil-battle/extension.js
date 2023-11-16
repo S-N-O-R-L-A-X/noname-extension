@@ -227,7 +227,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_panshu": "来源于ol潘淑和十周年潘淑。〖威仪〗改为每轮每名角色限一次，〖燕尔〗改为出牌阶段自己没牌也可发动。<br>【强度】★★★<br> 【亮点】综合",
               "re_boss_dongzhuo": "来源于挑战模式boss乱世魔王，加上技能〖神护〗。〖强征〗从手牌改为牌，历史上董卓横征暴敛最终为吕布所杀，因此增加技能〖横征〗，通过缩短自己寿命（体力上限）来发动〖强征〗。<br>【强度】★★★★<br> 【亮点】攻击",
               "fusion_shen_zhangfei": "来源于十周年神张飞和ol界张飞，加上技能〖神护〗。〖神裁〗取消了发动次数上限，且标记可以叠加。<br>【强度】★★★★<br> 【亮点】攻击",
-              "math_beimihu": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒，修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。<br>【强度】★★★★★<br> 【亮点】防御",
+              "math_beimihu": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒的同时修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。<br>【强度】★★★★★<br> 【亮点】防御，过牌",
             },
             skill: {
               shenhu: {
@@ -6348,7 +6348,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
               math_zongkui: {
                 audio: "zongkui",
-                group: ["math_zongkui_init", "math_zongkui_phase", "math_zongkui_round", "math_zongkui_marking"],
+                group: ["math_zongkui_init", "math_zongkui_phase", "math_zongkui_round", "math_zongkui_damage"],
                 subSkill: {
                   init: {
                     trigger: {
@@ -6465,7 +6465,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       }
                     },
                   },
-                  marking: {
+                  damage: {
                     trigger: { global: 'damageAfter' },
                     direct: true,
                     forced: true,
@@ -6475,9 +6475,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     content: function () {
                       const victim = trigger.player, attacker = trigger.source;
                       if (victim == player) {
-                        if (attacker.hasMark('zongkui_mark')) {
-                          player.draw();
-                        }
                         player.logSkill('math_zongkui', attacker);
                         attacker.addMark('zongkui_mark', 1);
                       }
