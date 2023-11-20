@@ -14,10 +14,28 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           }
         }
       }
+
+      // initiaiize group
       lib.init.css(lib.assetURL + "extension/大战七阴", "extension");
       lib.group.push("daqin");
       lib.translate.daqin = "秦";
       lib.groupnature.daqin = "thunder";
+
+      // initialize characters
+      if(!lib.devil_characters) {
+        lib.devil_characters={};
+      }
+
+      lib.devil_characters.old_dc_list=["xushao", "puyuan", "guozhao", "guansuo", "zhaoxiang", "xin_lingtong",
+      "re_liuzan"];
+      lib.devil_characters.dc_list=["caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
+      "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
+      "tenggongzhu", "caomao", "zhangxuan", "dc_zhouxuān", "xuelingyun", "shen_zhangfei",
+      "shen_zhangjiao", "luyi"];
+      lib.devil_characters.mobile_list=["shen_xunyu", "yangbiao", "sp_duyu"];
+      lib.devil_characters.ol_list=["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
+      lib.devil_characters.other_list=["sp_xiahoushi", "tw_dongzhao"];
+
       if (lib.config.mode == "brawl") {
         function initList(arr) {
           return arr.randomSort().slice(0, 7);
@@ -6993,6 +7011,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 `,
         clear: true,
         nopointer: true,
+      },
+      setPool: {
+        clear: true,
+        name: '<span style="text-decoration: underline;">点击选择自定义将池内容<span>',
+				intro: '自定义将池内容',
+        onclick: function() {
+          const dialog= ui.create.dialog("目前自定义将池包含的武将：");
+					dialog.add([lib.devil_characters.ol_list,'character']);
+        }
       },
       warning: {
         name: `<div style="color: red">本扩展可能与一些其他扩展冲突，如有冲突，请禁用本扩展或其他扩展！<br>
