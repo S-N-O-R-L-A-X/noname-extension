@@ -15,30 +15,34 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         }
       }
 
+
       // initiaiize group
       lib.init.css(lib.assetURL + "extension/大战七阴", "extension");
       lib.group.push("daqin");
       lib.translate.daqin = "秦";
       lib.groupnature.daqin = "thunder";
 
-      // initialize characters
-      if(!lib.devil_characters) {
-        lib.devil_characters={};
-        lib.devil_characters.custom_banned_characters=new Set();
+      if (!lib.config.custom_banned_characters) {
+        lib.config.custom_banned_characters = new Set();
       }
 
-      lib.devil_characters.old_dc_list=["xushao", "puyuan", "guozhao", "guansuo", "zhaoxiang", "xin_lingtong",
-      "re_liuzan"];
-      lib.devil_characters.dc_list=["caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
-      "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
-      "tenggongzhu", "caomao", "zhangxuan", "dc_zhouxuān", "xuelingyun", "shen_zhangfei",
-      "shen_zhangjiao", "luyi"];
-      lib.devil_characters.mobile_list=["shen_xunyu", "yangbiao", "sp_duyu"];
-      lib.devil_characters.ol_list=["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
-      lib.devil_characters.other_list=["sp_xiahoushi", "tw_dongzhao"];
+      // initialize characters
+      if (!lib.devil_characters) {
+        lib.devil_characters = {};
+      }
 
-      lib.devil_characters.all_devil_list=[...lib.devil_characters.old_dc_list,...lib.devil_characters.dc_list,
-      ...lib.devil_characters.mobile_list,...lib.devil_characters.ol_list,...lib.devil_characters.other_list];
+      lib.devil_characters.old_dc_list = ["xushao", "puyuan", "guozhao", "guansuo", "zhaoxiang", "xin_lingtong",
+        "re_liuzan"];
+      lib.devil_characters.dc_list = ["caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
+        "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
+        "tenggongzhu", "caomao", "zhangxuan", "dc_zhouxuān", "xuelingyun", "shen_zhangfei",
+        "shen_zhangjiao", "luyi"];
+      lib.devil_characters.mobile_list = ["shen_xunyu", "yangbiao", "sp_duyu"];
+      lib.devil_characters.ol_list = ["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
+      lib.devil_characters.other_list = ["sp_xiahoushi", "tw_dongzhao"];
+
+      lib.devil_characters.all_devil_list = [...lib.devil_characters.old_dc_list, ...lib.devil_characters.dc_list,
+      ...lib.devil_characters.mobile_list, ...lib.devil_characters.ol_list, ...lib.devil_characters.other_list];
 
       if (lib.config.mode == "brawl") {
         function initList(arr) {
@@ -7019,24 +7023,26 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
       setPool: {
         clear: true,
         name: '<span style="text-decoration: underline;">点击选择自定义将池内容<span>',
-				intro: '自定义将池内容',
-        onclick: function() {
+        intro: '自定义将池内容',
+        onclick: function () {
           const dialog = ui.create.dialog("目前自定义将池包含的武将：");
-          dialog.add([lib.devil_characters.all_devil_list,'character']);
-          dialog.buttons.forEach((button)=>{
-            if(lib.devil_characters.custom_banned_characters.has(button.link)){
+          dialog.add([lib.devil_characters.all_devil_list, 'character']);
+          dialog.buttons.forEach((button) => {
+            if (lib.config.custom_banned_characters.has(button.link)) {
               button.classList.add("custom_banned");
             }
 
-            button.onclick=()=>{
-                if(lib.devil_characters.custom_banned_characters.has(button.link)){
-                  lib.devil_characters.custom_banned_characters.delete(button.link);
-                  button.classList.remove("custom_banned");
-                }
-                else {
-                  lib.devil_characters.custom_banned_characters.add(button.link);
-                  button.classList.add("custom_banned");
-                }
+            button.onclick = () => {
+              if (lib.config.custom_banned_characters.has(button.link)) {
+                lib.config.custom_banned_characters.delete(button.link);
+                button.classList.remove("custom_banned");
+              }
+              else {
+                lib.config.custom_banned_characters.add(button.link);
+                button.classList.add("custom_banned");
+              }
+              game.saveConfig('custom_banned_characters', lib.config.custom_banned_characters);
+
             }
           })
 
