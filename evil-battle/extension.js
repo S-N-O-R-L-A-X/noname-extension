@@ -45,22 +45,19 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
       ...lib.devil_characters.mobile_list, ...lib.devil_characters.ol_list, ...lib.devil_characters.other_list];
 
       if (lib.config.mode == "brawl") {
-        function initList(arr) {
+        function get7characters(arr) {
           return arr.randomSort().slice(0, 7);
         }
         if (!lib.storage.stage) lib.storage.stage = {};
-        const old_dc_list = ["xushao", "puyuan", "guozhao", "guansuo", "zhaoxiang", "xin_lingtong",
-          "re_liuzan"];
-        const dc_list = ["caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
-          "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
-          "tenggongzhu", "caomao", "zhangxuan", "dc_zhouxuān", "xuelingyun", "shen_zhangfei",
-          "shen_zhangjiao", "luyi"];
-        const mobile_list = ["shen_xunyu", "yangbiao", "sp_duyu"];
-        const ol_list = ["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
-        const other_list = ["sp_xiahoushi", "tw_dongzhao"];
-        const old_dc_characters = initList(old_dc_list);
-        const dc_characters = initList(old_dc_list.concat(dc_list));
-        const all_characters = initList(old_dc_list.concat(dc_list).concat(mobile_list).concat(ol_list).concat(other_list));
+        const old_dc_characters = get7characters(lib.devil_characters.old_dc_list);
+        const dc_characters = get7characters(lib.devil_characters.old_dc_list.concat(lib.devil_characters.dc_list));
+        const all_characters = get7characters(lib.devil_characters.all_devil_list);
+        const all_devil_characters=lib.devil_characters.all_devil_list;
+        lib.config.custom_banned_characters.forEach((ch)=>{
+          all_devil_characters.remove(ch);
+        })
+        const custom_characters= get7characters(all_devil_characters);
+        
         lib.storage.stage["大战七阴"] = {
           name: "大战七阴",
           intro: `主公可供玩家设定，其余七位ai玩家从阴间武将中随机选中一个。
@@ -83,7 +80,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             cardPileBottom: [],
             discardPile: [],
             gameDraw: true,
-
           }, {
             name: "十周年阴间",
             intro: "十周年阴间乱斗",
@@ -101,7 +97,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             cardPileBottom: [],
             discardPile: [],
             gameDraw: true,
-
           }, {
             name: "三服阴间",
             intro: "三服阴间乱斗",
@@ -119,7 +114,23 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             cardPileBottom: [],
             discardPile: [],
             gameDraw: true,
-
+          }, {
+            name: "自定义阴间将池",
+            intro: "自定义阴间将池乱斗",
+            players: [
+              { "name": "random", "name2": "none", "identity": "zhu", "position": 1, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": true, "handcards": [], "equips": [], "judges": [] },
+              { "name": custom_characters[0], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": custom_characters[1], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": custom_characters[2], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": custom_characters[3], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": custom_characters[4], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": custom_characters[5], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+              { "name": custom_characters[6], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] }
+            ],
+            cardPileTop: [],
+            cardPileBottom: [],
+            discardPile: [],
+            gameDraw: true,
           },],
         };
         _status.extensionstage = true;
