@@ -2,6 +2,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
   return {
     name: "大战七阴",
     content: function (config, pack) {
+      // add useful functions
       if (!game.utils) {
         game.utils = {};
       }
@@ -15,6 +16,24 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         }
       }
 
+      game.utils.initAllCharacters = () => {
+        var list = [];
+        if (_status.connectMode) var list = get.charactersOL();
+        else {
+          var list = [];
+          for (var i in lib.character) {
+            if (lib.filter.characterDisabled2(i) || lib.filter.characterDisabled(i)) continue;
+            list.push(i);
+          }
+        }
+        game.countPlayer2(function (current) {
+          list.remove(current.name);
+          list.remove(current.name1);
+          list.remove(current.name2);
+          if (current.storage.rehuashen && current.storage.rehuashen.character) list.removeArray(current.storage.rehuashen.character)
+        });
+        _status.characterlist = list;
+      }
 
       // initiaiize group
       lib.init.css(lib.assetURL + "extension/大战七阴", "extension");
@@ -52,12 +71,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         const old_dc_characters = get7characters(lib.devil_characters.old_dc_list);
         const dc_characters = get7characters(lib.devil_characters.old_dc_list.concat(lib.devil_characters.dc_list));
         const all_characters = get7characters(lib.devil_characters.all_devil_list);
-        const all_devil_characters=lib.devil_characters.all_devil_list;
-        lib.config.custom_banned_characters.forEach((ch)=>{
+        let all_devil_characters = lib.devil_characters.all_devil_list.slice(0);
+        lib.config.custom_banned_characters.forEach((ch) => {
           all_devil_characters.remove(ch);
         })
-        const custom_characters= get7characters(all_devil_characters);
-        
+
+        let needed = 7 - all_devil_characters.length;
+        game.utils.initAllCharacters();
+        _status.characterlist.randomSort();
+        all_devil_characters = all_devil_characters.concat(_status.characterlist.slice(0, needed));
+        const custom_characters = get7characters(all_devil_characters);
+
         lib.storage.stage["大战七阴"] = {
           name: "大战七阴",
           intro: `主公可供玩家设定，其余七位ai玩家从阴间武将中随机选中一个。
@@ -4642,25 +4666,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 trigger: {
                   player: ['damageEnd', 'phaseJieshuBegin', "phaseZhunbeiBegin",],
                 },
-                // initialize skill pools
-                initList: function () {
-                  var list = [];
-                  if (_status.connectMode) var list = get.charactersOL();
-                  else {
-                    var list = [];
-                    for (var i in lib.character) {
-                      if (lib.filter.characterDisabled2(i) || lib.filter.characterDisabled(i)) continue;
-                      list.push(i);
-                    }
-                  }
-                  game.countPlayer2(function (current) {
-                    list.remove(current.name);
-                    list.remove(current.name1);
-                    list.remove(current.name2);
-                    if (current.storage.rehuashen && current.storage.rehuashen.character) list.removeArray(current.storage.rehuashen.character)
-                  });
-                  _status.characterlist = list;
-                },
+
                 /**
                  * 
                  * @param {*} event event name
@@ -4720,7 +4726,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }
 
                   if (!_status.characterlist) {
-                    lib.skill.math_pingjian.initList();
+                    game.utils.initAllCharacters();
                   }
                   var list = []; // store characters
                   var skills = []; // store usable skills
