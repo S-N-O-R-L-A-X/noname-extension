@@ -7074,14 +7074,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：6.5<font size="4px">▶▶▶</font></div>`,
-        version: 6.5,
+        name: `<div class=".update">扩展版本：7.0<font size="4px">▶▶▶</font></div>`,
+        version: 7.0,
         clear: true,
         intro: "点击查看此版本的更新内容",
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：融神张飞，数卑弥呼。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新关卡：自定义将池。现在可以在扩展界面配置自己的阴间将池啦。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
@@ -7090,7 +7090,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：6.5<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：7.0<font size="4px">▶▶▶</font></div>';
           };
         }
       },
@@ -7129,7 +7129,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
       author: "SNORLAX",
       diskURL: "",
       forumURL: "",
-      version: "6.5",
+      version: "7.0",
     },
     files: { "character": [], "card": [], "skill": [] }
   }

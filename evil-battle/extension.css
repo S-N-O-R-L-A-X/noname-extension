@@ -12,3 +12,7 @@
 }
 
 .update-content {}
+
+.custom_banned {
+    filter: brightness(0.5);
+}
