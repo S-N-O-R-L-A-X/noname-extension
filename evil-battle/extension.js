@@ -224,6 +224,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
               // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]],
               "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "bmcanshi"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_lvbu": ["male", "qun", 8, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -7069,7 +7070,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
       warning: {
         name: `<div style="color: red">本扩展可能与一些其他扩展冲突，如有冲突，请禁用本扩展或其他扩展！<br>
                 目前已知冲突：活动武将和活动武将配件（导致关卡内人物变化）
-                    </div>`,
+              </div>`,
         clear: true,
         nopointer: true,
       },
@@ -7081,8 +7082,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新关卡：自定义将池。现在可以在扩展界面配置自己的阴间将池啦。<br>'
-            );
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新关卡：自定义将池。现在可以在扩展界面配置自己的阴间将池啦。<br>'+
+              '<li><span style="color:#006400">说明二</span>：<br>更新了新武将：界最强神话。<br>'
+              );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
             this.innerHTML = '<div class=".update">扩展版本<font size="4px">▼▼▼</font></div>';
