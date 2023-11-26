@@ -225,6 +225,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]],
               "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "bmcanshi"], ["zhu", "boss", "bossallowed"]],
               "re_boss_lvbu": ["male", "qun", 8, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
+              "fusion_yuantanyuanxiyuanshang": ["male", "qun", 8, ["fusion_neifa"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -6558,6 +6559,175 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
 
+              // fusion_yuantanyuanxiyuanshang
+              fusion_neifa: {
+                audio:2,
+                trigger:{player:'phaseUseBegin'},
+                content:function(){
+                  'step 0'
+                  player.draw(3);
+                  player.chooseToDiscard(true,'he').set('ai',function(cardx){
+                    var player=_status.event.player;
+                    var num=0;
+                    var hs=player.getCards('h');
+                    var muniu=player.getEquip('muniu');
+                    if(muniu&&muniu.cards) hs=hs.concat(muniu.cards);
+                    if(get.type(cardx)=='basic'){
+                      var shas=hs.filter(function(card){
+                        return card!=cardx&&get.name(card,player)=='sha'&&player.hasValueTarget(card,false);
+                      });
+                      var numx=player.countCards('h',function(card){
+                        return get.type2(card,player)=='trick';
+                      });
+                      num+=Math.min(numx,Math.max(0,shas.length-player.getCardUsable('sha')))*0.65;
+                      num+=Math.min(player.getCardUsable('sha')+numx,shas.filter(function(card){
+                        return game.countPlayer(function(current){
+                          return player.canUse(card,current)&&get.effect(current,card,player,player)>0;
+                        })>1;
+                      }).length)*1.1;
+                      var taos=Math.min(player.maxHp-player.hp,hs.filter(function(card){
+                        return cardx!=card&&get.name(card,player)=='tao';
+                      }).length);
+                      num+=taos*player.getDamagedHp()*1.2;
+                    }
+                    else if(get.type2(cardx)=='trick'){
+                      var numx=Math.sqrt(Math.min(5,player.countCards('h',function(card){
+                        return get.type(card,player)=='basic';
+                      })));
+                      num+=hs.filter(function(card){
+                        return card!=cardx&&get.type2(card)=='trick'&&player.hasValueTarget(card);
+                      }).length*0.65;
+                    }
+                    else num=4;
+                    return num*1.5-get.value(cardx);
+                  });
+                  'step 1'
+                  if(result.bool&&result.cards&&result.cards.length&&get.type(result.cards[0])!='equip'){
+                    var name=get.type(result.cards[0])=='basic'?'dcneifa_basic':'dcneifa_trick';
+                    player.addTempSkill(name,'phaseUseAfter');
+                    var num=Math.min(5,player.countCards('h',function(cardx){
+                      var type=get.type(cardx,player);
+                      return (name=='dcneifa_basic')!=(type=='basic')&&type!='equip';
+                    }));
+                    if(num>0) player.addMark(name,num,false);
+                    else player.storage[name]=0;
+                  }
+                },
+                ai:{
+                  threaten:2.33,
+                },
+              },
+              dcneifa_basic:{
+                mark:true,
+                marktext:'伐',
+                onremove:true,
+                intro:{
+                  name:'内伐 - 基本牌',
+                  content:'本回合内不能使用锦囊牌，且使用【杀】选择目标时可以多选择1个目标，且使用【杀】的目标次数上限+#。',
+                },
+                mod:{
+                  cardEnabled:function(card,player){
+                    if(get.type(card,'trick')=='trick') return false;
+                  },
+                  cardSavable:function(card,player){
+                    if(get.type(card,'trick')=='trick') return false;
+                  },
+                  cardUsable:function(card,player,num){
+                    if(card.name=='sha'){
+                      return num+player.countMark('dcneifa_basic');
+                    }
+                  },
+                },
+                trigger:{player:'useCard2'},
+                filter:function(event,player){
+                  if(event.card.name!='sha') return false;
+                  return game.hasPlayer(function(current){
+                    return !event.targets.contains(current)&&player.canUse(event.card,current,false);
+                  });
+                },
+                direct:true,
+                content:function(){
+                  'step 0'
+                  player.chooseTarget(get.prompt('dcneifa'),'为'+get.translation(trigger.card)+'额外指定一个目标',function(card,player,target){
+                    return !_status.event.sourcex.contains(target)&&player.canUse(_status.event.card,target,false);
+                  }).set('sourcex',trigger.targets).set('ai',function(target){
+                    var player=_status.event.player;
+                    return get.effect(target,_status.event.card,player,player);
+                  }).set('card',trigger.card);
+                  'step 1'
+                  if(result.bool){
+                    if(!event.isMine()&&!event.isOnline()) game.delayx();
+                    event.targets=result.targets;
+                  }
+                  else{
+                    event.finish();
+                  }
+                  'step 2'
+                  player.logSkill('dcneifa',event.targets);
+                  trigger.targets.addArray(event.targets);
+                },
+              },
+              dcneifa_trick:{
+                trigger:{player:'useCard2'},
+                direct:true,
+                mark:true,
+                marktext:'伐',
+                onremove:true,
+                mod:{
+                  cardEnabled:function(card,player){
+                    if(get.type(card)=='basic') return false;
+                  },
+                  cardSavable:function(card,player){
+                    if(get.type(card)=='basic') return false;
+                  },
+                },
+                intro:{
+                  name:'内伐 - 锦囊牌',
+                  content:'本回合内不能使用基本牌，且使用普通锦囊牌选择目标时可以多选择或者取消1个目标。'
+                },
+                filter:function(event,player){
+                  if(get.type(event.card)!='trick') return false;
+                  if(event.targets&&event.targets.length>0) return true;
+                  var info=get.info(event.card);
+                  if(info.allowMultiple==false) return false;
+                  if(event.targets&&!info.multitarget){
+                    if(game.hasPlayer(function(current){
+                      return !event.targets.contains(current)&&lib.filter.targetEnabled2(event.card,player,current);
+                    })){
+                      return true;
+                    }
+                  }
+                  return false;
+                },
+                content:function(){
+                  'step 0'
+                  var prompt2='为'+get.translation(trigger.card)+'增加或减少一个目标'
+                  player.chooseTarget(get.prompt('dcneifa'),function(card,player,target){
+                    var player=_status.event.player;
+                    if(_status.event.targets.contains(target)) return true;
+                    return lib.filter.targetEnabled2(_status.event.card,player,target);
+                  }).set('prompt2',prompt2).set('ai',function(target){
+                    var trigger=_status.event.getTrigger();
+                    var player=_status.event.player;
+                    return get.effect(target,trigger.card,player,player)*(_status.event.targets.contains(target)?-1:1);
+                  }).set('targets',trigger.targets).set('card',trigger.card);
+                  'step 1'
+                  if(result.bool){
+                    if(!event.isMine()&&!event.isOnline()) game.delayx();
+                    event.targets=result.targets;
+                  }
+                  else{
+                    event.finish();
+                  }
+                  'step 2'
+                  if(event.targets){
+                    player.logSkill('dcneifa',event.targets);
+                    if(trigger.targets.contains(event.targets[0])) trigger.targets.removeArray(event.targets);
+                    else trigger.targets.addArray(event.targets);
+                  }
+                }
+        
+              }
 
             },
 
@@ -7082,9 +7252,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新关卡：自定义将池。现在可以在扩展界面配置自己的阴间将池啦。<br>'+
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新关卡：自定义将池。现在可以在扩展界面配置自己的阴间将池啦。<br>' +
               '<li><span style="color:#006400">说明二</span>：<br>更新了新武将：界最强神话。<br>'
-              );
+            );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
             this.innerHTML = '<div class=".update">扩展版本<font size="4px">▼▼▼</font></div>';
