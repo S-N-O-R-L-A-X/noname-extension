@@ -223,6 +223,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // "re_boss_huangyueying": ["female", "qun", 4, ["shenhu", "boss_gongshen", "boss_jizhi", "qicai", "boss_guiyin"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
               // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]],
+              // "math_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]] ,
               "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "bmcanshi"], ["zhu", "boss", "bossallowed"]],
               "re_boss_lvbu": ["male", "qun", 8, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
               "fusion_yuantanyuanxiyuanshang": ["male", "qun", 8, ["fusion_neifa"], ["zhu", "boss", "bossallowed"]],
@@ -6602,12 +6603,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     return num*1.5-get.value(cardx);
                   });
                   'step 1'
-                  if(result.bool&&result.cards&&result.cards.length&&get.type(result.cards[0])!='equip'){
-                    var name=get.type(result.cards[0])=='basic'?'dcneifa_basic':'dcneifa_trick';
+                  if(result.bool&&result.cards&&result.cards.length){
+                    let name="fusion_neifa_"+get.type(result.cards[0]);
+                    
                     player.addTempSkill(name,'phaseUseAfter');
                     var num=Math.min(5,player.countCards('h',function(cardx){
                       var type=get.type(cardx,player);
-                      return (name=='dcneifa_basic')!=(type=='basic')&&type!='equip';
+                      return (name=='fusion_neifa_basic')!=(type=='basic')&&type!='equip';
                     }));
                     if(num>0) player.addMark(name,num,false);
                     else player.storage[name]=0;
@@ -6617,7 +6619,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   threaten:2.33,
                 },
               },
-              dcneifa_basic:{
+              fusion_neifa_basic:{
                 mark:true,
                 marktext:'伐',
                 onremove:true,
@@ -6634,7 +6636,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   },
                   cardUsable:function(card,player,num){
                     if(card.name=='sha'){
-                      return num+player.countMark('dcneifa_basic');
+                      return num+player.countMark('fusion_neifa_basic');
                     }
                   },
                 },
@@ -6667,7 +6669,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   trigger.targets.addArray(event.targets);
                 },
               },
-              dcneifa_trick:{
+              fusion_neifa_trick:{
                 trigger:{player:'useCard2'},
                 direct:true,
                 mark:true,
@@ -6675,15 +6677,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onremove:true,
                 mod:{
                   cardEnabled:function(card,player){
-                    if(get.type(card)=='basic') return false;
+                    if(get.type(card)=='equip') return false;
                   },
                   cardSavable:function(card,player){
-                    if(get.type(card)=='basic') return false;
+                    if(get.type(card)=='equip') return false;
                   },
                 },
                 intro:{
                   name:'内伐 - 锦囊牌',
-                  content:'本回合内不能使用基本牌，且使用普通锦囊牌选择目标时可以多选择或者取消1个目标。'
+                  content:'本回合内不能使用装备牌，且使用普通锦囊牌选择目标时可以多选择#个目标。'
                 },
                 filter:function(event,player){
                   if(get.type(event.card)!='trick') return false;
@@ -6726,6 +6728,29 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else trigger.targets.addArray(event.targets);
                   }
                 }
+        
+              },
+              fusion_neifa_equip:{
+                mark:true,
+                marktext:'伐',
+                onremove:true,
+                intro:{
+                  name:'内伐 - 装备牌',
+                  content:'本回合内不能使用基本牌，本回合的出牌阶段内前#次使用装备牌时摸#张牌。',
+                },
+                mod:{
+                  cardEnabled:function(card,player){
+                    if(get.type(card,'basic')=='basic') return false;
+                  },
+                  cardSavable:function(card,player){
+                    if(get.type(card,'basic')=='basic') return false;
+                  },
+                  
+                },
+                trigger:{player:'useCard'},				
+                content:function(){
+                  player.draw(player.countMark('neifa_nobasic'));
+                },
         
               }
 
