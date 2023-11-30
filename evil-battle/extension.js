@@ -6604,11 +6604,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   });
                   'step 1'
                   if (result.bool && result.cards && result.cards.length) {
-                    if(result.cards[0]=="basic") {
+                    const banned_type = get.type(result.cards[0]);
+
+                    if (banned_type == "basic") {
                       player.addTempSkill("fusion_neifa_trick", 'phaseUseAfter');
                       player.addTempSkill("fusion_neifa_equip", 'phaseUseAfter');
                     }
-                    else if(result.cards[0]=="trick"){
+                    else if (banned_type == "trick") {
                       player.addTempSkill("fusion_neifa_basic", 'phaseUseAfter');
                       player.addTempSkill("fusion_neifa_equip", 'phaseUseAfter');
                     }
@@ -6616,14 +6618,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       player.addTempSkill("fusion_neifa_basic", 'phaseUseAfter');
                       player.addTempSkill("fusion_neifa_trick", 'phaseUseAfter');
                     }
-                    player.addTempSkill(`fusion_neifa_banned_${result.cards[0]}`, 'phaseUseAfter');
-                    
+                    player.addTempSkill(`fusion_neifa_banned_${banned_type}`, 'phaseUseAfter');
+
                     var num = Math.min(5, player.countCards('h', function (cardx) {
                       var type = get.type(cardx, player);
-                      return (name == 'fusion_neifa_basic') != (type == 'basic') && type != 'equip';
+                      return type == banned_type;
                     }));
-                    if (num > 0) player.addMark(name, num, false);
-                    else player.storage[name] = 0;
+                    if (num > 0) player.addMark("banned_cards", num, false);
+                    else player.storage["banned_cards"] = 0;
                   }
                 },
                 ai: {
@@ -6636,12 +6638,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onremove: true,
                 intro: {
                   name: '内伐 - 基本牌',
-                  content: '本回合使用【杀】选择目标时可以多选择1个目标，且使用【杀】的目标次数上限+#。',
+                  content: function (storage, player, skill) {
+                    return `本回合使用【杀】选择目标时可以多选择1个目标，且使用【杀】的目标次数上限+${player.countMark('banned_cards')}。`;
+                  },
                 },
                 mod: {
                   cardUsable: function (card, player, num) {
                     if (card.name == 'sha') {
-                      return num + player.countMark('fusion_neifa_basic');
+                      return num + player.countMark("banned_cards");
                     }
                   },
                 },
@@ -6698,7 +6702,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onremove: true,
                 intro: {
                   name: '内伐 - 锦囊牌',
-                  content: '本回合使用普通锦囊牌选择目标时可以多选择#个目标。'
+                  content: '本回合使用普通锦囊牌选择目标时可以增加或减少1个目标。'
                 },
                 filter: function (event, player) {
                   if (get.type(event.card) != 'trick') return false;
@@ -6758,19 +6762,26 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
               fusion_neifa_equip: {
+                audio: 'neifa',
+                usable: 2,
+                trigger: { player: 'useCard' },
                 mark: true,
                 marktext: '伐',
                 onremove: true,
+                
                 intro: {
                   name: '内伐 - 装备牌',
-                  content: '本回合内不能使用基本牌，本回合的出牌阶段内前#次使用装备牌时摸#张牌。',
+                  content: function (storage, player, skill) {
+                    return `本回合的出牌阶段内前${player.countMark('banned_cards')}次使用装备牌时摸${player.countMark('banned_cards')}张牌。`;
+                  },
                 },
-
-                trigger: { player: 'useCard' },
+                forced: true,
+                filter: function (event, player) {
+                  return get.type(event.card) == 'equip' && player.countMark('banned_cards') > 0;
+                },
                 content: function () {
-                  player.draw(player.countMark('neifa_nobasic'));
+                  player.draw(player.countMark('banned_cards'));
                 },
-
               },
               fusion_neifa_banned_equip: {
                 mod: {
