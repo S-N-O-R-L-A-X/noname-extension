@@ -6562,7 +6562,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // fusion_yuantanyuanxiyuanshang
               fusion_neifa: {
-                audio: 2,
+                audio: "dcneifa",
                 trigger: { player: 'phaseUseBegin' },
                 content: function () {
                   'step 0'
@@ -6633,6 +6633,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
               fusion_neifa_basic: {
+                audio: "neifa",
                 mark: true,
                 marktext: '伐',
                 onremove: true,
@@ -6692,9 +6693,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   name: '内伐 - 基本牌',
                   content: '本回合内不能使用基本牌。',
                 },
-
               },
+
               fusion_neifa_trick: {
+                audio: "neifa",
                 trigger: { player: 'useCard2' },
                 direct: true,
                 mark: true,
@@ -6702,7 +6704,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 onremove: true,
                 intro: {
                   name: '内伐 - 锦囊牌',
-                  content: '本回合使用普通锦囊牌选择目标时可以增加或减少1个目标。'
+                  content: '本回合使用普通锦囊牌选择目标时可以增加或减少1个目标且本回合使用的普通锦囊牌额外结算一次。'
                 },
                 filter: function (event, player) {
                   if (get.type(event.card) != 'trick') return false;
@@ -6731,6 +6733,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     return get.effect(target, trigger.card, player, player) * (_status.event.targets.contains(target) ? -1 : 1);
                   }).set('targets', trigger.targets).set('card', trigger.card);
                   'step 1'
+                  trigger.effectCount++;
                   if (result.bool) {
                     if (!event.isMine() && !event.isOnline()) game.delayx();
                     event.targets = result.targets;
@@ -6762,13 +6765,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
               fusion_neifa_equip: {
-                audio: 'neifa',
-                usable: 2,
+                audio: "neifa",
                 trigger: { player: 'useCard' },
                 mark: true,
                 marktext: '伐',
                 onremove: true,
-                
                 intro: {
                   name: '内伐 - 装备牌',
                   content: function (storage, player, skill) {
@@ -6777,7 +6778,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 forced: true,
                 filter: function (event, player) {
-                  return get.type(event.card) == 'equip' && player.countMark('banned_cards') > 0;
+                  return get.type(event.card) == 'equip' && player.countMark('banned_cards') > 0 && (player.getStat().skill.fusion_neifa_equip || 0) < player.countMark('banned_cards');
                 },
                 content: function () {
                   player.draw(player.countMark('banned_cards'));
@@ -6940,6 +6941,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_dongzhuo": "界乱世魔王",
               "fusion_shen_zhangfei": "融神张飞",
               "math_beimihu": "数卑弥呼",
+              "re_boss_lvbu": "界虎牢关吕布",
+              "fusion_yuantanyuanxiyuanshang": "融三袁",
 
               // skill
               "shenhu": "神护",
