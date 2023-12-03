@@ -226,7 +226,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // "math_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]] ,
               "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "bmcanshi"], ["zhu", "boss", "bossallowed"]],
               "re_boss_lvbu": ["male", "qun", 8, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
-              "fusion_yuantanyuanxiyuanshang": ["male", "qun", 8, ["fusion_neifa"], ["zhu", "boss", "bossallowed"]],
+              "fusion_yuantanyuanxiyuanshang": ["male", "qun", 4, ["fusion_neifa"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -6564,8 +6564,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               fusion_neifa: {
                 audio: "dcneifa",
                 trigger: { player: 'phaseUseBegin' },
+                forced: true,
                 content: function () {
                   'step 0'
+                  player.damage("nosource", "nocard");
                   player.draw(3);
                   player.chooseToDiscard(true, 'he').set('ai', function (cardx) {
                     var player = _status.event.player;
