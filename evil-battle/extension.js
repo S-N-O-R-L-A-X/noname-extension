@@ -6560,6 +6560,20 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
 
+              // re_boss_lvbu
+              re_boss_jingjia: {
+                forced: true,
+                trigger:{
+                  global:'phaseBefore',
+                  player:'enterGame',
+                },
+                content: function() {
+                  player.equip("wushuangfangtianji");
+                  player.equip("shufazijinguan");
+                  Math.random()<0.5 ? player.equip("linglongshimandai") : player.equip("hongmianbaihuapao");                  
+                }
+              },
+
               // fusion_yuantanyuanxiyuanshang
               fusion_neifa: {
                 audio: "dcneifa",
@@ -6681,7 +6695,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   trigger.targets.addArray(event.targets);
                 },
               },
-
               fusion_neifa_banned_basic: {
                 mod: {
                   cardEnabled: function (card, player) {
@@ -6696,7 +6709,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   content: '本回合内不能使用基本牌。',
                 },
               },
-
               fusion_neifa_trick: {
                 audio: "neifa",
                 trigger: { player: 'useCard2' },
@@ -6750,7 +6762,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     else trigger.targets.addArray(event.targets);
                   }
                 }
-
               },
               fusion_neifa_banned_trick: {
                 mod: {
@@ -6799,8 +6810,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   name: '内伐 - 装备牌',
                   content: '本回合内不能使用装备牌。',
                 },
-
               },
+
+
             },
 
             card: {
