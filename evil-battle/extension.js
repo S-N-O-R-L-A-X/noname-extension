@@ -6563,14 +6563,17 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // re_boss_lvbu
               re_boss_jingjia: {
                 forced: true,
-                trigger:{
-                  global:'phaseBefore',
-                  player:'enterGame',
+                filter:function(event,player){
+                  return (event.name!='phase'||game.phaseNumber==0);
                 },
-                content: function() {
-                  player.equip("wushuangfangtianji");
-                  player.equip("shufazijinguan");
-                  Math.random()<0.5 ? player.equip("linglongshimandai") : player.equip("hongmianbaihuapao");                  
+                trigger: {
+                  global: 'phaseBefore',
+                  player: 'enterGame',
+                },
+                content: function () {
+                  player.equip(game.createCard2('wushuangfangtianji', 'diamond', 12));
+                  player.equip(game.createCard2('shufazijinguan', 'diamond', 1));
+                  Math.random() < 0.5 ? player.equip(game.createCard2('hongmianbaihuapao', 'club', 1)) : player.equip(game.createCard2('linglongshimandai', 'spade', 2));
                 }
               },
 
@@ -7254,7 +7257,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_baijia_info": "锁定技，一名角色的回合开始阶段，若你距离上次〖拜假〗后因〖骨疽〗得到的牌不少于7张，你令所有其他角色获得1枚“傀”标记。",
 
               // fusion_tengfanglan
-
 
               // unused
               "geju": "割据",
