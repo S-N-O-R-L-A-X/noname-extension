@@ -75,11 +75,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         lib.config.custom_banned_characters.forEach((ch) => {
           all_devil_characters.remove(ch);
         })
-
         let needed = 7 - all_devil_characters.length;
-        game.utils.initAllCharacters();
-        _status.characterlist.randomSort();
-        all_devil_characters = all_devil_characters.concat(_status.characterlist.slice(0, needed));
+        if(needed>0){
+          game.utils.initAllCharacters();
+          _status.characterlist.randomSort();
+          all_devil_characters = all_devil_characters.concat(_status.characterlist.slice(0, needed));
+        }
+
         const custom_characters = get7characters(all_devil_characters);
 
         lib.storage.stage["大战七阴"] = {
@@ -7250,7 +7252,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // math_beimihu
               "math_zongkui": "纵傀",
-              "math_zongkui_info": "游戏开始时，你令所有角色获得1枚“傀”标记。回合开始前，你可以指定X名角色，令其获得一枚“傀”标记。一轮游戏开始时，你可以分别指定一名体力值最少或最多和一名手牌数最少或最多的其他角色，令其获得一枚“傀”标记。当你对其他角色造成伤害/受到其他角色造成的伤害时，你令除你外受到伤害的角色/伤害来源获得1枚“傀”标记。",
+              "math_zongkui_info": "游戏开始时，你令所有其他角色获得1枚“傀”标记。回合开始时，你可以指定X名角色，令其获得一枚“傀”标记。一轮游戏开始时，你可以分别指定一名体力值最少或最多和一名手牌数最少或最多的其他角色，令其获得一枚“傀”标记。当你对其他角色造成伤害/受到其他角色造成的伤害时，你令除你外受到伤害的角色/伤害来源获得1枚“傀”标记。（X为场上人数的一半，向下取整）",
               "math_guju": "骨疽",
               "math_guju_info": "锁定技，拥有“傀”标记的角色受到伤害后，你摸X张牌。（X为其拥有的“傀”标记数量）",
               "math_baijia": "拜假",
