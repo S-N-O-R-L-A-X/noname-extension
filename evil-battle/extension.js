@@ -223,10 +223,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // "fusion_panshu": ["female", "wu", 3, ["shenhu", "fusion_weiyi", "jinzhi", "zhiren", "fusion_yaner"], ["zhu", "boss", "bossallowed"]],
               "re_boss_dongzhuo": ["male", "qun", 20, ["shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng"], ["zhu", "boss", "bossallowed"]],
               // "re_boss_huangyueying": ["female", "qun", 4, ["shenhu", "boss_gongshen", "boss_jizhi", "qicai", "boss_guiyin"], ["zhu", "boss", "bossallowed"]],
-              "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
+              "fusion_shen_zhangfei": ["male", "shen", 6, ["shenhu", "fusion_shencai", "fusion_xunshi", "olpaoxiao"], ["zhu", "boss", "bossallowed"]],
               // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]],
               // "math_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]] ,
-              "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "bmcanshi"], ["zhu", "boss", "bossallowed"]],
+              "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "math_bmcanshi"], ["zhu", "boss", "bossallowed"]],
               "re_boss_lvbu": ["male", "qun", 8, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
               "fusion_yuantanyuanxiyuanshang": ["male", "qun", 4, ["fusion_neifa"], ["zhu", "boss", "bossallowed"]],
             },
@@ -268,7 +268,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "ex_zhaoji": "来源于【合纵抗秦】扩展包赵姬。对【大期】进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击",
               "ex_baiqi": "来源于【合纵抗秦】扩展包白起。白起作为秦军统帅，加入秦军士兵的技能。<br>【强度】★★★★★<br> 【亮点】攻击",
               "ex_zhangyi": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
-              "ex_shangyang": "来源于【合纵抗秦】扩展包商鞅。商鞅变法建立连坐制，因此加入技能【连坐】并对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击，爆发",
+              "ex_shangyang": "来源于【合纵抗秦】扩展包商鞅。商鞅变法建立连坐制，因此加入技能【连坐】并对其技能进行了修改。<br>【强度】★★★★<br> 【亮点】攻击，爆发",
               "ex_zhaogao": "来源于【合纵抗秦】扩展包赵高。加入技能【载棺】并对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
               "ex_miyue": "来源于【合纵抗秦】扩展包芈月。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】防御",
               "ex_lvbuwei": "来源于【合纵抗秦】扩展包吕不韦。对其技能进行了修改。<br>【强度】★★★★★<br> 【亮点】过牌",
@@ -292,7 +292,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_shen_xunyu": "来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的〖驱虎〗历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对〖驱虎〗的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。〖天佐〗〖灵策〗均为纯增强，加强进攻和防御能力。〖节命〗技能则是来自于手杀界节命和ol界节命，还加上了一个控制更强的节命效果。〖留香〗技能直接源于荀令留香的典故，技能内容也非常贴合。<br>【强度】★★★★★<br> 【亮点】综合",
               "fusion_panshu": "来源于ol潘淑和十周年潘淑。〖威仪〗改为每轮每名角色限一次，〖燕尔〗改为出牌阶段自己没牌也可发动。<br>【强度】★★★<br> 【亮点】综合",
               "re_boss_dongzhuo": "来源于挑战模式boss乱世魔王，加上技能〖神护〗。〖强征〗从手牌改为牌，历史上董卓横征暴敛最终为吕布所杀，因此增加技能〖横征〗，通过缩短自己寿命（体力上限）来发动〖强征〗。<br>【强度】★★★★<br> 【亮点】攻击",
-              "fusion_shen_zhangfei": "来源于十周年神张飞和ol界张飞，加上技能〖神护〗。〖神裁〗取消了发动次数上限，且标记可以叠加。<br>【强度】★★★★<br> 【亮点】攻击",
+              "fusion_shen_zhangfei": "来源于十周年神张飞和ol界张飞，加上技能〖神护〗。〖神裁〗取消了发动次数上限，且标记可以叠加。<br>【强度】★★★<br> 【亮点】攻击",
               "math_beimihu": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒的同时修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。<br>【强度】★★★★★<br> 【亮点】防御，过牌",
             },
             skill: {
@@ -6081,8 +6081,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   content: '发动次数上限+#',
                 },
               },
-              xunshi: {
-                audio: 2,
+              fusion_xunshi: {
+                audio: "xunshi",
                 mod: {
                   cardname: function (card) {
                     if (lib.skill.xunshi.isXunshi(card)) return 'sha';
@@ -6099,22 +6099,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   cardUsable: function (card) {
                     if (get.color(card) == 'none') return Infinity;
                   },
-                },
-                isXunshi: function (card) {
-                  var info = lib.card[card.name];
-                  if (!info || (info.type != 'trick' && info.type != 'delay')) return false;
-                  if (info.notarget) return false;
-                  if (info.selectTarget != undefined) {
-                    if (Array.isArray(info.selectTarget)) {
-                      if (info.selectTarget[0] < 0) return !info.toself;
-                      return info.selectTarget[0] != 1 || info.selectTarget[1] != 1;
-                    }
-                    else {
-                      if (info.selectTarget < 0) return !info.toself;
-                      return info.selectTarget != 1;
-                    }
-                  }
-                  return false;
                 },
                 trigger: { player: 'useCard2' },
                 forced: true,
@@ -6139,7 +6123,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   else event.finish();
                   'step 1'
                   var prompt2 = '为' + get.translation(trigger.card) + '增加任意个目标'
-                  player.chooseTarget(get.prompt('xunshi'), function (card, player, target) {
+                  player.chooseTarget(get.prompt('fusion_xunshi'), function (card, player, target) {
                     var player = _status.event.player;
                     return !_status.event.targets.contains(target) && lib.filter.targetEnabled2(_status.event.card, player, target);
                   }, [1, Infinity]).set('prompt2', prompt2).set('ai', function (target) {
@@ -6560,6 +6544,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   player.storage.math_baijia_last = player.storage.guju;
                   game.utils.giveMarkToOthers(player);
                 }
+              },
+              math_bmcanshi: {
+                inherit: "bmcanshi"
               },
 
               // re_boss_lvbu
@@ -7249,6 +7236,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // fusion_shen_zhangfei
               "fusion_shencai": "神裁",
               "fusion_shencai_info": "出牌阶段限一次，你可以令一名其他角色进行判定。你获得此判定牌，然后若此判定牌：包含以下要素中的任意一个，则其获得对应的效果：{⒈体力：当其受到伤害后，其失去等量的体力、⒉武器：其不能使用牌响应【杀】、⒊打出：当其失去手牌后，其再随机弃置一张手牌（不嵌套触发）、⒋距离：其结束阶段开始时，其翻面}；若均不包含，你获得其区域里的一张牌，其获得一枚“死”并获得如下效果：其的角色手牌上限-X、其回合结束时，若X大于场上存活人数，则其死亡（X为其“死”标记数）。",
+              "fusion_xunshi": "巡使",
+              "fusion_xunshi_info": "锁定技。①你手牌区内所有的多目标锦囊牌均视为花色为none的普【杀】。②你使用颜色为none的牌无距离和次数限制。③当你使用无颜色的牌选择目标后，你令你〖神裁〗的发动次数上限+1，然后可以为此牌增加任意个目标。",
 
               // math_beimihu
               "math_zongkui": "纵傀",
@@ -7257,7 +7246,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_guju_info": "锁定技，拥有“傀”标记的角色受到伤害后，你摸X张牌。（X为其拥有的“傀”标记数量）",
               "math_baijia": "拜假",
               "math_baijia_info": "锁定技，一名角色的回合开始阶段，若你距离上次〖拜假〗后因〖骨疽〗得到的牌不少于7张，你令所有其他角色获得1枚“傀”标记。",
-
+              "math_bmcanshi": "蚕食",
+              "math_bmcanshi_info": "一名角色使用基本牌或普通锦囊牌指定你为唯一目标时，若其有“傀”标记，你可以取消之，然后其失去1枚“傀”标记；你使用牌仅指定一名角色为目标时，你可以额外指定任意名带有“傀”标记的角色为目标（无距离限制），然后这些角色失去1枚“傀”标记。",
+              
               // fusion_tengfanglan
 
               // unused
