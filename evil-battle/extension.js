@@ -76,7 +76,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           all_devil_characters.remove(ch);
         })
         let needed = 7 - all_devil_characters.length;
-        if(needed>0){
+        if (needed > 0) {
           game.utils.initAllCharacters();
           _status.characterlist.randomSort();
           all_devil_characters = all_devil_characters.concat(_status.characterlist.slice(0, needed));
@@ -6552,8 +6552,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // re_boss_lvbu
               re_boss_jingjia: {
                 forced: true,
-                filter:function(event,player){
-                  return (event.name!='phase'||game.phaseNumber==0);
+                filter: function (event, player) {
+                  return (event.name != 'phase' || game.phaseNumber == 0);
                 },
                 trigger: {
                   global: 'phaseBefore',
@@ -6778,7 +6778,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 intro: {
                   name: '内伐 - 装备牌',
                   content: function (storage, player, skill) {
-                    return `本回合的出牌阶段内前${player.countMark('banned_cards')}次使用装备牌时摸${player.countMark('banned_cards')}张牌。`;
+                    return `本回合前${player.countMark('banned_cards')}次使用装备牌时摸${player.countMark('banned_cards')}张牌。`;
                   },
                 },
                 forced: true,
@@ -7214,7 +7214,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // fusion_shen_xunyu
               "fusion_quhu": "驱虎",
-              "fusion_quhu_info": "出牌阶段限一次，你可以与一名体力值大于你的角色拼点，若你赢，则该角色对其攻击范围内另X名由你指定的角色各造成1点伤害。若你没赢，该角色对你造成一点伤害。(X为点数之差)",
+              "fusion_quhu_info": "出牌阶段限一次，你可以与一名其他角色拼点，若你赢，则该角色对其攻击范围内另X名由你指定的角色各造成1点伤害。若你没赢，该角色对你造成一点伤害。(X为点数之差)",
               "fusion_jieming_all": "节命",
               "fusion_jieming_all_info": "①锁定技，你拥有〖ol界节命〗和〖手杀界节命〗。②当你受到1点伤害后，你可令一名角色摸X张牌。然后若其手牌数大于X，则其将手牌弃置至X张（X为其体力值且至多为5）。",
               "fusion_jieming": "节命",
@@ -7248,8 +7248,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_baijia_info": "锁定技，一名角色的回合开始阶段，若你距离上次〖拜假〗后因〖骨疽〗得到的牌不少于7张，你令所有其他角色获得1枚“傀”标记。",
               "math_bmcanshi": "蚕食",
               "math_bmcanshi_info": "一名角色使用基本牌或普通锦囊牌指定你为唯一目标时，若其有“傀”标记，你可以取消之，然后其失去1枚“傀”标记；你使用牌仅指定一名角色为目标时，你可以额外指定任意名带有“傀”标记的角色为目标（无距离限制），然后这些角色失去1枚“傀”标记。",
-              
+
               // fusion_tengfanglan
+
+              // re_boss_lvbu
+              "re_boss_jingjia":"精甲",
+              "re_boss_jingjia_info":"锁定技，游戏开始时，你装备【修罗方天戟】，【束发紫金冠】并随机装备【红棉百花袍】或【玲珑狮蛮带】。",
+
+              // fusion_yuantanyuanxiyuanshang
+              "fusion_neifa":"内伐",
+              "fusion_neifa_info":"锁定技，出牌阶段开始时，你受到一点伤害并摸三张牌，然后弃置一张牌，然后本回合你不能使用对应类型的牌，使用其他类型的牌获得以下效果：基本牌：本回合使用【杀】选择目标时可以多选择1个目标，且使用【杀】的目标次数上限X；锦囊牌：本回合使用普通锦囊牌选择目标时可以增加或减少1个目标且本回合使用的普通锦囊牌额外结算一次；本回合前X次使用装备牌时摸X张牌。（X为你发动〖内伐〗弃牌后手牌中因〖内伐〗而不能使用的牌的数量。你以此法选择的额外目标均无距离限制）。",
 
               // unused
               "geju": "割据",
