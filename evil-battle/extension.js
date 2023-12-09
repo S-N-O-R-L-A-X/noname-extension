@@ -6775,6 +6775,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 mark: true,
                 marktext: '伐',
                 onremove: true,
+                init: function (player) {
+                  player.storage.fusion_neifa_equip_times = 0;
+                },
                 intro: {
                   name: '内伐 - 装备牌',
                   content: function (storage, player, skill) {
@@ -6783,10 +6786,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 forced: true,
                 filter: function (event, player) {
-                  return get.type(event.card) == 'equip' && player.countMark('banned_cards') > 0 && (player.getStat().skill.fusion_neifa_equip || 0) < player.countMark('banned_cards');
+                  return get.type(event.card) == 'equip' && player.countMark('banned_cards') > 0 && player.storage.fusion_neifa_equip_times < player.countMark('banned_cards');
                 },
                 content: function () {
                   player.draw(player.countMark('banned_cards'));
+                  ++player.storage.fusion_neifa_equip_times;
                 },
               },
               fusion_neifa_banned_equip: {
@@ -7252,12 +7256,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // fusion_tengfanglan
 
               // re_boss_lvbu
-              "re_boss_jingjia":"精甲",
-              "re_boss_jingjia_info":"锁定技，游戏开始时，你装备【修罗方天戟】，【束发紫金冠】并随机装备【红棉百花袍】或【玲珑狮蛮带】。",
+              "re_boss_jingjia": "精甲",
+              "re_boss_jingjia_info": "锁定技，游戏开始时，你装备【无双方天戟】，【束发紫金冠】并随机装备【红棉百花袍】或【玲珑狮蛮带】。",
 
               // fusion_yuantanyuanxiyuanshang
-              "fusion_neifa":"内伐",
-              "fusion_neifa_info":"锁定技，出牌阶段开始时，你受到一点伤害并摸三张牌，然后弃置一张牌，然后本回合你不能使用对应类型的牌，使用其他类型的牌获得以下效果：基本牌：本回合使用【杀】选择目标时可以多选择1个目标，且使用【杀】的目标次数上限X；锦囊牌：本回合使用普通锦囊牌选择目标时可以增加或减少1个目标且本回合使用的普通锦囊牌额外结算一次；本回合前X次使用装备牌时摸X张牌。（X为你发动〖内伐〗弃牌后手牌中因〖内伐〗而不能使用的牌的数量。你以此法选择的额外目标均无距离限制）。",
+              "fusion_neifa": "内伐",
+              "fusion_neifa_info": "锁定技，出牌阶段开始时，你受到一点伤害并摸三张牌，然后弃置一张牌，然后本回合你不能使用对应类型的牌，使用其他类型的牌获得以下效果：基本牌：本回合使用【杀】选择目标时可以多选择1个目标，且使用【杀】的目标次数上限X；锦囊牌：本回合使用普通锦囊牌选择目标时可以增加或减少1个目标且本回合使用的普通锦囊牌额外结算一次；本回合前X次使用装备牌时摸X张牌。（X为你发动〖内伐〗弃牌后手牌中因〖内伐〗而不能使用的牌的数量。你以此法选择的额外目标均无距离限制）。",
 
               // unused
               "geju": "割据",
