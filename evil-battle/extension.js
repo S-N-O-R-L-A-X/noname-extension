@@ -50,7 +50,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         lib.devil_characters = {};
       }
 
-      lib.devil_characters.old_dc_list = ["xushao", "puyuan", "guozhao", "guansuo", "zhaoxiang", "xin_lingtong",
+      lib.devil_characters.old_dc_list = ["xushao", "puyuan", "guozhao", "dc_guansuo", "dc_zhaoxiang", "xin_lingtong",
         "re_liuzan"];
       lib.devil_characters.dc_list = ["caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
         "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
@@ -228,7 +228,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // "math_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]] ,
               "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "math_bmcanshi"], ["zhu", "boss", "bossallowed"]],
               "re_boss_lvbu": ["male", "qun", 8, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
-              "fusion_yuantanyuanxiyuanshang": ["male", "qun", 4, ["shenhu", "fusion_neifa"], ["zhu", "boss", "bossallowed"]],
+              "fusion_yuantanyuanxiyuanshang": ["male", "qun", 6, ["shenhu", "fusion_neifa"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -294,7 +294,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_dongzhuo": "来源于挑战模式boss乱世魔王，加上技能〖神护〗。〖强征〗从手牌改为牌，历史上董卓横征暴敛最终为吕布所杀，因此增加技能〖横征〗，通过缩短自己寿命（体力上限）来发动〖强征〗。<br>【强度】★★★★<br> 【亮点】攻击",
               "fusion_shen_zhangfei": "来源于十周年神张飞和ol界张飞，加上技能〖神护〗。〖神裁〗取消了发动次数上限，且标记可以叠加。<br>【强度】★★★<br> 【亮点】攻击",
               "math_beimihu": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒的同时修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。<br>【强度】★★★★★<br> 【亮点】防御，过牌",
-              "re_boss_lvbu": "来源于挑战模式boss吕布，直接获得虎牢关最终两种boss的所有技能，〖精甲〗进行了略微强化。七阴关一人镇守，足矣！<br>【强度】★★★★★<br> 【亮点】攻击，过牌",
+              "re_boss_lvbu": "来源于挑战模式boss最强神话，直接获得虎牢关最终两种形态boss的所有技能，〖精甲〗进行了略微强化。七阴关一人镇守，足矣！<br>【强度】★★★★★<br> 【亮点】攻击，过牌",
               "fusion_yuantanyuanxiyuanshang": "来源于十周年袁谭袁熙袁尚和ol袁谭袁尚，加上〖神护〗的同时对〖内伐〗进行了较大规模改动，不仅改为三类牌来体现出三兄弟的争夺，同时也加强了〖内伐〗效果。<br>【强度】★★★★<br> 【亮点】控制，过牌",
             },
             skill: {
@@ -7348,8 +7348,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
               '<li><span style="color:#006400">说明一</span>：<br>更新了新关卡：自定义将池。现在可以在扩展界面配置自己的阴间将池啦。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>更新了新武将：界最强神话。<br>'
-            );
+              '<li><span style="color:#006400">说明二</span>：<br>更新了新武将：界最强神话，融袁谭袁熙袁尚。<br>' +
+              '<li><span style="color:#006400">说明三</span>：<br>修复了关卡里出现ol关索，ol赵襄的问题。（需要更新本体至1.10.4以上版本）<br>' +
+              '<li><span style="color:#006400">说明四</span>：<br>修复一些描述问题<br>' 
+              );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
             this.innerHTML = '<div class=".update">扩展版本<font size="4px">▼▼▼</font></div>';
