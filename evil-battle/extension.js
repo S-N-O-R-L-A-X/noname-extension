@@ -50,12 +50,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         lib.devil_characters = {};
       }
 
-      lib.devil_characters.old_dc_list = ["xushao", "puyuan", "guozhao", "dc_guansuo", "dc_zhaoxiang", "xin_lingtong",
-        "re_liuzan"];
+      lib.devil_characters.old_dc_list = ["xushao", "puyuan", "guozhao", "dc_guansuo", "dc_zhaoxiang",
+        "xin_lingtong", "re_liuzan"];
       lib.devil_characters.dc_list = ["caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
-        "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao",
-        "tenggongzhu", "caomao", "zhangxuan", "dc_zhouxuān", "xuelingyun", "shen_zhangfei",
-        "shen_zhangjiao", "luyi"];
+        "zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao", "tenggongzhu",
+        "caomao", "zhangxuan", "dc_zhouxuān", "xuelingyun", "shen_zhangfei", "shen_zhangjiao", "luyi",
+        "sunlingluan", "wu_zhugeliang", "wu_luxun", "dc_xujing", "yue_caiwenji"];
       lib.devil_characters.mobile_list = ["shen_xunyu", "yangbiao", "sp_duyu"];
       lib.devil_characters.ol_list = ["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
       lib.devil_characters.other_list = ["sp_xiahoushi", "tw_dongzhao"];
@@ -7370,8 +7370,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
               '<li><span style="color:#006400">说明一</span>：<br>更新了新关卡：自定义将池。现在可以在扩展界面配置自己的阴间将池啦。<br>' +
               '<li><span style="color:#006400">说明二</span>：<br>更新了新武将：界最强神话，融袁谭袁熙袁尚。<br>' +
-              '<li><span style="color:#006400">说明三</span>：<br>修复了关卡里出现ol关索，ol赵襄的问题。（需要更新本体至1.10.4以上版本）<br>' +
-              '<li><span style="color:#006400">说明四</span>：<br>修复一些描述问题<br>'
+              '<li><span style="color:#006400">说明三</span>：<br>更新了阴间将池中的武将：孙翎鸾、武诸葛亮、武陆逊、新杀许靖、乐蔡文姬。<br>' +
+              '<li><span style="color:#006400">说明四</span>：<br>修复了关卡里出现ol关索，ol赵襄的问题。（需要更新本体至1.10.4以上版本）<br>' +
+              '<li><span style="color:#006400">说明五</span>：<br>修复一些描述问题<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
