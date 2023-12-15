@@ -6631,12 +6631,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     }
                     player.addTempSkill(`fusion_neifa_banned_${banned_type}`, 'phaseUseAfter');
 
-                    var num = Math.min(5, player.countCards('h', function (cardx) {
+                    var num = player.countCards('h', function (cardx) {
                       var type = get.type(cardx, player);
                       return type == banned_type;
-                    }));
-                    if (num > 0) player.addMark("banned_cards", num, false);
-                    else player.storage["banned_cards"] = 0;
+                    });
+                    player.storage.banned_cards = num;
                   }
                 },
                 subSkill: {
@@ -6671,7 +6670,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 intro: {
                   name: '内伐 - 基本牌',
                   content: function (storage, player, skill) {
-                    return `本回合使用【杀】选择目标时可以多选择1个目标，且使用【杀】的目标次数上限+${player.countMark('banned_cards')}。`;
+                    return `本回合使用【杀】选择目标时可以多选择1个目标，且使用【杀】的目标次数上限+${player.storage.banned_cards}。`;
                   },
                 },
                 mod: {
@@ -6804,15 +6803,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 intro: {
                   name: '内伐 - 装备牌',
                   content: function (storage, player, skill) {
-                    return `本回合前${player.countMark('banned_cards')}次使用装备牌时摸${player.countMark('banned_cards')}张牌。`;
+                    return `本回合前${player.storage.banned_cards}次使用装备牌时摸${player.storage.banned_cards}张牌。`;
                   },
                 },
                 forced: true,
                 filter: function (event, player) {
-                  return get.type(event.card) == 'equip' && player.countMark('banned_cards') > 0 && player.storage.fusion_neifa_equip_times < player.countMark('banned_cards');
+                  return get.type(event.card) == 'equip' && player.storage.banned_cards > 0 && player.storage.fusion_neifa_equip_times < player.storage.banned_cards;
                 },
                 content: function () {
-                  player.draw(player.countMark('banned_cards'));
+                  player.draw(player.storage.banned_cards);
                   ++player.storage.fusion_neifa_equip_times;
                 },
               },
