@@ -227,7 +227,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // "fusion_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]],
               // "math_tengfanglan": ["female", "wu", 4, ["shenhu", "fusion_luochong_all", "dcaichen"], ["zhu", "boss", "bossallowed"]] ,
               "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "math_bmcanshi"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_lvbu": ["male", "qun", 8, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_lvbu": ["male", "qun", 6, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
               "fusion_yuantanyuanxiyuanshang": ["male", "qun", 6, ["shenhu", "fusion_neifa"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
@@ -7360,7 +7360,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：7.0<font size="4px">▶▶▶</font></div>`,
+        name: `<div class=".update">扩展版本：7.0.1<font size="4px">▶▶▶</font></div>`,
         version: 7.0,
         clear: true,
         intro: "点击查看此版本的更新内容",
@@ -7371,7 +7371,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               '<li><span style="color:#006400">说明二</span>：<br>更新了新武将：界最强神话，融袁谭袁熙袁尚。<br>' +
               '<li><span style="color:#006400">说明三</span>：<br>更新了阴间将池中的武将：孙翎鸾、武诸葛亮、武陆逊、新杀许靖、乐蔡文姬。<br>' +
               '<li><span style="color:#006400">说明四</span>：<br>修复了关卡里出现ol关索，ol赵襄的问题。（需要更新本体至1.10.4以上版本）<br>' +
-              '<li><span style="color:#006400">说明五</span>：<br>修复一些描述问题<br>'
+              '<li><span style="color:#006400">说明五</span>：<br>修复一些描述问题<br>。'+
+              '<li><span style="color:#006400">说明六</span>：<br>修复了更新提示无法查看的问题。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
@@ -7380,7 +7381,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：7.0<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：7.0.1<font size="4px">▶▶▶</font></div>';
           };
         }
       },
