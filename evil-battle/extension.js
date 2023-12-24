@@ -174,7 +174,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           var against7devil = {
             name: "against7devil",
             connect: true,
-
+            // character detail
             character: {
               "re_boss_caocao": ["male", "wei", 12, ["shenhu", "boss_guixin", "xiongcai"], ["zhu", "boss", "bossallowed"]],
               "fusion_shen_sunce": ["male", "shen", "1/8", ["shenhu", "hunzi", "boss_jiang", "yingba", "scfuhai", "repinghe"], ["zhu", "boss", "bossallowed"]],
@@ -229,6 +229,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "math_bmcanshi"], ["zhu", "boss", "bossallowed"]],
               "re_boss_lvbu": ["male", "qun", 6, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
               "fusion_yuantanyuanxiyuanshang": ["male", "qun", 6, ["shenhu", "fusion_neifa"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_luzhi": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "qingzhong", "weijing", "re_boss_jingti", "zhichi", "aocai", "boss_baiyi"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -306,6 +307,38 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     }
                   },
                 },
+              },
+
+              re_boss_lianyu: {
+                forced: true,
+                group: ["re_boss_lianyu_hujia", "re_boss_lianyu_draw"],
+                subSkill: {
+                  "hujia": {
+                    trigger: { global: 'roundStart' },
+                    forced: true,
+                    content: () => {
+                      player.changeHujia(1, null, true);
+                    },
+                  },
+                  "draw": {
+                    trigger: { player: 'phaseDrawBegin2' },
+                    forced: true,
+                    filter: function (event, player) {
+                      return !event.numFixed;
+                    },
+                    content: function () {
+                      trigger.num += 3;
+                    },
+                    ai: {
+                      threaten: 2
+                    }
+                  }
+                },
+                mod: {
+                  cardUsable: function (card, player, num) {
+                    if (card.name == 'sha') return num + 3;
+                  }
+                }
               },
 
               // sunce
@@ -6830,6 +6863,25 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
 
+              // re_boss_luzhi
+              re_boss_jingti: {
+                forced: true,
+                trigger: {
+                  global: ['gainAfter', 'loseAsyncAfter', 'recoverAfter']
+                },
+                filter: function (event, player) {
+                  if (_status.currentPhase == player) return false;
+                  if (event.player == player) return false;
+                  if (event == "recover") {
+                    return true;
+                  }
+
+                  return event.getParent('phaseDraw').name != 'phaseDraw';
+                },
+                content: () => {
+                  player.draw();
+                }
+              },
 
             },
 
@@ -6913,16 +6965,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
             translate: {
               // config
-              update: "更新情况",
-              thanks: "鸣谢",
-              warning: "警告",
+              "update": "更新情况",
+              "thanks": "鸣谢",
+              "warning": "警告",
 
               //classification
-              against7devil: "大战七阴",
-              against7devil_boss: "挑战boss加强包",
-              against7devil_fusion: "融包",
-              against7devil_math: "数包",
-              against7devil_ex: "扩包",
+              "against7devil": "大战七阴",
+              "against7devil_boss": "挑战boss加强包",
+              "against7devil_fusion": "融包",
+              "against7devil_math": "数包",
+              "against7devil_ex": "扩包",
 
               //character
               "re_boss_caocao": "界魏武大帝",
@@ -7290,6 +7342,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "geju_info": "锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。",
               "geju_effect": "割据效果",
             },
+            // translation end
           };
 
           for (let character_name in against7devil.character) {
@@ -7371,7 +7424,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               '<li><span style="color:#006400">说明二</span>：<br>更新了新武将：界最强神话，融袁谭袁熙袁尚。<br>' +
               '<li><span style="color:#006400">说明三</span>：<br>更新了阴间将池中的武将：孙翎鸾、武诸葛亮、武陆逊、新杀许靖、乐蔡文姬。<br>' +
               '<li><span style="color:#006400">说明四</span>：<br>修复了关卡里出现ol关索，ol赵襄的问题。（需要更新本体至1.10.4以上版本）<br>' +
-              '<li><span style="color:#006400">说明五</span>：<br>修复一些描述问题<br>。'+
+              '<li><span style="color:#006400">说明五</span>：<br>修复一些描述问题。<br>' +
               '<li><span style="color:#006400">说明六</span>：<br>修复了更新提示无法查看的问题。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
