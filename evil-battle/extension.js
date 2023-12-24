@@ -278,7 +278,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_weiguojixie": "来源于剑阁模式魏国所有机械，将其技能进行融合。<br>【强度】★★★★<br> 【亮点】控制，攻击",
               "fusion_shuguojixie": "来源于剑阁模式蜀国所有机械，将其技能进行融合，并对其部分技能进行了修改。<br>【强度】★★★★★<br> 【亮点】攻击，防御",
               "fusion_weiguoyinghun": "来源于剑阁模式魏国所有英魂，将其技能进行融合。<br>【强度】★★★★★<br> 【亮点】综合",
-              "fusion_shuguoyinghun": "来源于剑阁模式蜀国所有英魂，将其技能进行融合，并对其部分技能进行了修改。。<br>【强度】★★★★★<br> 【亮点】综合",
+              "fusion_shuguoyinghun": "来源于剑阁模式蜀国所有英魂，将其技能进行融合，并对其部分技能进行了修改。<br>【强度】★★★★★<br> 【亮点】综合",
               "fusion_shuguoyinghun2": "来源于剑阁模式蜀国英魂中的智囊型武将（其实就是蜀国英魂强度过高出个限制版），将其技能进行融合，并对其部分技能进行了修改。<br>【强度】★★★<br> 【亮点】综合",
               "fusion_puyuan": "来源于十周年武将蒲元与OL蒲元，将其技能进行融合和修改，并加入新技能【辨水】。<br>【强度】★★★★<br> 【亮点】铸造",
               "fusion_shen_jiangwei": "来源于神姜维与OL界姜维，将其技能进行融合和修改。<br>【强度】★★★★<br> 【亮点】综合",
@@ -6876,7 +6876,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     return true;
                   }
 
-                  return event.getParent('phaseDraw').name != 'phaseDraw';
+                  if (event.getParent('phaseDraw').name == 'phaseDraw') {
+                    return false;
+                  }
+                  game.log(event.getg(player).length)
+                  return event.getg(player).length > 0;;
                 },
                 content: () => {
                   player.draw();
@@ -7027,6 +7031,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_beimihu": "数卑弥呼",
               "re_boss_lvbu": "界虎牢关吕布",
               "fusion_yuantanyuanxiyuanshang": "融三袁",
+              "re_boss_luzhi": "山河图鲁芝",
 
               // skill
               "shenhu": "神护",
