@@ -230,7 +230,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_lvbu": ["male", "qun", 6, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
               "fusion_yuantanyuanxiyuanshang": ["male", "qun", 6, ["shenhu", "fusion_neifa"], ["zhu", "boss", "bossallowed"]],
               "re_boss_luzhi": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "qingzhong", "weijing", "re_boss_jingti", "zhichi", "aocai", "boss_baiyi"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_xusheng": ["male", "wu", "6/6/4", ["re_boss_lianyu", "xinpojun", "feiyang", "re_boss_shouyi", "oljiuchi", "jiushi", "baoli"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_xusheng": ["male", "wu", "6/6/4", ["re_boss_lianyu", "xinpojun", "feiyang", "re_boss_shouyi", "oljiuchi", "jiushi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -340,6 +340,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     if (card.name == 'sha') return num + 3;
                   }
                 }
+              },
+
+              "re_boss_baoli": {
+                trigger:{source:'damageBegin1'},
+                forced:true,
+                charlotte:true,
+                content:function(){
+                  trigger.num++;
+                },        
               },
 
               // sunce
