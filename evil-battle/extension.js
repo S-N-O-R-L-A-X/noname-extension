@@ -1,40 +1,45 @@
 game.import("extension", function (lib, game, ui, get, ai, _status) {
+  // add useful functions
+
+  function get7characters(arr) {
+    return arr.randomSort().slice(0, 7);
+  }
+
+  if (!game.utils) {
+    game.utils = {};
+  }
+  game.utils.giveMarkToOthers = (player) => {
+    var list = game.filterPlayer();
+    for (var i = 0; i < list.length; i++) {
+      if (list[i] != player) {
+        list[i].addMark('zongkui_mark', 1);
+        player.line(list[i], 'green');
+      }
+    }
+  }
+
+  game.utils.initAllCharacters = () => {
+    var list = [];
+    if (_status.connectMode) var list = get.charactersOL();
+    else {
+      var list = [];
+      for (var i in lib.character) {
+        if (lib.filter.characterDisabled2(i) || lib.filter.characterDisabled(i)) continue;
+        list.push(i);
+      }
+    }
+    game.countPlayer2(function (current) {
+      list.remove(current.name);
+      list.remove(current.name1);
+      list.remove(current.name2);
+      if (current.storage.rehuashen && current.storage.rehuashen.character) list.removeArray(current.storage.rehuashen.character)
+    });
+    _status.characterlist = list;
+  }
+
   return {
     name: "大战七阴",
     content: function (config, pack) {
-      // add useful functions
-      if (!game.utils) {
-        game.utils = {};
-      }
-      game.utils.giveMarkToOthers = (player) => {
-        var list = game.filterPlayer();
-        for (var i = 0; i < list.length; i++) {
-          if (list[i] != player) {
-            list[i].addMark('zongkui_mark', 1);
-            player.line(list[i], 'green');
-          }
-        }
-      }
-
-      game.utils.initAllCharacters = () => {
-        var list = [];
-        if (_status.connectMode) var list = get.charactersOL();
-        else {
-          var list = [];
-          for (var i in lib.character) {
-            if (lib.filter.characterDisabled2(i) || lib.filter.characterDisabled(i)) continue;
-            list.push(i);
-          }
-        }
-        game.countPlayer2(function (current) {
-          list.remove(current.name);
-          list.remove(current.name1);
-          list.remove(current.name2);
-          if (current.storage.rehuashen && current.storage.rehuashen.character) list.removeArray(current.storage.rehuashen.character)
-        });
-        _status.characterlist = list;
-      }
-
       // initiaiize group
       lib.init.css(lib.assetURL + "extension/大战七阴", "extension");
       lib.group.push("daqin");
@@ -64,9 +69,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
       ...lib.devil_characters.mobile_list, ...lib.devil_characters.ol_list, ...lib.devil_characters.other_list];
 
       if (lib.config.mode == "brawl") {
-        function get7characters(arr) {
-          return arr.randomSort().slice(0, 7);
-        }
         if (!lib.storage.stage) lib.storage.stage = {};
         const old_dc_characters = get7characters(lib.devil_characters.old_dc_list);
         const dc_characters = get7characters(lib.devil_characters.old_dc_list.concat(lib.devil_characters.dc_list));
@@ -7461,19 +7463,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：7.0.1<font size="4px">▶▶▶</font></div>`,
-        version: 7.0,
+        name: `<div class=".update">扩展版本：7.1<font size="4px">▶▶▶</font></div>`,
+        version: 7.1,
         clear: true,
         intro: "点击查看此版本的更新内容",
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新关卡：自定义将池。现在可以在扩展界面配置自己的阴间将池啦。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>更新了新武将：界最强神话，融袁谭袁熙袁尚。<br>' +
-              '<li><span style="color:#006400">说明三</span>：<br>更新了阴间将池中的武将：孙翎鸾、武诸葛亮、武陆逊、新杀许靖、乐蔡文姬。<br>' +
-              '<li><span style="color:#006400">说明四</span>：<br>修复了关卡里出现ol关索，ol赵襄的问题。（需要更新本体至1.10.4以上版本）<br>' +
-              '<li><span style="color:#006400">说明五</span>：<br>修复一些描述问题。<br>' +
-              '<li><span style="color:#006400">说明六</span>：<br>修复了更新提示无法查看的问题。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图鲁芝，江东铁壁。<br>' +
+              '<li><span style="color:#006400">说明二</span>：<br>修复一些描述问题。<br>' 
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
@@ -7482,7 +7480,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：7.0.1<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：7.1<font size="4px">▶▶▶</font></div>';
           };
         }
       },
@@ -7521,7 +7519,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
       author: "SNORLAX",
       diskURL: "",
       forumURL: "",
-      version: "7.0",
+      version: "7.1",
     },
     files: { "character": [], "card": [], "skill": [] }
   }
