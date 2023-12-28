@@ -233,6 +233,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_yuantanyuanxiyuanshang": ["male", "qun", 6, ["shenhu", "fusion_neifa"], ["zhu", "boss", "bossallowed"]],
               "re_boss_luzhi": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "qingzhong", "weijing", "re_boss_jingti", "zhichi", "aocai", "boss_baiyi"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xusheng": ["male", "wu", "6/6/4", ["re_boss_lianyu", "xinpojun", "feiyang", "re_boss_shouyi", "oljiuchi", "jiushi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_yulintongshuai": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinliegong", "xinpojun", "re_boss_baoli", "re_boss_dungong", "wangong"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -345,12 +346,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               },
 
               "re_boss_baoli": {
-                trigger:{source:'damageBegin1'},
-                forced:true,
-                charlotte:true,
-                content:function(){
+                trigger: { source: 'damageBegin1' },
+                forced: true,
+                charlotte: true,
+                content: function () {
                   trigger.num++;
-                },        
+                },
               },
 
               // sunce
@@ -6927,8 +6928,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       trigger.num++;
                     },
                   }
-                },
+                }
+              },
 
+              // re_boss_huangzhong
+              "re_boss_dungong": {
+                forced: true,
+                trigger: { player: 'damageBegin4' },
+                content: () => {
+                  trigger.num = Math.min(3, trigger.num);
+                }
               }
 
             },
@@ -7471,7 +7480,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
               '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图鲁芝，江东铁壁。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>修复一些描述问题。<br>' 
+              '<li><span style="color:#006400">说明二</span>：<br>修复一些描述问题。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
