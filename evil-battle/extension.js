@@ -233,7 +233,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_yuantanyuanxiyuanshang": ["male", "qun", 6, ["shenhu", "fusion_neifa"], ["zhu", "boss", "bossallowed"]],
               "re_boss_luzhi": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "qingzhong", "weijing", "re_boss_jingti", "zhichi", "aocai", "boss_baiyi"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xusheng": ["male", "wu", "6/6/4", ["re_boss_lianyu", "xinpojun", "feiyang", "re_boss_shouyi", "oljiuchi", "jiushi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_yulintongshuai": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinliegong", "xinpojun", "re_boss_baoli", "re_boss_dungong", "wangong"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_huangzhong": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinliegong", "xinpojun", "re_boss_baoli", "re_boss_dungong", "wangong"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -7086,6 +7086,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_yuantanyuanxiyuanshang": "融三袁",
               "re_boss_luzhi": "山河图鲁芝",
               "re_boss_xusheng": "江东铁壁",
+              "re_boss_huangzhong": "羽林统帅",
 
               // skill
               "shenhu": "神护",
@@ -7395,6 +7396,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // fusion_yuantanyuanxiyuanshang
               "fusion_neifa": "内伐",
               "fusion_neifa_info": "锁定技，出牌阶段开始时，你受到一点伤害并摸三张牌，然后弃置一张牌，然后本回合你不能使用对应类型的牌，使用其他类型的牌获得以下效果：基本牌：本回合使用【杀】选择目标时可以多选择1个目标，且使用【杀】的目标次数上限+X；锦囊牌：本回合使用普通锦囊牌选择目标时可以增加或减少1个目标且本回合使用的普通锦囊牌额外结算一次；本回合前X次使用装备牌时摸X张牌。本回合你的手牌上限+Y（X为你发动〖内伐〗弃牌后手牌中因〖内伐〗而不能使用的牌的数量。Y为本回合进入弃牌堆的牌数。你以此法选择的额外目标均无距离限制）。",
+
+              // re_boss_luzhi
+              "re_boss_jingti": "警惕",
+              "re_boss_jingti_info": "锁定技，你的回合外，其他角色回复体力或在非摸牌阶段获得牌，你摸一张牌。",
+
+              // re_boss_xusheng
+              "re_boss_shouyi": "兽裔",
+              "re_boss_shouyi_info": "锁定技，你使用杀无距离限制且伤害+1，你的回合外，你受到锦囊牌造成的伤害时，此伤害+1。",
+
+              // re_boss_huangzhong
+              "re_boss_dungong": "盾弓",
+              "re_boss_dungong_info": "锁定技，防止对你造成的超过3点以上部分的伤害。",
 
               // unused
               "geju": "割据",
