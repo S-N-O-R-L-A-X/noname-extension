@@ -841,7 +841,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   for (var i = 0; i < skills.length; i++) {
                     player.addSkill(skills[i]);
                   }
-                  event.dialog = ui.create.dialog('<div class="text center">' + get.translation(player) + '发动了【雄才】', [[name], 'character']);
+                  event.dialog = ui.create.dialog('<div class="text center">' + get.translation(player) + '发动了【仁君】', [[name], 'character']);
                   game.delay(2);
                   'step 2'
                   event.dialog.close();
@@ -1385,7 +1385,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 filter: function (event, player) {
                   var evt = event.getl(player);
-                  if (event.name == 'equip' && event.player == player) return !evt || evt.cards.length != 1;
+                  if (event.name == 'equip' && event.player == player) return true;
+                  
                   return evt && evt.es.length;
                 },
                 direct: true,
@@ -1397,14 +1398,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 content: function () {
                   'step 0'
-                  // if(player.storage.xiongcai2<1){
-                  //		player.storage.xiongcai2++;
-                  //		event.finish();
-                  // }
-                  // else{
-                  //		player.storage.xiongcai2=0;
-                  // }
-                  'step 1'
                   player.logSkill('wuye');
                   var list = [];
                   var list2 = [];
@@ -1429,9 +1422,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   for (var i = 0; i < skills.length; i++) {
                     player.addSkill(skills[i]);
                   }
-                  event.dialog = ui.create.dialog('<div class="text center">' + get.translation(player) + '发动了【雄才】', [[name], 'character']);
+                  event.dialog = ui.create.dialog('<div class="text center">' + get.translation(player) + '发动了【吴业】', [[name], 'character']);
                   game.delay(2);
-                  'step 2'
+                  'step 1'
                   event.dialog.close();
                 }
               },
@@ -1507,7 +1500,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   for (var i = 0; i < skills.length; i++) {
                     player.addSkill(skills[i]);
                   }
-                  event.dialog = ui.create.dialog('<div class="text center">' + get.translation(player) + '发动了【雄才】', [[name], 'character']);
+                  event.dialog = ui.create.dialog('<div class="text center">' + get.translation(player) + '发动了【混战】', [[name], 'character']);
                   game.delay(2);
                   'step 2'
                   event.dialog.close();
@@ -7090,7 +7083,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // skill
               "shenhu": "神护",
-              "shenhu_info": "锁定技，你不能成为延时类锦囊的目标",
+              "shenhu_info": "锁定技，你不能成为延时类锦囊的目标。",
 
               // fusion_shen_sunce
               "repinghe": "冯河",
@@ -7116,7 +7109,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // liuxingyaodi
               "renjun": "仁君",
-              "renjun_info": "锁定技，当一名角色回复体力时，你随机获得一个蜀势力角色的所有技能",
+              "renjun_info": "锁定技，当一名角色回复体力时，你随机获得一个蜀势力角色的所有技能。",
               "boss_rende": "仁德",
               "boss_rende_info": "出牌阶段，若你有杀，你可以展示所有手牌并弃置其中的杀，令任意名角色各回复一点体力。然后你摸X张牌。（X为以此法恢复体力的角色数）",
 
@@ -7134,15 +7127,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // zhizunwudi
               "wuye": "吴业",
-              "wuye_info": "锁定技，当你使用或失去装备牌导致装备区发生变化时，你随机获得一个吴势力角色的所有技能",
+              "wuye_info": "锁定技，当你使用或失去装备牌导致装备区发生变化时，你随机获得一个吴势力角色的所有技能。",
               "boss_zhiheng": "制衡",
-              "boss_zhiheng_info": "出牌阶段限一次，你可以弃置所有手牌，然后从牌堆中随机获得一张装备牌",
+              "boss_zhiheng_info": "出牌阶段限一次，你可以弃置所有手牌，然后从牌堆中随机获得一张装备牌。",
 
               // luanshizhuhou
               "hunzhan": "混战",
               "hunzhan_info": "锁定技，当你造成一点伤害后，你随机获得一个群势力角色的所有技能。",
               "qibing": "起兵",
-              "qibing_info": "准备阶段，你可以选择一名敌方角色，若如此做，视为对其使用了一张杀",
+              "qibing_info": "准备阶段，你可以选择一名敌方角色，若如此做，视为对其使用了一张杀。",
 
               // yitongjindi
               "yuquan": "驭权",
@@ -7198,7 +7191,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "ex_shashen": "杀神",
               "ex_shashen_info": "你可以将手牌中的任意一张牌当【杀】使用或打出。每回合你使用的第一张【杀】造成伤害后，摸一张牌。",
               "ex_fachu": "伐楚",
-              "ex_fachu_info": "锁定技，当你因对非秦势力角色造成伤害而导致其进入濒死状态后，你随机废除其一个装备栏。若其没有装备栏可废除，其改为失去一点体力上限。之后若其死亡，视为被你击杀",
+              "ex_fachu_info": "锁定技，当你因对非秦势力角色造成伤害而导致其进入濒死状态后，你随机废除其一个装备栏。若其没有装备栏可废除，其改为失去一点体力上限。之后若其死亡，视为被你击杀。",
               "ex_changsheng": "常胜",
               "ex_changsheng_info": "锁定技，你使用【杀】无距离限制。",
 
