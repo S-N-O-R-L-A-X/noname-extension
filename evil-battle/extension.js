@@ -234,13 +234,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_luzhi": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "qingzhong", "weijing", "re_boss_jingti", "zhichi", "aocai", "boss_baiyi"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xusheng": ["male", "wu", "6/6/4", ["re_boss_lianyu", "xinpojun", "feiyang", "re_boss_shouyi", "oljiuchi", "jiushi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_huangzhong": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinliegong", "xinpojun", "re_boss_baoli", "re_boss_dungong", "wangong"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_xiahouba": ["male", "shu", "6/6/4", ["re_boss_lianyu", "boss_qixiang", "baobian", "zhongyun", "jieyuan", "buqu", "boss_xiaoshou"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu",
                   "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou",
                   "re_boss_yingzhao", "re_boss_xiangliu", "re_boss_dongzhuo", "re_boss_lvbu", "re_boss_luzhi",
-                  "re_boss_xusheng", "re_boss_huangzhong"],
+                  "re_boss_xusheng", "re_boss_huangzhong", "re_boss_xiahouba"],
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
@@ -7081,6 +7082,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_luzhi": "山河图鲁芝",
               "re_boss_xusheng": "江东铁壁",
               "re_boss_huangzhong": "羽林统帅",
+              "re_boss_xiahouba": "山河图夏侯霸",
 
               // skill
               "shenhu": "神护",
@@ -7486,7 +7488,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图鲁芝，江东铁壁，羽林统帅。<br>' +
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图鲁芝、江东铁壁、羽林统帅、山河图夏侯霸。<br>' +
               '<li><span style="color:#006400">说明二</span>：<br>修复〖吴业〗换装备时无法获得技能的问题。<br>' +
               '<li><span style="color:#006400">说明三</span>：<br>修复一些描述问题。<br>'
             );
