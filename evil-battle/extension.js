@@ -239,12 +239,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               against7devil: {
                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu",
                   "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou",
-                  "re_boss_yingzhao", "re_boss_xiangliu", "re_boss_dongzhuo"],
+                  "re_boss_yingzhao", "re_boss_xiangliu", "re_boss_dongzhuo", "re_boss_lvbu", "re_boss_luzhi",
+                  "re_boss_xusheng", "re_boss_huangzhong"],
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
                   "fusion_puyuan", "fusion_shen_jiangwei", "fusion_lingtong", "fusion_liuzan", "fusion_zhuanlundizang",
-                  "fusion_shen_xunyu", "fusion_shen_zhangfei"],
+                  "fusion_shen_xunyu", "fusion_shen_zhangfei", "fusion_yuantanyuanxiyuanshang"],
                 against7devil_math: ["math_caojinyu", "math_xiahoujie", "math_xushao", "math_zhangchangpu", "math_beimihu"],
                 against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi",
                   "ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
@@ -1386,7 +1387,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 filter: function (event, player) {
                   var evt = event.getl(player);
                   if (event.name == 'equip' && event.player == player) return true;
-                  
+
                   return evt && evt.es.length;
                 },
                 direct: true,
@@ -7485,8 +7486,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图鲁芝，江东铁壁。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>修复一些描述问题。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图鲁芝，江东铁壁，羽林统帅。<br>' +
+              '<li><span style="color:#006400">说明二</span>：<br>修复〖吴业〗换装备时无法获得技能的问题。<br>' +
+              '<li><span style="color:#006400">说明三</span>：<br>修复一些描述问题。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
