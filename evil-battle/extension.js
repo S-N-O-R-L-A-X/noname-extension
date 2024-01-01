@@ -231,10 +231,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "math_bmcanshi"], ["zhu", "boss", "bossallowed"]],
               "re_boss_lvbu": ["male", "qun", 6, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
               "fusion_yuantanyuanxiyuanshang": ["male", "qun", 6, ["shenhu", "fusion_neifa"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_luzhi": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "qingzhong", "weijing", "re_boss_jingti", "zhichi", "aocai", "boss_baiyi"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_luzhi": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "qingzhong", "weijing", "re_boss_jingti", "zhichi", "aocai", "boss_baiyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xusheng": ["male", "wu", "6/6/4", ["re_boss_lianyu", "xinpojun", "feiyang", "re_boss_shouyi", "oljiuchi", "jiushi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_huangzhong": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinliegong", "xinpojun", "re_boss_baoli", "re_boss_dungong", "wangong"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_xiahouba": ["male", "shu", "6/6/4", ["re_boss_lianyu", "boss_qixiang", "baobian", "zhongyun", "jieyuan", "buqu", "boss_xiaoshou"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_huangzhong": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinliegong", "xinpojun", "re_boss_baoli", "re_boss_dungong", "wangong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_xiahouba": ["male", "shu", "6/6/4", ["re_boss_lianyu", "boss_qixiang", "baobian", "zhongyun", "jieyuan", "buqu", "boss_xiaoshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -317,8 +317,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               re_boss_lianyu: {
                 forced: true,
-                group: ["re_boss_lianyu_hujia", "re_boss_lianyu_draw"],
+                group: ["re_boss_lianyu_init", "re_boss_lianyu_hujia", "re_boss_lianyu_draw"],
                 subSkill: {
+                  "init": {
+                    trigger: { global: 'phaseBefore', player: 'enterGame' },
+                    forced: true,
+                    filter: function (event, player) {
+                      return (event.name != 'phase' || game.phaseNumber == 0);
+                    },
+                    content: function () {
+                      player.draw(3);
+                    }
+                  },
                   "hujia": {
                     trigger: { global: 'roundStart' },
                     forced: true,
@@ -338,7 +348,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     ai: {
                       threaten: 2
                     }
-                  }
+                  },
                 },
                 mod: {
                   cardUsable: function (card, player, num) {
