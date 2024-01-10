@@ -13,8 +13,8 @@ export default function ShowAllCharacters() {
   const columns = [
     {
       title: '武将名',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: 'ChineseName',
+      key: 'ChineseName',
       sorter: (a: any, b: any) => a.name < b.name ? 1 : -1,
       render: (name: string) => (<><Space>{name}<ProfileOutlined onClick={handleProfileClick} /></Space></>)
     },
@@ -64,8 +64,8 @@ export default function ShowAllCharacters() {
     },
     {
       title: "扩展包",
-      dataIndex: "ex_package",
-      key: "ex_package",
+      dataIndex: "package",
+      key: "package",
       filters: [
         {
           text: "挑战boss加强包",
@@ -84,7 +84,7 @@ export default function ShowAllCharacters() {
           value: "扩包",
         },
       ],
-      onFilter: (value: any, record: any) => record.ex_package.indexOf(value) === 0,
+      onFilter: (value: any, record: any) => record.package.indexOf(value) !== -1,
     },
     {
       title: '性别',
@@ -137,8 +137,8 @@ export default function ShowAllCharacters() {
 
   return (
     <>
-      <Search searchArea={characters.names} />
-      <Table dataSource={characters.details} columns={columns} pagination={{ pageSize: 10 }}></Table>
+      <Search searchArea={characters} />
+      <Table dataSource={characters} columns={columns} pagination={{ pageSize: 10 }}></Table>
     </>
   )
 }
