@@ -1,59 +1,1495 @@
-{
-  "names": [ "界魏武大帝", "界神孙策", "魅魔", "界药坛圣手", "界赤壁火神", "阴间曹金玉", "回血亡", "融徐晃",
-    "六星耀帝", "界洛水仙子", "红脸婆", "界红脸婆", "扩貂蝉", "至尊吴帝", "乱世诸侯", "界年兽", "蛮王",
-    "扩嬴政", "扩赵姬", "扩白起", "扩张仪", "扩商鞅", "扩赵高", "扩芈月", "扩吕不韦", "融贾诩", "融李儒",
-    "魏国机械", "蜀国机械", "蜀国英魂", "魏国英魂", "蜀国智囊团", "融蒲元", "融神姜维", "界英招", "界相柳",
-    "融凌统", "融留赞", "数夏侯杰", "数许邵"
-  ],
-  "details": [
-    { "name": "re_boss_caocao", "gender": "male", "nationality": "wei", "hp": 12, "skills": [ "shenhu", "boss_guixin", "xiongcai" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "fusion_shen_sunce", "gender": "male", "nationality": "shen", "hp": "1/8", "skills": [ "shenhu", "hunzi", "boss_jiang", "yingba", "scfuhai", "repinghe" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "succubus", "gender": "female", "nationality": "shen", "hp": 6, "skills": [ "meihun", "rebiyue", "yuehun", "yunshen", "boss_guimei", "yuxin" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "re_boss_huatuo", "gender": "male", "nationality": "qun", "hp": 6, "skills": [ "shenhu", "chulao", "mazui", "boss_shengshou", "guizhen", "wuqin" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "re_boss_zhouyu", "gender": "male", "nationality": "wu", "hp": 10, "skills": [ "shenhu", "huoshen", "boss_honglian", "boss_xianyin", "boss_zhaohuo", "boss_honglianx" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "yin_caojinyu", "gender": "female", "nationality": "wei", "hp": 10, "skills": [ "shenhu", "yinyuqi", "yinshanshen", "yinxianjing" ], "ex_package": "数包", "strength": "", "details": { } },
-    { "name": "norecover", "gender": "male", "nationality": "shen", "hp": 25, "skills": [ "boss_fudu", "boss_kujiu", "boss_duqu", "boss_echou", "ex_haizhong" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "fusion_xuhuang", "gender": "male", "nationality": "wei", "hp": 6, "skills": [ "shenhu", "shipo", "famine", "olduanliang", "oljiezi" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "liuxingyaodi", "gender": "male", "nationality": "shu", "hp": "6/8", "skills": [ "shenhu", "renjun", "boss_rende" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "re_boss_zhenji", "gender": "female", "nationality": "wei", "hp": 6, "skills": [ "shenhu", "tashui", "lingbo", "jiaoxia", "fanghua", "reluoshen" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "fusion_honglianpo", "gender": "female", "nationality": "shen", "hp": 8, "skills": [ "boss_shiyou", "boss_wangshi", "boss_didong", "boss_guimei", "boss_xuechi" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "ex_diaochan", "gender": "female", "nationality": "qun", "hp": 3, "skills": [ "shenhu", "ex_yuhun", "ex_kongshen" ], "ex_package": "扩包", "strength": "", "details": { } },
-    { "name": "re_fusion_honglianpo", "gender": "female", "nationality": "shen", "hp": 8, "skills": [ "boss_shiyou", "rewangshi", "boss_didong", "boss_guimei", "rexuechi" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "zhizunwudi", "gender": "male", "nationality": "wu", "hp": 8, "skills": [ "shenhu", "wuye", "boss_zhiheng" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "luanshizhuhou", "gender": "male", "nationality": "qun", "hp": 10, "skills": [ "shenhu", "qibing", "hunzhan" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "re_nianshou", "gender": "male", "nationality": "shen", "hp": 4, "skills": [ "boss_nianrui", "boss_mengtai", "boss_jingjue", "boss_renxing", "boss_ruizhi", "boss_nbaonu", "boss_shouyi" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "barbarian_king", "gender": "male", "nationality": "qun", "hp": 10, "skills": [ "shenhu", "equan", "manji", "manyi", "mansi", "xiangzhen", "huoshou", "zaiqi", "juxiang", "hanyong" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "ex_yingzheng", "gender": "male", "nationality": "daqin", "hp": 8, "skills": [ "shenhu", "ex_yitong", "ex_shihuang", "ex_liuhe", "ex_zulong", "ex_fenshu", "ex_kencao" ], "ex_package": "扩包", "strength": "", "details": { } },
-    { "name": "ex_zhaoji", "gender": "female", "nationality": "daqin", "hp": 4, "skills": [ "ex_shanwu", "ex_daqi", "ex_xianji", "ex_huoluan" ], "ex_package": "扩包", "strength": "", "details": { } },
-    { "name": "ex_baiqi", "gender": "male", "nationality": "daqin", "hp": 8, "skills": [ "shenhu", "ex_wuan", "ex_shashen", "ex_fachu", "ex_changsheng", "bubing_fangzhen", "qibing_liangju", "qibing_changjian", "ex_kencao", "nushou_jinnu" ], "ex_package": "扩包", "strength": "", "details": { } },
-    { "name": "ex_zhangyi", "gender": "male", "nationality": "daqin", "hp": 6, "skills": [ "shenhu", "ex_lianheng", "ex_xiongbian", "ex_qiaoshe", "ex_xichu" ], "ex_package": "扩包", "strength": "", "details": { } },
-    { "name": "ex_shangyang", "gender": "male", "nationality": "daqin", "hp": 6, "skills": [ "shenhu", "ex_bianfa", "ex_limu", "ex_kencao", "ex_lianzuo" ], "ex_package": "扩包", "strength": "", "details": { } },
-    { "name": "ex_zhaogao", "gender": "male", "nationality": "daqin", "hp": 6, "skills": [ "shenhu", "ex_zhilu", "ex_gaizhao", "ex_haizhong", "ex_aili", "ex_zaiguan", "ex_kencao" ], "ex_package": "扩包", "strength": "", "details": { } },
-    { "name": "ex_miyue", "gender": "female", "nationality": "daqin", "hp": 8, "skills": [ "shenhu", "ex_zhangzheng", "ex_taihou", "ex_youmie", "ex_yintui" ], "ex_package": "扩包", "strength": "", "details": { } },
-    { "name": "ex_lvbuwei", "gender": "male", "nationality": "daqin", "hp": 4, "skills": [ "shenhu", "ex_jugu", "ex_qihuo", "ex_chunqiu", "ex_baixiang" ], "ex_package": "扩包", "strength": "", "details": { } },
-    { "name": "fusion_jiaxu", "gender": "male", "nationality": "qun", "hp": 7, "skills": [ "rewansha", "reluanwu", "reweimu", "zhenlue", "fusion_jianshu", "fusion_yongdi" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "fusion_liru", "gender": "male", "nationality": "qun", "hp": 5, "skills": [ "shenhu", "juece", "mieji", "fencheng", "xinjuece", "xinmieji", "xinfencheng", "rejuece", "remieji", "fusion_zhudong", "fusion_cidu" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "fusion_weiguojixie", "gender": "none", "nationality": "wei", "hp": 10, "skills": [ "boss_jiguan", "boss_nailuo", "boss_didongjg", "boss_lianyujg", "boss_tunshi", "boss_tanshi" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "fusion_shuguojixie", "gender": "none", "nationality": "shu", "hp": 15, "skills": [ "boss_jiguan", "boss_yuhuojg", "boss_tianyun", "fusion_zhenwei", "fusion_benlei", "yizhong", "boss_lingyu", "boss_mojianjg" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "fusion_shuguoyinghun", "gender": "none", "nationality": "shu", "hp": "1/2", "skills": [ "shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_lingfeng", "boss_jizhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg", "boss_xiaorui", "boss_huchen", "boss_fengjian", "boss_keding" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "fusion_shuguoyinghun2", "gender": "none", "nationality": "shu", "hp": "3/5", "skills": [ "shenhu", "fusion_gongshen", "boss_jingmiao", "boss_zhinang", "boss_biantian", "bazhen", "boss_yuhuojg", "boss_qiwu", "boss_tianyujg" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "fusion_weiguoyinghun", "gender": "none", "nationality": "wei", "hp": 10, "skills": [ "shenhu", "boss_xuanlei", "boss_skonghun", "boss_chiying", "boss_chuanyun", "boss_leili", "boss_fengxing", "boss_jueji", "fusion_jiaoxie" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "fusion_puyuan", "gender": "male", "nationality": "shu", "hp": 10, "skills": [ "shenhu", "fusion_shengong", "olqisi", "pytianjiang", "fusion_zhuren", "fusion_bianshui" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "fusion_shen_jiangwei", "gender": "male", "nationality": "shen", "hp": 10, "skills": [ "shenhu", "jiufa", "fusion_tianren", "fusion_pingxiang", "fusion_tiaoxin", "olzhiji" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "re_boss_yingzhao", "gender": "male", "nationality": "shen", "hp": 25, "skills": [ "shenhu", "re_boss_yaoshou", "boss_fengdong", "boss_xunyou", "boss_sipu" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "re_boss_xiangliu", "gender": "male", "nationality": "shen", "hp": 20, "skills": [ "shenhu", "re_boss_yaoshou", "boss_duqu", "boss_jiushou", "re_boss_echou" ], "ex_package": "挑战boss加强包", "strength": "", "details": { } },
-    { "name": "fusion_lingtong", "gender": "male", "nationality": "wu", "hp": 4, "skills": [ "shenhu", "fusion_xuanfeng", "yongjin", "fusion_yinshi" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "fusion_liuzan", "gender": "male", "nationality": "wu", "hp": 4, "skills": [ "shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji" ], "ex_package": "融包", "strength": "", "details": { } },
-    { "name": "math_xiahoujie", "gender": "male", "nationality": "wei", "hp": 8, "skills": [ "shenhu", "math_liedan", "math_zhuangdan" ], "ex_package": "数包", "strength": "★★★★", "details": { } },
-    { "name": "math_xushao", "gender": "male", "nationality": "qun", "hp": 6, "skills": [ "shenhu", "jsrgbahu", "kangyin", "fenyin", "refenyin", "fusion_liji" ], "ex_package": "数包", "strength": "★★★★★", "details": { } },
-    { "name": "math_zhangchangpu", "gender": "female", "nationality": "wei", "hp": 6, "skills": [ "shenhu", "math_yanjiao", "math_xingshen" ], "ex_package": "数包", "strength": "★★★★★", "details": { } },
-    { "name": "fusion_zhuanlundizang", "gender": "male", "nationality": "shen", "hp": 8, "skills": [ "boss_modao", "fusion_lunhui", "boss_wangsheng", "boss_zlfanshi", "boss_bufo", "fusion_wuliang", "boss_dayuan", "boss_diting" ], "ex_package": "融包", "strength": "★★★", "details": { } },
-    { "name": "fusion_shen_xunyu", "gender": "male", "nationality": "shen", "hp": 3, "skills": [ "fusion_quhu", "fusion_jieming_all", "fusion_tianzuo", "fusion_lingce", "dinghan", "fusion_liuxiang" ], "ex_package": "融包", "strength": "★★★★★", "details": { "design": "来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的〖驱虎〗历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对〖驱虎〗的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。〖天佐〗〖灵策〗均为纯增强，加强进攻和防御能力。〖节命〗技能则是来自于手杀界节命和ol界节命，还加上了一个控制更强的节命效果。〖留香〗技能直接源于荀令留香的典故，技能内容也非常贴合。来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的〖驱虎〗历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对〖驱虎〗的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。〖天佐〗〖灵策〗均为纯增强，加强进攻和防御能力。〖节命〗技能则是来自于手杀界节命和ol界节命，还加上了一个控制更强的节命效果。〖留香〗技能直接源于荀令留香的典故，技能内容也非常贴合。" } },
-    { "name": "re_boss_dongzhuo", "gender": "male", "nationality": "qun", "hp": 20, "skills": [ "shenhu", "re_boss_qiangzheng", "boss_baolin", "oljiuchi", "roulin", "re_boss_hengzheng" ], "ex_package": "挑战boss加强包", "strength": "★★★★★", "details": { "design": "来源于挑战模式boss乱世魔王，加上技能〖神护〗。〖强征〗从手牌改为牌，历史上董卓横征暴敛最终为吕布所杀，因此增加技能〖横征〗，通过缩短自己寿命（体力上限）来发动〖强征〗。" } },
-    { "name": "fusion_shen_zhangfei", "gender": "male", "nationality": "shen", "hp": 6, "skills": [ "shenhu", "fusion_shencai", "xunshi", "olpaoxiao" ], "ex_package": "融包", "strength": "★★★★", "details": { "design": "来源于十周年神张飞和ol界张飞，加上技能〖神护〗。〖神裁〗取消了发动次数上限，且标记可以叠加。" } },
-    { "name": "math_beimihu", "gender": "female", "nationality": "qun", "hp": 3, "skills": [ "shenhu", "math_zongkui", "math_guju", "math_baijia", "bmcanshi" ], "ex_package": "数包", "strength": "★★★★★", "details": { "design": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒的同时修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。" } },
-    { "name": "re_boss_lvbu", "gender": "male", "nationality": "qun", "hp": 6, "skills": [ "re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu" ], "ex_package": "挑战boss加强包", "strength": "★★★★★", "details": { "design": "来源于挑战模式boss最强神话，直接获得虎牢关最终两种形态boss的所有技能，〖精甲〗进行了略微强化。七阴关一人镇守，足矣！" } },
-    { "name": "fusion_yuantanyuanxiyuanshang", "gender": "male", "nationality": "qun", "hp": 6, "skills": [ "shenhu", "fusion_neifa" ], "ex_package": "融包", "strength": "★★★★", "details": { "design": "来源于十周年袁谭袁熙袁尚和ol袁谭袁尚，加上〖神护〗的同时对〖内伐〗进行了较大规模改动，不仅改为三类牌来体现出三兄弟的争夺，同时也加强了〖内伐〗效果。" } }
-
-  ]
-}
+[
+  {
+    "EnglishName": "re_boss_caocao",
+    "ChineseName": "界魏武大帝",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "12",
+    "skills": [
+      "shenhu",
+      "boss_guixin",
+      "xiongcai"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。",
+    "strength": " 【强度】★★★★ ",
+    "benefit": " 【亮点】综合，可玩性高"
+  },
+  {
+    "EnglishName": "fusion_shen_sunce",
+    "ChineseName": "界神孙策",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "1/8",
+    "skills": [
+      "shenhu",
+      "hunzi",
+      "boss_jiang",
+      "yingba",
+      "scfuhai",
+      "repinghe"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null,
+      null,
+      null,
+      "冯河"
+    ],
+    "package": "融包",
+    "details": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。",
+    "strength": " 【强度】★★★★★ ",
+    "benefit": " 【亮点】防御，过牌，激昂"
+  },
+  {
+    "EnglishName": "succubus",
+    "ChineseName": "魅魔",
+    "gender": "female",
+    "nationality": "shen",
+    "hp": "6",
+    "skills": [
+      "meihun",
+      "rebiyue",
+      "yuehun",
+      "yunshen",
+      "boss_guimei",
+      "yuxin"
+    ],
+    "ChineseSkills": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      "驭心"
+    ],
+    "package": "挑战boss加强包",
+    "details": "绝代妖姬+神貂蝉，够得上魅魔了吧。",
+    "strength": "【强度】★★★★★ ",
+    "benefit": " 【亮点】防御，可玩性高"
+  },
+  {
+    "EnglishName": "re_boss_huatuo",
+    "ChineseName": "界药坛圣手",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "6",
+    "skills": [
+      "shenhu",
+      "chulao",
+      "mazui",
+      "boss_shengshou",
+      "guizhen",
+      "wuqin"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于挑战模式boss药坛圣手，加上技能〖神护〗。",
+    "strength": "【强度】★★★",
+    "benefit": " 【亮点】全场空城"
+  },
+  {
+    "EnglishName": "re_boss_zhouyu",
+    "ChineseName": "界赤壁火神",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "10",
+    "skills": [
+      "shenhu",
+      "huoshen",
+      "boss_honglian",
+      "boss_xianyin",
+      "boss_zhaohuo",
+      "boss_honglianx"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于挑战模式boss赤壁火神，加上朱雀技能〖红莲〗，以及〖神护〗，真正的火神就此诞生。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】防御，稳定"
+  },
+  {
+    "EnglishName": "math_caojinyu",
+    "ChineseName": "数曹金玉",
+    "gender": "female",
+    "nationality": "wei",
+    "hp": "10",
+    "skills": [
+      "shenhu",
+      "math_yuqi",
+      "math_shanshen",
+      "math_xianjing"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "隅泣",
+      "善身",
+      "娴静"
+    ],
+    "package": "数包",
+    "details": "来源于曹金玉，无脑堆数字，还蛮好玩的。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】卖血，过牌"
+  },
+  {
+    "EnglishName": "norecover",
+    "ChineseName": "回血亡",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "25",
+    "skills": [
+      "boss_fudu",
+      "boss_kujiu",
+      "boss_duqu",
+      "boss_echou",
+      "ex_haizhong"
+    ],
+    "ChineseSkills": [
+      null,
+      null,
+      null,
+      null,
+      "害忠"
+    ],
+    "package": "融包",
+    "details": "来源于泰山王〖苦酒〗〖服毒〗，相柳〖毒躯〗〖恶臭〗，赵高〖害忠〗，虽然毫无操作感，但是能看对面崩死还挺好玩的。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】无法回血"
+  },
+  {
+    "EnglishName": "fusion_xuhuang",
+    "ChineseName": "融徐晃",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "6",
+    "skills": [
+      "shenhu",
+      "shipo",
+      "famine",
+      "olduanliang",
+      "oljiezi"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "势迫",
+      "饥荒",
+      null,
+      null
+    ],
+    "package": "融包",
+    "details": "来源于徐晃和谋徐晃，将〖断粮〗升级为〖饥荒〗。",
+    "strength": "【强度】★",
+    "benefit": " 【亮点】谋弈"
+  },
+  {
+    "EnglishName": "liuxingyaodi",
+    "ChineseName": "六星耀帝",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "6/8",
+    "skills": [
+      "shenhu",
+      "renjun",
+      "boss_rende"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "仁君",
+      "仁德"
+    ],
+    "package": "挑战boss加强包",
+    "details": "桃园结义是有关刘备的典故，因此将挑战模式boss魏武大帝的技能〖雄才〗换成〖仁君〗，加上自设计的〖仁德〗形成技能联动，和sp孙尚香的技能也有关系。",
+    "strength": " 【强度】★★★★★ ",
+    "benefit": " 【亮点】综合，可玩性高"
+  },
+  {
+    "EnglishName": "re_boss_zhenji",
+    "ChineseName": "界洛水仙子",
+    "gender": "female",
+    "nationality": "wei",
+    "hp": "6",
+    "skills": [
+      "shenhu",
+      "tashui",
+      "lingbo",
+      "jiaoxia",
+      "fanghua",
+      "reluoshen"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于挑战模式boss洛水仙子，加上界甄姬的〖洛神〗以及〖神护〗。",
+    "strength": " 【强度】★★★★ ",
+    "benefit": " 【亮点】爆发，控制"
+  },
+  {
+    "EnglishName": "fusion_honglianpo",
+    "ChineseName": "红脸婆",
+    "gender": "female",
+    "nationality": "shen",
+    "hp": "8",
+    "skills": [
+      "boss_shiyou",
+      "boss_wangshi",
+      "boss_didong",
+      "boss_guimei",
+      "boss_xuechi"
+    ],
+    "ChineseSkills": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "融包",
+    "details": "来源于捉鬼boss孟婆，加上五官王的〖血池〗以及红鬼的〖地动〗。没错，就是经典的五官王+红鬼+孟婆，三个五阶也也胆寒。",
+    "strength": " 【强度】★★ ",
+    "benefit": " 【亮点】恶心，回忆"
+  },
+  {
+    "EnglishName": "ex_diaochan",
+    "ChineseName": "扩貂蝉",
+    "gender": "female",
+    "nationality": "qun",
+    "hp": "3",
+    "skills": [
+      "shenhu",
+      "ex_yuhun",
+      "ex_kongshen"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "驭魂",
+      "控身"
+    ],
+    "package": "扩包",
+    "details": "来源于【假装无敌】扩展包貂蝉。由于非常喜欢这个傀儡机制，将她加入扩包第一将。",
+    "strength": " 【强度】★★★★ ",
+    "benefit": " 【亮点】机制"
+  },
+  {
+    "EnglishName": "re_fusion_honglianpo",
+    "ChineseName": "界红脸婆",
+    "gender": "female",
+    "nationality": "shen",
+    "hp": "8",
+    "skills": [
+      "boss_shiyou",
+      "rewangshi",
+      "boss_didong",
+      "boss_guimei",
+      "rexuechi"
+    ],
+    "ChineseSkills": [
+      null,
+      "往事",
+      null,
+      null,
+      "血池"
+    ],
+    "package": "融包",
+    "details": "来源于本包红脸婆。由于原版强度较低，完全打不过七阴。设计了增强版，单体爆破更加有效。",
+    "strength": " 【强度】★★★ ",
+    "benefit": " 【亮点】恶心，回忆"
+  },
+  {
+    "EnglishName": "zhizunwudi",
+    "ChineseName": "至尊吴帝",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "8",
+    "skills": [
+      "shenhu",
+      "wuye",
+      "boss_zhiheng"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "吴业",
+      "制衡"
+    ],
+    "package": "挑战boss加强包",
+    "details": "吴国向来有玩装备的传统，因此将挑战模式boss魏武大帝的技能〖雄才〗换成〖吴业〗，加上自设计的〖制衡〗形成技能联动。",
+    "strength": " 【强度】★★★★ ",
+    "benefit": " 【亮点】综合，可玩性高"
+  },
+  {
+    "EnglishName": "luanshizhuhou",
+    "ChineseName": "乱世诸侯",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "10",
+    "skills": [
+      "shenhu",
+      "qibing",
+      "hunzhan"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "起兵",
+      "混战"
+    ],
+    "package": "挑战boss加强包",
+    "details": "群雄是乱世中最混乱的势力，因此将挑战模式boss魏武大帝的技能〖雄才〗换成〖混战〗，加上自设计的〖起兵〗形成技能联动。",
+    "strength": " 【强度】★★★ ",
+    "benefit": " 【亮点】综合，可玩性高"
+  },
+  {
+    "EnglishName": "yitongjindi",
+    "ChineseName": "一统晋帝",
+    "gender": "male",
+    "nationality": "jin",
+    "hp": "4",
+    "skills": [
+      "shenhu",
+      "yuquan",
+      "chengbing"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "驭权",
+      "称病"
+    ],
+    "package": "挑战boss加强包",
+    "details": "晋国是乱世中隐藏最深的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【驭权】，加上自设计的【称病】形成技能联动。",
+    "strength": " 【强度】★★★★ ",
+    "benefit": " 【亮点】综合，可玩性高"
+  },
+  {
+    "EnglishName": "re_nianshou",
+    "ChineseName": "界年兽",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "4",
+    "skills": [
+      "boss_nianrui",
+      "boss_mengtai",
+      "boss_jingjue",
+      "boss_renxing",
+      "boss_ruizhi",
+      "boss_nbaonu",
+      "boss_shouyi"
+    ],
+    "ChineseSkills": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于挑战模式boss四大年兽，将其技能进行融合。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "barbarian_king",
+    "ChineseName": "蛮王",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "10",
+    "skills": [
+      "shenhu",
+      "equan",
+      "manji",
+      "manyi",
+      "mansi",
+      "xiangzhen",
+      "huoshou",
+      "zaiqi",
+      "juxiang",
+      "hanyong"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "融包",
+    "details": "将少数民族部落武将的技能进行融合。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "ex_yingzheng",
+    "ChineseName": "扩嬴政",
+    "gender": "male",
+    "nationality": "daqin",
+    "hp": "8",
+    "skills": [
+      "shenhu",
+      "ex_yitong",
+      "ex_shihuang",
+      "ex_liuhe",
+      "ex_zulong",
+      "ex_fenshu",
+      "ex_kencao"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "一统",
+      "始皇",
+      "六合",
+      "祖龙",
+      "焚书",
+      "垦草"
+    ],
+    "package": "扩包",
+    "details": "来源于【合纵抗秦】扩展包嬴政。作为一统六国的秦始皇，加入技能〖六合〗，并对其技能进行了修改。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】攻击，防御"
+  },
+  {
+    "EnglishName": "ex_zhaoji",
+    "ChineseName": "扩赵姬",
+    "gender": "female",
+    "nationality": "daqin",
+    "hp": "4",
+    "skills": [
+      "ex_shanwu",
+      "ex_daqi",
+      "ex_xianji",
+      "ex_huoluan"
+    ],
+    "ChineseSkills": [
+      "善舞",
+      "大期",
+      "献姬",
+      "祸乱"
+    ],
+    "package": "扩包",
+    "details": "来源于【合纵抗秦】扩展包赵姬。对〖大期〗进行了修改。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "ex_baiqi",
+    "ChineseName": "扩白起",
+    "gender": "male",
+    "nationality": "daqin",
+    "hp": "8",
+    "skills": [
+      "shenhu",
+      "ex_wuan",
+      "ex_shashen",
+      "ex_fachu",
+      "ex_changsheng",
+      "bubing_fangzhen",
+      "qibing_liangju",
+      "qibing_changjian",
+      "ex_kencao",
+      "nushou_jinnu"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "武安",
+      "杀神",
+      "伐楚",
+      "常胜",
+      "方阵",
+      "良驹",
+      "长剑",
+      "垦草",
+      null
+    ],
+    "package": "扩包",
+    "details": "来源于【合纵抗秦】扩展包白起。白起作为秦军统帅，加入秦军士兵的技能。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "ex_zhangyi",
+    "ChineseName": "扩张仪",
+    "gender": "male",
+    "nationality": "daqin",
+    "hp": "6",
+    "skills": [
+      "shenhu",
+      "ex_lianheng",
+      "ex_xiongbian",
+      "ex_qiaoshe",
+      "ex_xichu"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "连横",
+      "雄辩",
+      "巧舌",
+      "戏楚"
+    ],
+    "package": "扩包",
+    "details": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】防御"
+  },
+  {
+    "EnglishName": "ex_shangyang",
+    "ChineseName": "扩商鞅",
+    "gender": "male",
+    "nationality": "daqin",
+    "hp": "6",
+    "skills": [
+      "shenhu",
+      "ex_bianfa",
+      "ex_limu",
+      "ex_kencao",
+      "ex_lianzuo"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "变法",
+      "立木",
+      "垦草",
+      "连坐"
+    ],
+    "package": "扩包",
+    "details": "来源于【合纵抗秦】扩展包商鞅。商鞅变法建立连坐制，因此加入技能〖连坐〗并对其技能进行了修改。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】攻击，爆发"
+  },
+  {
+    "EnglishName": "ex_zhaogao",
+    "ChineseName": "扩赵高",
+    "gender": "male",
+    "nationality": "daqin",
+    "hp": "6",
+    "skills": [
+      "shenhu",
+      "ex_zhilu",
+      "ex_gaizhao",
+      "ex_haizhong",
+      "ex_aili",
+      "ex_zaiguan",
+      "ex_kencao"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "指鹿",
+      "改诏",
+      "害忠",
+      "爰历",
+      "载棺",
+      "垦草"
+    ],
+    "package": "扩包",
+    "details": "来源于【合纵抗秦】扩展包赵高。加入技能〖载棺〗并对其技能进行了修改。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】防御"
+  },
+  {
+    "EnglishName": "ex_miyue",
+    "ChineseName": "扩芈月",
+    "gender": "female",
+    "nationality": "daqin",
+    "hp": "8",
+    "skills": [
+      "shenhu",
+      "ex_zhangzheng",
+      "ex_taihou",
+      "ex_youmie",
+      "ex_yintui"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "掌政",
+      "太后",
+      "诱灭",
+      "隐退"
+    ],
+    "package": "扩包",
+    "details": "来源于【合纵抗秦】扩展包芈月。对其技能进行了修改。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】防御"
+  },
+  {
+    "EnglishName": "ex_lvbuwei",
+    "ChineseName": "扩吕不韦",
+    "gender": "male",
+    "nationality": "daqin",
+    "hp": "4",
+    "skills": [
+      "shenhu",
+      "ex_jugu",
+      "ex_qihuo",
+      "ex_chunqiu",
+      "ex_baixiang"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "巨贾",
+      "奇货",
+      "春秋",
+      "拜相"
+    ],
+    "package": "扩包",
+    "details": "来源于【合纵抗秦】扩展包吕不韦。对其技能进行了修改。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】过牌"
+  },
+  {
+    "EnglishName": "fusion_jiaxu",
+    "ChineseName": "融贾诩",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "7",
+    "skills": [
+      "rewansha",
+      "reluanwu",
+      "reweimu",
+      "zhenlue",
+      "fusion_jianshu",
+      "fusion_yongdi"
+    ],
+    "ChineseSkills": [
+      null,
+      null,
+      null,
+      null,
+      "间书",
+      "拥嫡"
+    ],
+    "package": "融包",
+    "details": "来源于界贾诩和sp贾诩。对其技能进行了修改。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】爆发，防御"
+  },
+  {
+    "EnglishName": "fusion_liru",
+    "ChineseName": "融李儒",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "5",
+    "skills": [
+      "shenhu",
+      "juece",
+      "mieji",
+      "fencheng",
+      "xinjuece",
+      "xinmieji",
+      "xinfencheng",
+      "rejuece",
+      "remieji",
+      "fusion_zhudong",
+      "fusion_cidu"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "助董",
+      "赐毒"
+    ],
+    "package": "融包",
+    "details": "来源于手杀界李儒，老李儒，和李儒。李儒是董卓首席谋士，因此加入新技能〖助董〗。并且受董卓命令毒杀刘辩，因此加入新技能〖赐毒〗。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "fusion_weiguojixie",
+    "ChineseName": "魏国机械",
+    "gender": "none",
+    "nationality": "wei",
+    "hp": "10",
+    "skills": [
+      "boss_jiguan",
+      "boss_nailuo",
+      "boss_didongjg",
+      "boss_lianyujg",
+      "boss_tunshi",
+      "boss_tanshi"
+    ],
+    "ChineseSkills": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "融包",
+    "details": "来源于剑阁模式魏国所有机械，将其技能进行融合。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】控制，攻击"
+  },
+  {
+    "EnglishName": "fusion_shuguojixie",
+    "ChineseName": "蜀国机械",
+    "gender": "none",
+    "nationality": "shu",
+    "hp": "15",
+    "skills": [
+      "boss_jiguan",
+      "boss_yuhuojg",
+      "boss_tianyun",
+      "fusion_zhenwei",
+      "fusion_benlei",
+      "yizhong",
+      "boss_lingyu",
+      "boss_mojianjg"
+    ],
+    "ChineseSkills": [
+      null,
+      null,
+      null,
+      "镇卫",
+      "奔雷",
+      null,
+      null,
+      null
+    ],
+    "package": "融包",
+    "details": "来源于剑阁模式蜀国所有机械，将其技能进行融合，并对其部分技能进行了修改。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】攻击，防御"
+  },
+  {
+    "EnglishName": "fusion_shuguoyinghun",
+    "ChineseName": "蜀国英魂",
+    "gender": "none",
+    "nationality": "shu",
+    "hp": "1/2",
+    "skills": [
+      "shenhu",
+      "fusion_gongshen",
+      "boss_jingmiao",
+      "boss_zhinang",
+      "boss_biantian",
+      "bazhen",
+      "boss_lingfeng",
+      "boss_jizhen",
+      "boss_yuhuojg",
+      "boss_qiwu",
+      "boss_tianyujg",
+      "boss_xiaorui",
+      "boss_huchen",
+      "boss_fengjian",
+      "boss_keding"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "工神",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "融包",
+    "details": "来源于剑阁模式蜀国所有英魂，将其技能进行融合，并对其部分技能进行了修改。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "fusion_shuguoyinghun2",
+    "ChineseName": "蜀国智囊团",
+    "gender": "none",
+    "nationality": "shu",
+    "hp": "3/5",
+    "skills": [
+      "shenhu",
+      "fusion_gongshen",
+      "boss_jingmiao",
+      "boss_zhinang",
+      "boss_biantian",
+      "bazhen",
+      "boss_yuhuojg",
+      "boss_qiwu",
+      "boss_tianyujg"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "工神",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "融包",
+    "details": "来源于剑阁模式蜀国英魂中的智囊型武将（其实就是蜀国英魂强度过高出个限制版），将其技能进行融合，并对其部分技能进行了修改。",
+    "strength": "【强度】★★★",
+    "benefit": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "fusion_weiguoyinghun",
+    "ChineseName": "魏国英魂",
+    "gender": "none",
+    "nationality": "wei",
+    "hp": "10",
+    "skills": [
+      "shenhu",
+      "boss_xuanlei",
+      "boss_skonghun",
+      "boss_chiying",
+      "boss_chuanyun",
+      "boss_leili",
+      "boss_fengxing",
+      "boss_jueji",
+      "fusion_jiaoxie"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "缴械"
+    ],
+    "package": "融包",
+    "details": "来源于剑阁模式魏国所有英魂，将其技能进行融合。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "fusion_puyuan",
+    "ChineseName": "融蒲元",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "10",
+    "skills": [
+      "shenhu",
+      "fusion_shengong",
+      "olqisi",
+      "pytianjiang",
+      "fusion_zhuren",
+      "fusion_bianshui"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "神工",
+      null,
+      null,
+      "铸刃",
+      "辨水"
+    ],
+    "package": "融包",
+    "details": "来源于十周年武将蒲元与OL蒲元，将其技能进行融合和修改，并加入新技能【辨水】。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】铸造"
+  },
+  {
+    "EnglishName": "fusion_shen_jiangwei",
+    "ChineseName": "融神姜维",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "10",
+    "skills": [
+      "shenhu",
+      "jiufa",
+      "fusion_tianren",
+      "fusion_pingxiang",
+      "fusion_tiaoxin",
+      "olzhiji"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      "天任",
+      "平襄",
+      "挑衅",
+      null
+    ],
+    "package": "融包",
+    "details": "来源于神姜维与OL界姜维，将其技能进行融合和修改。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "re_boss_yingzhao",
+    "ChineseName": "界英招",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "25",
+    "skills": [
+      "shenhu",
+      "re_boss_yaoshou",
+      "boss_fengdong",
+      "boss_xunyou",
+      "boss_sipu"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "妖兽",
+      null,
+      null,
+      null
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于英招，将其技能修改为最新的〖妖兽〗，甚至都没有加上最新的巡游就已经足够强。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "re_boss_xiangliu",
+    "ChineseName": "界相柳",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "20",
+    "skills": [
+      "shenhu",
+      "re_boss_yaoshou",
+      "boss_duqu",
+      "boss_jiushou",
+      "re_boss_echou"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "妖兽",
+      null,
+      null,
+      "恶臭"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于新版相柳，将其技能修改为最新的〖妖兽〗〖恶臭〗。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】恶心"
+  },
+  {
+    "EnglishName": "fusion_lingtong",
+    "ChineseName": "融凌统",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "4",
+    "skills": [
+      "shenhu",
+      "fusion_xuanfeng",
+      "yongjin",
+      "fusion_yinshi"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "旋风",
+      null,
+      "阴始"
+    ],
+    "package": "融包",
+    "details": "来源于十周年界凌统，手杀界凌统，旧凌统，ol凌统。界凌统打开了十周年阴间的大门，增加技能〖阴始〗。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "fusion_liuzan",
+    "ChineseName": "融留赞",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "4",
+    "skills": [
+      "shenhu",
+      "jsrgbahu",
+      "kangyin",
+      "fenyin",
+      "refenyin",
+      "fusion_liji"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null,
+      null,
+      null,
+      "力激"
+    ],
+    "package": "融包",
+    "details": "来源于十周年留赞，手杀留赞，diy留赞，增强后的力激加上斗地主的跋扈技能，现在是真正的歌王。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】攻击，过牌"
+  },
+  {
+    "EnglishName": "math_xiahoujie",
+    "ChineseName": "数夏侯杰",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "8",
+    "skills": [
+      "shenhu",
+      "math_liedan",
+      "math_zhuangdan"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "裂胆",
+      "壮胆"
+    ],
+    "package": "数包",
+    "details": "来源于十周年夏侯杰，去掉了技能负面效果，增加了摸牌机会。人越多越强。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】攻击，过牌"
+  },
+  {
+    "EnglishName": "math_xushao",
+    "ChineseName": "数许邵",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "6",
+    "skills": [
+      "shenhu",
+      "math_pingjian"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "评荐"
+    ],
+    "package": "数包",
+    "details": "来源于十周年许邵，增加了技能发动的时机和次数，一个技能加〖神护〗照样杀七阴。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "math_zhangchangpu",
+    "ChineseName": "数张菖蒲",
+    "gender": "female",
+    "nationality": "wei",
+    "hp": "6",
+    "skills": [
+      "shenhu",
+      "math_yanjiao",
+      "math_xingshen"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "严教",
+      "省身"
+    ],
+    "package": "数包",
+    "details": "终于可以在小学数学中玩三国杀了！来源于ol张菖蒲，修改了〖严教〗和〖省身〗，不用再担心愚蠢的队友不会小学数学了！现在你可以自己计算〖严教〗。设计思路：〖严教〗改为了转换技，体现了教学中老师示范与学生练习的过程，且数字逐渐增大，体现难度由浅入深。难度最大时学生把老师教的全都还给老师（不是）。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】数学+卖血"
+  },
+  {
+    "EnglishName": "fusion_zhuanlundizang",
+    "ChineseName": "转轮地藏",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "8",
+    "skills": [
+      "boss_modao",
+      "fusion_lunhui",
+      "boss_wangsheng",
+      "boss_zlfanshi",
+      "boss_bufo",
+      "fusion_wuliang",
+      "boss_dayuan",
+      "boss_diting"
+    ],
+    "ChineseSkills": [
+      null,
+      "轮回",
+      null,
+      null,
+      null,
+      "无量",
+      null,
+      null
+    ],
+    "package": "融包",
+    "details": "来源于转轮王和地藏王，面对七阴，需要两大boss强强联手才有一线希望。修改了技能〖轮回〗和〖无量〗。〖无量〗既可以指无限制无止境，也可以指佛教中的无量寿佛，因此增加了带领全体增加体力上限和体力的设定。",
+    "strength": "【强度】★★★",
+    "benefit": " 【亮点】综合+回忆"
+  },
+  {
+    "EnglishName": "fusion_shen_xunyu",
+    "ChineseName": "融神荀彧",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "3",
+    "skills": [
+      "fusion_quhu",
+      "fusion_jieming_all",
+      "fusion_tianzuo",
+      "fusion_lingce",
+      "dinghan",
+      "fusion_liuxiang"
+    ],
+    "ChineseSkills": [
+      "驱虎",
+      "节命",
+      "天佐",
+      "灵策",
+      null,
+      "留香"
+    ],
+    "package": "融包",
+    "details": "来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的〖驱虎〗历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对〖驱虎〗的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。〖天佐〗〖灵策〗均为纯增强，加强进攻和防御能力。〖节命〗技能则是来自于手杀界节命和ol界节命，还加上了一个控制更强的节命效果。〖留香〗技能直接源于荀令留香的典故，技能内容也非常贴合。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "fusion_panshu",
+    "ChineseName": "融潘淑",
+    "gender": "female",
+    "nationality": "wu",
+    "hp": "3",
+    "skills": [
+      "shenhu",
+      "fusion_weiyi",
+      "jinzhi",
+      "zhiren",
+      "fusion_yaner"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null,
+      null,
+      null
+    ],
+    "details": "来源于ol潘淑和十周年潘淑。〖威仪〗改为每轮每名角色限一次，〖燕尔〗改为出牌阶段自己没牌也可发动。",
+    "strength": "【强度】★★★",
+    "benefit": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "re_boss_dongzhuo",
+    "ChineseName": "界乱世魔王",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "20",
+    "skills": [
+      "shenhu",
+      "re_boss_qiangzheng",
+      "boss_baolin",
+      "oljiuchi",
+      "roulin",
+      "re_boss_hengzheng"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "强征",
+      null,
+      null,
+      null,
+      "横征"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于挑战模式boss乱世魔王，加上技能〖神护〗。〖强征〗从手牌改为牌，历史上董卓横征暴敛最终为吕布所杀，因此增加技能〖横征〗，通过缩短自己寿命（体力上限）来发动〖强征〗。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "re_boss_huangyueying",
+    "gender": "female",
+    "nationality": "qun",
+    "hp": "4",
+    "skills": [
+      "shenhu",
+      "boss_gongshen",
+      "boss_jizhi",
+      "qicai",
+      "boss_guiyin"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  {
+    "EnglishName": "fusion_shen_zhangfei",
+    "ChineseName": "融神张飞",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "6",
+    "skills": [
+      "shenhu",
+      "fusion_shencai",
+      "fusion_xunshi",
+      "olpaoxiao"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "神裁",
+      "巡使",
+      null
+    ],
+    "package": "融包",
+    "details": "来源于十周年神张飞和ol界张飞，加上技能〖神护〗。〖神裁〗取消了发动次数上限，且标记可以叠加。",
+    "strength": "【强度】★★★",
+    "benefit": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "fusion_tengfanglan",
+    "gender": "female",
+    "nationality": "wu",
+    "hp": "4",
+    "skills": [
+      "shenhu",
+      "fusion_luochong_all",
+      "dcaichen"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null
+    ]
+  },
+  {
+    "EnglishName": "math_tengfanglan",
+    "gender": "female",
+    "nationality": "wu",
+    "hp": "4",
+    "skills": [
+      "shenhu",
+      "fusion_luochong_all",
+      "dcaichen"
+    ],
+    "ChineseSkills": [
+      "神护",
+      null,
+      null
+    ]
+  },
+  {
+    "EnglishName": "math_beimihu",
+    "ChineseName": "数卑弥呼",
+    "gender": "female",
+    "nationality": "qun",
+    "hp": "3",
+    "skills": [
+      "shenhu",
+      "math_zongkui",
+      "math_guju",
+      "math_baijia",
+      "math_bmcanshi"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "纵傀",
+      "骨疽",
+      "拜假",
+      "蚕食"
+    ],
+    "package": "数包",
+    "details": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒的同时修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】防御，过牌"
+  },
+  {
+    "EnglishName": "re_boss_lvbu",
+    "ChineseName": "界虎牢关吕布",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "6",
+    "skills": [
+      "re_boss_jingjia",
+      "boss_aozhan",
+      "mashu",
+      "wushuang",
+      "xiuluo",
+      "shenwei",
+      "shenji",
+      "shenqu",
+      "jiwu"
+    ],
+    "ChineseSkills": [
+      "精甲",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于挑战模式boss最强神话，直接获得虎牢关最终两种形态boss的所有技能，〖精甲〗进行了略微强化。七阴关一人镇守，足矣！",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】攻击，过牌"
+  },
+  {
+    "EnglishName": "fusion_yuantanyuanxiyuanshang",
+    "ChineseName": "融三袁",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "6",
+    "skills": [
+      "shenhu",
+      "fusion_neifa"
+    ],
+    "ChineseSkills": [
+      "神护",
+      "内伐"
+    ],
+    "package": "融包",
+    "details": "来源于十周年袁谭袁熙袁尚和ol袁谭袁尚，加上〖神护〗的同时对〖内伐〗进行了较大规模改动，不仅改为三类牌来体现出三兄弟的争夺，同时也加强了〖内伐〗效果。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】控制，过牌"
+  },
+  {
+    "EnglishName": "re_boss_luzhi",
+    "ChineseName": "山河图鲁芝",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "drlt_qianjie",
+      "qingzhong",
+      "weijing",
+      "re_boss_jingti",
+      "zhichi",
+      "aocai",
+      "boss_baiyi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "警惕",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章boss鲁芝，没有任何改动，七阴连防御都打不穿。",
+    "strength": "【强度】★★★★★",
+    "benefit": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "re_boss_xusheng",
+    "ChineseName": "江东铁壁",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "xinpojun",
+      "feiyang",
+      "re_boss_shouyi",
+      "oljiuchi",
+      "jiushi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "兽裔",
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章boss江东铁壁，没有任何改动，这就是真正的大宝吗？",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "re_boss_huangzhong",
+    "ChineseName": "羽林统帅",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "xinliegong",
+      "xinpojun",
+      "re_boss_dungong",
+      "wangong",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "盾弓",
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章关内羽林统帅，没有任何改动，这就是老宝吗？",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "re_boss_xiahouba",
+    "ChineseName": "山河图夏侯霸",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_qixiang",
+      "baobian",
+      "zhongyun",
+      "jieyuan",
+      "buqu",
+      "boss_xiaoshou",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章boss夏侯霸，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "benefit": " 【亮点】卖血"
+  }
+]
