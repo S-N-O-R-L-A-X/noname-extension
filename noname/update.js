@@ -1,5 +1,16 @@
 import fs from "fs/promises";
 
+function getNowFormatDate() {
+	let date = new Date(),
+		year = date.getFullYear(), //获取完整的年份(4位)
+		month = date.getMonth() + 1, //获取当前月份(0-11,0代表1月)
+		strDate = date.getDate() // 获取当前日(1-31)
+	if (month < 10) month = `0${month}` // 如果月份是个位数，在前面补0
+	if (strDate < 10) strDate = `0${strDate}` // 如果日是个位数，在前面补0
+
+	return `${year}-${month}-${strDate}`
+}
+
 const Eng2Chinese = {};
 const character2intro = {};
 const character2detail = [];
@@ -43,20 +54,20 @@ fs.readFile('../evil-battle/extension.js', 'utf8').then(data => {
 		ch.ChineseName = Eng2Chinese[info[1]];
 		ch.gender = info[2];
 		ch.nationality = info[3];
-		if(info[4][0]==="\""){
-			ch.hp = info[4].substring(1,info[4].length-1);
+		if (info[4][0] === "\"") {
+			ch.hp = info[4].substring(1, info[4].length - 1);
 		}
 		else {
 			ch.hp = info[4];
 		}
 		ch.skills = info[5].split(/"/).filter(x => x !== "" && x !== ", ");
-		ch.ChineseSkills=[];
+		ch.ChineseSkills = [];
 
-		ch.skills.forEach((skill)=>{
+		ch.skills.forEach((skill) => {
 			ch.ChineseSkills.push(Eng2Chinese[skill]);
 			// if translation exists, this is a designed skill
-			if(Eng2Chinese[skill]){
-				skill2detail[skill]={EnglishName:skill,ChineseName:Eng2Chinese[skill],info:Eng2Chinese[`${skill}_info`]};
+			if (Eng2Chinese[skill]) {
+				skill2detail[skill] = { EnglishName: skill, ChineseName: Eng2Chinese[skill], info: Eng2Chinese[`${skill}_info`] };
 			}
 		})
 		ch.package = Eng2Chinese[character2package[info[1]]];
@@ -68,8 +79,29 @@ fs.readFile('../evil-battle/extension.js', 'utf8').then(data => {
 		}
 		character2detail.push(ch);
 	}
+
 	fs.writeFile("./src/Views/Characters/characters.json", JSON.stringify(character2detail, null, 2));
-	fs.writeFile("./src/Views/Skills/skills.json", JSON.stringify(skill2detail, null, 2))
+	fs.writeFile("./src/Views/Skills/skills.json", JSON.stringify(skill2detail, null, 2));
+
+	// get update log
+	const updateVersion = /<div class=".update">扩展版本：([\s\S]*?)<font size="4px">/.exec(data);
+	const updateContent = /<div class=".update">扩展版本：[\s\S]*?扩展版本/m.exec(data)[0];
+	const rg3 = /[\s\S]*?<\/span>：<br>([\s\S]*?)<br>'?/g;
+	const updateObj = {
+		"time": getNowFormatDate(),
+		"version": Number(updateVersion[1]),
+		"content": []
+	}
+
+	while ((info = rg3.exec(updateContent)) !== null) {
+		updateObj.content.push(info[1]);
+	}
+
+	fs.readFile("./src/Views/UpdateLog/update.json").then((buffer) => {
+		const log = JSON.parse(buffer);
+		log.update.push(updateObj);
+		fs.writeFile("./test.json", JSON.stringify(log, null, 2));
+	})
 
 }).catch(error => {
 	console.error(error);
