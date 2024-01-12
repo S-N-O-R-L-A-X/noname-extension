@@ -20,19 +20,23 @@ const skill2detail = {};
 
 // read from extension
 fs.readFile('../evil-battle/extension.js', 'utf8').then(data => {
+	let info;
+	
+	// get translation
 	const translation = /translation[\s\S]* translation end/m.exec(data)[0];
 	const rg = /"(.*)": "(.*)"/g;
-	let info;
 	while ((info = rg.exec(translation)) !== null) {
 		Eng2Chinese[info[1]] = info[2];
 	}
 
+	// get characters' introduction
 	const characterIntro = /characterIntro:[\s\S]*?\},/m.exec(data)[0];
 	while ((info = rg.exec(characterIntro)) !== null) {
 		const [intro, strength, benefit] = info[2].split("<br>");
 		character2intro[info[1]] = { intro, strength, benefit };
 	}
 
+	// get the relationship between character and package
 	const characterPackage = /against7devil:[\s\S]*?\},/m.exec(data)[0];
 	const rg1 = /([\s\S]*?): \[([\s\S]*?)\][\s\S]*?/g;
 	while ((info = rg1.exec(characterPackage)) !== null) {
@@ -46,6 +50,7 @@ fs.readFile('../evil-battle/extension.js', 'utf8').then(data => {
 		arr.forEach(x => character2package[x] = info[1]);
 	}
 
+	// get character detail
 	const characterDetail = /character:[\s\S]*\}[\s\S]*characterSort/m.exec(data)[0];
 	const rg2 = /"(.*)": \["(.*?)", "(.*?)", (.*?), \[(.*?)\].*\]/g;
 	while ((info = rg2.exec(characterDetail)) !== null) {
@@ -100,7 +105,7 @@ fs.readFile('../evil-battle/extension.js', 'utf8').then(data => {
 	fs.readFile("./src/Views/UpdateLog/update.json").then((buffer) => {
 		const log = JSON.parse(buffer);
 		log.update.push(updateObj);
-		fs.writeFile("./test.json", JSON.stringify(log, null, 2));
+		fs.writeFile("./src/Views/UpdateLog/update.json", JSON.stringify(log, null, 2));
 	})
 
 }).catch(error => {
