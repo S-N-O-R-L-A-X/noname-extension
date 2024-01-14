@@ -9,7 +9,7 @@ import { useCallback, useEffect, useState } from "react";
 
 export default function ShowAllSKills() {
   const allSkills: any[] = [];
-  for (const [key, val] of Object.entries(skills)) {
+  for (const [_, val] of Object.entries(skills)) {
     allSkills.push({ translation: val.ChineseName, info: val.info });
   }
 
@@ -17,7 +17,7 @@ export default function ShowAllSKills() {
 
   let { state } = useLocation();
 
-  const getSearchResults = useCallback((res: any[]) => {
+  const getSearchResults = useCallback(() => {
     
   }, [])
 
