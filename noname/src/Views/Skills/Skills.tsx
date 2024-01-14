@@ -9,30 +9,20 @@ import { useCallback, useEffect, useState } from "react";
 
 export default function ShowAllSKills() {
   const allSkills: any[] = [];
-  skills.details.forEach(({ name }) => {
-    allSkills.push(name);
-  })
+  for (const [key, val] of Object.entries(skills)) {
+    allSkills.push({ translation: val.ChineseName, info: val.info });
+  }
 
   const [showSkills, setShowSkills] = useState<any[]>([]);
 
   let { state } = useLocation();
 
   const getSearchResults = useCallback((res: any[]) => {
-    if (res) {
-      const ret: any[] = [];
-      res.forEach((skill) => {
-        skills.details.forEach(({ name, translation, info }) => {
-          if (skill === name) {
-            ret.push({ translation, info });
-          }
-        })
-      })
-      setShowSkills(ret);
-    }
+    
   }, [])
 
   useEffect(() => {
-    setShowSkills(skills.details);
+    setShowSkills(allSkills);
   }, []);
 
   const columns = [
