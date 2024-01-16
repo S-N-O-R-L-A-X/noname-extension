@@ -32,8 +32,8 @@ fs.readFile('../evil-battle/extension.js', 'utf8').then(data => {
 	// get characters' introduction
 	const characterIntro = /characterIntro:[\s\S]*?\},/m.exec(data)[0];
 	while ((info = rg.exec(characterIntro)) !== null) {
-		const [intro, strength, benefit] = info[2].split("<br>");
-		character2intro[info[1]] = { intro, strength, benefit };
+		const [intro, strength, highlight] = info[2].split("<br>");
+		character2intro[info[1]] = { intro, strength, highlight };
 	}
 
 	// get the relationship between character and package
@@ -77,10 +77,10 @@ fs.readFile('../evil-battle/extension.js', 'utf8').then(data => {
 		})
 		ch.package = Eng2Chinese[character2package[info[1]]];
 		if (character2intro[info[1]]) {
-			const { intro, strength, benefit } = character2intro[info[1]];
+			const { intro, strength, highlight } = character2intro[info[1]];
 			ch.details = intro;
 			ch.strength = strength;
-			ch.benefit = benefit;
+			ch.highlight = highlight;
 		}
 		character2detail.push(ch);
 	}
