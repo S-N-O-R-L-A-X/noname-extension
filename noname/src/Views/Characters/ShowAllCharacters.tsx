@@ -10,7 +10,7 @@ export default function ShowAllCharacters() {
     alert("此部分还没有完成！")
   }
 
-  const columns = [
+  const columns: any[] = [
     {
       title: '武将名',
       dataIndex: 'ChineseName',
@@ -131,12 +131,21 @@ export default function ShowAllCharacters() {
     {
       title: "强度",
       dataIndex: "strength",
-      key: "strength"
+      key: "strength",
+      sorter: (a: any, b: any) => (a.strength?.length || 0) > (b.strength?.length || 0) ? 1 : -1,
+      render: (strength: string) => (
+        <>
+          {strength && strength.substring(5)}
+        </>)
     },
     {
       title: "亮点",
       dataIndex: "highlight",
       key: "highlight",
+      render: (highlight: string) => (
+        <>
+          {highlight && highlight.substring(5)}
+        </>)
     },
   ];
 
