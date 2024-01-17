@@ -133,6 +133,11 @@ export default function ShowAllCharacters() {
       dataIndex: "strength",
       key: "strength"
     },
+    {
+      title: "亮点",
+      dataIndex: "highlight",
+      key: "highlight",
+    },
   ];
 
   return (

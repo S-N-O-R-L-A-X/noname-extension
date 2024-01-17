@@ -18,7 +18,7 @@
     "package": "挑战boss加强包",
     "details": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。",
     "strength": " 【强度】★★★★ ",
-    "benefit": " 【亮点】综合，可玩性高"
+    "highlight": " 【亮点】综合，可玩性高"
   },
   {
     "EnglishName": "fusion_shen_sunce",
@@ -45,7 +45,7 @@
     "package": "融包",
     "details": "神孙策+孙策+挑战模式boss那个男人，小霸王就是那么飒。",
     "strength": " 【强度】★★★★★ ",
-    "benefit": " 【亮点】防御，过牌，激昂"
+    "highlight": " 【亮点】防御，过牌，激昂"
   },
   {
     "EnglishName": "succubus",
@@ -72,7 +72,7 @@
     "package": "挑战boss加强包",
     "details": "绝代妖姬+神貂蝉，够得上魅魔了吧。",
     "strength": "【强度】★★★★★ ",
-    "benefit": " 【亮点】防御，可玩性高"
+    "highlight": " 【亮点】防御，可玩性高"
   },
   {
     "EnglishName": "re_boss_huatuo",
@@ -99,7 +99,7 @@
     "package": "挑战boss加强包",
     "details": "来源于挑战模式boss药坛圣手，加上技能〖神护〗。",
     "strength": "【强度】★★★",
-    "benefit": " 【亮点】全场空城"
+    "highlight": " 【亮点】全场空城"
   },
   {
     "EnglishName": "re_boss_zhouyu",
@@ -126,7 +126,7 @@
     "package": "挑战boss加强包",
     "details": "来源于挑战模式boss赤壁火神，加上朱雀技能〖红莲〗，以及〖神护〗，真正的火神就此诞生。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】防御，稳定"
+    "highlight": " 【亮点】防御，稳定"
   },
   {
     "EnglishName": "math_caojinyu",
@@ -149,7 +149,7 @@
     "package": "数包",
     "details": "来源于曹金玉，无脑堆数字，还蛮好玩的。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】卖血，过牌"
+    "highlight": " 【亮点】卖血，过牌"
   },
   {
     "EnglishName": "norecover",
@@ -174,7 +174,7 @@
     "package": "融包",
     "details": "来源于泰山王〖苦酒〗〖服毒〗，相柳〖毒躯〗〖恶臭〗，赵高〖害忠〗，虽然毫无操作感，但是能看对面崩死还挺好玩的。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】无法回血"
+    "highlight": " 【亮点】无法回血"
   },
   {
     "EnglishName": "fusion_xuhuang",
@@ -199,7 +199,7 @@
     "package": "融包",
     "details": "来源于徐晃和谋徐晃，将〖断粮〗升级为〖饥荒〗。",
     "strength": "【强度】★",
-    "benefit": " 【亮点】谋弈"
+    "highlight": " 【亮点】谋弈"
   },
   {
     "EnglishName": "liuxingyaodi",
@@ -220,7 +220,7 @@
     "package": "挑战boss加强包",
     "details": "桃园结义是有关刘备的典故，因此将挑战模式boss魏武大帝的技能〖雄才〗换成〖仁君〗，加上自设计的〖仁德〗形成技能联动，和sp孙尚香的技能也有关系。",
     "strength": " 【强度】★★★★★ ",
-    "benefit": " 【亮点】综合，可玩性高"
+    "highlight": " 【亮点】综合，可玩性高"
   },
   {
     "EnglishName": "re_boss_zhenji",
@@ -247,7 +247,7 @@
     "package": "挑战boss加强包",
     "details": "来源于挑战模式boss洛水仙子，加上界甄姬的〖洛神〗以及〖神护〗。",
     "strength": " 【强度】★★★★ ",
-    "benefit": " 【亮点】爆发，控制"
+    "highlight": " 【亮点】爆发，控制"
   },
   {
     "EnglishName": "fusion_honglianpo",
@@ -272,7 +272,7 @@
     "package": "融包",
     "details": "来源于捉鬼boss孟婆，加上五官王的〖血池〗以及红鬼的〖地动〗。没错，就是经典的五官王+红鬼+孟婆，三个五阶也也胆寒。",
     "strength": " 【强度】★★ ",
-    "benefit": " 【亮点】恶心，回忆"
+    "highlight": " 【亮点】恶心，回忆"
   },
   {
     "EnglishName": "ex_diaochan",
@@ -293,7 +293,7 @@
     "package": "扩包",
     "details": "来源于【假装无敌】扩展包貂蝉。由于非常喜欢这个傀儡机制，将她加入扩包第一将。",
     "strength": " 【强度】★★★★ ",
-    "benefit": " 【亮点】机制"
+    "highlight": " 【亮点】机制"
   },
   {
     "EnglishName": "re_fusion_honglianpo",
@@ -318,7 +318,7 @@
     "package": "融包",
     "details": "来源于本包红脸婆。由于原版强度较低，完全打不过七阴。设计了增强版，单体爆破更加有效。",
     "strength": " 【强度】★★★ ",
-    "benefit": " 【亮点】恶心，回忆"
+    "highlight": " 【亮点】恶心，回忆"
   },
   {
     "EnglishName": "zhizunwudi",
@@ -339,7 +339,7 @@
     "package": "挑战boss加强包",
     "details": "吴国向来有玩装备的传统，因此将挑战模式boss魏武大帝的技能〖雄才〗换成〖吴业〗，加上自设计的〖制衡〗形成技能联动。",
     "strength": " 【强度】★★★★ ",
-    "benefit": " 【亮点】综合，可玩性高"
+    "highlight": " 【亮点】综合，可玩性高"
   },
   {
     "EnglishName": "luanshizhuhou",
@@ -360,7 +360,7 @@
     "package": "挑战boss加强包",
     "details": "群雄是乱世中最混乱的势力，因此将挑战模式boss魏武大帝的技能〖雄才〗换成〖混战〗，加上自设计的〖起兵〗形成技能联动。",
     "strength": " 【强度】★★★ ",
-    "benefit": " 【亮点】综合，可玩性高"
+    "highlight": " 【亮点】综合，可玩性高"
   },
   {
     "EnglishName": "yitongjindi",
@@ -381,7 +381,7 @@
     "package": "挑战boss加强包",
     "details": "晋国是乱世中隐藏最深的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【驭权】，加上自设计的【称病】形成技能联动。",
     "strength": " 【强度】★★★★ ",
-    "benefit": " 【亮点】综合，可玩性高"
+    "highlight": " 【亮点】综合，可玩性高"
   },
   {
     "EnglishName": "re_nianshou",
@@ -410,7 +410,7 @@
     "package": "挑战boss加强包",
     "details": "来源于挑战模式boss四大年兽，将其技能进行融合。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】综合"
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "barbarian_king",
@@ -445,7 +445,7 @@
     "package": "融包",
     "details": "将少数民族部落武将的技能进行融合。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】攻击"
+    "highlight": " 【亮点】攻击"
   },
   {
     "EnglishName": "ex_yingzheng",
@@ -474,7 +474,7 @@
     "package": "扩包",
     "details": "来源于【合纵抗秦】扩展包嬴政。作为一统六国的秦始皇，加入技能〖六合〗，并对其技能进行了修改。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】攻击，防御"
+    "highlight": " 【亮点】攻击，防御"
   },
   {
     "EnglishName": "ex_zhaoji",
@@ -497,7 +497,7 @@
     "package": "扩包",
     "details": "来源于【合纵抗秦】扩展包赵姬。对〖大期〗进行了修改。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】攻击"
+    "highlight": " 【亮点】攻击"
   },
   {
     "EnglishName": "ex_baiqi",
@@ -532,7 +532,7 @@
     "package": "扩包",
     "details": "来源于【合纵抗秦】扩展包白起。白起作为秦军统帅，加入秦军士兵的技能。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】攻击"
+    "highlight": " 【亮点】攻击"
   },
   {
     "EnglishName": "ex_zhangyi",
@@ -557,7 +557,7 @@
     "package": "扩包",
     "details": "来源于【合纵抗秦】扩展包张仪。对其技能进行了修改。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】防御"
+    "highlight": " 【亮点】防御"
   },
   {
     "EnglishName": "ex_shangyang",
@@ -582,7 +582,7 @@
     "package": "扩包",
     "details": "来源于【合纵抗秦】扩展包商鞅。商鞅变法建立连坐制，因此加入技能〖连坐〗并对其技能进行了修改。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】攻击，爆发"
+    "highlight": " 【亮点】攻击，爆发"
   },
   {
     "EnglishName": "ex_zhaogao",
@@ -611,7 +611,7 @@
     "package": "扩包",
     "details": "来源于【合纵抗秦】扩展包赵高。加入技能〖载棺〗并对其技能进行了修改。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】防御"
+    "highlight": " 【亮点】防御"
   },
   {
     "EnglishName": "ex_miyue",
@@ -636,7 +636,7 @@
     "package": "扩包",
     "details": "来源于【合纵抗秦】扩展包芈月。对其技能进行了修改。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】防御"
+    "highlight": " 【亮点】防御"
   },
   {
     "EnglishName": "ex_lvbuwei",
@@ -661,7 +661,7 @@
     "package": "扩包",
     "details": "来源于【合纵抗秦】扩展包吕不韦。对其技能进行了修改。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】过牌"
+    "highlight": " 【亮点】过牌"
   },
   {
     "EnglishName": "fusion_jiaxu",
@@ -688,7 +688,7 @@
     "package": "融包",
     "details": "来源于界贾诩和sp贾诩。对其技能进行了修改。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】爆发，防御"
+    "highlight": " 【亮点】爆发，防御"
   },
   {
     "EnglishName": "fusion_liru",
@@ -725,7 +725,7 @@
     "package": "融包",
     "details": "来源于手杀界李儒，老李儒，和李儒。李儒是董卓首席谋士，因此加入新技能〖助董〗。并且受董卓命令毒杀刘辩，因此加入新技能〖赐毒〗。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】攻击"
+    "highlight": " 【亮点】攻击"
   },
   {
     "EnglishName": "fusion_weiguojixie",
@@ -752,7 +752,7 @@
     "package": "融包",
     "details": "来源于剑阁模式魏国所有机械，将其技能进行融合。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】控制，攻击"
+    "highlight": " 【亮点】控制，攻击"
   },
   {
     "EnglishName": "fusion_shuguojixie",
@@ -783,7 +783,7 @@
     "package": "融包",
     "details": "来源于剑阁模式蜀国所有机械，将其技能进行融合，并对其部分技能进行了修改。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】攻击，防御"
+    "highlight": " 【亮点】攻击，防御"
   },
   {
     "EnglishName": "fusion_shuguoyinghun",
@@ -828,7 +828,7 @@
     "package": "融包",
     "details": "来源于剑阁模式蜀国所有英魂，将其技能进行融合，并对其部分技能进行了修改。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】综合"
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "fusion_shuguoyinghun2",
@@ -861,7 +861,7 @@
     "package": "融包",
     "details": "来源于剑阁模式蜀国英魂中的智囊型武将（其实就是蜀国英魂强度过高出个限制版），将其技能进行融合，并对其部分技能进行了修改。",
     "strength": "【强度】★★★",
-    "benefit": " 【亮点】综合"
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "fusion_weiguoyinghun",
@@ -894,7 +894,7 @@
     "package": "融包",
     "details": "来源于剑阁模式魏国所有英魂，将其技能进行融合。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】综合"
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "fusion_puyuan",
@@ -921,7 +921,7 @@
     "package": "融包",
     "details": "来源于十周年武将蒲元与OL蒲元，将其技能进行融合和修改，并加入新技能【辨水】。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】铸造"
+    "highlight": " 【亮点】铸造"
   },
   {
     "EnglishName": "fusion_shen_jiangwei",
@@ -948,7 +948,7 @@
     "package": "融包",
     "details": "来源于神姜维与OL界姜维，将其技能进行融合和修改。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】综合"
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "re_boss_yingzhao",
@@ -973,7 +973,7 @@
     "package": "挑战boss加强包",
     "details": "来源于英招，将其技能修改为最新的〖妖兽〗，甚至都没有加上最新的巡游就已经足够强。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】综合"
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "re_boss_xiangliu",
@@ -998,7 +998,7 @@
     "package": "挑战boss加强包",
     "details": "来源于新版相柳，将其技能修改为最新的〖妖兽〗〖恶臭〗。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】恶心"
+    "highlight": " 【亮点】恶心"
   },
   {
     "EnglishName": "fusion_lingtong",
@@ -1021,7 +1021,7 @@
     "package": "融包",
     "details": "来源于十周年界凌统，手杀界凌统，旧凌统，ol凌统。界凌统打开了十周年阴间的大门，增加技能〖阴始〗。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】攻击"
+    "highlight": " 【亮点】攻击"
   },
   {
     "EnglishName": "fusion_liuzan",
@@ -1048,7 +1048,7 @@
     "package": "融包",
     "details": "来源于十周年留赞，手杀留赞，diy留赞，增强后的力激加上斗地主的跋扈技能，现在是真正的歌王。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】攻击，过牌"
+    "highlight": " 【亮点】攻击，过牌"
   },
   {
     "EnglishName": "math_xiahoujie",
@@ -1069,7 +1069,7 @@
     "package": "数包",
     "details": "来源于十周年夏侯杰，去掉了技能负面效果，增加了摸牌机会。人越多越强。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】攻击，过牌"
+    "highlight": " 【亮点】攻击，过牌"
   },
   {
     "EnglishName": "math_xushao",
@@ -1088,7 +1088,7 @@
     "package": "数包",
     "details": "来源于十周年许邵，增加了技能发动的时机和次数，一个技能加〖神护〗照样杀七阴。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】综合"
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "math_zhangchangpu",
@@ -1109,7 +1109,7 @@
     "package": "数包",
     "details": "终于可以在小学数学中玩三国杀了！来源于ol张菖蒲，修改了〖严教〗和〖省身〗，不用再担心愚蠢的队友不会小学数学了！现在你可以自己计算〖严教〗。设计思路：〖严教〗改为了转换技，体现了教学中老师示范与学生练习的过程，且数字逐渐增大，体现难度由浅入深。难度最大时学生把老师教的全都还给老师（不是）。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】数学+卖血"
+    "highlight": " 【亮点】数学+卖血"
   },
   {
     "EnglishName": "fusion_zhuanlundizang",
@@ -1140,7 +1140,7 @@
     "package": "融包",
     "details": "来源于转轮王和地藏王，面对七阴，需要两大boss强强联手才有一线希望。修改了技能〖轮回〗和〖无量〗。〖无量〗既可以指无限制无止境，也可以指佛教中的无量寿佛，因此增加了带领全体增加体力上限和体力的设定。",
     "strength": "【强度】★★★",
-    "benefit": " 【亮点】综合+回忆"
+    "highlight": " 【亮点】综合+回忆"
   },
   {
     "EnglishName": "fusion_shen_xunyu",
@@ -1167,7 +1167,7 @@
     "package": "融包",
     "details": "来源于手杀神荀彧，ol界荀彧和手杀界荀彧。荀彧的〖驱虎〗历史上是针对袁术、刘备、吕布三者的计谋，且当时并没有三者都比曹军强的说法。因此对〖驱虎〗的限制进行了删除，同时对拼点成功后的伤害范围进行了增加。〖天佐〗〖灵策〗均为纯增强，加强进攻和防御能力。〖节命〗技能则是来自于手杀界节命和ol界节命，还加上了一个控制更强的节命效果。〖留香〗技能直接源于荀令留香的典故，技能内容也非常贴合。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】综合"
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "fusion_panshu",
@@ -1191,7 +1191,7 @@
     ],
     "details": "来源于ol潘淑和十周年潘淑。〖威仪〗改为每轮每名角色限一次，〖燕尔〗改为出牌阶段自己没牌也可发动。",
     "strength": "【强度】★★★",
-    "benefit": " 【亮点】综合"
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "re_boss_dongzhuo",
@@ -1218,7 +1218,7 @@
     "package": "挑战boss加强包",
     "details": "来源于挑战模式boss乱世魔王，加上技能〖神护〗。〖强征〗从手牌改为牌，历史上董卓横征暴敛最终为吕布所杀，因此增加技能〖横征〗，通过缩短自己寿命（体力上限）来发动〖强征〗。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】攻击"
+    "highlight": " 【亮点】攻击"
   },
   {
     "EnglishName": "re_boss_huangyueying",
@@ -1261,7 +1261,7 @@
     "package": "融包",
     "details": "来源于十周年神张飞和ol界张飞，加上技能〖神护〗。〖神裁〗取消了发动次数上限，且标记可以叠加。",
     "strength": "【强度】★★★",
-    "benefit": " 【亮点】攻击"
+    "highlight": " 【亮点】攻击"
   },
   {
     "EnglishName": "fusion_tengfanglan",
@@ -1318,7 +1318,7 @@
     "package": "数包",
     "details": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒的同时修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】防御，过牌"
+    "highlight": " 【亮点】防御，过牌"
   },
   {
     "EnglishName": "re_boss_lvbu",
@@ -1351,7 +1351,7 @@
     "package": "挑战boss加强包",
     "details": "来源于挑战模式boss最强神话，直接获得虎牢关最终两种形态boss的所有技能，〖精甲〗进行了略微强化。七阴关一人镇守，足矣！",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】攻击，过牌"
+    "highlight": " 【亮点】攻击，过牌"
   },
   {
     "EnglishName": "fusion_yuantanyuanxiyuanshang",
@@ -1370,7 +1370,7 @@
     "package": "融包",
     "details": "来源于十周年袁谭袁熙袁尚和ol袁谭袁尚，加上〖神护〗的同时对〖内伐〗进行了较大规模改动，不仅改为三类牌来体现出三兄弟的争夺，同时也加强了〖内伐〗效果。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】控制，过牌"
+    "highlight": " 【亮点】控制，过牌"
   },
   {
     "EnglishName": "re_boss_luzhi",
@@ -1403,7 +1403,7 @@
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章boss鲁芝，没有任何改动，七阴连防御都打不穿。",
     "strength": "【强度】★★★★★",
-    "benefit": " 【亮点】综合"
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "re_boss_xusheng",
@@ -1432,7 +1432,7 @@
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章boss江东铁壁，没有任何改动，这就是真正的大宝吗？",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】攻击"
+    "highlight": " 【亮点】攻击"
   },
   {
     "EnglishName": "re_boss_huangzhong",
@@ -1459,7 +1459,7 @@
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内羽林统帅，没有任何改动，这就是老宝吗？",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】攻击"
+    "highlight": " 【亮点】攻击"
   },
   {
     "EnglishName": "re_boss_xiahouba",
@@ -1490,6 +1490,6 @@
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章boss夏侯霸，没有任何改动。",
     "strength": "【强度】★★★★",
-    "benefit": " 【亮点】卖血"
+    "highlight": " 【亮点】卖血"
   }
 ]
