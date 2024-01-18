@@ -10,12 +10,14 @@ export default function ShowAllCharacters() {
     alert("此部分还没有完成！")
   }
 
+  const existedCharacters = characters.filter((character) => character.ChineseName !== "");
+
   const columns: any[] = [
     {
       title: '武将名',
       dataIndex: 'ChineseName',
       key: 'ChineseName',
-      sorter: (a: any, b: any) => a.name < b.name ? 1 : -1,
+      sorter: (a: any, b: any) => a.ChineseName < b.ChineseName ? 1 : -1,
       render: (name: string) => (<><Space>{name}<ProfileOutlined onClick={handleProfileClick} /></Space></>)
     },
     {
@@ -116,7 +118,7 @@ export default function ShowAllCharacters() {
       title: "血量",
       dataIndex: "hp",
       key: "hp",
-      sorter: (a: any, b: any) => Number(a) - Number(b),
+      sorter: (a: any, b: any) => Number(a.hp) - Number(b.hp)
     },
     {
       title: "技能",
@@ -156,7 +158,7 @@ export default function ShowAllCharacters() {
   return (
     <>
       <Search searchArea={characters} />
-      <Table dataSource={characters} columns={columns} pagination={{ pageSize: 10 }}></Table>
+      <Table dataSource={existedCharacters} columns={columns} pagination={{ pageSize: 10 }}></Table>
     </>
   )
 }
