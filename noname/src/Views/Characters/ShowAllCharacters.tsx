@@ -117,7 +117,6 @@ export default function ShowAllCharacters() {
       dataIndex: "hp",
       key: "hp",
       sorter: (a: any, b: any) => Number(a) - Number(b),
-
     },
     {
       title: "技能",
@@ -127,6 +126,11 @@ export default function ShowAllCharacters() {
         <>
           {skills.map((val, idx) => <Link to="/skills" state={{ name: val }}><Tag color={skillColors[idx % 11]}>{val}</Tag></Link>)}
         </>)
+    },
+    {
+      title: "武将设计",
+      dataIndex: "details",
+      key: "details",
     },
     {
       title: "强度",
