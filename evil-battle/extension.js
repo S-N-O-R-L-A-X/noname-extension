@@ -235,6 +235,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_xusheng": ["male", "wu", "6/6/4", ["re_boss_lianyu", "xinpojun", "feiyang", "re_boss_shouyi", "oljiuchi", "jiushi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_huangzhong": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinliegong", "xinpojun", "re_boss_dungong", "wangong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xiahouba": ["male", "shu", "6/6/4", ["re_boss_lianyu", "boss_qixiang", "baobian", "zhongyun", "jieyuan", "buqu", "boss_xiaoshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_kuailiangkuaiyue": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "nzry_jianxiang", "nzry_shenshi", "re_boss_moqu", "jugu", "re_boss_zhene", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -6690,6 +6691,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                       var type = get.type(cardx, player);
                       return type == banned_type;
                     });
+                    game.log(num);
                     player.storage.banned_cards = num;
                   }
                 },
@@ -7097,6 +7099,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_xusheng": "江东铁壁",
               "re_boss_huangzhong": "羽林统帅",
               "re_boss_xiahouba": "山河图夏侯霸",
+              "re_boss_kuailiangkuaiyue": "山河图蒯良蒯越",
 
               // skill
               "shenhu": "神护",
