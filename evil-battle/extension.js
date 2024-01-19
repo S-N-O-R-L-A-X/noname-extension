@@ -6949,7 +6949,43 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 content: () => {
                   trigger.num = Math.min(3, trigger.num);
                 }
-              }
+              },
+
+              // re_boss_kuailiangkuaiyue
+              "re_boss_moqu": {
+                group: 'shenqu2',
+                forced: true,
+                trigger: { global: 'phaseJieshuBegin' },
+                filter: function (event, player) {
+                  return player.countCards('h') <= player.maxHp;
+                },
+                content: function () {
+                  player.draw(2);
+                }
+              },
+
+              "re_boss_zhene": {
+                forced: true,
+                trigger: {
+                  player: "useCardToTargeted",
+                },
+                filter: function (event, player) {
+                  return event.card && (get.type(event.card) == 'trick' || get.type(event.card) == 'basic' && !['shan', 'tao', 'jiu', 'du'].contains(event.card.name)) && game.hasPlayer(function (current) {
+                    return current != player && current.countCards("h") <= player.countCards("h");
+                  });
+                },
+                content: function () {
+                  trigger.directHit.addArray(game.filterPlayer(function (current) {
+                    return current != player && current.countCards("h") <= player.countCards("h");
+                  }));
+                },
+                ai: {
+                  directHit_ai: true,
+                  skillTagFilter: function (player, tag, arg) {
+                    return arg.target.countCards("h") <= player.countCards("h");
+                  },
+                },
+              },
 
             },
 
