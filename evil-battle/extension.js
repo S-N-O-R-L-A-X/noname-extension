@@ -6953,7 +6953,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               // re_boss_kuailiangkuaiyue
               "re_boss_moqu": {
-                group: 'shenqu2',
+                group: 're_boss_moqu_damage',
                 forced: true,
                 trigger: { global: 'phaseJieshuBegin' },
                 filter: function (event, player) {
@@ -6961,6 +6961,25 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 content: function () {
                   player.draw(2);
+                },
+                subSkill: {
+                  "damage": {
+                    trigger: { global: 'damageEnd' },
+                    filter: function (event, player) {
+                      if (get.mode() == 'guozhan' && player.identity != 'unknown') {
+                        return player.identity == target.identity;
+                      }
+                      else if (get.is.versus()) {
+                        return player.side == target.side;
+                      }
+
+                      return player.countCards("he") > 0;
+
+                    },
+                    content: () => {
+                      player.chooseToDiscard("he", "请弃置一张牌。");
+                    }
+                  }
                 }
               },
 
@@ -6970,9 +6989,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   player: "useCardToTargeted",
                 },
                 filter: function (event, player) {
-                  return event.card && (get.type(event.card) == 'trick' || get.type(event.card) == 'basic' && !['shan', 'tao', 'jiu', 'du'].contains(event.card.name)) && game.hasPlayer(function (current) {
-                    return current != player && current.countCards("h") <= player.countCards("h");
-                  });
+                  return event.card && (get.type(event.card) == 'trick' || get.type(event.card) == 'basic' && !['shan', 'tao', 'jiu', 'du'].contains(event.card.name))
+                    && event.target.countCards("h") <= player.countCards("h");
                 },
                 content: function () {
                   trigger.directHit.addArray(game.filterPlayer(function (current) {
@@ -7465,6 +7483,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // re_boss_huangzhong
               "re_boss_dungong": "盾弓",
               "re_boss_dungong_info": "锁定技，防止对你造成的超过3点以上部分的伤害。",
+
+              // re_boss_kuailiangkuaiyue
+              "re_boss_moqu": "魔躯",
+              "re_boss_moqu_info": "锁定技，每名角色的结束阶段，若你的手牌数不大于体力值，你摸两张牌。当其他友方角色受到伤害后，你弃置一张牌。",
+              "re_boss_zhene": "镇恶",
+              "re_boss_zhene_info": "锁定技，当你于出牌阶段使用牌指向目标后，若其手牌数不大于你，则其无法响应的你的牌。",
 
               // unused
               "geju": "割据",
