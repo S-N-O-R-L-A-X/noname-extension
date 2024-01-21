@@ -6957,7 +6957,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 forced: true,
                 trigger: { global: 'phaseJieshuBegin' },
                 filter: function (event, player) {
-                  return player.countCards('h') <= player.maxHp;
+                  return player.countCards('h') <= player.hp;
                 },
                 content: function () {
                   player.draw(2);
@@ -6965,19 +6965,19 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 subSkill: {
                   "damage": {
                     trigger: { global: 'damageEnd' },
+                    forced: true,
                     filter: function (event, player) {
                       if (get.mode() == 'guozhan' && player.identity != 'unknown') {
-                        return player.identity == target.identity;
+                        return player.identity == target.identity && player.countCards("he") > 0;
                       }
                       else if (get.is.versus()) {
-                        return player.side == target.side;
+                        return player.side == target.side && player.countCards("he") > 0;
                       }
 
-                      return player.countCards("he") > 0;
-
+                      return false;
                     },
                     content: () => {
-                      player.chooseToDiscard("he", "请弃置一张牌。");
+                      player.chooseToDiscard("he", "发动〖魔躯〗，请弃置一张牌。");
                     }
                   }
                 }
@@ -6993,9 +6993,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     && event.target.countCards("h") <= player.countCards("h");
                 },
                 content: function () {
-                  trigger.directHit.addArray(game.filterPlayer(function (current) {
-                    return current != player && current.countCards("h") <= player.countCards("h");
-                  }));
+                  trigger.directHit.addArray([trigger.target]);
                 },
                 ai: {
                   directHit_ai: true,
