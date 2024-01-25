@@ -238,6 +238,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_kuailiangkuaiyue": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "nzry_jianxiang", "nzry_shenshi", "re_boss_moqu", "jugu", "re_boss_zhene", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_luxun": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_liannu", "qianxun", "lianying", "sijian", "tairan", "qice", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_litong": ["male", "wei", "6/6/4", ["re_boss_lianyu", "tuifeng", "olcuipo", "xinbenxi", "re_boss_xiongshou", "jiaozi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_ganning": ["male", "wu", "6/6/4", ["re_boss_lianyu", "jiexuan", "fenwei", "feiyang", "luoying", "zhenlve", "re_boss_xiongshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -7170,6 +7171,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_kuailiangkuaiyue": "山河图蒯良蒯越",
               "re_boss_luxun": "山河图陆逊",
               "re_boss_litong": "山河图李通",
+              "re_boss_ganning": "江表虎臣",
 
               // skill
               "shenhu": "神护",
