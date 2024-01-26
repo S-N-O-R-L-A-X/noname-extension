@@ -365,6 +365,61 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
 
+              "re_boss_xiongshou": {
+                group: ['re_boss_xiongshou_turn', 're_boss_xiongshou_damage', 're_boss_xiongshou_sha'],
+                subSkill: {
+                  damage: {
+                    trigger: { player: 'damageEnd' },
+                    filter: function (event, player) {
+                      return event.num > 1 && !player.hasSkill("re_boss_xiongshou_damage_used");
+                    },
+                    forced: true,
+                    content: function () {
+                      player.addTempSkill('re_boss_xiongshou_damage_used');
+                      if (player.canUse('sha', trigger.source, false)) {
+                        player.useCard({ name: 'sha', isCard: true }, trigger.source, false, 'noai');
+                      }
+                    }
+                  },
+                  damage_used: {
+                    mark: true,
+                    intro: {
+                      content: '本回合已发动'
+                    }
+                  },
+                  sha: {
+                    trigger: { source: 'damageBegin1' },
+                    forced: true,
+                    filter: function (event, player) {
+                      return event.notLink() && event.card && event.card.name == 'sha';
+                    },
+                    content: function () {
+                      trigger.num++;
+                    }
+                  },
+                  turn: {
+                    trigger: { player: 'turnOverBefore' },
+                    priority: 20,
+                    forced: true,
+                    filter: function (event, player) {
+                      return !player.isTurnedOver();
+                    },
+                    content: function () {
+                      trigger.cancel();
+                      game.log(player, '取消了翻面');
+                    },
+                  }
+                },
+                mod: {
+                  globalFrom: function (from, to, distance) {
+                    return distance - 1;
+                  }
+                },
+                ai: {
+                  noturn: true,
+                }
+              },
+
               "re_boss_liannu": {
                 forced: true,
                 filter: function (event, player) {
@@ -7020,6 +7075,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
 
+              
             },
 
             card: {
