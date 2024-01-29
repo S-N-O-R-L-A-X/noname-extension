@@ -238,7 +238,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_kuailiangkuaiyue": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "nzry_jianxiang", "nzry_shenshi", "re_boss_moqu", "jugu", "re_boss_zhene", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_luxun": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_liannu", "qianxun", "lianying", "sijian", "tairan", "qice", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_litong": ["male", "wei", "6/6/4", ["re_boss_lianyu", "tuifeng", "olcuipo", "xinbenxi", "re_boss_xiongshou", "jiaozi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_ganning": ["male", "wu", "6/6/4", ["re_boss_lianyu", "jiexuan", "fenwei", "feiyang", "luoying", "zhenlve", "re_boss_xiongshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_ganning": ["male", "wu", "6/6/4", ["re_boss_lianyu", "clanjiexuan", "fenwei", "feiyang", "luoying", "zhenlue", "re_boss_xiongshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_sunquan": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_changandajian", "re_zhiheng", "fenwei", "feiyang", "dangxian", "shenshi", "xiangle", "clanjiejian", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
@@ -434,6 +434,21 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   player.equip(game.createCard2('zhuge', 'diamond', 1));
                 }
               },
+              "re_boss_changandajian": {
+                forced: true,
+                filter: function (event, player) {
+                  return (event.name != 'phase' || game.phaseNumber == 0);
+                },
+                trigger: {
+                  global: 'phaseBefore',
+                  player: 'enterGame',
+                },
+                content: function () {
+                  player.equip(game.createCard2('changandajian_equip1', 'spade', 10));
+                  player.equip(game.createCard2('changandajian_equip2', 'spade', 10));
+                }
+              },
+
 
               "re_boss_baoli": {
                 trigger: { source: 'damageBegin1' },
