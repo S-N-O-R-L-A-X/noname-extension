@@ -232,14 +232,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_lvbu": ["male", "qun", 6, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
               "fusion_yuantanyuanxiyuanshang": ["male", "qun", 6, ["shenhu", "fusion_neifa"], ["zhu", "boss", "bossallowed"]],
               "re_boss_luzhi": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "qingzhong", "weijing", "re_boss_jingti", "zhichi", "aocai", "boss_baiyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_xusheng": ["male", "wu", "6/6/4", ["re_boss_lianyu", "xinpojun", "feiyang", "re_boss_shouyi", "oljiuchi", "jiushi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_xusheng": ["male", "wu", "6/6/4", ["re_boss_lianyu", "xinpojun", "latest_ol_feiyang", "re_boss_shouyi", "oljiuchi", "jiushi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_huangzhong": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinliegong", "xinpojun", "re_boss_dungong", "wangong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_xiahouba": ["male", "shu", "6/6/4", ["re_boss_lianyu", "boss_qixiang", "baobian", "zhongyun", "jieyuan", "buqu", "boss_xiaoshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_kuailiangkuaiyue": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "nzry_jianxiang", "nzry_shenshi", "re_boss_moqu", "jugu", "re_boss_zhene", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_luxun": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_liannu", "qianxun", "lianying", "sijian", "tairan", "qice", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_litong": ["male", "wei", "6/6/4", ["re_boss_lianyu", "tuifeng", "olcuipo", "xinbenxi", "re_boss_xiongshou", "jiaozi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_ganning": ["male", "wu", "6/6/4", ["re_boss_lianyu", "clanjiexuan", "fenwei", "feiyang", "luoying", "zhenlue", "re_boss_xiongshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_sunquan": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_changandajian", "re_zhiheng", "fenwei", "feiyang", "dangxian", "shenshi", "xiangle", "clanjiejian", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_ganning": ["male", "wu", "6/6/4", ["re_boss_lianyu", "clanjiexuan", "fenwei", "latest_ol_feiyang", "luoying", "zhenlue", "re_boss_xiongshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_sunquan": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_changandajian", "re_zhiheng", "fenwei", "latest_ol_feiyang", "dangxian", "shenshi", "xiangle", "clanjiejian", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -322,6 +322,33 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                     }
                   },
                 },
+              },
+
+              latest_ol_feiyang: {
+                trigger: { player: 'phaseJudgeBegin' },
+                charlotte: true,
+                direct: true,
+                filter: function (event, player) {
+                  return _status.mode != 'online' && _status.mode != 'binglin' && player == game.zhu && player.countCards('j') && player.countCards('he') > 1;
+                },
+                content: function () {
+                  "step 0"
+                  player.chooseToDiscard('h', 2, get.prompt('feiyang'), '弃置两张手牌，然后弃置判定区里的所有牌').set('logSkill', 'feiyang').set('ai', function (card) {
+                    if (_status.event.goon) return 6 - get.value(card);
+                    return 0;
+                  }).set('goon', player.hasCard(function (card) {
+                    return get.effect(player, {
+                      name: card.viewAs || card.name,
+                      cards: [card],
+                    }, player, player) < 0;
+                  }, 'j'));
+                  "step 1"
+                  if (result.bool) {
+                    player.discard(player.getCards('e',function(card){
+                      return lib.filter.cardDiscardable(card,target,'shuiyanqijunx');
+                    }))
+                  }
+                }
               },
 
               re_boss_lianyu: {
