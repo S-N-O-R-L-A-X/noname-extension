@@ -333,7 +333,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 content: function () {
                   "step 0"
-                  player.chooseToDiscard('h', 2, get.prompt('feiyang'), '弃置两张手牌，然后弃置判定区里的所有牌').set('logSkill', 'feiyang').set('ai', function (card) {
+                  player.chooseToDiscard('he', 2, get.prompt('feiyang'), '弃置两张牌，然后弃置判定区里的所有牌').set('logSkill', 'feiyang').set('ai', function (card) {
                     if (_status.event.goon) return 6 - get.value(card);
                     return 0;
                   }).set('goon', player.hasCard(function (card) {
@@ -344,9 +344,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   }, 'j'));
                   "step 1"
                   if (result.bool) {
-                    player.discard(player.getCards('e',function(card){
-                      return lib.filter.cardDiscardable(card,target,'shuiyanqijunx');
-                    }))
+                    player.discard(player.getCards('j'))
                   }
                 }
               },
@@ -7276,6 +7274,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               // skill
               "shenhu": "神护",
               "shenhu_info": "锁定技，你不能成为延时类锦囊的目标。",
+
+              "latest_ol_feiyang": "飞扬 ",
+              "latest_ol_feiyang_info": "判定阶段开始时，若你的判定区有牌，则你可以弃置两张牌，然后弃置你判定区内所有牌。",
 
               // fusion_shen_sunce
               "repinghe": "冯河",
