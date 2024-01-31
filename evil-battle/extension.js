@@ -246,7 +246,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu",
                   "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou",
                   "re_boss_yingzhao", "re_boss_xiangliu", "re_boss_dongzhuo", "re_boss_lvbu", "re_boss_luzhi",
-                  "re_boss_xusheng", "re_boss_huangzhong", "re_boss_xiahouba"],
+                  "re_boss_xusheng", "re_boss_huangzhong", "re_boss_xiahouba", "re_boss_kuailiangkuaiyue",
+                  "re_boss_luxun", "re_boss_litong", "re_boss_ganning", "re_boss_sunquan"],
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
@@ -7275,8 +7276,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shenhu": "神护",
               "shenhu_info": "锁定技，你不能成为延时类锦囊的目标。",
 
-              "latest_ol_feiyang": "飞扬 ",
-              "latest_ol_feiyang_info": "判定阶段开始时，若你的判定区有牌，则你可以弃置两张牌，然后弃置你判定区内所有牌。",
+              "latest_ol_feiyang": "飞扬",
+              "latest_ol_feiyang_info": "你的判定阶段开始时，你可以弃置两张牌并弃置判定区里所有牌。",
+
+              "re_boss_xiongshou": "凶兽",
+              "re_boss_xiongshou_info": "锁定技，你使用【杀】造成的伤害+1。你与其他角色距离-1。你不能被翻面；每回合首次受到大于1点的伤害后，视为对伤害来源使用一张【杀】。",
 
               // fusion_shen_sunce
               "repinghe": "冯河",
