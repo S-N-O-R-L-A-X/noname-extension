@@ -7691,16 +7691,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：7.1<font size="4px">▶▶▶</font></div>`,
-        version: 7.1,
+        name: `<div class=".update">扩展版本：7.2<font size="4px">▶▶▶</font></div>`,
+        version: 7.2,
         clear: true,
         intro: "点击查看此版本的更新内容",
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图鲁芝、江东铁壁、羽林统帅、山河图夏侯霸。<br>' +
-              '<li><span style="color:#006400">说明二</span>：<br>修复〖吴业〗换装备时无法获得技能的问题。<br>' +
-              '<li><span style="color:#006400">说明三</span>：<br>修复一些描述问题。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图蒯良蒯越、山河图陆逊、山河图李通、江表虎臣、东吴大帝、山河图周瑜。<br>' +
+              '<li><span style="color:#006400">说明二</span>：<br>修复〖警惕〗会报错的问题。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
@@ -7709,7 +7708,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：7.1<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：7.2<font size="4px">▶▶▶</font></div>';
           };
         }
       },
@@ -7748,7 +7747,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
       author: "SNORLAX",
       diskURL: "",
       forumURL: "",
-      version: "7.1",
+      version: "7.2",
     },
     files: { "character": [], "card": [], "skill": [] }
   }
