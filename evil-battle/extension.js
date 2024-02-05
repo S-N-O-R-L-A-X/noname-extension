@@ -241,6 +241,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_ganning": ["male", "wu", "6/6/4", ["re_boss_lianyu", "clanjiexuan", "fenwei", "latest_ol_feiyang", "luoying", "zhenlue", "re_boss_xiongshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_sunquan": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_changandajian", "re_zhiheng", "fenwei", "latest_ol_feiyang", "dangxian", "shenshi", "xiangle", "clanjiejian", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_zhouyu": ["male", "wu", "5/5/4", ["re_boss_lianyu", "reyingzi", "refanjian", "luochong", "rekanpo", "fangzhu", "boss_jingmiao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_fuwan": ["male", "qun", "6/6/4", ["re_boss_lianyu", "re_boss_gudiandao", "moukui", "xinpojun", "zhuishe", "zhenlue", "oljiuchi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -7273,6 +7274,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_ganning": "江表虎臣",
               "re_boss_sunquan": "东吴大帝",
               "re_boss_zhouyu": "山河图周瑜",
+              "re_boss_fuwan": "山河图伏完",
 
               // skill
               "shenhu": "神护",
