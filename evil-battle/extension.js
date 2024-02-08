@@ -314,8 +314,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "fusion_yuantanyuanxiyuanshang": "来源于十周年袁谭袁熙袁尚和ol袁谭袁尚，加上〖神护〗的同时对〖内伐〗进行了较大规模改动，不仅改为三类牌来体现出三兄弟的争夺，同时也加强了〖内伐〗效果。<br>【强度】★★★★<br> 【亮点】控制，过牌",
               "re_boss_luzhi": "来源于山河图第一章boss鲁芝，没有任何改动，七阴连防御都打不穿。<br>【强度】★★★★★<br> 【亮点】综合",
               "re_boss_xusheng": "来源于山河图第一章boss江东铁壁，没有任何改动，这就是真正的大宝吗？<br>【强度】★★★★<br> 【亮点】攻击",
-              "re_boss_huangzhong": "来源于山河图第一章关内羽林统帅，没有任何改动，这就是老宝吗？<br>【强度】★★★★<br> 【亮点】攻击",
+              "re_boss_huangzhong": "来源于山河图第一章关内羽林统帅，没有任何改动，这就是老宝吗？<br>【强度】★★★★★<br> 【亮点】攻击",
               "re_boss_xiahouba": "来源于山河图第一章boss夏侯霸，没有任何改动。<br>【强度】★★★★<br> 【亮点】卖血",
+              "re_boss_kuailiangkuaiyue": "来源于山河图第一章boss蒯良蒯越，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+              "re_boss_luxun": "来源于山河图第一章关内陆逊，没有任何改动，草原的不死青蛇，就是这种强度吗？<br>【强度】★★★★<br> 【亮点】攻击",
+              "re_boss_litong": "来源于山河图第一章关内李通，没有任何改动，这家伙居然需要推锋？<br>【强度】★★★★<br> 【亮点】攻击",
+              "re_boss_ganning": "来源于山河图第一章boss江表虎臣，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+              "re_boss_sunquan": "来源于山河图第一章boss东吴大帝，没有任何改动，不需要会玩，照样杀七阴。<br>【强度】★★★★<br> 【亮点】综合",
+              "re_boss_zhouyu": "来源于山河图第一章关内周瑜，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击，控制",
+              "re_boss_fuwan": "来源于山河图第一章关内伏完，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+              "re_boss_huaxiong": "来源于山河图第一章关内华雄，没有任何改动。<br>【强度】★★★<br> 【亮点】攻击",
             },
             skill: {
               shenhu: {
@@ -7702,7 +7710,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图蒯良蒯越、山河图陆逊、山河图李通、江表虎臣、东吴大帝、山河图周瑜。<br>' +
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图蒯良蒯越、山河图陆逊、山河图李通、江表虎臣、东吴大帝、山河图周瑜、山河图付完、山河图华雄。<br>' +
               '<li><span style="color:#006400">说明二</span>：<br>修复〖警惕〗会报错的问题。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
