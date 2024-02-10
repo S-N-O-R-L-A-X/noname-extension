@@ -241,7 +241,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_ganning": ["male", "wu", "6/6/4", ["re_boss_lianyu", "clanjiexuan", "fenwei", "latest_ol_feiyang", "luoying", "zhenlue", "re_boss_xiongshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_sunquan": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_changandajian", "re_zhiheng", "fenwei", "latest_ol_feiyang", "dangxian", "shenshi", "xiangle", "clanjiejian", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_zhouyu": ["male", "wu", "5/5/4", ["re_boss_lianyu", "reyingzi", "refanjian", "luochong", "rekanpo", "fangzhu", "boss_jingmiao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_fuwan": ["male", "qun", "6/6/4", ["re_boss_lianyu", "re_boss_gudingdao", "moukui", "xinpojun", "zhuishe", "zhenlue", "oljiuchi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "re_boss_fuwan": ["male", "qun", "6/6/4", ["re_boss_lianyu", "re_boss_gudingdao", "moukui", "xinpojun", "re_boss_zhuishe", "zhenlue", "oljiuchi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "re_boss_huaxiong": ["male", "qun", "9/9/4", ["re_boss_lianyu", "shiyong", "reyaowu", "shizhan", "weizhong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
@@ -455,6 +455,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 ai: {
                   noturn: true,
+                }
+              },
+
+              "re_boss_zhuishe": {
+                mod: {
+                  cardUsable: function (card, player, num) {
+                    if (card.name == 'sha') return num + 1;
+                  }
                 }
               },
 
