@@ -231,26 +231,26 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_beimihu": ["female", "qun", 3, ["shenhu", "math_zongkui", "math_guju", "math_baijia", "math_bmcanshi"], ["zhu", "boss", "bossallowed"]],
               "re_boss_lvbu": ["male", "qun", 6, ["re_boss_jingjia", "boss_aozhan", "mashu", "wushuang", "xiuluo", "shenwei", "shenji", "shenqu", "jiwu"], ["zhu", "boss", "bossallowed"]],
               "fusion_yuantanyuanxiyuanshang": ["male", "qun", 6, ["shenhu", "fusion_neifa"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_luzhi": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "qingzhong", "weijing", "re_boss_jingti", "zhichi", "aocai", "boss_baiyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_xusheng": ["male", "wu", "6/6/4", ["re_boss_lianyu", "xinpojun", "latest_ol_feiyang", "re_boss_shouyi", "oljiuchi", "jiushi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_huangzhong": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinliegong", "xinpojun", "re_boss_dungong", "wangong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_xiahouba": ["male", "shu", "6/6/4", ["re_boss_lianyu", "boss_qixiang", "baobian", "zhongyun", "jieyuan", "buqu", "boss_xiaoshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_kuailiangkuaiyue": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "nzry_jianxiang", "nzry_shenshi", "re_boss_moqu", "jugu", "re_boss_zhene", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_luxun": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_liannu", "qianxun", "lianying", "sijian", "tairan", "qice", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_litong": ["male", "wei", "6/6/4", ["re_boss_lianyu", "tuifeng", "olcuipo", "xinbenxi", "re_boss_xiongshou", "jiaozi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_ganning": ["male", "wu", "6/6/4", ["re_boss_lianyu", "clanjiexuan", "fenwei", "latest_ol_feiyang", "luoying", "zhenlue", "re_boss_xiongshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_sunquan": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_changandajian", "re_zhiheng", "fenwei", "latest_ol_feiyang", "dangxian", "shenshi", "xiangle", "clanjiejian", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_zhouyu": ["male", "wu", "5/5/4", ["re_boss_lianyu", "reyingzi", "refanjian", "luochong", "rekanpo", "fangzhu", "boss_jingmiao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_fuwan": ["male", "qun", "6/6/4", ["re_boss_lianyu", "re_boss_gudingdao", "moukui", "xinpojun", "re_boss_zhuishe", "zhenlue", "oljiuchi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "re_boss_huaxiong": ["male", "qun", "9/9/4", ["re_boss_lianyu", "shiyong", "reyaowu", "shizhan", "weizhong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_luzhi": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "qingzhong", "weijing", "re_boss_jingti", "zhichi", "aocai", "boss_baiyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_xusheng": ["male", "wu", "6/6/4", ["re_boss_lianyu", "xinpojun", "latest_ol_feiyang", "re_boss_shouyi", "oljiuchi", "jiushi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_huangzhong": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinliegong", "xinpojun", "re_boss_dungong", "wangong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_xiahouba": ["male", "shu", "6/6/4", ["re_boss_lianyu", "boss_qixiang", "baobian", "zhongyun", "jieyuan", "buqu", "boss_xiaoshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_kuailiangkuaiyue": ["male", "wei", "6/6/4", ["re_boss_lianyu", "drlt_qianjie", "nzry_jianxiang", "nzry_shenshi", "re_boss_moqu", "jugu", "re_boss_zhene", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_luxun": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_liannu", "qianxun", "lianying", "sijian", "tairan", "qice", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_litong": ["male", "wei", "6/6/4", ["re_boss_lianyu", "tuifeng", "olcuipo", "xinbenxi", "re_boss_xiongshou", "jiaozi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_ganning": ["male", "wu", "6/6/4", ["re_boss_lianyu", "clanjiexuan", "fenwei", "latest_ol_feiyang", "luoying", "zhenlue", "re_boss_xiongshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_sunquan": ["male", "wu", "6/6/4", ["re_boss_lianyu", "re_boss_changandajian", "re_zhiheng", "fenwei", "latest_ol_feiyang", "dangxian", "shenshi", "xiangle", "clanjiejian", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_zhouyu": ["male", "wu", "5/5/4", ["re_boss_lianyu", "reyingzi", "refanjian", "luochong", "rekanpo", "fangzhu", "boss_jingmiao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_fuwan": ["male", "qun", "6/6/4", ["re_boss_lianyu", "re_boss_gudingdao", "moukui", "xinpojun", "re_boss_zhuishe", "zhenlue", "oljiuchi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_huaxiong": ["male", "qun", "9/9/4", ["re_boss_lianyu", "shiyong", "reyaowu", "shizhan", "weizhong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
                 against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu",
                   "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou",
-                  "re_boss_yingzhao", "re_boss_xiangliu", "re_boss_dongzhuo", "re_boss_lvbu", "re_boss_luzhi",
-                  "re_boss_xusheng", "re_boss_huangzhong", "re_boss_xiahouba", "re_boss_kuailiangkuaiyue",
-                  "re_boss_luxun", "re_boss_litong", "re_boss_ganning", "re_boss_sunquan"],
+                  "re_boss_yingzhao", "re_boss_xiangliu", "re_boss_dongzhuo", "re_boss_lvbu", "shanhetu_boss_luzhi",
+                  "shanhetu_boss_xusheng", "shanhetu_boss_huangzhong", "shanhetu_boss_xiahouba", "shanhetu_boss_kuailiangkuaiyue",
+                  "shanhetu_boss_luxun", "shanhetu_boss_litong", "shanhetu_boss_ganning", "shanhetu_boss_sunquan"],
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
@@ -312,18 +312,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_beimihu": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒的同时修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。<br>【强度】★★★★★<br> 【亮点】防御，过牌",
               "re_boss_lvbu": "来源于挑战模式boss最强神话，直接获得虎牢关最终两种形态boss的所有技能，〖精甲〗进行了略微强化。七阴关一人镇守，足矣！<br>【强度】★★★★★<br> 【亮点】攻击，过牌",
               "fusion_yuantanyuanxiyuanshang": "来源于十周年袁谭袁熙袁尚和ol袁谭袁尚，加上〖神护〗的同时对〖内伐〗进行了较大规模改动，不仅改为三类牌来体现出三兄弟的争夺，同时也加强了〖内伐〗效果。<br>【强度】★★★★<br> 【亮点】控制，过牌",
-              "re_boss_luzhi": "来源于山河图第一章boss鲁芝，没有任何改动，七阴连防御都打不穿。<br>【强度】★★★★★<br> 【亮点】综合",
-              "re_boss_xusheng": "来源于山河图第一章boss江东铁壁，没有任何改动，这就是真正的大宝吗？<br>【强度】★★★★<br> 【亮点】攻击",
-              "re_boss_huangzhong": "来源于山河图第一章关内羽林统帅，没有任何改动，这就是老宝吗？<br>【强度】★★★★★<br> 【亮点】攻击",
-              "re_boss_xiahouba": "来源于山河图第一章boss夏侯霸，没有任何改动。<br>【强度】★★★★<br> 【亮点】卖血",
-              "re_boss_kuailiangkuaiyue": "来源于山河图第一章boss蒯良蒯越，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
-              "re_boss_luxun": "来源于山河图第一章关内陆逊，没有任何改动，草原的不死青蛇，就是这种强度吗？<br>【强度】★★★★<br> 【亮点】攻击",
-              "re_boss_litong": "来源于山河图第一章关内李通，没有任何改动，这家伙居然需要推锋？<br>【强度】★★★★<br> 【亮点】攻击",
-              "re_boss_ganning": "来源于山河图第一章boss江表虎臣，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
-              "re_boss_sunquan": "来源于山河图第一章boss东吴大帝，没有任何改动，不需要会玩，照样杀七阴。<br>【强度】★★★★<br> 【亮点】综合",
-              "re_boss_zhouyu": "来源于山河图第一章关内周瑜，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击，控制",
-              "re_boss_fuwan": "来源于山河图第一章关内伏完，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
-              "re_boss_huaxiong": "来源于山河图第一章关内华雄，没有任何改动。<br>【强度】★★★<br> 【亮点】攻击",
+              "shanhetu_boss_luzhi": "来源于山河图第一章boss鲁芝，没有任何改动，七阴连防御都打不穿。<br>【强度】★★★★★<br> 【亮点】综合",
+              "shanhetu_boss_xusheng": "来源于山河图第一章boss江东铁壁，没有任何改动，这就是真正的大宝吗？<br>【强度】★★★★<br> 【亮点】攻击",
+              "shanhetu_boss_huangzhong": "来源于山河图第一章关内羽林统帅，没有任何改动，这就是老宝吗？<br>【强度】★★★★★<br> 【亮点】攻击",
+              "shanhetu_boss_xiahouba": "来源于山河图第一章boss夏侯霸，没有任何改动。<br>【强度】★★★★<br> 【亮点】卖血",
+              "shanhetu_boss_kuailiangkuaiyue": "来源于山河图第一章boss蒯良蒯越，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+              "shanhetu_boss_luxun": "来源于山河图第一章关内陆逊，没有任何改动，草原的不死青蛇，就是这种强度吗？<br>【强度】★★★★<br> 【亮点】攻击",
+              "shanhetu_boss_litong": "来源于山河图第一章关内李通，没有任何改动，这家伙居然需要〖推锋〗？<br>【强度】★★★★★<br> 【亮点】攻击",
+              "shanhetu_boss_ganning": "来源于山河图第一章boss江表虎臣，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+              "shanhetu_boss_sunquan": "来源于山河图第一章boss东吴大帝，没有任何改动，不需要会玩，照样杀七阴。<br>【强度】★★★★<br> 【亮点】综合",
+              "shanhetu_boss_zhouyu": "来源于山河图第一章关内周瑜，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击，控制",
+              "shanhetu_boss_fuwan": "来源于山河图第一章关内伏完，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+              "shanhetu_boss_huaxiong": "来源于山河图第一章关内华雄，没有任何改动。<br>【强度】★★★<br> 【亮点】攻击",
             },
             skill: {
               shenhu: {
@@ -7032,7 +7032,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
 
-              // re_boss_luzhi
+              // shanhetu_boss_luzhi
               re_boss_jingti: {
                 forced: true,
                 trigger: {
@@ -7056,7 +7056,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
 
-              // re_boss_xusheng
+              // shanhetu_boss_xusheng
               "re_boss_shouyi": {
                 group: ["re_boss_shouyi_sha", "re_boss_shouyi_trick"],
                 subSkill: {
@@ -7087,7 +7087,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
 
-              // re_boss_huangzhong
+              // shanhetu_boss_huangzhong
               "re_boss_dungong": {
                 forced: true,
                 trigger: { player: 'damageBegin4' },
@@ -7096,7 +7096,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
 
-              // re_boss_kuailiangkuaiyue
+              // shanhetu_boss_kuailiangkuaiyue
               "re_boss_moqu": {
                 group: 're_boss_moqu_damage',
                 forced: true,
@@ -7293,18 +7293,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "math_beimihu": "数卑弥呼",
               "re_boss_lvbu": "界虎牢关吕布",
               "fusion_yuantanyuanxiyuanshang": "融三袁",
-              "re_boss_luzhi": "山河图鲁芝",
-              "re_boss_xusheng": "江东铁壁",
-              "re_boss_huangzhong": "羽林统帅",
-              "re_boss_xiahouba": "山河图夏侯霸",
-              "re_boss_kuailiangkuaiyue": "山河图蒯良蒯越",
-              "re_boss_luxun": "山河图陆逊",
-              "re_boss_litong": "山河图李通",
-              "re_boss_ganning": "江表虎臣",
-              "re_boss_sunquan": "东吴大帝",
-              "re_boss_zhouyu": "山河图周瑜",
-              "re_boss_fuwan": "山河图伏完",
-              "re_boss_huaxiong": "山河图华雄",
+              "shanhetu_boss_luzhi": "山河图鲁芝",
+              "shanhetu_boss_xusheng": "江东铁壁",
+              "shanhetu_boss_huangzhong": "羽林统帅",
+              "shanhetu_boss_xiahouba": "山河图夏侯霸",
+              "shanhetu_boss_kuailiangkuaiyue": "山河图蒯良蒯越",
+              "shanhetu_boss_luxun": "山河图陆逊",
+              "shanhetu_boss_litong": "山河图李通",
+              "shanhetu_boss_ganning": "江表虎臣",
+              "shanhetu_boss_sunquan": "东吴大帝",
+              "shanhetu_boss_zhouyu": "山河图周瑜",
+              "shanhetu_boss_fuwan": "山河图伏完",
+              "shanhetu_boss_huaxiong": "山河图华雄",
 
               // skill
               "shenhu": "神护",
@@ -7629,19 +7629,19 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_baoli_info": "锁定技，你造成的伤害+1。",
 
 
-              // re_boss_luzhi
+              // shanhetu_boss_luzhi
               "re_boss_jingti": "警惕",
               "re_boss_jingti_info": "锁定技，你的回合外，其他角色回复体力或在非摸牌阶段获得牌，你摸一张牌。",
 
-              // re_boss_xusheng
+              // shanhetu_boss_xusheng
               "re_boss_shouyi": "兽裔",
               "re_boss_shouyi_info": "锁定技，你使用杀无距离限制且伤害+1，你的回合外，你受到锦囊牌造成的伤害时，此伤害+1。",
 
-              // re_boss_huangzhong
+              // shanhetu_boss_huangzhong
               "re_boss_dungong": "盾弓",
               "re_boss_dungong_info": "锁定技，防止对你造成的超过3点以上部分的伤害。",
 
-              // re_boss_kuailiangkuaiyue
+              // shanhetu_boss_kuailiangkuaiyue
               "re_boss_moqu": "魔躯",
               "re_boss_moqu_info": "锁定技，每名角色的结束阶段，若你的手牌数不大于体力值，你摸两张牌。当其他友方角色受到伤害后，你弃置一张牌。",
               "re_boss_zhene": "镇恶",
