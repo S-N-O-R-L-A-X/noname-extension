@@ -250,7 +250,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   "liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou",
                   "re_boss_yingzhao", "re_boss_xiangliu", "re_boss_dongzhuo", "re_boss_lvbu", "shanhetu_boss_luzhi",
                   "shanhetu_boss_xusheng", "shanhetu_boss_huangzhong", "shanhetu_boss_xiahouba", "shanhetu_boss_kuailiangkuaiyue",
-                  "shanhetu_boss_luxun", "shanhetu_boss_litong", "shanhetu_boss_ganning", "shanhetu_boss_sunquan"],
+                  "shanhetu_boss_luxun", "shanhetu_boss_litong", "shanhetu_boss_ganning", "shanhetu_boss_sunquan",
+                  "shanhetu_boss_zhouyu", "shanhetu_boss_fuwan", "shanhetu_boss_huaxiong"],
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
@@ -320,10 +321,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_luxun": "来源于山河图第一章关内陆逊，没有任何改动，草原的不死青蛇，就是这种强度吗？<br>【强度】★★★★<br> 【亮点】攻击",
               "shanhetu_boss_litong": "来源于山河图第一章关内李通，没有任何改动，这家伙居然需要〖推锋〗？<br>【强度】★★★★★<br> 【亮点】攻击",
               "shanhetu_boss_ganning": "来源于山河图第一章boss江表虎臣，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
-              "shanhetu_boss_sunquan": "来源于山河图第一章boss东吴大帝，没有任何改动，不需要会玩，照样杀七阴。<br>【强度】★★★★<br> 【亮点】综合",
+              "shanhetu_boss_sunquan": "来源于山河图第一章boss东吴大帝，没有任何改动，不需要会玩，照样杀七阴。<br>【强度】★★★★★<br> 【亮点】综合",
               "shanhetu_boss_zhouyu": "来源于山河图第一章关内周瑜，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击，控制",
               "shanhetu_boss_fuwan": "来源于山河图第一章关内伏完，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
-              "shanhetu_boss_huaxiong": "来源于山河图第一章关内华雄，没有任何改动。<br>【强度】★★★<br> 【亮点】攻击",
+              "shanhetu_boss_huaxiong": "来源于山河图第一章关内华雄，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
             },
             skill: {
               shenhu: {
@@ -7315,6 +7316,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               "re_boss_xiongshou": "凶兽",
               "re_boss_xiongshou_info": "锁定技，你使用【杀】造成的伤害+1。你与其他角色距离-1。你不能被翻面；每回合首次受到大于1点的伤害后，视为对伤害来源使用一张【杀】。",
+              "re_boss_zhuishe": "追摄",
+              "re_boss_zhuishe_info": "锁定技，你使用【杀】次数+1。",
+
 
               // fusion_shen_sunce
               "repinghe": "冯河",
@@ -7730,7 +7734,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图蒯良蒯越、山河图陆逊、山河图李通、江表虎臣、东吴大帝、山河图周瑜、山河图付完、山河图华雄。<br>' +
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图蒯良蒯越、山河图陆逊、山河图李通、江表虎臣、东吴大帝、山河图周瑜、山河图伏完、山河图华雄。<br>' +
               '<li><span style="color:#006400">说明二</span>：<br>修复〖警惕〗会报错的问题。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
