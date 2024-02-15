@@ -7319,6 +7319,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_zhuishe": "追摄",
               "re_boss_zhuishe_info": "锁定技，你使用【杀】次数+1。",
 
+              "re_boss_liannu": "持弩",
+              "re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
+              "re_boss_changandajian": "登舰",
+              "re_boss_changandajian_info": "锁定技，游戏开始时，将两张【长安大舰】置入你的装备区。",
+              "re_boss_gudingdao": "宝刀",
+              "re_boss_gudingdao_info": "锁定技，游戏开始时，将【古锭刀】置入你的装备区。",
 
               // fusion_shen_sunce
               "repinghe": "冯河",
@@ -7727,7 +7733,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         nopointer: true,
       },
       update: {
-        name: `<div class=".update">扩展版本：7.2<font size="4px">▶▶▶</font></div>`,
+        name: `<div class=".update">扩展版本：7.2.1<font size="4px">▶▶▶</font></div>`,
         version: 7.2,
         clear: true,
         intro: "点击查看此版本的更新内容",
@@ -7744,7 +7750,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
           else {
             this.parentNode.removeChild(this.updateContent);
             delete this.updateContent;
-            this.innerHTML = '<div class=".update">扩展版本：7.2<font size="4px">▶▶▶</font></div>';
+            this.innerHTML = '<div class=".update">扩展版本：7.2.1<font size="4px">▶▶▶</font></div>';
           };
         }
       },
