@@ -1,3 +1,5 @@
+import { game } from '../../noname.js';
+
 game.import("extension", function (lib, game, ui, get, ai, _status) {
   // add useful functions
 
@@ -7042,15 +7044,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 filter: function (event, player) {
                   if (_status.currentPhase == player) return false;
                   if (event.player == player) return false;
-                  if (event == "recover") {
+                  if (event.name == "recover") {
                     return true;
                   }
 
                   if (event.getParent('phaseDraw').name == 'phaseDraw') {
                     return false;
                   }
-                  game.log(event.getg(player).length)
-                  return event.getg(player).length > 0;;
+
+                  return event.getg(event.player).length > 0;;
                 },
                 content: () => {
                   player.draw();
