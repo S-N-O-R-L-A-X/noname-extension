@@ -504,6 +504,11 @@
     "ChineseName": "暴力",
     "info": "锁定技，你造成的伤害+1。"
   },
+  "latest_ol_feiyang": {
+    "EnglishName": "latest_ol_feiyang",
+    "ChineseName": "飞扬",
+    "info": "你的判定阶段开始时，你可以弃置两张牌并弃置判定区里所有牌。"
+  },
   "re_boss_shouyi": {
     "EnglishName": "re_boss_shouyi",
     "ChineseName": "兽裔",
@@ -513,5 +518,40 @@
     "EnglishName": "re_boss_dungong",
     "ChineseName": "盾弓",
     "info": "锁定技，防止对你造成的超过3点以上部分的伤害。"
+  },
+  "re_boss_moqu": {
+    "EnglishName": "re_boss_moqu",
+    "ChineseName": "魔躯",
+    "info": "锁定技，每名角色的结束阶段，若你的手牌数不大于体力值，你摸两张牌。当其他友方角色受到伤害后，你弃置一张牌。"
+  },
+  "re_boss_zhene": {
+    "EnglishName": "re_boss_zhene",
+    "ChineseName": "镇恶",
+    "info": "锁定技，当你于出牌阶段使用牌指向目标后，若其手牌数不大于你，则其无法响应的你的牌。"
+  },
+  "re_boss_liannu": {
+    "EnglishName": "re_boss_liannu",
+    "ChineseName": "持弩",
+    "info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。"
+  },
+  "re_boss_xiongshou": {
+    "EnglishName": "re_boss_xiongshou",
+    "ChineseName": "凶兽",
+    "info": "锁定技，你使用【杀】造成的伤害+1。你与其他角色距离-1。你不能被翻面；每回合首次受到大于1点的伤害后，视为对伤害来源使用一张【杀】。"
+  },
+  "re_boss_changandajian": {
+    "EnglishName": "re_boss_changandajian",
+    "ChineseName": "登舰",
+    "info": "锁定技，游戏开始时，将两张【长安大舰】置入你的装备区。"
+  },
+  "re_boss_gudingdao": {
+    "EnglishName": "re_boss_gudingdao",
+    "ChineseName": "宝刀",
+    "info": "锁定技，游戏开始时，将【古锭刀】置入你的装备区。"
+  },
+  "re_boss_zhuishe": {
+    "EnglishName": "re_boss_zhuishe",
+    "ChineseName": "追摄",
+    "info": "锁定技，你使用【杀】次数+1。"
   }
 }

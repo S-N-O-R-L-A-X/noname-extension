@@ -1373,7 +1373,7 @@
     "highlight": " 【亮点】控制，过牌"
   },
   {
-    "EnglishName": "re_boss_luzhi",
+    "EnglishName": "shanhetu_boss_luzhi",
     "ChineseName": "山河图鲁芝",
     "gender": "male",
     "nationality": "wei",
@@ -1406,7 +1406,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "re_boss_xusheng",
+    "EnglishName": "shanhetu_boss_xusheng",
     "ChineseName": "江东铁壁",
     "gender": "male",
     "nationality": "wu",
@@ -1414,7 +1414,7 @@
     "skills": [
       "re_boss_lianyu",
       "xinpojun",
-      "feiyang",
+      "latest_ol_feiyang",
       "re_boss_shouyi",
       "oljiuchi",
       "jiushi",
@@ -1423,7 +1423,7 @@
     "ChineseSkills": [
       "炼狱",
       null,
-      null,
+      "飞扬",
       "兽裔",
       null,
       null,
@@ -1435,7 +1435,7 @@
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "re_boss_huangzhong",
+    "EnglishName": "shanhetu_boss_huangzhong",
     "ChineseName": "羽林统帅",
     "gender": "male",
     "nationality": "shu",
@@ -1458,11 +1458,11 @@
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内羽林统帅，没有任何改动，这就是老宝吗？",
-    "strength": "【强度】★★★★",
+    "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "re_boss_xiahouba",
+    "EnglishName": "shanhetu_boss_xiahouba",
     "ChineseName": "山河图夏侯霸",
     "gender": "male",
     "nationality": "shu",
@@ -1491,5 +1491,251 @@
     "details": "来源于山河图第一章boss夏侯霸，没有任何改动。",
     "strength": "【强度】★★★★",
     "highlight": " 【亮点】卖血"
+  },
+  {
+    "EnglishName": "shanhetu_boss_kuailiangkuaiyue",
+    "ChineseName": "山河图蒯良蒯越",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "drlt_qianjie",
+      "nzry_jianxiang",
+      "nzry_shenshi",
+      "re_boss_moqu",
+      "jugu",
+      "re_boss_zhene",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "魔躯",
+      null,
+      "镇恶",
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章boss蒯良蒯越，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_luxun",
+    "ChineseName": "山河图陆逊",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_liannu",
+      "qianxun",
+      "lianying",
+      "sijian",
+      "tairan",
+      "qice",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "持弩",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章关内陆逊，没有任何改动，草原的不死青蛇，就是这种强度吗？",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_litong",
+    "ChineseName": "山河图李通",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "tuifeng",
+      "olcuipo",
+      "xinbenxi",
+      "re_boss_xiongshou",
+      "jiaozi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "凶兽",
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章关内李通，没有任何改动，这家伙居然需要〖推锋〗？",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_ganning",
+    "ChineseName": "江表虎臣",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "clanjiexuan",
+      "fenwei",
+      "latest_ol_feiyang",
+      "luoying",
+      "zhenlue",
+      "re_boss_xiongshou",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "飞扬",
+      null,
+      null,
+      "凶兽",
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章boss江表虎臣，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_sunquan",
+    "ChineseName": "东吴大帝",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_changandajian",
+      "re_zhiheng",
+      "fenwei",
+      "latest_ol_feiyang",
+      "dangxian",
+      "shenshi",
+      "xiangle",
+      "clanjiejian",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "登舰",
+      null,
+      null,
+      "飞扬",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章boss东吴大帝，没有任何改动，不需要会玩，照样杀七阴。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_zhouyu",
+    "ChineseName": "山河图周瑜",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "5/5/4",
+    "skills": [
+      "re_boss_lianyu",
+      "reyingzi",
+      "refanjian",
+      "luochong",
+      "rekanpo",
+      "fangzhu",
+      "boss_jingmiao",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章关内周瑜，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击，控制"
+  },
+  {
+    "EnglishName": "shanhetu_boss_fuwan",
+    "ChineseName": "山河图伏完",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_gudingdao",
+      "moukui",
+      "xinpojun",
+      "re_boss_zhuishe",
+      "zhenlue",
+      "oljiuchi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "宝刀",
+      null,
+      null,
+      "追摄",
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章关内伏完，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_huaxiong",
+    "ChineseName": "山河图华雄",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "9/9/4",
+    "skills": [
+      "re_boss_lianyu",
+      "shiyong",
+      "reyaowu",
+      "shizhan",
+      "weizhong",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章关内华雄，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
   }
 ]
