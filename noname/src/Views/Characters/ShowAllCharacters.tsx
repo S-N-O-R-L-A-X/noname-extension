@@ -86,7 +86,9 @@ export default function ShowAllCharacters() {
           value: "扩包",
         },
       ],
-      onFilter: (value: any, record: any) => record.package.indexOf(value) !== -1,
+      onFilter: (value: any, record: any) => {
+        return record.package?.indexOf(value) !== -1;
+      }
     },
     {
       title: '性别',
