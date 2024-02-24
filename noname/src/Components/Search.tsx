@@ -1,21 +1,44 @@
 import { AutoComplete, Input, SelectProps } from "antd";
 import { SearchProps as AntSearchProps } from "antd/es/input";
 import { useState } from "react";
-const { Search: AntSearch } = Input;
 
 interface SearchProps extends AntSearchProps {
   searchArea: any[];
-  getSearchResults?: Function;
+}
+
+const getSearchResult = (searchArea: any[], query: string) => {
+  const arr = searchArea.filter(item => {
+    let ret = false;
+    const foundValues = [];
+    for (const [key, value] of Object.entries(item)) {
+      if (value!.toString().indexOf(query) !== -1) {
+        ret = true;
+        foundValues.push(value);
+      }
+    }
+    item.foundValues = foundValues;
+    return ret;
+  });
+  return arr;
 }
 
 export default function Search(props: SearchProps) {
   // called when clicking search
-  const { searchArea, value, getSearchResults, } = props;
-  let { onSearch } = props;
+  const { searchArea, value } = props;
   const searchResult = (query: string) => {
-    const arr = searchArea.filter(item => item.indexOf(query) !== -1);
-    return arr.map((val) => {
-      return { value: val, label: (<span>{val}</span>) }
+    const arr = getSearchResult(searchArea, query);
+
+    return arr.map((item) => {
+      return {
+        value: item.ChineseName,
+        label: (
+          <div>
+            <span>
+              在{item.ChineseName}中找到{item.foundValues.join(" ")}
+            </span>
+          </div>
+        )
+      }
     })
   }
 
@@ -25,15 +48,9 @@ export default function Search(props: SearchProps) {
     setOptions(value ? searchResult(value) : []);
   };
 
-  if (getSearchResults) {
-    onSearch = (val) => {
-      getSearchResults(searchArea.filter(item => item && item.indexOf(val) !== -1));
-    }
-  }
-
   return (
     <AutoComplete options={options} value={value} onSearch={handleSearch}>
-      <AntSearch placeholder="search" onSearch={onSearch} allowClear enterButton />
+      <Input.Search size="middle" placeholder="input here" allowClear enterButton />
     </AutoComplete>
   )
 }
