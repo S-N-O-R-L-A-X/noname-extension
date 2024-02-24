@@ -128,7 +128,7 @@ export default function ShowAllCharacters() {
       key: "skills",
       render: (skills: string[]) => (
         <>
-          {skills.map((val, idx) => <Link to="/skills" state={{ name: val }}><Tag color={skillColors[idx % 11]}>{val}</Tag></Link>)}
+          {skills.map((val, idx) => <Link key={val} to="/skills" state={{ name: val }}><Tag color={skillColors[idx % 11]}>{val}</Tag></Link>)}
         </>)
     },
     {
@@ -160,7 +160,7 @@ export default function ShowAllCharacters() {
   return (
     <>
       <Search searchArea={characters} />
-      <Table dataSource={existedCharacters} columns={columns} pagination={{ pageSize: 10 }}></Table>
+      <Table rowKey="ChineseName" dataSource={existedCharacters} columns={columns} pagination={{ pageSize: 10 }}></Table>
     </>
   )
 }
