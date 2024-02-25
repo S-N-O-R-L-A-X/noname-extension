@@ -10,16 +10,12 @@ import { useCallback, useEffect, useState } from "react";
 export default function ShowAllSKills() {
   const allSkills: any[] = [];
   for (const [_, val] of Object.entries(skills)) {
-    allSkills.push({ translation: val.ChineseName, info: val.info });
+    allSkills.push({ ChineseName: val.ChineseName, info: val.info });
   }
 
   const [showSkills, setShowSkills] = useState<any[]>([]);
 
   let { state } = useLocation();
-
-  const getSearchResults = useCallback(() => {
-    
-  }, [])
 
   useEffect(() => {
     setShowSkills(allSkills);
@@ -28,8 +24,8 @@ export default function ShowAllSKills() {
   const columns = [
     {
       title: '技能名',
-      dataIndex: 'translation',
-      key: 'translation',
+      dataIndex: 'ChineseName',
+      key: 'ChineseName',
     },
     {
       title: '技能信息',
@@ -39,7 +35,7 @@ export default function ShowAllSKills() {
   ]
   return (
     <>
-      <Search searchArea={allSkills} value={state?.name} getSearchResults={getSearchResults} />
+      <Search searchArea={allSkills} value={state?.name} />
       <Table dataSource={showSkills} columns={columns} pagination={{ pageSize: 10 }}></Table>
     </>
   )
