@@ -4,6 +4,7 @@ import { useState } from "react";
 
 interface SearchProps extends AntSearchProps {
   searchArea: any[];
+  showResultComponent?: JSX.Element;
 }
 
 const getSearchResult = (searchArea: any[], query: string) => {
@@ -22,9 +23,22 @@ const getSearchResult = (searchArea: any[], query: string) => {
   return arr;
 }
 
+interface ShowTemplateProps {
+  where: string;
+  foundValues: any[];
+}
+
+function ShowTemplate(props: ShowTemplateProps) {
+  const { where, foundValues } = props;
+  return <span>在"{where}"中找到{foundValues.join(" ")}</span>;
+}
+
 export default function Search(props: SearchProps) {
   // called when clicking search
-  const { searchArea, value } = props;
+  const { searchArea, value, showResultComponent } = props;
+
+  const Show = (showResultComponent ?? ShowTemplate) as any;
+
   const searchResult = (query: string) => {
     const arr = getSearchResult(searchArea, query);
 
@@ -34,7 +48,7 @@ export default function Search(props: SearchProps) {
         label: (
           <div>
             <span>
-              在{item.ChineseName}中找到{item.foundValues.join(" ")}
+              <Show where={item.ChineseName} foundValues={item.foundValues} />
             </span>
           </div>
         )
