@@ -1,4 +1,4 @@
-import{r as n}from"./react-9a8850ac.js";import{A as L,i as v,p as I,s as T,m as S,j as R,a as z,g as M,r as j}from"./@remix-run-919b8213.js";/**
+import{r as n}from"./react-9a8850ac.js";import{A as L,i as v,p as I,s as T,m as S,j as R,g as M,r as j,a as z}from"./@remix-run-919b8213.js";/**
  * React Router v6.11.1
  *
  * Copyright (c) Remix Software Inc.
