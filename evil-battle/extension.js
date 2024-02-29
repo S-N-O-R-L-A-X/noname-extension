@@ -1,4 +1,4 @@
-import { game } from '../../noname.js';
+// import { game } from '../../noname.js';
 
 game.import("extension", function (lib, game, ui, get, ai, _status) {
   // add useful functions
@@ -245,6 +245,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_zhouyu": ["male", "wu", "5/5/4", ["re_boss_lianyu", "reyingzi", "refanjian", "luochong", "rekanpo", "fangzhu", "boss_jingmiao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "shanhetu_boss_fuwan": ["male", "qun", "6/6/4", ["re_boss_lianyu", "re_boss_gudingdao", "moukui", "xinpojun", "re_boss_zhuishe", "zhenlue", "oljiuchi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "shanhetu_boss_huaxiong": ["male", "qun", "9/9/4", ["re_boss_lianyu", "shiyong", "reyaowu", "shizhan", "weizhong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_zhangliao": ["male", "wei", "7/7/4", ["re_boss_lianyu", "re_boss_gudingdao", "re_boss_tengjia", "newtuxi", "olzhiti", "olduorui", "xinpojun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -7308,6 +7309,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_zhouyu": "山河图周瑜",
               "shanhetu_boss_fuwan": "山河图伏完",
               "shanhetu_boss_huaxiong": "山河图华雄",
+              "shanhetu_boss_zhangliao": "山河图张辽",
+
 
               // skill
               "shenhu": "神护",
