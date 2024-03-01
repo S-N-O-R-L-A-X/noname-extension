@@ -245,7 +245,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_zhouyu": ["male", "wu", "5/5/4", ["re_boss_lianyu", "reyingzi", "refanjian", "luochong", "rekanpo", "fangzhu", "boss_jingmiao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "shanhetu_boss_fuwan": ["male", "qun", "6/6/4", ["re_boss_lianyu", "re_boss_gudingdao", "moukui", "xinpojun", "re_boss_zhuishe", "zhenlue", "oljiuchi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "shanhetu_boss_huaxiong": ["male", "qun", "9/9/4", ["re_boss_lianyu", "shiyong", "reyaowu", "shizhan", "weizhong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "shanhetu_boss_zhangliao": ["male", "wei", "7/7/4", ["re_boss_lianyu", "re_boss_gudingdao", "re_boss_tengjia", "newtuxi", "olzhiti", "olduorui", "xinpojun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_zhangliao": ["male", "wei", "7/7/4", ["re_boss_lianyu", "re_boss_gudingdao", "re_boss_tengjia", "new_retuxi", "olzhiti", "olduorui", "xinpojun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -508,6 +508,19 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
                 content: function () {
                   player.equip(game.createCard2('guding', 'spade', 1));
+                }
+              },
+              "re_boss_tengjia": {
+                forced: true,
+                filter: function (event, player) {
+                  return (event.name != 'phase' || game.phaseNumber == 0);
+                },
+                trigger: {
+                  global: 'phaseBefore',
+                  player: 'enterGame',
+                },
+                content: function () {
+                  player.equip(game.createCard2('tengjia', 'spade', 2));
                 }
               },
 
@@ -7311,7 +7324,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_huaxiong": "山河图华雄",
               "shanhetu_boss_zhangliao": "山河图张辽",
 
-
               // skill
               "shenhu": "神护",
               "shenhu_info": "锁定技，你不能成为延时类锦囊的目标。",
@@ -7330,6 +7342,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_changandajian_info": "锁定技，游戏开始时，将两张【长安大舰】置入你的装备区。",
               "re_boss_gudingdao": "宝刀",
               "re_boss_gudingdao_info": "锁定技，游戏开始时，将【古锭刀】置入你的装备区。",
+              "re_boss_tengjia": "编甲",
+              "re_boss_gudingdao_info": "锁定技，游戏开始时，将【藤甲】置入你的装备区。",
 
               // fusion_shen_sunce
               "repinghe": "冯河",
