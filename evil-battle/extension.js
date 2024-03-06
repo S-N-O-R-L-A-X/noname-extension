@@ -531,6 +531,47 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
 
+              "re_boss_reborn_machao": {
+                trigger: {
+                  player: 'dieBefore'
+                },
+                content: async (event, trigger, player) => {
+                  trigger.cancel();
+                  await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_machao");
+                  await player.recover(player.maxHp - player.hp);
+                }
+              },
+              "re_boss_reborn_zhaoyun": {
+                trigger: {
+                  player: 'dieBefore'
+                },
+                content: async (event, trigger, player) => {
+                  trigger.cancel();
+                  await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhaoyun");
+                  await player.recover(player.maxHp - player.hp);
+                }
+              },
+              "re_boss_reborn_zhangfei": {
+                trigger: {
+                  player: 'dieBefore'
+                },
+                content: async (event, trigger, player) => {
+                  trigger.cancel();
+                  await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhangfei");
+                  await player.recover(player.maxHp - player.hp);
+                }
+              },
+              "re_boss_reborn_guanyu": {
+                trigger: {
+                  player: 'dieBefore'
+                },
+                content: async (event, trigger, player) => {
+                  trigger.cancel();
+                  await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_guanyu");
+                  await player.recover(player.maxHp - player.hp);
+                }
+              },
+
               "re_boss_baoli": {
                 trigger: { source: 'damageBegin1' },
                 forced: true,
