@@ -117,50 +117,6 @@ export default function ShowAllCharacters() {
             {gender === "male" ? <Tag color="blue">男</Tag> : gender === "female" ? <Tag color="pink">女</Tag> : <Tag color="green">无性别</Tag>}
           </>)
 
-<<<<<<< Updated upstream
-      },
-      {
-        title: "血量",
-        dataIndex: "hp",
-        key: "hp",
-        sorter: (a: any, b: any) => Number(a.hp) - Number(b.hp)
-      },
-      {
-        title: "技能",
-        dataIndex: "skills",
-        key: "skills",
-        render: (skills: string[]) => (
-          <>
-            {skills.map((val, idx) => <Link key={val} to="/skills" state={{ name: val }}><Tag color={skillColors[idx % 11]}>{val}</Tag></Link>)}
-          </>)
-      },
-      {
-        title: "武将设计",
-        dataIndex: "details",
-        key: "details",
-      },
-      {
-        title: "强度",
-        dataIndex: "strength",
-        key: "strength",
-        sorter: (a: any, b: any) => (a.strength?.length || 0) > (b.strength?.length || 0) ? 1 : -1,
-        render: (strength: string) => (
-          <>
-            {strength && strength.substring(5)}
-          </>)
-      },
-      {
-        title: "亮点",
-        dataIndex: "highlight",
-        key: "highlight",
-        render: (highlight: string) => (
-          <>
-            {highlight && highlight.substring(5)}
-          </>)
-      },
-    ];
-  }, [])
-=======
     },
     {
       title: "血量",
@@ -214,7 +170,6 @@ export default function ShowAllCharacters() {
         </>)
     },
   ];
->>>>>>> Stashed changes
 
   return (
     <>
