@@ -248,11 +248,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_zhangliao": ["male", "wei", "7/7/4", ["re_boss_lianyu", "re_boss_gudingdao", "re_boss_tengjia", "new_retuxi", "olzhiti", "olduorui", "xinpojun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "shanhetu_boss_caozhang": ["male", "wei", "7/7/4", ["re_boss_lianyu", "rejiangchi", "weijing", "yingzi", "fulin", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "shanhetu_boss_zhangling": ["male", "qun", "6/6/4", ["re_boss_lianyu", "zlhuji", "zlshoufu", "gzcongjian", "tairan", "boss_dayuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "shanhetu_boss_wuhu_huangzhong": ["male", "shu", "7/7/4", ["re_boss_lianyu", "re_boss_jinwuluorigong", "xinliegong", "xinfu_dianhu", "jieyuan", "re_boss_reborn_machao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "shanhetu_boss_wuhu_machao": ["male", "shu", "7/7/4", ["re_boss_lianyu", "mashu", "retieji", "re_boss_dongdang", "re_boss_reborn_zhaoyun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "shanhetu_boss_wuhu_zhaoyun": ["male", "shu", "7/7/4", ["re_boss_lianyu", "ollongdan", "olyajiao", "re_boss_dongdang", "re_boss_reborn_zhangfei", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "shanhetu_boss_wuhu_zhangfei": ["male", "shu", "7/7/4", ["re_boss_lianyu", "olpaoxiao", "oltishen", "re_boss_dongdang", "jizhi", "re_boss_reborn_guanyu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "shanhetu_boss_wuhu_guanyu": ["male", "shu", "7/7/4", ["re_boss_lianyu", "new_rewusheng", "new_yijue", "re_boss_dongdang", "oljiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_wangyi": ["female", "wei", "7/7/4", ["re_boss_lianyu", "zhenlie", "miji", "zhaxiang", "duwu", "xinkuanggu", "shibei", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+
+              // "shanhetu_boss_wuhu_huangzhong": ["male", "shu", "1/1", ["re_boss_lianyu", "re_boss_jinwuluorigong", "xinliegong", "xinfu_dianhu", "jieyuan", "re_boss_reborn_machao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              // "shanhetu_boss_wuhu_machao": ["male", "shu", "1/1", ["re_boss_lianyu", "mashu", "retieji", "re_boss_dongdang", "re_boss_reborn_zhaoyun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              // "shanhetu_boss_wuhu_zhaoyun": ["male", "shu", "1/1", ["re_boss_lianyu", "ollongdan", "olyajiao", "re_boss_dongdang", "re_boss_reborn_zhangfei", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              // "shanhetu_boss_wuhu_zhangfei": ["male", "shu", "7/7/4", ["re_boss_lianyu", "olpaoxiao", "oltishen", "re_boss_dongdang", "jizhi", "re_boss_reborn_guanyu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              // "shanhetu_boss_wuhu_guanyu": ["male", "shu", "7/7/4", ["re_boss_lianyu", "new_rewusheng", "new_yijue", "re_boss_dongdang", "oljiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
             },
             characterSort: {
               against7devil: {
@@ -533,44 +535,133 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
               "re_boss_reborn_machao": {
                 trigger: {
-                  player: 'dieBefore'
+                  player: 'dieBegin'
                 },
-                content: async (event, trigger, player) => {
-                  trigger.cancel();
-                  await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_machao");
-                  await player.recover(player.maxHp - player.hp);
+                forced: true,
+                // *content(event, map) {
+                //   var player = map.player, trigger = map.trigger;                  
+                //   trigger.cancel();
+                //   yield player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_machao");
+                //   yield player.recover(player.maxHp - player.hp);
+                // },
+                forceDie: true,
+                content: () => {
+
+                  var evt = event.getParent('dying');
+                  game.log(evt);
+                  game.log(evt.parent);
+
+                  if (evt && evt.parent) evt.parent.untrigger(false, player);
+                  // trigger.untrigger();
+                  // trigger.finish();
+                  // player.revive();
+
+
+                  // var next = game.createEvent('replacePlayerSingle', false, _status.event.getParent());
+                  // next.player = this;
+                  // next.forceDie = true;
+                  // next.setContent(function () {
+                  //   "step 0"
+                  //   game.delay();
+                  //   "step 1"
+                  //   player.chooseButton(true, ['请选择一名出场武将', [_status.characterChoice[player.identity].slice(0), 'character']]).set('forceDie', true);
+                  //   "step 2"
+                  //   var source = player;
+                  //   var name = result.links[0];
+                  //   var color = source.node.identity.dataset.color;
+
+                  //   game.broadcastAll(function (source, name, color) {
+                  //     source.revive(null, false);
+                  //     source.uninit();
+                  //     source.init(name);
+                  //     source.node.identity.dataset.color = color;
+                  //   }, source, name, color);
+                  //   game.log(source, '出场');
+
+
+
+                  //   var evt = event.getParent('dying');
+                  //   if (evt && evt.parent) evt.parent.untrigger(false, source);
+                  //   game.addVideo('reinit', source, [name, color]);
+                  //   game.triggerEnter(source);
+                  //   _status.characterChoice[player.identity].remove(name);
+                  // });
+
+                  player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_machao");
+                  player.recover(player.maxHp - player.hp);
                 }
               },
+
               "re_boss_reborn_zhaoyun": {
                 trigger: {
                   player: 'dieBefore'
                 },
-                content: async (event, trigger, player) => {
+                forced: true,
+                content: () => {
+                  // trigger.untrigger();
+                  game.log("enter re_boss_reborn_zhaoyun")
                   trigger.cancel();
-                  await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhaoyun");
-                  await player.recover(player.maxHp - player.hp);
+                  player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhaoyun");
+                  player.recover(player.maxHp - player.hp);
                 }
+                // content: async (event,trigger,player) => {
+                //   trigger.cancel();
+                //   await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhaoyun");
+                //   await player.recover(player.maxHp-player.hp);
+                // }
               },
               "re_boss_reborn_zhangfei": {
                 trigger: {
                   player: 'dieBefore'
                 },
-                content: async (event, trigger, player) => {
+                forced: true,
+                content: () => {
+                  // trigger.untrigger();
                   trigger.cancel();
-                  await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhangfei");
-                  await player.recover(player.maxHp - player.hp);
+                  player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhangfei");
+                  player.recover(player.maxHp - player.hp);
                 }
+                // content: async (event,trigger,player) => {
+                //   trigger.cancel();
+                //   await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhangfei");
+                //   await player.recover(player.maxHp-player.hp);
+                // }
               },
-              "re_boss_reborn_guanyu": {
-                trigger: {
-                  player: 'dieBefore'
-                },
-                content: async (event, trigger, player) => {
-                  trigger.cancel();
-                  await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_guanyu");
-                  await player.recover(player.maxHp - player.hp);
-                }
-              },
+              // "re_boss_reborn_guanyu": {
+              //   trigger: {
+              //     player: 'dieBefore'
+              //   },
+              //   forced: true,
+              //   content: async (event,trigger,player) => {
+              //     trigger.cancel();
+              //     await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_guanyu");
+              //     await player.recover(player.maxHp-player.hp);
+              //   }
+              // },
+
+
+              // "re_boss_dongdang": {
+              //   trigger: {
+              //     player: 'enterGame',
+              //     global: 'gameDrawAfter',
+              //   },
+              //   forced: true,
+              //   direct: true,
+              //   content: function () {
+              //     'step 0'
+              //     if (player.isLinked()) player.link();
+              //     if (player.isTurnedOver()) player.turnOver();
+              //     player.discard(player.getCards('j'));
+              //     'step 1'
+              //     while (_status.event.name != 'phaseLoop') {
+              //       _status.event = _status.event.parent;
+              //     }
+              //     game.resetSkills();
+              //     _status.paused = false;
+              //     _status.event.player = player;
+              //     _status.event.step = 0;
+              //   },
+              // },
 
               "re_boss_baoli": {
                 trigger: { source: 'damageBegin1' },
@@ -7373,6 +7464,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_zhangliao": "山河图张辽",
               "shanhetu_boss_caozhang": "山河图曹彰",
               "shanhetu_boss_zhangling": "山河图张天师",
+              "shanhetu_boss_wangyi": "决意巾帼",
+
               "shanhetu_boss_wuhu_huangzhong": "五虎之黄忠",
               "shanhetu_boss_wuhu_machao": "五虎之马超",
               "shanhetu_boss_wuhu_zhaoyun": "五虎之赵云",
