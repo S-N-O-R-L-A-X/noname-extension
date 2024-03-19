@@ -7305,6 +7305,68 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 },
               },
 
+              // shanhetu_boss_shen_zhaoyun
+              "re_boss_kuangxi": {
+                audio: "qiangxi",
+                enable: 'phaseUse',
+                filter: function (event,player) {
+                  return !player.hasSkill("re_boss_kuangxi_disabled");
+                },
+                filterTarget: function (card, player, target) {
+                  return player != target;
+                },
+                content: function () {
+                  "step 0"
+                  if (cards.length == 0) {
+                    player.loseHp();
+                  }
+                  "step 1"
+                  target.damage('nocard');
+                  player.addTempSkill("re_boss_kuangxi_judge");
+                },
+                ai: {
+                  damage: true,
+                  order: 1,
+                  result: {
+                    player: function (player, target) {
+                      if (ui.selected.cards.length) return 0;
+                      if (player.hp >= target.hp) return -0.9;
+                      if (player.hp <= 2) return -10;
+                      return -2;
+                    },
+                    target: function (player, target) {
+                      if (!ui.selected.cards.length) {
+                        if (player.hp < 2) return 0;
+                        if (player.hp == 2 && target.hp >= 2) return 0;
+                        if (target.hp > player.hp) return 0;
+                      }
+                      return get.damageEffect(target, player);
+                    }
+                  },
+                  threaten: 1,
+                },
+                subSkill: {
+                  "disabled": {
+                    charlotte: true
+                  },
+                  "judge": {
+                    trigger: { global: 'dying' },
+                    forced: true,
+                    popup: false,
+                    charlotte: true,
+                    filter: function (event, player) {
+                      return event.player.isIn() && event.reason && event.reason.getParent().name == 're_boss_kuangxi';
+                    },
+                    content: function () {
+                      player.addTempSkill("re_boss_kuangxi_disabled");
+                    },
+                  }
+                }
+              },
+
+
+
+
 
             },
 
