@@ -264,7 +264,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   "re_boss_yingzhao", "re_boss_xiangliu", "re_boss_dongzhuo", "re_boss_lvbu", "shanhetu_boss_luzhi",
                   "shanhetu_boss_xusheng", "shanhetu_boss_huangzhong", "shanhetu_boss_xiahouba", "shanhetu_boss_kuailiangkuaiyue",
                   "shanhetu_boss_luxun", "shanhetu_boss_litong", "shanhetu_boss_ganning", "shanhetu_boss_sunquan",
-                  "shanhetu_boss_zhouyu", "shanhetu_boss_fuwan", "shanhetu_boss_huaxiong"],
+                  "shanhetu_boss_zhouyu", "shanhetu_boss_fuwan", "shanhetu_boss_huaxiong", "shanhetu_boss_zhangliao",
+                  "shanhetu_boss_caozhang", "shanhetu_boss_zhangling", "shanhetu_boss_wangyi", "shanhetu_boss_shen_zhaoyun"],
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
@@ -338,6 +339,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_zhouyu": "来源于山河图第一章关内周瑜，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击，控制",
               "shanhetu_boss_fuwan": "来源于山河图第一章关内伏完，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
               "shanhetu_boss_huaxiong": "来源于山河图第一章关内华雄，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+              "shanhetu_boss_zhangliao": "来源于山河图第一章关内张辽，在九洲演义中也曾出现，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+              "shanhetu_boss_caozhang": "来源于山河图第一章关内曹彰，在九洲演义中也曾出现，没有任何改动。<br>【强度】★★★★<br> 【亮点】防御",
+              "shanhetu_boss_zhangling": "来源于山河图第一章关内张天师，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
+              "shanhetu_boss_wangyi": "来源于山河图第二章关内决意巾帼，没有任何改动，攻防一体的女武神。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
+              "shanhetu_boss_shen_zhaoyun": "来源于山河图第二章关内决意巾帼，没有任何改动，攻防一体的不死红蛇。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
             },
             skill: {
               shenhu: {
@@ -7309,7 +7315,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_kuangxi": {
                 audio: "qiangxi",
                 enable: 'phaseUse',
-                filter: function (event,player) {
+                filter: function (event, player) {
                   return !player.hasSkill("re_boss_kuangxi_disabled");
                 },
                 filterTarget: function (card, player, target) {
