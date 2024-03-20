@@ -250,6 +250,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_zhangling": ["male", "qun", "6/6/4", ["re_boss_lianyu", "zlhuji", "zlshoufu", "gzcongjian", "tairan", "boss_dayuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "shanhetu_boss_wangyi": ["female", "wei", "7/7/4", ["re_boss_lianyu", "zhenlie", "miji", "zhaxiang", "duwu", "xinkuanggu", "shibei", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "shanhetu_boss_shen_zhaoyun": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinjuejing", "xinlonghun", "huxiao", "boss_moyany", "re_boss_kuangxi", "gzbuqu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_zhangliao2": ["male", "wei", "8/8/4", ["re_boss_lianyu", "new_retuxi", "xinlonghun", "paoxiao", "shangshi", "kangge", "xianji", "zlhuji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 
               // "shanhetu_boss_wuhu_huangzhong": ["male", "shu", "1/1", ["re_boss_lianyu", "re_boss_jinwuluorigong", "xinliegong", "xinfu_dianhu", "jieyuan", "re_boss_reborn_machao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               // "shanhetu_boss_wuhu_machao": ["male", "shu", "1/1", ["re_boss_lianyu", "mashu", "retieji", "re_boss_dongdang", "re_boss_reborn_zhaoyun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
@@ -7535,6 +7536,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_zhangling": "山河图张天师",
               "shanhetu_boss_wangyi": "决意巾帼",
               "shanhetu_boss_shen_zhaoyun": "常山赵子龙",
+              "shanhetu_boss_zhangliao2": "古之召虎",
 
               "shanhetu_boss_wuhu_huangzhong": "五虎之黄忠",
               "shanhetu_boss_wuhu_machao": "五虎之马超",
@@ -7977,7 +7979,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图曹彰、山河图张天师、决意巾帼、常山赵子龙。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图曹彰、山河图张天师、决意巾帼、常山赵子龙、古之召虎。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
