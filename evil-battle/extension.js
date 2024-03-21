@@ -249,8 +249,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_caozhang": ["male", "wei", "7/7/4", ["re_boss_lianyu", "rejiangchi", "weijing", "yingzi", "fulin", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "shanhetu_boss_zhangling": ["male", "qun", "6/6/4", ["re_boss_lianyu", "zlhuji", "zlshoufu", "gzcongjian", "tairan", "boss_dayuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               "shanhetu_boss_wangyi": ["female", "wei", "7/7/4", ["re_boss_lianyu", "zhenlie", "miji", "zhaxiang", "duwu", "xinkuanggu", "shibei", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "shanhetu_boss_shen_zhaoyun": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinjuejing", "xinlonghun", "huxiao", "boss_moyany", "re_boss_kuangxi", "gzbuqu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-              "shanhetu_boss_zhangliao2": ["male", "wei", "8/8/4", ["re_boss_lianyu", "new_retuxi", "xinlonghun", "paoxiao", "shangshi", "kangge", "xianji", "zlhuji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_shen_zhaoyun": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinjuejing", "relonghun", "huxiao", "boss_moyany", "re_boss_kuangxi", "gzbuqu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+              "shanhetu_boss_zhangliao2": ["male", "wei", "8/8/4", ["re_boss_lianyu", "new_retuxi", "relonghun", "paoxiao", "shangshi", "kangge", "xianji", "zlhuji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 
               // "shanhetu_boss_wuhu_huangzhong": ["male", "shu", "1/1", ["re_boss_lianyu", "re_boss_jinwuluorigong", "xinliegong", "xinfu_dianhu", "jieyuan", "re_boss_reborn_machao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
               // "shanhetu_boss_wuhu_machao": ["male", "shu", "1/1", ["re_boss_lianyu", "mashu", "retieji", "re_boss_dongdang", "re_boss_reborn_zhaoyun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
@@ -266,7 +266,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                   "shanhetu_boss_xusheng", "shanhetu_boss_huangzhong", "shanhetu_boss_xiahouba", "shanhetu_boss_kuailiangkuaiyue",
                   "shanhetu_boss_luxun", "shanhetu_boss_litong", "shanhetu_boss_ganning", "shanhetu_boss_sunquan",
                   "shanhetu_boss_zhouyu", "shanhetu_boss_fuwan", "shanhetu_boss_huaxiong", "shanhetu_boss_zhangliao",
-                  "shanhetu_boss_caozhang", "shanhetu_boss_zhangling", "shanhetu_boss_wangyi", "shanhetu_boss_shen_zhaoyun"],
+                  "shanhetu_boss_caozhang", "shanhetu_boss_zhangling", "shanhetu_boss_wangyi", "shanhetu_boss_shen_zhaoyun",
+                  "shanhetu_boss_zhangliao2"],
                 against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
                   "re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
                   "fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
@@ -344,7 +345,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_caozhang": "来源于山河图第一章关内曹彰，在九洲演义中也曾出现，没有任何改动。<br>【强度】★★★★<br> 【亮点】防御",
               "shanhetu_boss_zhangling": "来源于山河图第一章关内张天师，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
               "shanhetu_boss_wangyi": "来源于山河图第二章关内决意巾帼，没有任何改动，攻防一体的女武神。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
-              "shanhetu_boss_shen_zhaoyun": "来源于山河图第二章关内决意巾帼，没有任何改动，攻防一体的不死红蛇。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
+              "shanhetu_boss_shen_zhaoyun": "来源于山河图第二章关内常山赵子龙，没有任何改动，攻防一体的不死红蛇。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
+              "shanhetu_boss_zhangliao2": "来源于山河图第二章关内古之召虎，没有任何改动，攻防一体的古之召虎。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
             },
             skill: {
               shenhu: {
