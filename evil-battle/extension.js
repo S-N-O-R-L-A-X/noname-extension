@@ -340,10 +340,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "shanhetu_boss_sunquan": "来源于山河图第一章boss东吴大帝，没有任何改动，不需要会玩，照样杀七阴。<br>【强度】★★★★★<br> 【亮点】综合",
               "shanhetu_boss_zhouyu": "来源于山河图第一章关内周瑜，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击，控制",
               "shanhetu_boss_fuwan": "来源于山河图第一章关内伏完，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
-              "shanhetu_boss_huaxiong": "来源于山河图第一章关内华雄，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+              "shanhetu_boss_huaxiong": "来源于山河图第一章关内华雄，没有任何改动。<br>【强度】★★<br> 【亮点】攻击",
               "shanhetu_boss_zhangliao": "来源于山河图第一章关内张辽，在九洲演义中也曾出现，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
-              "shanhetu_boss_caozhang": "来源于山河图第一章关内曹彰，在九洲演义中也曾出现，没有任何改动。<br>【强度】★★★★<br> 【亮点】防御",
-              "shanhetu_boss_zhangling": "来源于山河图第一章关内张天师，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
+              "shanhetu_boss_caozhang": "来源于山河图第一章关内曹彰，在九洲演义中也曾出现，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+              "shanhetu_boss_zhangling": "来源于山河图第一章关内张天师，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
               "shanhetu_boss_wangyi": "来源于山河图第二章关内决意巾帼，没有任何改动，攻防一体的女武神。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
               "shanhetu_boss_shen_zhaoyun": "来源于山河图第二章关内常山赵子龙，没有任何改动，攻防一体的不死红蛇。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
               "shanhetu_boss_zhangliao2": "来源于山河图第二章关内古之召虎，没有任何改动，攻防一体的古之召虎。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
@@ -7384,9 +7384,25 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 }
               },
 
-
-
-
+              gzcongjian: {
+                trigger: {
+                  player: 'damageBegin3',
+                  source: 'damageBegin1',
+                },
+                forced: true,
+                preHidden: true,
+                audio: 'drlt_congjian',
+                filter: function (event, player, name) {
+                  if (event.num <= 0) return false;
+                  if (name == 'damageBegin1' && _status.currentPhase != player) return true;
+                  if (name == 'damageBegin3' && _status.currentPhase == player) return true;
+                  return false;
+                },
+                check: function (event, player) {
+                  return _status.currentPhase != player;
+                },
+                content: function () { trigger.num++ },
+              },
 
             },
 
@@ -7908,6 +7924,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_moqu_info": "锁定技，每名角色的结束阶段，若你的手牌数不大于体力值，你摸两张牌。当其他友方角色受到伤害后，你弃置一张牌。",
               "re_boss_zhene": "镇恶",
               "re_boss_zhene_info": "锁定技，当你于出牌阶段使用牌指向目标后，若其手牌数不大于你，则其无法响应的你的牌。",
+
+              // shanhetu_boss_zhangling
+              gzcongjian: '从谏',
+              gzcongjian_info: '锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。',
+
 
               // unused
               "geju": "割据",
