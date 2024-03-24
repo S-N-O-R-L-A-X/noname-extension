@@ -7584,6 +7584,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_xiongshou_info": "锁定技，你使用【杀】造成的伤害+1。你与其他角色距离-1。你不能被翻面；每回合首次受到大于1点的伤害后，视为对伤害来源使用一张【杀】。",
               "re_boss_zhuishe": "追摄",
               "re_boss_zhuishe_info": "锁定技，你使用【杀】次数+1。",
+              "re_boss_xianji": "先机",
+              "re_boss_xianji_info": "锁定技，当你体力低于8，你成为牌的目标时，你摸2张牌",
 
               "re_boss_liannu": "持弩",
               "re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
@@ -7906,7 +7908,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_baoli": "暴力",
               "re_boss_baoli_info": "锁定技，你造成的伤害+1。",
 
-
               // shanhetu_boss_luzhi
               "re_boss_jingti": "警惕",
               "re_boss_jingti_info": "锁定技，你的回合外，其他角色回复体力或在非摸牌阶段获得牌，你摸一张牌。",
@@ -7926,9 +7927,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_zhene_info": "锁定技，当你于出牌阶段使用牌指向目标后，若其手牌数不大于你，则其无法响应的你的牌。",
 
               // shanhetu_boss_zhangling
-              gzcongjian: '从谏',
-              gzcongjian_info: '锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。',
+              "gzcongjian": "从谏",
+              "gzcongjian_info": "锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。",
 
+              // shanhetu_boss_shen_zhaoyun
+              "re_boss_kuangxi_info": "狂袭",
+              "re_boss_kuangxi_info": "出牌阶段，你可以失去1点体力，然后对一名其他角色造成1点伤害，若以此法使其进入濒死状态，则本回合本技能失效。",
 
               // unused
               "geju": "割据",
@@ -8013,7 +8017,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图曹彰、山河图张天师、决意巾帼、常山赵子龙、古之召虎。<br>'
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图张辽、山河图曹彰、山河图张天师、决意巾帼、常山赵子龙、古之召虎。<br>'+
+              '<li><span style="color:#006400">说明二</span>：<br>修复了一些武将描述。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
             this.updateContent = more;
