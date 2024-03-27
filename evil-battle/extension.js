@@ -7594,7 +7594,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "re_boss_gudingdao": "宝刀",
               "re_boss_gudingdao_info": "锁定技，游戏开始时，将【古锭刀】置入你的装备区。",
               "re_boss_tengjia": "编甲",
-              "re_boss_gudingdao_info": "锁定技，游戏开始时，将【藤甲】置入你的装备区。",
+              "re_boss_tengjia_info": "锁定技，游戏开始时，将【藤甲】置入你的装备区。",
 
               // fusion_shen_sunce
               "repinghe": "冯河",
@@ -7931,7 +7931,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
               "gzcongjian_info": "锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。",
 
               // shanhetu_boss_shen_zhaoyun
-              "re_boss_kuangxi_info": "狂袭",
+              "re_boss_kuangxi": "狂袭",
               "re_boss_kuangxi_info": "出牌阶段，你可以失去1点体力，然后对一名其他角色造成1点伤害，若以此法使其进入濒死状态，则本回合本技能失效。",
 
               // unused
@@ -8017,7 +8017,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
         onclick: function () {
           if (this.updateContent === undefined) {
             const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图张辽、山河图曹彰、山河图张天师、决意巾帼、常山赵子龙、古之召虎。<br>'+
+              '<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图张辽、山河图曹彰、山河图张天师、决意巾帼、常山赵子龙、古之召虎。<br>' +
               '<li><span style="color:#006400">说明二</span>：<br>修复了一些武将描述。<br>'
             );
             this.parentNode.insertBefore(more, this.nextSibling);
