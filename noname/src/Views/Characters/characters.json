@@ -1735,7 +1735,308 @@
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内华雄，没有任何改动。",
+    "strength": "【强度】★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_zhangliao",
+    "ChineseName": "山河图张辽",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_gudingdao",
+      "re_boss_tengjia",
+      "new_retuxi",
+      "olzhiti",
+      "olduorui",
+      "xinpojun",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "宝刀",
+      "编甲",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章关内张辽，在九洲演义中也曾出现，没有任何改动。",
     "strength": "【强度】★★★★",
     "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_caozhang",
+    "ChineseName": "山河图曹彰",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "rejiangchi",
+      "weijing",
+      "yingzi",
+      "fulin",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章关内曹彰，在九洲演义中也曾出现，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_zhangling",
+    "ChineseName": "山河图张天师",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "zlhuji",
+      "zlshoufu",
+      "gzcongjian",
+      "tairan",
+      "boss_dayuan",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "从谏",
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章关内张天师，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_wangyi",
+    "ChineseName": "决意巾帼",
+    "gender": "female",
+    "nationality": "wei",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "zhenlie",
+      "miji",
+      "zhaxiang",
+      "duwu",
+      "xinkuanggu",
+      "shibei",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章关内决意巾帼，没有任何改动，攻防一体的女武神。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击、防御"
+  },
+  {
+    "EnglishName": "shanhetu_boss_shen_zhaoyun",
+    "ChineseName": "常山赵子龙",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "xinjuejing",
+      "relonghun",
+      "huxiao",
+      "boss_moyany",
+      "re_boss_kuangxi",
+      "gzbuqu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "狂袭",
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章关内常山赵子龙，没有任何改动，攻防一体的不死红蛇。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击、防御"
+  },
+  {
+    "EnglishName": "shanhetu_boss_zhangliao2",
+    "ChineseName": "古之召虎",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "new_retuxi",
+      "relonghun",
+      "paoxiao",
+      "shangshi",
+      "kangge",
+      "re_boss_xianji",
+      "zlhuji",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "先机",
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章关内古之召虎，没有任何改动，攻防一体的古之召虎。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击、防御"
+  },
+  {
+    "EnglishName": "shanhetu_boss_wuhu_huangzhong",
+    "ChineseName": "五虎之黄忠",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "1/1",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_jinwuluorigong",
+      "xinliegong",
+      "xinfu_dianhu",
+      "jieyuan",
+      "re_boss_reborn_machao",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ]
+  },
+  {
+    "EnglishName": "shanhetu_boss_wuhu_machao",
+    "ChineseName": "五虎之马超",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "1/1",
+    "skills": [
+      "re_boss_lianyu",
+      "mashu",
+      "retieji",
+      "re_boss_dongdang",
+      "re_boss_reborn_zhaoyun",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ]
+  },
+  {
+    "EnglishName": "shanhetu_boss_wuhu_zhaoyun",
+    "ChineseName": "五虎之赵云",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "1/1",
+    "skills": [
+      "re_boss_lianyu",
+      "ollongdan",
+      "olyajiao",
+      "re_boss_dongdang",
+      "re_boss_reborn_zhangfei",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ]
+  },
+  {
+    "EnglishName": "shanhetu_boss_wuhu_zhangfei",
+    "ChineseName": "五虎之张飞",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "olpaoxiao",
+      "oltishen",
+      "re_boss_dongdang",
+      "jizhi",
+      "re_boss_reborn_guanyu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ]
+  },
+  {
+    "EnglishName": "shanhetu_boss_wuhu_guanyu",
+    "ChineseName": "五虎之关羽",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "new_rewusheng",
+      "new_yijue",
+      "re_boss_dongdang",
+      "oljiang",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ]
   }
 ]

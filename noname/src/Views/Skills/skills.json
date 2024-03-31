@@ -553,5 +553,25 @@
     "EnglishName": "re_boss_zhuishe",
     "ChineseName": "追摄",
     "info": "锁定技，你使用【杀】次数+1。"
+  },
+  "re_boss_tengjia": {
+    "EnglishName": "re_boss_tengjia",
+    "ChineseName": "编甲",
+    "info": "锁定技，游戏开始时，将【藤甲】置入你的装备区。"
+  },
+  "gzcongjian": {
+    "EnglishName": "gzcongjian",
+    "ChineseName": "从谏",
+    "info": "锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。"
+  },
+  "re_boss_kuangxi": {
+    "EnglishName": "re_boss_kuangxi",
+    "ChineseName": "狂袭",
+    "info": "出牌阶段，你可以失去1点体力，然后对一名其他角色造成1点伤害，若以此法使其进入濒死状态，则本回合本技能失效。"
+  },
+  "re_boss_xianji": {
+    "EnglishName": "re_boss_xianji",
+    "ChineseName": "先机",
+    "info": "锁定技，当你体力低于8，你成为牌的目标时，你摸2张牌"
   }
 }
