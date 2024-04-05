@@ -251,10 +251,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_wangyi": ["female", "wei", "7/7/4", ["re_boss_lianyu", "zhenlie", "miji", "zhaxiang", "duwu", "xinkuanggu", "shibei", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_shen_zhaoyun": ["male", "shu", "6/6/4", ["re_boss_lianyu", "xinjuejing", "relonghun", "huxiao", "boss_moyany", "re_boss_kuangxi", "gzbuqu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_zhangliao2": ["male", "wei", "8/8/4", ["re_boss_lianyu", "new_retuxi", "relonghun", "paoxiao", "shangshi", "kangge", "re_boss_xianji", "zlhuji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-
-							"shanhetu_boss_wuhu_huangzhong": ["male", "shu", "1/1", ["re_boss_lianyu", "re_boss_jinwuluorigong", "xinliegong", "xinfu_dianhu", "jieyuan", "re_boss_reborn_machao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-							"shanhetu_boss_wuhu_machao": ["male", "shu", "1/1", ["re_boss_lianyu", "mashu", "retieji", "re_boss_dongdang", "re_boss_reborn_zhaoyun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-							"shanhetu_boss_wuhu_zhaoyun": ["male", "shu", "1/1", ["re_boss_lianyu", "ollongdan", "olyajiao", "re_boss_dongdang", "re_boss_reborn_zhangfei", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_wuhu_huangzhong": ["male", "shu", "7/7/4", ["re_boss_lianyu", "re_boss_jinwuluorigong", "xinliegong", "xinfu_dianhu", "jieyuan", "re_boss_reborn_machao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_wuhu_machao": ["male", "shu", "7/7/4", ["re_boss_lianyu", "mashu", "retieji", "re_boss_dongdang", "re_boss_reborn_zhaoyun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_wuhu_zhaoyun": ["male", "shu", "7/7/4", ["re_boss_lianyu", "ollongdan", "olyajiao", "re_boss_dongdang", "re_boss_reborn_zhangfei", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_wuhu_zhangfei": ["male", "shu", "7/7/4", ["re_boss_lianyu", "olpaoxiao", "oltishen", "re_boss_dongdang", "jizhi", "re_boss_reborn_guanyu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_wuhu_guanyu": ["male", "shu", "7/7/4", ["re_boss_lianyu", "new_rewusheng", "new_yijue", "re_boss_dongdang", "oljiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 						},
@@ -612,12 +611,18 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 								},
 								forced: true,
 								forceDie: true,
-								content: async (event, trigger, player) => {
+								content: () => {
 									trigger.cancel();
-									await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_guanyu");									await player.recover(player.maxHp - player.hp);
-									await player.recover(player.maxHp - player.hp);
+									player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhangfei");
+									player.recover(player.maxHp - player.hp);
 									game.triggerEnter(player);
 								}
+								// content: async (event, trigger, player) => {
+								// 	trigger.cancel();
+								// 	await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_guanyu");									await player.recover(player.maxHp - player.hp);
+								// 	await player.recover(player.maxHp - player.hp);
+								// 	game.triggerEnter(player);
+								// }
 							},
 
 							"re_boss_dongdang": {
