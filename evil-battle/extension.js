@@ -256,6 +256,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_wuhu_zhaoyun": ["male", "shu", "7/7/4", ["re_boss_lianyu", "ollongdan", "olyajiao", "re_boss_dongdang", "re_boss_reborn_zhangfei", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_wuhu_zhangfei": ["male", "shu", "7/7/4", ["re_boss_lianyu", "olpaoxiao", "oltishen", "re_boss_dongdang", "jizhi", "re_boss_reborn_guanyu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_wuhu_guanyu": ["male", "shu", "7/7/4", ["re_boss_lianyu", "new_rewusheng", "new_yijue", "re_boss_dongdang", "oljiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_yanliangwenchou": ["male", "qun", "6/6/4", ["re_boss_lianyu", "olshuangxiong", "jiang", "xinkuanggu", "kunfen", "reluoyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 						},
 						characterSort: {
 							against7devil: {
@@ -7529,12 +7530,13 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_wangyi": "决意巾帼",
 							"shanhetu_boss_shen_zhaoyun": "常山赵子龙",
 							"shanhetu_boss_zhangliao2": "古之召虎",
-
 							"shanhetu_boss_wuhu_huangzhong": "五虎之黄忠",
 							"shanhetu_boss_wuhu_machao": "五虎之马超",
 							"shanhetu_boss_wuhu_zhaoyun": "五虎之赵云",
 							"shanhetu_boss_wuhu_zhangfei": "五虎之张飞",
 							"shanhetu_boss_wuhu_guanyu": "五虎之关羽",
+							"shanhetu_boss_yanliangwenchou": "乱世双雄",
+
 
 							// skill
 							"shenhu": "神护",
