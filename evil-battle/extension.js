@@ -257,6 +257,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_wuhu_zhangfei": ["male", "shu", "7/7/4", ["re_boss_lianyu", "olpaoxiao", "oltishen", "re_boss_dongdang", "jizhi", "re_boss_reborn_guanyu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_wuhu_guanyu": ["male", "shu", "7/7/4", ["re_boss_lianyu", "new_rewusheng", "new_yijue", "re_boss_dongdang", "oljiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_yanliangwenchou": ["male", "qun", "6/6/4", ["re_boss_lianyu", "olshuangxiong", "jiang", "xinkuanggu", "kunfen", "reluoyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_sp_pangde": ["male", "wei", "8/8/4", ["re_boss_lianyu", "mashu", "juesi", "kongcheng", "wushuang", "jiang", "reluoyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 						},
 						characterSort: {
 							against7devil: {
@@ -7536,7 +7537,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_wuhu_zhangfei": "五虎之张飞",
 							"shanhetu_boss_wuhu_guanyu": "五虎之关羽",
 							"shanhetu_boss_yanliangwenchou": "乱世双雄",
-
+							"shanhetu_boss_sp_pangde": "山河图庞德",
 
 							// skill
 							"shenhu": "神护",
