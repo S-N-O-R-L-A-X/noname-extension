@@ -7553,7 +7553,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"re_boss_zhuishe": "追摄",
 							"re_boss_zhuishe_info": "锁定技，你使用【杀】次数+1。",
 							"re_boss_xianji": "先机",
-							"re_boss_xianji_info": "锁定技，当你体力低于8，你成为牌的目标时，你摸2张牌",
+							"re_boss_xianji_info": "锁定技，当你体力低于8，你成为牌的目标时，你摸2张牌。",
+							"re_boss_dongdang": "动荡",
+							"re_boss_dongdang_info": "锁定技，当你进入游戏时，立即结束当前结算，结束当前角色回合并开始你的回合。",
 
 							"re_boss_liannu": "持弩",
 							"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
@@ -7901,6 +7903,22 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							// shanhetu_boss_shen_zhaoyun
 							"re_boss_kuangxi": "狂袭",
 							"re_boss_kuangxi_info": "出牌阶段，你可以失去1点体力，然后对一名其他角色造成1点伤害，若以此法使其进入濒死状态，则本回合本技能失效。",
+
+							// shanhetu_boss_wuhu_huangzhong
+							"re_boss_reborn_machao": "重生",
+							"re_boss_reborn_machao_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之马超。",
+
+							// shanhetu_boss_wuhu_machao
+							"re_boss_reborn_zhaoyun": "重生",
+							"re_boss_reborn_zhaoyun_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之赵云。",
+
+							// shanhetu_boss_zhaoyun
+							"re_boss_reborn_zhangfei": "重生",
+							"re_boss_reborn_zhangfei_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之张飞。",
+
+							// shanhetu_boss_zhangfei
+							"re_boss_reborn_guanyu": "重生",
+							"re_boss_reborn_guanyu_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之关羽。",
 
 							// unused
 							"geju": "割据",
