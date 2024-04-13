@@ -349,6 +349,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_wangyi": "来源于山河图第二章关内决意巾帼，没有任何改动，攻防一体的女武神。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
 							"shanhetu_boss_shen_zhaoyun": "来源于山河图第二章关内常山赵子龙，没有任何改动，攻防一体的不死红蛇。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
 							"shanhetu_boss_zhangliao2": "来源于山河图第二章关内古之召虎，没有任何改动，攻防一体的古之召虎。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
+							"shanhetu_boss_wuhu_huangzhong": "来源于山河图第二章boss五虎将，没有任何改动。一个接一个地…复活吧。<br>【强度】★★★★★<br> 【亮点】综合、复活",
+							"shanhetu_boss_yanliangwenchou": "来源于山河图第一章关内乱世双雄，没有任何改动。比小霸王还要激昂<br>【强度】★★★★★<br> 【亮点】攻击",
+							"shanhetu_boss_sp_pangde": "来源于山河图第二章关内sp庞德，没有任何改动。有一个男人，一血是他的最强形态，很喜欢“决斗”，有〖激昂〗，他就是……<br>【强度】★★★<br> 【亮点】攻击",
+							"shanhetu_boss_hansui": "来源于山河图第一章关内韩遂，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 						},
 						skill: {
 							shenhu: {
@@ -7555,7 +7559,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"re_boss_xianji": "先机",
 							"re_boss_xianji_info": "锁定技，当你体力低于8，你成为牌的目标时，你摸2张牌。",
 							"re_boss_dongdang": "动荡",
-							"re_boss_dongdang_info": "锁定技，当你进入游戏时，立即结束当前结算，结束当前角色回合并开始你的回合。",
+							"re_boss_dongdang_info": "锁定技，当你进入游戏时，立即结束当前结算并开始你的回合。",
 
 							"re_boss_liannu": "持弩",
 							"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
