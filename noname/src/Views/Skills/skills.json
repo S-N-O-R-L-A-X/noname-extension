@@ -572,6 +572,31 @@
   "re_boss_xianji": {
     "EnglishName": "re_boss_xianji",
     "ChineseName": "先机",
-    "info": "锁定技，当你体力低于8，你成为牌的目标时，你摸2张牌"
+    "info": "锁定技，当你体力低于8，你成为牌的目标时，你摸2张牌。"
+  },
+  "re_boss_reborn_machao": {
+    "EnglishName": "re_boss_reborn_machao",
+    "ChineseName": "重生",
+    "info": "锁定技，当你死亡时，你将此武将牌替换为五虎之马超。"
+  },
+  "re_boss_dongdang": {
+    "EnglishName": "re_boss_dongdang",
+    "ChineseName": "动荡",
+    "info": "锁定技，当你进入游戏时，立即结束当前结算并开始你的回合。"
+  },
+  "re_boss_reborn_zhaoyun": {
+    "EnglishName": "re_boss_reborn_zhaoyun",
+    "ChineseName": "重生",
+    "info": "锁定技，当你死亡时，你将此武将牌替换为五虎之赵云。"
+  },
+  "re_boss_reborn_zhangfei": {
+    "EnglishName": "re_boss_reborn_zhangfei",
+    "ChineseName": "重生",
+    "info": "锁定技，当你死亡时，你将此武将牌替换为五虎之张飞。"
+  },
+  "re_boss_reborn_guanyu": {
+    "EnglishName": "re_boss_reborn_guanyu",
+    "ChineseName": "重生",
+    "info": "锁定技，当你死亡时，你将此武将牌替换为五虎之关羽。"
   }
 }

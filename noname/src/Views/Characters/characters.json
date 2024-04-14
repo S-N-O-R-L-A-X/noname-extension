@@ -1925,7 +1925,7 @@
     "ChineseName": "五虎之黄忠",
     "gender": "male",
     "nationality": "shu",
-    "hp": "1/1",
+    "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
       "re_boss_jinwuluorigong",
@@ -1941,16 +1941,20 @@
       null,
       null,
       null,
-      null,
+      "重生",
       "暴力"
-    ]
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章boss五虎将，没有任何改动。一个接一个地…复活吧。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合、复活"
   },
   {
     "EnglishName": "shanhetu_boss_wuhu_machao",
     "ChineseName": "五虎之马超",
     "gender": "male",
     "nationality": "shu",
-    "hp": "1/1",
+    "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
       "mashu",
@@ -1963,17 +1967,18 @@
       "炼狱",
       null,
       null,
-      null,
-      null,
+      "动荡",
+      "重生",
       "暴力"
-    ]
+    ],
+    "package": "挑战boss加强包"
   },
   {
     "EnglishName": "shanhetu_boss_wuhu_zhaoyun",
     "ChineseName": "五虎之赵云",
     "gender": "male",
     "nationality": "shu",
-    "hp": "1/1",
+    "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
       "ollongdan",
@@ -1986,10 +1991,11 @@
       "炼狱",
       null,
       null,
-      null,
-      null,
+      "动荡",
+      "重生",
       "暴力"
-    ]
+    ],
+    "package": "挑战boss加强包"
   },
   {
     "EnglishName": "shanhetu_boss_wuhu_zhangfei",
@@ -2010,11 +2016,12 @@
       "炼狱",
       null,
       null,
+      "动荡",
       null,
-      null,
-      null,
+      "重生",
       "暴力"
-    ]
+    ],
+    "package": "挑战boss加强包"
   },
   {
     "EnglishName": "shanhetu_boss_wuhu_guanyu",
@@ -2034,9 +2041,99 @@
       "炼狱",
       null,
       null,
+      "动荡",
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包"
+  },
+  {
+    "EnglishName": "shanhetu_boss_yanliangwenchou",
+    "ChineseName": "乱世双雄",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "olshuangxiong",
+      "jiang",
+      "xinkuanggu",
+      "kunfen",
+      "reluoyi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
       null,
       null,
       "暴力"
-    ]
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章关内乱世双雄，没有任何改动。比小霸王还要激昂。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_sp_pangde",
+    "ChineseName": "山河图庞德",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "mashu",
+      "juesi",
+      "kongcheng",
+      "wushuang",
+      "jiang",
+      "reluoyi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章关内sp庞德，没有任何改动。有一个男人，一血是他的最强形态，很喜欢“决斗”，有〖激昂〗，他就是……",
+    "strength": "【强度】★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_hansui",
+    "ChineseName": "山河图韩遂",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "olniluan",
+      "olxiaoxi",
+      "wushuang",
+      "wushen",
+      "tairan",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第一章关内韩遂，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
   }
 ]
