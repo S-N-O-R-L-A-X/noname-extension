@@ -269,7 +269,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 									"shanhetu_boss_luxun", "shanhetu_boss_litong", "shanhetu_boss_ganning", "shanhetu_boss_sunquan",
 									"shanhetu_boss_zhouyu", "shanhetu_boss_fuwan", "shanhetu_boss_huaxiong", "shanhetu_boss_zhangliao",
 									"shanhetu_boss_caozhang", "shanhetu_boss_zhangling", "shanhetu_boss_wangyi", "shanhetu_boss_shen_zhaoyun",
-									"shanhetu_boss_zhangliao2"],
+									"shanhetu_boss_zhangliao2", "shanhetu_boss_wuhu_huangzhong", "shanhetu_boss_wuhu_machao", "shanhetu_boss_wuhu_zhaoyun",
+									"shanhetu_boss_wuhu_zhangfei", "shanhetu_boss_wuhu_guanyu", "shanhetu_boss_yanliangwenchou", "shanhetu_boss_sp_pangde",
+									"shanhetu_boss_hansui",],
 								against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
 									"re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
 									"fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
@@ -350,7 +352,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_shen_zhaoyun": "来源于山河图第二章关内常山赵子龙，没有任何改动，攻防一体的不死红蛇。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
 							"shanhetu_boss_zhangliao2": "来源于山河图第二章关内古之召虎，没有任何改动，攻防一体的古之召虎。<br>【强度】★★★★★<br> 【亮点】攻击、防御",
 							"shanhetu_boss_wuhu_huangzhong": "来源于山河图第二章boss五虎将，没有任何改动。一个接一个地…复活吧。<br>【强度】★★★★★<br> 【亮点】综合、复活",
-							"shanhetu_boss_yanliangwenchou": "来源于山河图第一章关内乱世双雄，没有任何改动。比小霸王还要激昂<br>【强度】★★★★★<br> 【亮点】攻击",
+							"shanhetu_boss_yanliangwenchou": "来源于山河图第一章关内乱世双雄，没有任何改动。比小霸王还要激昂。<br>【强度】★★★★★<br> 【亮点】攻击",
 							"shanhetu_boss_sp_pangde": "来源于山河图第二章关内sp庞德，没有任何改动。有一个男人，一血是他的最强形态，很喜欢“决斗”，有〖激昂〗，他就是……<br>【强度】★★★<br> 【亮点】攻击",
 							"shanhetu_boss_hansui": "来源于山河图第一章关内韩遂，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 						},
@@ -7958,7 +7960,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
                 这是本扩展的官方网站：<a class="github" href="https://s-n-o-r-l-a-x.github.io/noname-extension/">https://s-n-o-r-l-a-x.github.io/noname-extension</a><br>
                 如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极哦~<br>
                 <a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a><br>
-                如果想要加群的话，目前QQ群号是一群：214685856，二群：939494042，请优先加二群！请备注下从哪得知这个扩展的哈，如果是下载到的整合包包含，回答整合包即可。
+                如果想要加群的话，目前QQ群号是一群：214685856，二群：939494042，请优先加二群！二群问题填QQ频道即可，如果是下载到的整合包包含，回答整合包即可。
                 `,
 				clear: true,
 				nopointer: true,
@@ -8000,15 +8002,15 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 				nopointer: true,
 			},
 			update: {
-				name: `<div class=".update">扩展版本：7.3<font size="4px">▶▶▶</font></div>`,
-				version: 7.3,
+				name: `<div class=".update">扩展版本：7.4<font size="4px">▶▶▶</font></div>`,
+				version: 7.4,
 				clear: true,
 				intro: "点击查看此版本的更新内容",
 				onclick: function () {
 					if (this.updateContent === undefined) {
 						const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-							'<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图张辽、山河图曹彰、山河图张天师、决意巾帼、常山赵子龙、古之召虎。<br>' +
-							'<li><span style="color:#006400">说明二</span>：<br>修复了一些武将描述。<br>'
+							'<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图五虎，乱世双雄、山河图庞德、山河图韩遂。<br>' +
+							'<li><span style="color:#006400">说明二</span>：<br>修复了一些文字描述。<br>'
 						);
 						this.parentNode.insertBefore(more, this.nextSibling);
 						this.updateContent = more;
@@ -8017,7 +8019,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 					else {
 						this.parentNode.removeChild(this.updateContent);
 						delete this.updateContent;
-						this.innerHTML = '<div class=".update">扩展版本：7.3<font size="4px">▶▶▶</font></div>';
+						this.innerHTML = '<div class=".update">扩展版本：7.4<font size="4px">▶▶▶</font></div>';
 					};
 				}
 			},
@@ -8056,7 +8058,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 			author: "SNORLAX",
 			diskURL: "",
 			forumURL: "",
-			version: "7.3",
+			version: "7.4",
 		},
 		files: { "character": [], "card": [], "skill": [] }
 	}
