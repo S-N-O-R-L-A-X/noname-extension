@@ -41,7 +41,7 @@ fs.readFile('../evil-battle/extension.js', 'utf8').then(data => {
 	const rg1 = /([\s\S]*?): \[([\s\S]*?)\][\s\S]*?/g;
 	while ((info = rg1.exec(characterPackage)) !== null) {
 		let p = info[1].length - 1;
-		while (p >= 0 && info[1][p] !== " ") {
+		while (p >= 0 && (info[1][p] !== " " && info[1][p] !== "\t" )) {
 			--p;
 		}
 		info[1] = info[1].substring(p + 1);
