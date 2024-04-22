@@ -261,6 +261,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_hansui": ["male", "wei", "7/7/4", ["re_boss_lianyu", "olniluan", "olxiaoxi", "wushuang", "wushen", "tairan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_xiahoudun": ["male", "wei", "8/8/4", ["re_boss_lianyu", "buqu", "reganglie", "refankui", "boss_duqu", "gzyinghun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_daxiaoqiao": ["female", "wu", "7/7/4", ["re_boss_lianyu", "new_xingwu", "new_luoyan", "olhongyan", "jijiu", "jieyuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_dengai": ["male", "wei", "8/8/4", ["re_boss_lianyu", "oltuntian", "olzaoxian", "shenxian", "xiongshu", "dzgengzhan", "yongjin", "jilei", "xuanlve", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 						},
 						characterSort: {
 							against7devil: {
@@ -7550,6 +7551,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_hansui": "山河图韩遂",
 							"shanhetu_boss_xiahoudun": "山河图夏侯惇",
 							"shanhetu_boss_daxiaoqiao": "绝代双骄",
+							"shanhetu_boss_dengai": "伏鸾",
 
 							// skill
 							"shenhu": "神护",
