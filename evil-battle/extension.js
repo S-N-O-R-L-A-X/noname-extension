@@ -262,7 +262,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_xiahoudun": ["male", "wei", "8/8/4", ["re_boss_lianyu", "buqu", "reganglie", "refankui", "boss_duqu", "gzyinghun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_daxiaoqiao": ["female", "wu", "7/7/4", ["re_boss_lianyu", "new_xingwu", "new_luoyan", "olhongyan", "jijiu", "jieyuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_dengai": ["male", "wei", "8/8/4", ["re_boss_lianyu", "oltuntian", "olzaoxian", "shenxian", "xiongshu", "dzgengzhan", "yongjin", "jilei", "xuanlve", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-							"shanhetu_boss_shen_zhangliao": ["male", "shen", "7/7/4", ["re_boss_lianyu", "olduorui", "olzhiti", "latest_ol_feiyang", "junxing", "tieji", "yuce", "re_boss_juejue", "gzyinghun","jueji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_shen_zhangliao": ["male", "shen", "7/7/4", ["re_boss_lianyu", "olduorui", "olzhiti", "latest_ol_feiyang", "junxing", "tieji", "yuce", "re_boss_juejue", "gzyinghun", "jueji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 						},
 						characterSort: {
 							against7devil: {
@@ -501,6 +501,19 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 								},
 								content: () => {
 									player.draw(2);
+								}
+							},
+
+							"re_boss_juejue": {
+								trigger: { player: 'damageEnd' },
+								filter: function (event, player) {
+									return player.hp < 5;
+								},
+								forced: true,
+								content: () => {
+									if (!trigger.source.hasSkill('fengyin')) {
+										trigger.source.addTempSkill('fengyin');
+									}
 								}
 							},
 
