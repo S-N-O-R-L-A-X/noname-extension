@@ -262,7 +262,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_xiahoudun": ["male", "wei", "8/8/4", ["re_boss_lianyu", "buqu", "reganglie", "refankui", "boss_duqu", "gzyinghun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_daxiaoqiao": ["female", "wu", "7/7/4", ["re_boss_lianyu", "new_xingwu", "new_luoyan", "olhongyan", "jijiu", "jieyuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_dengai": ["male", "wei", "8/8/4", ["re_boss_lianyu", "oltuntian", "olzaoxian", "shenxian", "xiongshu", "dzgengzhan", "yongjin", "jilei", "xuanlve", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-							"shanhetu_boss_shen_zhangliao": ["male", "shen", "7/7/4", ["re_boss_lianyu", "olduorui", "olzhiti", "latest_ol_feiyang", "junxing", "tieji", "yuce", "re_boss_juejue", "gzyinghun", "jueji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_shen_zhangliao": ["male", "shen", "7/7/4", ["re_boss_lianyu", "olduorui", "olzhiti", "latest_ol_feiyang", "junxing", "tieji", "yuce", "re_boss_juejue", "gzyinghun", "re_boss_jueji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_zhangliang": ["male", "qun", "6/6/4", ["re_boss_lianyu", "xinleiji", "boss_luolei", "boss_leizhou", "olleijie", "boss_baiyi", "xinguidao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_shen_sunquan": ["male", "shen", "8/8/4", ["re_boss_lianyu", "junkyuheng", "junkdili", "qixi", "jiang", "keji", "zhuikong", "lianying", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 						},
@@ -516,6 +516,23 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 									if (!trigger.source.hasSkill('fengyin')) {
 										trigger.source.addTempSkill('fengyin');
 									}
+								}
+							},
+							"re_boss_jueji": {
+								trigger: { global: 'phaseDrawBegin' },
+								filter: function (event, player) {
+									if (event.player.isFriendOf(player)) {
+										return false;
+									}
+									return event.num > 0 && event.player != player && event.player.hp < event.player.maxHp && event.player.countGainableCards(player,event.source!=player?'he':'e');
+								},
+								logTarget: 'player',
+								content: function () {
+									player.gainPlayerCard(get.prompt('re_boss_jueji', trigger.player), trigger.player, get.buttonValue, trigger.player != player ? 'he' : 'e').set('logSkill', [event.name, trigger.player]);
+								},
+								ai: {
+									expose: 0.2,
+									threaten: 1.6
 								}
 							},
 
