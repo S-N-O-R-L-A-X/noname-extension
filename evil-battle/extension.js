@@ -7547,7 +7547,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"fusion_liuzan": "融留赞",
 							"math_xiahoujie": "数夏侯杰",
 							"math_xushao": "数许邵",
-							"math_zhangchangpu": "数张菖蒲",
+							"math_zhangchangpu": "数张昌蒲",
 							"fusion_zhuanlundizang": "转轮地藏",
 							"fusion_shen_xunyu": "融神荀彧",
 							"fusion_panshu": "融潘淑",
@@ -8044,14 +8044,14 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 				nopointer: true,
 			},
 			update: {
-				name: `<div class=".update">扩展版本：7.4<font size="4px">▶▶▶</font></div>`,
-				version: 7.4,
+				name: `<div class=".update">扩展版本：7.5<font size="4px">▶▶▶</font></div>`,
+				version: 7.5,
 				clear: true,
 				intro: "点击查看此版本的更新内容",
 				onclick: function () {
 					if (this.updateContent === undefined) {
 						const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-							'<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图五虎，乱世双雄、山河图庞德、山河图韩遂。<br>' +
+							'<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图夏侯惇、绝代双骄、伏鸾、山河图神张辽、山河图张梁、江东之虎。<br>' +
 							'<li><span style="color:#006400">说明二</span>：<br>修复了一些文字描述。<br>'
 						);
 						this.parentNode.insertBefore(more, this.nextSibling);
@@ -8061,7 +8061,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 					else {
 						this.parentNode.removeChild(this.updateContent);
 						delete this.updateContent;
-						this.innerHTML = '<div class=".update">扩展版本：7.4<font size="4px">▶▶▶</font></div>';
+						this.innerHTML = '<div class=".update">扩展版本：7.5<font size="4px">▶▶▶</font></div>';
 					};
 				}
 			},
@@ -8100,7 +8100,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 			author: "SNORLAX",
 			diskURL: "",
 			forumURL: "",
-			version: "7.4",
+			version: "7.5",
 		},
 		files: { "character": [], "card": [], "skill": [] }
 	}
