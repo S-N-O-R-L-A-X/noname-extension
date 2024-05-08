@@ -277,7 +277,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 									"shanhetu_boss_caozhang", "shanhetu_boss_zhangling", "shanhetu_boss_wangyi", "shanhetu_boss_shen_zhaoyun",
 									"shanhetu_boss_zhangliao2", "shanhetu_boss_wuhu_huangzhong", "shanhetu_boss_wuhu_machao", "shanhetu_boss_wuhu_zhaoyun",
 									"shanhetu_boss_wuhu_zhangfei", "shanhetu_boss_wuhu_guanyu", "shanhetu_boss_yanliangwenchou", "shanhetu_boss_sp_pangde",
-									"shanhetu_boss_hansui",],
+									"shanhetu_boss_hansui", "shanhetu_boss_xiahoudun", "shanhetu_boss_daxiaoqiao", "shanhetu_boss_dengai",
+									"shanhetu_boss_shen_zhangliao", "shanhetu_boss_zhangliang", "shanhetu_boss_shen_sunquan"],
 								against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
 									"re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
 									"fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
@@ -361,6 +362,12 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_yanliangwenchou": "来源于山河图第一章关内乱世双雄，没有任何改动。比小霸王还要激昂。<br>【强度】★★★★★<br> 【亮点】攻击",
 							"shanhetu_boss_sp_pangde": "来源于山河图第二章关内sp庞德，没有任何改动。有一个男人，一血是他的最强形态，很喜欢“决斗”，有〖激昂〗，他就是……<br>【强度】★★★<br> 【亮点】攻击",
 							"shanhetu_boss_hansui": "来源于山河图第一章关内韩遂，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
+							"shanhetu_boss_xiahoudun": "来源于山河图第二章关内夏侯惇，没有任何改动。<br>【强度】★★★★★<br> 【亮点】防御",
+							"shanhetu_boss_daxiaoqiao": "来源于山河图第二章关内绝代双骄，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+							"shanhetu_boss_dengai": "来源于山河图第二章关内伏鸾，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+							"shanhetu_boss_shen_zhangliao": "来源于山河图第二章关boss神张辽，没有任何改动。<br>【强度】★★★★★<br> 【亮点】输出",
+							"shanhetu_boss_zhangliang": "来源于山河图第二章关内张梁，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+							"shanhetu_boss_shen_sunquan": "来源于山河图第二章关内神孙权，没有任何改动。<br>【强度】★★★★★<br> 【亮点】过牌"
 						},
 						skill: {
 							shenhu: {
@@ -524,7 +531,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 									if (event.player.isFriendOf(player)) {
 										return false;
 									}
-									return event.num > 0 && event.player != player && event.player.hp < event.player.maxHp && event.player.countGainableCards(player,event.source!=player?'he':'e');
+									return event.num > 0 && event.player != player && event.player.hp < event.player.maxHp && event.player.countGainableCards(player, event.source != player ? 'he' : 'e');
 								},
 								logTarget: 'player',
 								content: function () {
