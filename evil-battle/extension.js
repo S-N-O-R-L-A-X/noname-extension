@@ -261,7 +261,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_hansui": ["male", "wei", "7/7/4", ["re_boss_lianyu", "olniluan", "olxiaoxi", "wushuang", "wushen", "tairan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_xiahoudun": ["male", "wei", "8/8/4", ["re_boss_lianyu", "buqu", "reganglie", "refankui", "boss_duqu", "gzyinghun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_daxiaoqiao": ["female", "wu", "7/7/4", ["re_boss_lianyu", "new_xingwu", "new_luoyan", "olhongyan", "jijiu", "jieyuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-							"shanhetu_boss_dengai": ["male", "wei", "8/8/4", ["re_boss_lianyu", "oltuntian", "olzaoxian", "shenxian", "xiongshu", "dzgengzhan", "yongjin", "jilei", "xuanlve", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_dengai": ["male", "wei", "8/8/4", ["re_boss_lianyu", "oltuntian", "olzaoxian", "shenxian", "xiongshu", "dzgengzhan", "yongjin", "jilei", "gzxuanlve", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_shen_zhangliao": ["male", "shen", "7/7/4", ["re_boss_lianyu", "olduorui", "olzhiti", "latest_ol_feiyang", "junxing", "tieji", "yuce", "re_boss_juejue", "gzyinghun", "re_boss_jueji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_zhangliang": ["male", "qun", "6/6/4", ["re_boss_lianyu", "xinleiji", "boss_luolei", "boss_leizhou", "olleijie", "boss_baiyi", "xinguidao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_shen_sunquan": ["male", "shen", "8/8/4", ["re_boss_lianyu", "junkyuheng", "junkdili", "qixi", "jiang", "keji", "zhuikong", "lianying", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
@@ -7399,6 +7399,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 								}
 							},
 
+							// guozhan
 							gzcongjian: {
 								trigger: {
 									player: 'damageBegin3',
@@ -7417,6 +7418,41 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 									return _status.currentPhase != player;
 								},
 								content: function () { trigger.num++ },
+							},
+							gzxuanlve: {
+								trigger: {
+									player: 'loseAfter',
+									global: ['equipAfter', 'addJudgeAfter', 'gainAfter', 'loseAsyncAfter', 'addToExpansionAfter'],
+								},
+								direct: true,
+								preHidden: true,
+								filter: function (event, player) {
+									var evt = event.getl(player);
+									return evt && evt.es && evt.es.length > 0;
+								},
+								content: function () {
+									'step 0'
+									player.chooseTarget(get.prompt('xuanlve'), '弃置一名其他角色的一张牌', function (card, player, target) {
+										return target != player && target.countDiscardableCards(player, 'he');
+									}).set('ai', function (target) {
+										var player = _status.event.player;
+										return get.effect(target, { name: 'guohe_copy2' }, player, player);
+									}).setHiddenSkill(event.name);
+									'step 1'
+									if (result.bool) {
+										player.logSkill('xuanlve', result.targets);
+										player.discardPlayerCard(result.targets[0], 'he', true);
+									}
+								},
+								ai: {
+									noe: true,
+									reverseEquip: true,
+									effect: {
+										target: function (card, player, target, current) {
+											if (get.type(card) == 'equip') return [1, 1];
+										}
+									}
+								}
 							},
 
 						},
