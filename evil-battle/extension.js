@@ -7647,6 +7647,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"re_boss_xianji_info": "锁定技，当你体力低于8，你成为牌的目标时，你摸2张牌。",
 							"re_boss_dongdang": "动荡",
 							"re_boss_dongdang_info": "锁定技，当你进入游戏时，立即结束当前结算并开始你的回合。",
+							"re_boss_jueji": "绝汲",
+							"re_boss_jueji_info": "敌方角色摸牌阶段，若其已受伤，你可以获得其一张牌。",
 
 							"re_boss_liannu": "持弩",
 							"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
