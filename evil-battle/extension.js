@@ -261,7 +261,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_hansui": ["male", "wei", "7/7/4", ["re_boss_lianyu", "olniluan", "olxiaoxi", "wushuang", "wushen", "tairan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_xiahoudun": ["male", "wei", "8/8/4", ["re_boss_lianyu", "buqu", "reganglie", "refankui", "boss_duqu", "gzyinghun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_daxiaoqiao": ["female", "wu", "7/7/4", ["re_boss_lianyu", "new_xingwu", "new_luoyan", "olhongyan", "jijiu", "jieyuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-							"shanhetu_boss_dengai": ["male", "wei", "8/8/4", ["re_boss_lianyu", "oltuntian", "olzaoxian", "shenxian", "xiongshu", "dzgengzhan", "yongjin", "jilei", "gzxuanlve", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_dengai": ["male", "wei", "8/8/4", ["re_boss_lianyu", "oltuntian", "olzaoxian", "shenxian", "xiongshu", "dzgengzhan", "yongjin", "jilei", "xuanlve", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_shen_zhangliao": ["male", "shen", "7/7/4", ["re_boss_lianyu", "olduorui", "olzhiti", "latest_ol_feiyang", "junxing", "tieji", "yuce", "re_boss_juejue", "gzyinghun", "re_boss_jueji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_zhangliang": ["male", "qun", "6/6/4", ["re_boss_lianyu", "xinleiji", "boss_luolei", "boss_leizhou", "olleijie", "boss_baiyi", "xinguidao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_shen_sunquan": ["male", "shen", "8/8/4", ["re_boss_lianyu", "junkyuheng", "junkdili", "qixi", "jiang", "keji", "zhuikong", "lianying", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
@@ -389,7 +389,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 								},
 								content: function () {
 									"step 0"
-									player.chooseToDiscard('he', 2, get.prompt('feiyang'), '弃置两张牌，然后弃置判定区里的所有牌').set('logSkill', 'feiyang').set('ai', function (card) {
+									player.chooseToDiscard('he', 2, get.prompt('latest_ol_feiyang'), '弃置两张牌，然后弃置判定区里的所有牌').set('logSkill', 'latest_ol_feiyang').set('ai', function (card) {
 										if (_status.event.goon) return 6 - get.value(card);
 										return 0;
 									}).set('goon', player.hasCard(function (card) {
@@ -7419,7 +7419,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 								},
 								content: function () { trigger.num++ },
 							},
-							gzxuanlve: {
+							xuanlve: {
 								trigger: {
 									player: 'loseAfter',
 									global: ['equipAfter', 'addJudgeAfter', 'gainAfter', 'loseAsyncAfter', 'addToExpansionAfter'],
@@ -8012,6 +8012,11 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							// shanhetu_boss_zhangfei
 							"re_boss_reborn_guanyu": "重生",
 							"re_boss_reborn_guanyu_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之关羽。",
+
+							// shanhetu_boss_dengai
+							"xuanlve":"旋略",
+							"xuanlve_info":"当你失去装备区里的牌后，你可以弃置一名其他角色的一张牌。",
+				
 
 							// unused
 							"geju": "割据",
