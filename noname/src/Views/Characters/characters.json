@@ -1092,7 +1092,7 @@
   },
   {
     "EnglishName": "math_zhangchangpu",
-    "ChineseName": "数张菖蒲",
+    "ChineseName": "数张昌蒲",
     "gender": "female",
     "nationality": "wei",
     "hp": "6",
@@ -2135,5 +2135,199 @@
     "details": "来源于山河图第一章关内韩遂，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_xiahoudun",
+    "ChineseName": "山河图夏侯惇",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "buqu",
+      "reganglie",
+      "refankui",
+      "boss_duqu",
+      "gzyinghun",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章关内夏侯惇，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】防御"
+  },
+  {
+    "EnglishName": "shanhetu_boss_daxiaoqiao",
+    "ChineseName": "绝代双骄",
+    "gender": "female",
+    "nationality": "wu",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "new_xingwu",
+      "new_luoyan",
+      "olhongyan",
+      "jijiu",
+      "jieyuan",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章关内绝代双骄，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_dengai",
+    "ChineseName": "伏鸾",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "oltuntian",
+      "olzaoxian",
+      "shenxian",
+      "xiongshu",
+      "dzgengzhan",
+      "yongjin",
+      "jilei",
+      "gzxuanlve",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章关内伏鸾，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_shen_zhangliao",
+    "ChineseName": "山河图神张辽",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "olduorui",
+      "olzhiti",
+      "latest_ol_feiyang",
+      "junxing",
+      "tieji",
+      "yuce",
+      "re_boss_juejue",
+      "gzyinghun",
+      "re_boss_jueji",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "飞扬",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "绝汲",
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章关boss神张辽，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】输出"
+  },
+  {
+    "EnglishName": "shanhetu_boss_zhangliang",
+    "ChineseName": "山河图张梁",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "xinleiji",
+      "boss_luolei",
+      "boss_leizhou",
+      "olleijie",
+      "boss_baiyi",
+      "xinguidao",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章关内张梁，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_shen_sunquan",
+    "ChineseName": "江东之虎",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "junkyuheng",
+      "junkdili",
+      "qixi",
+      "jiang",
+      "keji",
+      "zhuikong",
+      "lianying",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章关内神孙权，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】过牌"
   }
 ]

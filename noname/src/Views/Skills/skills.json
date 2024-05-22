@@ -598,5 +598,10 @@
     "EnglishName": "re_boss_reborn_guanyu",
     "ChineseName": "重生",
     "info": "锁定技，当你死亡时，你将此武将牌替换为五虎之关羽。"
+  },
+  "re_boss_jueji": {
+    "EnglishName": "re_boss_jueji",
+    "ChineseName": "绝汲",
+    "info": "敌方角色摸牌阶段，若其已受伤，你可以获得其一张牌。"
   }
 }
