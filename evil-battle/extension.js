@@ -265,6 +265,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_shen_zhangliao": ["male", "shen", "7/7/4", ["re_boss_lianyu", "olduorui", "olzhiti", "latest_ol_feiyang", "junxing", "tieji", "yuce", "re_boss_juejue", "gzyinghun", "re_boss_jueji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_zhangliang": ["male", "qun", "6/6/4", ["re_boss_lianyu", "xinleiji", "boss_luolei", "boss_leizhou", "olleijie", "boss_baiyi", "xinguidao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_shen_sunquan": ["male", "shen", "8/8/4", ["re_boss_lianyu", "junkyuheng", "junkdili", "qixi", "jiang", "keji", "zhuikong", "lianying", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_wutugu": ["male", "qun", "17/17/4", ["re_boss_lianyu", "re_boss_xiongshou2", "ranshang", "hanyong", "boss_luanchang", "xinkuanggu", "manjia", "sppanqin", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 						},
 						characterSort: {
 							against7devil: {
@@ -7630,7 +7631,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_dengai": "伏鸾",
 							"shanhetu_boss_shen_zhangliao": "山河图神张辽",
 							"shanhetu_boss_zhangliang": "山河图张梁",
-							"shanhetu_boss_shen_sunquan": "江东之虎",
+							"shanhetu_boss_wutugu": "江东之虎",
 
 							// skill
 							"shenhu": "神护",
@@ -8014,9 +8015,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"re_boss_reborn_guanyu_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之关羽。",
 
 							// shanhetu_boss_dengai
-							"xuanlve":"旋略",
-							"xuanlve_info":"当你失去装备区里的牌后，你可以弃置一名其他角色的一张牌。",
-				
+							"xuanlve": "旋略",
+							"xuanlve_info": "当你失去装备区里的牌后，你可以弃置一名其他角色的一张牌。",
+
 
 							// unused
 							"geju": "割据",
