@@ -508,6 +508,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 								subSkill: {
 									draw: {
 										trigger: { player: 'phaseDrawBegin2' },
+										forced: true,
 										filter: function (event, player) {
 											return !event.numFixed;
 										},
@@ -517,7 +518,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 									},
 									jieshu: {
 										trigger: { player: 'phaseJieshuBegin' },
-										frequent: true,
+										forced: true,
 										content: function () {
 											player.draw();
 										},
@@ -7678,6 +7679,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 
 							"re_boss_xiongshou": "凶兽",
 							"re_boss_xiongshou_info": "锁定技，你使用【杀】造成的伤害+1。你与其他角色距离-1。你不能被翻面；每回合首次受到大于1点的伤害后，视为对伤害来源使用一张【杀】。",
+							"re_boss_xiongshou2": "凶兽",
+							"re_boss_xiongshou2_info": "锁定技，你的判定区的牌中，【乐不思蜀】【兵粮寸断】判定结果反转；摸牌阶段你的摸牌数+1；结束阶段，你摸一张牌。",
 							"re_boss_zhuishe": "追摄",
 							"re_boss_zhuishe_info": "锁定技，你使用【杀】次数+1。",
 							"re_boss_xianji": "先机",
