@@ -502,6 +502,41 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 									noturn: true,
 								}
 							},
+							"re_boss_xiongshou2": {
+								forced: true,
+								group: ["re_boss_xiongshou2_draw", "re_boss_xiongshou2_jieshu"],
+								subSkill: {
+									draw: {
+										trigger: { player: 'phaseDrawBegin2' },
+										filter: function (event, player) {
+											return !event.numFixed;
+										},
+										content: function () {
+											trigger.num++;
+										},
+									},
+									jieshu: {
+										trigger: { player: 'phaseJieshuBegin' },
+										frequent: true,
+										content: function () {
+											player.draw();
+										},
+									}
+								},
+
+								mod: {
+									judge: function (player, result) {
+										if (_status.event.cardname == 'lebu' || _status.event.cardname == 'bingliang') {
+											if (result.bool == false) {
+												result.bool = true;
+											}
+											else {
+												result.bool = false;
+											}
+										}
+									}
+								},
+							},
 
 							"re_boss_xianji": {
 								trigger: { target: 'useCardToTargeted' },
@@ -7631,7 +7666,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_dengai": "伏鸾",
 							"shanhetu_boss_shen_zhangliao": "山河图神张辽",
 							"shanhetu_boss_zhangliang": "山河图张梁",
-							"shanhetu_boss_wutugu": "江东之虎",
+							"shanhetu_boss_shen_sunquan": "江东之虎",
+							"shanhetu_boss_wutugu": "山河图兀突骨",
 
 							// skill
 							"shenhu": "神护",
