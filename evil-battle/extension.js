@@ -655,6 +655,19 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 									player.equip(game.createCard2('xingtianpojunfu', 'diamond', 5));
 								}
 							},
+							"re_boss_heikuangkai": {
+								forced: true,
+								filter: function (event, player) {
+									return (event.name != 'phase' || game.phaseNumber == 0);
+								},
+								trigger: {
+									global: 'phaseBefore',
+									player: 'enterGame',
+								},
+								content: function () {
+									player.equip(game.createCard2('heikuangkai', 'club', 2));
+								}
+							},
 
 							"re_boss_reborn_machao": {
 								trigger: {
@@ -7715,6 +7728,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"re_boss_tengjia_info": "锁定技，游戏开始时，将【藤甲】置入你的装备区。",
 							"re_boss_xingtianpojunfu": "舞斧",
 							"re_boss_xingtianpojunfu_info": "锁定技，游戏开始时，将【刑天破军斧】置入你的装备区。",
+							"re_boss_heiguangkai": "着铠",
+							"re_boss_heiguangkai_info": "锁定技，游戏开始时，将【黑光铠】置入你的装备区。",
 
 							// fusion_shen_sunce
 							"repinghe": "冯河",
