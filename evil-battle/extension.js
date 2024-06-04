@@ -564,6 +564,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 									}
 								}
 							},
+
 							"re_boss_jueji": {
 								trigger: { global: 'phaseDrawBegin' },
 								filter: function (event, player) {
@@ -579,6 +580,36 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 								ai: {
 									expose: 0.2,
 									threaten: 1.6
+								}
+							},
+
+							"re_boss_fanzhen": {
+								trigger: { player: "damageEnd" },
+								filter: function (event, player) {
+									return event.source && !event.source.hasSkill("re_boss_fanzhen_effect");
+								},
+								content: function () {
+									const target = trigger.source;
+									if (!target.storage.re_boss_fanzhen_effect) target.storage.re_boss_fanzhen_effect = 0;
+									target.storage.re_boss_fanzhen_effect++;
+									target.markSkill("re_boss_fanzhen_effect");
+								},
+								forced: true,
+								global: "re_boss_fanzhen_effect",
+							},
+							"re_boss_fanzhen_effect": {
+								trigger: { player: "phaseJieshuBegin" },
+								mark: true,
+								marktext: "伤",
+								intro: { content: "mark" },
+								forced: true,
+								filter: function (event, player) {
+									return (player.storage.re_boss_fanzhen_effect || 0) > 0;
+								},
+								content: () => {
+									player.loseHp(player.storage.re_boss_fanzhen_effect--);
+									if (player.storage.re_boss_fanzhen_effect > 1) player.markSkill("re_boss_fanzhen_effect");
+									else player.unmarkSkill("re_boss_fanzhen_effect");
 								}
 							},
 
@@ -7719,6 +7750,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"re_boss_dongdang_info": "锁定技，当你进入游戏时，立即结束当前结算并开始你的回合。",
 							"re_boss_jueji": "绝汲",
 							"re_boss_jueji_info": "敌方角色摸牌阶段，若其已受伤，你可以获得其一张牌。",
+							"re_boss_fanzhen": "反震",
+							"re_boss_fanzhen_info": "锁定技，每次受到伤害时，为目标增加一个【伤】标记，可叠加，目标回合结束时流失等于【伤】标记的体力值，并移除1枚【伤】标记。",
 
 							"re_boss_liannu": "持弩",
 							"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
