@@ -268,6 +268,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_wutugu": ["male", "qun", "17/17/4", ["re_boss_lianyu", "re_boss_xiongshou2", "ranshang", "hanyong", "boss_luanchang", "xinkuanggu", "manjia", "sppanqin", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_yuejin": ["male", "wei", "7/7/4", ["re_boss_lianyu", "re_boss_xingtianpojunfu", "re_boss_heiguangkai", "xiaoguo", "xinshensu", "latest_ol_feiyang", "boss_aozhan", "re_boss_dungong", "re_boss_baoli", "reqicai", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_lidian": ["male", "wei", "6/6/4", ["re_boss_lianyu", "wangxi", "wangxi", "latest_ol_feiyang", "latest_ol_feiyang", "yise", "boss_fengdong", "re_boss_fanzhen", "re_boss_baoli", "new_keji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_caoxiancaohua1": ["female", "wei", "6/6/4", ["re_boss_lianyu", "wanrong", "xianwan", "lianhuo", "boss_suozu", "boss_nitai", "oltianxiang", "re_boss_baoli", "re_boss_nuyan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 						},
 						characterSort: {
 							against7devil: {
@@ -7730,6 +7731,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_wutugu": "山河图兀突骨",
 							"shanhetu_boss_yuejin": "山河图乐进",
 							"shanhetu_boss_lidian": "山河图李典",
+							"shanhetu_boss_caoxiancaohua1": "灵杉玉树",
 
 							// skill
 							"shenhu": "神护",
