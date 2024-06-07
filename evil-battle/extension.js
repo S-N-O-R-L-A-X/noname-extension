@@ -614,6 +614,43 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 								}
 							},
 
+							"re_boss_nuyan": {
+								enable: "phaseUse",
+								usable: 1,
+								filterCard: function (card) {
+									return get.color(card) == 'red';
+								},
+								check: function (card) {
+									return 8 - get.value(card);
+								},
+								position: "he",
+								content: function () {
+									player.loseHp();
+									player.addTempSkill("re_boss_nuyan_effect", "phaseAfter");
+								},
+								ai: {
+									order: 8,
+									result: {
+										player: function (player) {
+											return get.effect(player, { name: "losehp" }, player, player);
+										},
+									},
+									neg: true,
+								},
+							},
+							"re_boss_nuyan_effect": {
+								trigger: { source: "damageBegin1" },
+								forced: true,
+								filter: function (event, player) {
+									return event.card && get.color(event.card) == 'red';
+								},
+								logTarget: "player",
+								content: function () {
+									trigger.num++;
+									game.setNature(trigger, "fire");
+								},
+							},
+
 							"re_boss_zhuishe": {
 								mod: {
 									cardUsable: function (card, player, num) {
@@ -7754,6 +7791,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"re_boss_jueji_info": "敌方角色摸牌阶段，若其已受伤，你可以获得其一张牌。",
 							"re_boss_fanzhen": "反震",
 							"re_boss_fanzhen_info": "锁定技，每次受到伤害时，为目标增加一个【伤】标记，可叠加，目标回合结束时流失等于【伤】标记的体力值，并移除1枚【伤】标记。",
+							"re_boss_nuyan": "怒焰",
+							"re_boss_nuyan_info": "出牌阶段限一次，你可以弃置一张红色手牌，并失去1点体力，然后直到本回合结束前，你使用的红色牌造成伤害时，均视为火焰伤害且伤害+1。",
+
 
 							"re_boss_liannu": "持弩",
 							"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
@@ -8125,7 +8165,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							// shanhetu_boss_dengai
 							"xuanlve": "旋略",
 							"xuanlve_info": "当你失去装备区里的牌后，你可以弃置一名其他角色的一张牌。",
-
 
 							// unused
 							"geju": "割据",
