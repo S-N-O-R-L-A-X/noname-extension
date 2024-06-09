@@ -268,7 +268,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"shanhetu_boss_wutugu": ["male", "qun", "17/17/4", ["re_boss_lianyu", "re_boss_xiongshou2", "ranshang", "hanyong", "boss_luanchang", "xinkuanggu", "manjia", "sppanqin", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_yuejin": ["male", "wei", "7/7/4", ["re_boss_lianyu", "re_boss_xingtianpojunfu", "re_boss_heiguangkai", "xiaoguo", "xinshensu", "latest_ol_feiyang", "boss_aozhan", "re_boss_dungong", "re_boss_baoli", "reqicai", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_lidian": ["male", "wei", "6/6/4", ["re_boss_lianyu", "wangxi", "wangxi", "latest_ol_feiyang", "latest_ol_feiyang", "yise", "boss_fengdong", "re_boss_fanzhen", "re_boss_baoli", "new_keji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-							"shanhetu_boss_caoxiancaohua1": ["female", "wei", "8/8/4", ["re_boss_lianyu", "wanrong", "xianwan", "lianhuo", "boss_suozu", "boss_nitai", "oltianxiang", "re_boss_baoli", "re_boss_nuyan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+							"shanhetu_boss_caoxiancaohua1": ["female", "wei", "8/8/4", ["re_boss_lianyu", "wanrong", "xianwan", "lianhuo", "boss_suozu", "boss_nitai", "oltianxiang", "re_boss_baoli", "re_boss_nuyan", "re_boss_reborn_caoxiancaohua2", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 							"shanhetu_boss_caoxiancaohua2": ["female", "wei", "8/8/4", ["re_boss_lianyu", "huamu", "qianmeng", "liangyuan", "latest_ol_feiyang", "re_boss_dongdang", "boss_yuhuojg", "oljiuchi", "oltianxiang", "boss_lingqu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 						},
 						characterSort: {
@@ -801,6 +801,29 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 								content: () => {
 									trigger.cancel();
 									player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhangfei");
+									player.recover(player.maxHp - player.hp);
+									game.triggerEnter(player);
+								}
+								// content: async (event, trigger, player) => {
+								// 	trigger.cancel();
+								// 	await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_guanyu");									await player.recover(player.maxHp - player.hp);
+								// 	await player.recover(player.maxHp - player.hp);
+								// 	game.triggerEnter(player);
+								// }
+							},
+
+							"re_boss_reborn_caoxiancaohua2": {
+								trigger: {
+									player: 'dieBefore'
+								},
+								filter: function (event, player) {
+									return !event.finished;
+								},
+								forced: true,
+								forceDie: true,
+								content: () => {
+									trigger.cancel();
+									player.reinitCharacter(player.name1, "shanhetu_boss_caoxiancaohua2");
 									player.recover(player.maxHp - player.hp);
 									game.triggerEnter(player);
 								}
@@ -8167,6 +8190,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							// shanhetu_boss_dengai
 							"xuanlve": "旋略",
 							"xuanlve_info": "当你失去装备区里的牌后，你可以弃置一名其他角色的一张牌。",
+
+							// shanhetu_boss_caoxiancaohua
+							"re_boss_reborn_caoxiancaohua2": "重生",
+							"re_boss_reborn_caoxiancaohua2_info": "锁定技，当你死亡时，你将此武将牌替换为灵杉玉树。",
 
 							// unused
 							"geju": "割据",
