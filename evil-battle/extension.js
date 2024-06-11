@@ -416,7 +416,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 								}
 							},
 
-							re_boss_lianyu: {
+							"re_boss_lianyu": {
 								forced: true,
 								group: ["re_boss_lianyu_init", "re_boss_lianyu_hujia", "re_boss_lianyu_draw"],
 								subSkill: {
@@ -657,6 +657,61 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 									game.setNature(trigger, "fire");
 								},
 							},
+
+							"re_boss_bamen": {
+								derivation: ['re_boss_jinsuo'],
+								trigger: { global: 'roundStart' },
+								forced: true,
+								content: () => {
+									const list = player.getEnemies();
+									const enemy = list.randomGet();
+									enemy.addSkill("re_boss_jinsuo");
+								}
+							},
+
+							"re_boss_jinsuo": {
+								mod: {
+									cardEnabled: function (card, player) {
+										if (player.countMark('re_boss_jinsuo') >= player.hp) return false;
+									},
+									cardUsable: function (card, player) {
+										if (player.countMark('re_boss_jinsuo') >= player.hp) return false;
+									},
+									cardRespondable: function (card, player) {
+										if (player.countMark('re_boss_jinsuo') >= player.hp) return false;
+									},
+									cardSavable: function (card, player) {
+										if (player.countMark('re_boss_jinsuo') >= player.hp) return false;
+									},
+								},
+								trigger: {
+									player: "useCard1",
+								},
+								forced: true,
+								popup: false,
+								onremove: true,
+								firstDo: true,
+								init: function (player, skill) {
+									player.storage[skill] = 0;
+									var evt = _status.event.getParent('phaseUse');
+									if (evt && evt.player == player) {
+										player.getHistory('useCard', function (evtx) {
+											if (evtx.getParent('phaseUse') == evt) {
+												player.storage[skill]++;
+											}
+										})
+									}
+								},
+								onremove: function (player) {
+									player.unmarkSkill('mbmeibu');
+									delete player.storage.re_boss_jinsuo;
+								},
+								content: function () {
+									player.addMark('re_boss_jinsuo', 1, false);
+								},
+								ai: { presha: true, pretao: true, nokeep: true },
+							},
+
 
 							"re_boss_zhuishe": {
 								mod: {
