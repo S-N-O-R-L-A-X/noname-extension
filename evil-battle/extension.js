@@ -703,7 +703,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 									}
 								},
 								onremove: function (player) {
-									player.unmarkSkill('mbmeibu');
+									player.unmarkSkill('re_boss_jinsuo');
 									delete player.storage.re_boss_jinsuo;
 								},
 								content: function () {
@@ -7879,6 +7879,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 							"re_boss_fanzhen_info": "锁定技，每次受到伤害时，为目标增加一个【伤】标记，可叠加，目标回合结束时流失等于【伤】标记的体力值，并移除1枚【伤】标记。",
 							"re_boss_nuyan": "怒焰",
 							"re_boss_nuyan_info": "出牌阶段限一次，你可以弃置一张红色手牌，并失去1点体力，然后直到本回合结束前，你使用的红色牌造成伤害时，均视为火焰伤害且伤害+1。",
+							"re_boss_bamen": "八门",
+							"re_boss_bamen_info": "每轮开始时，你随机指定一个敌方目标，令其本轮内视为拥有【金锁】。",
+							"re_boss_jinsuo": "金锁",
+							"re_boss_jinsuo_info": "锁定技，出牌阶段，你最多使用6张牌。",
 
 
 							"re_boss_liannu": "持弩",
