@@ -87,7 +87,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 				}
 
 				const custom_characters = get7characters(all_devil_characters);
-
+				const hell_characters = get7characters(Object.values(lib.characterSort["against7devil"]).flat(Infinity));
 				lib.storage.stage["大战七阴"] = {
 					name: "大战七阴",
 					intro: `主公可供玩家设定，其余七位ai玩家从阴间武将中随机选中一个。
@@ -161,7 +161,24 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 						cardPileBottom: [],
 						discardPile: [],
 						gameDraw: true,
-					},],
+					}, {
+						name: "本扩展阴间将池",
+						intro: "本扩展阴间将池乱斗",
+						players: [
+							{ "name": "random", "name2": "none", "identity": "zhu", "position": 1, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": true, "handcards": [], "equips": [], "judges": [] },
+							{ "name": hell_characters[0], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+							{ "name": hell_characters[1], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+							{ "name": hell_characters[2], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+							{ "name": hell_characters[3], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+							{ "name": hell_characters[4], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+							{ "name": hell_characters[5], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] },
+							{ "name": hell_characters[6], "name2": "none", "identity": "fan", "position": 0, "hp": null, "maxHp": null, "linked": false, "turnedover": false, "playercontrol": false, "handcards": [], "equips": [], "judges": [] }
+						],
+						cardPileTop: [],
+						cardPileBottom: [],
+						discardPile: [],
+						gameDraw: true,
+					}],
 				};
 				_status.extensionstage = true;
 
@@ -8283,7 +8300,6 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 				})
 
 				// load characters
-				lib.config.all.characters.push('against7devil');
 				lib.translate['against7devil_character_config'] = "大战七阴";
 
 			}
