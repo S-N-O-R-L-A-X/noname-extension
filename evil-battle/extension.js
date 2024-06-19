@@ -8352,15 +8352,16 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 				nopointer: true,
 			},
 			update: {
-				name: `<div class=".update">扩展版本：7.5<font size="4px">▶▶▶</font></div>`,
-				version: 7.5,
+				name: `<div class=".update">扩展版本：7.6<font size="4px">▶▶▶</font></div>`,
+				version: 7.6,
 				clear: true,
 				intro: "点击查看此版本的更新内容",
 				onclick: function () {
 					if (this.updateContent === undefined) {
 						const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-							'<li><span style="color:#006400">说明一</span>：<br>更新了新武将：山河图夏侯惇、绝代双骄、伏鸾、山河图神张辽、山河图张梁、江东之虎。<br>' +
-							'<li><span style="color:#006400">说明二</span>：<br>修复了一些文字描述。<br>'
+							'<li><span style="color:#006400">说明一</span>：<br>增加了新关卡：本扩展阴间乱斗，感受下地域难度吧！<br>' +
+							'<li><span style="color:#006400">说明二</span>：<br>更新了新武将：山河图兀突骨、山河图乐进、山河图李典、灵杉玉树。<br>' +
+							'<li><span style="color:#006400">说明三</span>：<br>一些武将平衡性调整，更还原游戏真实情况。<br>'
 						);
 						this.parentNode.insertBefore(more, this.nextSibling);
 						this.updateContent = more;
@@ -8369,7 +8370,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 					else {
 						this.parentNode.removeChild(this.updateContent);
 						delete this.updateContent;
-						this.innerHTML = '<div class=".update">扩展版本：7.5<font size="4px">▶▶▶</font></div>';
+						this.innerHTML = '<div class=".update">扩展版本：7.6<font size="4px">▶▶▶</font></div>';
 					};
 				}
 			},
