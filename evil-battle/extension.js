@@ -1,8 +1,8 @@
-// import { game } from '../../noname.js';
+import { game } from '../../noname.js';
 
 game.import("extension", function (lib, game, ui, get, ai, _status) {
+	
 	// add useful functions
-
 	function get7characters(arr) {
 		return arr.randomSort().slice(0, 7);
 	}
@@ -5663,36 +5663,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 											}
 
 											"step 3"
-											if (!_status.connectMode) {
-												var choiceList = ui.create.dialog('请选择一种方案', 'hidden', 'forcebutton');
-												for (var i = 0; i < event.getedResult.length; i++) {
-													var str = '<div class="popup text" style="width:calc(100% - 10px);display:inline-block">方案' + get.cnNumber(i + 1, true);
-													str += '<br>第一组：';
-													var current = event.getedResult[i];
-													str += get.translation(current[0]);
-													str += '<br>第二组：';
-													str += get.translation(current[1]);
-													if (current[2].length) {
-														str += '<br>剩余：';
-														str += get.translation(current[2]);
-													}
-													str += '</div>';
-													var next = choiceList.add(str);
-													next.firstChild.addEventListener(lib.config.touchscreen ? 'touchend' : 'click', ui.click.button);
-													next.firstChild.link = i;
-													for (var j in lib.element.button) {
-														next[j] = lib.element.button[j];
-													}
-													choiceList.buttons.add(next.firstChild);
-												}
-												event.choiceList = choiceList;
-												event.target.chooseButton(choiceList, true);
-											}
 
 											"step 4"
-											if (result.bool && result.links) event.index = result.links[0];
-											else event.index = 0;
-											event.togain = event.getedResult[event.index];
+											event.togain = event.getedResult[0];
 											event.target.showCards(event.togain[0], get.translation(event.target) + '分出的第一份牌');
 											"step 5"
 											event.target.showCards(event.togain[1], get.translation(event.target) + '分出的第二份牌');
@@ -8300,6 +8273,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 				})
 
 				// load characters
+				lib.config.all.characters.push('against7devil');
 				lib.translate['against7devil_character_config'] = "大战七阴";
 
 			}
@@ -8409,7 +8383,7 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 			author: "SNORLAX",
 			diskURL: "",
 			forumURL: "",
-			version: "7.5",
+			version: "7.6",
 		},
 		files: { "character": [], "card": [], "skill": [] }
 	}
