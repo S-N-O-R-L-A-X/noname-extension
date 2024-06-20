@@ -1,7 +1,7 @@
 import { game } from '../../noname.js';
 
 game.import("extension", function (lib, game, ui, get, ai, _status) {
-	
+
 	// add useful functions
 	function get7characters(arr) {
 		return arr.randomSort().slice(0, 7);
@@ -11,8 +11,8 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 		game.utils = {};
 	}
 	game.utils.giveMarkToOthers = (player) => {
-		var list = game.filterPlayer();
-		for (var i = 0; i < list.length; i++) {
+		const list = game.filterPlayer();
+		for (let i = 0; i < list.length; i++) {
 			if (list[i] != player) {
 				list[i].addMark('zongkui_mark', 1);
 				player.line(list[i], 'green');
@@ -21,11 +21,10 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 	}
 
 	game.utils.initAllCharacters = () => {
-		var list = [];
-		if (_status.connectMode) var list = get.charactersOL();
+		let list = [];
+		if (_status.connectMode) list = get.charactersOL();
 		else {
-			var list = [];
-			for (var i in lib.character) {
+			for (const i in lib.character) {
 				if (lib.filter.characterDisabled2(i) || lib.filter.characterDisabled(i)) continue;
 				list.push(i);
 			}
@@ -62,8 +61,9 @@ game.import("extension", function (lib, game, ui, get, ai, _status) {
 			lib.devil_characters.dc_list = ["caojinyu", "wanglang", "guanning", "re_sunyi", "lvlingqi", "re_panshu",
 				"zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao", "tenggongzhu",
 				"caomao", "zhangxuan", "dc_zhouxuān", "xuelingyun", "shen_zhangfei", "shen_zhangjiao", "luyi",
-				"sunlingluan", "wu_zhugeliang", "wu_luxun", "dc_xujing", "yue_caiwenji"];
-			lib.devil_characters.mobile_list = ["shen_xunyu", "yangbiao", "sp_duyu"];
+				"sunlingluan", "wu_zhugeliang", "wu_luxun", "dc_xujing", "yue_caiwenji", "wu_guanyu", "dc_sb_simayi",
+				"bailingyun"];
+			lib.devil_characters.mobile_list = ["shen_xunyu", "yangbiao", "sp_duyu", "sb_caopi"];
 			lib.devil_characters.ol_list = ["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
 			lib.devil_characters.other_list = ["sp_xiahoushi", "tw_dongzhao"];
 
