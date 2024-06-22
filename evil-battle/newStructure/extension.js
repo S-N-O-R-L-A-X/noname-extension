@@ -1,4 +1,3 @@
-//game.import("name":"只因你太美"
 import { lib, game, ui, get, ai, _status } from '../../noname.js'
 import { content } from './source/content.js'
 import { precontent } from './source/precontent.js'
@@ -24,5 +23,18 @@ export default async function () {
 	Object.keys(extensionInfo)
 		.filter(key => key != 'name')
 		.forEach(key => extension.package[key] = extensionInfo[key]);
+
+	for (let character_name in extension.package.character.character) {
+		const path = 'ext:大战七阴/image/' + character_name + '.jpg';
+		//game.js will convert ext to different path in different devices
+		extension.package.character.character[character_name][4].push(path);
+	}
+
+	for (let card_name in extension.package.card.card) {
+		const path = 'ext:大战七阴/image/card/' + card_name + '.jpg';
+		//game.js will convert ext to different path in different devices
+		extension.package.card.card[card_name].image = path;
+	}
+
 	return extension;
 }

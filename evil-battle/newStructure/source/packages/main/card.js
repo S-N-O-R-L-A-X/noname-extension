@@ -76,8 +76,6 @@ export const card = {
 			},
 			fullimage: true,
 		},
-
-
 	},
 	translate: {
 		"shangyangbianfa": "商鞅变法",
