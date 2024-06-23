@@ -1,7 +1,6 @@
 import { lib, game, ui, get, ai, _status } from '../../../noname.js'
 
 export async function content(config, pack) {
-	// add useful functions
 	function get7characters(arr) {
 		return arr.randomSort().slice(0, 7);
 	}

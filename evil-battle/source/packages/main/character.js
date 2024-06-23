@@ -206,11 +206,6 @@ export const character = {
 	},
 
 	translate: {
-		// config
-		"update": "更新情况",
-		"thanks": "鸣谢",
-		"warning": "警告",
-
 		//classification
 		"against7devil": "大战七阴",
 		"against7devil_boss": "挑战boss加强包",

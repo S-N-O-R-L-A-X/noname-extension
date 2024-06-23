@@ -1,12 +1,13 @@
-import {lib,game,ui,get,ai,_status} from '../../../noname.js'
+import { lib, game, ui, get, ai, _status } from '../../../noname.js';
+
 export const config = {
-    intro: {
+	intro: {
 		name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。如果发现技能或武将缺失，请尝试将无名杀本体更新为最新版本，并在“扩展-诸神降临”中选择“开启”。
-		这是本扩展的官方网站：<a class="github" href="https://s-n-o-r-l-a-x.github.io/noname-extension/">https://s-n-o-r-l-a-x.github.io/noname-extension</a><br>
-		如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极哦~<br>
-		<a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a><br>
-		如果想要加群的话，目前QQ群号是一群：214685856，二群：939494042，请优先加二群！二群问题填QQ频道即可，如果是下载到的整合包包含，回答整合包即可。
-		`,
+			这是本扩展的官方网站：<a class="github" href="https://s-n-o-r-l-a-x.github.io/noname-extension/">https://s-n-o-r-l-a-x.github.io/noname-extension</a><br>
+			如果喜欢或者想要贡献的话，欢迎联系作者或去下面链接给作者一个star哦！star越多，更新越积极哦~<br>
+			<a class="github" href="https://github.com/S-N-O-R-L-A-X/noname-extension">https://github.com/S-N-O-R-L-A-X/noname-extension </a><br>
+			如果想要加群的话，目前QQ群号是一群：214685856，二群：939494042，请优先加二群！二群问题填QQ频道即可，如果是下载到的整合包包含，回答整合包即可。
+			`,
 		clear: true,
 		nopointer: true,
 	},
@@ -41,14 +42,13 @@ export const config = {
 	},
 	warning: {
 		name: `<div style="color: red">本扩展可能与一些其他扩展冲突，如有冲突，请禁用本扩展或其他扩展！<br>
-		目前已知冲突：活动武将和活动武将配件（导致关卡内人物变化）
-	  </div>`,
+			目前已知冲突：活动武将和活动武将配件（导致关卡内人物变化）
+		  </div>`,
 		clear: true,
 		nopointer: true,
 	},
 	update: {
-		name: `<div class=".update">扩展版本：7.6<font size="4px">▶▶▶</font></div>`,
-		version: 7.6,
+		name: `<div class=".update">扩展版本：8.0<font size="4px">▶▶▶</font></div>`,
 		clear: true,
 		intro: "点击查看此版本的更新内容",
 		onclick: function () {
@@ -60,12 +60,12 @@ export const config = {
 				);
 				this.parentNode.insertBefore(more, this.nextSibling);
 				this.updateContent = more;
-				this.innerHTML = '<div class=".update">扩展版本<font size="4px">▼▼▼</font></div>';
+				this.innerHTML = '<div class=".update"><font size="4px">▼▼▼</font></div>';
 			}
 			else {
 				this.parentNode.removeChild(this.updateContent);
 				delete this.updateContent;
-				this.innerHTML = '<div class=".update">扩展版本：7.6<font size="4px">▶▶▶</font></div>';
+				this.innerHTML = `<div class=".update">扩展版本：8.0<font size="4px">▶▶▶</font></div>`;
 			};
 		}
 	},
@@ -78,4 +78,12 @@ export const config = {
 			"2": "无名杀本体作者们，无名杀代码群群内大佬们，扩展包阳光包作者们，扩展包合纵抗秦作者们，扩展包假装无敌作者们"
 		}
 	},
+	translate: {
+		// config
+		"update": "更新情况",
+		"thanks": "鸣谢",
+		"warning": "警告",
+	}
+
+
 }
