@@ -1,0 +1,18 @@
+.github {
+    text-decoration: none;
+    color: brown;
+}
+
+.github:hover {
+    color: aqua;
+}
+
+.update {
+    cursor: pointer;
+}
+
+.update-content {}
+
+.custom_banned {
+    filter: brightness(0.5);
+}

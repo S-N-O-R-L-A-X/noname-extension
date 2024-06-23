@@ -3,7 +3,7 @@ import { basic } from '../../basic.js';
 import { card } from './card.js';
 import { character } from './character.js';
 import { skill } from './skill.js';
-export let extensionDefaultPackage = async function () {
+export const extensionDefaultPackage = async function () {
 	return {
 		character: await basic.resolve(character),
 		skill: await basic.resolve(skill),

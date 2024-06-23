@@ -51,7 +51,7 @@ export async function content(config, pack) {
 		}
 
 		const custom_characters = get7characters(all_devil_characters);
-		const hell_characters = get7characters(Object.values(lib.characterSort["against7devil"]).flat(Infinity));
+		const hell_characters = get7characters(Object.keys(pack.character.character));
 		lib.storage.stage["大战七阴"] = {
 			name: "大战七阴",
 			intro: `主公可供玩家设定，其余七位ai玩家从阴间武将中随机选中一个。
@@ -149,16 +149,16 @@ export async function content(config, pack) {
 		if (!_status.extensionmade) _status.extensionmade = [];
 		_status.extensionmade.push("大战七阴");
 
-		for (let character_name in against7devil.character) {
-			const path = 'ext:大战七阴/image/' + character_name + '.jpg';
-			//game.js will convert ext to different path in different devices
-			against7devil.character[character_name][4].push(path);
-		}
-		for (let card_name in against7devil.card) {
-			const path = 'ext:大战七阴/image/card/' + card_name + '.jpg';
-			//game.js will convert ext to different path in different devices
-			against7devil.card[card_name].image = path;
-		}	
 	}
+	for (const character_name in pack.character.character) {
+		const path = 'ext:大战七阴/image/' + character_name + '.jpg';
+		//game.js will convert ext to different path in different devices
+		pack.character.character[character_name][4].push(path);
+	}
+	for (const card_name in pack.card.card) {
+		const path = 'ext:大战七阴/image/card/' + card_name + '.jpg';
+		//game.js will convert ext to different path in different devices
+		pack.card.card[card_name].image = path;
+	}	
 
 }
