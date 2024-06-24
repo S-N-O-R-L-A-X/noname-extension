@@ -1,5 +1,12 @@
-game
-releases
+
+releases/
+game/
+!game/resources/
+!game/resources/app/
+!game/resources/app/extension/
+!game/resources/app/extension/大战七阴
+game/resources/app/extension/大战七阴/audio/*
+game/resources/app/extension/大战七阴/image/*
 
 *.jpg
 *.png
