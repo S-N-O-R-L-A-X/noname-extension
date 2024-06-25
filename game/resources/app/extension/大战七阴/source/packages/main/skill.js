@@ -405,10 +405,26 @@ export const skill = {
 				player: 'enterGame',
 			},
 			content: function () {
+				if (!lib.card["xingtianpojunfu"]) {
+					lib.card["xingtianpojunfu"] = {
+						type: "equip",
+						subtype: "equip1",
+						distance: { attackFrom: -3 },
+						skills: ["noda_axe"],
+						modeimage: "boss",
+						ai: {
+							basic: {
+								equipValue: 7.5,
+							},
+						},
+						fullskin: true,
+					}
+
+				}
 				player.equip(game.createCard2('xingtianpojunfu', 'diamond', 5));
 			}
 		},
-		"re_boss_heikuangkai": {
+		"re_boss_heiguangkai": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
