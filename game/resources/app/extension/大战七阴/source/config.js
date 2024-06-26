@@ -1,5 +1,7 @@
 import { lib, game, ui, get, ai, _status } from '../../../noname.js';
 
+const version = "8.0.0";
+
 export const config = {
 	intro: {
 		name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。如果发现技能或武将缺失，请尝试将无名杀本体更新为最新版本，并在“扩展-诸神降临”中选择“开启”。
@@ -48,15 +50,17 @@ export const config = {
 		nopointer: true,
 	},
 	update: {
-		name: `<div class=".update">扩展版本：8.0<font size="4px">▶▶▶</font></div>`,
+		name: `<div class=".update">扩展版本：${version}<font size="4px">▶▶▶</font></div>`,
 		clear: true,
 		intro: "点击查看此版本的更新内容",
 		onclick: function () {
 			if (this.updateContent === undefined) {
 				const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
-					'<li><span style="color:#006400">说明一</span>：<br>增加了新关卡：本扩展阴间乱斗，感受下地域难度吧！<br>' +
-					'<li><span style="color:#006400">说明二</span>：<br>更新了新武将：山河图兀突骨、山河图乐进、山河图李典、灵杉玉树。<br>' +
-					'<li><span style="color:#006400">说明三</span>：<br>一些武将平衡性调整，更还原游戏真实情况。<br>'
+					'<li><span style="color:#006400">说明一</span>：<br>对扩展结构进行整个重构，代码封装更清晰。<br>' +
+					'<li><span style="color:#006400">说明二</span>：<br>增加了新关卡：本扩展阴间乱斗，感受下地狱难度吧！<br>' +
+					'<li><span style="color:#006400">说明三</span>：<br>更新了新武将：山河图兀突骨、山河图乐进、山河图李典、灵杉玉树。<br>' +
+					'<li><span style="color:#006400">说明四</span>：<br>一些武将平衡性调整，更还原游戏真实情况。<br>'+
+					'<li><span style="color:#006400">说明五</span>：<br>修复了张菖蒲〖严教〗的bug。<br>'
 				);
 				this.parentNode.insertBefore(more, this.nextSibling);
 				this.updateContent = more;
@@ -65,7 +69,7 @@ export const config = {
 			else {
 				this.parentNode.removeChild(this.updateContent);
 				delete this.updateContent;
-				this.innerHTML = `<div class=".update">扩展版本：8.0<font size="4px">▶▶▶</font></div>`;
+				this.innerHTML = `<div class=".update">扩展版本：${version}<font size="4px">▶▶▶</font></div>`;
 			};
 		}
 	},
