@@ -7284,6 +7284,19 @@ export const skill = {
 			}
 		},
 
+		// 1v1
+		wanrong: {
+			audio: 2,
+			trigger: { target: "useCardToTargeted" },
+			frequent: true,
+			filter: function (event, player) {
+				return event.card.name == "sha";
+			},
+			content: function () {
+				player.draw();
+			},
+		},
+
 	},
 
 	translate: {
@@ -7686,6 +7699,10 @@ export const skill = {
 		// shanhetu_boss_dengai
 		"xuanlve": "旋略",
 		"xuanlve_info": "当你失去装备区里的牌后，你可以弃置一名其他角色的一张牌。",
+
+		// shanhetu_boss_lingshanyushu
+		"wanrong": "婉容",
+		"wanrong_info": "当你成为【杀】的目标后，你可以摸一张牌。",
 
 		// shanhetu_boss_caoxiancaohua
 		"re_boss_reborn_caoxiancaohua2": "重生",
