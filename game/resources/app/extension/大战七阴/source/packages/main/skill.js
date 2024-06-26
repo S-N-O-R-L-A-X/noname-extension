@@ -286,49 +286,51 @@ export const skill = {
 			content: () => {
 				const list = player.getEnemies();
 				const enemy = list.randomGet();
-				enemy.addSkill("re_boss_jinsuo");
+				player.line(enemy, "green");
+				enemy.addTempSkill("re_boss_jinsuo", "roundStart");
 			}
 		},
 
 		"re_boss_jinsuo": {
+			marktext: "锁",
+			intro: {
+				name: "金锁",
+				"name2": "金锁",
+				content: "mark",
+			},
+
 			mod: {
 				cardEnabled: function (card, player) {
-					if (player.countMark('re_boss_jinsuo') >= player.hp) return false;
+					if (player.countMark('re_boss_jinsuo') >= 6) return false;
 				},
 				cardUsable: function (card, player) {
-					if (player.countMark('re_boss_jinsuo') >= player.hp) return false;
+					if (player.countMark('re_boss_jinsuo') >= 6) return false;
 				},
 				cardRespondable: function (card, player) {
-					if (player.countMark('re_boss_jinsuo') >= player.hp) return false;
+					if (player.countMark('re_boss_jinsuo') >= 6) return false;
 				},
 				cardSavable: function (card, player) {
-					if (player.countMark('re_boss_jinsuo') >= player.hp) return false;
+					if (player.countMark('re_boss_jinsuo') >= 6) return false;
 				},
 			},
 			trigger: {
 				player: "useCard1",
 			},
+			filter: function (event, player) {
+				return event && event.player == player && player.isPhaseUsing();
+			},
 			forced: true,
-			popup: false,
 			onremove: true,
 			firstDo: true,
 			init: function (player, skill) {
-				player.storage[skill] = 0;
-				var evt = _status.event.getParent('phaseUse');
-				if (evt && evt.player == player) {
-					player.getHistory('useCard', function (evtx) {
-						if (evtx.getParent('phaseUse') == evt) {
-							player.storage[skill]++;
-						}
-					})
-				}
+				player.storage.re_boss_jinsuo = 0;
 			},
 			onremove: function (player) {
 				player.unmarkSkill('re_boss_jinsuo');
 				delete player.storage.re_boss_jinsuo;
 			},
 			content: function () {
-				player.addMark('re_boss_jinsuo', 1, false);
+				player.addMark('re_boss_jinsuo', 1);
 			},
 			ai: { presha: true, pretao: true, nokeep: true },
 		},
