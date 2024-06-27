@@ -25,7 +25,8 @@ export async function content(config, pack) {
 		"zhouyi", "re_nanhualaoxian", "dc_liuba", "dc_jiben", "shen_jiangwei", "shen_machao", "tenggongzhu",
 		"caomao", "zhangxuan", "dc_zhouxuān", "xuelingyun", "shen_zhangfei", "shen_zhangjiao", "luyi",
 		"sunlingluan", "wu_zhugeliang", "wu_luxun", "dc_xujing", "yue_caiwenji", "wu_guanyu", "dc_sb_simayi",
-		"bailingyun"];
+		"bailingyun", "sunchen", "dc_liubei", "dc_caocao", "dc_sunquan", "dc_sunce", "dc_zhaoyun", "dc_wuyi",
+		"chengui", "star_caoren", "dc_shen_huatuo", "dc_liuye"];
 	lib.devil_characters.mobile_list = ["shen_xunyu", "yangbiao", "sp_duyu", "sb_caopi"];
 	lib.devil_characters.ol_list = ["huangchengyan", "ol_weiyan", "panshu", "wolongfengchu", "shen_caopi", "wangyan"];
 	lib.devil_characters.other_list = ["sp_xiahoushi", "tw_dongzhao"];
@@ -158,6 +159,6 @@ export async function content(config, pack) {
 		const path = 'ext:大战七阴/image/card/' + card_name + '.jpg';
 		//game.js will convert ext to different path in different devices
 		pack.card.card[card_name].image = path;
-	}	
+	}
 
 }
