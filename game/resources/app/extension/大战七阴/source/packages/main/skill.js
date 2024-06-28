@@ -500,7 +500,7 @@ export const skill = {
 			forceDie: true,
 			content: () => {
 				trigger.cancel();
-				player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhangfei");
+				player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_guanyu");
 				player.recover(player.maxHp - player.hp);
 				game.triggerEnter(player);
 			}
