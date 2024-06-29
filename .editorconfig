@@ -1,3 +1,6 @@
 [*.js]
 indent_style = tab
 indent_size = 2
+
+[*.json]
+end_of_line = crlf

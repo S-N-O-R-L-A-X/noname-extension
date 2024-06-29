@@ -1,6 +1,6 @@
 import { lib, game, ui, get, ai, _status } from '../../../noname.js';
 
-const version = "8.0.0";
+const version = "8.1.0";
 
 export const config = {
 	intro: {
@@ -58,9 +58,10 @@ export const config = {
 				const more = ui.create.div('.update-content', '<div style="border:2px solid gray">' + '<font size=3px>' +
 					'<li><span style="color:#006400">说明一</span>：<br>对扩展结构进行整个重构，代码封装更清晰。<br>' +
 					'<li><span style="color:#006400">说明二</span>：<br>增加了新关卡：本扩展阴间乱斗，感受下地狱难度吧！<br>' +
-					'<li><span style="color:#006400">说明三</span>：<br>更新了新武将：山河图兀突骨、山河图乐进、山河图李典、灵杉玉树。<br>' +
-					'<li><span style="color:#006400">说明四</span>：<br>一些武将平衡性调整，更还原游戏真实情况。<br>'+
-					'<li><span style="color:#006400">说明五</span>：<br>修复了张菖蒲〖严教〗的bug。<br>'
+					'<li><span style="color:#006400">说明三</span>：<br>增加了阴间将池武将：武关羽、新杀谋司马懿、柏灵筠、孙綝、经典刘备、经典曹操、经典孙权、经典孙策、经典神赵云、经典吴懿、陈珪、星曹仁、十周年神华佗、十周年刘晔、手杀谋曹丕。<br>' +
+					'<li><span style="color:#006400">说明四</span>：<br>更新了新武将：山河图兀突骨、山河图乐进、山河图李典、灵杉玉树。<br>' +
+					'<li><span style="color:#006400">说明五</span>：<br>一些武将平衡性调整，更还原游戏真实情况。<br>'+
+					'<li><span style="color:#006400">说明六</span>：<br>修复了张菖蒲〖严教〗无法发动，山河图张飞无限重生的bug。<br>'
 				);
 				this.parentNode.insertBefore(more, this.nextSibling);
 				this.updateContent = more;
