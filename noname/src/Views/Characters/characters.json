@@ -1255,7 +1255,7 @@
     "ChineseSkills": [
       "神护",
       "神裁",
-      "巡使",
+      null,
       null
     ],
     "package": "融包",
@@ -1310,10 +1310,10 @@
     ],
     "ChineseSkills": [
       "神护",
-      "纵傀",
-      "骨疽",
-      "拜假",
-      "蚕食"
+      null,
+      null,
+      null,
+      null
     ],
     "package": "数包",
     "details": "来源于卑弥呼，加上技能〖神护〗。开局自动觉醒的同时修改了每个角色只能获得一枚“傀”的限制，增加了获得“傀”的方式和〖骨疽〗摸牌的数量。",
@@ -1338,7 +1338,7 @@
       "jiwu"
     ],
     "ChineseSkills": [
-      "精甲",
+      null,
       null,
       null,
       null,
@@ -1365,7 +1365,7 @@
     ],
     "ChineseSkills": [
       "神护",
-      "内伐"
+      null
     ],
     "package": "融包",
     "details": "来源于十周年袁谭袁熙袁尚和ol袁谭袁尚，加上〖神护〗的同时对〖内伐〗进行了较大规模改动，不仅改为三类牌来体现出三兄弟的争夺，同时也加强了〖内伐〗效果。",
@@ -1390,15 +1390,15 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
-      "警惕",
       null,
       null,
       null,
-      "暴力"
+      null,
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章boss鲁芝，没有任何改动，七阴连防御都打不穿。",
@@ -1421,13 +1421,13 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       null,
       "飞扬",
-      "兽裔",
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章boss江东铁壁，没有任何改动，这就是真正的大宝吗？",
@@ -1449,12 +1449,12 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
-      "盾弓",
       null,
-      "暴力"
+      null,
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内羽林统帅，没有任何改动，这就是老宝吗？",
@@ -1478,14 +1478,14 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章boss夏侯霸，没有任何改动。",
@@ -1509,14 +1509,14 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
-      "魔躯",
       null,
-      "镇恶",
-      "暴力"
+      null,
+      null,
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章boss蒯良蒯越，没有任何改动。",
@@ -1540,14 +1540,14 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       "持弩",
       null,
       null,
       null,
       null,
       null,
-      "暴力"
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内陆逊，没有任何改动，草原的不死青蛇，就是这种强度吗？",
@@ -1570,13 +1570,13 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       null,
       null,
       null,
       "凶兽",
       null,
-      "暴力"
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内李通，没有任何改动，这家伙居然需要〖推锋〗？",
@@ -1600,14 +1600,14 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       null,
       null,
       "飞扬",
       null,
       null,
       "凶兽",
-      "暴力"
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章boss江表虎臣，没有任何改动。",
@@ -1633,7 +1633,7 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       "登舰",
       null,
       null,
@@ -1642,7 +1642,7 @@
       null,
       null,
       null,
-      "暴力"
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章boss东吴大帝，没有任何改动，不需要会玩，照样杀七阴。",
@@ -1666,14 +1666,14 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内周瑜，没有任何改动。",
@@ -1697,14 +1697,14 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       "宝刀",
       null,
       null,
       "追摄",
       null,
       null,
-      "暴力"
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内伏完，没有任何改动。",
@@ -1716,7 +1716,7 @@
     "ChineseName": "山河图华雄",
     "gender": "male",
     "nationality": "qun",
-    "hp": "9/9/4",
+    "hp": "10/10/4",
     "skills": [
       "re_boss_lianyu",
       "shiyong",
@@ -1726,12 +1726,12 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内华雄，没有任何改动。",
@@ -1743,7 +1743,7 @@
     "ChineseName": "山河图张辽",
     "gender": "male",
     "nationality": "wei",
-    "hp": "7/7/4",
+    "hp": "8/8/4",
     "skills": [
       "re_boss_lianyu",
       "re_boss_gudingdao",
@@ -1755,14 +1755,14 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       "宝刀",
       "编甲",
       null,
       null,
       null,
       null,
-      "暴力"
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内张辽，在九洲演义中也曾出现，没有任何改动。",
@@ -1774,7 +1774,7 @@
     "ChineseName": "山河图曹彰",
     "gender": "male",
     "nationality": "wei",
-    "hp": "7/7/4",
+    "hp": "8/8/4",
     "skills": [
       "re_boss_lianyu",
       "rejiangchi",
@@ -1784,12 +1784,12 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内曹彰，在九洲演义中也曾出现，没有任何改动。",
@@ -1812,13 +1812,13 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
-      "从谏",
       null,
       null,
-      "暴力"
+      null,
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内张天师，没有任何改动。",
@@ -1842,14 +1842,14 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第二章关内决意巾帼，没有任何改动，攻防一体的女武神。",
@@ -1873,14 +1873,14 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
-      "狂袭",
       null,
-      "暴力"
+      null,
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第二章关内常山赵子龙，没有任何改动，攻防一体的不死红蛇。",
@@ -1905,7 +1905,7 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       null,
       null,
       null,
@@ -1913,7 +1913,7 @@
       null,
       "先机",
       null,
-      "暴力"
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第二章关内古之召虎，没有任何改动，攻防一体的古之召虎。",
@@ -1936,13 +1936,13 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
-      "重生",
-      "暴力"
+      null,
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第二章boss五虎将，没有任何改动。一个接一个地…复活吧。",
@@ -1964,12 +1964,12 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       null,
       null,
       "动荡",
-      "重生",
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包"
   },
@@ -1988,12 +1988,12 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       null,
       null,
       "动荡",
-      "重生",
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包"
   },
@@ -2013,13 +2013,13 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       null,
       null,
       "动荡",
       null,
-      "重生",
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包"
   },
@@ -2038,12 +2038,12 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       null,
       null,
       "动荡",
       null,
-      "暴力"
+      null
     ],
     "package": "挑战boss加强包"
   },
@@ -2063,13 +2063,13 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内乱世双雄，没有任何改动。比小霸王还要激昂。",
@@ -2093,14 +2093,14 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第二章关内sp庞德，没有任何改动。有一个男人，一血是他的最强形态，很喜欢“决斗”，有〖激昂〗，他就是……",
@@ -2123,13 +2123,13 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第一章关内韩遂，没有任何改动。",
@@ -2152,16 +2152,16 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
-    "details": "来源于山河图第二章关内夏侯惇，没有任何改动。",
+    "details": "来源于山河图第二章关内夏侯惇，没有任何改动，感受到守门夏侯惇的绝望了么。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】防御"
   },
@@ -2181,13 +2181,13 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第二章关内绝代双骄，没有任何改动。",
@@ -2209,11 +2209,10 @@
       "dzgengzhan",
       "yongjin",
       "jilei",
-      "gzxuanlve",
+      "xuanlve",
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
@@ -2222,7 +2221,8 @@
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第二章关内伏鸾，没有任何改动。",
@@ -2234,7 +2234,7 @@
     "ChineseName": "山河图神张辽",
     "gender": "male",
     "nationality": "shen",
-    "hp": "7/7/4",
+    "hp": "8/8/4",
     "skills": [
       "re_boss_lianyu",
       "olduorui",
@@ -2249,7 +2249,7 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
+      null,
       null,
       null,
       "飞扬",
@@ -2259,10 +2259,10 @@
       null,
       null,
       "绝汲",
-      "暴力"
+      null
     ],
     "package": "挑战boss加强包",
-    "details": "来源于山河图第二章关boss神张辽，没有任何改动。",
+    "details": "来源于山河图第二章boss神张辽，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】输出"
   },
@@ -2283,14 +2283,14 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第二章关内张梁，没有任何改动。",
@@ -2315,7 +2315,6 @@
       "re_boss_baoli"
     ],
     "ChineseSkills": [
-      "炼狱",
       null,
       null,
       null,
@@ -2323,11 +2322,195 @@
       null,
       null,
       null,
-      "暴力"
+      null,
+      null
     ],
     "package": "挑战boss加强包",
     "details": "来源于山河图第二章关内神孙权，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】过牌"
+  },
+  {
+    "EnglishName": "shanhetu_boss_wutugu",
+    "ChineseName": "山河图兀突骨",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "18/18/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_xiongshou2",
+      "ranshang",
+      "hanyong",
+      "boss_luanchang",
+      "xinkuanggu",
+      "manjia",
+      "sppanqin",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      null,
+      "凶兽",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章boss兀突骨，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】过牌"
+  },
+  {
+    "EnglishName": "shanhetu_boss_yuejin",
+    "ChineseName": "山河图乐进",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_xingtianpojunfu",
+      "re_boss_heiguangkai",
+      "xiaoguo",
+      "xinshensu",
+      "latest_ol_feiyang",
+      "boss_aozhan",
+      "re_boss_dungong",
+      "re_boss_baoli",
+      "reqicai",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      null,
+      "舞斧",
+      "着铠",
+      null,
+      null,
+      "飞扬",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章boss乐进，没有任何改动，小杀用起来最弱智的boss也能乱杀。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_lidian",
+    "ChineseName": "山河图李典",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "wangxi",
+      "wangxi",
+      "latest_ol_feiyang",
+      "latest_ol_feiyang",
+      "yise",
+      "boss_fengdong",
+      "re_boss_fanzhen",
+      "re_boss_baoli",
+      "new_keji",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      null,
+      null,
+      null,
+      "飞扬",
+      "飞扬",
+      null,
+      null,
+      "反震",
+      null,
+      null,
+      null
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章boss李典，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_caoxiancaohua1",
+    "ChineseName": "灵杉玉树",
+    "gender": "female",
+    "nationality": "wei",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "wanrong",
+      "xianwan",
+      "lianhuo",
+      "boss_suozu",
+      "boss_nitai",
+      "oltianxiang",
+      "re_boss_baoli",
+      "re_boss_nuyan",
+      "re_boss_reborn_caoxiancaohua2",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "怒焰",
+      null,
+      null
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章boss灵杉玉树，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_caoxiancaohua2",
+    "ChineseName": "灵杉玉树",
+    "gender": "female",
+    "nationality": "wei",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "huamu",
+      "qianmeng",
+      "liangyuan",
+      "latest_ol_feiyang",
+      "re_boss_dongdang",
+      "boss_yuhuojg",
+      "oljiuchi",
+      "oltianxiang",
+      "boss_lingqu",
+      "re_boss_baoli",
+      "re_boss_bamen"
+    ],
+    "ChineseSkills": [
+      null,
+      null,
+      null,
+      null,
+      "飞扬",
+      "动荡",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "八门"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第二章boss，灵杉玉树，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
   }
 ]
