@@ -9,8 +9,7 @@ import { extensionDefaultPackage } from './source/packages/main/main.js'
 export let type = 'extension';
 
 export default async function () {
-	const extensionInfo =
-		await lib.init.promises.json(`${lib.assetURL}${basic.extensionDirectoryPath}info.json`);
+	const extensionInfo = await lib.init.promises.json(`${lib.assetURL}${basic.extensionDirectoryPath}info.json`);
 	const extension = {
 		name: extensionInfo.name,
 		content: content,
@@ -20,9 +19,7 @@ export default async function () {
 		package: await basic.resolve(extensionDefaultPackage),
 		files: { "character": [], "card": [], "skill": [], "audio": [] }
 	};
-	Object.keys(extensionInfo)
-		.filter(key => key != 'name')
-		.forEach(key => extension.package[key] = extensionInfo[key]);
+	Object.keys(extensionInfo).filter(key => key != 'name').forEach(key => extension.package[key] = extensionInfo[key]);
 
 	return extension;
 }
