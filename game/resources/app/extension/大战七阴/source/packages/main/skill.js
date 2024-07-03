@@ -436,7 +436,7 @@ export const skill = {
 				player: 'enterGame',
 			},
 			content: function () {
-				player.equip(game.createCard2('heikuangkai', 'club', 2));
+				player.equip(game.createCard2('heiguangkai', 'club', 2));
 			}
 		},
 
