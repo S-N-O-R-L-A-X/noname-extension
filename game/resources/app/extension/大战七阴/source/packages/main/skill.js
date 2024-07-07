@@ -407,23 +407,15 @@ export const skill = {
 				player: 'enterGame',
 			},
 			content: function () {
-				if (!lib.card["xingtianpojunfu"]) {
-					lib.card["xingtianpojunfu"] = {
-						type: "equip",
-						subtype: "equip1",
-						distance: { attackFrom: -3 },
-						skills: ["noda_axe"],
-						modeimage: "boss",
-						ai: {
-							basic: {
-								equipValue: 7.5,
-							},
-						},
-						fullskin: true,
-					}
-
-				}
-				player.equip(game.createCard2('xingtianpojunfu', 'diamond', 5));
+				game.loadModeAsync("boss", mode => {
+					lib.card["xingtianpojunfu"] = lib.card["xingtianpojunfu"] || mode.card["xingtianpojunfu"];
+					lib.translate["xingtianpojunfu"] = lib.translate["xingtianpojunfu"] || mode.translate["xingtianpojunfu"];
+					lib.translate["noda_axe"] = lib.translate["noda_axe"] || mode.translate["noda_axe"];
+					lib.translate["noda_axe2"] = lib.translate["noda_axe2"] || mode.translate["noda_axe2"];
+					lib.skill["noda_axe"] = mode.skill["noda_axe"];
+					lib.skill["noda_axe2"] = mode.skill["noda_axe2"];
+					player.equip(game.createCard2('xingtianpojunfu', 'diamond', 5));
+				})
 			}
 		},
 		"re_boss_heiguangkai": {
