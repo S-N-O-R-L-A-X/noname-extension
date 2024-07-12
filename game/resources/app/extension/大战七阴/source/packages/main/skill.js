@@ -242,6 +242,68 @@ export const skill = {
 			}
 		},
 
+		"re_boss_zhufang": {
+			trigger: { player: 'damageEnd' },
+			forced: true,
+			filter: (event, player) => {
+				return player.hp < 5;
+			},
+			content: function () {
+				player.recover();
+			},
+			ai: {
+				maixie_defend: true,
+				threaten: 0.9,
+				effect: {
+					target: function (card, player, target) {
+						if (player.hasSkillTag('jueqing')) return;
+						if (target.hujia) return;
+						if (player._shibei_tmp) return;
+						if (_status.event.getParent('useCard', true) || _status.event.getParent('_wuxie', true)) return;
+						if (get.tag(card, 'damage')) {
+							if (target.getHistory('damage').length > 0) {
+								return [1, -2];
+							}
+							else {
+								if (get.attitude(player, target) > 0 && target.hp > 1) {
+									return 0;
+								}
+								if (get.attitude(player, target) < 0 && !player.hasSkillTag('damageBonus')) {
+									if (card.name == 'sha') return;
+									var sha = false;
+									player._shibei_tmp = true;
+									var num = player.countCards('h', function (card) {
+										if (card.name == 'sha') {
+											if (sha) {
+												return false;
+											}
+											else {
+												sha = true;
+											}
+										}
+										return get.tag(card, 'damage') && player.canUse(card, target) && get.effect(target, card, player, player) > 0;
+									});
+									delete player._shibei_tmp;
+									if (player.hasSkillTag('damage')) {
+										num++;
+									}
+									if (num < 2) {
+										var enemies = player.getEnemies();
+										if (enemies.length == 1 && enemies[0] == target && player.needsToDiscard()) {
+											return;
+										}
+										return 0;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+
+		},
+
 		"re_boss_nuyan": {
 			enable: "phaseUse",
 			usable: 1,
@@ -7309,6 +7371,8 @@ export const skill = {
 		"re_boss_zhuishe_info": "锁定技，你使用【杀】次数+1。",
 		"re_boss_xianji": "先机",
 		"re_boss_xianji_info": "锁定技，当你体力低于8，你成为牌的目标时，你摸2张牌。",
+		"re_boss_zhufang":"驻防",
+		"re_boss_zhufang_info":"锁定技，当你受到伤害后，若你体力值小于5，你回复一点体力。",
 		"re_boss_dongdang": "动荡",
 		"re_boss_dongdang_info": "锁定技，当你进入游戏时，立即结束当前结算并开始你的回合。",
 		"re_boss_jueji": "绝汲",
