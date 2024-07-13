@@ -12,7 +12,7 @@ export const skill = {
 			},
 		},
 
-		latest_ol_feiyang: {
+		"latest_ol_feiyang": {
 			trigger: { player: 'phaseJudgeBegin' },
 			charlotte: true,
 			direct: true,
@@ -397,6 +397,14 @@ export const skill = {
 			ai: { presha: true, pretao: true, nokeep: true },
 		},
 
+		"re_boss_chenghu": {
+			filter: (event, player) => {
+				return game.phaseNumber >= 3 && event.card && event.card.name == "sha" && event.getParent().name == "sha";
+			},
+			content: () => {
+				trigger.num++;
+			}
+		},
 
 		"re_boss_zhuishe": {
 			mod: {
@@ -7371,8 +7379,8 @@ export const skill = {
 		"re_boss_zhuishe_info": "锁定技，你使用【杀】次数+1。",
 		"re_boss_xianji": "先机",
 		"re_boss_xianji_info": "锁定技，当你体力低于8，你成为牌的目标时，你摸2张牌。",
-		"re_boss_zhufang":"驻防",
-		"re_boss_zhufang_info":"锁定技，当你受到伤害后，若你体力值小于5，你回复一点体力。",
+		"re_boss_zhufang": "驻防",
+		"re_boss_zhufang_info": "锁定技，当你受到伤害后，若你体力值小于5，你回复一点体力。",
 		"re_boss_dongdang": "动荡",
 		"re_boss_dongdang_info": "锁定技，当你进入游戏时，立即结束当前结算并开始你的回合。",
 		"re_boss_jueji": "绝汲",
