@@ -410,6 +410,20 @@ export const skill = {
 				}
 			}
 		},
+		"re_boss_xuli": {
+			filter: (event, player) => {
+				return event.card && event.card.name == "sha" && event.getParent().name == "sha";
+			},
+			content: () => {
+				trigger.num += Math.floor(game.phaseNumber / 4);
+			},
+			mod: {
+				cardUsable: function (card, player, num) {
+					if (card.name == 'sha') return num + Math.floor(game.phaseNumber / 4);
+				}
+			}
+		},
+
 
 		"re_boss_zhuishe": {
 			mod: {
@@ -7773,10 +7787,12 @@ export const skill = {
 		"re_boss_reborn_caoxiancaohua2": "重生",
 		"re_boss_reborn_caoxiancaohua2_info": "锁定技，当你死亡时，你将此武将牌替换为灵杉玉树。",
 
-		// chenghu
-		"re_boss_reborn_chenghu": "成虎",
-		"re_boss_reborn_chenghu2_info": "锁定技，游戏第3轮以及之后每进行3轮时，出牌阶段你可以使用的【杀】限制次数+1（可无限增强）。",
-
+		// shanhetu_boss_caiyong
+		"re_boss_chenghu": "成虎",
+		"re_boss_chenghu_info": "锁定技，游戏第3轮以及之后每进行3轮时，出牌阶段你可以使用的【杀】限制次数+1（可无限增强）。",
+		"re_boss_xuli": "蓄力",
+		"re_boss_xuli_info": "锁定技，游戏第4轮以及之后每进行4轮时，出牌阶段你可以使用的【杀】限制次数+1（可无限增强）。",
+		
 		// unused
 		"geju": "割据",
 		"geju_info": "锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。",
