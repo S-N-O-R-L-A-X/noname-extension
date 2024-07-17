@@ -78,6 +78,8 @@ export const card = {
 		},
 	},
 	translate: {
+		"qinnu": "秦弩",
+		"qinnu_info": "当你使用【杀】指定一个目标后，你令其防具无效，你的出牌阶段内，可使用的【杀】数量+1；当你失去装备区里的【秦弩】，你令此牌销毁。",
 		"shangyangbianfa": "商鞅变法",
 		"shangyangbianfa_info": "出牌阶段，对一名其他角色使用。你对目标角色造成随机1~3点伤害，若该角色以此法进入濒死状态，则其进行判定，若判定结果为黑色，则该角色本次濒死状态无法向其他角色求桃。",
 		"shangyangbianfa_dying": "商鞅变法",
