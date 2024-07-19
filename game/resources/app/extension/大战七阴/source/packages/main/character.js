@@ -182,6 +182,10 @@ export const character = {
 		"shanhetu_boss_lidian": "来源于山河图第二章boss李典，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_caoxiancaohua1": "来源于山河图第二章boss灵杉玉树，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_caoxiancaohua2": "来源于山河图第二章boss，灵杉玉树，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_yanliangwenchou2": "来源于山河图第三章关内boss颜良文丑，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
+		"shanhetu_boss_caiyong": "来源于山河图第三章关内蔡邕，没有任何改动，似乎是山河图垫底强度。<br>【强度】★★★<br> 【亮点】发育",
+		"shanhetu_boss_jushou": "来源于山河图第三章关内沮授，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_lushi": "来源于山河图第三章关内卢夫人，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -196,7 +200,8 @@ export const character = {
 				"shanhetu_boss_wuhu_zhangfei", "shanhetu_boss_wuhu_guanyu", "shanhetu_boss_yanliangwenchou", "shanhetu_boss_sp_pangde",
 				"shanhetu_boss_hansui", "shanhetu_boss_xiahoudun", "shanhetu_boss_daxiaoqiao", "shanhetu_boss_dengai",
 				"shanhetu_boss_shen_zhangliao", "shanhetu_boss_zhangliang", "shanhetu_boss_shen_sunquan", "shanhetu_boss_wutugu",
-				"shanhetu_boss_yuejin", "shanhetu_boss_lidian", "shanhetu_boss_caoxiancaohua1", "shanhetu_boss_caoxiancaohua2"],
+				"shanhetu_boss_yuejin", "shanhetu_boss_lidian", "shanhetu_boss_caoxiancaohua1", "shanhetu_boss_caoxiancaohua2",
+				"shanhetu_boss_yanliangwenchou2", "shanhetu_boss_caiyong", "shanhetu_boss_jushou", "shanhetu_boss_lushi"],
 			against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
 				"re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
 				"fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
