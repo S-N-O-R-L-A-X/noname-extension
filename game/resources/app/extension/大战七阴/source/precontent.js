@@ -1,6 +1,6 @@
-import {lib,game,ui,get,ai,_status} from '../../../noname.js'
+import { lib, game, ui, get, ai, _status } from '../../../noname.js'
 
-export async function precontent(config,pack){
+export async function precontent(config, pack) {
 	if (!game.utils) {
 		game.utils = {};
 	}
@@ -31,5 +31,4 @@ export async function precontent(config,pack){
 		});
 		_status.characterlist = list;
 	}
-
 }

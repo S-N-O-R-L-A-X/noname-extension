@@ -35,6 +35,20 @@ export async function content(config, pack) {
 	...lib.devil_characters.mobile_list, ...lib.devil_characters.ol_list, ...lib.devil_characters.other_list];
 
 	if (lib.config.mode == "brawl") {
+
+		// game.loadModeAsync('boss',function(mode){
+		// 	for(var i in mode.translate){
+		// 		lib.storage.translate[i]=mode.translate[i];
+		// 	}
+		// 	for(var i in mode.characterPack.mode_boss){
+		// 		if(mode.characterPack.mode_boss[i][4].contains('bossallowed')){
+		// 			lib.storage.boss[i]=mode.characterPack.mode_boss[i];
+		// 		}
+		// 	}
+		// 	loadversus();
+		// });
+
+
 		if (!lib.storage.stage) lib.storage.stage = {};
 		const old_dc_characters = get7characters(lib.devil_characters.old_dc_list);
 		const dc_characters = get7characters(lib.devil_characters.old_dc_list.concat(lib.devil_characters.dc_list));
@@ -143,6 +157,12 @@ export async function content(config, pack) {
 				discardPile: [],
 				gameDraw: true,
 			}],
+			// content: {
+			// 	chooseCharacterBefore: () => {
+			// 		console.log("start!!!");
+			// 		game.log("start")
+			// 	}
+			// }
 		};
 		_status.extensionstage = true;
 

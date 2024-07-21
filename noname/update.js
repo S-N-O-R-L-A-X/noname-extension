@@ -107,19 +107,10 @@ async function parseCharacters() {
 }
 
 async function parseUpdateInfo() {
-	return fs.readFile(`${root_url}/source/config.js`, 'utf8').then(data => {
-		// get update log
-		const updateContent = /<div class=".update">扩展版本：[\s\S]*?扩展版本/m.exec(data)[0];
-
-		const rg3 = /[\s\S]*?<\/span>：<br>([\s\S]*?)<br>'?/g;
-		const updateObj = {
-			"time": getNowFormatDate(),
-			"version": "8.1.0",
-			"content": []
-		}
-
-		while ((info = rg3.exec(updateContent)) !== null) {
-			updateObj.content.push(info[1]);
+	return fs.readFile(`${root_url}/update.json`, 'utf8').then(data => {
+		const updateObj= {
+			time: getNowFormatDate(),
+			...JSON.parse(data)
 		}
 
 		fs.readFile("./src/Views/UpdateLog/update.json").then((buffer) => {
