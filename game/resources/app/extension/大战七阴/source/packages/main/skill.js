@@ -7379,6 +7379,22 @@ export const skill = {
 				player.draw();
 			},
 		},
+		sgkuanggu: {
+			audio: "kuanggu",
+			trigger: { source: "damageSource" },
+			frequent: true,
+			filter: function (event, player) {
+				return player.isDamaged();
+			},
+			content: function () {
+				"step 0";
+				player.judge(function (result) {
+					return get.color(result) == "black" ? 2 : -2;
+				});
+				"step 1";
+				if (result.bool == true) player.recover();
+			},
+		},
 
 	},
 
@@ -7786,6 +7802,9 @@ export const skill = {
 		// shanhetu_boss_caoxiancaohua
 		"re_boss_reborn_caoxiancaohua2": "重生",
 		"re_boss_reborn_caoxiancaohua2_info": "锁定技，当你死亡时，你将此武将牌替换为灵杉玉树。",
+
+		"sgkuanggu": "狂骨",
+		"sgkuanggu_info": "当你造成伤害后，若你已受伤，你可以进行判定：若结果为黑色，你回复1点体力。",
 
 		// shanhetu_boss_caiyong
 		"re_boss_chenghu": "成虎",
