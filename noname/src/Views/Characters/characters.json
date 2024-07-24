@@ -2512,5 +2512,125 @@
     "details": "来源于山河图第二章boss，灵杉玉树，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_yanliangwenchou2",
+    "ChineseName": "拦路双雄",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "olshuangxiong",
+      "new_reluoyi",
+      "jiang",
+      "fengpo",
+      "wushuang",
+      "boss_sipu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第三章关内boss颜良文丑，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_caiyong",
+    "ChineseName": "山河图蔡邕",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "bizhuan",
+      "tongbo",
+      "re_boss_chenghu",
+      "re_boss_xuli",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "成虎",
+      "蓄力",
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第三章关内蔡邕，没有任何改动，似乎是山河图垫底强度。",
+    "strength": "【强度】★★★",
+    "highlight": " 【亮点】发育"
+  },
+  {
+    "EnglishName": "shanhetu_boss_jushou",
+    "ChineseName": "山河图沮授",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_liannu",
+      "jianying",
+      "shibei",
+      "zhaxiang",
+      "oljizhan",
+      "zhichi",
+      "reqicai",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "持弩",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第三章关内沮授，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_lushi",
+    "ChineseName": "卢夫人",
+    "gender": "female",
+    "nationality": "qun",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "olzhuyan",
+      "olleijie",
+      "boss_dayuan",
+      "sgkuanggu",
+      "nzry_huaiju",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "狂骨",
+      null,
+      "暴力"
+    ],
+    "package": "挑战boss加强包",
+    "details": "来源于山河图第三章关内卢夫人，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
   }
 ]

@@ -648,5 +648,20 @@
     "EnglishName": "re_boss_bamen",
     "ChineseName": "八门",
     "info": "每轮开始时，你随机指定一个敌方目标，令其本轮内视为拥有【金锁】。"
+  },
+  "re_boss_chenghu": {
+    "EnglishName": "re_boss_chenghu",
+    "ChineseName": "成虎",
+    "info": "锁定技，游戏第3轮以及之后每进行3轮时，出牌阶段你可以使用的【杀】限制次数+1（可无限增强）。"
+  },
+  "re_boss_xuli": {
+    "EnglishName": "re_boss_xuli",
+    "ChineseName": "蓄力",
+    "info": "锁定技，游戏第4轮以及之后每进行4轮时，出牌阶段你可以使用的【杀】限制次数+1（可无限增强）。"
+  },
+  "sgkuanggu": {
+    "EnglishName": "sgkuanggu",
+    "ChineseName": "狂骨",
+    "info": "当你造成伤害后，若你已受伤，你可以进行判定：若结果为黑色，你回复1点体力。"
   }
 }
