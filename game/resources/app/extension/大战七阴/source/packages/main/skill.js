@@ -352,7 +352,6 @@ export const skill = {
 				enemy.addTempSkill("re_boss_jinsuo", "roundStart");
 			}
 		},
-
 		"re_boss_jinsuo": {
 			marktext: "锁",
 			intro: {
@@ -424,6 +423,32 @@ export const skill = {
 			}
 		},
 
+		"re_boss_shennu": {
+			forced: true,
+			mark: true,
+			marktext: "怒",
+			intro: {
+				content: "当前有#个“怒”标记",
+			},
+			group: ["re_boss_shennu_damage", "re_boss_shennu_damaged"],
+			subSkill: {
+				"damage": {
+					trigger: { source: 'damageBegin1' },
+					forced: true,
+					content: () => {
+						trigger.num += player.countMark('re_boss_shennu');
+						player.removeMark("re_boss_shennu");
+					}
+				},
+				"damaged": {
+					forced: true,
+					trigger: { player: 'damageBegin4' },
+					content: () => {
+						player.addMark('re_boss_shennu', 1)
+					}
+				}
+			}
+		},
 
 		"re_boss_zhuishe": {
 			mod: {
@@ -7428,7 +7453,8 @@ export const skill = {
 		"re_boss_bamen_info": "每轮开始时，你随机指定一个敌方目标，令其本轮内视为拥有【金锁】。",
 		"re_boss_jinsuo": "金锁",
 		"re_boss_jinsuo_info": "锁定技，出牌阶段，你最多使用6张牌。",
-
+		"re_boss_shennu": "神怒",
+		"re_boss_shennu_info": "锁定技，你每次受到伤害时，你将累计1枚【怒】；当你造成伤害时，每有1枚【怒】，此伤害+1，造成伤害后你丢弃1枚【怒】标记。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
@@ -7597,6 +7623,7 @@ export const skill = {
 		"ex_yintui": "隐退",
 		"ex_yintui_info": "锁定技，当你失去最后一张手牌时，你翻面。你的武将牌背面朝上时，若受到伤害，你可以选择令此伤害-1，然后摸一张牌。",
 
+		// ex_lvbuwei
 		"ex_jugu": "巨贾",
 		"ex_jugu_info": "锁定技，你的手牌上限+X；回合开始时，你额外摸X张牌（X为你的体力上限）。",
 		"ex_qihuo": "奇货",
@@ -7811,7 +7838,7 @@ export const skill = {
 		"re_boss_chenghu_info": "锁定技，游戏第3轮以及之后每进行3轮时，出牌阶段你可以使用的【杀】限制次数+1（可无限增强）。",
 		"re_boss_xuli": "蓄力",
 		"re_boss_xuli_info": "锁定技，游戏第4轮以及之后每进行4轮时，出牌阶段你可以使用的【杀】限制次数+1（可无限增强）。",
-		
+
 		// unused
 		"geju": "割据",
 		"geju_info": "锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。",
