@@ -450,6 +450,37 @@ export const skill = {
 			}
 		},
 
+		"re_boss_juexing": {
+			forced: true,
+			trigger: { player: 'damageEnd' },
+			mark: true,
+			marktext: "※",
+			intro: {
+				content: "当前共发动过#次觉醒",
+			},
+			init: (player) => {
+				if (!player.storage.re_boss_juexing) {
+					player.storage.re_boss_juexing = 0;
+				}
+			},
+			filter: function (event, player) {
+				let sum = 0;
+				event.player.getHistory('damage').forEach((evt) => {
+					sum += evt.num;
+				})
+				return sum >= 3;
+			},
+			content: () => {
+				players = game.players.slice(0).sortBySeat();
+				player.line(players);
+				++player.storage.re_boss_juexing;
+				players.forEach(p => {
+					if (p != player) p.damage(player.storage.re_boss_juexing);
+				})
+			},
+
+		},
+
 		"re_boss_zhuishe": {
 			mod: {
 				cardUsable: function (card, player, num) {
@@ -562,7 +593,6 @@ export const skill = {
 				game.triggerEnter(player);
 			},
 		},
-
 		"re_boss_reborn_zhaoyun": {
 			trigger: {
 				player: 'dieBefore'
@@ -7455,6 +7485,9 @@ export const skill = {
 		"re_boss_jinsuo_info": "锁定技，出牌阶段，你最多使用6张牌。",
 		"re_boss_shennu": "神怒",
 		"re_boss_shennu_info": "锁定技，你每次受到伤害时，你将累计1枚【怒】；当你造成伤害时，每有1枚【怒】，此伤害+1，造成伤害后你丢弃1枚【怒】标记。",
+		"re_boss_juexing": "觉醒",
+		"re_boss_juexing_info": "锁定技，当你于一个回合内受到了至少3点伤害时，中止一切结算并结束当前回合，然后你对其他角色各造成X点伤害（X为本局本技能触发次数）。",
+
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
