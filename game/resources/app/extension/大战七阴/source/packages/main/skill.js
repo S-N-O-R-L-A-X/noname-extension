@@ -471,6 +471,14 @@ export const skill = {
 				return sum >= 3;
 			},
 			content: () => {
+				const evt = _status.event.getParent('phase');
+				if (evt) {
+					game.resetSkills();
+					_status.event = evt;
+					_status.event.finish();
+					_status.event.untrigger(true);
+				}
+
 				players = game.players.slice(0).sortBySeat();
 				player.line(players);
 				++player.storage.re_boss_juexing;
