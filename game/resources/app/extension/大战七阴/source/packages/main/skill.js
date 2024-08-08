@@ -584,6 +584,47 @@ export const skill = {
 				player.equip(game.createCard2('heiguangkai', 'club', 2));
 			}
 		},
+		"re_boss_wushuangfangtianji": {
+			forced: true,
+			filter: function (event, player) {
+				return (event.name != 'phase' || game.phaseNumber == 0);
+			},
+			trigger: {
+				global: 'phaseBefore',
+				player: 'enterGame',
+			},
+			content: function () {
+				player.equip(game.createCard2('wushuangfangtianji', 'diamond', 12));
+
+				player.equip(game.createCard2('heiguangkai', 'club', 2));
+			}
+		},
+		"re_boss_hongmianbaihuapao": {
+			forced: true,
+			filter: function (event, player) {
+				return (event.name != 'phase' || game.phaseNumber == 0);
+			},
+			trigger: {
+				global: 'phaseBefore',
+				player: 'enterGame',
+			},
+			content: function () {
+				player.equip(game.createCard2('hongmianbaihuapao', 'club', 1));
+			}
+		},
+		"re_boss_shufazijinguan": {
+			forced: true,
+			filter: function (event, player) {
+				return (event.name != 'phase' || game.phaseNumber == 0);
+			},
+			trigger: {
+				global: 'phaseBefore',
+				player: 'enterGame',
+			},
+			content: function () {
+				player.equip(game.createCard2('shufazijinguan', 'diamond', 1));
+			}
+		},
 
 		"re_boss_reborn_machao": {
 			trigger: {
