@@ -196,17 +196,7 @@ export const character = {
 		mode_extension_大战七阴: {
 			against7devil_boss: ["re_boss_caocao", "succubus", "re_boss_huatuo", "re_boss_zhouyu",
 				"liuxingyaodi", "re_boss_zhenji", "zhizunwudi", "luanshizhuhou", "yitongjindi", "re_nianshou",
-				"re_boss_yingzhao", "re_boss_xiangliu", "re_boss_dongzhuo", "re_boss_lvbu", "shanhetu_boss_luzhi",
-				"shanhetu_boss_xusheng", "shanhetu_boss_huangzhong", "shanhetu_boss_xiahouba", "shanhetu_boss_kuailiangkuaiyue",
-				"shanhetu_boss_luxun", "shanhetu_boss_litong", "shanhetu_boss_ganning", "shanhetu_boss_sunquan",
-				"shanhetu_boss_zhouyu", "shanhetu_boss_fuwan", "shanhetu_boss_huaxiong", "shanhetu_boss_zhangliao",
-				"shanhetu_boss_caozhang", "shanhetu_boss_zhangling", "shanhetu_boss_wangyi", "shanhetu_boss_shen_zhaoyun",
-				"shanhetu_boss_zhangliao2", "shanhetu_boss_wuhu_huangzhong", "shanhetu_boss_wuhu_machao", "shanhetu_boss_wuhu_zhaoyun",
-				"shanhetu_boss_wuhu_zhangfei", "shanhetu_boss_wuhu_guanyu", "shanhetu_boss_yanliangwenchou", "shanhetu_boss_sp_pangde",
-				"shanhetu_boss_hansui", "shanhetu_boss_xiahoudun", "shanhetu_boss_daxiaoqiao", "shanhetu_boss_dengai",
-				"shanhetu_boss_shen_zhangliao", "shanhetu_boss_zhangliang", "shanhetu_boss_shen_sunquan", "shanhetu_boss_wutugu",
-				"shanhetu_boss_yuejin", "shanhetu_boss_lidian", "shanhetu_boss_caoxiancaohua1", "shanhetu_boss_caoxiancaohua2",
-				"shanhetu_boss_yanliangwenchou2", "shanhetu_boss_caiyong", "shanhetu_boss_jushou", "shanhetu_boss_lushi"],
+				"re_boss_yingzhao", "re_boss_xiangliu", "re_boss_dongzhuo", "re_boss_lvbu"],
 			against7devil_fusion: ["fusion_shen_sunce", "norecover", "fusion_xuhuang", "fusion_honglianpo",
 				"re_fusion_honglianpo", "barbarian_king", "fusion_jiaxu", "fusion_liru", "fusion_weiguojixie",
 				"fusion_shuguojixie", "fusion_shuguoyinghun", "fusion_weiguoyinghun", "fusion_shuguoyinghun2",
@@ -215,7 +205,18 @@ export const character = {
 			against7devil_math: ["math_caojinyu", "math_xiahoujie", "math_xushao", "math_zhangchangpu", "math_beimihu"],
 			against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi",
 				"ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
-
+			against7devil_shanhetu_boss: ["shanhetu_boss_luzhi", "shanhetu_boss_xusheng", "shanhetu_boss_huangzhong",
+				"shanhetu_boss_xiahouba", "shanhetu_boss_kuailiangkuaiyue", "shanhetu_boss_luxun", "shanhetu_boss_litong",
+				"shanhetu_boss_ganning", "shanhetu_boss_sunquan", "shanhetu_boss_zhouyu", "shanhetu_boss_fuwan",
+				"shanhetu_boss_huaxiong", "shanhetu_boss_zhangliao", "shanhetu_boss_caozhang", "shanhetu_boss_zhangling",
+				"shanhetu_boss_wangyi", "shanhetu_boss_shen_zhaoyun", "shanhetu_boss_zhangliao2",
+				"shanhetu_boss_wuhu_huangzhong", "shanhetu_boss_wuhu_machao", "shanhetu_boss_wuhu_zhaoyun",
+				"shanhetu_boss_wuhu_zhangfei", "shanhetu_boss_wuhu_guanyu", "shanhetu_boss_yanliangwenchou",
+				"shanhetu_boss_sp_pangde", "shanhetu_boss_hansui", "shanhetu_boss_xiahoudun", "shanhetu_boss_daxiaoqiao",
+				"shanhetu_boss_dengai", "shanhetu_boss_shen_zhangliao", "shanhetu_boss_zhangliang",
+				"shanhetu_boss_shen_sunquan", "shanhetu_boss_wutugu", "shanhetu_boss_yuejin", "shanhetu_boss_lidian",
+				"shanhetu_boss_caoxiancaohua1", "shanhetu_boss_caoxiancaohua2", "shanhetu_boss_yanliangwenchou2",
+				"shanhetu_boss_caiyong", "shanhetu_boss_jushou", "shanhetu_boss_lushi"]
 		}
 	},
 
@@ -226,6 +227,7 @@ export const character = {
 		"against7devil_fusion": "融包",
 		"against7devil_math": "数包",
 		"against7devil_ex": "扩包",
+		"against7devil_shanhetu_boss": "山河图boss包",
 
 		//character
 		"re_boss_caocao": "界魏武大帝",
