@@ -663,5 +663,20 @@
     "EnglishName": "sgkuanggu",
     "ChineseName": "狂骨",
     "info": "当你造成伤害后，若你已受伤，你可以进行判定：若结果为黑色，你回复1点体力。"
+  },
+  "re_boss_shennu": {
+    "EnglishName": "re_boss_shennu",
+    "ChineseName": "神怒",
+    "info": "锁定技，你每次受到伤害时，你将累计1枚【怒】；当你造成伤害时，每有1枚【怒】，此伤害+1，造成伤害后你丢弃1枚【怒】标记。"
+  },
+  "re_boss_zhufang": {
+    "EnglishName": "re_boss_zhufang",
+    "ChineseName": "驻防",
+    "info": "锁定技，当你受到伤害后，若你体力值小于5，你回复一点体力。"
+  },
+  "re_boss_juexing": {
+    "EnglishName": "re_boss_juexing",
+    "ChineseName": "觉醒",
+    "info": "锁定技，当你于一个回合内受到了至少3点伤害时，中止一切结算并结束当前回合，然后你对其他角色各造成X点伤害（X为本局本技能触发次数）。"
   }
 }
