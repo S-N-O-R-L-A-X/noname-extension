@@ -486,7 +486,61 @@ export const skill = {
 					if (p != player) p.damage(player.storage.re_boss_juexing);
 				})
 			},
+		},
+		"re_boss_juexing2": {
+			forced: true,
+			trigger: {
+				player: ['damageEnd', 'loseAfter'],
+				global: 'gainAfter',
+			},
+			filter: function (event, player) {
+				if (player == _status.currentPhase) return false;
 
+				let damage = 0, card = 0;
+				if (event.name == "damage") {
+					player.getHistory('damage').forEach((evt) => {
+						damage += evt.num;
+					})
+				}
+				else {
+					if (event.name === "lose") {
+						if (event.type != 'discard' || !event.player.isIn()) return false;
+					}
+
+					if (event.name === 'gain') {
+						if (event.giver || event.getParent().name == 'gift') return false;
+						if (!event['bySelf']) return false;
+						var evtx = event.getl(player);
+						if (!evtx || !evtx.cards2 || evtx.cards2.length<=0) return false;
+					}
+
+					player.getHistory('lose').forEach((evt) => {
+						if (evt.type == "discard" || evt.type == "gain") {
+							card += evt.num;
+						}
+					})
+				}
+				game.log("damage" + damage)
+				game.log("card" + card)
+				return damage >= 5 || card >= 3;
+			},
+			content: () => {
+				const evt = _status.event.getParent('phase');
+				if (evt) {
+					game.resetSkills();
+					_status.event = evt;
+					_status.event.finish();
+					_status.event.untrigger(true);
+				}
+
+				players = game.players.slice(0).sortBySeat();
+				players.forEach(p => {
+					if (p != player) {
+						player.line(p);
+						p.damage();
+					}
+				})
+			},
 		},
 
 		"re_boss_zhuishe": {
@@ -7536,7 +7590,8 @@ export const skill = {
 		"re_boss_shennu_info": "锁定技，你每次受到伤害时，你将累计1枚【怒】；当你造成伤害时，每有1枚【怒】，此伤害+1，造成伤害后你丢弃1枚【怒】标记。",
 		"re_boss_juexing": "觉醒",
 		"re_boss_juexing_info": "锁定技，当你于一个回合内受到了至少3点伤害时，中止一切结算并结束当前回合，然后你对其他角色各造成X点伤害（X为本局本技能触发次数）。",
-
+		"re_boss_juexing2": "觉醒",
+		"re_boss_juexing2_info": "锁定技，你的回合外，若你于一个回合内受到超过5点伤害，或因弃置或被其他角色获得而失去超过3张牌时，中止一切结算并结束当前回合，然后你对其他角色各造成1点伤害。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
