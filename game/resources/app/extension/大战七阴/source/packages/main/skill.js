@@ -511,7 +511,7 @@ export const skill = {
 						if (event.giver || event.getParent().name == 'gift') return false;
 						if (!event['bySelf']) return false;
 						var evtx = event.getl(player);
-						if (!evtx || !evtx.cards2 || evtx.cards2.length<=0) return false;
+						if (!evtx || !evtx.cards2 || evtx.cards2.length <= 0) return false;
 					}
 
 					player.getHistory('lose').forEach((evt) => {
@@ -7523,6 +7523,73 @@ export const skill = {
 					}
 				}
 			}
+		},
+		keshou: {
+			audio: 2,
+			trigger: { player: "damageBegin3" },
+			filter: function (event, player) {
+				return event.num > 0;
+			},
+			direct: true,
+			preHidden: true,
+			content: function () {
+				"step 0";
+				var check =
+					player.countCards("h", { color: "red" }) > 1 ||
+					player.countCards("h", { color: "black" }) > 1;
+				player
+					.chooseCard(
+						get.prompt("keshou"),
+						"弃置两张颜色相同的牌，令即将受到的伤害-1",
+						"he",
+						2,
+						function (card) {
+							if (ui.selected.cards.length)
+								return get.color(card) == get.color(ui.selected.cards[0]);
+							return true;
+						}
+					)
+					.set("complexCard", true)
+					.set("ai", function (card) {
+						if (!_status.event.check) return 0;
+						var player = _status.event.player;
+						if (player.hp == 1) {
+							if (
+								!player.countCards("h", function (card) {
+									return get.tag(card, "save");
+								}) &&
+								!player.hasSkillTag("save", true)
+							)
+								return 10 - get.value(card);
+							return 7 - get.value(card);
+						}
+						return 6 - get.value(card);
+					})
+					.set("check", check)
+					.setHiddenSkill(event.name);
+				"step 1";
+				var logged = false;
+				if (result.cards) {
+					logged = true;
+					player.logSkill("keshou");
+					player.discard(result.cards);
+					trigger.num--;
+				}
+				if (
+					!player.isUnseen() &&
+					!game.hasPlayer(function (current) {
+						return current != player && current.isFriendOf(player);
+					})
+				) {
+					if (!logged) player.logSkill("keshou");
+					player.judge(function (card) {
+						if (get.color(card) == "red") return 1;
+						return 0;
+					});
+				} else event.finish();
+				"step 2";
+				if (result.judge > 0) player.draw();
+			},
 		},
 
 		// 1v1
