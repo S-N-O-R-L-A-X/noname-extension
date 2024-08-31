@@ -198,6 +198,10 @@ export const character = {
 		"shanhetu_boss_yuanshao": "来源于山河图妖篇第一章关内袁绍，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 		"shanhetu_boss_lvbu": "来源于山河图妖篇第一章关内吕布，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 		"shanhetu_boss_huangzu": "来源于山河图妖篇第一章关内黄祖，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
+		"shanhetu_boss_dongzhuo": "来源于山河图妖篇第一章关内董卓，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_xusheng2": "来源于山河图妖篇第一章关内徐盛，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+		"shanhetu_boss_lvmeng": "来源于山河图妖篇第一章关内吕蒙，没有任何改动。<br>【强度】★★★★★<br> 【亮点】连破",
+		"shanhetu_boss_yingzhao": "来源于山河图妖篇第一章关内英招，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -224,7 +228,8 @@ export const character = {
 				"shanhetu_boss_shen_sunquan", "shanhetu_boss_wutugu", "shanhetu_boss_yuejin", "shanhetu_boss_lidian",
 				"shanhetu_boss_caoxiancaohua1", "shanhetu_boss_caoxiancaohua2", "shanhetu_boss_yanliangwenchou2",
 				"shanhetu_boss_caiyong", "shanhetu_boss_jushou", "shanhetu_boss_lushi", "shanhetu_boss_shamoke",
-				"shanhetu_boss_yuanshao", "shanhetu_boss_lvbu", "shanhetu_boss_huangzu"]
+				"shanhetu_boss_yuanshao", "shanhetu_boss_lvbu", "shanhetu_boss_huangzu", "shanhetu_boss_dongzhuo",
+				"shanhetu_boss_xusheng2", "shanhetu_boss_lvmeng", "shanhetu_boss_yingzhao"]
 		}
 	},
 
