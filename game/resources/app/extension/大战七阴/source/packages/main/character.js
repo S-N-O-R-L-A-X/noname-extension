@@ -216,7 +216,7 @@ export const character = {
 			against7devil_math: ["math_caojinyu", "math_xiahoujie", "math_xushao", "math_zhangchangpu", "math_beimihu"],
 			against7devil_ex: ["ex_diaochan", "ex_yingzheng", "ex_zhaoji", "ex_baiqi", "ex_zhangyi",
 				"ex_shangyang", "ex_zhaogao", "ex_miyue", "ex_lvbuwei"],
-			against7devil_shanhetu_boss: ["shanhetu_boss_luzhi", "shanhetu_boss_xusheng", "shanhetu_boss_huangzhong",
+			against7devil_shanhetu_jiuzhou_boss: ["shanhetu_boss_luzhi", "shanhetu_boss_xusheng", "shanhetu_boss_huangzhong",
 				"shanhetu_boss_xiahouba", "shanhetu_boss_kuailiangkuaiyue", "shanhetu_boss_luxun", "shanhetu_boss_litong",
 				"shanhetu_boss_ganning", "shanhetu_boss_sunquan", "shanhetu_boss_zhouyu", "shanhetu_boss_fuwan",
 				"shanhetu_boss_huaxiong", "shanhetu_boss_zhangliao", "shanhetu_boss_caozhang", "shanhetu_boss_zhangling",
@@ -227,9 +227,12 @@ export const character = {
 				"shanhetu_boss_dengai", "shanhetu_boss_shen_zhangliao", "shanhetu_boss_zhangliang",
 				"shanhetu_boss_shen_sunquan", "shanhetu_boss_wutugu", "shanhetu_boss_yuejin", "shanhetu_boss_lidian",
 				"shanhetu_boss_caoxiancaohua1", "shanhetu_boss_caoxiancaohua2", "shanhetu_boss_yanliangwenchou2",
-				"shanhetu_boss_caiyong", "shanhetu_boss_jushou", "shanhetu_boss_lushi", "shanhetu_boss_shamoke",
+				"shanhetu_boss_caiyong", "shanhetu_boss_jushou", "shanhetu_boss_lushi", "shanhetu_boss_shamoke"
+			],
+			against7devil_shanhetu_yao_boss: [
 				"shanhetu_boss_yuanshao", "shanhetu_boss_lvbu", "shanhetu_boss_huangzu", "shanhetu_boss_dongzhuo",
-				"shanhetu_boss_xusheng2", "shanhetu_boss_lvmeng", "shanhetu_boss_yingzhao"]
+				"shanhetu_boss_xusheng2", "shanhetu_boss_lvmeng", "shanhetu_boss_yingzhao"
+			]
 		}
 	},
 
@@ -240,7 +243,8 @@ export const character = {
 		"against7devil_fusion": "融包",
 		"against7devil_math": "数包",
 		"against7devil_ex": "扩包",
-		"against7devil_shanhetu_boss": "山河图boss包",
+		"against7devil_shanhetu_jiuzhou_boss": "山河图九州雄心包",
+		"against7devil_shanhetu_yao_boss": "山河图妖包",
 
 		//character
 		"re_boss_caocao": "界魏武大帝",
