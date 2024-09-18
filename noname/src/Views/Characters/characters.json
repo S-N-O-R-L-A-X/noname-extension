@@ -1400,7 +1400,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章boss鲁芝，没有任何改动，七阴连防御都打不穿。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -1418,6 +1418,7 @@
       "re_boss_shouyi",
       "oljiuchi",
       "jiushi",
+      "xinluoshen",
       "re_boss_baoli"
     ],
     "ChineseSkills": [
@@ -1427,9 +1428,10 @@
       "兽裔",
       null,
       null,
+      null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章boss江东铁壁，没有任何改动，这就是真正的大宝吗？",
     "strength": "【强度】★★★★",
     "highlight": " 【亮点】攻击"
@@ -1456,7 +1458,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内羽林统帅，没有任何改动，这就是老宝吗？",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
@@ -1487,7 +1489,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章boss夏侯霸，没有任何改动。",
     "strength": "【强度】★★★★",
     "highlight": " 【亮点】卖血"
@@ -1518,7 +1520,7 @@
       "镇恶",
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章boss蒯良蒯越，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -1549,7 +1551,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内陆逊，没有任何改动，草原的不死青蛇，就是这种强度吗？",
     "strength": "【强度】★★★★",
     "highlight": " 【亮点】攻击"
@@ -1578,7 +1580,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内李通，没有任何改动，这家伙居然需要〖推锋〗？",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
@@ -1609,7 +1611,7 @@
       "凶兽",
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章boss江表虎臣，没有任何改动。",
     "strength": "【强度】★★★★",
     "highlight": " 【亮点】攻击"
@@ -1644,7 +1646,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章boss东吴大帝，没有任何改动，不需要会玩，照样杀七阴。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -1675,7 +1677,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内周瑜，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击，控制"
@@ -1706,7 +1708,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内伏完，没有任何改动。",
     "strength": "【强度】★★★★",
     "highlight": " 【亮点】攻击"
@@ -1733,7 +1735,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内华雄，没有任何改动。",
     "strength": "【强度】★★",
     "highlight": " 【亮点】攻击"
@@ -1764,7 +1766,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内张辽，在九洲演义中也曾出现，没有任何改动。",
     "strength": "【强度】★★★★",
     "highlight": " 【亮点】攻击"
@@ -1791,7 +1793,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内曹彰，在九洲演义中也曾出现，没有任何改动。",
     "strength": "【强度】★★★★",
     "highlight": " 【亮点】攻击"
@@ -1820,7 +1822,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内张天师，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -1851,7 +1853,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章关内决意巾帼，没有任何改动，攻防一体的女武神。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击、防御"
@@ -1882,7 +1884,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章关内常山赵子龙，没有任何改动，攻防一体的不死红蛇。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击、防御"
@@ -1915,7 +1917,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章关内古之召虎，没有任何改动，攻防一体的古之召虎。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击、防御"
@@ -1944,7 +1946,7 @@
       "重生",
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章boss五虎将，没有任何改动。一个接一个地…复活吧。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合、复活"
@@ -1971,7 +1973,7 @@
       "重生",
       "暴力"
     ],
-    "package": "山河图boss包"
+    "package": "山河图九州雄心包"
   },
   {
     "EnglishName": "shanhetu_boss_wuhu_zhaoyun",
@@ -1995,7 +1997,7 @@
       "重生",
       "暴力"
     ],
-    "package": "山河图boss包"
+    "package": "山河图九州雄心包"
   },
   {
     "EnglishName": "shanhetu_boss_wuhu_zhangfei",
@@ -2021,7 +2023,7 @@
       "重生",
       "暴力"
     ],
-    "package": "山河图boss包"
+    "package": "山河图九州雄心包"
   },
   {
     "EnglishName": "shanhetu_boss_wuhu_guanyu",
@@ -2045,7 +2047,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包"
+    "package": "山河图九州雄心包"
   },
   {
     "EnglishName": "shanhetu_boss_yanliangwenchou",
@@ -2071,7 +2073,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内乱世双雄，没有任何改动。比小霸王还要激昂。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
@@ -2102,7 +2104,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章关内sp庞德，没有任何改动。有一个男人，一血是他的最强形态，很喜欢“决斗”，有〖激昂〗，他就是……",
     "strength": "【强度】★★★",
     "highlight": " 【亮点】攻击"
@@ -2131,7 +2133,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内韩遂，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
@@ -2160,7 +2162,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章关内夏侯惇，没有任何改动，感受到守门夏侯惇的绝望了么。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】防御"
@@ -2189,7 +2191,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章关内绝代双骄，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -2224,7 +2226,7 @@
       "旋略",
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章关内伏鸾，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -2261,7 +2263,7 @@
       "绝汲",
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章boss神张辽，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】输出"
@@ -2292,7 +2294,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章关内张梁，没有任何改动。",
     "strength": "【强度】★★★★",
     "highlight": " 【亮点】攻击"
@@ -2325,7 +2327,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章关内神孙权，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】过牌"
@@ -2358,7 +2360,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章boss兀突骨，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】过牌"
@@ -2395,7 +2397,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章boss乐进，没有任何改动，小杀用起来最弱智的boss也能乱杀。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
@@ -2432,7 +2434,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章boss李典，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -2469,7 +2471,7 @@
       "重生",
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章boss灵杉玉树，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -2508,7 +2510,7 @@
       "暴力",
       "八门"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第二章boss，灵杉玉树，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -2539,7 +2541,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第三章关内颜良文丑，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
@@ -2566,7 +2568,7 @@
       "蓄力",
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第三章关内蔡邕，没有任何改动，似乎是山河图垫底强度。",
     "strength": "【强度】★★★",
     "highlight": " 【亮点】发育"
@@ -2599,7 +2601,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第三章关内沮授，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -2628,7 +2630,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第三章关内卢夫人，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -2667,7 +2669,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第三章boss沙摩柯，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
@@ -2698,7 +2700,7 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图妖包",
     "details": "来源于山河图妖篇第一章关内袁绍，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
@@ -2737,31 +2739,26 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图妖包",
     "details": "来源于山河图妖篇第一章关内吕布，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "shanhetu_boss_lvbu",
-    "ChineseName": "山河图吕布",
+    "EnglishName": "shanhetu_boss_dongzhuo",
+    "ChineseName": "山河图董卓",
     "gender": "male",
     "nationality": "qun",
     "hp": "12/12/4",
     "skills": [
       "re_boss_lianyu",
       "oljiuchi",
-      ",",
       "roulin",
       "benghuai",
       "jieming",
       "oldianjun",
       "ninge",
-      "wumou",
-      "ol_wuqian",
-      "ol_shenfen",
-      "xinjuejing",
-      "reqicai",
+      "re_boss_juexing2",
       "re_boss_baoli"
     ],
     "ChineseSkills": [
@@ -2772,18 +2769,13 @@
       null,
       null,
       null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+      "觉醒",
       "暴力"
     ],
-    "package": "山河图boss包",
-    "details": "来源于山河图妖篇第一章关内吕布，没有任何改动。",
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章关内董卓，没有任何改动。",
     "strength": "【强度】★★★★★",
-    "highlight": " 【亮点】攻击"
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "shanhetu_boss_huangzu",
@@ -2809,9 +2801,104 @@
       null,
       "暴力"
     ],
-    "package": "山河图boss包",
+    "package": "山河图妖包",
     "details": "来源于山河图妖篇第一章关内黄祖，没有任何改动。",
     "strength": "【强度】★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_xusheng2",
+    "ChineseName": "山河图徐盛二号",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "xinpojun",
+      "latest_ol_feiyang",
+      "re_boss_shouyi",
+      "oljiuchi",
+      "jiushi",
+      "zhengding",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      "飞扬",
+      "兽裔",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章关内徐盛，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_lvmeng",
+    "ChineseName": "山河图吕蒙",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_liannu",
+      "keji",
+      "qinxue",
+      "botu",
+      "jugu",
+      "keshou",
+      "chouhai",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "持弩",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章关内吕蒙，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】连破"
+  },
+  {
+    "EnglishName": "shanhetu_boss_yingzhao",
+    "ChineseName": "山河图英招",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_fengdong",
+      "boss_xunyou",
+      "boss_sipu",
+      "aocai",
+      "gzcongjian",
+      "re_boss_shouyi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "从谏",
+      "兽裔",
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章关内英招，没有任何改动。",
+    "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
   }
 ]
