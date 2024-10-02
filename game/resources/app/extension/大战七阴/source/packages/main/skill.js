@@ -543,6 +543,33 @@ export const skill = {
 			},
 		},
 
+		"re_boss_eyi": {
+			player: "phaseBegin",
+			filter: function (event, player) {
+				return player.hp === player.mapHp;
+			},
+			content: () => {
+				player.addTempSkill("re_boss_eyi_effect");
+			}
+		},
+		"re_boss_eyi_effect": {
+			onremove: true,
+			trigger: { player: 'useCard' },
+			filter: function (event, player) {
+				return event.card && event.card.name == 'sha';
+			},
+			forced: true,
+			content: function () {
+				trigger.directHit.addArray(game.players);
+			},
+			ai: {
+				directHit_ai: true,
+				skillTagFilter: function (player, tag, arg) {
+					return arg.card.name == 'sha';
+				},
+			},
+		},
+
 		"re_boss_xuzhang": {
 			trigger: {
 				source: "damageSource",
