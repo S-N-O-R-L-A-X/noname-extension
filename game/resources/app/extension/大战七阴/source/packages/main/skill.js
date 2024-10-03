@@ -544,9 +544,12 @@ export const skill = {
 		},
 
 		"re_boss_eyi": {
-			player: "phaseBegin",
+			trigger: {
+				player: "phaseZhunbeiBegin",
+			},
+			forced: true,
 			filter: function (event, player) {
-				return player.hp === player.mapHp;
+				return player.hp === player.maxHp;
 			},
 			content: () => {
 				player.addTempSkill("re_boss_eyi_effect");
@@ -556,17 +559,12 @@ export const skill = {
 			onremove: true,
 			trigger: { player: 'useCard' },
 			filter: function (event, player) {
-				return event.card && event.card.name == 'sha';
+				return event.card && event.card.name == 'sha' && !player.hasSkill("re_boss_eyi_effect_used");
 			},
 			forced: true,
 			content: function () {
 				trigger.directHit.addArray(game.players);
-			},
-			ai: {
-				directHit_ai: true,
-				skillTagFilter: function (player, tag, arg) {
-					return arg.card.name == 'sha';
-				},
+				player.addTempSkill("re_boss_eyi_effect_used");
 			},
 		},
 
@@ -7716,6 +7714,8 @@ export const skill = {
 		"re_boss_juexing_info": "锁定技，当你于一个回合内受到了至少3点伤害时，中止一切结算并结束当前回合，然后你对其他角色各造成X点伤害（X为本局本技能触发次数）。",
 		"re_boss_juexing2": "觉醒",
 		"re_boss_juexing2_info": "锁定技，你的回合外，若你于一个回合内受到超过5点伤害，或因弃置或被其他角色获得而失去超过3张牌时，中止一切结算并结束当前回合，然后你对其他角色各造成1点伤害。",
+		"re_boss_eyi": "恶意",
+		"re_boss_eyi_info": "锁定技，回合开始时，若当前体力值等于体力上限，则目标无法响应你本回合使用的首张【杀】",
 		"re_boss_xuzhang": "蓄瘴",
 		"re_boss_xuzhang_info": "锁定技，你对其他角色造成伤害后，其获得等同此伤害值的【瘴】标记（【瘴】：准备阶段，你损失X点体力或减少X点体力上限（X为你瘴的数量，触发后弃置所有[瘴]））。",
 		"re_boss_xuzhang_effect": "瘴",
