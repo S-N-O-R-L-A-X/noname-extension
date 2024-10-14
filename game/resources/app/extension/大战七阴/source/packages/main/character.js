@@ -108,6 +108,7 @@ export const character = {
 		"shanhetu_boss_duanjiong": ["male", "qun", "7/7/4", ["re_boss_lianyu", "olsaogu", "luoying", "qixi", "tairan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_qiongqi": ["male", "shen", "7/7/4", ["re_boss_lianyu", "boss_zhue", "boss_futai", "re_boss_eyi", "boss_yandu", "shenxian", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_shuishengonggong": ["male", "shen", "7/7/4", ["re_boss_lianyu", "boss_juehong", "boss_lingqu", "re_boss_eyi", "repojun", "xinjuece", "shanzhuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_boss_hundun": ["male", "shen", "7/7/4", ["re_boss_lianyu", "boss_wuzang", "boss_xiangde", "re_boss_eyi", "re_boss_yinzei", "paoxiao", "oljiang", "xinkuanggu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
 		"re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
@@ -352,6 +353,7 @@ export const character = {
 		"shanhetu_boss_duanjiong": "凉州英杰",
 		"shanhetu_boss_qiongqi": "山河图穷奇",
 		"shanhetu_boss_shuishengonggong": "山河图水神共工",
+		"shanhetu_boss_hundun": "山河图混沌"
 	},
 
 }
