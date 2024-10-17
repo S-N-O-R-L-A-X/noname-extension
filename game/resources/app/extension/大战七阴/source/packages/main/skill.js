@@ -7524,6 +7524,25 @@ export const skill = {
 			}
 		},
 
+		"re_boss_yinzei": {
+			trigger: { player: "damageEnd" },
+			forced: true,
+			logTarget: "source",
+			filter: function (event, player) {
+				return (
+					event.source &&
+					event.source.isIn() &&
+					event.source != player &&
+					event.source.countCards("he") &&
+					!player.countCards("h")
+				);
+			},
+			content: function () {
+				const card = trigger.source.getCards('he').randomGet();
+				player.gain(card, trigger.player, 'giveAuto', 'bySelf');
+			},
+		},
+
 		// guozhan
 		gzcongjian: {
 			trigger: {
@@ -8103,6 +8122,10 @@ export const skill = {
 		"re_boss_chenghu_info": "锁定技，游戏第3轮以及之后每进行3轮时，出牌阶段你可以使用的【杀】限制次数+1（可无限增强）。",
 		"re_boss_xuli": "蓄力",
 		"re_boss_xuli_info": "锁定技，游戏第4轮以及之后每进行4轮时，出牌阶段你可以使用的【杀】限制次数+1（可无限增强）。",
+
+		// shanhetu_boss_hundun
+		"re_boss_yinzei": "隐贼",
+		"re_boss_yinzei_info": "锁定技，当其他角色对你造成伤害后，若你没有手牌，你随机获得其一张牌。",
 
 		// unused
 		"geju": "割据",
