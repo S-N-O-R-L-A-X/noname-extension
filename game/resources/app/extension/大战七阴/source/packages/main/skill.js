@@ -48,7 +48,7 @@ export const skill = {
 						return (event.name != 'phase' || game.phaseNumber == 0);
 					},
 					content: function () {
-						player.draw(3);
+						player.draw(40);
 					}
 				},
 				"hujia": {
@@ -552,21 +552,29 @@ export const skill = {
 				return player.hp === player.maxHp;
 			},
 			content: () => {
+				game.log("eyi!")
 				player.addTempSkill("re_boss_eyi_effect");
+			},
+			subSkill: {
+				"effect": {
+					onremove: true,
+					trigger: { player: 'useCard' },
+					filter: function (event, player) {
+						return event.card && event.card.name == 'sha' && !player.hasSkill("re_boss_eyi_effect_used");
+					},
+					forced: true,
+					content: function () {
+						game.log("effect!")
+						trigger.directHit.addArray(game.players);
+						player.addTempSkill("re_boss_eyi_effect_used");
+					},
+				},
+				"effect_used":{
+					
+				}
 			}
 		},
-		"re_boss_eyi_effect": {
-			onremove: true,
-			trigger: { player: 'useCard' },
-			filter: function (event, player) {
-				return event.card && event.card.name == 'sha' && !player.hasSkill("re_boss_eyi_effect_used");
-			},
-			forced: true,
-			content: function () {
-				trigger.directHit.addArray(game.players);
-				player.addTempSkill("re_boss_eyi_effect_used");
-			},
-		},
+		
 
 		"re_boss_xuzhang": {
 			trigger: {
