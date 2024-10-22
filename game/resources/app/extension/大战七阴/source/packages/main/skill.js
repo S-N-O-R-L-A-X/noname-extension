@@ -48,7 +48,7 @@ export const skill = {
 						return (event.name != 'phase' || game.phaseNumber == 0);
 					},
 					content: function () {
-						player.draw(40);
+						player.draw(3);
 					}
 				},
 				"hujia": {
@@ -552,7 +552,6 @@ export const skill = {
 				return player.hp === player.maxHp;
 			},
 			content: () => {
-				game.log("eyi!")
 				player.addTempSkill("re_boss_eyi_effect");
 			},
 			subSkill: {
@@ -564,7 +563,6 @@ export const skill = {
 					},
 					forced: true,
 					content: function () {
-						game.log("effect!")
 						trigger.directHit.addArray(game.players);
 						player.addTempSkill("re_boss_eyi_effect_used");
 					},
