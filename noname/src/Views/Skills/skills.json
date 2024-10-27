@@ -683,5 +683,15 @@
     "EnglishName": "re_boss_juexing2",
     "ChineseName": "觉醒",
     "info": "锁定技，你的回合外，若你于一个回合内受到超过5点伤害，或因弃置或被其他角色获得而失去超过3张牌时，中止一切结算并结束当前回合，然后你对其他角色各造成1点伤害。"
+  },
+  "re_boss_eyi": {
+    "EnglishName": "re_boss_eyi",
+    "ChineseName": "恶意",
+    "info": "锁定技，回合开始时，若当前体力值等于体力上限，则目标无法响应你本回合使用的首张【杀】"
+  },
+  "re_boss_yinzei": {
+    "EnglishName": "re_boss_yinzei",
+    "ChineseName": "隐贼",
+    "info": "锁定技，当其他角色对你造成伤害后，若你没有手牌，你随机获得其一张牌。"
   }
 }

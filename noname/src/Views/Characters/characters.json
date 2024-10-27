@@ -2900,5 +2900,125 @@
     "details": "来源于山河图妖篇第一章关内英招，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_duanjiong",
+    "ChineseName": "凉州英杰",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "olsaogu",
+      "luoying",
+      "qixi",
+      "tairan",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图九州雄心包",
+    "details": "来源于山河图江东雄心篇第一章关内凉州英杰，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_qiongqi",
+    "ChineseName": "山河图穷奇",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_zhue",
+      "boss_futai",
+      "re_boss_eyi",
+      "boss_yandu",
+      "shenxian",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "恶意",
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章关内穷奇，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】控制"
+  },
+  {
+    "EnglishName": "shanhetu_boss_shuishengonggong",
+    "ChineseName": "山河图水神共工",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_juehong",
+      "boss_lingqu",
+      "re_boss_eyi",
+      "repojun",
+      "xinjuece",
+      "shanzhuan",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "恶意",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章关内水神共工，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_hundun",
+    "ChineseName": "山河图混沌",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_wuzang",
+      "boss_xiangde",
+      "re_boss_eyi",
+      "re_boss_yinzei",
+      "paoxiao",
+      "oljiang",
+      "xinkuanggu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "恶意",
+      "隐贼",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章关内混沌，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
   }
 ]
