@@ -110,7 +110,7 @@ export const character = {
 		"shanhetu_boss_shuishengonggong": ["male", "shen", "7/7/4", ["re_boss_lianyu", "boss_juehong", "boss_lingqu", "re_boss_eyi", "repojun", "xinjuece", "shanzhuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_hundun": ["male", "shen", "7/7/4", ["re_boss_lianyu", "boss_wuzang", "boss_xiangde", "re_boss_eyi", "re_boss_yinzei", "paoxiao", "oljiang", "xinkuanggu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_taowu": ["male", "shen", "7/7/4", ["re_boss_lianyu", "boss_nitai", "boss_minwan", "re_boss_eyi", "boss_luanchang_switch", "zhendu", "boss_lingqu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_boss_taoti": ["male", "shen", "7/7/4", ["re_boss_lianyu", "boss_tanyu", "boss_cangmu", "re_boss_eyi", "boss_jicai_switch", "chouhai", "keshou", "jiaozi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_boss_taotie": ["male", "shen", "7/7/4", ["re_boss_lianyu", "boss_tanyu", "boss_cangmu", "re_boss_eyi", "boss_jicai_switch", "chouhai", "keshou", "jiaozi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_ganning2": ["male", "wu", "6/6/4", ["re_boss_lianyu", "latest_ol_feiyang", "qixi", "fenwei", "gzduanliang", "reluoshen", "xiehui", "mingzhe", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_yanrou": ["male", "wei", "7/7/4", ["re_boss_lianyu", "re_boss_wushuangfangtianji", "choutao", "xiangshu", "retieji", "lieren", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
@@ -215,7 +215,7 @@ export const character = {
 		"shanhetu_boss_shuishengonggong": "来源于山河图妖篇第一章关内水神共工，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_hundun": "来源于山河图妖篇第一章关内混沌，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 		"shanhetu_boss_taowu": "来源于山河图妖篇第一章关内梼杌，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
-		"shanhetu_boss_taoti": "来源于山河图妖篇第一章关内饕鬄，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
+		"shanhetu_boss_taotie": "来源于山河图妖篇第一章关内饕餮，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 		"shanhetu_boss_ganning2": "来源于山河图妖篇第一章boss甘宁，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 		"shanhetu_boss_yanrou": "来源于山河图江东雄心篇第一章关内阎柔，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击"
 	},
@@ -249,7 +249,7 @@ export const character = {
 			against7devil_shanhetu_yao_boss: [
 				"shanhetu_boss_yuanshao", "shanhetu_boss_lvbu", "shanhetu_boss_huangzu", "shanhetu_boss_dongzhuo",
 				"shanhetu_boss_xusheng2", "shanhetu_boss_lvmeng", "shanhetu_boss_yingzhao", "shanhetu_boss_qiongqi",
-				"shanhetu_boss_shuishengonggong", "shanhetu_boss_hundun", "shanhetu_boss_taowu", "shanhetu_boss_taoti",
+				"shanhetu_boss_shuishengonggong", "shanhetu_boss_hundun", "shanhetu_boss_taowu", "shanhetu_boss_taotie",
 				"shanhetu_boss_ganning2"
 			]
 		}
@@ -370,7 +370,7 @@ export const character = {
 		"shanhetu_boss_shuishengonggong": "山河图水神共工",
 		"shanhetu_boss_hundun": "山河图混沌",
 		"shanhetu_boss_taowu": "山河图梼杌",
-		"shanhetu_boss_taoti": "山河图饕鬄",
+		"shanhetu_boss_taotie": "山河图饕餮",
 		"shanhetu_boss_ganning2": "山河图甘宁二号",
 		"shanhetu_boss_yanrou": "山河图阎柔",
 	},
