@@ -3020,5 +3020,131 @@
     "details": "来源于山河图妖篇第一章关内混沌，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_taowu",
+    "ChineseName": "山河图梼杌",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_nitai",
+      "boss_minwan",
+      "re_boss_eyi",
+      "boss_luanchang_switch",
+      "zhendu",
+      "boss_lingqu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "恶意",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章关内梼杌，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_taotie",
+    "ChineseName": "山河图饕餮",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_tanyu",
+      "boss_cangmu",
+      "re_boss_eyi",
+      "boss_jicai_switch",
+      "chouhai",
+      "keshou",
+      "jiaozi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "恶意",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章关内饕餮，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_ganning2",
+    "ChineseName": "山河图甘宁二号",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "6/6/4",
+    "skills": [
+      "re_boss_lianyu",
+      "latest_ol_feiyang",
+      "qixi",
+      "fenwei",
+      "gzduanliang",
+      "reluoshen",
+      "xiehui",
+      "mingzhe",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "飞扬",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章boss甘宁，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_boss_yanrou",
+    "ChineseName": "山河图阎柔",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_wushuangfangtianji",
+      "choutao",
+      "xiangshu",
+      "retieji",
+      "lieren",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图九州雄心包",
+    "details": "来源于山河图江东雄心篇第一章关内阎柔，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
   }
 ]
