@@ -567,12 +567,12 @@ export const skill = {
 						player.addTempSkill("re_boss_eyi_effect_used");
 					},
 				},
-				"effect_used":{
-					
+				"effect_used": {
+
 				}
 			}
 		},
-		
+
 
 		"re_boss_xuzhang": {
 			trigger: {
@@ -586,20 +586,35 @@ export const skill = {
 			content: () => {
 				const target = trigger.player;
 				player.line(target);
-				target.addMark('re_boss_xuzhang', trigger.num);
+				target.addMark('re_boss_xuzhang_effect', trigger.num);
 				target.markSkill('re_boss_xuzhang_effect');
 			}
 		},
 		"re_boss_xuzhang_effect": {
 			forced: true,
 			mark: true,
-			intro: { content: "mark" },
+			intro: {
+				name: '瘴',
+				content: '当前有#个标记',
+			},
 			trigger: { player: 'phaseZhunbeiBegin' },
 			filter: function (event, player) {
 				return player.storage.re_boss_xuzhang_effect && player.storage.re_boss_xuzhang_effect > 0;
 			},
-			content: () => {
-				player.loseHp(player.storage.re_boss_xuzhang_effect);
+			content: async () => {
+				const choices = ["失去" + player.storage.re_boss_xuzhang_effect + "点体力", "失去" + player.storage.re_boss_xuzhang_effect + "点体力上限"];
+				const result = await player.chooseControl(choices).set("ai", () => {
+					if(player.hp<re_boss_xuzhang_effect && player.maxHp>re_boss_xuzhang_effect) {
+						return 1;
+					}
+					return 0;
+				})
+				if(result.index===0) {
+					player.loseHp(player.storage.re_boss_xuzhang_effect);
+				}
+				else {
+					player.loseMaxHp(player.storage.re_boss_xuzhang_effect);
+				}
 				player.storage.re_boss_xuzhang_effect = 0;
 			}
 		},
