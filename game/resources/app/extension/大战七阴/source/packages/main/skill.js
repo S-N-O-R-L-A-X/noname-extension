@@ -573,7 +573,29 @@ export const skill = {
 			}
 		},
 
-
+		"re_boss_baoyu": {
+			forced: true,
+			group: ["re_boss_baoyu_fire", "re_boss_baoyu_damage"],
+			subSkill: {
+				"fire": {
+					forced: true,
+					inherit: "shixin"
+				},
+				"damage": {
+					trigger: { global: 'roundStart' },
+					forced: true,
+					content: () => {
+						const players = game.players.slice(0).sortBySeat();
+						player.line(players);
+						players.forEach((ch) => {
+							if (ch != player) {
+								ch.damage();
+							}
+						})
+					}
+				}
+			}
+		},
 		"re_boss_xuzhang": {
 			trigger: {
 				source: "damageSource",
@@ -587,7 +609,7 @@ export const skill = {
 				const target = trigger.player;
 				player.line(target);
 				target.addMark('re_boss_xuzhang_effect', trigger.num);
-				target.markSkill('re_boss_xuzhang_effect');
+				target.addSkill('re_boss_xuzhang_effect');
 			}
 		},
 		"re_boss_xuzhang_effect": {
@@ -604,12 +626,13 @@ export const skill = {
 			content: async () => {
 				const choices = ["失去" + player.storage.re_boss_xuzhang_effect + "点体力", "失去" + player.storage.re_boss_xuzhang_effect + "点体力上限"];
 				const result = await player.chooseControl(choices).set("ai", () => {
-					if(player.hp<re_boss_xuzhang_effect && player.maxHp>re_boss_xuzhang_effect) {
+					if (player.hp < re_boss_xuzhang_effect - 1 && player.maxHp > re_boss_xuzhang_effect) {
 						return 1;
 					}
 					return 0;
 				})
-				if(result.index===0) {
+				game.log(result);
+				if (result.index === 0) {
 					player.loseHp(player.storage.re_boss_xuzhang_effect);
 				}
 				else {
@@ -7755,7 +7778,9 @@ export const skill = {
 		"re_boss_juexing2": "觉醒",
 		"re_boss_juexing2_info": "锁定技，你的回合外，若你于一个回合内受到超过5点伤害，或因弃置或被其他角色获得而失去超过3张牌时，中止一切结算并结束当前回合，然后你对其他角色各造成1点伤害。",
 		"re_boss_eyi": "恶意",
-		"re_boss_eyi_info": "锁定技，回合开始时，若当前体力值等于体力上限，则目标无法响应你本回合使用的首张【杀】",
+		"re_boss_eyi_info": "锁定技，回合开始时，若当前体力值等于体力上限，则目标无法响应你本回合使用的首张【杀】。",
+		"re_boss_baoyu": "暴雨",
+		"re_boss_baoyu_info": "锁定技，防止你受到的火焰伤害；每轮开始时，对所有其他角色造成1点伤害。",
 		"re_boss_xuzhang": "蓄瘴",
 		"re_boss_xuzhang_info": "锁定技，你对其他角色造成伤害后，其获得等同此伤害值的【瘴】标记（【瘴】：准备阶段，你损失X点体力或减少X点体力上限（X为你瘴的数量，触发后弃置所有[瘴]））。",
 		"re_boss_xuzhang_effect": "瘴",
