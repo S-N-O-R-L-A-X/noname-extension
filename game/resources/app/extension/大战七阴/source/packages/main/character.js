@@ -220,8 +220,12 @@ export const character = {
 		"shanhetu_boss_hundun": "来源于山河图妖篇第一章关内混沌，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 		"shanhetu_boss_taowu": "来源于山河图妖篇第一章关内梼杌，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 		"shanhetu_boss_taotie": "来源于山河图妖篇第一章关内饕餮，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
-		"shanhetu_boss_ganning2": "来源于山河图妖篇第一章boss甘宁，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
-		"shanhetu_boss_yanrou": "来源于山河图江东雄心篇第一章关内阎柔，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击"
+		"shanhetu_boss_ganning2": "来源于山河图妖篇第一章boss甘宁，没有任何改动。<br>【强度】★★★★★<br> 【亮点】控制",
+		"shanhetu_boss_yanrou": "来源于山河图江东雄心篇第一章关内阎柔，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_haiheshang1": "来源于山河图妖篇第一章boss海和尚，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_haiheshang2": "来源于山河图妖篇第一章boss海和尚，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_haiheshang3": "来源于山河图妖篇第一章boss海和尚，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_haiheshang4": "来源于山河图妖篇第一章boss海和尚，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合"
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -254,7 +258,8 @@ export const character = {
 				"shanhetu_boss_yuanshao", "shanhetu_boss_lvbu", "shanhetu_boss_huangzu", "shanhetu_boss_dongzhuo",
 				"shanhetu_boss_xusheng2", "shanhetu_boss_lvmeng", "shanhetu_boss_yingzhao", "shanhetu_boss_qiongqi",
 				"shanhetu_boss_shuishengonggong", "shanhetu_boss_hundun", "shanhetu_boss_taowu", "shanhetu_boss_taotie",
-				"shanhetu_boss_ganning2"
+				"shanhetu_boss_ganning2","shanhetu_boss_haiheshang1","shanhetu_boss_haiheshang2","shanhetu_boss_haiheshang3",
+				"shanhetu_boss_haiheshang4"
 			]
 		}
 	},
