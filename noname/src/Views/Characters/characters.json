@@ -3116,7 +3116,7 @@
     "package": "山河图妖包",
     "details": "来源于山河图妖篇第一章boss甘宁，没有任何改动。",
     "strength": "【强度】★★★★★",
-    "highlight": " 【亮点】攻击"
+    "highlight": " 【亮点】控制"
   },
   {
     "EnglishName": "shanhetu_boss_yanrou",
@@ -3145,6 +3145,148 @@
     "package": "山河图九州雄心包",
     "details": "来源于山河图江东雄心篇第一章关内阎柔，没有任何改动。",
     "strength": "【强度】★★★★★",
-    "highlight": " 【亮点】攻击"
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_haiheshang1",
+    "ChineseName": "山河图海和尚一号",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_qixiang",
+      "boss_tanyu",
+      "boss_jicai_switch",
+      "re_boss_baoyu",
+      "jieyuan",
+      "re_boss_xuzhang",
+      "xinfu_gongqing",
+      "chouhai",
+      "benyu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "暴雨",
+      null,
+      "蓄瘴",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章boss海和尚，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_haiheshang2",
+    "ChineseName": "山河图海和尚二号",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_qixiang",
+      "boss_tanyu",
+      "boss_jicai_switch",
+      "re_boss_baoyu",
+      "drlt_jueyan",
+      "re_boss_xuzhang",
+      "tuxing",
+      "lvli",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "暴雨",
+      null,
+      "蓄瘴",
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章boss海和尚，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_haiheshang3",
+    "ChineseName": "山河图海和尚三号",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "20/20/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_qixiang",
+      "boss_tanyu",
+      "boss_jicai_switch",
+      "ranshang",
+      "enyuan",
+      "re_boss_xuzhang",
+      "re_boss_yangwu",
+      "zhaxiang",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "蓄瘴",
+      "扬武",
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章boss海和尚，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_haiheshang4",
+    "ChineseName": "山河图海和尚四号",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_qixiang",
+      "boss_tanyu",
+      "boss_jicai_switch",
+      "re_boss_baoyu",
+      "clanjiexuan",
+      "re_boss_xuzhang",
+      "re_boss_xianji",
+      "zhengding",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "暴雨",
+      null,
+      "蓄瘴",
+      "先机",
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第一章boss海和尚，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
   }
 ]

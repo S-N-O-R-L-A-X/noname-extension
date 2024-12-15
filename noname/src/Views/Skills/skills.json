@@ -687,11 +687,26 @@
   "re_boss_eyi": {
     "EnglishName": "re_boss_eyi",
     "ChineseName": "恶意",
-    "info": "锁定技，回合开始时，若当前体力值等于体力上限，则目标无法响应你本回合使用的首张【杀】"
+    "info": "锁定技，回合开始时，若当前体力值等于体力上限，则目标无法响应你本回合使用的首张【杀】。"
   },
   "re_boss_yinzei": {
     "EnglishName": "re_boss_yinzei",
     "ChineseName": "隐贼",
     "info": "锁定技，当其他角色对你造成伤害后，若你没有手牌，你随机获得其一张牌。"
+  },
+  "re_boss_baoyu": {
+    "EnglishName": "re_boss_baoyu",
+    "ChineseName": "暴雨",
+    "info": "锁定技，防止你受到的火焰伤害；每轮开始时，对所有其他角色造成1点伤害。"
+  },
+  "re_boss_xuzhang": {
+    "EnglishName": "re_boss_xuzhang",
+    "ChineseName": "蓄瘴",
+    "info": "锁定技，你对其他角色造成伤害后，其获得等同此伤害值的【瘴】标记（【瘴】：准备阶段，你损失X点体力或减少X点体力上限（X为你瘴的数量，触发后弃置所有[瘴]））。"
+  },
+  "re_boss_yangwu": {
+    "EnglishName": "re_boss_yangwu",
+    "ChineseName": "扬武",
+    "info": "锁定技，准备阶段，你对所有角色各造成1点伤害，然后失去1点体力。"
   }
 }
