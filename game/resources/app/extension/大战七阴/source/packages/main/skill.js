@@ -349,7 +349,7 @@ export const skill = {
 				const list = player.getEnemies();
 				const enemy = list.randomGet();
 				player.line(enemy, "green");
-				enemy.addTempSkill("re_boss_jinsuo", "roundStart");
+				enemy.addTempSkill("re_boss_jinsuo");
 			}
 		},
 		"re_boss_jinsuo": {
@@ -359,7 +359,6 @@ export const skill = {
 				"name2": "金锁",
 				content: "mark",
 			},
-
 			mod: {
 				cardEnabled: function (card, player) {
 					if (player.countMark('re_boss_jinsuo') >= 6) return false;
@@ -624,19 +623,19 @@ export const skill = {
 				return player.storage.re_boss_xuzhang_effect && player.storage.re_boss_xuzhang_effect > 0;
 			},
 			content: async () => {
-				const choices = ["失去" + player.storage.re_boss_xuzhang_effect + "点体力", "失去" + player.storage.re_boss_xuzhang_effect + "点体力上限"];
+				const marks = player.storage.re_boss_xuzhang_effect;
+				const choices = ["失去" + marks + "点体力", "失去" + marks + "点体力上限"];
 				const result = await player.chooseControl(choices).set("ai", () => {
-					if (player.hp < re_boss_xuzhang_effect - 1 && player.maxHp > re_boss_xuzhang_effect) {
+					if (player.hp < marks - 1 && player.maxHp > marks) {
 						return 1;
 					}
 					return 0;
-				})
-				game.log(result);
+				}).forResult();
 				if (result.index === 0) {
-					player.loseHp(player.storage.re_boss_xuzhang_effect);
+					player.loseHp(marks);
 				}
 				else {
-					player.loseMaxHp(player.storage.re_boss_xuzhang_effect);
+					player.loseMaxHp(marks);
 				}
 				player.storage.re_boss_xuzhang_effect = 0;
 			}
