@@ -114,7 +114,7 @@ export const character = {
 		"shanhetu_boss_ganning2": ["male", "wu", "6/6/4", ["re_boss_lianyu", "latest_ol_feiyang", "qixi", "fenwei", "gzduanliang", "reluoshen", "xiehui", "mingzhe", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_yanrou": ["male", "wei", "7/7/4", ["re_boss_lianyu", "re_boss_wushuangfangtianji", "choutao", "xiangshu", "retieji", "lieren", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_haiheshang1": ["male", "qun", "7/7/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "re_boss_baoyu", "jieyuan", "re_boss_xuzhang", "xinfu_gongqing", "chouhai", "benyu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_boss_haiheshang2": ["male", "qun", "7/7/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "re_boss_baoyu", "drlt_jueyan", "re_boss_xuzhang", "tuxing", "lvli", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_boss_haiheshang2": ["male", "qun", "7/7/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "re_boss_baoyu", "drlt_jueyan", "re_boss_xuzhang", "tuxing", "xinlvli", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_haiheshang3": ["male", "qun", "20/20/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "ranshang", "enyuan", "re_boss_xuzhang", "re_boss_yangwu", "zhaxiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_haiheshang4": ["male", "qun", "7/7/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "re_boss_baoyu", "clanjiexuan", "re_boss_xuzhang", "re_boss_xianji", "zhengding", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
