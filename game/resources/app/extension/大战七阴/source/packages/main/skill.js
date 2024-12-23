@@ -5468,7 +5468,7 @@ export const skill = {
 			marktext: '☯',
 			intro: {
 				content: function (storage, player, skill) {
-					if (!player.storage.math_yanjiao) return '你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你失去一点体力。然后你弃置场上X张牌（X为另一组的数量）。';
+					if (!player.storage.math_yanjiao) return '你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你受到一点伤害。然后你弃置一名角色X张牌（X为另一组的数量）。';
 					return '你可以选择一名其他角色并从牌堆顶亮出四张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组，然后将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数一半，向下取整）';
 				},
 			},
@@ -5587,10 +5587,10 @@ export const skill = {
 								return lib.filter.canBeDiscarded(card, player, current);
 							}, 'hej');
 						})) {
-							player.chooseTarget('是否弃置场上的一张牌？', function (card, player, target) {
+							player.chooseTarget('是否弃置其场上的' + event.discardCards.length + '张牌？', function (card, player, target) {
 								return target.hasCard(function (card) {
 									return lib.filter.canBeDiscarded(card, player, target);
-								}, 'hej');
+								}, 'he');
 							});
 						}
 						else event.finish();
@@ -5599,7 +5599,7 @@ export const skill = {
 						if (result.bool) {
 							var target = result.targets[0];
 							player.line(target, 'thunder');
-							player.discardPlayerCard(target, true, 'hej');
+							player.discardPlayerCard(target, true, 'he');
 
 							if (--event.discardCards > 0) {
 								event.goto(8);
@@ -8055,7 +8055,7 @@ export const skill = {
 
 		// math_zhangchangpu
 		"math_yanjiao": "严教",
-		"math_yanjiao_info": "转换技，出牌阶段限一次，阴：你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你失去一点体力。然后你弃置场上X张牌（X为另一组的数量）。阳：你可以选择一名其他角色并从牌堆顶亮出4张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组，然后将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数）<br>【严教·改】<br>出牌阶段限一次，你可以选择一名其他角色并从牌堆顶亮出10张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组并将等量手牌交给你，将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数）",
+		"math_yanjiao_info": "转换技，出牌阶段限一次，阴：你可以从牌堆顶亮出4张牌，将这些牌分成点数之和相等的两组，你选择获得其中一组，然后将剩余未分组的牌置入弃牌堆。若未分组的牌超过一张，你受到一点伤害。然后你弃置场上X张牌（X为另一组的数量）。阳：你可以选择一名其他角色并从牌堆顶亮出4张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组，然后将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数）<br>【严教·改】<br>出牌阶段限一次，你可以选择一名其他角色并从牌堆顶亮出10张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组并将等量手牌交给你，将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数）",
 		"math_yanjiao_upgrade": "严教",
 		"math_yanjiao_upgrade_info": "出牌阶段限一次，你可以选择一名其他角色并从牌堆顶亮出10张牌。该角色将这些牌分成点数之和相等的两组，你选择获得其中一组，其获得另一组并将等量手牌交给你，将剩余未分组的牌置入弃牌堆。你对其造成X点伤害。（X为未分组的牌数）",
 		"math_xingshen": "省身",
