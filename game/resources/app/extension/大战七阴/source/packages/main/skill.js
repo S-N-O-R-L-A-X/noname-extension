@@ -654,6 +654,22 @@ export const skill = {
 				player.loseHp();
 			}
 		},
+		"re_boss_rensan": {
+			trigger: { player: ['damageEnd', "loseHpAfter"] },
+			forced: true,
+			init: (player) => {
+				if (!player.storage.re_boss_rensan) {
+					player.storage.re_boss_rensan = 0;
+				}
+			},
+			content: () => {
+				player.storage.re_boss_rensan += trigger.num;
+				if (player.storage.re_boss_rensan > 3) {
+					player.loseMaxHp();
+					player.storage.re_boss_rensan %= 3;
+				}
+			}
+		},
 
 		"re_boss_zhuishe": {
 			mod: {
@@ -7800,6 +7816,8 @@ export const skill = {
 		"re_boss_xuzhang_effect_info": "锁定技，准备阶段，你损失X点体力或减少X点体力上限（X为你【瘴】的数量，触发后弃置所有【瘴】）。",
 		"re_boss_yangwu": "扬武",
 		"re_boss_yangwu_info": "锁定技，准备阶段，你对所有角色各造成1点伤害，然后失去1点体力。",
+		"re_boss_rensan": "人三",
+		"re_boss_rensan_info": "锁定技，你每损失3点体力，减少1点体力上限。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
