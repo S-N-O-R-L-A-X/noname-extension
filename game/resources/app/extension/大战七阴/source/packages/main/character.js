@@ -117,6 +117,7 @@ export const character = {
 		"shanhetu_boss_haiheshang2": ["male", "qun", "7/7/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "re_boss_baoyu", "drlt_jueyan", "re_boss_xuzhang", "tuxing", "xinlvli", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_haiheshang3": ["male", "qun", "20/20/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "ranshang", "enyuan", "re_boss_xuzhang", "re_boss_yangwu", "zhaxiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_haiheshang4": ["male", "qun", "7/7/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "re_boss_baoyu", "clanjiexuan", "re_boss_xuzhang", "re_boss_xianji", "zhengding", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_boss_sanshiyou": ["male", "qun", "7/7/4", ["re_boss_lianyu", "re_boss_eyi", "re_boss_sanku", "rensan", "reyicong", "tuntian", "zaoxian", "re_boss_wangliang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
 		"re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
@@ -258,7 +259,7 @@ export const character = {
 				"shanhetu_boss_yuanshao", "shanhetu_boss_lvbu", "shanhetu_boss_huangzu", "shanhetu_boss_dongzhuo",
 				"shanhetu_boss_xusheng2", "shanhetu_boss_lvmeng", "shanhetu_boss_yingzhao", "shanhetu_boss_qiongqi",
 				"shanhetu_boss_shuishengonggong", "shanhetu_boss_hundun", "shanhetu_boss_taowu", "shanhetu_boss_taotie",
-				"shanhetu_boss_ganning2","shanhetu_boss_haiheshang1","shanhetu_boss_haiheshang2","shanhetu_boss_haiheshang3",
+				"shanhetu_boss_ganning2", "shanhetu_boss_haiheshang1", "shanhetu_boss_haiheshang2", "shanhetu_boss_haiheshang3",
 				"shanhetu_boss_haiheshang4"
 			]
 		}
@@ -382,10 +383,11 @@ export const character = {
 		"shanhetu_boss_taotie": "山河图饕餮",
 		"shanhetu_boss_ganning2": "山河图甘宁二号",
 		"shanhetu_boss_yanrou": "山河图阎柔",
-		"shanhetu_boss_haiheshang1": "山河图海和尚一号",
-		"shanhetu_boss_haiheshang2": "山河图海和尚二号",
-		"shanhetu_boss_haiheshang3": "山河图海和尚三号",
-		"shanhetu_boss_haiheshang4": "山河图海和尚四号",
+		"shanhetu_boss_haiheshang1": "海和尚一号",
+		"shanhetu_boss_haiheshang2": "海和尚二号",
+		"shanhetu_boss_haiheshang3": "海和尚三号",
+		"shanhetu_boss_haiheshang4": "海和尚四号",
+		"shanhetu_boss_sanshiyou": "三逝友"
 	},
 
 }
