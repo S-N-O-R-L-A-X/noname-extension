@@ -670,37 +670,47 @@ export const skill = {
 				}
 			}
 		},
-		"re_boss_wangliang_green": {
+		"re_boss_wangliang_blue": {
 			trigger: { target: 'useCardToTargeted', source: 'damageBegin3', player: 'damageEnd' },
 			forced: true,
 			mark: true,
-			intro: () => {
-				return {
-					name: '魍魉',
-					content: '当前有#个标记',
-				}
+			intro: {
+				content: function (storage, player) {
+					return `当前状态为${player.storage.re_boss_wangliang}`
+				},
 			},
 			init: (player) => {
 				if (!player.storage.re_boss_wangliang) {
-					player.storage.re_boss_wangliang = "green";
+					player.storage.re_boss_wangliang = "blue";
 				}
 			},
+			filter: (event, player) => {
+				const blue = player.storage.re_boss_wangliang === "blue" && event.name === "useCardToTargeted" && player != event.player;
+				const red = player.storage.re_boss_wangliang === "red" && event.name === "damage" && event.source == player;
+				const yellow = player.storage.re_boss_wangliang === "yellow" && event.name === "damage" && event.player == player;
+				return blue || red || yellow;
+			},
 			content: async (event, trigger, player) => {
-				game.log(event.player);
-				game.log(trigger.name);
-				if (player.storage.re_boss_wangliang === "green" && trigger.name === "useCardToTargeted" && player != trigger.player) {
-					const tg = trigger.player;
-					await player.discardPlayerCard(tg, "he", tg.countCards("h") >> 1, true);
-					player.line(tg);
-					player.storage.re_boss_wangliang = "red";
-				}
-				if (player.storage.re_boss_wangliang === "red" && trigger.name === "damage" && trigger.player == player) {
-					trigger.num <<= 1;
-					player.storage.re_boss_wangliang = "yellow";
-				}
-				if (player.storage.re_boss_wangliang === "yellow" && trigger.name === "damage" && trigger.target == player) {
-					player.recover(trigger.num);
-					player.storage.re_boss_wangliang = "green";
+				switch (player.storage.re_boss_wangliang) {
+					case "blue":
+						const tg = trigger.player;
+						await player.discardPlayerCard(tg, "he", tg.countCards("h") >> 1, true);
+						player.line(tg);
+						player.storage.re_boss_wangliang = "red";
+						game.log(get.translation("re_boss_wangliang_blue") + "状态转为红色");
+						break;
+					case "red":
+						trigger.num <<= 1;
+						player.storage.re_boss_wangliang = "yellow";
+						game.log(get.translation("re_boss_wangliang_blue") + "状态转为黄色");
+						break;
+					case "yellow":
+						player.recover(trigger.num);
+						player.storage.re_boss_wangliang = "blue";
+						game.log(get.translation("re_boss_wangliang_blue") + "状态转为蓝色");
+						break;
+					default:
+						break;
 				}
 			},
 		},
@@ -7852,8 +7862,8 @@ export const skill = {
 		"re_boss_yangwu_info": "锁定技，准备阶段，你对所有角色各造成1点伤害，然后失去1点体力。",
 		"re_boss_rensan": "人三",
 		"re_boss_rensan_info": "锁定技，你每损失3点体力，减少1点体力上限。",
-		"re_boss_wangliang_green": "魍魉",
-		"re_boss_wangliang_green_info": "你拥有三种状态（初始为青），发动此技能后切换至下一状态（循环）。赤：你造成伤害后，你令此伤害翻倍；黄：你受到伤害后，你回复等值体力；青：你成为其他角色使用牌的目标时，弃置其一半手牌。",
+		"re_boss_wangliang_blue": "魍魉",
+		"re_boss_wangliang_blue_info": "你拥有三种状态（初始为青），发动此技能后切换至下一状态（循环）。赤：你造成伤害后，你令此伤害翻倍；黄：你受到伤害后，你回复等值体力；青：你成为其他角色使用牌的目标时，弃置其一半手牌。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
