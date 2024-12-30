@@ -6,9 +6,11 @@ export async function content(config, pack) {
 	}
 	//在这里编写启动阶段执行的代码。
 	lib.init.css(lib.assetURL + "extension/大战七阴", "extension");
-	lib.group.push("daqin");
-	lib.translate.daqin = "秦";
-	lib.groupnature.daqin = "thunder";
+	if (lib.group.indexOf("daqin") === -1) {
+		lib.group.push("daqin");
+		lib.translate.daqin = "秦";
+		lib.groupnature.daqin = "thunder";
+	}
 
 	if (!lib.config.custom_banned_characters) {
 		lib.config.custom_banned_characters = new Set();
