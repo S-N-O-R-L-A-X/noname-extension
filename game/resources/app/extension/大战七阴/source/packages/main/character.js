@@ -117,7 +117,8 @@ export const character = {
 		"shanhetu_boss_haiheshang2": ["male", "qun", "7/7/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "re_boss_baoyu", "drlt_jueyan", "re_boss_xuzhang", "tuxing", "xinlvli", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_haiheshang3": ["male", "qun", "20/20/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "ranshang", "enyuan", "re_boss_xuzhang", "re_boss_yangwu", "zhaxiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_haiheshang4": ["male", "qun", "7/7/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "re_boss_baoyu", "clanjiexuan", "re_boss_xuzhang", "re_boss_xianji", "zhengding", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_boss_sanshiyou": ["male", "qun", "7/7/4", ["re_boss_lianyu", "re_boss_eyi", "re_boss_sanku", "rensan", "reyicong", "tuntian", "zaoxian", "re_boss_wangliang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_boss_sanshiyou": ["male", "qun", "7/7/4", ["re_boss_lianyu", "re_boss_eyi", "re_boss_sanku", "rensan", "reyicong", "tuntian", "zaoxian", "re_boss_wangliang_blue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_boss_yuanniu": ["male", "qun", "8/8/4", ["re_boss_lianyu", "qianxi", "clbshuiyong", "re_boss_zhangdu", "reyicong", "yidu", "jieyuan", "re_boss_huangkong", "reenyuan", "re_boss_juexing", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
 		"re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
@@ -387,7 +388,8 @@ export const character = {
 		"shanhetu_boss_haiheshang2": "海和尚二号",
 		"shanhetu_boss_haiheshang3": "海和尚三号",
 		"shanhetu_boss_haiheshang4": "海和尚四号",
-		"shanhetu_boss_sanshiyou": "三逝友"
+		"shanhetu_boss_sanshiyou": "三逝友",
+		"shanhetu_boss_yuanniu": "怨牛"
 	},
 
 }
