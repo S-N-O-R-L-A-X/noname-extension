@@ -715,6 +715,34 @@ export const skill = {
 			},
 		},
 
+		"re_boss_huangkong": {
+			forced: true,
+			group: ["re_boss_huangkong_draw", "re_boss_huangkong_discard"],
+			subSkill: {
+				"draw": {
+					trigger: { player: 'phaseDrawBegin2' },
+					forced: true,
+					filter: function (event, player) {
+						return !event.numFixed;
+					},
+					content: function () {
+						trigger.num <<= 1;
+					},
+				},
+				"discard": {
+					trigger: { player: 'phaseDiscard' },
+					forced: true,
+					filter: function (event, player) {
+						return !event.numFixed;
+					},
+					content: function () {
+						player.chooseToDiscard(trigger.num <<= 1, 'he', true);
+					}
+				}
+			}
+
+		},
+
 		"re_boss_zhuishe": {
 			mod: {
 				cardUsable: function (card, player, num) {
@@ -7864,6 +7892,8 @@ export const skill = {
 		"re_boss_rensan_info": "锁定技，你每损失3点体力，减少1点体力上限。",
 		"re_boss_wangliang_blue": "魍魉",
 		"re_boss_wangliang_blue_info": "你拥有三种状态（初始为青），发动此技能后切换至下一状态（循环）。赤：你造成伤害后，你令此伤害翻倍；黄：你受到伤害后，你回复等值体力；青：你成为其他角色使用牌的目标时，弃置其一半手牌。",
+		"re_boss_huangkong": "惶恐",
+		"re_boss_huangkong_info": "锁定技，摸牌阶段你的摸牌量翻倍，弃牌阶段你的弃牌量翻倍。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
