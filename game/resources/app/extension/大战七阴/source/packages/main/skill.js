@@ -482,7 +482,7 @@ export const skill = {
 				player.line(players);
 				++player.storage.re_boss_juexing;
 				players.forEach(p => {
-					if (p != player) p.damage(player.storage.re_boss_juexing);
+					if (p != player) p.damage(player.storage.re_boss_juexing + 1);
 				})
 			},
 		},
@@ -736,7 +736,7 @@ export const skill = {
 						return !event.numFixed;
 					},
 					content: function () {
-						player.chooseToDiscard(trigger.num <<= 1, 'he', true);
+						trigger.num <<= 1;
 					}
 				}
 			}
