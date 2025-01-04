@@ -743,6 +743,21 @@ export const skill = {
 
 		},
 
+		"re_boss_zhangdu": {
+			forced: true,
+			trigger: { global: 'damageBegin4' },
+			filter: function (event, player) {
+				return event.source && event.source.isIn() && event.source == player;
+			},
+			content: function () {
+				trigger.cancel();
+				const target = trigger.player;
+				player.line(target);
+				target.addMark("re_boss_xuzhang_effect", trigger.num + 1);
+				target.addSkill('re_boss_xuzhang_effect');
+			},
+		},
+
 		"re_boss_zhuishe": {
 			mod: {
 				cardUsable: function (card, player, num) {
@@ -7894,6 +7909,8 @@ export const skill = {
 		"re_boss_wangliang_blue_info": "你拥有三种状态（初始为青），发动此技能后切换至下一状态（循环）。赤：你造成伤害后，你令此伤害翻倍；黄：你受到伤害后，你回复等值体力；青：你成为其他角色使用牌的目标时，弃置其一半手牌。",
 		"re_boss_huangkong": "惶恐",
 		"re_boss_huangkong_info": "锁定技，摸牌阶段你的摸牌量翻倍，弃牌阶段你的弃牌量翻倍。",
+		"re_boss_zhangdu": "瘴毒",
+		"re_boss_zhangdu_info": "锁定技，防止你造成的伤害，为目标增加伤害量+1的【瘴】标记（【瘴】：准备阶段，你损失X点体力或减少X点体力上限（X为你瘴的数量，触发后弃置所有[瘴]））。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
