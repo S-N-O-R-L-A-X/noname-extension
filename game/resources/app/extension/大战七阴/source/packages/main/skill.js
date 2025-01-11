@@ -469,7 +469,8 @@ export const skill = {
 				})
 				return sum >= 3;
 			},
-			content: () => {
+			content: async () => {
+				"step 0"
 				const evt = _status.event.getParent('phase');
 				if (evt) {
 					game.resetSkills();
@@ -478,12 +479,15 @@ export const skill = {
 					_status.event.untrigger(true);
 				}
 
-				players = game.players.slice(0).sortBySeat();
+				"step 1"
+				const players = game.players.slice(0).sortBySeat();
 				player.line(players);
 				++player.storage.re_boss_juexing;
-				players.forEach(p => {
-					if (p != player) p.damage(player.storage.re_boss_juexing + 1);
-				})
+				for (const p of players) {
+					if (p != player) {
+						p.damage(player.storage.re_boss_juexing + 1);
+					}
+				}
 			},
 		},
 		"re_boss_juexing2": {
@@ -7703,6 +7707,26 @@ export const skill = {
 			},
 		},
 
+		"re_boss_zaie": {
+			trigger: { player: "phaseBegin" },
+			filter: function (event, player) {
+				const players = game.filterPlayer((current) => {
+					return current.countMark("boss_shedu") > 0;
+				});
+				return players.length > 0 && players.length <= player.countCards("he");
+			},
+			content: async function () {
+				const players = game.filterPlayer((current) => {
+					return current.countMark("boss_shedu") > 0;
+				});
+				player.chooseToDiscard('请弃置' + get.cnNumber(players.length) + '张牌', 'he', true, players.length).set('ai', get.unuseful);
+				for (const ch of players) {
+					await ch.useSkill("boss_shedu");
+				}
+			},
+		},
+
+
 		// guozhan
 		gzcongjian: {
 			trigger: {
@@ -8298,6 +8322,9 @@ export const skill = {
 		// shanhetu_boss_hundun
 		"re_boss_yinzei": "隐贼",
 		"re_boss_yinzei_info": "锁定技，当其他角色对你造成伤害后，若你没有手牌，你随机获得其一张牌。",
+
+		"re_boss_zaie": "灾厄",
+		"re_boss_zaie_info": "准备阶段，你可以弃置X张牌，触发全场「蛇毒」标记，然后摸等同于全场最高「蛇毒」标记数量的牌（X为拥有蛇毒标记的角色数量）。",
 
 		// unused
 		"geju": "割据",
