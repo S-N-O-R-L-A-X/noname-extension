@@ -349,7 +349,8 @@ export const skill = {
 				const list = player.getEnemies();
 				const enemy = list.randomGet();
 				player.line(enemy, "green");
-				enemy.addTempSkill("re_boss_jinsuo");
+				enemy.addTempSkill("re_boss_jinsuo", { player: "phaseEnd" });
+				enemy.markSkill("re_boss_jinsuo");
 			}
 		},
 		"re_boss_jinsuo": {
@@ -7707,6 +7708,7 @@ export const skill = {
 			},
 		},
 
+		// shanhetu_xiangliujushe
 		"re_boss_zaie": {
 			trigger: { player: "phaseBegin" },
 			filter: function (event, player) {
@@ -7725,7 +7727,6 @@ export const skill = {
 				}
 			},
 		},
-
 
 		// guozhan
 		gzcongjian: {
@@ -8323,8 +8324,11 @@ export const skill = {
 		"re_boss_yinzei": "隐贼",
 		"re_boss_yinzei_info": "锁定技，当其他角色对你造成伤害后，若你没有手牌，你随机获得其一张牌。",
 
+		// shanhetu_boss_xiangliujushe
 		"re_boss_zaie": "灾厄",
 		"re_boss_zaie_info": "准备阶段，你可以弃置X张牌，触发全场「蛇毒」标记，然后摸等同于全场最高「蛇毒」标记数量的牌（X为拥有蛇毒标记的角色数量）。",
+		"re_boss_duqu": "毒躯",
+		"re_boss_duqu_info": "锁定技，你造成/受到伤害时，受伤角色/伤害来源获得等同于此次伤害值的「蛇毒」标记；你的【桃】均视为【杀】。（「蛇毒」：锁定技，准备阶段，你弃置X张牌或失去X点体力（X为「蛇毒」标记数），然后弃置1枚「蛇毒」。）",
 
 		// unused
 		"geju": "割据",
