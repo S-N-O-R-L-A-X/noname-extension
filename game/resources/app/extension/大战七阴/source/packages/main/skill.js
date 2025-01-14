@@ -7727,6 +7727,25 @@ export const skill = {
 				}
 			},
 		},
+		"re_boss_duqu": {
+			trigger: {
+				player: "damageEnd",
+				source: 'damageSource'
+			},
+			content: function () {
+				const target = trigger.source == player ? trigger.player : trigger.source;
+				if (!target.storage.boss_shedu) target.storage.boss_shedu = 0;
+				target.storage.boss_shedu++;
+				target.markSkill("boss_shedu");
+			},
+			forced: true,
+			global: "boss_shedu",
+			mod: {
+				cardname: function (card, player) {
+					if (card.name == "tao") return "sha";
+				},
+			},
+		},
 
 		// guozhan
 		gzcongjian: {
