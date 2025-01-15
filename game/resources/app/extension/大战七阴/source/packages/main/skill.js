@@ -7746,6 +7746,45 @@ export const skill = {
 				},
 			},
 		},
+		"re_boss_bashou": {
+			forced: true,
+			group: ["re_boss_bashou_init", "re_boss_bashou_update", "re_boss_bashou_damage"],
+			subSkill: {
+				init: {
+					filter: function (event, player) {
+						return (event.name != 'phase' || game.phaseNumber == 0);
+					},
+					trigger: {
+						global: 'phaseBefore',
+						player: 'enterGame',
+					},
+					forced: true,
+					content: () => {
+						player.maxHp = 8;
+						player.update();
+					}
+				},
+				update: {
+					trigger: {
+						player: [
+							"loseMaxHpBefore",
+							"gainMaxHpBefore",
+						],
+					},
+					forced: true,
+					content: function () {
+						trigger.cancel();
+					},
+				},
+				damage: {
+					trigger: { player: "damageBegin4" },
+					forced: true,
+					content: () => {
+						trigger.num === 1 ? trigger.num = 0 : trigger.num = 1;
+					}
+				}
+			},
+		},
 
 		// guozhan
 		gzcongjian: {
@@ -8348,6 +8387,8 @@ export const skill = {
 		"re_boss_zaie_info": "准备阶段，你可以弃置X张牌，触发全场「蛇毒」标记，然后摸等同于全场最高「蛇毒」标记数量的牌（X为拥有蛇毒标记的角色数量）。",
 		"re_boss_duqu": "毒躯",
 		"re_boss_duqu_info": "锁定技，你造成/受到伤害时，受伤角色/伤害来源获得等同于此次伤害值的「蛇毒」标记；你的【桃】均视为【杀】。（「蛇毒」：锁定技，准备阶段，你弃置X张牌或失去X点体力（X为「蛇毒」标记数），然后弃置1枚「蛇毒」。）",
+		"re_boss_bashou": "八首",
+		"re_boss_bashou_info": "锁定技，你的体力上限固定为8；当你受到伤害时，若伤害值等于1，将此伤害值改为0，若伤害值大于1，将此伤害值改为1",
 
 		// unused
 		"geju": "割据",
