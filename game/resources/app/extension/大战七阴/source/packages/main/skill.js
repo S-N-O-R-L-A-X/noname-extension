@@ -7785,6 +7785,15 @@ export const skill = {
 				}
 			},
 		},
+		"re_boss_sishe": {
+			trigger: { player: "damageEnd" },
+			forced: true,
+			content: function () {
+				if (trigger.source.isIn()) {
+					trigger.source.damage(trigger.num);
+				}
+			}
+		},
 
 		// guozhan
 		gzcongjian: {
@@ -8389,6 +8398,8 @@ export const skill = {
 		"re_boss_duqu_info": "锁定技，你造成/受到伤害时，受伤角色/伤害来源获得等同于此次伤害值的「蛇毒」标记；你的【桃】均视为【杀】。（「蛇毒」：锁定技，准备阶段，你弃置X张牌或失去X点体力（X为「蛇毒」标记数），然后弃置1枚「蛇毒」。）",
 		"re_boss_bashou": "八首",
 		"re_boss_bashou_info": "锁定技，你的体力上限固定为8；当你受到伤害时，若伤害值等于1，将此伤害值改为0，若伤害值大于1，将此伤害值改为1",
+		"re_boss_sishe": "巳蛇",
+		"re_boss_sishe_info": "当你受到伤害后，你可以对伤害来源造成等量伤害。",
 
 		// unused
 		"geju": "割据",
