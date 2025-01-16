@@ -763,6 +763,18 @@ export const skill = {
 			},
 		},
 
+		"re_boss_wuying": {
+			trigger: { global: "gainEnd" },
+			filter: function (event, player) {
+				const tg = event.player;
+				return tg != player && _status.currentPhase == tg && tg.countCards("h") > 10;
+			},
+			forced: true,
+			content: () => {
+				trigger.player.damage();
+			}
+		},
+
 		"re_boss_zhuishe": {
 			mod: {
 				cardUsable: function (card, player, num) {
@@ -8003,6 +8015,8 @@ export const skill = {
 		"re_boss_huangkong_info": "锁定技，摸牌阶段你的摸牌量翻倍，弃牌阶段你的弃牌量翻倍。",
 		"re_boss_zhangdu": "瘴毒",
 		"re_boss_zhangdu_info": "锁定技，防止你造成的伤害，为目标增加伤害量+1的【瘴】标记（【瘴】：准备阶段，你损失X点体力或减少X点体力上限（X为你瘴的数量，触发后弃置所有[瘴]））。",
+		"re_boss_wuying": "无影",
+		"re_boss_wuying_info": "锁定技，你的敌方若手牌数大于10，于其回合内获得手牌后（按次数），其受到你造成的1点伤害",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
