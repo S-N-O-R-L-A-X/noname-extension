@@ -119,8 +119,8 @@ export const character = {
 		"shanhetu_boss_haiheshang4": ["male", "qun", "7/7/4", ["re_boss_lianyu", "boss_qixiang", "boss_tanyu", "boss_jicai_switch", "re_boss_baoyu", "clanjiexuan", "re_boss_xuzhang", "re_boss_xianji", "zhengding", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_sanshiyou": ["male", "qun", "7/7/4", ["re_boss_lianyu", "re_boss_eyi", "re_boss_sanku", "re_boss_rensan", "reyicong", "tuntian", "zaoxian", "re_boss_wangliang_blue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_yuanniu": ["male", "qun", "8/8/4", ["re_boss_lianyu", "qianxi", "clbshuiyong", "re_boss_zhangdu", "yidu", "jieyuan", "re_boss_huangkong", "reenyuan", "re_boss_juexing", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_boss_xiangliujushe": ["male", "qun", "9/9/4", ["re_boss_lianyu", "re_boss_yaoshou", "boss_duqu", "re_boss_bashou", "re_boss_sishe", "jiaozi", "re_boss_zaie", "chouhai", "moqu", "re_boss_bamen", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_boss_baihu": ["male", "qun", "8/8/4", ["re_boss_lianyu", "qianxi", "yimie", "reyaowu", "xiaoxi", "cuijue", "re_boss_wuying", "re_boss_xianji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_boss_xiangliujushe": ["male", "qun", "9/9/4", ["re_boss_lianyu", "re_boss_yaoshou", "re_boss_duqu", "re_boss_bashou", "re_boss_sishe", "jiaozi", "re_boss_zaie", "chouhai", "re_boss_moqu", "re_boss_bamen", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_boss_baihu": ["male", "qun", "8/8/4", ["re_boss_lianyu", "qianxi", "yimie", "reyaowu", "olxiaoxi", "cuijue", "re_boss_wuying", "re_boss_xianji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
 		"re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
