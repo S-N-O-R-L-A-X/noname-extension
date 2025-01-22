@@ -229,7 +229,11 @@ export const character = {
 		"shanhetu_boss_haiheshang1": "来源于山河图妖篇第一章boss海和尚，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_haiheshang2": "来源于山河图妖篇第一章boss海和尚，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_haiheshang3": "来源于山河图妖篇第一章boss海和尚，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
-		"shanhetu_boss_haiheshang4": "来源于山河图妖篇第一章boss海和尚，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合"
+		"shanhetu_boss_haiheshang4": "来源于山河图妖篇第一章boss海和尚，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_sanshiyou": "来源于山河图妖篇第二章关内三逝友，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
+		"shanhetu_boss_yuanniu": "来源于山河图妖篇第二章关内怨牛，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_xiangliujushe": "来源于山河图妖篇第二章关内相柳巨蛇，单挑恶心王，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_baihu": "来源于山河图妖篇第二章关内白虎，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合"
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -263,7 +267,8 @@ export const character = {
 				"shanhetu_boss_xusheng2", "shanhetu_boss_lvmeng", "shanhetu_boss_yingzhao", "shanhetu_boss_qiongqi",
 				"shanhetu_boss_shuishengonggong", "shanhetu_boss_hundun", "shanhetu_boss_taowu", "shanhetu_boss_taotie",
 				"shanhetu_boss_ganning2", "shanhetu_boss_haiheshang1", "shanhetu_boss_haiheshang2", "shanhetu_boss_haiheshang3",
-				"shanhetu_boss_haiheshang4"
+				"shanhetu_boss_haiheshang4", "shanhetu_boss_sanshiyou", "shanhetu_boss_yuanniu", "shanhetu_boss_xiangliujushe",
+				"shanhetu_boss_baihu"
 			]
 		}
 	},
