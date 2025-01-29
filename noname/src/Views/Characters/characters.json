@@ -3149,7 +3149,7 @@
   },
   {
     "EnglishName": "shanhetu_boss_haiheshang1",
-    "ChineseName": "山河图海和尚一号",
+    "ChineseName": "海和尚一号",
     "gender": "male",
     "nationality": "qun",
     "hp": "7/7/4",
@@ -3186,7 +3186,7 @@
   },
   {
     "EnglishName": "shanhetu_boss_haiheshang2",
-    "ChineseName": "山河图海和尚二号",
+    "ChineseName": "海和尚二号",
     "gender": "male",
     "nationality": "qun",
     "hp": "7/7/4",
@@ -3199,7 +3199,7 @@
       "drlt_jueyan",
       "re_boss_xuzhang",
       "tuxing",
-      "lvli",
+      "xinlvli",
       "re_boss_baoli"
     ],
     "ChineseSkills": [
@@ -3221,7 +3221,7 @@
   },
   {
     "EnglishName": "shanhetu_boss_haiheshang3",
-    "ChineseName": "山河图海和尚三号",
+    "ChineseName": "海和尚三号",
     "gender": "male",
     "nationality": "qun",
     "hp": "20/20/4",
@@ -3256,7 +3256,7 @@
   },
   {
     "EnglishName": "shanhetu_boss_haiheshang4",
-    "ChineseName": "山河图海和尚四号",
+    "ChineseName": "海和尚四号",
     "gender": "male",
     "nationality": "qun",
     "hp": "7/7/4",
@@ -3286,6 +3286,144 @@
     ],
     "package": "山河图妖包",
     "details": "来源于山河图妖篇第一章boss海和尚，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_sanshiyou",
+    "ChineseName": "三逝友",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_eyi",
+      "re_boss_sanku",
+      "re_boss_rensan",
+      "reyicong",
+      "tuntian",
+      "zaoxian",
+      "re_boss_wangliang_blue",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "恶意",
+      null,
+      "人三",
+      null,
+      null,
+      null,
+      "魍魉",
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第二章关内三逝友，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_yuanniu",
+    "ChineseName": "怨牛",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "qianxi",
+      "clbshuiyong",
+      "re_boss_zhangdu",
+      "yidu",
+      "jieyuan",
+      "re_boss_huangkong",
+      "reenyuan",
+      "re_boss_juexing",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "瘴毒",
+      null,
+      null,
+      "惶恐",
+      null,
+      "觉醒",
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第二章关内怨牛，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_xiangliujushe",
+    "ChineseName": "相柳巨蛇",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "9/9/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_yaoshou",
+      "re_boss_duqu",
+      "re_boss_bashou",
+      "re_boss_sishe",
+      "jiaozi",
+      "re_boss_zaie",
+      "chouhai",
+      "re_boss_moqu",
+      "re_boss_bamen",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "妖兽",
+      "毒躯",
+      "八首",
+      "巳蛇",
+      null,
+      "灾厄",
+      null,
+      "魔躯",
+      "八门",
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第二章关内相柳巨蛇，单挑恶心王，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_baihu",
+    "ChineseName": "白虎",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "qianxi",
+      "yimie",
+      "reyaowu",
+      "olxiaoxi",
+      "cuijue",
+      "re_boss_wuying",
+      "re_boss_xianji",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "无影",
+      "先机",
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第二章关内白虎，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
   }
