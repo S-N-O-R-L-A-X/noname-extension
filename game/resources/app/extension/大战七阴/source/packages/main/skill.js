@@ -7807,6 +7807,38 @@ export const skill = {
 			}
 		},
 
+		// shanhetu_boss_feiduan
+		"re_boss_busi": {
+			trigger: { player: ['dying'] },
+			forced: true,
+			content: () => {
+				player.recover(player.maxHp - player.hp);
+				player.addMark("re_boss_busi_effect", 2);
+				player.addSkill("re_boss_busi_effect");
+			},
+			mod: {
+				cardEnabled2(card, player) {
+					if (card.name == "tao") return false;
+				},
+			},
+		},
+		"re_boss_busi_effect": {
+			trigger: { global: ['roundStart'] },
+			forced: true,
+			forceDie: true,
+			mark: true,
+			markText: "碎",
+			filter: (event, player) => {
+				return player.countMark("re_boss_busi_effect") > player.hp;
+			},
+			intro: {
+				content: "当前有#个“碎”标记",
+			},
+			content: () => {
+				player.die();
+			}
+		},
+
 		// guozhan
 		gzcongjian: {
 			trigger: {
@@ -8416,6 +8448,11 @@ export const skill = {
 		"re_boss_bashou_info": "锁定技，你的体力上限固定为8；当你受到伤害时，若伤害值等于1，将此伤害值改为0，若伤害值大于1，将此伤害值改为1",
 		"re_boss_sishe": "巳蛇",
 		"re_boss_sishe_info": "当你受到伤害后，你可以对伤害来源造成等量伤害。",
+
+		// shanhetu_boss_feiduan
+		"re_boss_busi": "不死",
+		"re_boss_busi_info": "锁定技，你无法使用【桃】，进入濒死时你回复体力至体力上限，然后叠加2枚[碎]，（碎：每轮开始时，若[碎]大于当前体力，你死亡）",
+		"re_boss_busi_effect": "不死",
 
 		// unused
 		"geju": "割据",
