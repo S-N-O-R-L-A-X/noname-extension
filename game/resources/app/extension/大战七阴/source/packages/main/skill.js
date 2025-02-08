@@ -1037,6 +1037,10 @@ export const skill = {
 			},
 		},
 
+		"re_boss_duanhun": {
+
+		},
+
 		// sunce
 		repinghe: {
 			audio: "pinghe",
