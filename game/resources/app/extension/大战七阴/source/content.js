@@ -12,6 +12,12 @@ export async function content(config, pack) {
 		lib.groupnature.daqin = "thunder";
 	}
 
+	if (lib.group.indexOf("yao") === -1) {
+		lib.group.push("yao");
+		lib.translate.yao = "妖";
+		lib.groupnature.yao = "thunder";
+	}
+
 	if (!lib.config.custom_banned_characters) {
 		lib.config.custom_banned_characters = new Set();
 	}
