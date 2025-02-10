@@ -7842,6 +7842,21 @@ export const skill = {
 				player.die();
 			}
 		},
+		"re_boss_xietu": {
+			trigger: { player: 'damageEnd' },
+			filter: function (event, player) {
+				return event.source && event.source.isIn();
+			},
+			logTarget: 'source',
+			check: function (event, player) {
+				return get.attitude(player, event.source) < 0;
+			},
+			content: () => {
+				const tg = trigger.source;
+				player.chooseToDiscard('he', true).logSkill = ['re_boss_xietu', tg];
+				tg.damage(trigger.num);
+			}
+		},
 
 		// guozhan
 		gzcongjian: {
@@ -8457,6 +8472,8 @@ export const skill = {
 		"re_boss_busi": "不死",
 		"re_boss_busi_info": "锁定技，你无法使用【桃】，进入濒死时你回复体力至体力上限，然后叠加2枚[碎]，（碎：每轮开始时，若[碎]大于当前体力，你死亡）",
 		"re_boss_busi_effect": "不死",
+		"re_boss_xietu": "邪徒",
+		"re_boss_xietu_info": "当你受到伤害后，你可以弃置1张牌，然后对伤害来源造成同等伤害。",
 
 		// unused
 		"geju": "割据",
