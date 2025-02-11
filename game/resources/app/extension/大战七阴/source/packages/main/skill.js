@@ -1040,6 +1040,46 @@ export const skill = {
 		"re_boss_duanhun": {
 
 		},
+		"re_boss_cuanchao": {
+			zhuanhuanji: true,
+			mark: true,
+			marktext: '☯',
+			intro: {
+				content: function (storage, player, skill) {
+					if (player.storage.re_boss_cuanchao == true) return '当你成为锦囊牌的目标时，你可令其无效。';
+					return '当你成为基本牌的目标时，你可令其无效';
+				},
+			},
+			content: () => {
+
+			},
+			group: ["re_boss_cuanchao_1", "re_boss_cuanchao_2"],
+			subSkill: {
+				"1": {
+					trigger: { target: 'useCardToBefore' },
+					prompt2: "令该锦囊无效？",
+					filter: function (event, player) {
+						return get.type(event.card) == 'trick' && !player.storage.re_boss_cuanchao;
+					},
+					content: () => {
+						trigger.cancel();
+						player.changeZhuanhuanji('re_boss_cuanchao');
+					}
+				},
+				"2": {
+					trigger: { target: 'useCardToBefore' },
+					prompt2: "令该基本牌无效？",
+					filter: function (event, player) {
+						return get.type(event.card) == 'basic' && player.storage.re_boss_cuanchao;
+					},
+					content: () => {
+						trigger.cancel();
+						player.changeZhuanhuanji('re_boss_cuanchao');
+					}
+				},
+			}
+		},
+
 
 		// sunce
 		repinghe: {
@@ -8070,6 +8110,8 @@ export const skill = {
 		"re_boss_wuying_info": "锁定技，你的敌方若手牌数大于10，于其回合内获得手牌后（按次数），其受到你造成的1点伤害",
 		"re_boss_duanhun": "断魂",
 		"re_boss_duanhun_info": "锁定技，当你死亡时，杀死你的角色失去所有战法。",
+		"re_boss_cuanchao": "篡朝",
+		"re_boss_cuanchao_info": "转换技，阳：当你成为基本牌的目标时，你可令其无效；阴：当你成为锦囊牌的目标时，你可令其无效。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
