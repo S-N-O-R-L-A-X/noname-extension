@@ -1079,7 +1079,20 @@ export const skill = {
 				},
 			}
 		},
-
+		"re_boss_youji": {
+			forced: true,
+			trigger: { player: 'phaseDrawBegin2' },
+			frequent: true,
+			filter(event, player) {
+				return !event.numFixed;
+			},
+			async content(event, trigger, player) {
+				trigger.num += Math.floor(game.round, 5);
+			},
+			ai: {
+				threaten: 1.8
+			}
+		},
 
 		// sunce
 		repinghe: {
@@ -8112,6 +8125,8 @@ export const skill = {
 		"re_boss_duanhun_info": "锁定技，当你死亡时，杀死你的角色失去所有战法。",
 		"re_boss_cuanchao": "篡朝",
 		"re_boss_cuanchao_info": "转换技，阳：当你成为基本牌的目标时，你可令其无效；阴：当你成为锦囊牌的目标时，你可令其无效。",
+		"re_boss_youji": "酉鸡",
+		"re_boss_youji_info": "锁定技，摸牌阶段，你多摸X张牌（X为游戏轮数且最多为5）。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
