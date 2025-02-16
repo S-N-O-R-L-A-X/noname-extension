@@ -1087,10 +1087,103 @@ export const skill = {
 				return !event.numFixed;
 			},
 			async content(event, trigger, player) {
-				trigger.num += Math.floor(game.round, 5);
+				trigger.num += Math.floor(game.roundNumber, 5);
 			},
 			ai: {
 				threaten: 1.8
+			}
+		},
+		"re_boss_luanxin": {
+			forced: true,
+			init: function (player) {
+				player.storage.re_boss_luanxin_discard = 0;
+				player.storage.re_boss_luanxin_getcard = 0;
+			},
+			mark: true,
+			intro: {
+				content: function (storage, player) {
+					return '<div class="text center"><span>手牌上限+' + player.storage.re_boss_luanxin_discard + '</span> <br/>　<span>下个摸牌阶段摸牌数+' + player.storage.re_boss_luanxin_getcard + '</span></div>'
+				},
+			},
+			mod: {
+				maxHandcard: function (player, num) {
+					return num + player.storage.re_boss_luanxin_discard;
+				},
+			},
+			group: ["re_boss_luanxin_discard", "re_boss_luanxin_getcard", "re_boss_luanxin_draw", "re_boss_luanxin_damaged", "re_boss_luanxin_damage"],
+			subSkill: {
+				"discard": {
+					trigger: {
+						global: ['loseAfter', 'loseAsyncAfter'],
+					},
+					forced: true,
+					filter: function (event, player) {
+						if (event.type != 'discard' || event.getlx === false || event.player != player || event.discarder == player) return false;
+						var evt = event.getl(player);
+						return evt && evt.hs && evt.hs.length > 0;
+					},
+					content: () => {
+						player.storage.re_boss_luanxin_discard++;
+					},
+				},
+				"getcard": {
+					trigger: {
+						player: 'gainAfter',
+						global: 'loseAsyncAfter',
+					},
+					forced: true,
+					filter: function (event, player) {
+						if (event.type == "gain" || event.name == "gain") {
+							if (event.getg(player).length > 0) {
+								const cards = event.getg(player);
+								return game.hasPlayer(function (current) {
+									if (current == event.player) return false;
+									const hs = event.getl(current).hs;
+									for (const card of hs) {
+										if (cards.includes(card)) return true;
+									}
+									return false;
+								});
+							}
+						}
+						return false;
+					},
+					content: () => {
+						player.storage.re_boss_luanxin_getcard++;
+					}
+				},
+				"draw": {
+					forced: true,
+					trigger: { player: 'phaseDrawBegin2' },
+					frequent: true,
+					filter(event, player) {
+						return !event.numFixed;
+					},
+					async content(event, trigger, player) {
+						trigger.num += player.storage.re_boss_luanxin_getcard;
+						player.storage.re_boss_luanxin_getcard = 0;
+					},
+					ai: {
+						threaten: 1.8
+					}
+				},
+				"damaged": {
+					trigger: { player: 'damageEnd' },
+					forced: true,
+					filter: (event, player) => {
+						return event.source && event.source.isIn();
+					},
+					content: () => {
+						player.gainMaxHp();
+					}
+				},
+				"damage": {
+					trigger: { source: "damage" },
+					forced: true,
+					content: () => {
+						player.recover();
+					}
+				}
 			}
 		},
 
@@ -8127,6 +8220,8 @@ export const skill = {
 		"re_boss_cuanchao_info": "转换技，阳：当你成为基本牌的目标时，你可令其无效；阴：当你成为锦囊牌的目标时，你可令其无效。",
 		"re_boss_youji": "酉鸡",
 		"re_boss_youji_info": "锁定技，摸牌阶段，你多摸X张牌（X为游戏轮数且最多为5）。",
+		"re_boss_luanxin": "乱心",
+		"re_boss_luanxin_info": "锁定技，你被弃置手牌后，你的手牌上限+1；你受到伤害后，你的体力上限+1；你造成伤害后，回复1点体力；你获得其他角色手牌后，下个摸牌阶段摸牌数+1。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
