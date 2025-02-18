@@ -8021,6 +8021,26 @@ export const skill = {
 			}
 		},
 
+		// shanhetu_boss_chijianwuzhe
+		"re_boss_shihun": {
+			shaRelated: true,
+			trigger: { source: 'damageSource' },
+			filter: function (event, player) {
+				if (event._notrigger.includes(event.player)) return false;
+				return (event.card && event.card.name == 'sha' && event.getParent().name == 'sha' &&
+					event.player.isIn());
+			},
+			check: function (event, player) {
+				return get.attitude(player, event.player) < 0;
+			},
+			content: function () {
+				const skillList = event.player.getSkills(null, false, false).filter(skill => (game.utils.checkUnforcedSkill(skill)));
+				const skill = skillList.randomGet();
+				event.player.removeSkills(skill);
+				player.addSkill(skill);
+			}
+		},
+
 		// guozhan
 		gzcongjian: {
 			trigger: {
@@ -8647,6 +8667,10 @@ export const skill = {
 		// shanhetu_boss_kuileiguowang
 		"re_boss_reborn_cuanchaoyaoseng": "重生",
 		"re_boss_reborn_cuanchaoyaoseng_info": "锁定技，当你死亡时，你将此武将牌替换为篡朝妖僧。",
+
+		// shanhetu_boss_chijianwuzhe
+		"re_boss_shihun": "噬魂",
+		"re_boss_shihun_info": "当你使用【杀】造成伤害后，你随机获得目标一个非锁定技能。",
 
 		// unused
 		"geju": "割据",
