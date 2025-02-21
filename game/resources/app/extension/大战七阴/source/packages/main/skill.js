@@ -1048,7 +1048,6 @@ export const skill = {
 		"re_boss_baoli": {
 			trigger: { source: 'damageBegin1' },
 			forced: true,
-			charlotte: true,
 			content: function () {
 				trigger.num++;
 			},
@@ -8040,6 +8039,39 @@ export const skill = {
 				player.addSkill(skill);
 			}
 		},
+		"re_boss_tonghua": {
+			forced: true,
+			group: ["re_boss_tonghua_damage", "re_boss_tonghua_damaged"],
+			subSkill: {
+				"damage": {
+					trigger: { source: 'damageBegin1' },
+					forced: true,
+					filter: (event, player) => {
+						return event.player.group == player.group;
+					},
+					content: () => {
+						trigger.num++;
+					},
+				},
+				"damaged": {
+					trigger: { player: 'damageEnd' },
+					forced: true,
+					filter: (event, player) => {
+						return event.source && event.source.isIn();
+					},
+					content: async (event, trigger, player) => {
+						const tg = trigger.source;
+						const { result } = await tg.judge();
+						if (result.suit == "spade") {
+							tg.changeGroup("yao");
+							tg.popup("yao", get.groupnature("yao", 'raw'));
+						}
+					}
+				}
+			}
+
+		},
+
 
 		// guozhan
 		gzcongjian: {
@@ -8671,6 +8703,8 @@ export const skill = {
 		// shanhetu_boss_chijianwuzhe
 		"re_boss_shihun": "噬魂",
 		"re_boss_shihun_info": "当你使用【杀】造成伤害后，你随机获得目标一个非锁定技能。",
+		"re_boss_tonghua": "同化",
+		"re_boss_tonghua_info": "锁定技，你对妖势力角色造成伤害+1；敌方对你造成伤害后， 其需判定，若为黑桃则其势力变更为妖。",
 
 		// unused
 		"geju": "割据",
