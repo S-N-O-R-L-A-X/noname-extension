@@ -8032,11 +8032,13 @@ export const skill = {
 			check: function (event, player) {
 				return get.attitude(player, event.player) < 0;
 			},
-			content: function () {
-				const skillList = event.player.getSkills(null, false, false).filter(skill => (game.utils.checkUnforcedSkill(skill)));
+			content: () => {
+				const tg = trigger.player;
+				const skillList = tg.getSkills(null, false, false).filter(skill => (game.utils.checkUnforcedSkill(skill)));
 				const skill = skillList.randomGet();
-				event.player.removeSkills(skill);
+				tg.removeSkills(skill);
 				player.addSkill(skill);
+				game.log(player + "获得" + skill);
 			}
 		},
 		"re_boss_tonghua": {
