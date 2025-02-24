@@ -924,7 +924,19 @@ export const skill = {
 				player.equip(game.createCard2('qimenbagua', 'spade', 2));
 			}
 		},
-		
+		"re_boss_sanlve": {
+			forced: true,
+			filter: function (event, player) {
+				return (event.name != 'phase' || game.phaseNumber == 0);
+			},
+			trigger: {
+				global: 'phaseBefore',
+				player: 'enterGame',
+			},
+			content: function () {
+				player.equip(game.createCard2('sanlve', 'spade', 5));
+			}
+		},
 
 		"re_boss_reborn_machao": {
 			trigger: {
