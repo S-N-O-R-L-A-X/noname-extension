@@ -2874,7 +2874,7 @@
     "EnglishName": "shanhetu_boss_yingzhao",
     "ChineseName": "山河图英招",
     "gender": "male",
-    "nationality": "shen",
+    "nationality": "yao",
     "hp": "6/6/4",
     "skills": [
       "re_boss_lianyu",
@@ -2932,7 +2932,7 @@
     "EnglishName": "shanhetu_boss_qiongqi",
     "ChineseName": "山河图穷奇",
     "gender": "male",
-    "nationality": "shen",
+    "nationality": "yao",
     "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
@@ -2961,7 +2961,7 @@
     "EnglishName": "shanhetu_boss_shuishengonggong",
     "ChineseName": "山河图水神共工",
     "gender": "male",
-    "nationality": "shen",
+    "nationality": "yao",
     "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
@@ -2992,7 +2992,7 @@
     "EnglishName": "shanhetu_boss_hundun",
     "ChineseName": "山河图混沌",
     "gender": "male",
-    "nationality": "shen",
+    "nationality": "yao",
     "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
@@ -3025,7 +3025,7 @@
     "EnglishName": "shanhetu_boss_taowu",
     "ChineseName": "山河图梼杌",
     "gender": "male",
-    "nationality": "shen",
+    "nationality": "yao",
     "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
@@ -3056,7 +3056,7 @@
     "EnglishName": "shanhetu_boss_taotie",
     "ChineseName": "山河图饕餮",
     "gender": "male",
-    "nationality": "shen",
+    "nationality": "yao",
     "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
@@ -3151,7 +3151,7 @@
     "EnglishName": "shanhetu_boss_haiheshang1",
     "ChineseName": "海和尚一号",
     "gender": "male",
-    "nationality": "qun",
+    "nationality": "yao",
     "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
@@ -3188,7 +3188,7 @@
     "EnglishName": "shanhetu_boss_haiheshang2",
     "ChineseName": "海和尚二号",
     "gender": "male",
-    "nationality": "qun",
+    "nationality": "yao",
     "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
@@ -3223,7 +3223,7 @@
     "EnglishName": "shanhetu_boss_haiheshang3",
     "ChineseName": "海和尚三号",
     "gender": "male",
-    "nationality": "qun",
+    "nationality": "yao",
     "hp": "20/20/4",
     "skills": [
       "re_boss_lianyu",
@@ -3258,7 +3258,7 @@
     "EnglishName": "shanhetu_boss_haiheshang4",
     "ChineseName": "海和尚四号",
     "gender": "male",
-    "nationality": "qun",
+    "nationality": "yao",
     "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
@@ -3293,7 +3293,7 @@
     "EnglishName": "shanhetu_boss_sanshiyou",
     "ChineseName": "三逝友",
     "gender": "male",
-    "nationality": "qun",
+    "nationality": "yao",
     "hp": "7/7/4",
     "skills": [
       "re_boss_lianyu",
@@ -3326,7 +3326,7 @@
     "EnglishName": "shanhetu_boss_yuanniu",
     "ChineseName": "怨牛",
     "gender": "male",
-    "nationality": "qun",
+    "nationality": "yao",
     "hp": "8/8/4",
     "skills": [
       "re_boss_lianyu",
@@ -3361,7 +3361,7 @@
     "EnglishName": "shanhetu_boss_xiangliujushe",
     "ChineseName": "相柳巨蛇",
     "gender": "male",
-    "nationality": "qun",
+    "nationality": "yao",
     "hp": "9/9/4",
     "skills": [
       "re_boss_lianyu",
@@ -3398,7 +3398,7 @@
     "EnglishName": "shanhetu_boss_baihu",
     "ChineseName": "白虎",
     "gender": "male",
-    "nationality": "qun",
+    "nationality": "yao",
     "hp": "8/8/4",
     "skills": [
       "re_boss_lianyu",
@@ -3426,5 +3426,157 @@
     "details": "来源于山河图妖篇第二章关内白虎，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_kuileiguowang",
+    "ChineseName": "傀儡国王",
+    "gender": "male",
+    "nationality": "yao",
+    "hp": "9/9/4",
+    "skills": [
+      "re_boss_lianyu",
+      "drlt_qianjie",
+      "hezhong",
+      "qice",
+      "boss_tunshi",
+      "jianying",
+      "lianying",
+      "re_boss_zhene",
+      "re_boss_zhufang",
+      "re_boss_duanhun",
+      "re_boss_reborn_cuanchaoyaoseng",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "镇恶",
+      "驻防",
+      "断魂",
+      "重生",
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第二章boss傀儡国王，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_yaosengzhenjia",
+    "ChineseName": "妖僧真迦",
+    "gender": "male",
+    "nationality": "yao",
+    "hp": "9/9/4",
+    "skills": [
+      "re_boss_lianyu",
+      "drlt_qianjie",
+      "reguhuo",
+      "clansankuang",
+      "re_boss_cuanchao",
+      "re_boss_dongdang",
+      "re_boss_youji",
+      "re_boss_luanxin",
+      "shanduan",
+      "yilie",
+      "dangxian",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "篡朝",
+      "动荡",
+      "酉鸡",
+      "乱心",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第二章boss妖僧真迦，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_feiduan",
+    "ChineseName": "飞断",
+    "gender": "male",
+    "nationality": "yao",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "qiangxi",
+      "yangkuang",
+      "re_boss_busi",
+      "re_boss_juexing",
+      "xinkuanggu",
+      "re_boss_xietu",
+      "reqiaomeng",
+      "rejianxiong",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "不死",
+      "觉醒",
+      null,
+      "邪徒",
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第二章boss飞断，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_chijianwuzhe",
+    "ChineseName": "痴剑武者",
+    "gender": "male",
+    "nationality": "yao",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_qimenbagua",
+      "re_boss_sanlve",
+      "choutao",
+      "xinkuanggu",
+      "re_boss_shihun",
+      "zhengding",
+      "yilie",
+      "olzhuiji",
+      "re_boss_tonghua",
+      "ollongdan",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "噬魂",
+      null,
+      null,
+      null,
+      "同化",
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第三章关内痴剑武者，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合，偷技能"
   }
 ]

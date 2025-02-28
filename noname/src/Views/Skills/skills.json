@@ -753,5 +753,50 @@
     "EnglishName": "re_boss_wuying",
     "ChineseName": "无影",
     "info": "锁定技，你的敌方若手牌数大于10，于其回合内获得手牌后（按次数），其受到你造成的1点伤害"
+  },
+  "re_boss_duanhun": {
+    "EnglishName": "re_boss_duanhun",
+    "ChineseName": "断魂",
+    "info": "锁定技，当你死亡时，杀死你的角色失去所有战法。"
+  },
+  "re_boss_reborn_cuanchaoyaoseng": {
+    "EnglishName": "re_boss_reborn_cuanchaoyaoseng",
+    "ChineseName": "重生",
+    "info": "锁定技，当你死亡时，你将此武将牌替换为篡朝妖僧。"
+  },
+  "re_boss_cuanchao": {
+    "EnglishName": "re_boss_cuanchao",
+    "ChineseName": "篡朝",
+    "info": "转换技，阳：当你成为基本牌的目标时，你可令其无效；阴：当你成为锦囊牌的目标时，你可令其无效。"
+  },
+  "re_boss_youji": {
+    "EnglishName": "re_boss_youji",
+    "ChineseName": "酉鸡",
+    "info": "锁定技，摸牌阶段，你多摸X张牌（X为游戏轮数且最多为5）。"
+  },
+  "re_boss_luanxin": {
+    "EnglishName": "re_boss_luanxin",
+    "ChineseName": "乱心",
+    "info": "锁定技，你被弃置手牌后，你的手牌上限+1；你受到伤害后，你的体力上限+1；你造成伤害后，回复1点体力；你获得其他角色手牌后，下个摸牌阶段摸牌数+1。"
+  },
+  "re_boss_busi": {
+    "EnglishName": "re_boss_busi",
+    "ChineseName": "不死",
+    "info": "锁定技，你无法使用【桃】，进入濒死时你回复体力至体力上限，然后叠加2枚[碎]，（碎：每轮开始时，若[碎]大于当前体力，你死亡）"
+  },
+  "re_boss_xietu": {
+    "EnglishName": "re_boss_xietu",
+    "ChineseName": "邪徒",
+    "info": "当你受到伤害后，你可以弃置1张牌，然后对伤害来源造成同等伤害。"
+  },
+  "re_boss_shihun": {
+    "EnglishName": "re_boss_shihun",
+    "ChineseName": "噬魂",
+    "info": "当你使用【杀】造成伤害后，你随机获得目标一个非锁定技能。"
+  },
+  "re_boss_tonghua": {
+    "EnglishName": "re_boss_tonghua",
+    "ChineseName": "同化",
+    "info": "锁定技，你对妖势力角色造成伤害+1；敌方对你造成伤害后， 其需判定，若为黑桃则其势力变更为妖。"
   }
 }
