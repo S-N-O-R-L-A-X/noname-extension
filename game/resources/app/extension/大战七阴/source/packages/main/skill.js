@@ -1229,6 +1229,32 @@ export const skill = {
 			}
 		},
 
+		"re_boss_jinghua": {
+			trigger: {
+				target: 'useCardToTargeted',
+			},
+			filter: function (event, player) {
+				return event.player != player && player.countCards('he') >= 2;
+			},
+			content: async () => {
+				const { result: { bool } } = await player.chooseToDiscard('弃置两张牌，令此牌对你无效', 'he', 2).set('ai', function (card) {
+					return (_status.event.goon / 1.4) - get.value(card);
+				}).set('goon', function () {
+					if (!trigger.targets.length) return -get.attitude(player, trigger.player);
+					var num = 0;
+					for (var i of trigger.targets) {
+						num -= get.effect(i, trigger.card, trigger.player, player)
+					}
+					return num;
+				}());
+
+				if (bool) {
+					trigger.excluded.add(player);
+				}
+
+			}
+		},
+
 		// sunce
 		repinghe: {
 			audio: "pinghe",
@@ -8319,6 +8345,8 @@ export const skill = {
 		"re_boss_youji_info": "锁定技，摸牌阶段，你多摸X张牌（X为游戏轮数且最多为5）。",
 		"re_boss_luanxin": "乱心",
 		"re_boss_luanxin_info": "锁定技，你被弃置手牌后，你的手牌上限+1；你受到伤害后，你的体力上限+1；你造成伤害后，回复1点体力；你获得其他角色手牌后，下个摸牌阶段摸牌数+1。",
+		"re_boss_jinghua": "镜花",
+		"re_boss_jinghua_info": "当你成为其他角色使用牌的目标时，你可以弃置两张手牌令此牌对你无效。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
