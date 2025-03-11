@@ -1254,6 +1254,129 @@ export const skill = {
 
 			}
 		},
+		"re_boss_huanyue": {
+			filter: function (event, player) {
+				if (event.type == 'wuxie' || player.countCards('h') < 2) return false;
+				for (let name of lib.inpile) {
+					if (get.type(name) != 'basic') continue;
+					let card = { name: name, isCard: true };
+					if (event.filterCard(card, player, event)) return true;
+					if (name == 'sha') {
+						for (let nature of lib.inpile_nature) {
+							card.nature = nature;
+							if (event.filterCard(card, player, event)) return true;
+						}
+					}
+				}
+				return false;
+			},
+			enable: 'chooseToUse',
+			hiddenCard: function (player, name) {
+				if (get.type(name) != 'basic') return false;
+				return player.countCards('h') >= 2;
+			},
+			chooseButton: {
+				dialog: function (event, player) {
+					const vcards = [];
+					for (let name of lib.inpile) {
+						if (get.type(name) != 'basic') continue;
+						let card = { name: name, isCard: true };
+						if (event.filterCard(card, player, event)) vcards.push(['基本', '', name]);
+						if (name == 'sha') {
+							for (let nature of lib.inpile_nature) {
+								card.nature = nature;
+								if (event.filterCard(card, player, event)) vcards.push(['基本', '', name, nature]);
+							}
+						}
+					}
+					return ui.create.dialog('幻月', [vcards, 'vcard'], 'hidden');
+				},
+				check: function (button) {
+					const player = _status.event.player;
+					const card = { name: button.link[2], nature: button.link[3] };
+					if (game.hasPlayer(function (current) {
+						return player.canUse(card, current) && get.effect(current, card, player, player) > 0;
+					})) {
+						switch (button.link[2]) {
+							case 'tao': return 5;
+							case 'jiu': return 3.01;
+							case 'sha':
+								if (button.link[3] == 'fire') return 2.95;
+								else if (button.link[3] == 'thunder') return 2.92;
+								else return 2.9;
+							case 'shan': return 1;
+						}
+					}
+					return 0;
+				},
+				backup: function (links, player) {
+					return {
+						check: function (card) {
+							return 6 - get.value(card);
+						},
+						selectCard: 2,
+						filterCard: (card) => {
+							return lib.filter.cardRecastable.apply(this, arguments);
+						},
+						viewAs: {
+							name: links[0][2],
+							nature: links[0][3],
+							suit: 'none',
+							number: null,
+							isCard: true,
+						},
+						position: 'h',
+						ignoreMod: true,
+						precontent: async function (event) {
+							player.logSkill('re_boss_huanyue');
+							const resFromRecast = await player.recast(event.result.cards);
+							const resFromDiscard = await player.chooseToDiscard('he', 1, function (card) {
+								return resFromRecast._result.includes(card);
+							});
+							const viewAs = { name: event.result.card.name, nature: event.result.card.nature };
+							result.card = viewAs;
+							result.cards = [];
+
+							player.markAuto('re_boss_huanyue', viewAs.name)
+						},
+					}
+				},
+				prompt: function (links, player) {
+					return '重铸任意两张手牌并弃置其中一张，视为使用' + get.translation(links[0][2]);
+				}
+			},
+			ai: {
+				order: function () {
+					var player = _status.event.player;
+					var event = _status.event;
+					return 3.1;
+				},
+				respondSha: true,
+				fireAttack: true,
+				respondShan: true,
+				skillTagFilter: function (player, tag, arg) {
+					if (tag == 'fireAttack') return true;
+					if (player.hasCard(function (card) {
+						return get.color(card) == 'black' && get.type(card) != 'basic';
+					}, 'he')) {
+						if (tag == 'respondSha') {
+							if (arg != 'use') return false;
+							if (list.includes('sha')) return false;
+						}
+						else if (tag == 'respondShan') {
+							if (list.includes('shan')) return false;
+						}
+					}
+					else {
+						return false;
+					}
+				},
+				result: {
+					player: 1
+				}
+			}
+
+		},
 
 		// sunce
 		repinghe: {
@@ -8347,6 +8470,8 @@ export const skill = {
 		"re_boss_luanxin_info": "锁定技，你被弃置手牌后，你的手牌上限+1；你受到伤害后，你的体力上限+1；你造成伤害后，回复1点体力；你获得其他角色手牌后，下个摸牌阶段摸牌数+1。",
 		"re_boss_jinghua": "镜花",
 		"re_boss_jinghua_info": "当你成为其他角色使用牌的目标时，你可以弃置两张手牌令此牌对你无效。",
+		"re_boss_huanyue": "幻月",
+		"re_boss_huanyue_info": "当你需要使用一张基本牌时，你重铸任意两张手牌并弃置其中一张，视为使用。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
