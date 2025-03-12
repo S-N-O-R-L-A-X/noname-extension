@@ -1407,6 +1407,31 @@ export const skill = {
 				},
 			}
 		},
+		"re_boss_juepan": {
+			enable: 'phaseUse',
+			usable: 1,
+			filter: function (event, player) {
+				return player.countCards("h", lib.filter.cardRecastable) > 0;
+			},
+			content: async () => {
+				const sha1 = player.countCards('h', { name: 'sha' });
+				const { result: chosenCardsResult } = await player.chooseCard("h", "请选择不超过3张手牌", [1, 3], function (card) {
+					return lib.filter.cardRecastable.apply(this, arguments);
+				})
+				if (chosenCardsResult.bool) {
+					await player.recast(chosenCardsResult.cards);
+					const sha2 = player.countCards('h', { name: 'sha' });
+					if (sha2 > sha1) {
+						const {result:chosenTargetResult} = await player.chooseTarget(1, "选取一名角色，对其造成" + (sha2 - sha1) + "点伤害");
+						if(chosenTargetResult.bool) {
+							const tg=chosenTargetResult.targets[0];
+							player.line(tg, 'red');
+							tg.damage(sha2 - sha1);
+						}
+					}
+				}
+			}
+		},
 
 		// sunce
 		repinghe: {
@@ -8504,6 +8529,8 @@ export const skill = {
 		"re_boss_huanyue_info": "当你需要使用一张基本牌时，你重铸任意两张手牌并弃置其中一张，视为使用。",
 		"re_boss_zhouxue": "咒雪",
 		"re_boss_zhouxue_info": "锁定技，受到你伤害的其他角色直到你的下一回合开始时，手牌上限为0且无法获得护甲。",
+		"re_boss_juepan": "绝叛",
+		"re_boss_juepan_info": "出牌阶段限一次，你可以重铸最多3张手牌，然后对一名角色造成X点伤害（X为本次重铸后你手牌中增加的【杀】数量）。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
