@@ -1378,6 +1378,36 @@ export const skill = {
 
 		},
 
+		"re_boss_zhouxue": {
+			trigger: { source: 'damageSource' },
+			forced: true,
+			content: () => {
+				trigger.player.addTempSkill("re_boss_zhouxue_effect", { player: 'roundStart' })
+			}
+		},
+		"re_boss_zhouxue_effect": {
+			trigger: { player: "changeHujiaBefore" },
+			forced: true,
+			mark: true,
+			markText: "咒",
+			intro: {
+				content: function (storage, player) {
+					return '手牌上限为0且无法获得护甲。'
+				},
+			},
+			filter: function (event, player) {
+				return event.num > 0;
+			},
+			content: function () {
+				trigger.cancel();
+			},
+			mod: {
+				maxHandcard: function (player, num) {
+					return 0;
+				},
+			}
+		},
+
 		// sunce
 		repinghe: {
 			audio: "pinghe",
@@ -8472,6 +8502,8 @@ export const skill = {
 		"re_boss_jinghua_info": "当你成为其他角色使用牌的目标时，你可以弃置两张手牌令此牌对你无效。",
 		"re_boss_huanyue": "幻月",
 		"re_boss_huanyue_info": "当你需要使用一张基本牌时，你重铸任意两张手牌并弃置其中一张，视为使用。",
+		"re_boss_zhouxue": "咒雪",
+		"re_boss_zhouxue_info": "锁定技，受到你伤害的其他角色直到你的下一回合开始时，手牌上限为0且无法获得护甲。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
