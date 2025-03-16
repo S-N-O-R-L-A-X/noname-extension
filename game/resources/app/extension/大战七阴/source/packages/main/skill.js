@@ -1422,15 +1422,85 @@ export const skill = {
 					await player.recast(chosenCardsResult.cards);
 					const sha2 = player.countCards('h', { name: 'sha' });
 					if (sha2 > sha1) {
-						const {result:chosenTargetResult} = await player.chooseTarget(1, "选取一名角色，对其造成" + (sha2 - sha1) + "点伤害");
-						if(chosenTargetResult.bool) {
-							const tg=chosenTargetResult.targets[0];
+						const { result: chosenTargetResult } = await player.chooseTarget(1, "选取一名角色，对其造成" + (sha2 - sha1) + "点伤害");
+						if (chosenTargetResult.bool) {
+							const tg = chosenTargetResult.targets[0];
 							player.line(tg, 'red');
 							tg.damage(sha2 - sha1);
 						}
 					}
 				}
 			}
+		},
+
+		"re_boss_tiepao": {
+			trigger: { player: 'damageEnd' },
+			filter: (event, player) => {
+				return event.source && event.source.isIn() && event.player != player;
+			},
+			viewAsFilter: function (player) {
+				return player.countCards("he");
+			},
+			viewAs: {
+				name: "sha",
+				suit: "none",
+				number: null,
+				isCard: true,
+			},
+			filterCard: true,
+			selectCard: [1, Infinity],
+			position: "he",
+			check: function (card) {
+				const player = get.player();
+				return 4.5 + (player.hasSkill("olchuming") ? 1 : 0) - 1.5 * ui.selected.cards.length - get.value(card);
+			},
+			popname: true,
+			ignoreMod: true,
+			precontent: function* (event, map) {
+				var player = map.player;
+				var evt = event.getParent();
+				if (evt.dialog && typeof evt.dialog == "object") evt.dialog.close();
+				player.logSkill("oltousui");
+				delete event.result.skill;
+				var cards = event.result.cards;
+				player.loseToDiscardpile(cards, ui.cardPile, false, "blank").log = false;
+				var shownCards = cards.filter(i => get.position(i) == "e"),
+					handcardsLength = cards.length - shownCards.length;
+				if (shownCards.length) {
+					player.$throw(shownCards, null);
+					game.log(player, "将", shownCards, "置于了牌堆底");
+				}
+
+				game.delayex();
+				var viewAs = new lib.element.VCard({ name: event.result.card.name, isCard: true });
+				event.result.card = viewAs;
+				event.result.cards = [];
+				event.result._apply_args = {
+					shanReq: cards.length,
+					oncard: () => {
+						var evt = get.event();
+						for (var target of game.filterPlayer(null, null, true)) {
+							var id = target.playerid;
+							var map = evt.customArgs;
+							if (!map[id]) map[id] = {};
+							map[id].shanRequired = evt.shanReq;
+						}
+					},
+				};
+			},
+			ai: {
+				order: function (item, player) {
+					return get.order({ name: "sha" }) + 0.1;
+				},
+				result: { player: 1 },
+				keepdu: true,
+				respondSha: true,
+				skillTagFilter: (player, tag, arg) => {
+					if (tag == "respondSha" && arg != "use") return false;
+				},
+			},
+
+
 		},
 
 		// sunce
@@ -8531,6 +8601,8 @@ export const skill = {
 		"re_boss_zhouxue_info": "锁定技，受到你伤害的其他角色直到你的下一回合开始时，手牌上限为0且无法获得护甲。",
 		"re_boss_juepan": "绝叛",
 		"re_boss_juepan_info": "出牌阶段限一次，你可以重铸最多3张手牌，然后对一名角色造成X点伤害（X为本次重铸后你手牌中增加的【杀】数量）。",
+		"re_boss_tiepao": "铁炮",
+		"re_boss_tiepao_info": "当你受到其他角色的伤害后，你可以将任意牌视为【杀】对伤害来源使用，若此【杀】造成伤害，其与你的距离+1直到你的回合开始。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
