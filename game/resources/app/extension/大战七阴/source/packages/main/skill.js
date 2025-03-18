@@ -8434,7 +8434,26 @@ export const skill = {
 				}
 			}
 		},
-
+		"re_boss_shenshi": {
+			group: ["re_boss_shenshi_damage", "re_boss_shenshi_damaged"],
+			subSkill: {
+				damage: {
+					trigger: { source: 'damageBegin1' },
+					filter: (event) => !event.numFixed,
+					content: () => {
+						event.numFixed = true;
+						trigger.num = player.countMark('re_boss_jimu') % 10;
+					}
+				},
+				damaged: {
+					forced: true,
+					trigger: { player: 'damageEnd' },
+					content: () => {
+						player.removeMark("re_boss_jimu", 1);
+					}
+				}
+			}
+		},
 
 		// guozhan
 		gzcongjian: {
@@ -9079,8 +9098,11 @@ export const skill = {
 		"re_boss_tonghua": "同化",
 		"re_boss_tonghua_info": "锁定技，你对妖势力角色造成伤害+1；敌方对你造成伤害后， 其需判定，若为黑桃则其势力变更为妖。",
 
+		// shanhetu_boss_baiyannv
 		"re_boss_jimu": "集目",
 		"re_boss_jimu_info": "锁定技，当你使用或打出牌后，你获得2枚[目]标记，若[目]的十位数值变大，则本局战斗中你的摸牌阶段摸牌数、出【杀】次数、体力上限均+1，若[目]的百位数值变化，则消灭所有敌方角色。",
+		"re_boss_shenshi": "神视",
+		"re_boss_shenshi_info": "你受到伤害后，移除1枚[目]标记；你造成伤害时，你可将伤害修改为[目]的个位数数值",
 
 		// unused
 		"geju": "割据",
