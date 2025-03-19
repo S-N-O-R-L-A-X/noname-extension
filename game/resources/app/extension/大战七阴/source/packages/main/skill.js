@@ -8679,6 +8679,7 @@ export const skill = {
 		"re_boss_huanyue_info": "当你需要使用一张基本牌时，你重铸任意两张手牌并弃置其中一张，视为使用。",
 		"re_boss_zhouxue": "咒雪",
 		"re_boss_zhouxue_info": "锁定技，受到你伤害的其他角色直到你的下一回合开始时，手牌上限为0且无法获得护甲。",
+		"re_boss_zhouxue_effect": "咒雪",
 		"re_boss_juepan": "绝叛",
 		"re_boss_juepan_info": "出牌阶段限一次，你可以重铸最多3张手牌，然后对一名角色造成X点伤害（X为本次重铸后你手牌中增加的【杀】数量）。",
 		"re_boss_tiepao": "铁炮",
