@@ -34,7 +34,7 @@ export async function precontent(config, pack) {
 
 	game.utils.checkUnforcedSkill = (skill) => {
 		const info = get.info(skill);
-		if (!info || info.charlotte || info.persevereSkill || info.hiddenSkill || info.juexingji || info.limited || (info.unique && !info.gainable)) return false;
+		if (!info || !get.is.locked(skill) || info.charlotte || info.persevereSkill || info.hiddenSkill || info.juexingji || info.limited || (info.unique && !info.gainable)) return false;
 		return true;
 	}
 }
