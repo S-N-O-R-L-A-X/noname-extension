@@ -246,7 +246,11 @@ export const character = {
 		"shanhetu_boss_kuileiguowang": "来源于山河图妖篇第二章boss傀儡国王，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_yaosengzhenjia": "来源于山河图妖篇第二章boss妖僧真迦，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_feiduan": "来源于山河图妖篇第二章boss飞断，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
-		"shanhetu_boss_chijianwuzhe": "来源于山河图妖篇第三章关内痴剑武者，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合，偷技能"
+		"shanhetu_boss_chijianwuzhe": "来源于山河图妖篇第三章关内痴剑武者，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合，偷技能",
+		"shanhetu_boss_shenlouyaoshi": "来源于山河图妖篇第三章关内蜃楼妖师，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_lingji": "来源于山河图妖篇第三章关内凌姬，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_gulong": "来源于山河图妖篇第三章关内骨龙，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
+		"shanhetu_boss_baiyannv": "来源于山河图妖篇第三章关内百眼女，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -282,7 +286,8 @@ export const character = {
 				"shanhetu_boss_ganning2", "shanhetu_boss_haiheshang1", "shanhetu_boss_haiheshang2", "shanhetu_boss_haiheshang3",
 				"shanhetu_boss_haiheshang4", "shanhetu_boss_sanshiyou", "shanhetu_boss_yuanniu", "shanhetu_boss_xiangliujushe",
 				"shanhetu_boss_baihu", "shanhetu_boss_kuileiguowang", "shanhetu_boss_yaosengzhenjia", "shanhetu_boss_feiduan",
-				"shanhetu_boss_chijianwuzhe"
+				"shanhetu_boss_chijianwuzhe","shanhetu_boss_shenlouyaoshi", "shanhetu_boss_lingji", "shanhetu_boss_gulong",
+				"shanhetu_boss_baiyannv"
 			]
 		}
 	},
