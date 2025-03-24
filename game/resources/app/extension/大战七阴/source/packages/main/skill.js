@@ -1436,71 +1436,55 @@ export const skill = {
 		"re_boss_tiepao": {
 			trigger: { player: 'damageEnd' },
 			filter: (event, player) => {
-				return event.source && event.source.isIn() && event.player != player;
+				return event.source && event.source.isIn() && event.source != player;
 			},
-			viewAsFilter: function (player) {
-				return player.countCards("he");
+			init: (player) => {
+				player.storage.re_boss_tiepao_distance = new Map();
 			},
-			viewAs: {
-				name: "sha",
-				suit: "none",
-				number: null,
-				isCard: true,
+			mark: true,
+			intro: {
+				content: function (storage, player) {
+					let str = "";
+					player.storage.re_boss_tiepao_distance.forEach((v, k) => {
+						str += '<div class="text center"><span>与' + get.translation(k.name) + '的距离增加' + v + '</span></div>';
+					})
+					return str;
+				}
 			},
-			filterCard: true,
-			selectCard: [1, Infinity],
-			position: "he",
-			check: function (card) {
-				const player = get.player();
-				return 4.5 + (player.hasSkill("olchuming") ? 1 : 0) - 1.5 * ui.selected.cards.length - get.value(card);
-			},
-			popname: true,
-			ignoreMod: true,
-			precontent: function* (event, map) {
-				var player = map.player;
-				var evt = event.getParent();
-				if (evt.dialog && typeof evt.dialog == "object") evt.dialog.close();
-				player.logSkill("oltousui");
-				delete event.result.skill;
-				var cards = event.result.cards;
-				player.loseToDiscardpile(cards, ui.cardPile, false, "blank").log = false;
-				var shownCards = cards.filter(i => get.position(i) == "e"),
-					handcardsLength = cards.length - shownCards.length;
-				if (shownCards.length) {
-					player.$throw(shownCards, null);
-					game.log(player, "将", shownCards, "置于了牌堆底");
+			content: async () => {
+				const tg = trigger.source;
+				const { result: chosenCardsResult } = await player.chooseCard("he", [1, Infinity], "请选择任意张手牌作为杀对" + get.translation(tg.name) + "使用");
+
+				if (chosenCardsResult.bool) {
+					await player.useCard({ name: 'sha' }, chosenCardsResult.cards, tg, false);
 				}
 
-				game.delayex();
-				var viewAs = new lib.element.VCard({ name: event.result.card.name, isCard: true });
-				event.result.card = viewAs;
-				event.result.cards = [];
-				event.result._apply_args = {
-					shanReq: cards.length,
-					oncard: () => {
-						var evt = get.event();
-						for (var target of game.filterPlayer(null, null, true)) {
-							var id = target.playerid;
-							var map = evt.customArgs;
-							if (!map[id]) map[id] = {};
-							map[id].shanRequired = evt.shanReq;
-						}
+				if (player.hasHistory('useCard', evt => {
+					return evt.getParent() == event && player.hasHistory('sourceDamage', (evtx) => {
+						return evt.card == evtx.card
+					});
+				})) {
+					player.storage.re_boss_tiepao_distance.set(tg, (player.storage.re_boss_tiepao_distance.get(player) || 0) + 1);
+				}
+			},
+			group: ["re_boss_tiepao_clear"],
+			subSkill: {
+				"clear": {
+					trigger: { player: 'phaseBeginStart' },
+					forced: true,
+					charlotte: true,
+					mod: {
+						globalTo: function (from, to, distance) {
+							if (from.side != to.side) {
+								return distance + (player.storage.re_boss_tiepao_distance.get(from) || 0);
+							}
+						},
 					},
-				};
-			},
-			ai: {
-				order: function (item, player) {
-					return get.order({ name: "sha" }) + 0.1;
+					content: () => {
+						player.storage.re_boss_tiepao_distance.clear();
+					}
 				},
-				result: { player: 1 },
-				keepdu: true,
-				respondSha: true,
-				skillTagFilter: (player, tag, arg) => {
-					if (tag == "respondSha" && arg != "use") return false;
-				},
-			},
-
-
+			}
 		},
 
 		// sunce
@@ -8684,6 +8668,7 @@ export const skill = {
 		"re_boss_juepan_info": "出牌阶段限一次，你可以重铸最多3张手牌，然后对一名角色造成X点伤害（X为本次重铸后你手牌中增加的【杀】数量）。",
 		"re_boss_tiepao": "铁炮",
 		"re_boss_tiepao_info": "当你受到其他角色的伤害后，你可以将任意牌视为【杀】对伤害来源使用，若此【杀】造成伤害，其与你的距离+1直到你的回合开始。",
+		"re_boss_tiepao_distance": "铁炮",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
