@@ -798,5 +798,40 @@
     "EnglishName": "re_boss_tonghua",
     "ChineseName": "同化",
     "info": "锁定技，你对妖势力角色造成伤害+1；敌方对你造成伤害后， 其需判定，若为黑桃则其势力变更为妖。"
+  },
+  "re_boss_jinghua": {
+    "EnglishName": "re_boss_jinghua",
+    "ChineseName": "镜花",
+    "info": "当你成为其他角色使用牌的目标时，你可以弃置两张手牌令此牌对你无效。"
+  },
+  "re_boss_huanyue": {
+    "EnglishName": "re_boss_huanyue",
+    "ChineseName": "幻月",
+    "info": "当你需要使用一张基本牌时，你重铸任意两张手牌并弃置其中一张，视为使用。"
+  },
+  "re_boss_juepan": {
+    "EnglishName": "re_boss_juepan",
+    "ChineseName": "绝叛",
+    "info": "出牌阶段限一次，你可以重铸最多3张手牌，然后对一名角色造成X点伤害（X为本次重铸后你手牌中增加的【杀】数量）。"
+  },
+  "re_boss_zhouxue": {
+    "EnglishName": "re_boss_zhouxue",
+    "ChineseName": "咒雪",
+    "info": "锁定技，受到你伤害的其他角色直到你的下一回合开始时，手牌上限为0且无法获得护甲。"
+  },
+  "re_boss_tiepao": {
+    "EnglishName": "re_boss_tiepao",
+    "ChineseName": "铁炮",
+    "info": "当你受到其他角色的伤害后，你可以将任意牌视为【杀】对伤害来源使用，若此【杀】造成伤害，其与你的距离+1直到你的回合开始。"
+  },
+  "re_boss_jimu": {
+    "EnglishName": "re_boss_jimu",
+    "ChineseName": "集目",
+    "info": "锁定技，当你使用或打出牌后，你获得2枚[目]标记，若[目]的十位数值变大，则本局战斗中你的摸牌阶段摸牌数、出【杀】次数、体力上限均+1，若[目]的百位数值变化，则消灭所有敌方角色。"
+  },
+  "re_boss_shenshi": {
+    "EnglishName": "re_boss_shenshi",
+    "ChineseName": "神视",
+    "info": "你受到伤害后，移除1枚[目]标记；你造成伤害时，你可将伤害修改为[目]的个位数数值"
   }
 }
