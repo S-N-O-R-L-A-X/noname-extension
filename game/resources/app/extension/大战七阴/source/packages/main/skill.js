@@ -1487,6 +1487,52 @@ export const skill = {
 			}
 		},
 
+		"re_boss_sanyi": {
+			trigger: {
+				source: 'damageSource',
+				player: "phaseZhunbeiBegin",
+			},
+			forced: true,
+			filter(event) {
+				return (event.name != 'damage') || event.num > 0;
+			},
+			content() {
+				if (trigger.name == "damage") {
+					trigger.player.addSkill('re_boss_sanyi_effect');
+					trigger.player.addMark("re_boss_sanyi_effect");
+				}
+				else {
+					const players = game.players.slice(0).sortBySeat();
+					player.line(players);
+					players.forEach((ch) => {
+						if (ch != player) {
+							ch.addSkill('re_boss_sanyi_effect');
+							ch.addMark("re_boss_sanyi_effect");
+						}
+					})
+				}
+			},
+		},
+		"re_boss_sanyi_effect": {
+			trigger: {
+				player: "phaseZhunbeiBegin",
+			},
+			mark: true,
+			markText: "疫",
+			intro: {
+				name: '疫',
+				content: 'mark'
+			},
+			forced: true,
+			filter: (event, player) => {
+				return player.countMark("re_boss_sanyi_effect") >= 6;
+			},
+			content: function () {
+				player.removeMark("re_boss_sanyi_effect", 6);
+				player.loseMaxHp();
+			}
+		},
+
 		// sunce
 		repinghe: {
 			audio: "pinghe",
@@ -8669,6 +8715,9 @@ export const skill = {
 		"re_boss_tiepao": "铁炮",
 		"re_boss_tiepao_info": "当你受到其他角色的伤害后，你可以将任意牌视为【杀】对伤害来源使用，若此【杀】造成伤害，其与你的距离+1直到你的回合开始。",
 		"re_boss_tiepao_distance": "铁炮",
+		"re_boss_sanyi": "散疫",
+		"re_boss_sanyi_info": "你的回合开始时，所有其他角色增加一枚【疫】标记；你对目标造成伤害后将会使其【疫】数量+1（准备阶段，若【疫】标记达到6，则扣除1点体力上限，并移除6枚【疫】标记）",
+		"re_boss_sanyi_effect": "散疫",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
