@@ -1533,6 +1533,26 @@ export const skill = {
 			}
 		},
 
+		"re_boss_yuren": {
+			trigger: {
+				source: 'damageSource',
+				player: "phaseZhunbeiBegin",
+			},
+			filter: (event, player) => {
+				return event.num > 0;
+			},
+			content: async (event, trigger, player) => {
+				const { result } = await player.judge();
+				if (result.color == "red") {
+					const list = game.players.slice(0);
+					list.remove(player);
+					const target = list.randomGet();
+					player.line(target, "thunder");
+					target.damage("thunder");
+				}
+			}
+		},
+
 		// sunce
 		repinghe: {
 			audio: "pinghe",
@@ -8718,6 +8738,8 @@ export const skill = {
 		"re_boss_sanyi": "散疫",
 		"re_boss_sanyi_info": "你的回合开始时，所有其他角色增加一枚【疫】标记；你对目标造成伤害后将会使其【疫】数量+1（准备阶段，若【疫】标记达到6，则扣除1点体力上限，并移除6枚【疫】标记）",
 		"re_boss_sanyi_effect": "散疫",
+		"re_boss_yuren": "羽刃",
+		"re_boss_yuren_info": "当你造成伤害后可判定，若为红色，则对不为你的一名角色再造成1点雷属性伤害。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
