@@ -8679,6 +8679,8 @@ export const skill = {
 		"re_boss_zhufang_info": "锁定技，当你受到伤害后，若你体力值小于5，你回复一点体力。",
 		"re_boss_dongdang": "动荡",
 		"re_boss_dongdang_info": "锁定技，当你进入游戏时，立即结束当前结算并开始你的回合。",
+		"re_boss_juejue": "绝决",
+		"re_boss_juejue_info": "锁定技，当受到伤害后，若你体力低于5，你令伤害来源其本回合非锁定技失效。",
 		"re_boss_jueji": "绝汲",
 		"re_boss_jueji_info": "敌方角色摸牌阶段，若其已受伤，你可以获得其一张牌。",
 		"re_boss_fanzhen": "反震",
