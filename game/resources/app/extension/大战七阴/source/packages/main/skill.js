@@ -8505,6 +8505,67 @@ export const skill = {
 			}
 		},
 
+		// shanhetu_boss_yixin
+		"re_boss_taidao": {
+			mark: true,
+			markText: "刀",
+			intro: {
+				content: (storage, player) => {
+					const cnt = player.getHistory("useCard", (evt) => {
+						return evt.card.name == "sha";
+					}).length;
+					return `<div>已使用${cnt}张杀</div><div>下个摸牌阶段多摸${player.storage.re_boss_taidao}张牌</div>`;
+				},
+			},
+
+			forced: true,
+			group: ["re_boss_taidao_in", "re_boss_taidao_out", "re_boss_taidao_draw"],
+			subSkill: {
+				"in": {
+					mark: true,
+					trigger: { source: "damageBegin1" },
+					filter: function (event) {
+						return event.card && event.card.name == "sha" && event.getParent().name == "sha";
+					},
+					forced: true,
+					content: () => {
+						trigger.num += player.getHistory("useCard", (evt) => {
+							return evt.card.name == "sha";
+						}).length - 1;
+					},
+				},
+				"out": {
+					init: (player) => {
+						player.storage.re_boss_taidao = 0;
+					},
+					forced: true,
+					trigger: { player: ["useCard", "respondAfter"] },
+					filter: function (event, player) {
+						if (_status.currentPhase == player) return false;
+						if (!event.cards) return false;
+						return true;
+					},
+					content: () => {
+						player.storage.re_boss_taidao += trigger.cards.length;
+					}
+				},
+				"draw": {
+					trigger: { player: 'phaseDrawBegin2' },
+					forced: true,
+					filter: function (event, player) {
+						return !event.numFixed;
+					},
+					content: function () {
+						trigger.num += player.storage.re_boss_taidao;
+						player.storage.re_boss_taidao = 0;
+					},
+					ai: {
+						threaten: 2
+					}
+				}
+			}
+		},
+
 		// guozhan
 		gzcongjian: {
 			trigger: {
@@ -9162,6 +9223,10 @@ export const skill = {
 		"re_boss_jimu_info": "锁定技，当你使用或打出牌后，你获得2枚[目]标记，若[目]的十位数值变大，则本局战斗中你的摸牌阶段摸牌数、出【杀】次数、体力上限均+1，若[目]的百位数值变化，则消灭所有敌方角色。",
 		"re_boss_shenshi": "神视",
 		"re_boss_shenshi_info": "你受到伤害后，移除1枚[目]标记；你造成伤害时，你可将伤害修改为[目]的个位数数值",
+
+		// shanhetu_boss_yixin
+		"re_boss_taidao": "太刀",
+		"re_boss_taidao_info": "锁定技，你的回合内，你使用的每张【杀】会使本回合内后续【杀】的伤害+1；你的回合外，你使用或打出的每张手牌会使你下回合摸牌阶段摸牌数+1。",
 
 		// unused
 		"geju": "割据",
