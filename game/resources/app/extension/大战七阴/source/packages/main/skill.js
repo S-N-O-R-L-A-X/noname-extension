@@ -8565,6 +8565,34 @@ export const skill = {
 				}
 			}
 		},
+		"re_boss_changqiang": {
+			enable: 'phaseUse',
+			usable: 1,
+			filter: (event, player) => {
+				return player.countCards('h') >= game.players.slice(0).length - 1;
+			},
+			content: async (event, trigger, player) => {
+				const players = game.players.slice(0).sortBySeat();
+				const n = players.length - 1;
+				const { result } = await player.chooseToDiscard("h", n, `弃置${n}张牌，视为对所有其他角色使用一张不可响应的【杀】`);
+				if (result) {
+					player.line(players);
+					players.forEach((ch) => {
+						if (ch != player) {
+							if (player.canUse({ name: "sha" }, ch, false)) {
+								const next = player.useCard({ name: "sha" }, ch);
+								next.oncard = function () {
+									_status.event.directHit.add(ch);
+								};
+							}
+						}
+					})
+				}
+			}
+		},
+		"re_boss_zhongyi": {
+
+		},
 
 		// guozhan
 		gzcongjian: {
@@ -9227,6 +9255,10 @@ export const skill = {
 		// shanhetu_boss_yixin
 		"re_boss_taidao": "太刀",
 		"re_boss_taidao_info": "锁定技，你的回合内，你使用的每张【杀】会使本回合内后续【杀】的伤害+1；你的回合外，你使用或打出的每张手牌会使你下回合摸牌阶段摸牌数+1。",
+		"re_boss_changqiang": "长枪",
+		"re_boss_changqiang_info": "出牌阶段限一次，你可以弃置X张手牌对所有其他角色视为使用一张不可响应的【杀】（X为其他角色数）。",
+		"re_boss_zhongyi": "忠义",
+		"re_boss_zhongyi_info": "限定技，出牌阶段，你可以将一张红色手牌置于你的武将牌上，若如此做，此轮结束后，你将此牌置入弃牌堆。若你的武将牌上有「忠义」牌，己方角色使用【杀】的伤害+ 1。",
 
 		// unused
 		"geju": "割据",
