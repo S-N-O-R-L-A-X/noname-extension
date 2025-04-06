@@ -1032,7 +1032,7 @@ export const skill = {
 			// }
 		},
 
-		"re_boss_reborn_cuanchaoyaoseng": {
+		"re_boss_reborn_yaosengzhenjia": {
 			trigger: {
 				player: 'dieBefore'
 			},
@@ -1043,7 +1043,7 @@ export const skill = {
 			forceDie: true,
 			content: async (event, trigger, player) => {
 				trigger.cancel();
-				await player.reinitCharacter(player.name1, "shanhetu_boss_cuanchaoyaoseng"); await player.recover(player.maxHp - player.hp);
+				await player.reinitCharacter(player.name1, "shanhetu_boss_yaosengzhenjia"); await player.recover(player.maxHp - player.hp);
 				await player.recover(player.maxHp - player.hp);
 				game.triggerEnter(player);
 			}
@@ -8522,7 +8522,6 @@ export const skill = {
 			group: ["re_boss_taidao_in", "re_boss_taidao_out", "re_boss_taidao_draw"],
 			subSkill: {
 				"in": {
-					mark: true,
 					trigger: { source: "damageBegin1" },
 					filter: function (event) {
 						return event.card && event.card.name == "sha" && event.getParent().name == "sha";
@@ -8589,9 +8588,6 @@ export const skill = {
 					})
 				}
 			}
-		},
-		"re_boss_zhongyi": {
-
 		},
 
 		// guozhan
@@ -9237,8 +9233,8 @@ export const skill = {
 		"re_boss_xietu_info": "当你受到伤害后，你可以弃置1张牌，然后对伤害来源造成同等伤害。",
 
 		// shanhetu_boss_kuileiguowang
-		"re_boss_reborn_cuanchaoyaoseng": "重生",
-		"re_boss_reborn_cuanchaoyaoseng_info": "锁定技，当你死亡时，你将此武将牌替换为篡朝妖僧。",
+		"re_boss_reborn_yaosengzhenjia": "重生",
+		"re_boss_reborn_yaosengzhenjia_info": "锁定技，当你死亡时，你将此武将牌替换为篡朝妖僧。",
 
 		// shanhetu_boss_chijianwuzhe
 		"re_boss_shihun": "噬魂",
