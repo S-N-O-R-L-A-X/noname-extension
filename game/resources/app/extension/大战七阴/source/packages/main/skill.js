@@ -8589,6 +8589,35 @@ export const skill = {
 				}
 			}
 		},
+		"re_boss_yongjue": {
+			init: (player) => {
+				game.addGlobalSkill("re_boss_yongjue_global", player);
+			},
+		},
+		"re_boss_yongjue_global": {
+			trigger: {
+				player: 'useCardAfter',
+			},
+			filter: function (event, player) {
+				var evtx = event.getParent('phaseUse');
+				if (!evtx || evtx.player != player) return false;
+				const origin = lib.skill.globalmap["re_boss_yongjue_global"];
+				if (!origin) return false;
+				let flag = false;
+				for (const ch of origin) {
+					if (ch.isFriendOf(player)) {
+						flag = true;
+					}
+				}
+				if (!flag) return false;
+				return player.getHistory('useCard').length === 1 && player.getHistory('useCard', evt => {
+					return evt.card.name == 'sha' && event.getParent('phaseUse') == evtx;
+				}).indexOf(event) == 0;
+			},
+			content: async (event, trigger, player) => {
+				player.gain(trigger.cards, 'gain2');
+			},
+		},
 
 		// guozhan
 		gzcongjian: {
@@ -9253,9 +9282,10 @@ export const skill = {
 		"re_boss_taidao_info": "锁定技，你的回合内，你使用的每张【杀】会使本回合内后续【杀】的伤害+1；你的回合外，你使用或打出的每张手牌会使你下回合摸牌阶段摸牌数+1。",
 		"re_boss_changqiang": "长枪",
 		"re_boss_changqiang_info": "出牌阶段限一次，你可以弃置X张手牌对所有其他角色视为使用一张不可响应的【杀】（X为其他角色数）。",
-		"re_boss_zhongyi": "忠义",
-		"re_boss_zhongyi_info": "限定技，出牌阶段，你可以将一张红色手牌置于你的武将牌上，若如此做，此轮结束后，你将此牌置入弃牌堆。若你的武将牌上有「忠义」牌，己方角色使用【杀】的伤害+ 1。",
-
+		"re_boss_yongjue": "勇决",
+		"re_boss_yongjue_info": "当一名角色于其出牌阶段使用【杀】后，若其与你势力相同且此【杀】为其于此阶段使用的第一张牌，其可以获得之。",
+		"re_boss_yongjue_global": "勇决",
+		
 		// unused
 		"geju": "割据",
 		"geju_info": "锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。",
