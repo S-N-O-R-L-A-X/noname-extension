@@ -8618,6 +8618,54 @@ export const skill = {
 				player.gain(trigger.cards, 'gain2');
 			},
 		},
+		"re_boss_jiansheng": {
+			group: ["re_boss_jiansheng_in", "re_boss_jiansheng_out"],
+			subSkill: {
+				"in": {
+					enable: 'chooseToUse',
+					filterCard: function (card) {
+						return true
+					},
+					viewAs: { name: 'jiu' },
+					viewAsFilter: function (player) {
+						return player == _status.currentPhase && player.countCards('he');
+					},
+					prompt: '将一张手牌当酒使用',
+					check: function (card) {
+						if (_status.event.type == 'dying') return 1 / Math.max(0.1, get.value(card));
+						return 4 - get.value(card);
+					},
+					ai: {
+						threaten: 1.5,
+					}
+				},
+				"out": {
+					enable: 'chooseToUse',
+					filterCard(card) {
+						return get.itemtype(card) == 'card';
+					},
+					position: 'h',
+					viewAs: { name: 'shan' },
+					viewAsFilter(player) {
+						return player != _status.currentPhase && player.countCards('he');
+					},
+					prompt: '将一张牌当作【闪】使用',
+					check(card) {
+						return 7 - get.value(card);
+					},
+					ai: {
+						order: 2,
+						respondShan: true,
+						effect: {
+							target(card, player, target, current) {
+								if (get.tag(card, 'respondShan') && current < 0) return 0.6;
+							},
+						},
+					},
+
+				}
+			}
+		},
 
 		// guozhan
 		gzcongjian: {
@@ -9285,7 +9333,9 @@ export const skill = {
 		"re_boss_yongjue": "勇决",
 		"re_boss_yongjue_info": "当一名角色于其出牌阶段使用【杀】后，若其与你势力相同且此【杀】为其于此阶段使用的第一张牌，其可以获得之。",
 		"re_boss_yongjue_global": "勇决",
-		
+		"re_boss_jiansheng": "剑圣",
+		"re_boss_jiansheng_info": "你的回合外，你可以将任何牌当【闪】使用或打出；你的回合内，你可以将任何牌当【酒】使用",
+
 		// unused
 		"geju": "割据",
 		"geju_info": "锁定技，当你受到一点伤害时，本轮其他角色与你计算距离时+1。",
