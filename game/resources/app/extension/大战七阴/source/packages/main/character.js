@@ -254,6 +254,9 @@ export const character = {
 		"shanhetu_boss_lingji": "来源于山河图妖篇第三章关内凌姬，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_gulong": "来源于山河图妖篇第三章关内骨龙，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
 		"shanhetu_boss_baiyannv": "来源于山河图妖篇第三章关内百眼女，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_yixin": "来源于山河图妖篇第三章关内一心，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_xiangliujushe2": "来源于山河图妖篇第三章boss相柳巨蛇，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
+		"shanhetu_boss_liusandao": "来源于山河图诸侯伐董篇第一章关内刘三刀，没有任何改动。<br>【强度】★<br> 【亮点】?",
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -290,7 +293,10 @@ export const character = {
 				"shanhetu_boss_haiheshang4", "shanhetu_boss_sanshiyou", "shanhetu_boss_yuanniu", "shanhetu_boss_xiangliujushe",
 				"shanhetu_boss_baihu", "shanhetu_boss_kuileiguowang", "shanhetu_boss_yaosengzhenjia", "shanhetu_boss_feiduan",
 				"shanhetu_boss_chijianwuzhe", "shanhetu_boss_shenlouyaoshi", "shanhetu_boss_lingji", "shanhetu_boss_gulong",
-				"shanhetu_boss_baiyannv"
+				"shanhetu_boss_baiyannv", "shanhetu_boss_yixin", "shanhetu_boss_moluoyecha", "shanhetu_boss_xiangliujushe2"
+			],
+			against7devil_zhuhou_boss: [
+				"shanhetu_boss_liusandao"
 			]
 		}
 	},
