@@ -8578,13 +8578,16 @@ export const skill = {
 			content: async (event, trigger, player) => {
 				const players = game.players.slice(0).sortBySeat();
 				const n = players.length - 1;
-				const { result } = await player.chooseToDiscard("h", n, `弃置${n}张牌，视为对所有其他角色使用一张不可响应的【杀】`);
+				const { result } = await player.chooseToDiscard("h", n, `弃置${n}张牌，视为对所有其他角色使用一张不可响应的【杀】`)
+					.set("ai", function (card) {
+						return 100 - get.value(card);
+					});
 				if (result) {
 					player.line(players);
 					players.forEach((ch) => {
 						if (ch != player) {
 							if (player.canUse({ name: "sha" }, ch, false)) {
-								const next = player.useCard({ name: "sha" }, ch);
+								const next = player.useCard({ name: "sha" }, ch, false);
 								next.oncard = function () {
 									_status.event.directHit.add(ch);
 								};
