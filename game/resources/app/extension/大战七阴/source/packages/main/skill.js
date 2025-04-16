@@ -427,6 +427,11 @@ export const skill = {
 			forced: true,
 			mark: true,
 			marktext: "怒",
+			init: (player) => {
+				if (!player.storage.re_boss_shennu) {
+					player.storage.re_boss_shennu = 0;
+				}
+			},
 			intro: {
 				content: "当前有#个“怒”标记",
 			},
