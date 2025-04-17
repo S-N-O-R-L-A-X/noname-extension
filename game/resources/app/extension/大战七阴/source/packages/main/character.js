@@ -310,6 +310,7 @@ export const character = {
 		"against7devil_ex": "扩包",
 		"against7devil_shanhetu_jiuzhou_boss": "山河图九州雄心包",
 		"against7devil_shanhetu_yao_boss": "山河图妖包",
+		"against7devil_zhuhou_boss": "山河图诸侯伐董包",
 
 		//character
 		"re_boss_caocao": "界魏武大帝",
