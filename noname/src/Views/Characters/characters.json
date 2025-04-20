@@ -2258,7 +2258,7 @@
       null,
       null,
       null,
-      null,
+      "绝决",
       null,
       "绝汲",
       "暴力"
@@ -3444,7 +3444,7 @@
       "re_boss_zhene",
       "re_boss_zhufang",
       "re_boss_duanhun",
-      "re_boss_reborn_cuanchaoyaoseng",
+      "re_boss_reborn_yaosengzhenjia",
       "re_boss_baoli"
     ],
     "ChineseSkills": [
@@ -3667,7 +3667,7 @@
       "re_boss_tiepao",
       "re_boss_taidao",
       "re_boss_changqiang",
-      "re_boss_zhongyi",
+      "zhongyi",
       "re_boss_yongjue",
       "re_boss_jiansheng",
       "zhihu",
@@ -3678,15 +3678,19 @@
       "炼狱",
       "飞扬",
       "铁炮",
+      "太刀",
+      "长枪",
       null,
-      null,
-      null,
-      null,
-      null,
+      "勇决",
+      "剑圣",
       null,
       null,
       "暴力"
-    ]
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第三章关内一心，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "shanhetu_boss_gulong",
@@ -3753,5 +3757,113 @@
     "details": "来源于山河图妖篇第三章关内百眼女，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_moluoyecha",
+    "ChineseName": "魔罗夜叉",
+    "gender": "male",
+    "nationality": "yao",
+    "hp": "9/9/4",
+    "skills": [
+      "re_boss_lianyu",
+      "kongcheng",
+      "yuanchou",
+      "re_boss_sanyi",
+      "boss_jingmiao",
+      "boss_yuhuojg",
+      "zhidao",
+      "re_boss_yuren",
+      "re_boss_wuying",
+      "re_boss_juejue",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "散疫",
+      null,
+      null,
+      null,
+      "羽刃",
+      "无影",
+      "绝决",
+      "暴力"
+    ],
+    "package": "山河图妖包"
+  },
+  {
+    "EnglishName": "shanhetu_boss_xiangliujushe2",
+    "ChineseName": "相柳巨蛇二号",
+    "gender": "male",
+    "nationality": "yao",
+    "hp": "10/10/4",
+    "skills": [
+      "re_boss_lianyu",
+      "boss_mengtai",
+      "re_boss_yaoshou",
+      "boss_duqu",
+      "re_boss_bashou",
+      "drlt_zhenggu",
+      "kongcheng",
+      "xueji",
+      "re_boss_zaie",
+      "boss_echou",
+      "re_boss_jingti",
+      "chouhai",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      "妖兽",
+      null,
+      "八首",
+      null,
+      null,
+      null,
+      "灾厄",
+      null,
+      "警惕",
+      null,
+      "暴力"
+    ],
+    "package": "山河图妖包",
+    "details": "来源于山河图妖篇第三章boss相柳巨蛇，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_boss_liusandao",
+    "ChineseName": "山河图刘三刀",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "chongzhen",
+      "boss_huchen",
+      "boss_aozhan",
+      "nuzhan",
+      "wuqian",
+      "zhanshen",
+      "dengji",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图诸侯伐董包",
+    "details": "来源于山河图诸侯伐董篇第一章关内刘三刀，没有任何改动。",
+    "strength": "【强度】★",
+    "highlight": " 【亮点】?"
   }
 ]

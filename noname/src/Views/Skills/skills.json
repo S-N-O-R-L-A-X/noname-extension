@@ -604,6 +604,11 @@
     "ChineseName": "旋略",
     "info": "当你失去装备区里的牌后，你可以弃置一名其他角色的一张牌。"
   },
+  "re_boss_juejue": {
+    "EnglishName": "re_boss_juejue",
+    "ChineseName": "绝决",
+    "info": "锁定技，当受到伤害后，若你体力低于5，你令伤害来源其本回合非锁定技失效。"
+  },
   "re_boss_jueji": {
     "EnglishName": "re_boss_jueji",
     "ChineseName": "绝汲",
@@ -759,8 +764,8 @@
     "ChineseName": "断魂",
     "info": "锁定技，当你死亡时，杀死你的角色失去所有战法。"
   },
-  "re_boss_reborn_cuanchaoyaoseng": {
-    "EnglishName": "re_boss_reborn_cuanchaoyaoseng",
+  "re_boss_reborn_yaosengzhenjia": {
+    "EnglishName": "re_boss_reborn_yaosengzhenjia",
     "ChineseName": "重生",
     "info": "锁定技，当你死亡时，你将此武将牌替换为篡朝妖僧。"
   },
@@ -824,6 +829,26 @@
     "ChineseName": "铁炮",
     "info": "当你受到其他角色的伤害后，你可以将任意牌视为【杀】对伤害来源使用，若此【杀】造成伤害，其与你的距离+1直到你的回合开始。"
   },
+  "re_boss_taidao": {
+    "EnglishName": "re_boss_taidao",
+    "ChineseName": "太刀",
+    "info": "锁定技，你的回合内，你使用的每张【杀】会使本回合内后续【杀】的伤害+1；你的回合外，你使用或打出的每张手牌会使你下回合摸牌阶段摸牌数+1。"
+  },
+  "re_boss_changqiang": {
+    "EnglishName": "re_boss_changqiang",
+    "ChineseName": "长枪",
+    "info": "出牌阶段限一次，你可以弃置X张手牌对所有其他角色视为使用一张不可响应的【杀】（X为其他角色数）。"
+  },
+  "re_boss_yongjue": {
+    "EnglishName": "re_boss_yongjue",
+    "ChineseName": "勇决",
+    "info": "当一名角色于其出牌阶段使用【杀】后，若其与你势力相同且此【杀】为其于此阶段使用的第一张牌，其可以获得之。"
+  },
+  "re_boss_jiansheng": {
+    "EnglishName": "re_boss_jiansheng",
+    "ChineseName": "剑圣",
+    "info": "你的回合外，你可以将任何牌当【闪】使用或打出；你的回合内，你可以将任何牌当【酒】使用"
+  },
   "re_boss_jimu": {
     "EnglishName": "re_boss_jimu",
     "ChineseName": "集目",
@@ -833,5 +858,15 @@
     "EnglishName": "re_boss_shenshi",
     "ChineseName": "神视",
     "info": "你受到伤害后，移除1枚[目]标记；你造成伤害时，你可将伤害修改为[目]的个位数数值"
+  },
+  "re_boss_sanyi": {
+    "EnglishName": "re_boss_sanyi",
+    "ChineseName": "散疫",
+    "info": "你的回合开始时，所有其他角色增加一枚【疫】标记；你对目标造成伤害后将会使其【疫】数量+1（准备阶段，若【疫】标记达到6，则扣除1点体力上限，并移除6枚【疫】标记）"
+  },
+  "re_boss_yuren": {
+    "EnglishName": "re_boss_yuren",
+    "ChineseName": "羽刃",
+    "info": "当你造成伤害后可判定，若为红色，则对不为你的一名角色再造成1点雷属性伤害。"
   }
 }
