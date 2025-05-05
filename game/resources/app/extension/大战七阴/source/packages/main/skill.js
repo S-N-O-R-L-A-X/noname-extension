@@ -780,6 +780,23 @@ export const skill = {
 			}
 		},
 
+		"re_boss_cuiku": {
+			trigger: { global: 'roundStart' },
+			forced: true,
+			filter: (event, player) => {
+				return game.roundNumber % 5 === 0;
+			},
+			content: () => {
+				const players = game.players.slice(0).sortBySeat();
+				player.line(players);
+				players.forEach((ch) => {
+					if (ch != player) {
+						ch.damage();
+					}
+				})
+			}
+		},
+
 		"re_boss_zhuishe": {
 			mod: {
 				cardUsable: function (card, player, num) {
@@ -8939,6 +8956,8 @@ export const skill = {
 		"re_boss_sanyi_effect": "散疫",
 		"re_boss_yuren": "羽刃",
 		"re_boss_yuren_info": "当你造成伤害后可判定，若为红色，则对不为你的一名角色再造成1点雷属性伤害。",
+		"re_boss_cuiku": "摧枯",
+		"re_boss_cuiku_info": "锁定技，游戏第5轮以及之后每进行5轮时，你对一名敌方角色造成1点伤害。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
