@@ -9310,11 +9310,7 @@ export const skill = {
 		"re_boss_moqu_info": "锁定技，每名角色的结束阶段，若你的手牌数不大于体力值，你摸两张牌。当其他友方角色受到伤害后，你弃置一张牌。",
 		"re_boss_zhene": "镇恶",
 		"re_boss_zhene_info": "锁定技，当你于出牌阶段使用牌指向目标后，若其手牌数不大于你，则其无法响应的你的牌。",
-
-		// shanhetu_boss_zhangling
-		"gzcongjian": "从谏",
-		"gzcongjian_info": "锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。",
-
+		
 		// shanhetu_boss_shen_zhaoyun
 		"re_boss_kuangxi": "狂袭",
 		"re_boss_kuangxi_info": "出牌阶段，你可以失去1点体力，然后对一名其他角色造成1点伤害，若以此法使其进入濒死状态，则本回合本技能失效。",
@@ -9335,20 +9331,9 @@ export const skill = {
 		"re_boss_reborn_guanyu": "重生",
 		"re_boss_reborn_guanyu_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之关羽。",
 
-		// shanhetu_boss_dengai
-		"xuanlve": "旋略",
-		"xuanlve_info": "当你失去装备区里的牌后，你可以弃置一名其他角色的一张牌。",
-
-		// shanhetu_boss_lingshanyushu
-		"wanrong": "婉容",
-		"wanrong_info": "当你成为【杀】的目标后，你可以摸一张牌。",
-
 		// shanhetu_boss_caoxiancaohua
 		"re_boss_reborn_caoxiancaohua2": "重生",
 		"re_boss_reborn_caoxiancaohua2_info": "锁定技，当你死亡时，你将此武将牌替换为灵杉玉树。",
-
-		"sgkuanggu": "狂骨",
-		"sgkuanggu_info": "当你造成伤害后，若你已受伤，你可以进行判定：若结果为黑色，你回复1点体力。",
 
 		// shanhetu_boss_caiyong
 		"re_boss_chenghu": "成虎",
@@ -9403,6 +9388,18 @@ export const skill = {
 		"re_boss_yongjue_global": "勇决",
 		"re_boss_jiansheng": "剑圣",
 		"re_boss_jiansheng_info": "你的回合外，你可以将任何牌当【闪】使用或打出；你的回合内，你可以将任何牌当【酒】使用",
+
+		// missing
+		"gzcongjian": "从谏",
+		"gzcongjian_info": "锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。",
+		"xuanlve": "旋略",
+		"xuanlve_info": "当你失去装备区里的牌后，你可以弃置一名其他角色的一张牌。",
+		"keshou": "恪守",
+		"keshou_info": "当你受到伤害时，你发动此技能。你可弃置两张颜色相同的牌，若如此做，此伤害-1。你的势力已确定且场上没有与你势力相同的其他角色，则你进行判定，若结果为红色，你摸一张牌。",
+		"wanrong": "婉容",
+		"wanrong_info": "当你成为【杀】的目标后，你可以摸一张牌。",
+		"sgkuanggu": "狂骨",
+		"sgkuanggu_info": "当你造成伤害后，若你已受伤，你可以进行判定：若结果为黑色，你回复1点体力。",
 
 		// unused
 		"geju": "割据",
