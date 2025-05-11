@@ -136,7 +136,7 @@ export const character = {
 		"shanhetu_boss_weiyan": ["male", "shu", "8/8/4", ["re_boss_lianyu", "re_boss_qinggangjian", "re_boss_baiyinshizi", "xinkuanggu", "qimou", "zishu", "xuanlve", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_zhaoyun": ["male", "shu", "8/8/4", ["re_boss_lianyu", "ollongdan", "chongzhen", "reyingzi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_zhanghe": ["male", "shu", "8/8/4", ["re_boss_lianyu", "spolzhouxuan", "qice", "latest_ol_feiyang", "kongcheng", "mengjin", "re_boss_cuiku", "aocai", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_boss_lijue": ["male", "shu", "8/8/4", ["re_boss_lianyu", "langxi", "yisuan", "latest_ol_feiyang", "bazhen", "lvli", "xinfu_weilu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_boss_lijue": ["male", "shu", "8/8/4", ["re_boss_lianyu", "xinfu_langxi", "xinfu_yisuan", "latest_ol_feiyang", "bazhen", "xinlvli", "xinfu_weilu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
 		"re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
