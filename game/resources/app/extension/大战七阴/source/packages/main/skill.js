@@ -797,6 +797,24 @@ export const skill = {
 			}
 		},
 
+		"re_boss_zhengyi": {
+			trigger: { player: 'phaseUseAfter' },
+			forced: true,
+			filter: (event, player) => {
+				return !player.hasSkill("re_boss_zhengyi_used");
+			},
+			popup: false,
+			content: function () {
+				var next = trigger.player.phaseUse();
+				event.next.remove(next);
+				trigger.getParent('phase').next.push(next);
+				player.addTempSkill('re_boss_zhengyi_used', "phaseEnd");
+			}
+		},
+		"re_boss_zhengyi_used": {
+
+		},
+
 		"re_boss_zhuishe": {
 			mod: {
 				cardUsable: function (card, player, num) {
@@ -8958,6 +8976,8 @@ export const skill = {
 		"re_boss_yuren_info": "当你造成伤害后可判定，若为红色，则对不为你的一名角色再造成1点雷属性伤害。",
 		"re_boss_cuiku": "摧枯",
 		"re_boss_cuiku_info": "锁定技，游戏第5轮以及之后每进行5轮时，你对一名敌方角色造成1点伤害。",
+		"re_boss_zhengyi": "征役",
+		"re_boss_zhengyi_info": "锁定技，每回合限1次，出牌阶段结束后，你获得一个额外的出牌阶段。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
@@ -9310,7 +9330,7 @@ export const skill = {
 		"re_boss_moqu_info": "锁定技，每名角色的结束阶段，若你的手牌数不大于体力值，你摸两张牌。当其他友方角色受到伤害后，你弃置一张牌。",
 		"re_boss_zhene": "镇恶",
 		"re_boss_zhene_info": "锁定技，当你于出牌阶段使用牌指向目标后，若其手牌数不大于你，则其无法响应的你的牌。",
-		
+
 		// shanhetu_boss_shen_zhaoyun
 		"re_boss_kuangxi": "狂袭",
 		"re_boss_kuangxi_info": "出牌阶段，你可以失去1点体力，然后对一名其他角色造成1点伤害，若以此法使其进入濒死状态，则本回合本技能失效。",
