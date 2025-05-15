@@ -135,8 +135,8 @@ export const character = {
 		"shanhetu_boss_liusandao": ["male", "qun", "7/7/4", ["re_boss_lianyu", "chongzhen", "boss_huchen", "boss_aozhan", "nuzhan", "wuqian", "zhanshen", "dengji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_weiyan": ["male", "shu", "8/8/4", ["re_boss_lianyu", "re_boss_qinggangjian", "re_boss_baiyinshizi", "xinkuanggu", "qimou", "zishu", "xuanlve", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_zhaoyun": ["male", "shu", "8/8/4", ["re_boss_lianyu", "ollongdan", "chongzhen", "reyingzi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_boss_zhanghe": ["male", "shu", "8/8/4", ["re_boss_lianyu", "spolzhouxuan", "qice", "latest_ol_feiyang", "kongcheng", "mengjin", "re_boss_cuiku", "aocai", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_boss_lijue": ["male", "shu", "8/8/4", ["re_boss_lianyu", "xinfu_langxi", "xinfu_yisuan", "latest_ol_feiyang", "bazhen", "xinlvli", "xinfu_weilu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_boss_zhanghe": ["male", "qun", "8/8/4", ["re_boss_lianyu", "spolzhouxuan", "qice", "latest_ol_feiyang", "kongcheng", "mengjin", "re_boss_cuiku", "aocai", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_boss_lijue": ["male", "qun", "8/8/4", ["re_boss_lianyu", "xinfu_langxi", "xinfu_yisuan", "latest_ol_feiyang", "bazhen", "xinlvli", "xinfu_weilu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
 		"re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
@@ -261,6 +261,10 @@ export const character = {
 		"shanhetu_boss_yixin": "来源于山河图妖篇第三章关内一心，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_xiangliujushe2": "来源于山河图妖篇第三章boss相柳巨蛇，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
 		"shanhetu_boss_liusandao": "来源于山河图诸侯伐董篇第一章关内刘三刀，没有任何改动。<br>【强度】★<br> 【亮点】?",
+		"shanhetu_boss_weiyan": "来源于山河图九洲演义篇第一章关内魏延，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
+		"shanhetu_boss_zhaoyun": "来源于山河图九洲演义篇第一章关内赵云，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
+		"shanhetu_boss_zhanghe": "来源于山河图九洲演义篇第一章关内张郃，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_boss_lijue": "来源于山河图九洲演义篇第一章关内李傕，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -300,8 +304,14 @@ export const character = {
 				"shanhetu_boss_baiyannv", "shanhetu_boss_yixin", "shanhetu_boss_moluoyecha", "shanhetu_boss_xiangliujushe2"
 			],
 			against7devil_zhuhou_boss: [
+				"shanhetu_boss_weiyan",
+				"shanhetu_boss_zhaoyun",
+				"shanhetu_boss_zhanghe",
+				"shanhetu_boss_lijue"
+			],
+			against7devil_zhuhou_boss: [
 				"shanhetu_boss_liusandao"
-			]
+			],
 		}
 	},
 
