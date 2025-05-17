@@ -303,13 +303,13 @@ export const character = {
 				"shanhetu_boss_chijianwuzhe", "shanhetu_boss_shenlouyaoshi", "shanhetu_boss_lingji", "shanhetu_boss_gulong",
 				"shanhetu_boss_baiyannv", "shanhetu_boss_yixin", "shanhetu_boss_moluoyecha", "shanhetu_boss_xiangliujushe2"
 			],
-			against7devil_zhuhou_boss: [
+			against7devil_shanhetu_hanzhong_boss: [
 				"shanhetu_boss_weiyan",
 				"shanhetu_boss_zhaoyun",
 				"shanhetu_boss_zhanghe",
 				"shanhetu_boss_lijue"
 			],
-			against7devil_zhuhou_boss: [
+			against7devil_shanhetu_hanzhong_boss: [
 				"shanhetu_boss_liusandao"
 			],
 		}
@@ -322,9 +322,10 @@ export const character = {
 		"against7devil_fusion": "融包",
 		"against7devil_math": "数包",
 		"against7devil_ex": "扩包",
-		"against7devil_shanhetu_jiuzhou_boss": "山河图九州雄心包",
+		"against7devil_shanhetu_jiuzhou_boss": "山河图江东雄心包",
 		"against7devil_shanhetu_yao_boss": "山河图妖包",
-		"against7devil_zhuhou_boss": "山河图诸侯伐董包",
+		"against7devil_shanhetu_hanzhong_boss": "山河图风起汉中包",
+		"against7devil_shanhetu_zhuhou_boss": "山河图诸侯伐董包",
 
 		//character
 		"re_boss_caocao": "界魏武大帝",
