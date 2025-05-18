@@ -987,7 +987,7 @@ export const skill = {
 				player: 'enterGame',
 			},
 			content: function () {
-				player.equip(game.createCard2('qinggangjian', 'spade', 2));
+				player.equip(game.createCard2('qinggang', 'spade', 2));
 			}
 		},
 		"re_boss_baiyinshizi": {

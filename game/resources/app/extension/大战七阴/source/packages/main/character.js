@@ -309,7 +309,7 @@ export const character = {
 				"shanhetu_boss_zhanghe",
 				"shanhetu_boss_lijue"
 			],
-			against7devil_shanhetu_hanzhong_boss: [
+			against7devil_shanhetu_zhuhou_boss: [
 				"shanhetu_boss_liusandao"
 			],
 		}
