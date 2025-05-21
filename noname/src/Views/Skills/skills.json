@@ -684,10 +684,30 @@
     "ChineseName": "觉醒",
     "info": "锁定技，当你于一个回合内受到了至少3点伤害时，中止一切结算并结束当前回合，然后你对其他角色各造成X点伤害（X为本局本技能触发次数）。"
   },
+  "re_boss_wushuangfangtianji": {
+    "EnglishName": "re_boss_wushuangfangtianji",
+    "ChineseName": "舞戟",
+    "info": "锁定技，游戏开始时，将【无双方天戟】置入你的装备区。"
+  },
+  "re_boss_hongmianbaihuapao": {
+    "EnglishName": "re_boss_hongmianbaihuapao",
+    "ChineseName": "着袍",
+    "info": "锁定技，游戏开始时，将【红棉百花袍】置入你的装备区。"
+  },
+  "re_boss_shufazijinguan": {
+    "EnglishName": "re_boss_shufazijinguan",
+    "ChineseName": "戴冠",
+    "info": "锁定技，游戏开始时，将【束发紫金冠】置入你的装备区。"
+  },
   "re_boss_juexing2": {
     "EnglishName": "re_boss_juexing2",
     "ChineseName": "觉醒",
     "info": "锁定技，你的回合外，若你于一个回合内受到超过5点伤害，或因弃置或被其他角色获得而失去超过3张牌时，中止一切结算并结束当前回合，然后你对其他角色各造成1点伤害。"
+  },
+  "keshou": {
+    "EnglishName": "keshou",
+    "ChineseName": "恪守",
+    "info": "当你受到伤害时，你发动此技能。你可弃置两张颜色相同的牌，若如此做，此伤害-1。你的势力已确定且场上没有与你势力相同的其他角色，则你进行判定，若结果为红色，你摸一张牌。"
   },
   "re_boss_eyi": {
     "EnglishName": "re_boss_eyi",
@@ -794,6 +814,16 @@
     "ChineseName": "邪徒",
     "info": "当你受到伤害后，你可以弃置1张牌，然后对伤害来源造成同等伤害。"
   },
+  "re_boss_qimenbagua": {
+    "EnglishName": "re_boss_qimenbagua",
+    "ChineseName": "奇阵",
+    "info": "锁定技，游戏开始时，将【奇门八阵】置入你的装备区。"
+  },
+  "re_boss_sanlve": {
+    "EnglishName": "re_boss_sanlve",
+    "ChineseName": "哓略",
+    "info": "锁定技，游戏开始时，将【三略】置入你的装备区。"
+  },
   "re_boss_shihun": {
     "EnglishName": "re_boss_shihun",
     "ChineseName": "噬魂",
@@ -868,5 +898,20 @@
     "EnglishName": "re_boss_yuren",
     "ChineseName": "羽刃",
     "info": "当你造成伤害后可判定，若为红色，则对不为你的一名角色再造成1点雷属性伤害。"
+  },
+  "re_boss_qinggangjian": {
+    "EnglishName": "re_boss_qinggangjian",
+    "ChineseName": "执剑",
+    "info": "锁定技，游戏开始时，将【青釭剑】置入你的装备区。"
+  },
+  "re_boss_baiyinshizi": {
+    "EnglishName": "re_boss_baiyinshizi",
+    "ChineseName": "披盔",
+    "info": "锁定技，游戏开始时，将【白银狮子】置入你的装备区。"
+  },
+  "re_boss_cuiku": {
+    "EnglishName": "re_boss_cuiku",
+    "ChineseName": "摧枯",
+    "info": "锁定技，游戏第5轮以及之后每进行5轮时，你对一名敌方角色造成1点伤害。"
   }
 }
