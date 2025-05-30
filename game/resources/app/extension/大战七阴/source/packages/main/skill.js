@@ -1620,6 +1620,20 @@ export const skill = {
 			}
 		},
 
+		"re_boss_chengxiong": {
+			trigger: { source: 'damageBegin1' },
+			forced: true,
+			content: function () {
+				if (game.roundNumber & 1) {
+					trigger.num++;
+				}
+				else {
+					trigger.num--;
+				}
+			},
+		},
+
+
 		// sunce
 		repinghe: {
 			audio: "pinghe",
@@ -8978,6 +8992,8 @@ export const skill = {
 		"re_boss_cuiku_info": "锁定技，游戏第5轮以及之后每进行5轮时，你对一名敌方角色造成1点伤害。",
 		"re_boss_zhengyi": "征役",
 		"re_boss_zhengyi_info": "锁定技，每回合限1次，出牌阶段结束后，你获得一个额外的出牌阶段。",
+		"re_boss_chengxiong": "逞凶",
+		"re_boss_chengxiong_info": "锁定技，游戏轮数为单数时，你造成的伤害+1；游戏轮数为双数时，你造成的伤害-1。",
 
 		"re_boss_liannu": "持弩",
 		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
