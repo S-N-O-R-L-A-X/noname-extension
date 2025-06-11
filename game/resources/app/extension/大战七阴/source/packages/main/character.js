@@ -269,6 +269,11 @@ export const character = {
 		"shanhetu_boss_zhaoyun": "来源于山河图九洲演义篇第一章关内赵云，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
 		"shanhetu_boss_zhanghe": "来源于山河图九洲演义篇第一章关内张郃，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_lijue": "来源于山河图九洲演义篇第一章关内李傕，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_hanzhong_boss_pangde": "来源于山河图九洲演义篇第一章boss庞德，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_hanzhong_boss_lvmeng2": "来源于山河图九洲演义篇第一章boss吕蒙，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_hanzhong_boss_guohuai": "来源于山河图九洲演义篇第二章关内郭淮，没有任何改动。<br>【强度】★★★★★<br> 【亮点】连动",
+		"shanhetu_hanzhong_boss_wanglang": "来源于山河图九洲演义篇第二章关内王朗，没有任何改动。<br>【强度】★★★★★<br> 【亮点】防御"
+
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -308,10 +313,9 @@ export const character = {
 				"shanhetu_boss_baiyannv", "shanhetu_boss_yixin", "shanhetu_boss_moluoyecha", "shanhetu_boss_xiangliujushe2"
 			],
 			against7devil_shanhetu_hanzhong_boss: [
-				"shanhetu_boss_weiyan",
-				"shanhetu_boss_zhaoyun",
-				"shanhetu_boss_zhanghe",
-				"shanhetu_boss_lijue"
+				"shanhetu_boss_weiyan", "shanhetu_boss_zhaoyun", "shanhetu_boss_zhanghe", 
+				"shanhetu_boss_lijue", "shanhetu_hanzhong_boss_pangde", "shanhetu_hanzhong_boss_lvmeng2",
+				"shanhetu_hanzhong_boss_guohuai", "shanhetu_hanzhong_boss_wanglang"
 			],
 			against7devil_shanhetu_zhuhou_boss: [
 				"shanhetu_boss_liusandao"
@@ -463,10 +467,10 @@ export const character = {
 		"shanhetu_boss_zhaoyun": "山河图赵云",
 		"shanhetu_boss_zhanghe": "山河图张郃",
 		"shanhetu_boss_lijue": "山河图李傕",
-		"shanhetu_boss_pangde": "山河图庞德",
-		"shanhetu_boss_lvmeng2": "山河图吕蒙",
-		"shanhetu_boss_guohuai": "山河图郭淮",
-		"shanhetu_boss_wanglang": "山河图王朗",
+		"shanhetu_hanzhong_boss_pangde": "山河图庞德",
+		"shanhetu_hanzhong_boss_lvmeng2": "山河图吕蒙",
+		"shanhetu_hanzhong_boss_guohuai": "山河图郭淮",
+		"shanhetu_hanzhong_boss_wanglang": "山河图王朗",
 	},
 
 }
