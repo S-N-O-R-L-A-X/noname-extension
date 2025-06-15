@@ -805,10 +805,10 @@ export const skill = {
 			},
 			popup: false,
 			content: function () {
+				player.addTempSkill('re_boss_zhengyi_used', "phaseEnd");
 				var next = trigger.player.phaseUse();
 				event.next.remove(next);
 				trigger.getParent('phase').next.push(next);
-				player.addTempSkill('re_boss_zhengyi_used', "phaseEnd");
 			}
 		},
 		"re_boss_zhengyi_used": {
