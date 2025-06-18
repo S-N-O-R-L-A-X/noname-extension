@@ -913,5 +913,15 @@
     "EnglishName": "re_boss_cuiku",
     "ChineseName": "摧枯",
     "info": "锁定技，游戏第5轮以及之后每进行5轮时，你对一名敌方角色造成1点伤害。"
+  },
+  "re_boss_zhengyi": {
+    "EnglishName": "re_boss_zhengyi",
+    "ChineseName": "征役",
+    "info": "锁定技，每回合限1次，出牌阶段结束后，你获得一个额外的出牌阶段。"
+  },
+  "re_boss_chengxiong": {
+    "EnglishName": "re_boss_chengxiong",
+    "ChineseName": "逞凶",
+    "info": "锁定技，游戏轮数为单数时，你造成的伤害+1；游戏轮数为双数时，你造成的伤害-1。"
   }
 }

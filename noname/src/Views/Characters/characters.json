@@ -3336,7 +3336,7 @@
       "yidu",
       "jieyuan",
       "re_boss_huangkong",
-      "reenyuan",
+      "xinenyuan",
       "re_boss_juexing",
       "re_boss_baoli"
     ],
@@ -3867,8 +3867,8 @@
     "highlight": " 【亮点】?"
   },
   {
-    "EnglishName": "shanhetu_boss_weiyan",
-    "ChineseName": "山河图魏延",
+    "EnglishName": "shanhetu_hanzhong_boss_weiyan",
+    "ChineseName": "汉中篇魏延",
     "gender": "male",
     "nationality": "shu",
     "hp": "8/8/4",
@@ -3898,8 +3898,8 @@
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "shanhetu_boss_zhaoyun",
-    "ChineseName": "山河图赵云",
+    "EnglishName": "shanhetu_hanzhong_boss_zhaoyun",
+    "ChineseName": "汉中篇赵云",
     "gender": "male",
     "nationality": "shu",
     "hp": "8/8/4",
@@ -3923,8 +3923,8 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_zhanghe",
-    "ChineseName": "山河图张郃",
+    "EnglishName": "shanhetu_hanzhong_boss_zhanghe",
+    "ChineseName": "汉中篇张郃",
     "gender": "male",
     "nationality": "qun",
     "hp": "8/8/4",
@@ -3956,8 +3956,8 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_lijue",
-    "ChineseName": "山河图李傕",
+    "EnglishName": "shanhetu_hanzhong_boss_lijue",
+    "ChineseName": "汉中篇李傕",
     "gender": "male",
     "nationality": "qun",
     "hp": "8/8/4",
@@ -3985,5 +3985,143 @@
     "details": "来源于山河图九洲演义篇第一章关内李傕，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_hanzhong_boss_pangde",
+    "ChineseName": "汉中篇庞德",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "mashu",
+      "rejianchu",
+      "latest_ol_feiyang",
+      "jilei",
+      "mengjin",
+      "luoying",
+      "olninge",
+      "re_boss_juexing",
+      "oljiang",
+      "re_boss_zhengyi",
+      "re_boss_chengxiong",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "飞扬",
+      null,
+      null,
+      null,
+      null,
+      "觉醒",
+      null,
+      "征役",
+      "逞凶",
+      "暴力"
+    ],
+    "package": "山河图风起汉中包",
+    "details": "来源于山河图九洲演义篇第一章boss庞德，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_hanzhong_boss_lvmeng",
+    "ChineseName": "汉中篇吕蒙",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "xinpojun",
+      "juece",
+      "latest_ol_feiyang",
+      "xinenyuan",
+      "choutao",
+      "youyan",
+      "shanduan",
+      "re_boss_juexing",
+      "re_boss_zhengyi",
+      "huisheng",
+      "xinfu_fuyin",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "飞扬",
+      null,
+      null,
+      null,
+      null,
+      "觉醒",
+      "征役",
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图风起汉中包",
+    "details": "来源于山河图九洲演义篇第一章boss吕蒙，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_hanzhong_boss_guohuai",
+    "ChineseName": "汉中篇郭淮",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "rejingce",
+      "rebotu",
+      "zhiheng",
+      "fulin",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图风起汉中包",
+    "details": "来源于山河图九洲演义篇第二章关内郭淮，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】连动"
+  },
+  {
+    "EnglishName": "shanhetu_hanzhong_boss_wanglang",
+    "ChineseName": "汉中篇王朗",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "7/7/4",
+    "skills": [
+      "re_boss_lianyu",
+      "gushi",
+      "shibei",
+      "jici",
+      "tianbian",
+      "zhichi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图风起汉中包",
+    "details": "来源于山河图九洲演义篇第二章关内王朗，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】防御"
   }
 ]
