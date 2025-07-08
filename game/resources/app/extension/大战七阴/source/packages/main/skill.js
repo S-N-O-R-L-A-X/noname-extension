@@ -8883,6 +8883,50 @@ export const skill = {
 				if (result.judge > 0) player.draw();
 			},
 		},
+		yingyang: {
+			audio: 2,
+			trigger: { player: "compare", target: "compare" },
+			filter: function (event) {
+				return !event.iwhile;
+			},
+			direct: true,
+			preHidden: true,
+			content: function () {
+				"step 0";
+				player
+					.chooseControl("点数+3", "点数-3", "cancel2")
+					.set("prompt", get.prompt2("yingyang"))
+					.set("ai", function () {
+						if (_status.event.small) return 1;
+						else return 0;
+					})
+					.set("small", trigger.small);
+				("step 1");
+				if (result.index != 2) {
+					player.logSkill("yingyang");
+					if (result.index == 0) {
+						game.log(player, "拼点牌点数+3");
+						if (player == trigger.player) {
+							trigger.num1 += 3;
+							if (trigger.num1 > 13) trigger.num1 = 13;
+						} else {
+							trigger.num2 += 3;
+							if (trigger.num2 > 13) trigger.num2 = 13;
+						}
+					} else {
+						game.log(player, "拼点牌点数-3");
+						if (player == trigger.player) {
+							trigger.num1 -= 3;
+							if (trigger.num1 < 1) trigger.num1 = 1;
+						} else {
+							trigger.num2 -= 3;
+							if (trigger.num2 < 1) trigger.num2 = 1;
+						}
+					}
+				}
+			},
+		},
+
 
 		// 1v1
 		wanrong: {
@@ -9448,6 +9492,8 @@ export const skill = {
 		"wanrong_info": "当你成为【杀】的目标后，你可以摸一张牌。",
 		"sgkuanggu": "狂骨",
 		"sgkuanggu_info": "当你造成伤害后，若你已受伤，你可以进行判定：若结果为黑色，你回复1点体力。",
+		"yingyang": "鹰扬",
+		"yingyang_info": "当你的拼点牌亮出后，你可以令此牌的点数+3或-3（至多为K，至少为1）。",
 
 		// unused
 		"geju": "割据",
