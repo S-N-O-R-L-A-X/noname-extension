@@ -276,8 +276,11 @@ export const character = {
 		"shanhetu_hanzhong_boss_pangde": "来源于山河图九洲演义篇第一章boss庞德，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_hanzhong_boss_lvmeng": "来源于山河图九洲演义篇第一章boss吕蒙，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_hanzhong_boss_guohuai": "来源于山河图九洲演义篇第二章关内郭淮，没有任何改动。<br>【强度】★★★★★<br> 【亮点】连动",
-		"shanhetu_hanzhong_boss_wanglang": "来源于山河图九洲演义篇第二章关内王朗，没有任何改动。<br>【强度】★★★★★<br> 【亮点】防御"
-
+		"shanhetu_hanzhong_boss_wanglang": "来源于山河图九洲演义篇第二章关内王朗，没有任何改动。<br>【强度】★★★★★<br> 【亮点】防御",
+		"shanhetu_hanzhong_boss_zhuling": "来源于山河图九洲演义篇第二章boss朱灵，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_hanzhong_boss_zhangchunhua": "来源于山河图九洲演义篇第三章关内张春华，没有任何改动。<br>【强度】★★★★★<br> 【亮点】体力流失",
+		"shanhetu_junshi_boss_jiangwei": "来源于山河图军师联盟篇葭萌关关内姜维，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_junshi_boss_yanyan": "来源于山河图军师联盟篇葭萌关关内严颜，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -319,7 +322,11 @@ export const character = {
 			against7devil_shanhetu_hanzhong_boss: [
 				"shanhetu_hanzhong_boss_weiyan", "shanhetu_hanzhong_boss_zhaoyun", "shanhetu_hanzhong_boss_zhanghe",
 				"shanhetu_hanzhong_boss_lijue", "shanhetu_hanzhong_boss_pangde", "shanhetu_hanzhong_boss_lvmeng",
-				"shanhetu_hanzhong_boss_guohuai", "shanhetu_hanzhong_boss_wanglang"
+				"shanhetu_hanzhong_boss_guohuai", "shanhetu_hanzhong_boss_wanglang", "shanhetu_hanzhong_boss_zhuling",
+				"shanhetu_hanzhong_boss_zhangchunhua"
+			],
+			against7devil_shanhetu_junshi_boss: ["shanhetu_junshi_boss_jiangwei",
+				"shanhetu_junshi_boss_yanyan"
 			],
 			against7devil_shanhetu_zhuhou_boss: [
 				"shanhetu_boss_liusandao"
