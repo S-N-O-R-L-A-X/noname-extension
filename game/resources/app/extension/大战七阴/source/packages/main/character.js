@@ -132,7 +132,7 @@ export const character = {
 		"shanhetu_boss_baiyannv": ["female", "yao", "9/9/4", ["re_boss_lianyu", "guanxu", "sidao", "re_boss_jimu", "jiang", "boss_chiyi", "zhengding", "re_boss_shenshi", "re_boss_juexing", "relonghun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_moluoyecha": ["male", "yao", "9/9/4", ["re_boss_lianyu", "kongcheng", "yuanchou", "re_boss_sanyi", "boss_jingmiao", "boss_yuhuojg", "zhidao", "re_boss_yuren", "re_boss_wuying", "re_boss_juejue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_boss_xiangliujushe2": ["male", "yao", "10/10/4", ["re_boss_lianyu", "boss_mengtai", "re_boss_yaoshou", "boss_duqu", "re_boss_bashou", "drlt_zhenggu", "kongcheng", "xueji", "re_boss_zaie", "boss_echou", "re_boss_jingti", "chouhai", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_boss_liusandao": ["male", "qun", "7/7/4", ["re_boss_lianyu", "chongzhen", "boss_huchen", "boss_aozhan", "nuzhan", "wuqian", "zhanshen", "dengji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_fadong_liusandao": ["male", "qun", "7/7/4", ["re_boss_lianyu", "chongzhen", "boss_huchen", "boss_aozhan", "nuzhan", "wuqian", "zhanshen", "dengji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_hanzhong_boss_weiyan": ["male", "shu", "8/8/4", ["re_boss_lianyu", "re_boss_qinggangjian", "re_boss_baiyinshizi", "xinkuanggu", "qimou", "zishu", "xuanlve", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_hanzhong_boss_zhaoyun": ["male", "shu", "8/8/4", ["re_boss_lianyu", "ollongdan", "chongzhen", "reyingzi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_hanzhong_boss_zhanghe": ["male", "qun", "8/8/4", ["re_boss_lianyu", "spolzhouxuan", "qice", "latest_ol_feiyang", "kongcheng", "mengjin", "re_boss_cuiku", "aocai", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
@@ -268,7 +268,7 @@ export const character = {
 		"shanhetu_boss_baiyannv": "来源于山河图妖篇第三章关内百眼女，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_yixin": "来源于山河图妖篇第三章关内一心，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_boss_xiangliujushe2": "来源于山河图妖篇第三章boss相柳巨蛇，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
-		"shanhetu_boss_liusandao": "来源于山河图诸侯伐董篇第一章关内刘三刀，没有任何改动。<br>【强度】★<br> 【亮点】?",
+		"shanhetu_fadong_liusandao": "来源于山河图诸侯伐董篇第一章关内刘三刀，没有任何改动。<br>【强度】★<br> 【亮点】?",
 		"shanhetu_hanzhong_boss_weiyan": "来源于山河图九洲演义篇第一章关内魏延，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 		"shanhetu_hanzhong_boss_zhaoyun": "来源于山河图九洲演义篇第一章关内赵云，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
 		"shanhetu_hanzhong_boss_zhanghe": "来源于山河图九洲演义篇第一章关内张郃，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
@@ -328,8 +328,8 @@ export const character = {
 			against7devil_shanhetu_junshi_boss: ["shanhetu_junshi_boss_jiangwei",
 				"shanhetu_junshi_boss_yanyan"
 			],
-			against7devil_shanhetu_zhuhou_boss: [
-				"shanhetu_boss_liusandao"
+			against7devil_shanhetu_fadong_boss: [
+				"shanhetu_fadong_liusandao"
 			],
 		}
 	},
@@ -344,7 +344,8 @@ export const character = {
 		"against7devil_shanhetu_jiuzhou_boss": "山河图江东雄心包",
 		"against7devil_shanhetu_yao_boss": "山河图妖包",
 		"against7devil_shanhetu_hanzhong_boss": "山河图风起汉中包",
-		"against7devil_shanhetu_zhuhou_boss": "山河图诸侯伐董包",
+		"against7devil_shanhetu_fadong_boss": "山河图诸侯伐董包",
+		"against7devil_shanhetu_junshi_boss": "山河图军师联盟包",
 
 		//character
 		"re_boss_caocao": "界魏武大帝",
@@ -473,7 +474,7 @@ export const character = {
 		"shanhetu_boss_baiyannv": "百眼女",
 		"shanhetu_boss_moluoyecha": "魔罗夜叉",
 		"shanhetu_boss_xiangliujushe2": "相柳巨蛇二号",
-		"shanhetu_boss_liusandao": "山河图刘三刀",
+		"shanhetu_fadong_liusandao": "伐董篇刘三刀",
 		"shanhetu_hanzhong_boss_weiyan": "汉中篇魏延",
 		"shanhetu_hanzhong_boss_zhaoyun": "汉中篇赵云",
 		"shanhetu_hanzhong_boss_zhanghe": "汉中篇张郃",
