@@ -923,5 +923,15 @@
     "EnglishName": "re_boss_chengxiong",
     "ChineseName": "逞凶",
     "info": "锁定技，游戏轮数为单数时，你造成的伤害+1；游戏轮数为双数时，你造成的伤害-1。"
+  },
+  "yingyang": {
+    "EnglishName": "yingyang",
+    "ChineseName": "鹰扬",
+    "info": "当你的拼点牌亮出后，你可以令此牌的点数+3或-3（至多为K，至少为1）。"
+  },
+  "re_boss_shunxue": {
+    "EnglishName": "re_boss_shunxue",
+    "ChineseName": "吮血",
+    "info": "出牌阶段开始时和结束阶段开始时，你将手牌摸至手牌上限。"
   }
 }

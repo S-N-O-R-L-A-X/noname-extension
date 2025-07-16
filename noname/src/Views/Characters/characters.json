@@ -2675,7 +2675,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_yuanshao",
+    "EnglishName": "shanhetu_yao_yuanshao",
     "ChineseName": "山河图袁绍",
     "gender": "male",
     "nationality": "qun",
@@ -2706,7 +2706,7 @@
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "shanhetu_boss_lvbu",
+    "EnglishName": "shanhetu_yao_lvbu",
     "ChineseName": "山河图吕布",
     "gender": "male",
     "nationality": "qun",
@@ -2745,7 +2745,7 @@
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "shanhetu_boss_dongzhuo",
+    "EnglishName": "shanhetu_yao_dongzhuo",
     "ChineseName": "山河图董卓",
     "gender": "male",
     "nationality": "qun",
@@ -2778,7 +2778,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_huangzu",
+    "EnglishName": "shanhetu_yao_huangzu",
     "ChineseName": "山河图黄祖",
     "gender": "male",
     "nationality": "qun",
@@ -2807,7 +2807,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_xusheng2",
+    "EnglishName": "shanhetu_yao_xusheng2",
     "ChineseName": "山河图徐盛二号",
     "gender": "male",
     "nationality": "wu",
@@ -2838,7 +2838,7 @@
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "shanhetu_boss_lvmeng",
+    "EnglishName": "shanhetu_yao_lvmeng",
     "ChineseName": "山河图吕蒙",
     "gender": "male",
     "nationality": "wu",
@@ -2871,7 +2871,7 @@
     "highlight": " 【亮点】连破"
   },
   {
-    "EnglishName": "shanhetu_boss_yingzhao",
+    "EnglishName": "shanhetu_yao_yingzhao",
     "ChineseName": "山河图英招",
     "gender": "male",
     "nationality": "yao",
@@ -2929,7 +2929,7 @@
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "shanhetu_boss_qiongqi",
+    "EnglishName": "shanhetu_yao_qiongqi",
     "ChineseName": "山河图穷奇",
     "gender": "male",
     "nationality": "yao",
@@ -2958,7 +2958,7 @@
     "highlight": " 【亮点】控制"
   },
   {
-    "EnglishName": "shanhetu_boss_shuishengonggong",
+    "EnglishName": "shanhetu_yao_shuishengonggong",
     "ChineseName": "山河图水神共工",
     "gender": "male",
     "nationality": "yao",
@@ -2989,7 +2989,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_hundun",
+    "EnglishName": "shanhetu_yao_hundun",
     "ChineseName": "山河图混沌",
     "gender": "male",
     "nationality": "yao",
@@ -3022,7 +3022,7 @@
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "shanhetu_boss_taowu",
+    "EnglishName": "shanhetu_yao_taowu",
     "ChineseName": "山河图梼杌",
     "gender": "male",
     "nationality": "yao",
@@ -3053,7 +3053,7 @@
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "shanhetu_boss_taotie",
+    "EnglishName": "shanhetu_yao_taotie",
     "ChineseName": "山河图饕餮",
     "gender": "male",
     "nationality": "yao",
@@ -3086,7 +3086,7 @@
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "shanhetu_boss_ganning2",
+    "EnglishName": "shanhetu_yao_ganning2",
     "ChineseName": "山河图甘宁二号",
     "gender": "male",
     "nationality": "wu",
@@ -3148,7 +3148,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_haiheshang1",
+    "EnglishName": "shanhetu_yao_haiheshang1",
     "ChineseName": "海和尚一号",
     "gender": "male",
     "nationality": "yao",
@@ -3185,7 +3185,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_haiheshang2",
+    "EnglishName": "shanhetu_yao_haiheshang2",
     "ChineseName": "海和尚二号",
     "gender": "male",
     "nationality": "yao",
@@ -3220,7 +3220,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_haiheshang3",
+    "EnglishName": "shanhetu_yao_haiheshang3",
     "ChineseName": "海和尚三号",
     "gender": "male",
     "nationality": "yao",
@@ -3255,7 +3255,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_haiheshang4",
+    "EnglishName": "shanhetu_yao_haiheshang4",
     "ChineseName": "海和尚四号",
     "gender": "male",
     "nationality": "yao",
@@ -3290,7 +3290,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_sanshiyou",
+    "EnglishName": "shanhetu_yao_sanshiyou",
     "ChineseName": "三逝友",
     "gender": "male",
     "nationality": "yao",
@@ -3323,7 +3323,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_yuanniu",
+    "EnglishName": "shanhetu_yao_yuanniu",
     "ChineseName": "怨牛",
     "gender": "male",
     "nationality": "yao",
@@ -3358,7 +3358,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_xiangliujushe",
+    "EnglishName": "shanhetu_yao_xiangliujushe",
     "ChineseName": "相柳巨蛇",
     "gender": "male",
     "nationality": "yao",
@@ -3395,7 +3395,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_baihu",
+    "EnglishName": "shanhetu_yao_baihu",
     "ChineseName": "白虎",
     "gender": "male",
     "nationality": "yao",
@@ -3428,7 +3428,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_kuileiguowang",
+    "EnglishName": "shanhetu_yao_kuileiguowang",
     "ChineseName": "傀儡国王",
     "gender": "male",
     "nationality": "yao",
@@ -3467,7 +3467,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_yaosengzhenjia",
+    "EnglishName": "shanhetu_yao_yaosengzhenjia",
     "ChineseName": "妖僧真迦",
     "gender": "male",
     "nationality": "yao",
@@ -3506,7 +3506,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_feiduan",
+    "EnglishName": "shanhetu_yao_feiduan",
     "ChineseName": "飞断",
     "gender": "male",
     "nationality": "yao",
@@ -3541,7 +3541,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_chijianwuzhe",
+    "EnglishName": "shanhetu_yao_chijianwuzhe",
     "ChineseName": "痴剑武者",
     "gender": "male",
     "nationality": "yao",
@@ -3580,7 +3580,7 @@
     "highlight": " 【亮点】综合，偷技能"
   },
   {
-    "EnglishName": "shanhetu_boss_shenlouyaoshi",
+    "EnglishName": "shanhetu_yao_shenlouyaoshi",
     "ChineseName": "蜃楼妖师",
     "gender": "male",
     "nationality": "yao",
@@ -3617,7 +3617,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_lingji",
+    "EnglishName": "shanhetu_yao_lingji",
     "ChineseName": "凌姬",
     "gender": "female",
     "nationality": "yao",
@@ -3656,7 +3656,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_yixin",
+    "EnglishName": "shanhetu_yao_yixin",
     "ChineseName": "一心",
     "gender": "male",
     "nationality": "yao",
@@ -3693,7 +3693,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_gulong",
+    "EnglishName": "shanhetu_yao_gulong",
     "ChineseName": "骨龙",
     "gender": "male",
     "nationality": "yao",
@@ -3722,7 +3722,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_baiyannv",
+    "EnglishName": "shanhetu_yao_baiyannv",
     "ChineseName": "百眼女",
     "gender": "female",
     "nationality": "yao",
@@ -3759,7 +3759,7 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_moluoyecha",
+    "EnglishName": "shanhetu_yao_moluoyecha",
     "ChineseName": "魔罗夜叉",
     "gender": "male",
     "nationality": "yao",
@@ -3793,7 +3793,7 @@
     "package": "山河图妖包"
   },
   {
-    "EnglishName": "shanhetu_boss_xiangliujushe2",
+    "EnglishName": "shanhetu_yao_xiangliujushe2",
     "ChineseName": "相柳巨蛇二号",
     "gender": "male",
     "nationality": "yao",
@@ -3834,8 +3834,8 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "shanhetu_boss_liusandao",
-    "ChineseName": "山河图刘三刀",
+    "EnglishName": "shanhetu_fadong_liusandao",
+    "ChineseName": "伐董篇刘三刀",
     "gender": "male",
     "nationality": "qun",
     "hp": "7/7/4",
@@ -4123,5 +4123,133 @@
     "details": "来源于山河图九洲演义篇第二章关内王朗，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】防御"
+  },
+  {
+    "EnglishName": "shanhetu_hanzhong_boss_zhuling",
+    "ChineseName": "汉中篇朱灵",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "jixian",
+      "wushuang",
+      "latest_ol_feiyang",
+      "re_boss_xiongshou",
+      "shichou",
+      "zhaxiang",
+      "boss_lunhui",
+      "boss_xiongshou",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "飞扬",
+      "凶兽",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图风起汉中包",
+    "details": "来源于山河图九洲演义篇第二章boss朱灵，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_hanzhong_boss_zhangchunhua",
+    "ChineseName": "汉中篇张春华",
+    "gender": "female",
+    "nationality": "wei",
+    "hp": "8/8/4",
+    "skills": [
+      "re_boss_lianyu",
+      "gangzhi",
+      "shangshi",
+      "zhaxiang",
+      "duwu",
+      "aocai",
+      "boss_futai",
+      "zhendu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图风起汉中包",
+    "details": "来源于山河图九洲演义篇第三章关内张春华，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】体力流失"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_boss_jiangwei",
+    "ChineseName": "军师篇姜维",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "7/7/8",
+    "skills": [
+      "re_boss_lianyu",
+      "olsbzhuri",
+      "olsbranji",
+      "yingyang",
+      "sanku",
+      "tianbian",
+      "re_boss_shunxue",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "鹰扬",
+      null,
+      null,
+      "吮血",
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇葭萌关关内姜维，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_boss_yanyan",
+    "ChineseName": "军师篇严颜",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "5/5/5",
+    "skills": [
+      "re_boss_lianyu",
+      "nzry_juzhan",
+      "yimie",
+      "drlt_wanglie",
+      "re_boss_busi",
+      "re_boss_tiepao",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "不死",
+      "铁炮",
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇葭萌关关内严颜，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
   }
 ]
