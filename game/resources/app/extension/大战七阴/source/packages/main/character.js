@@ -145,6 +145,7 @@ export const character = {
 		"shanhetu_hanzhong_boss_zhangchunhua": ["female", "wei", "8/8/4", ["re_boss_lianyu", "gangzhi", "shangshi", "zhaxiang", "duwu", "aocai", "boss_futai", "zhendu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_boss_jiangwei": ["male", "shu", "7/7/8", ["re_boss_lianyu", "olsbzhuri", "olsbranji", "yingyang", "sanku", "tianbian", "re_boss_shunxue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_boss_yanyan": ["male", "shu", "5/5/5", ["re_boss_lianyu", "nzry_juzhan", "yimie", "drlt_wanglie", "re_boss_busi", "re_boss_tiepao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_boss_huojun": ["male", "shu", "5/5/5", ["re_boss_lianyu", "re_boss_baiyin", "qiongshou", "tuxing", "drlt_poshi", "luanfeng", "re_boss_zhouxue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
 		"re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
@@ -487,6 +488,7 @@ export const character = {
 		"shanhetu_hanzhong_boss_zhangchunhua": "汉中篇张春华",
 		"shanhetu_junshi_boss_jiangwei": "军师篇姜维",
 		"shanhetu_junshi_boss_yanyan": "军师篇严颜",
+		"shanhetu_junshi_boss_huojun": "军师篇霍峻",
 	},
 
 }
