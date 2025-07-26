@@ -143,12 +143,12 @@ export const character = {
 		"shanhetu_hanzhong_boss_wanglang": ["male", "wei", "7/7/4", ["re_boss_lianyu", "gushi", "shibei", "jici", "tianbian", "zhichi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_hanzhong_boss_zhuling": ["male", "wei", "8/8/4", ["re_boss_lianyu", "jixian", "wushuang", "latest_ol_feiyang", "re_boss_xiongshou", "shichou", "zhaxiang", "boss_lunhui", "boss_xiongshou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_hanzhong_boss_zhangchunhua": ["female", "wei", "8/8/4", ["re_boss_lianyu", "gangzhi", "shangshi", "zhaxiang", "duwu", "aocai", "boss_futai", "zhendu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_boss_jiangwei": ["male", "shu", "7/7/8", ["re_boss_lianyu", "olsbzhuri", "olsbranji", "yingyang", "sanku", "tianbian", "re_boss_shunxue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_boss_yanyan": ["male", "shu", "5/5/5", ["re_boss_lianyu", "nzry_juzhan", "yimie", "drlt_wanglie", "re_boss_busi", "re_boss_tiepao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_boss_huojun": ["male", "shu", "5/5/5", ["re_boss_lianyu", "re_boss_baiyinshizi", "qiongshou", "tuxing", "drlt_poshi", "luanfeng", "re_boss_zhouxue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_boss_machao": ["male", "shu", "7/7/8", ["re_boss_lianyu", "re_boss_zhangbashemao", "retieji", "xinleiji", "ganglie", "sgkuanggu", "boss_dayuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_boss_zhangfei": ["male", "shu", "7/7/8", ["re_boss_lianyu", "olpaoxiao", "oltishen", "zhongyi", "oljiang", "wangxi", "re_boss_juexing", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_boss_wuqiao": ["male", "shu", "7/7/8", ["re_boss_lianyu", "clanqiajue", "clanmuyin", "shenzhi", "olxianzhen", "re_boss_sishe", "shanzhuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_jiangwei": ["male", "shu", "7/7/8", ["re_boss_lianyu", "olsbzhuri", "olsbranji", "yingyang", "sanku", "tianbian", "re_boss_shunxue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_yanyan": ["male", "shu", "5/5/5", ["re_boss_lianyu", "nzry_juzhan", "yimie", "drlt_wanglie", "re_boss_busi", "re_boss_tiepao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_huojun": ["male", "shu", "5/5/5", ["re_boss_lianyu", "re_boss_baiyinshizi", "qiongshou", "tuxing", "drlt_poshi", "luanfeng", "re_boss_zhouxue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_machao": ["male", "shu", "7/7/8", ["re_boss_lianyu", "re_boss_zhangbashemao", "retieji", "xinleiji", "ganglie", "sgkuanggu", "boss_dayuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_zhangfei": ["male", "shu", "7/7/8", ["re_boss_lianyu", "olpaoxiao", "oltishen", "zhongyi", "oljiang", "wangxi", "re_boss_juexing", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_wuqiao": ["male", "shu", "7/7/8", ["re_boss_lianyu", "clanqiajue", "clanmuyin", "shenzhi", "olxianzhen", "re_boss_sishe", "shanzhuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
 		"re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
@@ -283,8 +283,8 @@ export const character = {
 		"shanhetu_hanzhong_boss_wanglang": "来源于山河图九洲演义篇第二章关内王朗，没有任何改动。<br>【强度】★★★★★<br> 【亮点】防御",
 		"shanhetu_hanzhong_boss_zhuling": "来源于山河图九洲演义篇第二章boss朱灵，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_hanzhong_boss_zhangchunhua": "来源于山河图九洲演义篇第三章关内张春华，没有任何改动。<br>【强度】★★★★★<br> 【亮点】体力流失",
-		"shanhetu_junshi_boss_jiangwei": "来源于山河图军师联盟篇葭萌关关内姜维，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
-		"shanhetu_junshi_boss_yanyan": "来源于山河图军师联盟篇葭萌关关内严颜，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_junshi_jiangwei": "来源于山河图军师联盟篇葭萌关关内姜维，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_junshi_yanyan": "来源于山河图军师联盟篇葭萌关关内严颜，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -329,8 +329,8 @@ export const character = {
 				"shanhetu_hanzhong_boss_guohuai", "shanhetu_hanzhong_boss_wanglang", "shanhetu_hanzhong_boss_zhuling",
 				"shanhetu_hanzhong_boss_zhangchunhua"
 			],
-			against7devil_shanhetu_junshi_boss: ["shanhetu_junshi_boss_jiangwei",
-				"shanhetu_junshi_boss_yanyan"
+			against7devil_shanhetu_junshi_boss: ["shanhetu_junshi_jiangwei",
+				"shanhetu_junshi_yanyan"
 			],
 			against7devil_shanhetu_fadong_boss: [
 				"shanhetu_fadong_liusandao"
@@ -489,12 +489,12 @@ export const character = {
 		"shanhetu_hanzhong_boss_wanglang": "汉中篇王朗",
 		"shanhetu_hanzhong_boss_zhuling": "汉中篇朱灵",
 		"shanhetu_hanzhong_boss_zhangchunhua": "汉中篇张春华",
-		"shanhetu_junshi_boss_jiangwei": "军师篇姜维",
-		"shanhetu_junshi_boss_yanyan": "军师篇严颜",
-		"shanhetu_junshi_boss_huojun": "军师篇霍峻",
-		"shanhetu_junshi_boss_machao": "军师篇马超",
-		"shanhetu_junshi_boss_zhangfei": "军师篇张飞",
-		"shanhetu_junshi_boss_wuqiao": "军师篇吴乔"
+		"shanhetu_junshi_jiangwei": "军师篇姜维",
+		"shanhetu_junshi_yanyan": "军师篇严颜",
+		"shanhetu_junshi_huojun": "军师篇霍峻",
+		"shanhetu_junshi_machao": "军师篇马超",
+		"shanhetu_junshi_zhangfei": "军师篇张飞",
+		"shanhetu_junshi_wuqiao": "军师篇吴乔"
 	},
 
 }
