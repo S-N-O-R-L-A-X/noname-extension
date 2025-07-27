@@ -1026,6 +1026,19 @@ export const skill = {
 				player.equip(game.createCard2('zhangba', 'spade', 12));
 			}
 		},
+		"equip_hanbingjian": {
+			forced: true,
+			filter: function (event, player) {
+				return (event.name != 'phase' || game.phaseNumber == 0);
+			},
+			trigger: {
+				global: 'phaseBefore',
+				player: 'enterGame',
+			},
+			content: function () {
+				player.equip(game.createCard2('zhangba', 'spade', 2));
+			}
+		},
 
 		"re_boss_reborn_machao": {
 			trigger: {
@@ -9091,7 +9104,8 @@ export const skill = {
 		"re_boss_baiyinshizi_info": "锁定技，游戏开始时，将【白银狮子】置入你的装备区。",
 		"re_boss_zhangmashemao": "执矛",
 		"re_boss_zhangmashemao_info": "锁定技，游戏开始时，将【丈八蛇矛】置入你的装备区。",
-
+		"equip_hanbingjian": "霜刃",
+		"equip_hanbingjian_info": "锁定技，游戏开始时，将【寒冰剑】置入你的装备区。",
 
 		// fusion_shen_sunce
 		"repinghe": "冯河",
