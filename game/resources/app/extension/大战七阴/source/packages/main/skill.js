@@ -833,7 +833,7 @@ export const skill = {
 			}
 		},
 
-		"re_boss_liannu": {
+		"equip_zhugeliannu": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -846,7 +846,7 @@ export const skill = {
 				player.equip(game.createCard2('zhuge', 'diamond', 1));
 			}
 		},
-		"re_boss_changandajian": {
+		"equip_changandajian": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -860,7 +860,7 @@ export const skill = {
 				player.equip(game.createCard2('changandajian_equip2', 'spade', 10));
 			}
 		},
-		"re_boss_gudingdao": {
+		"equip_gudingdao": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -873,7 +873,7 @@ export const skill = {
 				player.equip(game.createCard2('guding', 'spade', 1));
 			}
 		},
-		"re_boss_tengjia": {
+		"equip_tengjia": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -886,7 +886,7 @@ export const skill = {
 				player.equip(game.createCard2('tengjia', 'spade', 2));
 			}
 		},
-		"re_boss_xingtianpojunfu": {
+		"equip_xingtianpojunfu": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -907,7 +907,7 @@ export const skill = {
 				})
 			}
 		},
-		"re_boss_heiguangkai": {
+		"equip_heiguangkai": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -920,7 +920,7 @@ export const skill = {
 				player.equip(game.createCard2('heiguangkai', 'club', 2));
 			}
 		},
-		"re_boss_wushuangfangtianji": {
+		"equip_wushuangfangtianji": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -935,7 +935,7 @@ export const skill = {
 				player.equip(game.createCard2('heiguangkai', 'club', 2));
 			}
 		},
-		"re_boss_hongmianbaihuapao": {
+		"equip_hongmianbaihuapao": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -948,7 +948,7 @@ export const skill = {
 				player.equip(game.createCard2('hongmianbaihuapao', 'club', 1));
 			}
 		},
-		"re_boss_shufazijinguan": {
+		"equip_shufazijinguan": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -961,7 +961,7 @@ export const skill = {
 				player.equip(game.createCard2('shufazijinguan', 'diamond', 1));
 			}
 		},
-		"re_boss_qimenbagua": {
+		"equip_qimenbagua": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -974,7 +974,7 @@ export const skill = {
 				player.equip(game.createCard2('qimenbagua', 'spade', 2));
 			}
 		},
-		"re_boss_sanlve": {
+		"equip_sanlve": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -987,7 +987,7 @@ export const skill = {
 				player.equip(game.createCard2('sanlve', 'spade', 5));
 			}
 		},
-		"re_boss_qinggangjian": {
+		"equip_qinggangjian": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -1000,7 +1000,7 @@ export const skill = {
 				player.equip(game.createCard2('qinggang', 'spade', 2));
 			}
 		},
-		"re_boss_baiyinshizi": {
+		"equip_baiyinshizi": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -1013,7 +1013,7 @@ export const skill = {
 				player.equip(game.createCard2('baiyin', 'club', 1));
 			}
 		},
-		"re_boss_zhangbashemao": {
+		"equip_zhangbashemao": {
 			forced: true,
 			filter: function (event, player) {
 				return (event.name != 'phase' || game.phaseNumber == 0);
@@ -9089,32 +9089,32 @@ export const skill = {
 		"re_boss_shunxue": "吮血",
 		"re_boss_shunxue_info": "出牌阶段开始时和结束阶段开始时，你将手牌摸至手牌上限。",
 
-		"re_boss_liannu": "持弩",
-		"re_boss_liannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
-		"re_boss_changandajian": "登舰",
-		"re_boss_changandajian_info": "锁定技，游戏开始时，将两张【长安大舰】置入你的装备区。",
-		"re_boss_gudingdao": "宝刀",
-		"re_boss_gudingdao_info": "锁定技，游戏开始时，将【古锭刀】置入你的装备区。",
-		"re_boss_tengjia": "编甲",
-		"re_boss_tengjia_info": "锁定技，游戏开始时，将【藤甲】置入你的装备区。",
-		"re_boss_xingtianpojunfu": "舞斧",
-		"re_boss_xingtianpojunfu_info": "锁定技，游戏开始时，将【刑天破军斧】置入你的装备区。",
-		"re_boss_heiguangkai": "着铠",
-		"re_boss_heiguangkai_info": "锁定技，游戏开始时，将【黑光铠】置入你的装备区。",
-		"re_boss_wushuangfangtianji": "舞戟",
-		"re_boss_wushuangfangtianji_info": "锁定技，游戏开始时，将【无双方天戟】置入你的装备区。",
-		"re_boss_hongmianbaihuapao": "着袍",
-		"re_boss_hongmianbaihuapao_info": "锁定技，游戏开始时，将【红棉百花袍】置入你的装备区。",
-		"re_boss_shufazijinguan": "戴冠",
-		"re_boss_shufazijinguan_info": "锁定技，游戏开始时，将【束发紫金冠】置入你的装备区。",
-		"re_boss_qimenbagua": "奇阵",
-		"re_boss_qimenbagua_info": "锁定技，游戏开始时，将【奇门八阵】置入你的装备区。",
-		"re_boss_sanlve": "哓略",
-		"re_boss_sanlve_info": "锁定技，游戏开始时，将【三略】置入你的装备区。",
-		"re_boss_qinggangjian": "执剑",
-		"re_boss_qinggangjian_info": "锁定技，游戏开始时，将【青釭剑】置入你的装备区。",
-		"re_boss_baiyinshizi": "披盔",
-		"re_boss_baiyinshizi_info": "锁定技，游戏开始时，将【白银狮子】置入你的装备区。",
+		"equip_zhugeliannu": "持弩",
+		"equip_zhugeliannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
+		"equip_changandajian": "登舰",
+		"equip_changandajian_info": "锁定技，游戏开始时，将两张【长安大舰】置入你的装备区。",
+		"equip_gudingdao": "宝刀",
+		"equip_gudingdao_info": "锁定技，游戏开始时，将【古锭刀】置入你的装备区。",
+		"equip_tengjia": "编甲",
+		"equip_tengjia_info": "锁定技，游戏开始时，将【藤甲】置入你的装备区。",
+		"equip_xingtianpojunfu": "舞斧",
+		"equip_xingtianpojunfu_info": "锁定技，游戏开始时，将【刑天破军斧】置入你的装备区。",
+		"equip_heiguangkai": "着铠",
+		"equip_heiguangkai_info": "锁定技，游戏开始时，将【黑光铠】置入你的装备区。",
+		"equip_wushuangfangtianji": "舞戟",
+		"equip_wushuangfangtianji_info": "锁定技，游戏开始时，将【无双方天戟】置入你的装备区。",
+		"equip_hongmianbaihuapao": "着袍",
+		"equip_hongmianbaihuapao_info": "锁定技，游戏开始时，将【红棉百花袍】置入你的装备区。",
+		"equip_shufazijinguan": "戴冠",
+		"equip_shufazijinguan_info": "锁定技，游戏开始时，将【束发紫金冠】置入你的装备区。",
+		"equip_qimenbagua": "奇阵",
+		"equip_qimenbagua_info": "锁定技，游戏开始时，将【奇门八阵】置入你的装备区。",
+		"equip_sanlve": "哓略",
+		"equip_sanlve_info": "锁定技，游戏开始时，将【三略】置入你的装备区。",
+		"equip_qinggangjian": "执剑",
+		"equip_qinggangjian_info": "锁定技，游戏开始时，将【青釭剑】置入你的装备区。",
+		"equip_baiyinshizi": "披盔",
+		"equip_baiyinshizi_info": "锁定技，游戏开始时，将【白银狮子】置入你的装备区。",
 		"re_boss_zhangmashemao": "执矛",
 		"re_boss_zhangmashemao_info": "锁定技，游戏开始时，将【丈八蛇矛】置入你的装备区。",
 		"equip_hanbingjian": "霜刃",
