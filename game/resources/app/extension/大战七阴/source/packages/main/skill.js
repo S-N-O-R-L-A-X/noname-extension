@@ -1052,6 +1052,28 @@ export const skill = {
 				player.equip(game.createCard2('renwang', 'club', 2));
 			}
 		},
+		"equip_jinwuluorigong": {
+			forced: true,
+			filter: function (event, player) {
+				return (event.name != 'phase' || game.phaseNumber == 0);
+			},
+			trigger: {
+				global: 'phaseBefore',
+				player: 'enterGame',
+			},
+			content: function () {
+				game.loadModeAsync("boss", mode => {
+					lib.card["jinwuluorigong"] = lib.card["jinwuluorigong"] || mode.card["jinwuluorigong"];
+					lib.translate["jinwuluorigong"] = lib.translate["jinwuluorigong"] || mode.translate["jinwuluorigong"];
+					lib.translate["iwasawa_crowbow"] = lib.translate["iwasawa_crowbow"] || mode.translate["iwasawa_crowbow"];
+					lib.translate["iwasawa_crowbow2"] = lib.translate["iwasawa_crowbow2"] || mode.translate["iwasawa_crowbow2"];
+					lib.skill["iwasawa_crowbow"] = mode.skill["iwasawa_crowbow"];
+					lib.skill["iwasawa_crowbow2"] = mode.skill["iwasawa_crowbow2"];
+					player.equip(game.createCard2('jinwuluorigong', 'heart', 5));
+				})
+			}
+		},
+
 
 		"re_boss_reborn_machao": {
 			trigger: {
@@ -9121,6 +9143,8 @@ export const skill = {
 		"equip_hanbingjian_info": "锁定技，游戏开始时，将【寒冰剑】置入你的装备区。",
 		"equip_renwangdun": "持盾",
 		"equip_renwangdun_info": "锁定技，游戏开始时，将【仁王盾】置入你的装备区。",
+		"equip_jinwuluorigong": "弯弓",
+		"equip_jinwuluorigong_info": "锁定技，游戏开始时，将【金乌落日弓】置入你的装备区。",
 
 		// fusion_shen_sunce
 		"repinghe": "冯河",
