@@ -529,8 +529,8 @@
     "ChineseName": "镇恶",
     "info": "锁定技，当你于出牌阶段使用牌指向目标后，若其手牌数不大于你，则其无法响应的你的牌。"
   },
-  "re_boss_liannu": {
-    "EnglishName": "re_boss_liannu",
+  "equip_zhugeliannu": {
+    "EnglishName": "equip_zhugeliannu",
     "ChineseName": "持弩",
     "info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。"
   },
@@ -539,13 +539,13 @@
     "ChineseName": "凶兽",
     "info": "锁定技，你使用【杀】造成的伤害+1。你与其他角色距离-1。你不能被翻面；每回合首次受到大于1点的伤害后，视为对伤害来源使用一张【杀】。"
   },
-  "re_boss_changandajian": {
-    "EnglishName": "re_boss_changandajian",
+  "equip_changandajian": {
+    "EnglishName": "equip_changandajian",
     "ChineseName": "登舰",
     "info": "锁定技，游戏开始时，将两张【长安大舰】置入你的装备区。"
   },
-  "re_boss_gudingdao": {
-    "EnglishName": "re_boss_gudingdao",
+  "equip_gudingdao": {
+    "EnglishName": "equip_gudingdao",
     "ChineseName": "宝刀",
     "info": "锁定技，游戏开始时，将【古锭刀】置入你的装备区。"
   },
@@ -554,8 +554,8 @@
     "ChineseName": "追摄",
     "info": "锁定技，你使用【杀】次数+1。"
   },
-  "re_boss_tengjia": {
-    "EnglishName": "re_boss_tengjia",
+  "equip_tengjia": {
+    "EnglishName": "equip_tengjia",
     "ChineseName": "编甲",
     "info": "锁定技，游戏开始时，将【藤甲】置入你的装备区。"
   },
@@ -573,6 +573,11 @@
     "EnglishName": "re_boss_xianji",
     "ChineseName": "先机",
     "info": "锁定技，当你体力低于8，你成为牌的目标时，你摸2张牌。"
+  },
+  "equip_jinwuluorigong": {
+    "EnglishName": "equip_jinwuluorigong",
+    "ChineseName": "弯弓",
+    "info": "锁定技，游戏开始时，将【金乌落日弓】置入你的装备区。"
   },
   "re_boss_reborn_machao": {
     "EnglishName": "re_boss_reborn_machao",
@@ -619,13 +624,13 @@
     "ChineseName": "凶兽",
     "info": "锁定技，你的判定区的牌中，【乐不思蜀】【兵粮寸断】判定结果反转；摸牌阶段你的摸牌数+1；结束阶段，你摸一张牌。"
   },
-  "re_boss_xingtianpojunfu": {
-    "EnglishName": "re_boss_xingtianpojunfu",
+  "equip_xingtianpojunfu": {
+    "EnglishName": "equip_xingtianpojunfu",
     "ChineseName": "舞斧",
     "info": "锁定技，游戏开始时，将【刑天破军斧】置入你的装备区。"
   },
-  "re_boss_heiguangkai": {
-    "EnglishName": "re_boss_heiguangkai",
+  "equip_heiguangkai": {
+    "EnglishName": "equip_heiguangkai",
     "ChineseName": "着铠",
     "info": "锁定技，游戏开始时，将【黑光铠】置入你的装备区。"
   },
@@ -684,18 +689,18 @@
     "ChineseName": "觉醒",
     "info": "锁定技，当你于一个回合内受到了至少3点伤害时，中止一切结算并结束当前回合，然后你对其他角色各造成X点伤害（X为本局本技能触发次数）。"
   },
-  "re_boss_wushuangfangtianji": {
-    "EnglishName": "re_boss_wushuangfangtianji",
+  "equip_wushuangfangtianji": {
+    "EnglishName": "equip_wushuangfangtianji",
     "ChineseName": "舞戟",
     "info": "锁定技，游戏开始时，将【无双方天戟】置入你的装备区。"
   },
-  "re_boss_hongmianbaihuapao": {
-    "EnglishName": "re_boss_hongmianbaihuapao",
+  "equip_hongmianbaihuapao": {
+    "EnglishName": "equip_hongmianbaihuapao",
     "ChineseName": "着袍",
     "info": "锁定技，游戏开始时，将【红棉百花袍】置入你的装备区。"
   },
-  "re_boss_shufazijinguan": {
-    "EnglishName": "re_boss_shufazijinguan",
+  "equip_shufazijinguan": {
+    "EnglishName": "equip_shufazijinguan",
     "ChineseName": "戴冠",
     "info": "锁定技，游戏开始时，将【束发紫金冠】置入你的装备区。"
   },
@@ -814,13 +819,13 @@
     "ChineseName": "邪徒",
     "info": "当你受到伤害后，你可以弃置1张牌，然后对伤害来源造成同等伤害。"
   },
-  "re_boss_qimenbagua": {
-    "EnglishName": "re_boss_qimenbagua",
+  "equip_qimenbagua": {
+    "EnglishName": "equip_qimenbagua",
     "ChineseName": "奇阵",
     "info": "锁定技，游戏开始时，将【奇门八阵】置入你的装备区。"
   },
-  "re_boss_sanlve": {
-    "EnglishName": "re_boss_sanlve",
+  "equip_sanlve": {
+    "EnglishName": "equip_sanlve",
     "ChineseName": "哓略",
     "info": "锁定技，游戏开始时，将【三略】置入你的装备区。"
   },
@@ -899,13 +904,13 @@
     "ChineseName": "羽刃",
     "info": "当你造成伤害后可判定，若为红色，则对不为你的一名角色再造成1点雷属性伤害。"
   },
-  "re_boss_qinggangjian": {
-    "EnglishName": "re_boss_qinggangjian",
+  "equip_qinggangjian": {
+    "EnglishName": "equip_qinggangjian",
     "ChineseName": "执剑",
     "info": "锁定技，游戏开始时，将【青釭剑】置入你的装备区。"
   },
-  "re_boss_baiyinshizi": {
-    "EnglishName": "re_boss_baiyinshizi",
+  "equip_baiyinshizi": {
+    "EnglishName": "equip_baiyinshizi",
     "ChineseName": "披盔",
     "info": "锁定技，游戏开始时，将【白银狮子】置入你的装备区。"
   },
@@ -924,6 +929,11 @@
     "ChineseName": "逞凶",
     "info": "锁定技，游戏轮数为单数时，你造成的伤害+1；游戏轮数为双数时，你造成的伤害-1。"
   },
+  "equip_hanbingjian": {
+    "EnglishName": "equip_hanbingjian",
+    "ChineseName": "霜刃",
+    "info": "锁定技，游戏开始时，将【寒冰剑】置入你的装备区。"
+  },
   "yingyang": {
     "EnglishName": "yingyang",
     "ChineseName": "鹰扬",
@@ -933,5 +943,10 @@
     "EnglishName": "re_boss_shunxue",
     "ChineseName": "吮血",
     "info": "出牌阶段开始时和结束阶段开始时，你将手牌摸至手牌上限。"
+  },
+  "equip_renwangdun": {
+    "EnglishName": "equip_renwangdun",
+    "ChineseName": "持盾",
+    "info": "锁定技，游戏开始时，将【仁王盾】置入你的装备区。"
   }
 }
