@@ -8821,6 +8821,42 @@ export const skill = {
 			}
 		},
 
+		// shanhetu_junshi_duanjiong
+		"re_boss_fumeng": {
+			trigger: { global: ["roundStart"] },
+			filter(event, player) {
+				return player.countCards("h") > 0;
+			},
+			logTarget: "player",
+			async content(event, trigger, player) {
+				const result = await player
+					.choosePlayerCard(player, true, "h", [1, Infinity])
+					.set(
+						"prompt",
+						(() => {
+							return '###赴梦###<div class="text center">令任意手牌手牌为【杀】</div>';
+						})()
+					)
+					.forResult();
+				if (result?.bool && result.cards?.length) {
+					player.addGaintag(result.cards, "re_boss_fumeng_viewAs");
+				}
+			},
+			mod: {
+				cardname(card) {
+					if (get.itemtype(card) === "card" && card.hasGaintag("re_boss_fumeng_viewAs")) {
+						return "sha";
+					}
+				},
+				cardnature(card) {
+					if (get.itemtype(card) === "card" && card.hasGaintag("re_boss_fumeng_viewAs")) {
+						return false;
+					}
+				},
+			},
+
+		},
+
 		// guozhan
 		gzcongjian: {
 			trigger: {
@@ -9548,6 +9584,10 @@ export const skill = {
 		"re_boss_yongjue_global": "勇决",
 		"re_boss_jiansheng": "剑圣",
 		"re_boss_jiansheng_info": "你的回合外，你可以将任何牌当【闪】使用或打出；你的回合内，你可以将任何牌当【酒】使用",
+
+		// shanhetu_junshi_duanjiong
+		"re_boss_fumeng": "赴梦",
+		"re_boss_fumeng_info": "每轮开始时，你可以令你任意张手牌视为【杀】。",
 
 		// missing
 		"gzcongjian": "从谏",
