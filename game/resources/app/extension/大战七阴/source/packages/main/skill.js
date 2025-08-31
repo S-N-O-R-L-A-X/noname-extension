@@ -825,6 +825,18 @@ export const skill = {
 			}
 		},
 
+		"re_boss_lingdong": {
+			trigger: { player: "damageBegin4" },
+			forced: true,
+			content: async function () {
+				const { result } = await player.judge();
+				if (result.color == "red") {
+					trigger.cancel();
+				}
+			}
+		},
+
+
 		"re_boss_zhuishe": {
 			mod: {
 				cardUsable: function (card, player, num) {
@@ -9146,6 +9158,8 @@ export const skill = {
 		"re_boss_chengxiong_info": "锁定技，游戏轮数为单数时，你造成的伤害+1；游戏轮数为双数时，你造成的伤害-1。",
 		"re_boss_shunxue": "吮血",
 		"re_boss_shunxue_info": "出牌阶段开始时和结束阶段开始时，你将手牌摸至手牌上限。",
+		"re_boss_lingdong": "灵动",
+		"re_boss_lingdong_info": "锁定技，受到伤害时你判定，若判定结果为红色，则防止此伤害。",
 
 		"equip_zhugeliannu": "持弩",
 		"equip_zhugeliannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
