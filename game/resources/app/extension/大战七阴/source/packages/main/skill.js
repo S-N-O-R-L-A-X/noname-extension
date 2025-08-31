@@ -828,14 +828,13 @@ export const skill = {
 		"re_boss_lingdong": {
 			trigger: { player: "damageBegin4" },
 			forced: true,
-			content: async function () {
+			content: async function (event, trigger, player) {
 				const { result } = await player.judge();
 				if (result.color == "red") {
 					trigger.cancel();
 				}
 			}
 		},
-
 
 		"re_boss_zhuishe": {
 			mod: {
@@ -9602,6 +9601,7 @@ export const skill = {
 		// shanhetu_junshi_duanjiong
 		"re_boss_fumeng": "赴梦",
 		"re_boss_fumeng_info": "每轮开始时，你可以令你任意张手牌视为【杀】。",
+		"re_boss_fumeng_viewAs": "灵动",
 
 		// missing
 		"gzcongjian": "从谏",
