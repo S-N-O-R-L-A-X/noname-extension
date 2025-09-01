@@ -1084,6 +1084,19 @@ export const skill = {
 				})
 			}
 		},
+		"equip_guanshifu": {
+			forced: true,
+			filter: function (event, player) {
+				return (event.name != 'phase' || game.phaseNumber == 0);
+			},
+			trigger: {
+				global: 'phaseBefore',
+				player: 'enterGame',
+			},
+			content: function () {
+				player.equip(game.createCard2('guanshi', 'diamond', 5));
+			}
+		},
 
 
 		"re_boss_reborn_machao": {
@@ -9194,6 +9207,9 @@ export const skill = {
 		"equip_renwangdun_info": "锁定技，游戏开始时，将【仁王盾】置入你的装备区。",
 		"equip_jinwuluorigong": "弯弓",
 		"equip_jinwuluorigong_info": "锁定技，游戏开始时，将【金乌落日弓】置入你的装备区。",
+		"equip_guanshifu": "大斧",
+		"equip_guanshifu_info": "锁定技，游戏开始时，将【贯石斧】置入你的装备区。",
+
 
 		// fusion_shen_sunce
 		"repinghe": "冯河",
