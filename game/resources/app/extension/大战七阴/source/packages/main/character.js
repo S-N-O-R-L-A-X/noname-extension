@@ -293,6 +293,10 @@ export const character = {
 		"shanhetu_junshi_machao": "来源于山河图军师联盟篇葭萌关关内马超，没有任何改动。<br>【强度】★★★★★★<br> 【亮点】综合",
 		"shanhetu_junshi_zhangfei": "来源于山河图军师联盟篇葭萌关关内张飞，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_junshi_wuqiao": "来源于山河图军师联盟篇葭萌关关内吴乔，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_junshi_wuyi": "来源于山河图军师联盟篇葭萌关关内吴懿，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
+		"shanhetu_junshi_duanjiong": "来源于山河图军师联盟篇葭萌关关内段颎，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_junshi_zhujun": "来源于山河图军师联盟篇葭萌关关内朱儁，没有任何改动。<br>【强度】★★★★<br> 【亮点】控制",
+		"shanhetu_junshi_hansui": "来源于山河图军师联盟篇葭萌关关内韩遂，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击"
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -339,7 +343,9 @@ export const character = {
 			],
 			against7devil_shanhetu_junshi_boss: ["shanhetu_junshi_jiangwei", "shanhetu_junshi_yanyan",
 				"shanhetu_junshi_huojun", "shanhetu_junshi_machao", "shanhetu_junshi_zhangfei",
-				"shanhetu_junshi_wuqiao"
+				"shanhetu_junshi_wuqiao", "shanhetu_junshi_wuyi", "shanhetu_junshi_duanjiong",
+				"shanhetu_junshi_zhujun", "shanhetu_junshi_hansui"
+
 			],
 			against7devil_shanhetu_fadong_boss: [
 				"shanhetu_fadong_liusandao"
