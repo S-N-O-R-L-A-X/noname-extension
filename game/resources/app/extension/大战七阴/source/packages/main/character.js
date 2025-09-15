@@ -151,7 +151,7 @@ export const character = {
 		"shanhetu_junshi_wuqiao": ["male", "qun", "8/8/8", ["re_boss_lianyu", "equip_qinggangjian", "clanqiajue", "clanmuyin", "shenzhi", "olxianzhen", "re_boss_sishe", "shanzhuan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_wuyi": ["male", "shu", "8/8/8", ["re_boss_lianyu", "equip_zhugeliannu", "equip_shufazijinguan", "xinbenxi", "jieyuan", "bixin", "wangong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_duanjiong": ["male", "qun", "8/8/8", ["re_boss_lianyu", "equip_zhangbashemao", "olsaogu", "re_zhiheng", "xiangle", "re_boss_fumeng", "re_boss_lingdong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_zhujun": ["male", "qun", "8/8/8", ["re_boss_lianyu", "equip_guanshifu", "cuipo", "new_rewusheng", "ganglie", "re_boss_bamen", "re_boss_zhengyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_zhujun": ["male", "qun", "8/8/8", ["re_boss_lianyu", "equip_guanshifu", "olcuipo", "new_rewusheng", "ganglie", "re_boss_bamen", "re_boss_zhengyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_hansui": ["male", "qun", "8/8/8", ["re_boss_lianyu", "equip_guanshifu", "niluan", "xiaoxi", "luanji", "xinkuanggu", "re_boss_duanjia", "re_boss_changqiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
@@ -293,7 +293,7 @@ export const character = {
 		"shanhetu_junshi_machao": "来源于山河图军师联盟篇葭萌关关内马超，没有任何改动。<br>【强度】★★★★★★<br> 【亮点】综合",
 		"shanhetu_junshi_zhangfei": "来源于山河图军师联盟篇葭萌关关内张飞，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_junshi_wuqiao": "来源于山河图军师联盟篇葭萌关关内吴乔，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
-		"shanhetu_junshi_wuyi": "来源于山河图军师联盟篇葭萌关关内吴懿，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
+		"shanhetu_junshi_wuyi": "来源于山河图军师联盟篇葭萌关关内吴懿，没有任何改动。<br>【强度】★★★★★★<br> 【亮点】攻击",
 		"shanhetu_junshi_duanjiong": "来源于山河图军师联盟篇葭萌关关内段颎，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_junshi_zhujun": "来源于山河图军师联盟篇葭萌关关内朱儁，没有任何改动。<br>【强度】★★★★<br> 【亮点】控制",
 		"shanhetu_junshi_hansui": "来源于山河图军师联盟篇葭萌关关内韩遂，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击"
@@ -345,7 +345,6 @@ export const character = {
 				"shanhetu_junshi_huojun", "shanhetu_junshi_machao", "shanhetu_junshi_zhangfei",
 				"shanhetu_junshi_wuqiao", "shanhetu_junshi_wuyi", "shanhetu_junshi_duanjiong",
 				"shanhetu_junshi_zhujun", "shanhetu_junshi_hansui"
-
 			],
 			against7devil_shanhetu_fadong_boss: [
 				"shanhetu_fadong_liusandao"
