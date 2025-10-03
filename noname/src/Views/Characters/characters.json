@@ -4357,7 +4357,7 @@
     "EnglishName": "shanhetu_junshi_wuqiao",
     "ChineseName": "军师篇吴乔",
     "gender": "male",
-    "nationality": "shu",
+    "nationality": "qun",
     "hp": "8/8/8",
     "skills": [
       "re_boss_lianyu",
@@ -4385,5 +4385,131 @@
     "details": "来源于山河图军师联盟篇葭萌关关内吴乔，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_wuyi",
+    "ChineseName": "军师篇吴懿",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "8/8/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_zhugeliannu",
+      "equip_shufazijinguan",
+      "xinbenxi",
+      "jieyuan",
+      "bixin",
+      "wangong",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "持弩",
+      "戴冠",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇葭萌关关内吴懿，没有任何改动。",
+    "strength": "【强度】★★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_duanjiong",
+    "ChineseName": "军师篇段颎",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "8/8/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_zhangbashemao",
+      "olsaogu",
+      "re_zhiheng",
+      "xiangle",
+      "re_boss_fumeng",
+      "re_boss_lingdong",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "赴梦",
+      "灵动",
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇葭萌关关内段颎，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_zhujun",
+    "ChineseName": "军师篇朱儁",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "8/8/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_guanshifu",
+      "olcuipo",
+      "new_rewusheng",
+      "ganglie",
+      "re_boss_bamen",
+      "re_boss_zhengyi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "大斧",
+      null,
+      null,
+      null,
+      "八门",
+      "征役",
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇葭萌关关内朱儁，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】控制"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_hansui",
+    "ChineseName": "军师篇韩遂",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "8/8/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_guanshifu",
+      "niluan",
+      "xiaoxi",
+      "luanji",
+      "xinkuanggu",
+      "re_boss_duanjia",
+      "re_boss_changqiang",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "大斧",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "长枪",
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇葭萌关关内韩遂，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
   }
 ]

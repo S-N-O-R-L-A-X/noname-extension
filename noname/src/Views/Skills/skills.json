@@ -948,5 +948,20 @@
     "EnglishName": "equip_renwangdun",
     "ChineseName": "持盾",
     "info": "锁定技，游戏开始时，将【仁王盾】置入你的装备区。"
+  },
+  "re_boss_fumeng": {
+    "EnglishName": "re_boss_fumeng",
+    "ChineseName": "赴梦",
+    "info": "每轮开始时，你可以令你任意张手牌视为【杀】。"
+  },
+  "re_boss_lingdong": {
+    "EnglishName": "re_boss_lingdong",
+    "ChineseName": "灵动",
+    "info": "锁定技，受到伤害时你判定，若判定结果为红色，则防止此伤害。"
+  },
+  "equip_guanshifu": {
+    "EnglishName": "equip_guanshifu",
+    "ChineseName": "大斧",
+    "info": "锁定技，游戏开始时，将【贯石斧】置入你的装备区。"
   }
 }
