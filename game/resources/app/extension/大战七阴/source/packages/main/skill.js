@@ -475,7 +475,7 @@ export const skill = {
 				})
 				return sum >= 3;
 			},
-			content: async () => {
+			content: async (event, trigger, player) => {
 				"step 0"
 				const evt = _status.event.getParent('phase');
 				if (evt) {
@@ -632,7 +632,7 @@ export const skill = {
 			filter: function (event, player) {
 				return player.storage.re_boss_xuzhang_effect && player.storage.re_boss_xuzhang_effect > 0;
 			},
-			content: async () => {
+			content: async (event, trigger, player) => {
 				const marks = player.storage.re_boss_xuzhang_effect;
 				const choices = ["失去" + marks + "点体力", "失去" + marks + "点体力上限"];
 				const result = await player.chooseControl(choices).set("ai", () => {
@@ -1397,7 +1397,7 @@ export const skill = {
 			filter: function (event, player) {
 				return event.player != player && player.countCards('he') >= 2;
 			},
-			content: async () => {
+			content: async (event, trigger, player) => {
 				const { result: { bool } } = await player.chooseToDiscard('弃置两张牌，令此牌对你无效', 'he', 2).set('ai', function (card) {
 					return (_status.event.goon / 1.4) - get.value(card);
 				}).set('goon', function () {
@@ -1574,7 +1574,7 @@ export const skill = {
 			filter: function (event, player) {
 				return player.countCards("h", lib.filter.cardRecastable) > 0;
 			},
-			content: async () => {
+			content: async (event, trigger, player) => {
 				const sha1 = player.countCards('h', { name: 'sha' });
 				const { result: chosenCardsResult } = await player.chooseCard("h", "请选择不超过3张手牌", [1, 3], function (card) {
 					return lib.filter.cardRecastable.apply(this, arguments);
@@ -1612,7 +1612,7 @@ export const skill = {
 					return str;
 				}
 			},
-			content: async () => {
+			content: async (event, trigger, player) => {
 				const tg = trigger.source;
 				const { result: chosenCardsResult } = await player.chooseCard("he", [1, Infinity], "请选择任意张手牌作为杀对" + get.translation(tg.name) + "使用");
 
