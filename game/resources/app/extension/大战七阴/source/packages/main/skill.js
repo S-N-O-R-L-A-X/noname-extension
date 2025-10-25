@@ -836,6 +836,25 @@ export const skill = {
 			}
 		},
 
+		"re_boss_duanjia": {
+			trigger: { player: 'phaseZhunbeiBegin' },
+			filter: function (event, player) {
+				return !player.hasEmptySlot(2)
+			},
+			content: async function (event, trigger, player) {
+				const card = get.cardPile(function (card) {
+					var type = get.subtype(card);
+					if (result.control == "equip6") {
+						return type == "equip3" || type == "equip4";
+					}
+					return type == result.control;
+				});
+				if (card) {
+					player.equip(card);
+				}
+			}
+		},
+
 		"re_boss_zhuishe": {
 			mod: {
 				cardUsable: function (card, player, num) {
@@ -9172,6 +9191,8 @@ export const skill = {
 		"re_boss_shunxue_info": "出牌阶段开始时和结束阶段开始时，你将手牌摸至手牌上限。",
 		"re_boss_lingdong": "灵动",
 		"re_boss_lingdong_info": "锁定技，受到伤害时你判定，若判定结果为红色，则防止此伤害。",
+		"re_boss_duanjia": "锻甲",
+		"re_boss_duanjia_info": "准备阶段，若你没有防具，则将一件随机防具置入你的装备区。",
 
 		"equip_zhugeliannu": "持弩",
 		"equip_zhugeliannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
