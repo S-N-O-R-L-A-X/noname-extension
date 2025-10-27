@@ -153,7 +153,7 @@ export const character = {
 		"shanhetu_junshi_duanjiong": ["male", "qun", "8/8/8", ["re_boss_lianyu", "equip_zhangbashemao", "olsaogu", "re_zhiheng", "xiangle", "re_boss_fumeng", "re_boss_lingdong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_zhujun": ["male", "qun", "8/8/8", ["re_boss_lianyu", "equip_guanshifu", "olcuipo", "new_rewusheng", "ganglie", "re_boss_bamen", "re_boss_zhengyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_hansui": ["male", "qun", "8/8/8", ["re_boss_lianyu", "equip_guanshifu", "niluan", "xiaoxi", "luanji", "xinkuanggu", "re_boss_duanjia", "re_boss_changqiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_lingcao": ["male", "wu", "8/8/8", ["re_boss_lianyu", "equip_tengjia", "dujin", "yimie", "re_boss_duanjia", "re_boss_jibao", "dlt_jueyan", "tuxing", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_lingcao": ["male", "wu", "8/8/8", ["re_boss_lianyu", "equip_tengjia", "dujin", "yimie", "re_boss_duanjia", "re_boss_jibao", "drlt_jueyan", "tuxing", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_shamoke": ["male", "shu", "7/7/8", ["re_boss_lianyu", "equip_pintieshuangji", "jili", "latest_ol_feiyang", "fentian", "zishu", "huaiyuan", "re_boss_libing", "re_boss_duanjia", "boss_nbaonu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {

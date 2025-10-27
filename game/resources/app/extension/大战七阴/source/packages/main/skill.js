@@ -839,15 +839,12 @@ export const skill = {
 		"re_boss_duanjia": {
 			trigger: { player: 'phaseZhunbeiBegin' },
 			filter: function (event, player) {
-				return !player.hasEmptySlot(2)
+				return player.hasEmptySlot(2);
 			},
 			content: async function (event, trigger, player) {
 				const card = get.cardPile(function (card) {
 					var type = get.subtype(card);
-					if (result.control == "equip6") {
-						return type == "equip3" || type == "equip4";
-					}
-					return type == result.control;
+					return type == "equip2";
 				});
 				if (card) {
 					player.equip(card);
