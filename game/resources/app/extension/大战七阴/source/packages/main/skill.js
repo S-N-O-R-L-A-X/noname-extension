@@ -852,6 +852,22 @@ export const skill = {
 			}
 		},
 
+		"re_boss_jibao": {
+			trigger: { player: 'phaseZhunbeiBegin' },
+			filter: function (event, player) {
+				return player.hasEmptySlot(5);
+			},
+			content: async function (event, trigger, player) {
+				const card = get.cardPile(function (card) {
+					var type = get.subtype(card);
+					return type == "equip5";
+				});
+				if (card) {
+					player.equip(card);
+				}
+			}
+		},
+
 		"re_boss_zhuishe": {
 			mod: {
 				cardUsable: function (card, player, num) {
@@ -9190,6 +9206,8 @@ export const skill = {
 		"re_boss_lingdong_info": "锁定技，受到伤害时你判定，若判定结果为红色，则防止此伤害。",
 		"re_boss_duanjia": "锻甲",
 		"re_boss_duanjia_info": "准备阶段，若你没有防具，则将一件随机防具置入你的装备区。",
+		"re_boss_jibao": "集宝",
+		"re_boss_jibao_info": "准备阶段，若你没有宝物，则将一件随机宝物置入你的装备区。",
 
 		"equip_zhugeliannu": "持弩",
 		"equip_zhugeliannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
