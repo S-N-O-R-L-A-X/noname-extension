@@ -154,8 +154,8 @@ export const character = {
 		"shanhetu_junshi_zhujun": ["male", "qun", "8/8/8", ["re_boss_lianyu", "equip_guanshifu", "olcuipo", "new_rewusheng", "ganglie", "re_boss_bamen", "re_boss_zhengyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_hansui": ["male", "qun", "8/8/8", ["re_boss_lianyu", "equip_guanshifu", "niluan", "xiaoxi", "luanji", "xinkuanggu", "re_boss_duanjia", "re_boss_changqiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_lingcao": ["male", "wu", "8/8/8", ["re_boss_lianyu", "equip_tengjia", "dujin", "yimie", "re_boss_duanjia", "re_boss_jibao", "drlt_jueyan", "tuxing", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_shamoke": ["male", "shu", "7/7/8", ["re_boss_lianyu", "equip_pintieshuangji", "jili", "latest_ol_feiyang", "fentian", "zishu", "huaiyuan", "re_boss_libing", "re_boss_duanjia", "boss_nbaonu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_liangxing": ["male", "qun", "7/7/8", ["re_boss_lianyu", "lulve", "zhuixi", "latest_ol_feiyang", "faen", "jiushi", "lingqu", "hengjiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_shamoke": ["male", "shu", "7/7/8", ["re_boss_lianyu", "equip_pintieshuangji", "gzjili", "latest_ol_feiyang", "fentian", "zishu", "huaiyuan", "re_boss_libing", "re_boss_duanjia", "boss_nbaonu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_liangxing": ["male", "qun", "7/7/8", ["re_boss_lianyu", "lulve", "lxzhuixi", "latest_ol_feiyang", "faen", "jiushi", "boss_lingqu", "hengjiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_chengjichengcui": ["male", "wei", "7/7/8", ["re_boss_lianyu", "oltousui", "olchuming", "latest_ol_feiyang", "xiansi", "shizhan", "cangxin", "boss_qixiang", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
@@ -518,9 +518,9 @@ export const character = {
 		"shanhetu_junshi_zhujun": "军师篇朱儁",
 		"shanhetu_junshi_hansui": "军师篇韩遂",
 		"shanhetu_junshi_lingcao": "军师篇凌操",
-		"shanetu_junshi_shamoke": "军师篇沙摩柯",
-		"shanetu_junshi_liangxing": "军师篇梁兴",
-		"shanetu_junshi_chengjichengcui": "军师篇成济成倅",
+		"shanhetu_junshi_shamoke": "军师篇沙摩柯",
+		"shanhetu_junshi_liangxing": "军师篇梁兴",
+		"shanhetu_junshi_chengjichengcui": "军师篇成济成倅",
 	},
 
 }
