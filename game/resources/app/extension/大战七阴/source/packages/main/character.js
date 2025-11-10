@@ -293,14 +293,18 @@ export const character = {
 		"shanhetu_hanzhong_zhangchunhua": "来源于山河图风起汉中篇第三章关内张春华，没有任何改动。<br>【强度】★★★★★<br> 【亮点】体力流失",
 		"shanhetu_junshi_jiangwei": "来源于山河图军师联盟篇葭萌关关内姜维，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_junshi_yanyan": "来源于山河图军师联盟篇葭萌关关内严颜，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
-		"shanhetu_junshi_huojun": "来源于山河图军师联盟篇葭萌关关内霍峻，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_junshi_huojun": "来源于山河图军师联盟篇葭萌关关内霍峻，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
 		"shanhetu_junshi_machao": "来源于山河图军师联盟篇葭萌关关内马超，没有任何改动。<br>【强度】★★★★★★<br> 【亮点】综合",
 		"shanhetu_junshi_zhangfei": "来源于山河图军师联盟篇葭萌关关内张飞，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_junshi_wuqiao": "来源于山河图军师联盟篇葭萌关关内吴乔，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_junshi_wuyi": "来源于山河图军师联盟篇葭萌关关内吴懿，没有任何改动。<br>【强度】★★★★★★<br> 【亮点】攻击",
 		"shanhetu_junshi_duanjiong": "来源于山河图军师联盟篇葭萌关关内段颎，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 		"shanhetu_junshi_zhujun": "来源于山河图军师联盟篇葭萌关关内朱儁，没有任何改动。<br>【强度】★★★★<br> 【亮点】控制",
-		"shanhetu_junshi_hansui": "来源于山河图军师联盟篇葭萌关关内韩遂，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击"
+		"shanhetu_junshi_hansui": "来源于山河图军师联盟篇葭萌关关内韩遂，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
+		"shanhetu_junshi_lingcao": "来源于山河图军师联盟篇葭萌关关内凌操，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+		"shanhetu_junshi_shamoke": "来源于山河图军师联盟篇葭萌关boss沙摩柯，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
+		"shanhetu_junshi_liangxing": "来源于山河图军师联盟篇葭萌关boss梁兴，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
+		"shanhetu_junshi_chengjichengcui": "来源于山河图军师联盟篇葭萌关boss成济成倅，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击"
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -348,7 +352,8 @@ export const character = {
 			against7devil_shanhetu_junshi_boss: ["shanhetu_junshi_jiangwei", "shanhetu_junshi_yanyan",
 				"shanhetu_junshi_huojun", "shanhetu_junshi_machao", "shanhetu_junshi_zhangfei",
 				"shanhetu_junshi_wuqiao", "shanhetu_junshi_wuyi", "shanhetu_junshi_duanjiong",
-				"shanhetu_junshi_zhujun", "shanhetu_junshi_hansui"
+				"shanhetu_junshi_zhujun", "shanhetu_junshi_hansui", "shanhetu_junshi_lingcao",
+				"shanhetu_junshi_shamoke", "shanhetu_junshi_liangxing", "shanhetu_junshi_chengjichengcui"
 			],
 			against7devil_shanhetu_fadong_boss: [
 				"shanhetu_fadong_liusandao"
