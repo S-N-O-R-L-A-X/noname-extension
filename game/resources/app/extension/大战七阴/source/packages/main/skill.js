@@ -1156,10 +1156,10 @@ export const skill = {
 			},
 			forced: true,
 			forceDie: true,
-			content: () => {
+			content: async (event, trigger, player) => {
 				trigger.cancel();
-				player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_machao");
-				player.recover(player.maxHp - player.hp);
+				await player.reinitCharacter(player.name1, "shanhetu_jiangdong_wuhu_machao");
+				await player.recover(player.maxHp - player.hp);
 				game.triggerEnter(player);
 			},
 		},
@@ -1172,10 +1172,10 @@ export const skill = {
 			},
 			forced: true,
 			forceDie: true,
-			content: () => {
+			content: async (event, trigger, player) => {
 				trigger.cancel();
-				player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhaoyun");
-				player.recover(player.maxHp - player.hp);
+				await player.reinitCharacter(player.name1, "shanhetu_jiangdong_wuhu_zhaoyun");
+				await player.recover(player.maxHp - player.hp);
 				game.triggerEnter(player);
 			}
 		},
@@ -1188,10 +1188,10 @@ export const skill = {
 			},
 			forced: true,
 			forceDie: true,
-			content: () => {
+			content: async (event, trigger, player) => {
 				trigger.cancel();
-				player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_zhangfei");
-				player.recover(player.maxHp - player.hp);
+				await player.reinitCharacter(player.name1, "shanhetu_jiangdong_wuhu_zhangfei");
+				await player.recover(player.maxHp - player.hp);
 				game.triggerEnter(player);
 			}
 		},
@@ -1204,18 +1204,12 @@ export const skill = {
 			},
 			forced: true,
 			forceDie: true,
-			content: () => {
+			content: async (event, trigger, player) => {
 				trigger.cancel();
-				player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_guanyu");
-				player.recover(player.maxHp - player.hp);
+				await player.reinitCharacter(player.name1, "shanhetu_jiangdong_wuhu_guanyu");
+				await player.recover(player.maxHp - player.hp);
 				game.triggerEnter(player);
 			}
-			// content: async (event, trigger, player) => {
-			// 	trigger.cancel();
-			// 	await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_guanyu");									await player.recover(player.maxHp - player.hp);
-			// 	await player.recover(player.maxHp - player.hp);
-			// 	game.triggerEnter(player);
-			// }
 		},
 
 		"re_boss_reborn_caoxiancaohua2": {
@@ -1227,18 +1221,12 @@ export const skill = {
 			},
 			forced: true,
 			forceDie: true,
-			content: () => {
+			content: async (event, trigger, player) => {
 				trigger.cancel();
-				player.reinitCharacter(player.name1, "shanhetu_boss_caoxiancaohua2");
-				player.recover(player.maxHp - player.hp);
+				await player.reinitCharacter(player.name1, "shanhetu_jiangdong_caoxiancaohua2");
+				await player.recover(player.maxHp - player.hp);
 				game.triggerEnter(player);
 			}
-			// content: async (event, trigger, player) => {
-			// 	trigger.cancel();
-			// 	await player.reinitCharacter(player.name1, "shanhetu_boss_wuhu_guanyu");									await player.recover(player.maxHp - player.hp);
-			// 	await player.recover(player.maxHp - player.hp);
-			// 	game.triggerEnter(player);
-			// }
 		},
 
 		"re_boss_reborn_yaosengzhenjia": {
