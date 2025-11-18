@@ -54,7 +54,7 @@ export const skill = {
 				"hujia": {
 					trigger: { global: 'roundStart' },
 					forced: true,
-					content: () => {
+					content: (event, trigger, player) => {
 						player.changeHujia(1, null, true);
 					},
 				},
@@ -176,7 +176,7 @@ export const skill = {
 			filter: function (event, player) {
 				return player.hp < 8;
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				player.draw(2);
 			}
 		},
@@ -187,7 +187,7 @@ export const skill = {
 				return player.hp < 5;
 			},
 			forced: true,
-			content: () => {
+			content: (event, trigger, player) => {
 				if (!trigger.source.hasSkill('fengyin')) {
 					trigger.source.addTempSkill('fengyin');
 				}
@@ -235,7 +235,7 @@ export const skill = {
 			filter: function (event, player) {
 				return (player.storage.re_boss_fanzhen_effect || 0) > 0;
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				player.loseHp(player.storage.re_boss_fanzhen_effect--);
 				if (player.storage.re_boss_fanzhen_effect > 1) player.markSkill("re_boss_fanzhen_effect");
 				else player.unmarkSkill("re_boss_fanzhen_effect");
@@ -345,7 +345,7 @@ export const skill = {
 			derivation: ['re_boss_jinsuo'],
 			trigger: { global: 'roundStart' },
 			forced: true,
-			content: () => {
+			content: (event, trigger, player) => {
 				const list = player.getEnemies();
 				const enemy = list.randomGet();
 				player.line(enemy, "green");
@@ -400,7 +400,7 @@ export const skill = {
 			filter: (event, player) => {
 				return event.card && event.card.name == "sha" && event.getParent().name == "sha";
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				trigger.num += Math.floor(game.phaseNumber / 3);
 			},
 			mod: {
@@ -413,7 +413,7 @@ export const skill = {
 			filter: (event, player) => {
 				return event.card && event.card.name == "sha" && event.getParent().name == "sha";
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				trigger.num += Math.floor(game.phaseNumber / 4);
 			},
 			mod: {
@@ -440,7 +440,7 @@ export const skill = {
 				"damage": {
 					trigger: { source: 'damageBegin1' },
 					forced: true,
-					content: () => {
+					content: (event, trigger, player) => {
 						trigger.num += player.countMark('re_boss_shennu');
 						player.removeMark("re_boss_shennu");
 					}
@@ -448,7 +448,7 @@ export const skill = {
 				"damaged": {
 					forced: true,
 					trigger: { player: 'damageBegin4' },
-					content: () => {
+					content: (event, trigger, player) => {
 						player.addMark('re_boss_shennu', 1)
 					}
 				}
@@ -533,7 +533,7 @@ export const skill = {
 				game.log("card" + card)
 				return damage >= 5 || card >= 3;
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				const evt = _status.event.getParent('phase');
 				if (evt) {
 					game.resetSkills();
@@ -560,7 +560,7 @@ export const skill = {
 			filter: function (event, player) {
 				return player.hp === player.maxHp;
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				player.addTempSkill("re_boss_eyi_effect");
 			},
 			subSkill: {
@@ -593,7 +593,7 @@ export const skill = {
 				"damage": {
 					trigger: { global: 'roundStart' },
 					forced: true,
-					content: () => {
+					content: (event, trigger, player) => {
 						const players = game.players.slice(0).sortBySeat();
 						player.line(players);
 						players.forEach((ch) => {
@@ -614,7 +614,7 @@ export const skill = {
 				if (event._notrigger.includes(event.player)) return false;
 				return event.player != player && event.player.isIn();
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				const target = trigger.player;
 				player.line(target);
 				target.addMark('re_boss_xuzhang_effect', trigger.num);
@@ -653,7 +653,7 @@ export const skill = {
 		"re_boss_yangwu": {
 			trigger: { player: 'phaseBegin' },
 			forced: true,
-			content: () => {
+			content: (event, trigger, player) => {
 				const players = game.players.slice(0).sortBySeat();
 				player.line(players);
 				players.forEach((ch) => {
@@ -672,7 +672,7 @@ export const skill = {
 					player.storage.re_boss_rensan = 0;
 				}
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				player.storage.re_boss_rensan += trigger.num;
 				if (player.storage.re_boss_rensan > 3) {
 					player.loseMaxHp();
@@ -775,7 +775,7 @@ export const skill = {
 				return tg != player && _status.currentPhase == tg && tg.countCards("h") > 10;
 			},
 			forced: true,
-			content: () => {
+			content: (event, trigger, player) => {
 				trigger.player.damage();
 			}
 		},
@@ -786,7 +786,7 @@ export const skill = {
 			filter: (event, player) => {
 				return game.roundNumber % 5 === 0;
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				const players = game.players.slice(0).sortBySeat();
 				player.line(players);
 				players.forEach((ch) => {
@@ -1289,7 +1289,7 @@ export const skill = {
 					return '当你成为基本牌的目标时，你可令其无效';
 				},
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 
 			},
 			group: ["re_boss_cuanchao_1", "re_boss_cuanchao_2"],
@@ -1300,7 +1300,7 @@ export const skill = {
 					filter: function (event, player) {
 						return get.type(event.card) == 'trick' && !player.storage.re_boss_cuanchao;
 					},
-					content: () => {
+					content: (event, trigger, player) => {
 						trigger.cancel();
 						player.changeZhuanhuanji('re_boss_cuanchao');
 					}
@@ -1311,7 +1311,7 @@ export const skill = {
 					filter: function (event, player) {
 						return get.type(event.card) == 'basic' && player.storage.re_boss_cuanchao;
 					},
-					content: () => {
+					content: (event, trigger, player) => {
 						trigger.cancel();
 						player.changeZhuanhuanji('re_boss_cuanchao');
 					}
@@ -1361,7 +1361,7 @@ export const skill = {
 						var evt = event.getl(player);
 						return evt && evt.hs && evt.hs.length > 0;
 					},
-					content: () => {
+					content: (event, trigger, player) => {
 						player.storage.re_boss_luanxin_discard++;
 					},
 				},
@@ -1387,7 +1387,7 @@ export const skill = {
 						}
 						return false;
 					},
-					content: () => {
+					content: (event, trigger, player) => {
 						player.storage.re_boss_luanxin_getcard++;
 					}
 				},
@@ -1412,14 +1412,14 @@ export const skill = {
 					filter: (event, player) => {
 						return event.source && event.source.isIn();
 					},
-					content: () => {
+					content: (event, trigger, player) => {
 						player.gainMaxHp();
 					}
 				},
 				"damage": {
 					trigger: { source: "damage" },
 					forced: true,
-					content: () => {
+					content: (event, trigger, player) => {
 						player.recover();
 					}
 				}
@@ -1578,7 +1578,7 @@ export const skill = {
 		"re_boss_zhouxue": {
 			trigger: { source: 'damageSource' },
 			forced: true,
-			content: () => {
+			content: (event, trigger, player) => {
 				trigger.player.addTempSkill("re_boss_zhouxue_effect", { player: 'roundStart' })
 			}
 		},
@@ -1677,7 +1677,7 @@ export const skill = {
 							}
 						},
 					},
-					content: () => {
+					content: (event, trigger, player) => {
 						player.storage.re_boss_tiepao_distance.clear();
 					}
 				},
@@ -8272,7 +8272,7 @@ export const skill = {
 
 				return event.getg(event.player).length > 0;;
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				player.draw();
 			}
 		},
@@ -8312,7 +8312,7 @@ export const skill = {
 		"re_boss_dungong": {
 			forced: true,
 			trigger: { player: 'damageBegin4' },
-			content: () => {
+			content: (event, trigger, player) => {
 				trigger.num = Math.min(3, trigger.num);
 			}
 		},
@@ -8342,7 +8342,7 @@ export const skill = {
 
 						return false;
 					},
-					content: () => {
+					content: (event, trigger, player) => {
 						player.chooseToDiscard("he", "发动〖魔躯〗，请弃置一张牌。");
 					}
 				}
@@ -8498,7 +8498,7 @@ export const skill = {
 						player: 'enterGame',
 					},
 					forced: true,
-					content: () => {
+					content: (event, trigger, player) => {
 						player.maxHp = 8;
 						player.update();
 					}
@@ -8518,7 +8518,7 @@ export const skill = {
 				damage: {
 					trigger: { player: "damageBegin4" },
 					forced: true,
-					content: () => {
+					content: (event, trigger, player) => {
 						trigger.num === 1 ? trigger.num = 0 : trigger.num = 1;
 					}
 				}
@@ -8538,7 +8538,7 @@ export const skill = {
 		"re_boss_busi": {
 			trigger: { player: ['dying'] },
 			forced: true,
-			content: () => {
+			content: (event, trigger, player) => {
 				player.recover(player.maxHp - player.hp);
 				player.addMark("re_boss_busi_effect", 2);
 				player.addSkill("re_boss_busi_effect");
@@ -8561,7 +8561,7 @@ export const skill = {
 			intro: {
 				content: "当前有#个“碎”标记",
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				player.die();
 			}
 		},
@@ -8574,7 +8574,7 @@ export const skill = {
 			check: function (event, player) {
 				return get.attitude(player, event.source) < 0;
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				const tg = trigger.source;
 				player.chooseToDiscard('he', true).logSkill = ['re_boss_xietu', tg];
 				tg.damage(trigger.num);
@@ -8593,7 +8593,7 @@ export const skill = {
 			check: function (event, player) {
 				return get.attitude(player, event.player) < 0;
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				const tg = trigger.player;
 				const skillList = tg.getSkills(null, false, false).filter(skill => (game.utils.checkUnforcedSkill(skill)));
 				const skill = skillList.randomGet();
@@ -8612,7 +8612,7 @@ export const skill = {
 					filter: (event, player) => {
 						return event.player.group == player.group;
 					},
-					content: () => {
+					content: (event, trigger, player) => {
 						trigger.num++;
 					},
 				},
@@ -8652,7 +8652,7 @@ export const skill = {
 				name2: '目',
 				content: 'mark',
 			},
-			content: () => {
+			content: (event, trigger, player) => {
 				const oldCnt = player.countMark('re_boss_jimu');
 				player.addMark('re_boss_jimu', 2);
 				const newCnt = player.countMark('re_boss_jimu');
@@ -8701,7 +8701,7 @@ export const skill = {
 				damage: {
 					trigger: { source: 'damageBegin1' },
 					filter: (event) => !event.numFixed,
-					content: () => {
+					content: (event, trigger, player) => {
 						event.numFixed = true;
 						trigger.num = player.countMark('re_boss_jimu') % 10;
 					}
@@ -8709,7 +8709,7 @@ export const skill = {
 				damaged: {
 					forced: true,
 					trigger: { player: 'damageEnd' },
-					content: () => {
+					content: (event, trigger, player) => {
 						player.removeMark("re_boss_jimu", 1);
 					}
 				}
@@ -8738,7 +8738,7 @@ export const skill = {
 						return event.card && event.card.name == "sha" && event.getParent().name == "sha";
 					},
 					forced: true,
-					content: () => {
+					content: (event, trigger, player) => {
 						trigger.num += player.getHistory("useCard", (evt) => {
 							return evt.card.name == "sha";
 						}).length - 1;
@@ -8755,7 +8755,7 @@ export const skill = {
 						if (!event.cards) return false;
 						return true;
 					},
-					content: () => {
+					content: (event, trigger, player) => {
 						player.storage.re_boss_taidao += trigger.cards.length;
 					}
 				},
