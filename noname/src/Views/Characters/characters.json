@@ -1073,7 +1073,7 @@
   },
   {
     "EnglishName": "math_xushao",
-    "ChineseName": "数许邵",
+    "ChineseName": "数许劭",
     "gender": "male",
     "nationality": "qun",
     "hp": "6",
@@ -1086,7 +1086,7 @@
       "评荐"
     ],
     "package": "数包",
-    "details": "来源于十周年许邵，增加了技能发动的时机和次数，一个技能加〖神护〗照样杀七阴。",
+    "details": "来源于十周年许劭，增加了技能发动的时机和次数，一个技能加〖神护〗照样杀七阴。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】综合"
   },
@@ -4286,7 +4286,7 @@
     ],
     "package": "山河图军师联盟包",
     "details": "来源于山河图军师联盟篇葭萌关关内霍峻，没有任何改动。",
-    "strength": "【强度】★★★★★",
+    "strength": "【强度】★★★★",
     "highlight": " 【亮点】综合"
   },
   {
@@ -4503,12 +4503,148 @@
       null,
       null,
       null,
-      null,
+      "锻甲",
       "长枪",
       "暴力"
     ],
     "package": "山河图军师联盟包",
     "details": "来源于山河图军师联盟篇葭萌关关内韩遂，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_lingcao",
+    "ChineseName": "军师篇凌操",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "8/8/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_tengjia",
+      "dujin",
+      "yimie",
+      "re_boss_duanjia",
+      "re_boss_jibao",
+      "drlt_jueyan",
+      "tuxing",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "编甲",
+      null,
+      null,
+      "锻甲",
+      "集宝",
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇葭萌关关内凌操，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_shamoke",
+    "ChineseName": "军师篇沙摩柯",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "7/7/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_pintieshuangji",
+      "gzjili",
+      "latest_ol_feiyang",
+      "fentian",
+      "zishu",
+      "huaiyuan",
+      "re_boss_libing",
+      "re_boss_duanjia",
+      "boss_nbaonu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "飞扬",
+      null,
+      null,
+      null,
+      "厉兵",
+      "锻甲",
+      null,
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇葭萌关boss沙摩柯，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_liangxing",
+    "ChineseName": "军师篇梁兴",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "7/7/8",
+    "skills": [
+      "re_boss_lianyu",
+      "lulve",
+      "lxzhuixi",
+      "latest_ol_feiyang",
+      "faen",
+      "jiushi",
+      "boss_lingqu",
+      "hengjiang",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "飞扬",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇葭萌关boss梁兴，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_chengjichengcui",
+    "ChineseName": "军师篇成济成倅",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "7/7/8",
+    "skills": [
+      "re_boss_lianyu",
+      "oltousui",
+      "olchuming",
+      "latest_ol_feiyang",
+      "xiansi",
+      "shizhan",
+      "cangxin",
+      "boss_qixiang",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "飞扬",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇葭萌关boss成济成倅，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
   }

@@ -963,5 +963,20 @@
     "EnglishName": "equip_guanshifu",
     "ChineseName": "大斧",
     "info": "锁定技，游戏开始时，将【贯石斧】置入你的装备区。"
+  },
+  "re_boss_duanjia": {
+    "EnglishName": "re_boss_duanjia",
+    "ChineseName": "锻甲",
+    "info": "准备阶段，若你没有防具，则将一件随机防具置入你的装备区。"
+  },
+  "re_boss_jibao": {
+    "EnglishName": "re_boss_jibao",
+    "ChineseName": "集宝",
+    "info": "准备阶段，若你没有宝物，则将一件随机宝物置入你的装备区。"
+  },
+  "re_boss_libing": {
+    "EnglishName": "re_boss_libing",
+    "ChineseName": "厉兵",
+    "info": "准备阶段，若你没有武器，则将一件随机武器置入你的装备区。"
   }
 }
