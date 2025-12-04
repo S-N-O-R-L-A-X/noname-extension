@@ -8917,6 +8917,49 @@ export const skill = {
 
 		},
 
+		"re_boss_tengyun": {
+			trigger: { player: "damageEnd" },
+			forced: true,
+			content() {
+				player.addSkill("re_boss_tengyun_effect");
+			},
+			subSkill: {
+				remove: {
+					charlotte: true,
+					trigger: { player: "phaseAfter" },
+					forced: true,
+					content() {
+						player.removeSkill("re_boss_tengyun_effect");
+					},
+				},
+				"effect": {
+					trigger: { target: "useCardToBefore" },
+					forced: true,
+					charlotte: true,
+					priority: 15,
+					sourceSkill: "re_boss_tengyun",
+					content() {
+						game.log(player, "发动了腾云，", trigger.card, "对", trigger.target, "失效");
+						trigger.cancel();
+					},
+					mark: true,
+					intro: {
+						content: "其他角色对你使用的牌无效",
+					},
+					ai: {
+						effect: {
+							target(card, player, target, current) {
+								if (get.type(card) == "trick" || card.name == "sha") {
+									return "zeroplayertarget";
+								}
+							},
+						},
+					},
+
+				}
+			},
+		},
+
 		// guozhan
 		gzcongjian: {
 			trigger: {
