@@ -8960,6 +8960,59 @@ export const skill = {
 			},
 		},
 
+		"re_boss_fushen": {
+			enable: "chooseToUse",
+			limited: true,
+			skillAnimation: true,
+			animationColor: "fire",
+			filter(event, player) {
+				if (event.type == "dying") {
+					if (player != event.dying) {
+						return false;
+					}
+					return true;
+				}
+				return false;
+			},
+			async content(event, trigger, player) {
+				player.awakenSkill(event.name);
+				player.storage.re_boss_fushen = true;
+				await player.discard(player.getCards("hej"));
+				await player.link(false);
+				await player.turnOver(false);
+				await player.draw(3);
+				if (player.hp < 3) {
+					await player.recover(3 - player.hp);
+				}
+			},
+			ai: {
+				order: 0.5,
+				skillTagFilter(player, tag, target) {
+					if (player != target || player.storage.re_boss_fushen) {
+						return false;
+					}
+				},
+				save: true,
+				result: {
+					player(player) {
+						if (player.hp <= 0) {
+							return 10;
+						}
+						if (player.hp <= 1 && player.countCards("he") <= 1) {
+							return 10;
+						}
+						return 0;
+					},
+				},
+				threaten(player, target) {
+					if (!target.storage.re_boss_fushen) {
+						return 0.6;
+					}
+				},
+			}
+		},
+
+
 		// guozhan
 		gzcongjian: {
 			trigger: {
@@ -9703,6 +9756,12 @@ export const skill = {
 		"re_boss_fumeng": "赴梦",
 		"re_boss_fumeng_info": "每轮开始时，你可以令你任意张手牌视为【杀】。",
 		"re_boss_fumeng_viewAs": "灵动",
+
+		// shanhetu_junshi_tenglong
+		"re_boss_tengyun": "腾云",
+		"re_boss_tengyun_info": "锁定技，当你受到伤害后，其他角色对你使用的牌无效直到你的回合结束。",
+		"re_boss_fushen": "福神",
+		"re_boss_fushen_info": "限定技，当你处于濒死状态时，你可以弃置所有牌，然后复原你的武将牌，摸3张牌，将体力回复至3点。",
 
 		// missing
 		"gzcongjian": "从谏",
