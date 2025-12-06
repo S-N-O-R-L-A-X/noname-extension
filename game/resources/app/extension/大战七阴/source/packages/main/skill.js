@@ -9012,6 +9012,58 @@ export const skill = {
 			}
 		},
 
+		"latest_ol_chenlong": {
+			audio: true,
+			enable: "phaseUse",
+			filterTarget: lib.filter.notMe,
+			limited: true,
+			usable: 1,
+			audio: "olchenlong",
+			group: ["latest_ol_chenlong_dying"],
+			async content(event, trigger, player) {
+				const result = await player
+					.chooseNumbers(get.translation(event.name), [{ prompt: "请选择你要失去的体力值", min: 1, max: 5 }], true)
+					.set("processAI", () => {
+						const player = get.player();
+						let num = Math.min(5, player.getHp() - 1);
+						if (!player.hasCard(card => player.canSaveCard(card, player), "hs")) {
+							num = Math.min(5, player.getHp());
+						}
+						return [num];
+					})
+					.forResult(),
+					num = result.numbers?.[0];
+				if (num) {
+					await player.loseHp(num);
+					await event.target.damage(num);
+				}
+			},
+			ai: {
+				order: 1,
+				result: {
+					player(player, target) {
+						if (player.getHp() + player.countCards("hs", card => player.canSaveCard(card, player)) <= 1) {
+							return 0;
+						}
+						return get.damageEffect(target, player, player);
+					},
+				},
+			},
+			subSkill: {
+				dying: {
+					audio: "olchenlong",
+					charlotte: true,
+					trigger: { player: "dying" },
+					filter(event, player) {
+						return event.getParent("loseHp").name === "latest_ol_chenlong";
+					},
+					content() {
+						player.loseMaxHp();
+					},
+				},
+			},
+		},
+
 
 		// guozhan
 		gzcongjian: {
@@ -9758,10 +9810,13 @@ export const skill = {
 		"re_boss_fumeng_viewAs": "灵动",
 
 		// shanhetu_junshi_tenglong
+		"latest_ol_chenlong": "辰龙",
+		"latest_ol_chenlong_info": "限定技，出牌阶段，你可以失去至多5点体力，对一名其他角色造成等量伤害。若你以此法进入濒死状态，你回复至1点体力，然后减少1点体力上限。",
 		"re_boss_tengyun": "腾云",
 		"re_boss_tengyun_info": "锁定技，当你受到伤害后，其他角色对你使用的牌无效直到你的回合结束。",
 		"re_boss_fushen": "福神",
 		"re_boss_fushen_info": "限定技，当你处于濒死状态时，你可以弃置所有牌，然后复原你的武将牌，摸3张牌，将体力回复至3点。",
+
 
 		// missing
 		"gzcongjian": "从谏",
