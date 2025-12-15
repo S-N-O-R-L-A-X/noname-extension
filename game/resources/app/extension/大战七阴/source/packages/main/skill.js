@@ -8934,6 +8934,9 @@ export const skill = {
 				},
 				"effect": {
 					trigger: { target: "useCardToBefore" },
+					filter(event, player) {
+						return event.player != player;
+					},
 					forced: true,
 					charlotte: true,
 					priority: 15,
@@ -9022,7 +9025,7 @@ export const skill = {
 			group: ["latest_ol_chenlong_dying"],
 			async content(event, trigger, player) {
 				const result = await player
-					.chooseNumbers(get.translation(event.name), [{ prompt: "请选择你要失去的体力值", min: 1, max: 5 }], true)
+					.chooseNumbers(get.translation(event.name), [{ prompt: "请选择你要失去的体力值", min: 1, max: player.hp }], true)
 					.set("processAI", () => {
 						const player = get.player();
 						let num = Math.min(5, player.getHp() - 1);
@@ -9051,13 +9054,15 @@ export const skill = {
 			},
 			subSkill: {
 				dying: {
+					forced: true,
 					audio: "olchenlong",
 					charlotte: true,
 					trigger: { player: "dying" },
 					filter(event, player) {
 						return event.getParent("loseHp").name === "latest_ol_chenlong";
 					},
-					content() {
+					async content(event, trigger, player) {
+						await player.recoverTo(1);
 						player.loseMaxHp();
 					},
 				},
