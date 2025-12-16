@@ -9016,19 +9016,19 @@ export const skill = {
 		},
 
 		"latest_ol_chenlong": {
-			audio: true,
 			enable: "phaseUse",
 			filterTarget: lib.filter.notMe,
 			limited: true,
-			usable: 1,
 			audio: "olchenlong",
-			group: ["latest_ol_chenlong_dying"],
+			async contentBefore(event, trigger, player) {
+				player.awakenSkill(event.skill);
+			},
 			async content(event, trigger, player) {
 				const result = await player
-					.chooseNumbers(get.translation(event.name), [{ prompt: "请选择你要失去的体力值", min: 1, max: player.hp }], true)
+					.chooseNumbers(get.translation(event.name), [{ prompt: "请选择你要失去的体力值", min: 1, max: Math.min(5, player.hp) }], true)
 					.set("processAI", () => {
 						const player = get.player();
-						let num = Math.min(5, player.getHp() - 1);
+						let num = Math.min(5, player.getHp());
 						if (!player.hasCard(card => player.canSaveCard(card, player), "hs")) {
 							num = Math.min(5, player.getHp());
 						}
@@ -9052,6 +9052,7 @@ export const skill = {
 					},
 				},
 			},
+			group: ["latest_ol_chenlong_dying"],
 			subSkill: {
 				dying: {
 					forced: true,
@@ -9059,7 +9060,7 @@ export const skill = {
 					charlotte: true,
 					trigger: { player: "dying" },
 					filter(event, player) {
-						return event.getParent("loseHp").name === "latest_ol_chenlong";
+						return event.getParent("loseHp").getParent().name === "latest_ol_chenlong";
 					},
 					async content(event, trigger, player) {
 						await player.recoverTo(1);
