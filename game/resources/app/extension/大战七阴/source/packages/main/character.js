@@ -160,7 +160,7 @@ export const character = {
 		"shanhetu_junshi_xiahoudun": ["male", "wei", "7/7/8", ["re_boss_lianyu", "reganglie", "new_qingjian", "latest_ol_feiyang", "tiandu", "huituo", "xinleiji", "youdi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_xushu": ["male", "shu", "7/7/8", ["re_boss_lianyu", "equip_zhangbashemao", "zhuhai", "qianxin", "repojun", "gzcongjian", "lulve", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_tenglong": ["male", "shen", "7/7/8", ["re_boss_lianyu", "equip_baiyinshizi", "latest_ol_chenlong", "xianshuai", "re_boss_fushen", "re_boss_tengyun", "re_boss_juexing", "xinfu_weilu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_yuejin": ["male", "wei", "7/7/8", ["re_boss_lianyu", "equip_baiyinshizi", "gzcongjian", "qiaoyan", "re_boss_juexing", "xinfu_weilu","re_boss_shunxue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_yuejin": ["male", "wei", "7/7/8", ["re_boss_lianyu", "equip_baiyinshizi", "gzcongjian", "qiaoyan", "re_boss_juexing", "xinfu_weilu", "re_boss_shunxue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
 		"re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
@@ -308,7 +308,11 @@ export const character = {
 		"shanhetu_junshi_lingcao": "来源于山河图军师联盟篇葭萌关关内凌操，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
 		"shanhetu_junshi_shamoke": "来源于山河图军师联盟篇葭萌关boss沙摩柯，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 		"shanhetu_junshi_liangxing": "来源于山河图军师联盟篇葭萌关boss梁兴，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
-		"shanhetu_junshi_chengjichengcui": "来源于山河图军师联盟篇葭萌关boss成济成倅，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击"
+		"shanhetu_junshi_chengjichengcui": "来源于山河图军师联盟篇葭萌关boss成济成倅，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
+		"shanhetu_junshi_xiahoudun": "来源于山河图军师联盟篇濮阳关内夏侯惇，没有任何改动。<br>【强度】★★★★★<br> 【亮点】防御",
+		"shanhetu_junshi_xushu": "来源于山河图军师联盟篇濮阳关内徐庶，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+		"shanhetu_junshi_tenglong": "来源于山河图军师联盟篇濮阳关内腾龙，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_junshi_yuejin": "来源于山河图军师联盟篇濮阳关内乐进，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击"
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -357,7 +361,9 @@ export const character = {
 				"shanhetu_junshi_huojun", "shanhetu_junshi_machao", "shanhetu_junshi_zhangfei",
 				"shanhetu_junshi_wuqiao", "shanhetu_junshi_wuyi", "shanhetu_junshi_duanjiong",
 				"shanhetu_junshi_zhujun", "shanhetu_junshi_hansui", "shanhetu_junshi_lingcao",
-				"shanhetu_junshi_shamoke", "shanhetu_junshi_liangxing", "shanhetu_junshi_chengjichengcui"
+				"shanhetu_junshi_shamoke", "shanhetu_junshi_liangxing", "shanhetu_junshi_chengjichengcui",
+				"shanhetu_junshi_xiahoudun", "shanhetu_junshi_xushu", "shanhetu_junshi_tenglong",
+				"shanhetu_junshi_yuejin"
 			],
 			against7devil_shanhetu_fadong_boss: [
 				"shanhetu_fadong_liusandao"
