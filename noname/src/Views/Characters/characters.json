@@ -4647,5 +4647,133 @@
     "details": "来源于山河图军师联盟篇葭萌关boss成济成倅，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_xiahoudun",
+    "ChineseName": "军师篇夏侯惇",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "7/7/8",
+    "skills": [
+      "re_boss_lianyu",
+      "reganglie",
+      "new_qingjian",
+      "latest_ol_feiyang",
+      "tiandu",
+      "huituo",
+      "xinleiji",
+      "youdi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "飞扬",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇濮阳关内夏侯惇，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】防御"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_xushu",
+    "ChineseName": "军师篇徐庶",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "7/7/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_zhangbashemao",
+      "zhuhai",
+      "qianxin",
+      "repojun",
+      "gzcongjian",
+      "lulve",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      "从谏",
+      null,
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇濮阳关内徐庶，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_tenglong",
+    "ChineseName": "军师篇腾龙",
+    "gender": "male",
+    "nationality": "shen",
+    "hp": "7/7/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_baiyinshizi",
+      "latest_ol_chenlong",
+      "xianshuai",
+      "re_boss_fushen",
+      "re_boss_tengyun",
+      "re_boss_juexing",
+      "xinfu_weilu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "披盔",
+      "辰龙",
+      null,
+      "福神",
+      "腾云",
+      "觉醒",
+      null,
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇濮阳关内腾龙，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_yuejin",
+    "ChineseName": "军师篇乐进",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "7/7/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_baiyinshizi",
+      "gzcongjian",
+      "qiaoyan",
+      "re_boss_juexing",
+      "xinfu_weilu",
+      "re_boss_shunxue",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "披盔",
+      "从谏",
+      null,
+      "觉醒",
+      null,
+      "吮血",
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇濮阳关内乐进，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
   }
 ]

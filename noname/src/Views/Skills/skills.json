@@ -978,5 +978,20 @@
     "EnglishName": "re_boss_libing",
     "ChineseName": "厉兵",
     "info": "准备阶段，若你没有武器，则将一件随机武器置入你的装备区。"
+  },
+  "latest_ol_chenlong": {
+    "EnglishName": "latest_ol_chenlong",
+    "ChineseName": "辰龙",
+    "info": "限定技，出牌阶段，你可以失去至多5点体力，对一名其他角色造成等量伤害。若你以此法进入濒死状态，你回复至1点体力，然后减少1点体力上限。"
+  },
+  "re_boss_fushen": {
+    "EnglishName": "re_boss_fushen",
+    "ChineseName": "福神",
+    "info": "限定技，当你处于濒死状态时，你可以弃置所有牌，然后复原你的武将牌，摸3张牌，将体力回复至3点。"
+  },
+  "re_boss_tengyun": {
+    "EnglishName": "re_boss_tengyun",
+    "ChineseName": "腾云",
+    "info": "锁定技，当你受到伤害后，其他角色对你使用的牌无效直到你的回合结束。"
   }
 }
