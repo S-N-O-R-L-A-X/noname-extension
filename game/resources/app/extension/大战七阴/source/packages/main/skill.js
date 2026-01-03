@@ -892,6 +892,61 @@ export const skill = {
 			}
 		},
 
+		"re_boss_liezhen": {
+			equipSkill: true,
+			forced: true,
+			content: function () {},
+			group: ["re_boss_liezhen_bagua", "re_boss_liezhen_renwangdun"],
+			subSkill: {
+				bagua: {
+					noHidden: true,
+					inherit: "bagua_skill",
+					// sourceSkill: "bazhen",
+					filter(event, player) {
+						return game.roundNumber % 2 === 0;
+						// return lib.skill.bagua_skill.filter(event, player) && game.roundNumber % 2 === 0;
+					},
+					ai: {
+						respondShan: true,
+						freeShan: true,
+						skillTagFilter(player, tag, arg) {
+							if (tag !== "respondShan" && tag !== "freeShan") {
+								return;
+							}
+							if (!arg || !arg.player) {
+								return true;
+							}
+
+							return true;
+						},
+						effect: {
+							target(card, player, target) {
+								return lib.skill.bagua_skill.ai.effect.target.apply(this, arguments);
+							},
+						},
+					},
+				},
+				renwangdun: {
+					noHidden: true,
+					inherit: "renwang_skill",
+					// sourceSkill: "renwang",
+					filter(event, player) {
+						return game.roundNumber % 2 === 1;
+						// return lib.skill.renwang_skill.filter(event, player) && game.roundNumber % 2 === 1;
+					},
+					ai: {
+						skillTagFilter(player, tag, arg) {
+							if (!arg || !arg.player) {
+								return true;
+							}
+							return true;
+						}
+					},
+				}
+			}
+		},
+
+
 		"equip_zhugeliannu": {
 			forced: true,
 			filter: function (event, player) {
@@ -9368,6 +9423,8 @@ export const skill = {
 		"re_boss_duanjia_info": "准备阶段，若你没有防具，则将一件随机防具置入你的装备区。",
 		"re_boss_jibao": "集宝",
 		"re_boss_jibao_info": "准备阶段，若你没有宝物，则将一件随机宝物置入你的装备区。",
+		"re_boss_liezhen": "列阵",
+		"re_boss_liezhen_info": "锁定技，奇数轮次中你视为装备着仁王盾，偶数轮次中你视为装备着八卦阵。",
 
 		"equip_zhugeliannu": "持弩",
 		"equip_zhugeliannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",
