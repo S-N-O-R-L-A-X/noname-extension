@@ -893,18 +893,14 @@ export const skill = {
 		},
 
 		"re_boss_liezhen": {
-			equipSkill: true,
 			forced: true,
-			content: function () {},
 			group: ["re_boss_liezhen_bagua", "re_boss_liezhen_renwangdun"],
 			subSkill: {
 				bagua: {
 					noHidden: true,
 					inherit: "bagua_skill",
-					// sourceSkill: "bazhen",
 					filter(event, player) {
-						return game.roundNumber % 2 === 0;
-						// return lib.skill.bagua_skill.filter(event, player) && game.roundNumber % 2 === 0;
+						return game.roundNumber % 2 === 0 && lib.skill.bagua_skill.filter(event, player);
 					},
 					ai: {
 						respondShan: true,
@@ -929,10 +925,8 @@ export const skill = {
 				renwangdun: {
 					noHidden: true,
 					inherit: "renwang_skill",
-					// sourceSkill: "renwang",
 					filter(event, player) {
-						return game.roundNumber % 2 === 1;
-						// return lib.skill.renwang_skill.filter(event, player) && game.roundNumber % 2 === 1;
+						return game.roundNumber % 2 === 1 && lib.skill.renwang_skill.filter(event, player);
 					},
 					ai: {
 						skillTagFilter(player, tag, arg) {
@@ -1150,7 +1144,7 @@ export const skill = {
 				player: 'enterGame',
 			},
 			content: function () {
-				player.equip(game.createCard2('zhangba', 'spade', 2));
+				player.equip(game.createCard2('hanbing', 'spade', 2));
 			}
 		},
 		"equip_renwangdun": {
@@ -9452,8 +9446,8 @@ export const skill = {
 		"equip_qinggangjian_info": "锁定技，游戏开始时，将【青釭剑】置入你的装备区。",
 		"equip_baiyinshizi": "披盔",
 		"equip_baiyinshizi_info": "锁定技，游戏开始时，将【白银狮子】置入你的装备区。",
-		"re_boss_zhangmashemao": "执矛",
-		"re_boss_zhangmashemao_info": "锁定技，游戏开始时，将【丈八蛇矛】置入你的装备区。",
+		"equip_zhangbashemao": "执矛",
+		"equip_zhangbashemao_info": "锁定技，游戏开始时，将【丈八蛇矛】置入你的装备区。",
 		"equip_hanbingjian": "霜刃",
 		"equip_hanbingjian_info": "锁定技，游戏开始时，将【寒冰剑】置入你的装备区。",
 		"equip_renwangdun": "持盾",
