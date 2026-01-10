@@ -1194,7 +1194,23 @@ export const skill = {
 				player.equip(game.createCard2('guanshi', 'diamond', 5));
 			}
 		},
-
+		"equip_chiyanzhenhunqin": {
+			forced: true,
+			filter: function (event, player) {
+				return (event.name != 'phase' || game.phaseNumber == 0);
+			},
+			trigger: {
+				global: 'phaseBefore',
+				player: 'enterGame',
+			},
+			content: function () {
+				game.loadModeAsync("boss", mode => {
+					lib.card["chiyanzhenhunqin"] = lib.card["chiyanzhenhunqin"] || mode.card["chiyanzhenhunqin"];
+					lib.translate["chiyanzhenhunqin"] = lib.translate["chiyanzhenhunqin"] || mode.translate["chiyanzhenhunqin"];
+					player.equip(game.createCard2('chiyanzhenhunqin', 'diamond', 1));
+				})
+			}
+		},
 
 		"re_boss_reborn_machao": {
 			trigger: {
@@ -9456,7 +9472,8 @@ export const skill = {
 		"equip_jinwuluorigong_info": "锁定技，游戏开始时，将【金乌落日弓】置入你的装备区。",
 		"equip_guanshifu": "大斧",
 		"equip_guanshifu_info": "锁定技，游戏开始时，将【贯石斧】置入你的装备区。",
-
+		"equip_chiyanzhenhunqin": "奏琴",
+		"equip_chiyanzhenhunqin_info": "锁定技，游戏开始时，将【赤焰镇魂琴】置入你的装备区。",
 
 		// fusion_shen_sunce
 		"repinghe": "冯河",
