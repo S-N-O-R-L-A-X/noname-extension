@@ -1211,6 +1211,23 @@ export const skill = {
 				})
 			}
 		},
+		"equip_tianjitu": {
+			forced: true,
+			filter: function (event, player) {
+				return (event.name != 'phase' || game.phaseNumber == 0);
+			},
+			trigger: {
+				global: 'phaseBefore',
+				player: 'enterGame',
+			},
+			content: function () {
+				game.loadModeAsync("boss", mode => {
+					// lib.card["tianjitu"] = lib.card["tianjitu"] || mode.card["tianjitu"];
+					// lib.translate["tianjitu"] = lib.translate["tianjitu"] || mode.translate["tianjitu"];
+					player.equip(game.createCard2('tianjitu', 'club', 12));
+				})
+			}
+		},
 
 		"re_boss_reborn_machao": {
 			trigger: {
@@ -9474,6 +9491,8 @@ export const skill = {
 		"equip_guanshifu_info": "锁定技，游戏开始时，将【贯石斧】置入你的装备区。",
 		"equip_chiyanzhenhunqin": "奏琴",
 		"equip_chiyanzhenhunqin_info": "锁定技，游戏开始时，将【赤焰镇魂琴】置入你的装备区。",
+		"equip_tianjitu": "解图",
+		"equip_tianjitu_info": "锁定技，游戏开始时，将【天机图】置入你的装备区。",
 
 		// fusion_shen_sunce
 		"repinghe": "冯河",
