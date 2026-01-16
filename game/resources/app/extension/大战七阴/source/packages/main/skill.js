@@ -1221,11 +1221,7 @@ export const skill = {
 				player: 'enterGame',
 			},
 			content: function () {
-				game.loadModeAsync("boss", mode => {
-					// lib.card["tianjitu"] = lib.card["tianjitu"] || mode.card["tianjitu"];
-					// lib.translate["tianjitu"] = lib.translate["tianjitu"] || mode.translate["tianjitu"];
-					player.equip(game.createCard2('tianjitu', 'club', 12));
-				})
+				player.equip(game.createCard2('tianjitu', 'club', 12));
 			}
 		},
 
@@ -9318,6 +9314,32 @@ export const skill = {
 				}
 			},
 		},
+		gz_keji: {
+			audio: "keji",
+			forced: true,
+			trigger: {
+				player: "phaseDiscardBegin",
+			},
+			filter(event, player) {
+				const list = [];
+				player.getHistory("useCard", function (evt) {
+					if (evt.isPhaseUsing(player)) {
+						const color = get.color(evt.card);
+						if (color != "nocolor") {
+							list.add(color);
+						}
+					}
+					return true;
+				});
+				return list.length <= 1;
+			},
+			check(event, player) {
+				return player.needsToDiscard();
+			},
+			async content(event, trigger, player) {
+				player.addTempSkill("keji_add", "phaseAfter");
+			},
+		},
 
 
 		// 1v1
@@ -9924,6 +9946,8 @@ export const skill = {
 		"sgkuanggu_info": "当你造成伤害后，若你已受伤，你可以进行判定：若结果为黑色，你回复1点体力。",
 		"yingyang": "鹰扬",
 		"yingyang_info": "当你的拼点牌亮出后，你可以令此牌的点数+3或-3（至多为K，至少为1）。",
+		"gz_keji": "克己",
+		"gz_keji_info": "锁定技，弃牌阶段开始时，若你未于出牌阶段使用过颜色不同的牌或出牌阶段被跳过，你本回合手牌上限+4。",
 
 		// unused
 		"geju": "割据",
