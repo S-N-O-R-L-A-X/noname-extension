@@ -162,7 +162,7 @@ export const character = {
 		"shanhetu_junshi_tenglong": ["male", "shen", "7/7/8", ["re_boss_lianyu", "equip_baiyinshizi", "latest_ol_chenlong", "xianshuai", "re_boss_fushen", "re_boss_tengyun", "re_boss_juexing", "xinfu_weilu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_yuejin": ["male", "wei", "7/7/8", ["re_boss_lianyu", "equip_baiyinshizi", "gzcongjian", "qiaoyan", "re_boss_juexing", "xinfu_weilu", "re_boss_shunxue", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_lvmeng": ["male", "wu", "6/6/8", ["re_boss_lianyu", "equip_hanbingjian", "shelie", "gongxin", "xinguidao", "rejingce", "olbeige", "nzry_shicai", "xinfu_sidao", "re_boss_liezhen", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_wenyang": ["male", "wei", "8/8/8", ["re_boss_lianyu", "equip_chiyanzhenhunqin", "lvli", "choujue", "regangle", "zhongyun", "yangkuang", "boss_jiushou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_wenyang": ["male", "wei", "8/8/8", ["re_boss_lianyu", "equip_chiyanzhenhunqin", "xinlvli", "choujue", "reganglie", "zhongyun", "yangkuang", "boss_jiushou", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_xuchu": ["male", "wei", "7/7/8", ["re_boss_lianyu", "equip_guanshifu", "new_reluoyi", "latest_ol_feiyang", "oljiang", "juguan", "retieji", "jiwu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_zhuhuan": ["male", "wu", "7/7/8", ["re_boss_lianyu", "equip_jinwuluorigong", "equip_renwangdun", "equip_tianjitu", "fenli", "pingkou", "xuanlve", "boss_mengtai", "gz_keji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
@@ -316,7 +316,11 @@ export const character = {
 		"shanhetu_junshi_xiahoudun": "来源于山河图军师联盟篇濮阳关内夏侯惇，没有任何改动。<br>【强度】★★★★★<br> 【亮点】防御",
 		"shanhetu_junshi_xushu": "来源于山河图军师联盟篇濮阳关内徐庶，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
 		"shanhetu_junshi_tenglong": "来源于山河图军师联盟篇濮阳关内腾龙，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
-		"shanhetu_junshi_yuejin": "来源于山河图军师联盟篇濮阳关内乐进，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击"
+		"shanhetu_junshi_yuejin": "来源于山河图军师联盟篇濮阳关内乐进，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
+		"shanhetu_junshi_lvmeng": "来源于山河图军师联盟篇濮阳关boss吕蒙，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_junshi_wenyang": "来源于山河图军师联盟篇濮阳关boss文鸯，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+		"shanhetu_junshi_xuchu": "来源于山河图军师联盟篇濮阳关boss许褚，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
+		"shanhetu_junshi_zhuhuan": "来源于山河图军师联盟篇濮阳关boss朱桓，没有任何改动。<br>【强度】★★★★<br> 【亮点】跳过阶段",
 	},
 	characterSort: {
 		mode_extension_大战七阴: {
@@ -367,7 +371,8 @@ export const character = {
 				"shanhetu_junshi_zhujun", "shanhetu_junshi_hansui", "shanhetu_junshi_lingcao",
 				"shanhetu_junshi_shamoke", "shanhetu_junshi_liangxing", "shanhetu_junshi_chengjichengcui",
 				"shanhetu_junshi_xiahoudun", "shanhetu_junshi_xushu", "shanhetu_junshi_tenglong",
-				"shanhetu_junshi_yuejin"
+				"shanhetu_junshi_yuejin", "shanhetu_junshi_lvmeng", "shanhetu_junshi_wenyang",
+				"shanhetu_junshi_xuchu", "shanhetu_junshi_zhuhuan"
 			],
 			against7devil_shanhetu_fadong_boss: [
 				"shanhetu_fadong_liusandao"
