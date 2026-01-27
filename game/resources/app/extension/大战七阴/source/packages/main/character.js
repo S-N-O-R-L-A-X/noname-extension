@@ -1,7 +1,7 @@
 import { lib, game, ui, get, ai, _status } from '../../../../../noname.js'
 
 export const character = {
-	//在这里编写角色信息。
+
 	character: {
 		"re_boss_caocao": ["male", "wei", 12, ["shenhu", "boss_guixin", "xiongcai"], ["zhu", "boss", "bossallowed"]],
 		"fusion_shen_sunce": ["male", "shen", "1/8", ["shenhu", "hunzi", "boss_jiang", "yingba", "scfuhai", "repinghe"], ["zhu", "boss", "bossallowed"]],

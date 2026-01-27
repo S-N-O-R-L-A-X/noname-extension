@@ -1,6 +1,6 @@
 import { lib, game, ui, get, ai, _status } from '../../../../../noname.js'
 export const card = {
-	//在这里编写卡牌信息。
+
 	card: {
 		"zhenlongchangjian": {
 			type: "equip",

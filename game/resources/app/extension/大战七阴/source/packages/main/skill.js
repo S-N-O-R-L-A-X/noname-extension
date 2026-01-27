@@ -1,6 +1,7 @@
 import { lib, game, ui, get, ai, _status } from '../../../../../noname.js'
+import { content } from '../../content.js';
 export const skill = {
-	//在这里编写技能。
+
 	skill: {
 		shenhu: {
 			mod: {
@@ -455,19 +456,108 @@ export const skill = {
 			}
 		},
 
+		// "re_boss_juexing": {
+		// 	forced: true,
+		// 	trigger: { player: 'damageEnd' },
+		// 	mark: true,
+		// 	marktext: "※",
+		// 	intro: {
+		// 		content: "当前共发动过#次觉醒",
+		// 	},
+		// 	init: (player) => {
+		// 		if (!player.storage.re_boss_juexing) {
+		// 			player.storage.re_boss_juexing = 0;
+		// 		}
+		// 	},
+		// 	filter: function (event, player) {
+		// 		let sum = 0;
+		// 		event.player.getHistory('damage').forEach((evt) => {
+		// 			sum += evt.num;
+		// 		})
+		// 		return sum >= 3;
+		// 	},
+		// 	content: async (event, trigger, player) => {
+		// 		"step 0"
+		// 		const evt = _status.event.getParent('phase');
+		// 		if (evt) {
+		// 			game.resetSkills();
+		// 			_status.event = evt;
+		// 			_status.event.finish();
+		// 			_status.event.untrigger(true);
+		// 		}
+
+		// 		"step 1"
+		// 		const players = game.players.slice(0).sortBySeat();
+		// 		player.line(players);
+		// 		++player.storage.re_boss_juexing;
+		// 		for (const p of players) {
+		// 			if (p != player) {
+		// 				p.damage(player.storage.re_boss_juexing + 1);
+		// 			}
+		// 		}
+		// 	},
+		// },
+		// "re_boss_juexing2": {
+		// 	forced: true,
+		// 	trigger: {
+		// 		player: ['damageEnd', 'loseAfter'],
+		// 		global: 'gainAfter',
+		// 	},
+		// 	filter: function (event, player) {
+		// 		if (player == _status.currentPhase) return false;
+
+		// 		let damage = 0, card = 0;
+		// 		if (event.name == "damage") {
+		// 			player.getHistory('damage').forEach((evt) => {
+		// 				damage += evt.num;
+		// 			})
+		// 		}
+		// 		else {
+		// 			if (event.name === "lose") {
+		// 				if (event.type != 'discard' || !event.player.isIn()) return false;
+		// 			}
+
+		// 			if (event.name === 'gain') {
+		// 				if (event.giver || event.getParent().name == 'gift') return false;
+		// 				if (!event['bySelf']) return false;
+		// 				var evtx = event.getl(player);
+		// 				if (!evtx || !evtx.cards2 || evtx.cards2.length <= 0) return false;
+		// 			}
+
+		// 			player.getHistory('lose').forEach((evt) => {
+		// 				if (evt.type == "discard" || evt.type == "gain") {
+		// 					card += evt.num;
+		// 				}
+		// 			})
+		// 		}
+		// 		game.log("damage" + damage)
+		// 		game.log("card" + card)
+		// 		return damage >= 5 || card >= 3;
+		// 	},
+		// 	content: (event, trigger, player) => {
+		// 		const evt = _status.event.getParent('phase');
+		// 		if (evt) {
+		// 			game.resetSkills();
+		// 			_status.event = evt;
+		// 			_status.event.finish();
+		// 			_status.event.untrigger(true);
+		// 		}
+
+		// 		players = game.players.slice(0).sortBySeat();
+		// 		players.forEach(p => {
+		// 			if (p != player) {
+		// 				player.line(p);
+		// 				p.damage();
+		// 			}
+		// 		})
+		// 	},
+		// },
+
+
 		"re_boss_juexing": {
 			forced: true,
 			trigger: { player: 'damageEnd' },
-			mark: true,
-			marktext: "※",
-			intro: {
-				content: "当前共发动过#次觉醒",
-			},
-			init: (player) => {
-				if (!player.storage.re_boss_juexing) {
-					player.storage.re_boss_juexing = 0;
-				}
-			},
+
 			filter: function (event, player) {
 				let sum = 0;
 				event.player.getHistory('damage').forEach((evt) => {
@@ -476,25 +566,8 @@ export const skill = {
 				return sum >= 3;
 			},
 			content: async (event, trigger, player) => {
-				"step 0"
-				const evt = _status.event.getParent('phase');
-				if (evt) {
-					game.resetSkills();
-					_status.event = evt;
-					_status.event.finish();
-					_status.event.untrigger(true);
-				}
-
-				"step 1"
-				const players = game.players.slice(0).sortBySeat();
-				player.line(players);
-				++player.storage.re_boss_juexing;
-				for (const p of players) {
-					if (p != player) {
-						p.damage(player.storage.re_boss_juexing + 1);
-					}
-				}
-			},
+				alert("目前无名杀不支持该函数调用，觉醒技能无法正常触发，请谅解！")
+			}
 		},
 		"re_boss_juexing2": {
 			forced: true,
@@ -533,23 +606,9 @@ export const skill = {
 				game.log("card" + card)
 				return damage >= 5 || card >= 3;
 			},
-			content: (event, trigger, player) => {
-				const evt = _status.event.getParent('phase');
-				if (evt) {
-					game.resetSkills();
-					_status.event = evt;
-					_status.event.finish();
-					_status.event.untrigger(true);
-				}
-
-				players = game.players.slice(0).sortBySeat();
-				players.forEach(p => {
-					if (p != player) {
-						player.line(p);
-						p.damage();
-					}
-				})
-			},
+			content: async (event, trigger, player) => {
+				alert("目前无名杀不支持该函数调用，觉醒技能无法正常触发，请谅解！")
+			}
 		},
 
 		"re_boss_eyi": {

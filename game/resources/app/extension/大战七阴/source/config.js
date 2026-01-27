@@ -3,10 +3,10 @@ import { basic } from './basic.js'
 
 export const config = async () => {
 	const update = await lib.init.promises.json(`${lib.assetURL}${basic.extensionDirectoryPath}update.json`);
-	const version=update.version;
-	const content=update.content;
-	const showContent=content.map((text,idx)=> `<li><span style="color:#006400">说明${idx+1}</span>：<br/>${text}<br/></li>`);
-	
+	const version = update.version;
+	const content = update.content;
+	const showContent = content.map((text, idx) => `<li><span style="color:#006400">说明${idx + 1}</span>：<br/>${text}<br/></li>`);
+
 	return {
 		intro: {
 			name: `本扩展包含一个模式与一些武将。模式可在乱斗中打开。如果发现技能或武将缺失，请尝试将无名杀本体更新为最新版本，并在“扩展-诸神降临”中选择“开启”。
