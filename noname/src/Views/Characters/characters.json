@@ -4307,7 +4307,7 @@
     ],
     "ChineseSkills": [
       "炼狱",
-      null,
+      "执矛",
       null,
       null,
       null,
@@ -4435,7 +4435,7 @@
     ],
     "ChineseSkills": [
       "炼狱",
-      null,
+      "执矛",
       null,
       null,
       null,
@@ -4699,7 +4699,7 @@
     ],
     "ChineseSkills": [
       "炼狱",
-      null,
+      "执矛",
       null,
       null,
       null,
@@ -4775,5 +4775,143 @@
     "details": "来源于山河图军师联盟篇濮阳关内乐进，没有任何改动。",
     "strength": "【强度】★★★★★",
     "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_lvmeng",
+    "ChineseName": "军师篇吕蒙",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "6/6/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_hanbingjian",
+      "shelie",
+      "gongxin",
+      "xinguidao",
+      "rejingce",
+      "olbeige",
+      "nzry_shicai",
+      "xinfu_sidao",
+      "re_boss_liezhen",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "霜刃",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "列阵",
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇濮阳关boss吕蒙，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_wenyang",
+    "ChineseName": "军师篇文鸯",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "8/8/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_chiyanzhenhunqin",
+      "xinlvli",
+      "choujue",
+      "reganglie",
+      "zhongyun",
+      "yangkuang",
+      "boss_jiushou",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "奏琴",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇濮阳关boss文鸯，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_xuzhu",
+    "ChineseName": "军师篇许褚",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "7/7/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_guanshifu",
+      "new_reluoyi",
+      "latest_ol_feiyang",
+      "oljiang",
+      "juguan",
+      "retieji",
+      "jiwu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "大斧",
+      null,
+      "飞扬",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇濮阳关boss许褚，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_junshi_zhuhuan",
+    "ChineseName": "军师篇朱桓",
+    "gender": "male",
+    "nationality": "wu",
+    "hp": "7/7/8",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_jinwuluorigong",
+      "equip_renwangdun",
+      "equip_tianjitu",
+      "fenli",
+      "pingkou",
+      "xuanlve",
+      "boss_mengtai",
+      "gz_keji",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "弯弓",
+      "持盾",
+      "解图",
+      null,
+      null,
+      "旋略",
+      null,
+      "克己",
+      "暴力"
+    ],
+    "package": "山河图军师联盟包",
+    "details": "来源于山河图军师联盟篇濮阳关boss朱桓，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】跳过阶段"
   }
 ]

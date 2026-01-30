@@ -949,6 +949,11 @@
     "ChineseName": "持盾",
     "info": "锁定技，游戏开始时，将【仁王盾】置入你的装备区。"
   },
+  "equip_zhangbashemao": {
+    "EnglishName": "equip_zhangbashemao",
+    "ChineseName": "执矛",
+    "info": "锁定技，游戏开始时，将【丈八蛇矛】置入你的装备区。"
+  },
   "re_boss_fumeng": {
     "EnglishName": "re_boss_fumeng",
     "ChineseName": "赴梦",
@@ -993,5 +998,25 @@
     "EnglishName": "re_boss_tengyun",
     "ChineseName": "腾云",
     "info": "锁定技，当你受到伤害后，其他角色对你使用的牌无效直到你的回合结束。"
+  },
+  "re_boss_liezhen": {
+    "EnglishName": "re_boss_liezhen",
+    "ChineseName": "列阵",
+    "info": "锁定技，奇数轮次中你视为装备着仁王盾，偶数轮次中你视为装备着八卦阵。"
+  },
+  "equip_chiyanzhenhunqin": {
+    "EnglishName": "equip_chiyanzhenhunqin",
+    "ChineseName": "奏琴",
+    "info": "锁定技，游戏开始时，将【赤焰镇魂琴】置入你的装备区。"
+  },
+  "equip_tianjitu": {
+    "EnglishName": "equip_tianjitu",
+    "ChineseName": "解图",
+    "info": "锁定技，游戏开始时，将【天机图】置入你的装备区。"
+  },
+  "gz_keji": {
+    "EnglishName": "gz_keji",
+    "ChineseName": "克己",
+    "info": "锁定技，弃牌阶段开始时，若你未于出牌阶段使用过颜色不同的牌或出牌阶段被跳过，你本回合手牌上限+4。"
   }
 }
