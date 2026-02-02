@@ -1,9 +1,17 @@
 
 releases/
-game/**
-!game/resources/app/extension/大战七阴
-game/resources/app/extension/大战七阴/audio/*
-game/resources/app/extension/大战七阴/image/*
+# 只追踪 game/project/dist/extension/大战七阴，其余 game/ 下内容忽略
+game/*
+!game/project/
+game/project/*
+!game/project/dist/
+game/project/dist/*
+!game/project/dist/extension/
+game/project/dist/extension/*
+!game/project/dist/extension/大战七阴/
+!game/project/dist/extension/大战七阴/**
+game/project/dist/extension/大战七阴/audio/*
+game/project/dist/extension/大战七阴/image/*
 
 *.jpg
 *.png
