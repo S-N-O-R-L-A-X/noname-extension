@@ -18,7 +18,7 @@ const character2package = {};
 const package2character = {};
 const skill2detail = {};
 
-const root_url = "../game/resources/app/extension/大战七阴";
+const root_url = "../game/project/dist/extension/大战七阴";
 const source_url = root_url + "/source/packages/main";
 const rg = /"(.*)": "(.*)"/g;
 
