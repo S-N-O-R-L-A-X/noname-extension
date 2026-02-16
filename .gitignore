@@ -1,17 +1,9 @@
-
-releases/
-# 只追踪 game/dist/extension/大战七阴，其余 game/ 下内容忽略
+# 忽略 game/ 下所有内容，除了 game/extension/大战七阴
 game/*
-!game/
-game/*
-!game/dist/
-game/dist/*
-!game/dist/extension/
-game/dist/extension/*
-!game/dist/extension/大战七阴/
-!game/dist/extension/大战七阴/**
-game/dist/extension/大战七阴/audio/*
-game/dist/extension/大战七阴/image/*
+!game/extension/
+!game/extension/大战七阴/
+game/extension/大战七阴/audio
+game/extension/大战七阴/image
 
 *.jpg
 *.png

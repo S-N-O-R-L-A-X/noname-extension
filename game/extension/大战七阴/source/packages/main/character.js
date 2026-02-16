@@ -560,5 +560,4 @@ export const character = {
 		"shanhetu_junshi_shoushangdebaihu": "受伤的白虎",
 		"shanhetu_junshi_jiededaofei": "饥饿的盗匪"
 	},
-
 }
