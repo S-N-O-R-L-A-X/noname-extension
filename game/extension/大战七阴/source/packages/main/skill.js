@@ -9207,6 +9207,85 @@ export const skill = {
 			},
 		},
 
+		"re_boss_shouhun": {
+			trigger: {
+				global: "phaseBefore",
+				player: ["phaseDrawBegin2", "damageBegin4", "enterGame"],
+			},
+			filter(event, player) {
+				const storage = player.storage?.["re_boss_shouhun"];
+				if (!storage) {
+					return false;
+				}
+				if (event.name === "damage") {
+					return true;
+				}
+				if (event.name === "phaseDraw") {
+					return !event.numFixed && storage[0] > 0;
+				}
+				return storage[2] > 0 && (event.name !== "phase" || game.phaseNumber === 0);
+			},
+			forced: true,
+			async content(event, trigger, player) {
+				const skill = event.name,
+					storage = player.storage[skill];
+				switch (trigger.name) {
+					case "damage": {
+						const list = ["摸牌数", "手牌上限", "体力上限"];
+						const choices = [0, 1, 2].filter(num => storage[num] === Math.min(...storage));
+						const result =
+							choices.length > 1
+								? await player
+									.chooseControl(choices.map(num => list[num]))
+									.set("ai", () => {
+										const list = ["摸牌数", "体力上限", "手牌上限"];
+										return get.event().controls.sort((a, b) => list.indexOf(a) - list.indexOf(b))[0];
+									})
+									.set("prompt", "兽魂：请选择一个数值项最小的选项，令其数值+1")
+									.forResult()
+								: { control: list[choices[0]] };
+						const choice = result?.control;
+						if (choice) {
+							const index = list.indexOf(choice);
+							player.popup(choice);
+							game.log(player, "令", "#g【" + get.translation(skill) + "】", "的", "#y" + choice + "+1");
+							player.storage[skill][index]++;
+							player.markSkill(skill);
+							player.addTip(skill, [get.translation(skill)].concat(player.storage[skill]).join(" "));
+							if (index === 2) {
+								await player.gainMaxHp();
+							}
+						}
+						break;
+					}
+					case "phaseDraw":
+						trigger.num += storage[0];
+						break;
+					default:
+						await player.gainMaxHp(storage[2]);
+						break;
+				}
+			},
+			init(player, skill) {
+				player.storage[skill] = player.storage[skill] || [0, 0, 0];
+				player.markSkill(skill);
+				player.addTip(skill, [get.translation(skill)].concat(player.storage[skill]).join(" "));
+			},
+			onremove(player, skill) {
+				delete player.storage[skill];
+				player.removeTip(skill);
+			},
+			mark: true,
+			intro: {
+				markcount: storage => storage.map(num => num.toString()).join(""),
+				content(storage = []) {
+					return ["摸牌阶段额外摸" + storage[0] + "张牌", "手牌上限+" + storage[1], "体力上限+" + storage[2]].map(str => "<li>" + str).join("<br>");
+				},
+			},
+			mod: { maxHandcard: (player, num) => num + (player.storage?.["re_boss_shouhun"]?.[1] || 0) },
+
+
+		},
 
 		// guozhan
 		gzcongjian: {
@@ -9991,6 +10070,8 @@ export const skill = {
 		"re_boss_fushen": "福神",
 		"re_boss_fushen_info": "限定技，当你处于濒死状态时，你可以弃置所有牌，然后复原你的武将牌，摸3张牌，将体力回复至3点。",
 
+		"re_boss_shouhun": "兽魂",
+		"re_boss_shouhun_info": "锁定技，你的摸牌数+{0}、手牌上限+{0}、体力上限+{0}；当你受到伤害时，令兽魂效果中数值最低的一项数值+{0}。",
 
 		// missing
 		"gzcongjian": "从谏",
