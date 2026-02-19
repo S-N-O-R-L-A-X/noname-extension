@@ -167,7 +167,7 @@ export const character = {
 		"shanhetu_junshi_zhuhuan": ["male", "wu", "7/7/8", ["re_boss_lianyu", "equip_jinwuluorigong", "equip_renwangdun", "equip_tianjitu", "fenli", "pingkou", "xuanlve", "boss_mengtai", "gz_keji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_sunjian": ["male", "wu", "7/8/8", ["re_boss_lianyu", "yinghun", "wulie", "latest_ol_feiyang", "kunfen", "enyuan", "bazhen", "langxi", "shangshi", "boss_chuanyun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 		"shanhetu_junshi_shoushangdebaihu": ["male", "shen", "9/10/9", ["re_boss_lianyu", "boss_xiongshou", "xinkuanggu", "boss_xiongshou", "boss_sipu", "re_boss_shouhun", "re_boss_shouhun", "boss_fengdong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-		"shanhetu_junshi_jiededaofei": ["male", "qun", "9/10/9", ["re_boss_lianyu", "re_boss_hanbingjian", "duodao", "zhanjin", "jielve", "qiangxi", "xinkuanggu", "zhaxiang", "re_boss_bamen", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+		"shanhetu_junshi_jiededaofei": ["male", "qun", "9/10/9", ["re_boss_lianyu", "re_boss_hanbingjian", "duodao", "olzhanjin", "re_boss_jielve", "olqiangxi", "xinkuanggu", "zhaxiang", "re_boss_bamen", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	},
 	characterIntro: {
 		"re_boss_caocao": "来源于挑战模式boss魏武大帝，只加上〖神护〗就可以大战七阴。<br> 【强度】★★★★ <br> 【亮点】综合，可玩性高",
