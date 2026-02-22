@@ -9287,6 +9287,41 @@ export const skill = {
 
 		},
 
+		"re_boss_jielve": {
+			trigger: { source: "damageSource" },
+			filter(event, player) {
+				if (event._notrigger.includes(event.player)) {
+					return false;
+				}
+				return event.player.isIn() && event.player.countCards("hej") > 0 && event.player != player;
+			},
+			forced: true,
+			content() {
+				var num = 0;
+				if (trigger.player.countCards("h")) {
+					num++;
+				}
+				if (trigger.player.countCards("e")) {
+					num++;
+				}
+				if (trigger.player.countCards("j")) {
+					num++;
+				}
+				if (num) {
+					player.gainPlayerCard(trigger.player, num, "hej", true).set("filterButton", function (button) {
+						for (var i = 0; i < ui.selected.buttons.length; i++) {
+							if (get.position(button.link) == get.position(ui.selected.buttons[i].link)) {
+								return false;
+							}
+						}
+						return true;
+					});
+				}
+				player.loseHp();
+			},
+
+		},
+
 		// guozhan
 		gzcongjian: {
 			trigger: {
@@ -10072,6 +10107,10 @@ export const skill = {
 
 		"re_boss_shouhun": "兽魂",
 		"re_boss_shouhun_info": "锁定技，你的摸牌数+{0}、手牌上限+{0}、体力上限+{0}；当你受到伤害时，令兽魂效果中数值最低的一项数值+{0}。",
+
+		// shanhetu_junshi_jiededaofei
+		"re_boss_jielve": "劫掠",
+		"re_boss_jielve_info": "锁定技，当你对一名其他角色造成伤害后，你获得其区域里的各一张牌，然后失去1点体力。",
 
 		// missing
 		"gzcongjian": "从谏",
