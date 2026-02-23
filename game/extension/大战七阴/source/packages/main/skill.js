@@ -9322,6 +9322,31 @@ export const skill = {
 
 		},
 
+		"re_boss_baozhu": {
+			enable: "phaseUse",
+			limited: true,
+			async contentBefore(event, trigger, player) {
+				player.awakenSkill(event.skill);
+			},
+			async content(event, trigger, player) {
+				game.players.forEach((ch) => {
+					const num = player.hujia;
+					if (num > 0) {
+						player.changeHujia(-num);
+					}
+				})
+				player.loseHp();
+
+				game.players.forEach((ch) => {
+					ch.addTempSkill("re_boss_baozhu_effect", "phaseStart");
+				});
+			}
+		},
+
+		"re_boss_baozhu_effect": {
+			inherit: "boss_zuijiu"
+		},
+
 		// guozhan
 		gzcongjian: {
 			trigger: {
@@ -10111,6 +10136,9 @@ export const skill = {
 		// shanhetu_junshi_jiededaofei
 		"re_boss_jielve": "劫掠",
 		"re_boss_jielve_info": "锁定技，当你对一名其他角色造成伤害后，你获得其区域里的各一张牌，然后失去1点体力。",
+
+		"re_boss_baozhu": "爆竹",
+		"re_boss_baozhu_info": "限定技，击破场上所有角色护甲,并失去1点体力值；同时使所有单位【杀】造成的伤害+1，效果持续至使用者下一回合开始时。",
 
 		// missing
 		"gzcongjian": "从谏",
