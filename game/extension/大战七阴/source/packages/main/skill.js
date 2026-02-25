@@ -9330,9 +9330,9 @@ export const skill = {
 			},
 			async content(event, trigger, player) {
 				game.players.forEach((ch) => {
-					const num = player.hujia;
+					const num = ch.hujia;
 					if (num > 0) {
-						player.changeHujia(-num);
+						ch.changeHujia(-num);
 					}
 				})
 				player.loseHp();
