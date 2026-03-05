@@ -559,11 +559,6 @@
     "ChineseName": "编甲",
     "info": "锁定技，游戏开始时，将【藤甲】置入你的装备区。"
   },
-  "gzcongjian": {
-    "EnglishName": "gzcongjian",
-    "ChineseName": "从谏",
-    "info": "锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。"
-  },
   "re_boss_kuangxi": {
     "EnglishName": "re_boss_kuangxi",
     "ChineseName": "狂袭",
@@ -604,11 +599,6 @@
     "ChineseName": "重生",
     "info": "锁定技，当你死亡时，你将此武将牌替换为五虎之关羽。"
   },
-  "xuanlve": {
-    "EnglishName": "xuanlve",
-    "ChineseName": "旋略",
-    "info": "当你失去装备区里的牌后，你可以弃置一名其他角色的一张牌。"
-  },
   "re_boss_juejue": {
     "EnglishName": "re_boss_juejue",
     "ChineseName": "绝决",
@@ -639,11 +629,6 @@
     "ChineseName": "反震",
     "info": "锁定技，每次受到伤害时，为目标增加一个【伤】标记，可叠加，目标回合结束时流失等于【伤】标记的体力值，并移除1枚【伤】标记。"
   },
-  "wanrong": {
-    "EnglishName": "wanrong",
-    "ChineseName": "婉容",
-    "info": "当你成为【杀】的目标后，你可以摸一张牌。"
-  },
   "re_boss_nuyan": {
     "EnglishName": "re_boss_nuyan",
     "ChineseName": "怒焰",
@@ -668,11 +653,6 @@
     "EnglishName": "re_boss_xuli",
     "ChineseName": "蓄力",
     "info": "锁定技，游戏第4轮以及之后每进行4轮时，出牌阶段你可以使用的【杀】限制次数+1（可无限增强）。"
-  },
-  "sgkuanggu": {
-    "EnglishName": "sgkuanggu",
-    "ChineseName": "狂骨",
-    "info": "当你造成伤害后，若你已受伤，你可以进行判定：若结果为黑色，你回复1点体力。"
   },
   "re_boss_shennu": {
     "EnglishName": "re_boss_shennu",
@@ -708,11 +688,6 @@
     "EnglishName": "re_boss_juexing2",
     "ChineseName": "觉醒",
     "info": "锁定技，你的回合外，若你于一个回合内受到超过5点伤害，或因弃置或被其他角色获得而失去超过3张牌时，中止一切结算并结束当前回合，然后你对其他角色各造成1点伤害。"
-  },
-  "keshou": {
-    "EnglishName": "keshou",
-    "ChineseName": "恪守",
-    "info": "当你受到伤害时，你发动此技能。你可弃置两张颜色相同的牌，若如此做，此伤害-1。你的势力已确定且场上没有与你势力相同的其他角色，则你进行判定，若结果为红色，你摸一张牌。"
   },
   "re_boss_eyi": {
     "EnglishName": "re_boss_eyi",
@@ -934,11 +909,6 @@
     "ChineseName": "霜刃",
     "info": "锁定技，游戏开始时，将【寒冰剑】置入你的装备区。"
   },
-  "yingyang": {
-    "EnglishName": "yingyang",
-    "ChineseName": "鹰扬",
-    "info": "当你的拼点牌亮出后，你可以令此牌的点数+3或-3（至多为K，至少为1）。"
-  },
   "re_boss_shunxue": {
     "EnglishName": "re_boss_shunxue",
     "ChineseName": "吮血",
@@ -1014,9 +984,8 @@
     "ChineseName": "解图",
     "info": "锁定技，游戏开始时，将【天机图】置入你的装备区。"
   },
-  "gz_keji": {
-    "EnglishName": "gz_keji",
-    "ChineseName": "克己",
-    "info": "锁定技，弃牌阶段开始时，若你未于出牌阶段使用过颜色不同的牌或出牌阶段被跳过，你本回合手牌上限+4。"
+  "re_boss_shouhun": {
+    "EnglishName": "re_boss_shouhun",
+    "ChineseName": "兽魂"
   }
 }
