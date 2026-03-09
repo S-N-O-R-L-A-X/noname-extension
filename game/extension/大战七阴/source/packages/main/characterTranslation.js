@@ -174,5 +174,6 @@ export const translation = {
 	"shanhetu_junshi_sunjian": "军师篇孙坚",
 	"shanhetu_junshi_shoushangdebaihu": "受伤的白虎",
 	"shanhetu_junshi_jiededaofei": "饥饿的盗匪",
-	"shanhetu_junshi_shibixie": "石辟邪"
+	"shanhetu_junshi_shibixie": "石辟邪",
+	"shanhetu_beiwang_yangyi": "北望篇杨仪",
 }
