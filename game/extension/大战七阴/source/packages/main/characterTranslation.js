@@ -177,4 +177,5 @@ export const translation = {
 	"shanhetu_junshi_shibixie": "石辟邪",
 	"shanhetu_beiwang_yangyi": "北望篇杨仪",
 	"shanhetu_beiwang_guojia": "北望篇郭嘉",
+	"shanhetu_beiwang_yuejin": "北望篇乐进",
 }
