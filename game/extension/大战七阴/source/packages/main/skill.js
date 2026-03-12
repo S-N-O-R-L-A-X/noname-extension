@@ -9347,6 +9347,30 @@ export const skill = {
 			inherit: "boss_zuijiu"
 		},
 
+		// shanhetu_beiwang_yuejin
+		"re_boss_yingzi": {
+			audioname: ["sunce", "re_sunben", "re_sunce"],
+			trigger: { player: "phaseDrawBegin2" },
+			forced: true,
+			preHidden: true,
+			filter(event, player) {
+				return !event.numFixed;
+			},
+			content() {
+				trigger.num += game.countPlayer();
+			},
+			ai: {
+				threaten: 1.5,
+			},
+			mod: {
+				maxHandcardBase(player, num) {
+					return player.maxHp;
+				},
+			},
+
+		},
+
+
 		// guozhan
 		gzcongjian: {
 			trigger: {
@@ -10139,6 +10163,11 @@ export const skill = {
 
 		"re_boss_baozhu": "爆竹",
 		"re_boss_baozhu_info": "限定技，击破场上所有角色护甲,并失去1点体力值；同时使所有单位【杀】造成的伤害+1，效果持续至使用者下一回合开始时。",
+
+		// shanhetu_beiwang_yuejin
+		"re_boss_yingzi": "英姿",
+		"re_boss_yingzi_info": "锁定技，摸牌阶段，你多摸X张牌。你的手牌上限为你的体力上限（X为存活角色数）。",
+
 
 		// missing
 		"gzcongjian": "从谏",
