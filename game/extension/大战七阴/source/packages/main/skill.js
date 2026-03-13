@@ -9370,6 +9370,48 @@ export const skill = {
 
 		},
 
+		// shanhetu_beiwang_guanyu
+		"re_boss_wusheng": {
+			mod: {
+				targetInRange(card) {
+					if (card.name == "sha") {
+						return true;
+					}
+				},
+			},
+			locked: false,
+			audio: "wusheng",
+			audioname: ["re_guanyu", "jsp_guanyu", "re_guanzhang", "dc_jsp_guanyu"],
+			enable: ["chooseToRespond", "chooseToUse"],
+			filterCard(card, player) {
+				return true;
+			},
+			position: "hes",
+			viewAs: {
+				name: "sha",
+			},
+			viewAsFilter(player) {
+				if (!player.countCards("hes")) {
+					return false;
+				}
+			},
+			prompt: "将一张牌当杀使用或打出",
+			check(card) {
+				var val = get.value(card);
+				if (_status.event.name == "chooseToRespond") {
+					return 1 / Math.max(0.1, val);
+				}
+				return 5 - val;
+			},
+			ai: {
+				respondSha: true,
+				skillTagFilter(player) {
+					if (!player.countCards("hes")) {
+						return false;
+					}
+				},
+			},
+		},
 
 		// guozhan
 		gzcongjian: {
@@ -10168,6 +10210,9 @@ export const skill = {
 		"re_boss_yingzi": "英姿",
 		"re_boss_yingzi_info": "锁定技，摸牌阶段，你多摸X张牌。你的手牌上限为你的体力上限（X为存活角色数）。",
 
+		// shanhetu_beiwang_guanyu
+		"re_boss_wusheng": "武圣",
+		"re_boss_wusheng_info": "你可以将一张牌当【杀】使用或打出。你使用的【杀】无距离限制。",
 
 		// missing
 		"gzcongjian": "从谏",
