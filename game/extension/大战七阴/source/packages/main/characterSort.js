@@ -54,5 +54,7 @@ export const sort = {
 		against7devil_shanhetu_fadong_boss: [
 			"shanhetu_fadong_liusandao"
 		],
+		against7devil_shanhetu_beiwang_boss: ["shanhetu_beiwang_yangyi", "shanhetu_beiwang_guojia",
+			"shanhetu_beiwang_yuejin", "shanhetu_beiwang_guanyu"]
 	}
 }

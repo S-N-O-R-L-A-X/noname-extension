@@ -10,6 +10,7 @@ export const translation = {
 	"against7devil_shanhetu_hanzhong": "山河图风起汉中包",
 	"against7devil_shanhetu_fadong_boss": "山河图诸侯伐董包",
 	"against7devil_shanhetu_junshi_boss": "山河图军师联盟包",
+	"against7devil_shanhetu_beiwang_boss": "山河图北望包",
 
 	//character
 	"re_boss_caocao": "界魏武大帝",
