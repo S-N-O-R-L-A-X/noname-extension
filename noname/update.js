@@ -1,4 +1,8 @@
 import fs from "fs/promises";
+import { translation } from "../game/extension/大战七阴/source/packages/main/characterTranslation.js";
+import { intro } from "../game/extension/大战七阴/source/packages/main/characterIntro.js";
+import { sort } from "../game/extension/大战七阴/source/packages/main/characterSort.js";
+import { characters } from "../game/extension/大战七阴/source/packages/main/character.js";
 
 function getNowFormatDate() {
 	let date = new Date(),
@@ -11,8 +15,8 @@ function getNowFormatDate() {
 	return `${year}-${month}-${strDate}`
 }
 
-const Eng2Chinese = {};
-const character2intro = {};
+const Eng2Chinese = translation;
+const character2intro = intro;
 const character2detail = [];
 const character2package = {};
 const package2character = {};
@@ -24,91 +28,74 @@ const rg = /"(.*)": "(.*)"/g;
 
 let info;
 
-function getTranslation(data) {
-	// get translation
-	const translation = /translate: \{([^}]+)\}/.exec(data)[0];
-	while ((info = rg.exec(translation)) !== null) {
-		Eng2Chinese[info[1]] = info[2];
+async function getSkillTranslation() {
+	// get skill translation from skill.js
+	const filePath = `${source_url}/skill.js`;
+	try {
+		const data = await fs.readFile(filePath, "utf8");
+		const translation = /translate: \{([^}]+)\}/.exec(data)[0];
+		while ((info = rg.exec(translation)) !== null) {
+			Eng2Chinese[info[1]] = info[2];
+		}
+	} catch (error) {
+		console.error(`Failed to read skill translation file: ${filePath}`, error);
 	}
 }
 
-
 async function parseSkills() {
 	// get skill translation
-	return fs.readFile(`${source_url}/skill.js`, "utf8").then(data => {
-		getTranslation(data);
-		return Promise.resolve();
-	})
+	await getSkillTranslation();
+	return Promise.resolve();
 }
 
 async function parseCharacters() {
-	// get characters' introduction
-	return fs.readFile(`${source_url}/character.js`, "utf8").then(data => {
 
-		getTranslation(data);
+	Object.entries(intro).forEach(([key, value]) => {
+		const [intro, strength, highlight] = value.split("<br>");
+		character2intro[key] = { intro, strength, highlight };
+	})
 
-		const characterIntro = /characterIntro:[\s\S]*?\},/m.exec(data)[0];
-		while ((info = rg.exec(characterIntro)) !== null) {
-			const [intro, strength, highlight] = info[2].split("<br>");
-			character2intro[info[1]] = { intro, strength, highlight };
+	Object.entries(sort.mode_extension_大战七阴).forEach(([key, value]) => {
+		package2character[key] = value;
+
+		value.forEach(ch => {
+			character2package[ch] = key;
+		})
+	});
+
+	Object.entries(characters).forEach(([key, value]) => {
+		const [gender, nationality, hp, skills] = value;
+		const ch = {};
+		ch.EnglishName = key;
+		ch.ChineseName = Eng2Chinese[key];
+		ch.gender = gender;
+		ch.nationality = nationality;
+		ch.hp = hp;
+		ch.skills = skills;
+		ch.ChineseSkills = [];
+		
+		ch.skills.forEach((skill) => {
+			ch.ChineseSkills.push(Eng2Chinese[skill]);
+			// if translation exists, this is a designed skill
+			if (Eng2Chinese[skill]) {
+				skill2detail[skill] = { EnglishName: skill, ChineseName: Eng2Chinese[skill], info: Eng2Chinese[`${skill}_info`] };
+			}
+		})
+
+		ch.package = Eng2Chinese[character2package[key]];
+		if (character2intro[key]) {
+			const { intro, strength, highlight } = character2intro[key];
+			ch.details = intro;
+			ch.strength = strength;
+			ch.highlight = highlight;
 		}
-
-		const characterPackage = /mode_extension_大战七阴:[\s\S]*?\},/m.exec(data)[0];
-		const rg1 = /([\s\S]*?): \[([\s\S]*?)\][\s\S]*?/g;
-		while ((info = rg1.exec(characterPackage)) !== null) {
-			let p = info[1].length - 1;
-			while (p >= 0 && (info[1][p] !== " " && info[1][p] !== "\t")) {
-				--p;
-			}
-			info[1] = info[1].substring(p + 1);
-			const arr = info[2].split(/"/).filter(x => x !== "" && !x.startsWith(","));
-			package2character[info[1]] = arr;
-			arr.forEach(x => character2package[x] = info[1]);
-		}
-
-		// get character detail
-		const characterDetail = /character:[\s\S]*\}[\s\S]*characterSort/m.exec(data)[0];
-		const rg2 = /"(.*)": \["(.*?)", "(.*?)", (.*?), \[(.*?)\].*\]/g;
-		while ((info = rg2.exec(characterDetail)) !== null) {
-			const ch = {};
-			ch.EnglishName = info[1];
-			ch.ChineseName = Eng2Chinese[info[1]];
-			ch.gender = info[2];
-			ch.nationality = info[3];
-			if (info[4][0] === "\"") {
-				ch.hp = info[4].substring(1, info[4].length - 1);
-			}
-			else {
-				ch.hp = info[4];
-			}
-			ch.skills = info[5].split(/"/).filter(x => x !== "" && x !== ", ");
-			ch.ChineseSkills = [];
-
-			ch.skills.forEach((skill) => {
-				ch.ChineseSkills.push(Eng2Chinese[skill]);
-				// if translation exists, this is a designed skill
-				if (Eng2Chinese[skill]) {
-					skill2detail[skill] = { EnglishName: skill, ChineseName: Eng2Chinese[skill], info: Eng2Chinese[`${skill}_info`] };
-				}
-			})
-			ch.package = Eng2Chinese[character2package[info[1]]];
-			// console.log(ch)
-			if (character2intro[info[1]]) {
-				const { intro, strength, highlight } = character2intro[info[1]];
-				ch.details = intro;
-				ch.strength = strength;
-				ch.highlight = highlight;
-			}
-			character2detail.push(ch);
-		}
-		return Promise.resolve();
-
+		character2detail.push(ch);
 	})
 }
 
 async function parseUpdateInfo() {
 	return fs.readFile(`${root_url}/update.json`, 'utf8').then(data => {
-		const updateObj= {
+		const updateObj = {
 			time: getNowFormatDate(),
 			...JSON.parse(data)
 		}
