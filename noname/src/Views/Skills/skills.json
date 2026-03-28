@@ -94,16 +94,6 @@
     "ChineseName": "混战",
     "info": "锁定技，当你造成一点伤害后，你随机获得一个群势力角色的所有技能。"
   },
-  "yuquan": {
-    "EnglishName": "yuquan",
-    "ChineseName": "驭权",
-    "info": "隐匿技，锁定技，当你登场后，你随机获得一个晋势力角色的所有技能。"
-  },
-  "chengbing": {
-    "EnglishName": "chengbing",
-    "ChineseName": "称病",
-    "info": "当你受到伤害后，你进入隐匿状态。"
-  },
   "ex_yitong": {
     "EnglishName": "ex_yitong",
     "ChineseName": "一统",
@@ -987,5 +977,10 @@
   "re_boss_shouhun": {
     "EnglishName": "re_boss_shouhun",
     "ChineseName": "兽魂"
+  },
+  "equip_bagua": {
+    "EnglishName": "equip_bagua",
+    "ChineseName": "布阵",
+    "info": "锁定技，游戏开始时，将【八卦阵】置入你的装备区。"
   }
 }

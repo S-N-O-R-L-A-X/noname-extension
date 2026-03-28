@@ -4,7 +4,7 @@
     "ChineseName": "界魏武大帝",
     "gender": "male",
     "nationality": "wei",
-    "hp": "12",
+    "hp": 12,
     "skills": [
       "shenhu",
       "boss_guixin",
@@ -52,7 +52,7 @@
     "ChineseName": "魅魔",
     "gender": "female",
     "nationality": "shen",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "meihun",
       "rebiyue",
@@ -79,7 +79,7 @@
     "ChineseName": "界药坛圣手",
     "gender": "male",
     "nationality": "qun",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "shenhu",
       "chulao",
@@ -106,7 +106,7 @@
     "ChineseName": "界赤壁火神",
     "gender": "male",
     "nationality": "wu",
-    "hp": "10",
+    "hp": 10,
     "skills": [
       "shenhu",
       "huoshen",
@@ -133,7 +133,7 @@
     "ChineseName": "数曹金玉",
     "gender": "female",
     "nationality": "wei",
-    "hp": "10",
+    "hp": 10,
     "skills": [
       "shenhu",
       "math_yuqi",
@@ -156,7 +156,7 @@
     "ChineseName": "回血亡",
     "gender": "male",
     "nationality": "shen",
-    "hp": "25",
+    "hp": 25,
     "skills": [
       "boss_fudu",
       "boss_kujiu",
@@ -181,7 +181,7 @@
     "ChineseName": "融徐晃",
     "gender": "male",
     "nationality": "wei",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "shenhu",
       "shipo",
@@ -227,7 +227,7 @@
     "ChineseName": "界洛水仙子",
     "gender": "female",
     "nationality": "wei",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "shenhu",
       "tashui",
@@ -254,7 +254,7 @@
     "ChineseName": "红脸婆",
     "gender": "female",
     "nationality": "shen",
-    "hp": "8",
+    "hp": 8,
     "skills": [
       "boss_shiyou",
       "boss_wangshi",
@@ -279,7 +279,7 @@
     "ChineseName": "扩貂蝉",
     "gender": "female",
     "nationality": "qun",
-    "hp": "3",
+    "hp": 3,
     "skills": [
       "shenhu",
       "ex_yuhun",
@@ -300,7 +300,7 @@
     "ChineseName": "界红脸婆",
     "gender": "female",
     "nationality": "shen",
-    "hp": "8",
+    "hp": 8,
     "skills": [
       "boss_shiyou",
       "rewangshi",
@@ -325,7 +325,7 @@
     "ChineseName": "至尊吴帝",
     "gender": "male",
     "nationality": "wu",
-    "hp": "8",
+    "hp": 8,
     "skills": [
       "shenhu",
       "wuye",
@@ -346,7 +346,7 @@
     "ChineseName": "乱世诸侯",
     "gender": "male",
     "nationality": "qun",
-    "hp": "10",
+    "hp": 10,
     "skills": [
       "shenhu",
       "qibing",
@@ -363,32 +363,11 @@
     "highlight": " 【亮点】综合，可玩性高"
   },
   {
-    "EnglishName": "yitongjindi",
-    "ChineseName": "一统晋帝",
-    "gender": "male",
-    "nationality": "jin",
-    "hp": "4",
-    "skills": [
-      "shenhu",
-      "yuquan",
-      "chengbing"
-    ],
-    "ChineseSkills": [
-      "神护",
-      "驭权",
-      "称病"
-    ],
-    "package": "挑战boss加强包",
-    "details": "晋国是乱世中隐藏最深的势力，因此将挑战模式boss魏武大帝的技能【雄才】换成【驭权】，加上自设计的【称病】形成技能联动。",
-    "strength": " 【强度】★★★★ ",
-    "highlight": " 【亮点】综合，可玩性高"
-  },
-  {
     "EnglishName": "re_nianshou",
     "ChineseName": "界年兽",
     "gender": "male",
     "nationality": "shen",
-    "hp": "4",
+    "hp": 4,
     "skills": [
       "boss_nianrui",
       "boss_mengtai",
@@ -417,7 +396,7 @@
     "ChineseName": "蛮王",
     "gender": "male",
     "nationality": "qun",
-    "hp": "10",
+    "hp": 10,
     "skills": [
       "shenhu",
       "equan",
@@ -452,7 +431,7 @@
     "ChineseName": "扩嬴政",
     "gender": "male",
     "nationality": "daqin",
-    "hp": "8",
+    "hp": 8,
     "skills": [
       "shenhu",
       "ex_yitong",
@@ -481,7 +460,7 @@
     "ChineseName": "扩赵姬",
     "gender": "female",
     "nationality": "daqin",
-    "hp": "4",
+    "hp": 4,
     "skills": [
       "ex_shanwu",
       "ex_daqi",
@@ -504,7 +483,7 @@
     "ChineseName": "扩白起",
     "gender": "male",
     "nationality": "daqin",
-    "hp": "8",
+    "hp": 8,
     "skills": [
       "shenhu",
       "ex_wuan",
@@ -539,7 +518,7 @@
     "ChineseName": "扩张仪",
     "gender": "male",
     "nationality": "daqin",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "shenhu",
       "ex_lianheng",
@@ -564,7 +543,7 @@
     "ChineseName": "扩商鞅",
     "gender": "male",
     "nationality": "daqin",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "shenhu",
       "ex_bianfa",
@@ -589,7 +568,7 @@
     "ChineseName": "扩赵高",
     "gender": "male",
     "nationality": "daqin",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "shenhu",
       "ex_zhilu",
@@ -618,7 +597,7 @@
     "ChineseName": "扩芈月",
     "gender": "female",
     "nationality": "daqin",
-    "hp": "8",
+    "hp": 8,
     "skills": [
       "shenhu",
       "ex_zhangzheng",
@@ -643,7 +622,7 @@
     "ChineseName": "扩吕不韦",
     "gender": "male",
     "nationality": "daqin",
-    "hp": "4",
+    "hp": 4,
     "skills": [
       "shenhu",
       "ex_jugu",
@@ -668,7 +647,7 @@
     "ChineseName": "融贾诩",
     "gender": "male",
     "nationality": "qun",
-    "hp": "7",
+    "hp": 7,
     "skills": [
       "rewansha",
       "reluanwu",
@@ -695,7 +674,7 @@
     "ChineseName": "融李儒",
     "gender": "male",
     "nationality": "qun",
-    "hp": "5",
+    "hp": 5,
     "skills": [
       "shenhu",
       "juece",
@@ -732,7 +711,7 @@
     "ChineseName": "魏国机械",
     "gender": "none",
     "nationality": "wei",
-    "hp": "10",
+    "hp": 10,
     "skills": [
       "boss_jiguan",
       "boss_nailuo",
@@ -759,7 +738,7 @@
     "ChineseName": "蜀国机械",
     "gender": "none",
     "nationality": "shu",
-    "hp": "15",
+    "hp": 15,
     "skills": [
       "boss_jiguan",
       "boss_yuhuojg",
@@ -868,7 +847,7 @@
     "ChineseName": "魏国英魂",
     "gender": "none",
     "nationality": "wei",
-    "hp": "10",
+    "hp": 10,
     "skills": [
       "shenhu",
       "boss_xuanlei",
@@ -901,7 +880,7 @@
     "ChineseName": "融蒲元",
     "gender": "male",
     "nationality": "shu",
-    "hp": "10",
+    "hp": 10,
     "skills": [
       "shenhu",
       "fusion_shengong",
@@ -928,7 +907,7 @@
     "ChineseName": "融神姜维",
     "gender": "male",
     "nationality": "shen",
-    "hp": "10",
+    "hp": 10,
     "skills": [
       "shenhu",
       "jiufa",
@@ -955,7 +934,7 @@
     "ChineseName": "界英招",
     "gender": "male",
     "nationality": "shen",
-    "hp": "25",
+    "hp": 25,
     "skills": [
       "shenhu",
       "re_boss_yaoshou",
@@ -980,7 +959,7 @@
     "ChineseName": "界相柳",
     "gender": "male",
     "nationality": "shen",
-    "hp": "20",
+    "hp": 20,
     "skills": [
       "shenhu",
       "re_boss_yaoshou",
@@ -1005,7 +984,7 @@
     "ChineseName": "融凌统",
     "gender": "male",
     "nationality": "wu",
-    "hp": "4",
+    "hp": 4,
     "skills": [
       "shenhu",
       "fusion_xuanfeng",
@@ -1028,7 +1007,7 @@
     "ChineseName": "融留赞",
     "gender": "male",
     "nationality": "wu",
-    "hp": "4",
+    "hp": 4,
     "skills": [
       "shenhu",
       "jsrgbahu",
@@ -1055,7 +1034,7 @@
     "ChineseName": "数夏侯杰",
     "gender": "male",
     "nationality": "wei",
-    "hp": "8",
+    "hp": 8,
     "skills": [
       "shenhu",
       "math_liedan",
@@ -1076,7 +1055,7 @@
     "ChineseName": "数许劭",
     "gender": "male",
     "nationality": "qun",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "shenhu",
       "math_pingjian"
@@ -1095,7 +1074,7 @@
     "ChineseName": "数张昌蒲",
     "gender": "female",
     "nationality": "wei",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "shenhu",
       "math_yanjiao",
@@ -1116,7 +1095,7 @@
     "ChineseName": "转轮地藏",
     "gender": "male",
     "nationality": "shen",
-    "hp": "8",
+    "hp": 8,
     "skills": [
       "boss_modao",
       "fusion_lunhui",
@@ -1147,7 +1126,7 @@
     "ChineseName": "融神荀彧",
     "gender": "male",
     "nationality": "shen",
-    "hp": "3",
+    "hp": 3,
     "skills": [
       "fusion_quhu",
       "fusion_jieming_all",
@@ -1170,35 +1149,11 @@
     "highlight": " 【亮点】综合"
   },
   {
-    "EnglishName": "fusion_panshu",
-    "ChineseName": "融潘淑",
-    "gender": "female",
-    "nationality": "wu",
-    "hp": "3",
-    "skills": [
-      "shenhu",
-      "fusion_weiyi",
-      "jinzhi",
-      "zhiren",
-      "fusion_yaner"
-    ],
-    "ChineseSkills": [
-      "神护",
-      null,
-      null,
-      null,
-      null
-    ],
-    "details": "来源于ol潘淑和十周年潘淑。〖威仪〗改为每轮每名角色限一次，〖燕尔〗改为出牌阶段自己没牌也可发动。",
-    "strength": "【强度】★★★",
-    "highlight": " 【亮点】综合"
-  },
-  {
     "EnglishName": "re_boss_dongzhuo",
     "ChineseName": "界乱世魔王",
     "gender": "male",
     "nationality": "qun",
-    "hp": "20",
+    "hp": 20,
     "skills": [
       "shenhu",
       "re_boss_qiangzheng",
@@ -1221,31 +1176,11 @@
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "re_boss_huangyueying",
-    "gender": "female",
-    "nationality": "qun",
-    "hp": "4",
-    "skills": [
-      "shenhu",
-      "boss_gongshen",
-      "boss_jizhi",
-      "qicai",
-      "boss_guiyin"
-    ],
-    "ChineseSkills": [
-      "神护",
-      null,
-      null,
-      null,
-      null
-    ]
-  },
-  {
     "EnglishName": "fusion_shen_zhangfei",
     "ChineseName": "融神张飞",
     "gender": "male",
     "nationality": "shen",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "shenhu",
       "fusion_shencai",
@@ -1264,43 +1199,11 @@
     "highlight": " 【亮点】攻击"
   },
   {
-    "EnglishName": "fusion_tengfanglan",
-    "gender": "female",
-    "nationality": "wu",
-    "hp": "4",
-    "skills": [
-      "shenhu",
-      "fusion_luochong_all",
-      "dcaichen"
-    ],
-    "ChineseSkills": [
-      "神护",
-      null,
-      null
-    ]
-  },
-  {
-    "EnglishName": "math_tengfanglan",
-    "gender": "female",
-    "nationality": "wu",
-    "hp": "4",
-    "skills": [
-      "shenhu",
-      "fusion_luochong_all",
-      "dcaichen"
-    ],
-    "ChineseSkills": [
-      "神护",
-      null,
-      null
-    ]
-  },
-  {
     "EnglishName": "math_beimihu",
     "ChineseName": "数卑弥呼",
     "gender": "female",
     "nationality": "qun",
-    "hp": "3",
+    "hp": 3,
     "skills": [
       "shenhu",
       "math_zongkui",
@@ -1325,7 +1228,7 @@
     "ChineseName": "界虎牢关吕布",
     "gender": "male",
     "nationality": "qun",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "re_boss_jingjia",
       "boss_aozhan",
@@ -1358,7 +1261,7 @@
     "ChineseName": "融三袁",
     "gender": "male",
     "nationality": "qun",
-    "hp": "6",
+    "hp": 6,
     "skills": [
       "shenhu",
       "fusion_neifa"
@@ -5054,6 +4957,126 @@
     "package": "山河图军师联盟包",
     "details": "来源于山河图军师联盟篇洛阳关内石辟邪，没有任何改动。",
     "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_yangyi",
+    "ChineseName": "北望篇杨仪",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "5/5/5",
+    "skills": [
+      "re_boss_lianyu",
+      "dingcuo",
+      "oljuanxia",
+      "xiansi",
+      "danshou",
+      "mengjin",
+      "boss_tianyun",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇兖州关内杨仪，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_guojia",
+    "ChineseName": "北望篇郭嘉",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "5/5/5",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_zhugeliannu",
+      "equip_bagua",
+      "tiandu",
+      "yiji",
+      "oldangxian",
+      "huituo",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "持弩",
+      "布阵",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇兖州关内郭嘉，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_yuejin",
+    "ChineseName": "北望篇乐进",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "5/5/5",
+    "skills": [
+      "re_boss_lianyu",
+      "xiaoguo",
+      "oljiangchi",
+      "oldangxian",
+      "qiaoli",
+      "re_boss_yingzi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇兖州关内乐进，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_guanyu",
+    "ChineseName": "北望篇关羽",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "5/5/5",
+    "skills": [
+      "re_boss_lianyu",
+      "re_boss_wusheng",
+      "re_boss_mashu",
+      "nuzhan",
+      "yijue",
+      "xinkuanggu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇兖州关内关羽，没有任何改动。",
+    "strength": "【强度】★★★★",
     "highlight": " 【亮点】综合"
   }
 ]
