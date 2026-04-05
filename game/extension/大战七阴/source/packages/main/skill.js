@@ -1294,6 +1294,19 @@ export const skills = {
 			player.equip(game.createCard2('bagua', 'spade', 2));
 		}
 	},
+	"equip_qilingong": {
+		forced: true,
+		filter: function (event, player) {
+			return (event.name != 'phase' || game.phaseNumber == 0);
+		},
+		trigger: {
+			global: 'phaseBefore',
+			player: 'enterGame',
+		},
+		content: function () {
+			player.equip(game.createCard2('qilin', 'heart', 5));
+		}
+	},
 
 	"re_boss_reborn_machao": {
 		trigger: {

@@ -142,6 +142,8 @@ export const skillTranslation = {
 	"equip_tianjitu_info": "锁定技，游戏开始时，将【天机图】置入你的装备区。",
 	"equip_bagua": "布阵",
 	"equip_bagua_info": "锁定技，游戏开始时，将【八卦阵】置入你的装备区。",
+	"equip_qilin": "持弓",
+	"equip_qilin_info": "锁定技，游戏开始时，将【麒麟弓】置入你的装备区。",
 
 	// fusion_shen_sunce
 	"repinghe": "冯河",
