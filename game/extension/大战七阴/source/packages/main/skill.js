@@ -9437,6 +9437,119 @@ export const skills = {
 		},
 	},
 
+	"re_boss_yiji": {
+		audio: 2,
+		trigger: { player: ["damageEnd", "die"] },
+		forceDie: true,
+		filter(event, player) {
+			if (event.name == "die") {
+				return true;
+			}
+			return player.isIn() && event.num > 0;
+		},
+		async content(event, trigger, player) {
+			const cards = [];
+			while (cards.length < 3) {
+				const card = get.cardPile((c) => get.type(c) === "trick" && !cards.includes(c));
+				if (card) {
+					cards.push(card);
+				} else {
+					break;
+				}
+			}
+			if (cards.length) {
+				game.log(player, "获得了", get.cnNumber(cards.length), "张牌");
+				player.$draw(cards.length);
+				player.directgain(cards);
+			}
+
+			do {
+				const result =
+					cards.length > 1
+						? await player
+							.chooseButtonTarget({
+								createDialog: [`遗计：请选择要分配的牌和目标`, cards],
+								forced: true,
+								allowChooseAll: true,
+								selectButton: [1, Infinity],
+								cardsx: cards,
+								ai1(button) {
+									return get.value(button.link);
+								},
+								ai2(target) {
+									const player = get.player();
+									const card = ui.selected.buttons[0].link;
+									if (card) {
+										return get.value(card, target) * get.attitude(player, target);
+									}
+									return 1;
+								},
+							})
+							.forResult()
+						: await player
+							.chooseTarget("选择一名角色获得" + get.translation(cards), true)
+							.set("ai", target => {
+								const att = get.attitude(_status.event.player, target);
+								if (_status.event.enemy) {
+									return -att;
+								} else if (att > 0) {
+									return att / (1 + target.countCards("h"));
+								} else {
+									return att / 100;
+								}
+							})
+							.set("enemy", get.value(cards[0], player, "raw") < 0)
+							.forResult();
+				if (result?.bool) {
+					if (!result.links?.length) {
+						result.links = cards.slice(0);
+					}
+					cards.removeArray(result.links);
+					player.line(result.targets, "green");
+					const gainEvent = result.targets[0].gain(result.links, "draw");
+					gainEvent.giver = player;
+					await gainEvent;
+				}
+			} while (cards.length > 0);
+
+		},
+		ai: {
+			expose: 0.2,
+			maixie: true,
+			maixie_hp: true,
+			effect: {
+				target(card, player, target, current) {
+					if (get.tag(card, "damage") && target.hp > 1) {
+						if (player.hasSkillTag("jueqing", false, target)) {
+							return [1, -2];
+						}
+						var max = 0;
+						var players = game.filterPlayer();
+						for (var i = 0; i < players.length; i++) {
+							if (get.attitude(target, players[i]) > 0) {
+								max = Math.max(Math.min(5, players[i].hp) - players[i].countCards("h"), max);
+							}
+						}
+						switch (max) {
+							case 0:
+								return 2;
+							case 1:
+								return 1.5;
+							case 2:
+								return [1, 2];
+							default:
+								return [0, max];
+						}
+					}
+					if ((card.name == "tao" || card.name == "caoyao") && target.hp > 1 && target.countCards("h") <= target.hp) {
+						return [0, 0];
+					}
+				},
+			},
+		},
+	},
+
+
 	// guozhan
 	gzcongjian: {
 		trigger: {

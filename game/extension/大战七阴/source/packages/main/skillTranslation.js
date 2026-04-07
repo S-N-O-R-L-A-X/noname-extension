@@ -579,6 +579,9 @@ export const skillTranslation = {
 	"re_boss_wusheng": "武圣",
 	"re_boss_wusheng_info": "你可以将一张牌当【杀】使用或打出。你使用的【杀】无距离限制。",
 
+	"re_boss_yiji": "遗计",
+	"re_boss_yiji_info": "当你受到1点伤害后或死亡时，你可以获得三张锦囊牌，然后可以将这些牌交给任意角色。",
+
 	// missing
 	"gzcongjian": "从谏",
 	"gzcongjian_info": "锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。",
