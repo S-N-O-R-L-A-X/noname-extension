@@ -158,11 +158,11 @@ export const intro = {
 	"shanhetu_junshi_jiededaofei": "来源于山河图军师联盟篇洛阳关内饥饿的盗匪，没有任何改动。<br>【强度】★★★★★★<br> 【亮点】攻击",
 	"shanhetu_junshi_shibixie": "来源于山河图军师联盟篇洛阳关内石辟邪，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
 	"shanhetu_beiwang_yangyi": "来源于山河图北望篇兖州关内杨仪，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
-	"shanhetu_beiwang_guojia": "来源于山河图北望篇兖州关内郭嘉，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
+	"shanhetu_beiwang_guojia": "来源于山河图北望篇兖州关内郭嘉，没有任何改动。<br>【强度】★★★★<br> 【亮点】防御",
 	"shanhetu_beiwang_yuejin": "来源于山河图北望篇兖州关内乐进，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
-	"shanhetu_beiwang_guanyu": "来源于山河图北望篇兖州关内关羽，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
+	"shanhetu_beiwang_guanyu": "来源于山河图北望篇兖州关内关羽，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
 	"shanhetu_beiwang_caoxiu": "来源于山河图北望篇兖州关内曹休，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
-	"shanhetu_beiwang_wangyi": "来源于山河图北望篇兖州关内王异，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
-	"shanhetu_beiwang_gongsunzan": "来源于山河图北望篇兖州关内公孙瓒，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
-	"shanhetu_beiwang_chengyu": "来源于山河图北望篇兖州关内程昱，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合"
+	"shanhetu_beiwang_wangyi": "来源于山河图北望篇兖州关内王异，没有任何改动。<br>【强度】★★★★<br> 【亮点】防御",
+	"shanhetu_beiwang_gongsunzan": "来源于山河图北望篇兖州关内公孙瓒，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+	"shanhetu_beiwang_chengyu": "来源于山河图北望篇兖州关内程昱，没有任何改动。<br>【强度】★★★★<br> 【亮点】防御"
 }
