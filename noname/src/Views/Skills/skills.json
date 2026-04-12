@@ -1038,5 +1038,10 @@
     "EnglishName": "re_boss_wusheng",
     "ChineseName": "武圣",
     "info": "你可以将一张牌当【杀】使用或打出。你使用的【杀】无距离限制。"
+  },
+  "re_boss_yiji": {
+    "EnglishName": "re_boss_yiji",
+    "ChineseName": "遗计",
+    "info": "当你受到1点伤害后或死亡时，你可以获得三张锦囊牌，然后可以将这些牌交给任意角色。"
   }
 }

@@ -5019,7 +5019,7 @@
     "package": "山河图北望包",
     "details": "来源于山河图北望篇兖州关内郭嘉，没有任何改动。",
     "strength": "【强度】★★★★",
-    "highlight": " 【亮点】综合"
+    "highlight": " 【亮点】防御"
   },
   {
     "EnglishName": "shanhetu_beiwang_yuejin",
@@ -5054,7 +5054,7 @@
     "EnglishName": "shanhetu_beiwang_guanyu",
     "ChineseName": "北望篇关羽",
     "gender": "male",
-    "nationality": "shu",
+    "nationality": "wei",
     "hp": "5/5/5",
     "skills": [
       "re_boss_lianyu",
@@ -5077,6 +5077,128 @@
     "package": "山河图北望包",
     "details": "来源于山河图北望篇兖州关内关羽，没有任何改动。",
     "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_caoxiu",
+    "ChineseName": "北望篇曹休",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "5/5/5",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_qilingong",
+      "qianju",
+      "qingxi",
+      "liegong",
+      "jieyuan",
+      "anjian",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇兖州关内曹休，没有任何改动。",
+    "strength": "【强度】★★★★",
     "highlight": " 【亮点】综合"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_wangyi",
+    "ChineseName": "北望篇王异",
+    "gender": "female",
+    "nationality": "wei",
+    "hp": "5/5/5",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_qinglong",
+      "olzhenlie",
+      "olmiji",
+      "shouxi",
+      "xiangle",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇兖州关内王异，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】防御"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_gongsunzan",
+    "ChineseName": "北望篇公孙瓒",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "5/5/5",
+    "skills": [
+      "re_boss_lianyu",
+      "olsbjiaodi",
+      "olsbbaojing",
+      "boss_chuanyun",
+      "oldangxian",
+      "jiaozi",
+      "wushen",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇兖州关内公孙瓒，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_chengyu",
+    "ChineseName": "北望篇程昱",
+    "gender": "male",
+    "nationality": "wei",
+    "hp": "5/5/5",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_bagua",
+      "shefu",
+      "benyu",
+      "oltishen",
+      "re_boss_yiji",
+      "ollongdan",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "布阵",
+      null,
+      null,
+      null,
+      "遗计",
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇兖州关内程昱，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】防御"
   }
 ]
