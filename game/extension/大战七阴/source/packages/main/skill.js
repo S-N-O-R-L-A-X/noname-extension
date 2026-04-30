@@ -1,4 +1,5 @@
 import { lib, game, ui, get, ai, _status } from '../../../../../noname.js'
+import { intro } from './characterIntro.js';
 
 export const skills = {
 	shenhu: {
@@ -9549,6 +9550,89 @@ export const skills = {
 		},
 	},
 
+	"re_boss_sidao": {
+		audio: 2,
+		trigger: {
+			player: "useCardAfter",
+		},
+		filter(event, player) {
+			if (player.countMark("re_boss_sidao_count") > player.hp || !player.countCards("hs")) {
+				return false;
+			}
+			if (!event.targets || !event.targets.length || !event.isPhaseUsing(player)) {
+				return false;
+			}
+			for (var i = 0; i < event.targets.length; i++) {
+				if (event.targets.includes(event.targets[i]) && lib.filter.filterTarget({ name: "shunshou" }, player, event.targets[i])) {
+					return true;
+				}
+			}
+			return false;
+		},
+		direct: true,
+		content(event, trigger, player) {
+			player.addTempSkill("re_boss_sidao_clear", "phaseChange");
+
+			var targets = player.getLastUsed(0).targets;
+			var next = player.chooseToUse();
+			next.set(
+				"targets",
+				game.filterPlayer(function (current) {
+					return targets.includes(current) && trigger.targets.includes(current);
+				})
+			);
+			next.set("openskilldialog", get.prompt2("re_boss_sidao"));
+			next.set("norestore", true);
+			next.set("_backupevent", "re_boss_sidaox");
+			next.set("custom", {
+				add: {},
+				replace: { window() {} },
+			});
+			next.backup("re_boss_sidaox");
+		},
+	},
+	re_boss_sidaox: {
+		mark: true,
+		marktext: "盗",
+		intro: {
+			content: "本阶段使用的顺手牵羊次数为#",
+		},
+		charlotte: true,
+		init: function (player, skill) {
+			player.storage.re_boss_sidao_count = 0;
+		},
+		onremove: function (player) {
+			player.unmarkSkill('re_boss_sidao_count');
+			delete player.storage.re_boss_sidao_count;
+		},
+		audio: "re_boss_sidao",
+		sourceSkill: "re_boss_sidao",
+		filterCard(card) {
+			return get.itemtype(card) == "card";
+		},
+		position: "hs",
+		viewAs: {
+			name: "shunshou",
+		},
+		filterTarget(card, player, target) {
+			return _status.event.targets && _status.event.targets.includes(target) && lib.filter.filterTarget.apply(this, arguments);
+		},
+		prompt: "将一张手牌当顺手牵羊使用",
+		check(card) {
+			return 7 - get.value(card);
+		},
+		onuse(links, player) {
+			player.addMark("re_boss_sidao_count", 1);
+		},
+	},
+
+	clear: {
+		charlotte: true,
+		onremove(player) {
+			player.unmarkSkill('re_boss_sidao_count');
+			delete player.storage.re_boss_sidao_count;
+		},
+	},
 
 	// guozhan
 	gzcongjian: {

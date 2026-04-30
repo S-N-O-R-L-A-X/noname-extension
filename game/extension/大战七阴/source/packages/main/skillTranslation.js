@@ -582,6 +582,10 @@ export const skillTranslation = {
 	"re_boss_yiji": "遗计",
 	"re_boss_yiji_info": "当你受到1点伤害后或死亡时，你可以获得三张锦囊牌，然后可以将这些牌交给任意角色。",
 
+	// shanhetu_beiwang_zhangmancheng
+	"re_boss_sidao":"伺盗",
+	"re_boss_sidao_info":"出牌阶段限X次，当你对一名其他角色使用一张牌后，你可以将一张手牌当【顺手牵羊】对其使用（须合法）。（X为你当前体力值）",
+
 	// missing
 	"gzcongjian": "从谏",
 	"gzcongjian_info": "锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。",
