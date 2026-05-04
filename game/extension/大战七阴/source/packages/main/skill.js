@@ -9647,6 +9647,35 @@ export const skills = {
 		},
 	},
 
+	"re_boss_jianxiong": {
+		audio: 2,
+		audioname: ["shen_caopi", "mb_caocao"],
+		trigger: { player: "damageEnd" },
+		filter(event, player) {
+			return get.itemtype(event.cards) == "cards" && get.position(event.cards[0], true) == "o";
+		},
+		content() {
+			player.gain(trigger.cards);
+			player.$gain2(trigger.cards);
+			player.draw(player.getDamagedHp());
+		},
+		ai: {
+			maixie: true,
+			maixie_hp: true,
+			effect: {
+				target(card, player, target) {
+					if (player.hasSkillTag("jueqing", false, target)) {
+						return [1, -1];
+					}
+					if (get.tag(card, "damage")) {
+						return [1, 0.55];
+					}
+				},
+			},
+		},
+
+	},
+
 	// guozhan
 	gzcongjian: {
 		trigger: {

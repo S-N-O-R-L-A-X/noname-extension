@@ -585,8 +585,11 @@ export const skillTranslation = {
 	"re_boss_yiji_info": "当你受到1点伤害后或死亡时，你可以获得三张锦囊牌，然后可以将这些牌交给任意角色。",
 
 	// shanhetu_beiwang_zhangmancheng
-	"re_boss_sidao":"伺盗",
-	"re_boss_sidao_info":"出牌阶段限X次，当你对一名其他角色使用一张牌后，你可以将一张手牌当【顺手牵羊】对其使用（须合法）。（X为你当前体力值）",
+	"re_boss_sidao": "伺盗",
+	"re_boss_sidao_info": "出牌阶段限X次，当你对一名其他角色使用一张牌后，你可以将一张手牌当【顺手牵羊】对其使用（须合法）。（X为你当前体力值）",
+
+	"re_boss_jianxiong": "奸雄",
+	"re_boss_jianxiong_info": "当你受到伤害后，你可以摸X张牌，并获得造成此伤害的牌。（X为你已损失的体力值）",
 
 	// missing
 	"gzcongjian": "从谏",
