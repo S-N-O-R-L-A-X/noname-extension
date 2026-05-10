@@ -146,6 +146,8 @@ export const skillTranslation = {
 	"equip_qilin_info": "锁定技，游戏开始时，将【麒麟弓】置入你的装备区。",
 	"equip_luanfenghemingjian": "舞剑",
 	"equip_luanfenghemingjian_info": "锁定技，游戏开始时，将【鸾凤和鸣剑】置入你的装备区。",
+	"equip_guofengyupao": "着袍",
+	"equip_guofengyupao_info": "锁定技，游戏开始时，将【国风玉袍】置入你的装备区。",
 
 	// fusion_shen_sunce
 	"repinghe": "冯河",
