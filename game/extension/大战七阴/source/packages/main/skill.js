@@ -9578,12 +9578,22 @@ export const skills = {
 	},
 
 	"re_boss_sidao": {
+		mark: true,
+		marktext: "盗",
+		intro: {
+			content: "本阶段使用的顺手牵羊次数为#",
+		},
+		charlotte: true,
+		init: function (player, skill) {
+			player.storage.re_boss_sidao = 0;
+		},
+
 		audio: 2,
 		trigger: {
 			player: "useCardAfter",
 		},
 		filter(event, player) {
-			if (player.countMark("re_boss_sidao_count") > player.hp || !player.countCards("hs")) {
+			if (player.countMark("re_boss_sidao") >= player.hp || !player.countCards("hs")) {
 				return false;
 			}
 			if (!event.targets || !event.targets.length || !event.isPhaseUsing(player)) {
@@ -9618,19 +9628,9 @@ export const skills = {
 			next.backup("re_boss_sidaox");
 		},
 	},
-	re_boss_sidaox: {
-		mark: true,
-		marktext: "盗",
-		intro: {
-			content: "本阶段使用的顺手牵羊次数为#",
-		},
-		charlotte: true,
-		init: function (player, skill) {
-			player.storage.re_boss_sidao_count = 0;
-		},
+	"re_boss_sidaox": {
 		onremove: function (player) {
-			player.unmarkSkill('re_boss_sidao_count');
-			delete player.storage.re_boss_sidao_count;
+			delete player.storage.re_boss_sidao;
 		},
 		audio: "re_boss_sidao",
 		sourceSkill: "re_boss_sidao",
@@ -9649,15 +9649,14 @@ export const skills = {
 			return 7 - get.value(card);
 		},
 		onuse(links, player) {
-			player.addMark("re_boss_sidao_count", 1);
+			player.addMark("re_boss_sidao", 1);
 		},
 	},
 
-	clear: {
+	"re_boss_sidao_clear": {
 		charlotte: true,
 		onremove(player) {
-			player.unmarkSkill('re_boss_sidao_count');
-			delete player.storage.re_boss_sidao_count;
+			delete player.storage.re_boss_sidao;
 		},
 	},
 
@@ -9669,9 +9668,9 @@ export const skills = {
 			return get.itemtype(event.cards) == "cards" && get.position(event.cards[0], true) == "o";
 		},
 		content() {
+			player.draw(player.getDamagedHp());
 			player.gain(trigger.cards);
 			player.$gain2(trigger.cards);
-			player.draw(player.getDamagedHp());
 		},
 		ai: {
 			maixie: true,
