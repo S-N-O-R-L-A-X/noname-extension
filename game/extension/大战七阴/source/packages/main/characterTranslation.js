@@ -188,4 +188,5 @@ export const translation = {
 	"shanhetu_beiwang_mayuanyi": "北望篇马元义",
 	"shanhetu_beiwang_zhangmancheng": "北望篇张曼成",
 	"shanhetu_beiwang_bianxi": "北望篇卞喜",
+	"shanhetu_beiwang_huanggai": "北望篇黄盖",
 }
