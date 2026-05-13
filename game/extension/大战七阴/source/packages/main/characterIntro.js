@@ -164,5 +164,9 @@ export const intro = {
 	"shanhetu_beiwang_caoxiu": "来源于山河图北望篇兖州关内曹休，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
 	"shanhetu_beiwang_wangyi": "来源于山河图北望篇兖州关内王异，没有任何改动。<br>【强度】★★★★<br> 【亮点】防御",
 	"shanhetu_beiwang_gongsunzan": "来源于山河图北望篇兖州关内公孙瓒，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
-	"shanhetu_beiwang_chengyu": "来源于山河图北望篇兖州关内程昱，没有任何改动。<br>【强度】★★★★<br> 【亮点】防御"
+	"shanhetu_beiwang_chengyu": "来源于山河图北望篇兖州关内程昱，没有任何改动。<br>【强度】★★★★<br> 【亮点】防御",
+	"shanhetu_beiwang_zhangliao": "来源于山河图北望篇兖州关内张辽，没有任何改动。<br>【强度】★★★<br> 【亮点】综合",
+	"shanhetu_beiwang_mayuanyi": "来源于山河图北望篇徐州关内马元义，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
+	"shanhetu_beiwang_zhangmancheng": "来源于山河图北望篇徐州关内张曼成，没有任何改动。<br>【强度】★★★★★<br> 【亮点】连续顺",
+	"shanhetu_beiwang_huanggai": "来源于山河图北望篇徐州关内奇遇黄盖，没有任何改动。<br>【强度】★★★★★★★<br> 【亮点】攻击",
 }

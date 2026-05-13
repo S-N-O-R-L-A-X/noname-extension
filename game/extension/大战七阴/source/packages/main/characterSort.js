@@ -56,7 +56,9 @@ export const sort = {
 		],
 		against7devil_shanhetu_beiwang_boss: ["shanhetu_beiwang_yangyi", "shanhetu_beiwang_guojia",
 			"shanhetu_beiwang_yuejin", "shanhetu_beiwang_guanyu", "shanhetu_beiwang_caoxiu",
-			"shanhetu_beiwang_wangyi", "shanhetu_beiwang_gongsunzan", "shanhetu_beiwang_chengyu"
+			"shanhetu_beiwang_wangyi", "shanhetu_beiwang_gongsunzan", "shanhetu_beiwang_chengyu",
+			"shanhetu_beiwang_zhangliao", "shanhetu_beiwang_mayuanyi", "shanhetu_beiwang_zhangmancheng",
+			"shanhetu_beiwang_huanggai"
 		]
 	}
 }
