@@ -9910,4 +9910,42 @@ export const skills = {
 			if (result.bool == true) player.recover();
 		},
 	},
+	xiechan: {
+		audio: 2,
+		limited: true,
+		enable: "phaseUse",
+		skillAnimation: true,
+		animationColor: "water",
+		filterTarget: function (card, player, target) {
+			return target != player && player.canCompare(target);
+		},
+		content: function () {
+			"step 0";
+			player.awakenSkill(event.name);
+			player.chooseToCompare(target);
+			"step 1";
+			if (result.bool) {
+				player.useCard({ name: "juedou" }, target, "noai");
+			} else {
+				target.useCard({ name: "juedou" }, player, "noai");
+			}
+		},
+		ai: {
+			order: 1,
+			result: {
+				target: function (player, target) {
+					if (
+						player.countCards("h", function (card) {
+							return get.value(card) <= 5 && get.number(card) >= 12;
+						}) &&
+						get.effect(target, { name: "juedou" }, player, player) > 0
+					) {
+						return -1;
+					}
+					return 0;
+				},
+			},
+		},
+	},
+
 }
