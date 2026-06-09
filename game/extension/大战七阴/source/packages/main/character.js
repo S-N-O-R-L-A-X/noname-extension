@@ -178,6 +178,6 @@ export const characters = {
 	"shanhetu_beiwang_zhangmancheng": ["male", "qun", "8/8/6", ["re_boss_lianyu", "equip_guofengyupao", "re_boss_yingzi", "boss_modao", "re_boss_sidao", "qiangwu", "re_boss_jianxiong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	// "shanhetu_beiwang_bianxi": ["male", "qun", "11/11/6", ["re_boss_lianyu", "equip_chiwenyupei", "equip_luanfenghemingjian", "quanjiu", "oljiuchi", "olzhuiji", "benyu", "xinliegong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_huanggai": ["male", "wu", "9/9/6", ["re_boss_lianyu", "equip_baiyin", "kurou", "qimou", "baobian", "xinkuanggu", "zhaxiang", "re_boss_xuli", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-	"shanhetu_beiwang_yanliangwenchou": ["male", "qun", "9/9/6", ["re_boss_lianyu", "equip_guding", "shuangxiong", "wushuang", "luoyi", "xiechan", "oljiang", "re_boss_dungong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-	"shanhetu_beiwang_xiahouba": ["male", "shu", "9/9/6", ["re_boss_lianyu", "equip_guding", "baobian", "re_boss_zizhong", "shangshi", "yanzheng", "zhichi", "re_boss_tianfa", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+	"shanhetu_beiwang_yanliangwenchou": ["male", "qun", "9/9/6", ["re_boss_lianyu", "equip_gudingdao", "shuangxiong", "wushuang", "luoyi", "xiechan", "oljiang", "re_boss_dungong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+	"shanhetu_beiwang_xiahouba": ["male", "shu", "9/9/6", ["re_boss_lianyu", "equip_gudingdao", "baobian", "re_boss_zizhong", "shangshi", "yanzheng", "zhichi", "re_boss_tianfa", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 }
