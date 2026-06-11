@@ -99,6 +99,8 @@ export const skillTranslation = {
 	"re_boss_jibao_info": "准备阶段，若你没有宝物，则将一件随机宝物置入你的装备区。",
 	"re_boss_liezhen": "列阵",
 	"re_boss_liezhen_info": "锁定技，奇数轮次中你视为装备着仁王盾，偶数轮次中你视为装备着八卦阵。",
+	"re_boss_tianfa": "天罚",
+	"re_boss_tianfa_info": "准备阶段，随机向所有角色分配等同你体力上限的火焰伤害，此伤害视为无伤害来源。",
 
 	"equip_zhugeliannu": "持弩",
 	"equip_zhugeliannu_info": "锁定技，游戏开始时，将【诸葛连弩】置入你的装备区。",

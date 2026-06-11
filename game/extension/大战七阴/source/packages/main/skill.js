@@ -993,8 +993,31 @@ export const skills = {
 						}
 						return true;
 					}
-				},
+				}
 			}
+		}
+	},
+
+	"re_boss_tianfa": {
+		trigger: { player: 'phaseZhunbeiBegin' },
+		forced: true,
+		content: (event, trigger, player) => {
+			const players = game.players.slice(0).sortBySeat();
+			const totalDamage = player.maxHp;
+			if (players.length === 0) return;
+
+			// Randomly distribute total damage among all targets
+			const damageDistribution = new Array(players.length).fill(0);
+			for (let i = 0; i < totalDamage; i++) {
+				const randomIndex = Math.floor(Math.random() * players.length);
+				damageDistribution[randomIndex]++;
+			}
+
+			players.forEach((target, index) => {
+				if (damageDistribution[index] > 0) {
+					target.damage(damageDistribution[index], 'fire', null);
+				}
+			});
 		}
 	},
 
@@ -9686,7 +9709,6 @@ export const skills = {
 				},
 			},
 		},
-
 	},
 
 	// guozhan
