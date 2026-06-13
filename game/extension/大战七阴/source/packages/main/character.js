@@ -180,4 +180,5 @@ export const characters = {
 	"shanhetu_beiwang_huanggai": ["male", "wu", "9/9/6", ["re_boss_lianyu", "equip_baiyin", "kurou", "qimou", "baobian", "xinkuanggu", "zhaxiang", "re_boss_xuli", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_yanliangwenchou": ["male", "qun", "9/9/6", ["re_boss_lianyu", "equip_gudingdao", "shuangxiong", "wushuang", "luoyi", "xiechan", "oljiang", "re_boss_dungong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_xiahouba": ["male", "shu", "9/9/6", ["re_boss_lianyu", "equip_gudingdao", "baobian", "re_boss_zizhong", "shangshi", "yanzheng", "zhichi", "re_boss_tianfa", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+	"shanhetu_beiwang_duanqing": ["male", "qun", "10/10/6", ["re_boss_lianyu", "equip_baipidao", "re_boss_zizhong", "scls_lingren", "shanjia", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 }
