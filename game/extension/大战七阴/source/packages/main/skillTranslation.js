@@ -97,6 +97,8 @@ export const skillTranslation = {
 	"re_boss_duanjia_info": "准备阶段，若你没有防具，则将一件随机防具置入你的装备区。",
 	"re_boss_jibao": "集宝",
 	"re_boss_jibao_info": "准备阶段，若你没有宝物，则将一件随机宝物置入你的装备区。",
+	"re_boss_zizhong": "辎重",
+	"re_boss_zizhong_info": "准备阶段，若你有空的装备栏，则将一件随机装备置入你的装备区。",
 	"re_boss_liezhen": "列阵",
 	"re_boss_liezhen_info": "锁定技，奇数轮次中你视为装备着仁王盾，偶数轮次中你视为装备着八卦阵。",
 	"re_boss_tianfa": "天罚",

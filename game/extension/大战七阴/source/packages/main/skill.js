@@ -942,6 +942,31 @@ export const skills = {
 		}
 	},
 
+	"re_boss_zizhong": {
+		trigger: { player: 'phaseZhunbeiBegin' },
+		forced: true,
+		filter: function (event, player) {
+			for (var i = 1; i <= 5; i++) {
+				if (player.hasEmptySlot(i)) return true;
+			}
+			return false;
+		},
+		content: function () {
+			var emptySlots = [];
+			for (var i = 1; i <= 5; i++) {
+				if (player.hasEmptySlot(i)) emptySlots.push("equip" + i);
+			}
+			const card = get.cardPile(function (card) {
+				var type = get.subtype(card);
+				return emptySlots.includes(type);
+			});
+			if (card) {
+				player.equip(card);
+				game.log(player, '装备了', card);
+			}
+		}
+	},
+
 	"re_boss_zhuishe": {
 		mod: {
 			cardUsable: function (card, player, num) {
