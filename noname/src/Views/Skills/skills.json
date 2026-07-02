@@ -1058,5 +1058,25 @@
     "EnglishName": "re_boss_jianxiong",
     "ChineseName": "奸雄",
     "info": "当你受到伤害后，你可以摸X张牌，并获得造成此伤害的牌。（X为你已损失的体力值）"
+  },
+  "xiechan": {
+    "EnglishName": "xiechan",
+    "ChineseName": "挟缠",
+    "info": "限定技，出牌阶段，你可以与对手拼点：若你赢，你视为对其使用一张【决斗】。若你没赢，其视为对你使用一张【决斗】。"
+  },
+  "re_boss_zizhong": {
+    "EnglishName": "re_boss_zizhong",
+    "ChineseName": "辎重",
+    "info": "准备阶段，若你有空的装备栏，则将一件随机装备置入你的装备区。"
+  },
+  "re_boss_tianfa": {
+    "EnglishName": "re_boss_tianfa",
+    "ChineseName": "天罚",
+    "info": "准备阶段，随机向所有角色分配等同你体力上限的火焰伤害，此伤害视为无伤害来源。"
+  },
+  "equip_baipidao": {
+    "EnglishName": "equip_baipidao",
+    "ChineseName": "持刀",
+    "info": "锁定技，游戏开始时，将【百辟刀】置入你的装备区。"
   }
 }

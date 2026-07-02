@@ -5328,5 +5328,105 @@
     "details": "来源于山河图北望篇徐州关内奇遇黄盖，没有任何改动。",
     "strength": "【强度】★★★★★★★",
     "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_yanliangwenchou",
+    "ChineseName": "北望篇颜良文丑",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "9/9/6",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_gudingdao",
+      "shuangxiong",
+      "wushuang",
+      "luoyi",
+      "xiechan",
+      "oljiang",
+      "re_boss_dungong",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "宝刀",
+      null,
+      null,
+      null,
+      "挟缠",
+      null,
+      "盾弓",
+      "暴力"
+    ]
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_xiahouba",
+    "ChineseName": "北望篇夏侯霸",
+    "gender": "male",
+    "nationality": "shu",
+    "hp": "9/9/6",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_gudingdao",
+      "baobian",
+      "re_boss_zizhong",
+      "shangshi",
+      "yanzheng",
+      "zhichi",
+      "re_boss_tianfa",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "宝刀",
+      null,
+      "辎重",
+      null,
+      null,
+      null,
+      "天罚",
+      "暴力"
+    ]
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_duanqing",
+    "ChineseName": "北望篇段青",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "10/10/6",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_baipidao",
+      "re_boss_zizhong",
+      "scls_lingren",
+      "shanjia",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "持刀",
+      "辎重",
+      null,
+      null,
+      "暴力"
+    ]
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_yangchou",
+    "ChineseName": "北望篇杨丑",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "11/11/6",
+    "skills": [
+      "re_boss_lianyu",
+      "olshuangxiong",
+      "drlt_poxi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "暴力"
+    ]
   }
 ]
