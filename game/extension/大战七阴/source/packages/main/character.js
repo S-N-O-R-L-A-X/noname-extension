@@ -180,10 +180,10 @@ export const characters = {
 	"shanhetu_beiwang_huanggai": ["male", "wu", "9/9/6", ["re_boss_lianyu", "equip_baiyin", "kurou", "qimou", "baobian", "xinkuanggu", "zhaxiang", "re_boss_xuli", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_yanliangwenchou": ["male", "qun", "9/9/6", ["re_boss_lianyu", "equip_gudingdao", "shuangxiong", "wushuang", "luoyi", "xiechan", "oljiang", "re_boss_dungong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_xiahouba": ["male", "shu", "9/9/6", ["re_boss_lianyu", "equip_gudingdao", "baobian", "re_boss_zizhong", "shangshi", "yanzheng", "zhichi", "re_boss_tianfa", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-	"shanhetu_beiwang_duanqing": ["male", "qun", "10/10/6", ["re_boss_lianyu", "equip_baipidao", "re_boss_zizhong", "scls_lingren", "shanjia", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+	"shanhetu_beiwang_duanqing": ["male", "qun", "10/10/6", ["re_boss_lianyu", "equip_baipidao", "re_boss_zizhong", "scls_lingren", "olshanjia", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_yangchou": ["male", "qun", "11/11/6", ["re_boss_lianyu", "olshuangxiong", "drlt_poxi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-	"shanhetu_beiwang_silixiaowei": ["male", "qun", "9/9/6", ["re_boss_lianyu", "bingjie", "wushuang", "liantao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+	"shanhetu_beiwang_silixiaowei": ["male", "qun", "9/9/6", ["re_boss_lianyu", "bingjie", "wushuang", "olliantao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_shoulingjiang": ["male", "qun", "11/11/6", ["re_boss_lianyu", "olkuangxiang", "olzhenying", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-	"shanhetu_beiwang_yangbiao": ["male", "qun", "11/11/6", ["re_boss_lianyu", "jiannan", "pozhu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+	"shanhetu_beiwang_yangbiao": ["male", "qun", "11/11/6", ["re_boss_lianyu", "clanjiannan", "pozhu", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_neishi": ["male", "qun", "9/9/6", ["re_boss_lianyu", "xinenyuan", "yuce", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 }
