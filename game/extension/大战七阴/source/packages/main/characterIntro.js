@@ -169,4 +169,12 @@ export const intro = {
 	"shanhetu_beiwang_mayuanyi": "来源于山河图北望篇徐州关内马元义，没有任何改动。<br>【强度】★★★★<br> 【亮点】综合",
 	"shanhetu_beiwang_zhangmancheng": "来源于山河图北望篇徐州关内张曼成，没有任何改动。<br>【强度】★★★★★<br> 【亮点】连续顺",
 	"shanhetu_beiwang_huanggai": "来源于山河图北望篇徐州关内奇遇黄盖，没有任何改动。<br>【强度】★★★★★★★<br> 【亮点】攻击",
+	"shanhetu_beiwang_yanliangwenchou": "来源于山河图北望篇徐州关内奇遇颜良文丑，没有任何改动。<br>【强度】★★★★★★<br> 【亮点】攻击",
+	"shanhetu_beiwang_xiahouba": "来源于山河图北望篇徐州关内奇遇夏侯霸，没有任何改动。<br>【强度】★★★★★<br> 【亮点】综合",
+	"shanhetu_beiwang_duanqing": "来源于山河图北望篇司隶关内段青，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+	"shanhetu_beiwang_yangchou": "来源于山河图北望篇司隶关内杨丑，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+	"shanhetu_beiwang_silixiaowei": "来源于山河图北望篇司隶关内司隶校尉，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+	"shanhetu_beiwang_shoulingjiang": "来源于山河图北望篇司隶关内守陵将，没有任何改动。<br>【强度】★★★<br> 【亮点】控制",
+	"shanhetu_beiwang_yangbiao": "来源于山河图北望篇司隶关内杨彪，没有任何改动。<br>【强度】★★★★<br> 【亮点】攻击",
+	"shanhetu_beiwang_neishi": "来源于山河图北望篇司隶关内内侍，没有任何改动。<br>【强度】★★★<br> 【亮点】防御",
 }
