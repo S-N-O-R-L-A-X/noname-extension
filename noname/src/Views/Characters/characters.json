@@ -5356,7 +5356,11 @@
       null,
       "盾弓",
       "暴力"
-    ]
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇徐州关内奇遇颜良文丑，没有任何改动。",
+    "strength": "【强度】★★★★★★",
+    "highlight": " 【亮点】攻击"
   },
   {
     "EnglishName": "shanhetu_beiwang_xiahouba",
@@ -5385,7 +5389,11 @@
       null,
       "天罚",
       "暴力"
-    ]
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇徐州关内奇遇夏侯霸，没有任何改动。",
+    "strength": "【强度】★★★★★",
+    "highlight": " 【亮点】综合"
   },
   {
     "EnglishName": "shanhetu_beiwang_duanqing",
@@ -5398,7 +5406,7 @@
       "equip_baipidao",
       "re_boss_zizhong",
       "scls_lingren",
-      "shanjia",
+      "olshanjia",
       "re_boss_baoli"
     ],
     "ChineseSkills": [
@@ -5408,7 +5416,11 @@
       null,
       null,
       "暴力"
-    ]
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内段青，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
   },
   {
     "EnglishName": "shanhetu_beiwang_yangchou",
@@ -5427,6 +5439,154 @@
       null,
       null,
       "暴力"
-    ]
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内杨丑，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_silixiaowei",
+    "ChineseName": "北望篇司隶校尉",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "9/9/6",
+    "skills": [
+      "re_boss_lianyu",
+      "bingjie",
+      "wushuang",
+      "olliantao",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内司隶校尉，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_shoulingjiang",
+    "ChineseName": "北望篇守陵将",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "11/11/6",
+    "skills": [
+      "re_boss_lianyu",
+      "olkuangxiang",
+      "olzhenying",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内守陵将，没有任何改动。",
+    "strength": "【强度】★★★",
+    "highlight": " 【亮点】控制"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_yangbiao",
+    "ChineseName": "北望篇杨彪",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "11/11/6",
+    "skills": [
+      "re_boss_lianyu",
+      "clanjiannan",
+      "pozhu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内杨彪，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_neishi",
+    "ChineseName": "北望篇内侍",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "9/9/6",
+    "skills": [
+      "re_boss_lianyu",
+      "xinenyuan",
+      "yuce",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内内侍，没有任何改动。",
+    "strength": "【强度】★★★",
+    "highlight": " 【亮点】防御"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_duanwei",
+    "ChineseName": "北望篇段煨",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "10/10/6",
+    "skills": [
+      "re_boss_lianyu",
+      "danshou",
+      "jiangchi",
+      "shenduan",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内段煨，没有任何改动。",
+    "strength": "【强度】★★★",
+    "highlight": " 【亮点】控制"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_zhongyuan",
+    "ChineseName": "北望篇钟媛",
+    "gender": "female",
+    "nationality": "qun",
+    "hp": "9/9/6",
+    "skills": [
+      "re_boss_lianyu",
+      "clanbaozu",
+      "olmiaoxin",
+      "miji",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内钟媛，没有任何改动。",
+    "strength": "【强度】★★★",
+    "highlight": " 【亮点】防御"
   }
 ]
