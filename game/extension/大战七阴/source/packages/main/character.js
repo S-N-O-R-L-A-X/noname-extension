@@ -164,7 +164,7 @@ export const characters = {
 	"shanhetu_junshi_sunjian": ["male", "wu", "7/8/8", ["re_boss_lianyu", "yinghun", "wulie", "latest_ol_feiyang", "kunfen", "enyuan", "bazhen", "langxi", "shangshi", "boss_chuanyun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_junshi_shoushangdebaihu": ["male", "shen", "9/10/9", ["re_boss_lianyu", "boss_xiongshou", "xinkuanggu", "boss_xiongshou", "boss_sipu", "re_boss_shouhun", "re_boss_shouhun", "boss_fengdong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_junshi_jiededaofei": ["male", "qun", "9/10/9", ["re_boss_lianyu", "equip_hanbingjian", "duodao", "olzhanjin", "re_boss_jielve", "olqiangxi", "xinkuanggu", "zhaxiang", "re_boss_bamen", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-	"shanhetu_junshi_shibixie": ["male", "qun", "9/9/9", ["re_boss_lianyu", "equip_renwangdun", "boss_wuzang", "zhengu", "jiaozi", "re_boss_baozhu", "dzgengzhan", "bixiong", "re_boss_zhouxue", "re_boss_zhengyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+	"shanhetu_junshi_shibixie": ["male", "qun", "9/9/9", ["re_boss_lianyu", "equip_renwangdun", "boss_wuzang", "drlt_zhengu", "jiaozi", "re_boss_baozhu", "dzgengzhan", "bixiong", "re_boss_zhouxue", "re_boss_zhengyi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_yangyi": ["male", "shu", "5/5/5", ["re_boss_lianyu", "dingcuo", "oljuanxia", "xiansi", "danshou", "mengjin", "boss_tianyun", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_guojia": ["male", "wei", "5/5/5", ["re_boss_lianyu", "equip_zhugeliannu", "equip_bagua", "tiandu", "yiji", "oldangxian", "huituo", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_yuejin": ["male", "wei", "5/5/5", ["re_boss_lianyu", "xiaoguo", "oljiangchi", "oldangxian", "qiaoli", "re_boss_yingzi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
@@ -189,7 +189,7 @@ export const characters = {
 	"shanhetu_beiwang_duanwei": ["male", "qun", "10/10/6", ["re_boss_lianyu", "danshou", "jiangchi", "shenduan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_zhongyuan": ["female", "qun", "9/9/6", ["re_boss_lianyu", "clanbaozu", "olmiaoxin", "miji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_hansong": ["male", "qun", "10/10/6", ["re_boss_lianyu", "nzry_cuike", "zhengrong", "zlhuji", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
-	"shanhetu_beiwang_zhongji": ["male", "qun", "10/10/6", ["re_boss_lianyu", "rejizhi", "zhengu", "jianying", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+	"shanhetu_beiwang_zhongji": ["male", "qun", "10/10/6", ["re_boss_lianyu", "rejizhi", "drlt_zhengu", "jianying", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_zhangxiu": ["male", "qun", "10/10/6", ["re_boss_lianyu", "equip_hongmianbaihuapao", "boss_taiping", "xiangle", "youlong", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_zhaoshi": ["male", "qun", "9/9/6", ["re_boss_lianyu", "sanchen", "fankui", "tairan", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 }
