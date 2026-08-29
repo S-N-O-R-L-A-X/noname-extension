@@ -4932,7 +4932,7 @@
       "re_boss_lianyu",
       "equip_renwangdun",
       "boss_wuzang",
-      "zhengu",
+      "drlt_zhengu",
       "jiaozi",
       "re_boss_baozhu",
       "dzgengzhan",
@@ -5588,5 +5588,107 @@
     "details": "来源于山河图北望篇司隶关内钟媛，没有任何改动。",
     "strength": "【强度】★★★",
     "highlight": " 【亮点】防御"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_hansong",
+    "ChineseName": "北望篇韩嵩",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "10/10/6",
+    "skills": [
+      "re_boss_lianyu",
+      "nzry_cuike",
+      "zhengrong",
+      "zlhuji",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内韩嵩，没有任何改动。",
+    "strength": "【强度】★★★★",
+    "highlight": " 【亮点】攻击"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_zhongji",
+    "ChineseName": "北望篇种辑",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "10/10/6",
+    "skills": [
+      "re_boss_lianyu",
+      "rejizhi",
+      "drlt_zhengu",
+      "jianying",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内种辑，没有任何改动。",
+    "strength": "【强度】★★★",
+    "highlight": " 【亮点】防御"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_zhangxiu",
+    "ChineseName": "北望篇张绣",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "10/10/6",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_hongmianbaihuapao",
+      "boss_taiping",
+      "xiangle",
+      "youlong",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "着袍",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内张绣，没有任何改动。",
+    "strength": "【强度】★★★",
+    "highlight": " 【亮点】"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_zhaoshi",
+    "ChineseName": "北望篇诏使",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "9/9/6",
+    "skills": [
+      "re_boss_lianyu",
+      "sanchen",
+      "fankui",
+      "tairan",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇司隶关内诏使，没有任何改动。",
+    "strength": "【强度】★★★",
+    "highlight": " 【亮点】"
   }
 ]
