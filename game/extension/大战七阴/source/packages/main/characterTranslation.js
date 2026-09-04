@@ -204,5 +204,6 @@ export const translation = {
 	"shanhetu_beiwang_zhangxiu": "北望篇张绣",
 	"shanhetu_beiwang_zhaoshi": "北望篇诏使",
 	"shanhetu_beiwang_liangcangzongguan": "北望篇粮仓总管",
-	"shanhetu_beiwang_mitan": "北望篇密探"
+	"shanhetu_beiwang_mitan": "北望篇密探",
+	"shanhetu_beiwang_zhangyang": "北望篇张杨"
 }
