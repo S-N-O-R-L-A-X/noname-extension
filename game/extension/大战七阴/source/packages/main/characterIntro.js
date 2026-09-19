@@ -183,4 +183,8 @@ export const intro = {
 	"shanhetu_beiwang_zhongji": "来源于山河图北望篇司隶关内种辑，没有任何改动。<br>【强度】★★★<br> 【亮点】防御",
 	"shanhetu_beiwang_zhangxiu": "来源于山河图北望篇司隶关内张绣，没有任何改动。<br>【强度】★★★<br> 【亮点】",
 	"shanhetu_beiwang_zhaoshi": "来源于山河图北望篇司隶关内诏使，没有任何改动。<br>【强度】★★★<br> 【亮点】",
+	"shanhetu_beiwang_liangcangzongguan": "来源于山河图北望篇司隶关内粮仓总管，没有任何改动。<br>【强度】★★★<br> 【亮点】",
+	"shanhetu_beiwang_mitan": "来源于山河图北望篇司隶关内密探，没有任何改动。<br>【强度】★★★<br> 【亮点】",
+	"shanhetu_beiwang_zhangyang": "来源于山河图北望篇司隶关内张杨，没有任何改动。<br>【强度】★★★<br> 【亮点】",
+	"shanhetu_beiwang_dongcheng": "来源于山河图北望篇司隶关内董承，没有任何改动。<br>【强度】★★★<br> 【亮点】控制"
 }
