@@ -32,8 +32,12 @@ let info;
 async function parseCharacters() {
 	// get character intro
 	Object.entries(intro).forEach(([key, value]) => {
-		const [intro, strength, highlight] = value.split("<br>");
-		character2intro[key] = { intro, strength, highlight };
+		const [intro, strength = "", highlight = ""] = value.split("<br>");
+		character2intro[key] = {
+			intro,
+			strength: strength.replace("【强度】", "").trim(),
+			highlight: highlight.replace("【亮点】", "").trim(),
+		};
 	})
 
 	// get character package
