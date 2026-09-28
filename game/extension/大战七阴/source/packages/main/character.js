@@ -196,4 +196,5 @@ export const characters = {
 	"shanhetu_beiwang_mitan": ["male", "qun", "9/9/6", ["re_boss_lianyu", "sanyao", "olsbzhuijiao", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_zhangyang": ["male", "qun", "12/12/6", ["re_boss_lianyu", "olzishou", "olqiangxi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 	"shanhetu_beiwang_dongcheng": ["male", "qun", "13/13/6", ["re_boss_lianyu", "yifa", "yashi", "olguzheng", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
+	"shanhetu_beiwang_qinghegongzhu": ["female", "wei", "8/8/6", ["re_boss_lianyu", "chengou", "changji", "yangwei", "weishu", "zhichi", "re_boss_baoli"], ["zhu", "boss", "bossallowed"]],
 }
