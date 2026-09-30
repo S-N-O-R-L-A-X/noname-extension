@@ -599,6 +599,10 @@ export const skillTranslation = {
 	"re_boss_jianxiong": "奸雄",
 	"re_boss_jianxiong_info": "当你受到伤害后，你可以摸X张牌，并获得造成此伤害的牌。（X为你已损失的体力值）",
 
+	// shanhetu_beiwang_hanheng
+	"re_boss_houtu": "后屠",
+	"re_boss_houtu_info": "锁定技，跳过你的前十个出牌阶段。你使用杀无次数限制，你于出牌阶段使用杀指定目标后，摸X张牌（X为你的攻击距离，至少为1）。",
+
 	// missing
 	"gzcongjian": "从谏",
 	"gzcongjian_info": "锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。",

@@ -9750,6 +9750,51 @@ export const skills = {
 		},
 	},
 
+	"re_boss_houtu": {
+		mark: true,
+		marktext: "屠",
+		intro: {
+			content: "锁定技，你的出牌阶段还剩#次被跳过",
+		},
+		group: ["re_boss_houtu_skip", "re_boss_houtu_draw"],
+		init(player) {
+			player.addMark("re_boss_houtu", 10, false);
+		},
+		mod: {
+			cardUsable(card, player, num) {
+				if (card.name == "sha") {
+					return Infinity;
+				}
+			},
+		},
+		subSkill: {
+			skip: {
+				trigger: { player: "phaseZhunbeiBegin" },
+				forced: true,
+				filter(event, player) {
+					return player.countMark("re_boss_houtu") > 0;
+				},
+				content(event, trigger, player) {
+					player.removeMark("re_boss_houtu");
+					player.skip("phaseUse");
+				},
+			},
+			draw: {
+				trigger: { player: "useCard2" },
+				forced: true,
+				filter(event, player) {
+					if (event.card.name != "sha" || !event.targets?.length) {
+						return false;
+					}
+					return event.isPhaseUsing(player);
+				},
+				content(event, trigger, player) {
+					player.draw(Math.max(player.getAttackRange(), 1));
+				},
+			},
+		},
+	},
+
 	// guozhan
 	gzcongjian: {
 		trigger: {
