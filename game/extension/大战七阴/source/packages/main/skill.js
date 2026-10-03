@@ -9769,14 +9769,14 @@ export const skills = {
 		},
 		subSkill: {
 			skip: {
-				trigger: { player: "phaseZhunbeiBegin" },
+				trigger: { player: "phaseUseBefore" },
 				forced: true,
 				filter(event, player) {
 					return player.countMark("re_boss_houtu") > 0;
 				},
 				content(event, trigger, player) {
+					trigger.cancel();
 					player.removeMark("re_boss_houtu");
-					player.skip("phaseUse");
 				},
 			},
 			draw: {
