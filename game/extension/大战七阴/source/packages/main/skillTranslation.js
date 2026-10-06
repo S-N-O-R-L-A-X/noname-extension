@@ -154,6 +154,8 @@ export const skillTranslation = {
 	"equip_guofengyupao_info": "锁定技，游戏开始时，将【国风玉袍】置入你的装备区。",
 	"equip_baipidao": "持刀",
 	"equip_baipidao_info": "锁定技，游戏开始时，将【百辟刀】置入你的装备区。",
+	"equip_huxinjing": "悬镜",
+	"equip_huxinjing_info": "锁定技，游戏开始时，将【护心镜】置入你的装备区。",
 
 	// fusion_shen_sunce
 	"repinghe": "冯河",

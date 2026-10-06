@@ -1398,6 +1398,20 @@ export const skills = {
 		}
 	},
 
+	"equip_huxinjing": {
+		forced: true,
+		filter: function (event, player) {
+			return (event.name != 'phase' || game.phaseNumber == 0);
+		},
+		trigger: {
+			global: 'phaseBefore',
+			player: 'enterGame',
+		},
+		content: function () {
+			player.equip(game.createCard2('huxinjing', 'club', 1));
+		}
+	},
+
 	"re_boss_reborn_machao": {
 		trigger: {
 			player: 'dieBefore'
