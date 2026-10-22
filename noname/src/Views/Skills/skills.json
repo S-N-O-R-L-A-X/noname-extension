@@ -1078,5 +1078,25 @@
     "EnglishName": "equip_baipidao",
     "ChineseName": "持刀",
     "info": "锁定技，游戏开始时，将【百辟刀】置入你的装备区。"
+  },
+  "equip_luanfenghemingjian": {
+    "EnglishName": "equip_luanfenghemingjian",
+    "ChineseName": "舞剑",
+    "info": "锁定技，游戏开始时，将【鸾凤和鸣剑】置入你的装备区。"
+  },
+  "equip_huxinjing": {
+    "EnglishName": "equip_huxinjing",
+    "ChineseName": "悬镜",
+    "info": "锁定技，游戏开始时，将【护心镜】置入你的装备区。"
+  },
+  "re_boss_houtu": {
+    "EnglishName": "re_boss_houtu",
+    "ChineseName": "后屠",
+    "info": "锁定技，跳过你的前十个出牌阶段。你使用杀无次数限制，你于出牌阶段使用杀指定目标后，摸X张牌（X为你的攻击距离，至少为1）。"
+  },
+  "equip_cixiongshuanggujian": {
+    "EnglishName": "equip_cixiongshuanggujian",
+    "ChineseName": "双剑",
+    "info": "锁定技，游戏开始时，将【雌雄双股剑】置入你的装备区。"
   }
 }

@@ -5784,5 +5784,130 @@
     "details": "来源于山河图北望篇司隶关内董承，没有任何改动。",
     "strength": "★★★",
     "highlight": "控制"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_qinghegongzhu",
+    "ChineseName": "北望篇清河公主",
+    "gender": "female",
+    "nationality": "wei",
+    "hp": "8/8/6",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_luanfenghemingjian",
+      "equip_huxinjing",
+      "zengou",
+      "changji",
+      "yangwei",
+      "weishu",
+      "zhichi",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "舞剑",
+      "悬镜",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇冀州关内清河公主，没有任何改动。",
+    "strength": "★★★",
+    "highlight": ""
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_hanheng",
+    "ChineseName": "北望篇韩珩",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "34/34/6",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_huxinjing",
+      "re_boss_houtu",
+      "dangxian",
+      "oldianjun",
+      "boss_panguan",
+      "keji",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "悬镜",
+      "后屠",
+      null,
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇冀州关内韩珩，没有任何改动。",
+    "strength": "★★★★",
+    "highlight": "不动"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_wocike",
+    "ChineseName": "北望篇倭刺客",
+    "gender": "male",
+    "nationality": "qun",
+    "hp": "7/7/6",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_wushuangfangtianji",
+      "olpaoxiao",
+      "re_boss_tiepao",
+      "anjian",
+      "boss_jinggong",
+      "ollongdan",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "舞戟",
+      null,
+      "铁炮",
+      null,
+      null,
+      null,
+      "暴力"
+    ],
+    "details": "来源于山河图北望篇冀州关内倭刺客，没有任何改动。",
+    "strength": "★★★★★",
+    "highlight": "攻击"
+  },
+  {
+    "EnglishName": "shanhetu_beiwang_huxian",
+    "ChineseName": "北望篇狐仙",
+    "gender": "female",
+    "nationality": "qun",
+    "hp": "14/14/6",
+    "skills": [
+      "re_boss_lianyu",
+      "equip_cixiongshuanggujian",
+      "boss_shouhun",
+      "boss_skonghun",
+      "clanshangshen",
+      "re_boss_yuren",
+      "tiandu",
+      "re_boss_baoli"
+    ],
+    "ChineseSkills": [
+      "炼狱",
+      "双剑",
+      null,
+      null,
+      null,
+      "羽刃",
+      null,
+      "暴力"
+    ],
+    "package": "山河图北望包",
+    "details": "来源于山河图北望篇冀州关内狐仙，没有任何改动。",
+    "strength": "★★★★",
+    "highlight": ""
   }
 ]
