@@ -58,6 +58,8 @@ export const skillTranslation = {
 	"re_boss_wuying_info": "锁定技，你的敌方若手牌数大于10，于其回合内获得手牌后（按次数），其受到你造成的1点伤害",
 	"re_boss_duanhun": "断魂",
 	"re_boss_duanhun_info": "锁定技，当你死亡时，杀死你的角色失去所有战法。",
+	"re_boss_duanzi": "断辎",
+	"re_boss_duanzi_info": "锁定技，当你死亡时，杀死你的角色废弃所有装备栏。",
 	"re_boss_cuanchao": "篡朝",
 	"re_boss_cuanchao_info": "转换技，阳：当你成为基本牌的目标时，你可令其无效；阴：当你成为锦囊牌的目标时，你可令其无效。",
 	"re_boss_youji": "酉鸡",

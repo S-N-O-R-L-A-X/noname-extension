@@ -1558,6 +1558,26 @@ export const skills = {
 	"re_boss_duanhun": {
 
 	},
+	"re_boss_duanzi": {
+		trigger: { player: 'die' },
+		forced: true,
+		filter: function (event, player) {
+			return event.source && event.source.isIn();
+		},
+		content: async function content(event, trigger, player) {
+			const source = trigger.source;
+			const disables = [];
+			for (let i = 1; i <= 5; i++) {
+				for (let j = 0; j < source.countEnabledSlot(i); j++) {
+					disables.push(i);
+				}
+			}
+			if (disables.length > 0) {
+				await source.disableEquip(disables);
+			}
+		},
+	},
+
 	"re_boss_cuanchao": {
 		zhuanhuanji: true,
 		mark: true,
