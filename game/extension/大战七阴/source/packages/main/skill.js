@@ -1556,6 +1556,43 @@ export const skills = {
 	},
 
 	"re_boss_duanhun": {
+		trigger: { player: "die" },
+		forced: true,
+		forceDie: true,
+		skillAnimation: true,
+		animationColor: "gray",
+		filter(event) {
+			return event.source && event.source.isIn();
+		},
+		async content(event, trigger, player) {
+			const source = trigger.source;
+			for (const id of [...source.getStorage("zhanfa")]) {
+				source.removeZhanfa(id);
+			}
+		},
+		logTarget: "source",
+		ai: {
+			maixie_defend: true,
+			threaten(player, target) {
+				if (target.hp == 1 && player.getStorage("zhanfa").length > 0) {
+					return 0.2;
+				}
+				return 1.5;
+			},
+			effect: {
+				target(card, player, target, current) {
+					if (!target.hasFriend()) {
+						return;
+					}
+					if (target.hp <= 1 && get.tag(card, "damage")) {
+						if (player.hasSkillTag("jueqing", false, target)) {
+							return 3;
+						}
+						return [1, 0, 0, -3 * get.threaten(player)];
+					}
+				},
+			},
+		},
 
 	},
 	"re_boss_duanzi": {
