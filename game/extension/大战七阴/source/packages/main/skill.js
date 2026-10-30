@@ -1046,6 +1046,40 @@ export const skills = {
 		}
 	},
 
+	"re_boss_langxi": {
+		trigger: { global: "phaseBegin" },
+		filter(event, player) {
+			return game.hasPlayer(function (current) {
+				return current != player && current.hp <= player.hp;
+			});
+		},
+		async cost(event, trigger, player) {
+			event.result = await player
+				.chooseTarget(get.prompt(event.name.slice(0, -5)), "对一名体力值不大于你的其他角色造成1-2点随机伤害", (card, player, target) => {
+					return target !== player && target.hp <= player.hp;
+				})
+				.set("ai", target => {
+					const player = get.event().player,
+						att = get.attitude(player, target);
+					if (att > 0) {
+						return 0;
+					}
+					return get.damageEffect(target, player, player);
+				})
+				.forResult();
+		},
+		async content(event, trigger, player) {
+			const target = event.targets[0];
+			if (get.mode() !== "identity" || player.identity !== "nei") {
+				player.addExpose(0.3);
+			}
+			const num = Math.random() < 0.5 ? 1 : 2;
+			await target.damage(num, player);
+		},
+		ai: {
+			threaten: 1.7,
+		},
+	},
 
 	"equip_zhugeliannu": {
 		forced: true,
