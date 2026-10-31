@@ -1559,6 +1559,24 @@ export const skills = {
 		}
 	},
 
+	"reborn_bailang": {
+		trigger: {
+			player: 'dieBefore'
+		},
+		filter: function (event, player) {
+			return !event.finished;
+		},
+		forced: true,
+		forceDie: true,
+		content: async (event, trigger, player) => {
+			trigger.cancel();
+			await player.reinitCharacter(player.name1, "shanhetu_beiwang_bailang"); await player.recover(player.maxHp - player.hp);
+			await player.recover(player.maxHp - player.hp);
+			game.triggerEnter(player);
+		}
+	},
+
+
 	"re_boss_dongdang": {
 		trigger: {
 			player: 'enterGame',

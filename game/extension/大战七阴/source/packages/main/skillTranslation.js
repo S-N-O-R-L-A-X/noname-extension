@@ -611,6 +611,10 @@ export const skillTranslation = {
 	"re_boss_houtu": "后屠",
 	"re_boss_houtu_info": "锁定技，跳过你的前十个出牌阶段。你使用杀无次数限制，你于出牌阶段使用杀指定目标后，摸X张牌（X为你的攻击距离，至少为1）。",
 
+	// shanhetu_beiwang_mianyang
+	"reborn_bailang": "重生",
+	"reborn_bailang_info": "锁定技，当你死亡时，你将此武将牌替换为白狼。",
+
 	// missing
 	"gzcongjian": "从谏",
 	"gzcongjian_info": "锁定技，当你于回合外造成伤害，或于回合内受到伤害时，此伤害+1。",
