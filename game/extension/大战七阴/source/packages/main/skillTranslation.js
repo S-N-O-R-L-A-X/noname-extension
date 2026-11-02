@@ -614,6 +614,9 @@ export const skillTranslation = {
 	// shanhetu_beiwang_mianyang
 	"reborn_bailang": "重生",
 	"reborn_bailang_info": "锁定技，当你死亡时，你将此武将牌替换为白狼。",
+	
+	"re_boss_longwei_qingniujiao": "龙卫",
+	"re_boss_longwei_qingniujiao_info": "出牌阶段限一次，召唤1个随从，若有随从已阵亡，则改为将其复活，并令其摸牌至5。",
 
 	// missing
 	"gzcongjian": "从谏",

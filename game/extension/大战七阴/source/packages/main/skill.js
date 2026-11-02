@@ -9932,6 +9932,53 @@ export const skills = {
 		},
 	},
 
+	"re_boss_longwei_qingniujiao": {
+		enable: "phaseUse",
+		usable: 1,
+		init: function (player) {
+			player.storage.re_boss_longwei_qingniujiao = [];
+		},
+		content: function () {
+			const qingniujiao = game.addPlayerOL(player, "shanhetu_beiwang_qingniujiao");
+			qingniujiao.identity = player.identity;
+			qingniujiao.side = player.side;
+			player.storage.re_boss_longwei_qingniujiao.push(qingniujiao);
+			game.triggerEnter(qingniujiao);
+		},
+		group: ["re_boss_longwei_qingniujiao_win"],
+		subSkill: {
+			win: {
+				trigger: {
+					global: ['dieBegin', 'die', 'phaseAfter'],
+				},
+				silent: true,
+				popup: false,
+				forced: true,
+				filter: function (event, player, name) {
+					var mode = get.mode();
+					var players = player.storage.re_boss_longwei_qingniujiao;
+					if (!players || !players.length) return false;
+					if (mode == 'identity' && name == 'dieBegin' && player.identity == 'nei') {
+						var alive = players.filter(function (fellow) {
+							return fellow.isAlive();
+						});
+						return game.players.length - alive.length <= 2 && event.player != player;
+					}
+					else if (name == 'die' || name == 'phaseAfter') return player.getEnemies().length == 0;
+				},
+				content: function () {
+					'step 0'
+					game.delay();
+					'step 1'
+					if (game.showIdentity) {
+						game.showIdentity();
+					}
+					game.over(true);
+				},
+			},
+		}
+	},
+
 	// guozhan
 	gzcongjian: {
 		trigger: {
