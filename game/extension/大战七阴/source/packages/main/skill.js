@@ -9938,12 +9938,25 @@ export const skills = {
 		init: function (player) {
 			player.storage.re_boss_longwei_qingniujiao = [];
 		},
-		content: function () {
-			const qingniujiao = game.addPlayerOL(player, "shanhetu_beiwang_qingniujiao");
-			qingniujiao.identity = player.identity;
-			qingniujiao.side = player.side;
-			player.storage.re_boss_longwei_qingniujiao.push(qingniujiao);
-			game.triggerEnter(qingniujiao);
+		content: async function (event, trigger, player) {
+			const fellows = player.storage.re_boss_longwei_qingniujiao;
+			const alive = fellows.filter(function (fellow) {
+				return fellow.isAlive();
+			});
+			if (fellows.length === alive.length) {
+				const qingniujiao = game.addPlayerOL(player, "shanhetu_beiwang_qingniujiao");
+				qingniujiao.identity = player.identity;
+				qingniujiao.side = player.side;
+				player.storage.re_boss_longwei_qingniujiao.push(qingniujiao);
+				game.triggerEnter(qingniujiao);
+			}
+			else {
+				for (const fellow of fellows) {
+					await fellow.reviveEvent();
+					await fellow.recover(fellow.maxHp);
+					fellow.draw(5);
+				}
+			}
 		},
 		group: ["re_boss_longwei_qingniujiao_win"],
 		subSkill: {
@@ -9956,10 +9969,10 @@ export const skills = {
 				forced: true,
 				filter: function (event, player, name) {
 					var mode = get.mode();
-					var players = player.storage.re_boss_longwei_qingniujiao;
-					if (!players || !players.length) return false;
+					var fellows = player.storage.re_boss_longwei_qingniujiao;
+					if (!fellows || !fellows.length) return false;
 					if (mode == 'identity' && name == 'dieBegin' && player.identity == 'nei') {
-						var alive = players.filter(function (fellow) {
+						const alive = fellows.filter(function (fellow) {
 							return fellow.isAlive();
 						});
 						return game.players.length - alive.length <= 2 && event.player != player;
