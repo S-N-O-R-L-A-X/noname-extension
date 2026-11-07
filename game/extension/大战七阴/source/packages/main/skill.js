@@ -1553,7 +1553,7 @@ export const skills = {
 		forceDie: true,
 		content: async (event, trigger, player) => {
 			trigger.cancel();
-			await player.reinitCharacter(player.name1, "shanhetu_boss_yaosengzhenjia"); await player.recover(player.maxHp - player.hp);
+			await player.reinitCharacter(player.name1, "shanhetu_boss_yaosengzhenjia");
 			await player.recover(player.maxHp - player.hp);
 			game.triggerEnter(player);
 		}
@@ -1570,7 +1570,7 @@ export const skills = {
 		forceDie: true,
 		content: async (event, trigger, player) => {
 			trigger.cancel();
-			await player.reinitCharacter(player.name1, "shanhetu_beiwang_bailang"); await player.recover(player.maxHp - player.hp);
+			await player.reinitCharacter(player.name1, "shanhetu_beiwang_bailang"); 
 			await player.recover(player.maxHp - player.hp);
 			game.triggerEnter(player);
 		}
@@ -1584,18 +1584,16 @@ export const skills = {
 		forced: true,
 		direct: true,
 		content: function () {
-			'step 0'
-			if (player.isLinked()) player.link();
-			if (player.isTurnedOver()) player.turnOver();
-			player.discard(player.getCards('j'));
-			'step 1'
-			while (_status.event.name != 'phaseLoop') {
-				_status.event = _status.event.parent;
+			const evt = _status.event.getParent("phase", true);
+			if (evt) {
+				game.resetSkills();
+				evt.finish();
+				evt.untrigger(true);
 			}
-			game.resetSkills();
-			// _status.paused = false;
-			_status.event.player = player;
-			_status.event.step = 0;
+			const loop = _status.event.getParent("phaseLoop");
+			if (loop) {
+				loop.player = player.previous;
+			}
 		},
 	},
 
