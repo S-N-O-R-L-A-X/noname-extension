@@ -1570,7 +1570,10 @@ export const skills = {
 		forceDie: true,
 		content: async (event, trigger, player) => {
 			trigger.cancel();
-			await player.reinitCharacter(player.name1, "shanhetu_beiwang_bailang"); 
+			const oldMaxHp = get.character(player.name1).maxHp;
+			await player.reinitCharacter(player.name1, "shanhetu_beiwang_bailang");
+			player.maxHp += get.character("shanhetu_beiwang_bailang").maxHp - oldMaxHp;
+			player.update();
 			await player.recover(player.maxHp - player.hp);
 			game.triggerEnter(player);
 		}
