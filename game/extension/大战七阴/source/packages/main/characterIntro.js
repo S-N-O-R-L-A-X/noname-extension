@@ -191,4 +191,8 @@ export const intro = {
 	"shanhetu_beiwang_hanheng": "来源于山河图北望篇冀州关内韩珩，没有任何改动。<br>【强度】★★★★<br> 【亮点】不动",
 	"shanhetu_beiwang_wocike": "来源于山河图北望篇冀州关内倭刺客，没有任何改动。<br>【强度】★★★★★<br> 【亮点】攻击",
 	"shanhetu_beiwang_huxian": "来源于山河图北望篇冀州关内狐仙，没有任何改动。<br>【强度】★★★★<br> 【亮点】",
+	"shanhetu_beiwang_huanglong": "来源于山河图北望篇冀州关内黄龙，没有任何改动。<br>【强度】★★★★<br> 【亮点】召唤",
+	"shanhetu_beiwang_qingniujiao": "来源于山河图北望篇冀州关内青牛角，没有任何改动。<br>【强度】★★★★<br> 【亮点】",
+	"shanhetu_beiwang_mianyang": "来源于山河图北望篇冀州关内绵羊，没有任何改动。<br>【强度】★★★★★<br> 【亮点】亡语",
+	"shanhetu_beiwang_bailang": "来源于山河图北望篇冀州关内白狼，没有任何改动。<br>【强度】★★★★<br> 【亮点】直伤",
 }

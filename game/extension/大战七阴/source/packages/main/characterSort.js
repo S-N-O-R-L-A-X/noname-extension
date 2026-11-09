@@ -65,7 +65,8 @@ export const sort = {
 			"shanhetu_beiwang_zhongji", "shanhetu_beiwang_zhangxiu", "shanhetu_beiwang_zhaoshi",
 			"shanhetu_beiwang_liangcangzongguan", "shanhetu_beiwang_mitan", "shanhetu_beiwang_zhangyang",
 			"shanhetu_beiwang_dongcheng", "shanhetu_beiwang_qinghegongzhu", "shanhetu_beiwang_hanheng",
-			"shanhetu_beiwang_huxian"
+			"shanhetu_beiwang_wocike", "shanhetu_beiwang_huxian", "shanhetu_beiwang_huanglong",
+			"shanhetu_beiwang_qingniujiao", "shanhetu_beiwang_mianyang", "shanhetu_beiwang_bailang"
 		]
 	}
 }
