@@ -76,6 +76,18 @@ export const card = {
 			},
 			fullimage: true,
 		},
+		"gouxiang": {
+			type: "equip",
+			subtype: "equip2",
+			skills: ["gouxiang_skill"],
+			enable: true,
+			fullimage: true,
+			ai: {
+				basic: {
+					equipValue: 5,
+				},
+			},
+		},
 	},
 	translate: {
 		"qinnu": "秦弩",
@@ -91,6 +103,10 @@ export const card = {
 		"zhenlongchangjian_info": "锁定技，你于一回合内使用的第一张普通锦囊牌不是【无懈可击】的合法目标。",
 		"chuanguoyuxi": "传国玉玺",
 		"chuanguoyuxi_info": "出牌阶段开始时，你可以视为使用一张【南蛮入侵】【万箭齐发】/【桃园结义】/【五谷丰登】。",
+		"gouxiang": "钩镶",
+		"gouxiang_info": "锁定技，当你使用【闪】响应【杀】后，若两张牌花色或点数相同，你随机获得此【杀】使用者一张手牌。",
+		"gouxiang_skill": "钩镶",
+		"gouxiang_skill_info": "锁定技，当你使用【闪】响应【杀】后，若两张牌花色或点数相同，你随机获得此【杀】使用者一张手牌。",
 	},
 	list: [],
 }

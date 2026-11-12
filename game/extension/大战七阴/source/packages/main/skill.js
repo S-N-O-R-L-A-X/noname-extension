@@ -1460,6 +1460,51 @@ export const skills = {
 		}
 	},
 
+	"equip_gouxiang": {
+		forced: true,
+		filter: function (event, player) {
+			return (event.name != 'phase' || game.phaseNumber == 0);
+		},
+		trigger: {
+			global: 'phaseBefore',
+			player: 'enterGame',
+		},
+		content: function () {
+			player.equip(game.createCard2('gouxiang', 'spade', 2));
+		}
+	},
+
+	"gouxiang_skill": {
+		forced: true,
+		trigger: {
+			player: 'respond',
+		},
+		filter: function (event, player) {
+			if (!Array.isArray(event.respondTo)) {
+				return false;
+			}
+			const shan = event.card;
+			const sha = event.respondTo[1];
+			if (get.name(shan) != 'shan' || get.name(sha) != 'sha') {
+				return false;
+			}
+			const shanSuit = get.suit(shan),
+				shaSuit = get.suit(sha);
+			if (shanSuit && shanSuit != 'none' && shanSuit == shaSuit) {
+				return true;
+			}
+			const shanNumber = get.number(shan),
+				shaNumber = get.number(sha);
+			return shanNumber != null && shaNumber != null && shanNumber == shaNumber;
+		},
+		content: function (event, trigger, player) {
+			const source = trigger.respondTo[0];
+			if (source && source.countCards('h')) {
+				player.randomGain(source, 'h');
+			}
+		}
+	},
+
 	"re_boss_reborn_machao": {
 		trigger: {
 			player: 'dieBefore'

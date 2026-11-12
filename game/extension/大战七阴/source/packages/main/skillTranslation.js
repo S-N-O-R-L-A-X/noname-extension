@@ -162,6 +162,8 @@ export const skillTranslation = {
 	"equip_huxinjing_info": "锁定技，游戏开始时，将【护心镜】置入你的装备区。",
 	"equip_cixiongshuanggujian": "双剑",
 	"equip_cixiongshuanggujian_info": "锁定技，游戏开始时，将【雌雄双股剑】置入你的装备区。",
+	"equip_gouxiang": "持镶",
+	"equip_gouxiang_info": "锁定技，游戏开始时，将【钩镶】置入你的装备区。",
 
 	// fusion_shen_sunce
 	"repinghe": "冯河",
