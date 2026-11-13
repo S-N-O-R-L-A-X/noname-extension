@@ -1400,7 +1400,11 @@ export const skills = {
 			player: 'enterGame',
 		},
 		content: function () {
-			player.equip(game.createCard2('longfenghemingjian', 'spade', 2));
+			game.loadModeAsync("boss", mode => {
+				lib.card["longfenghemingjian"] = lib.card["longfenghemingjian"] || mode.card["longfenghemingjian"];
+				lib.translate["longfenghemingjian"] = lib.translate["longfenghemingjian"] || mode.translate["longfenghemingjian"];
+				player.equip(game.createCard2('longfenghemingjian', 'spade', 2));
+			})
 		}
 	},
 
