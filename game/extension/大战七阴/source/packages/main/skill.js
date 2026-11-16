@@ -1608,6 +1608,30 @@ export const skills = {
 		}
 	},
 
+	"reborn_common_revive": {
+		trigger: {
+			player: 'dieAfter'
+		},
+		filter: function (event, player) {
+			return event.rebornTo && event.reserveOut && player.isDead();
+		},
+		forced: true,
+		forceDie: true,
+		forceOut: true,
+		lastDo: true,
+		silent: true,
+		content: async (event, trigger, player) => {
+			const rebornTo = trigger.rebornTo;
+			player.revive(1, false);
+			const oldMaxHp = player.maxHp;
+			await player.reinitCharacter(player.name1, rebornTo);
+			player.maxHp += get.character(rebornTo).maxHp - oldMaxHp;
+			player.update();
+			await player.recover(player.maxHp - player.hp);
+			game.triggerEnter(player);
+		}
+	},
+
 	"reborn_bailang": {
 		trigger: {
 			player: 'dieBefore'
@@ -1619,34 +1643,11 @@ export const skills = {
 		forceDie: true,
 		forceOut: true,
 		priority: 15,
-		group: ["reborn_bailang_revive"],
+		group: ["reborn_common_revive"],
 		content: function (event, trigger, player) {
 			trigger.reserveOut = true;
 			trigger.noDieAudio = true;
-		},
-		subSkill: {
-			revive: {
-				trigger: {
-					player: 'dieAfter'
-				},
-				filter: function (event, player) {
-					return event.reserveOut && player.isDead();
-				},
-				forced: true,
-				forceDie: true,
-				forceOut: true,
-				lastDo: true,
-				silent: true,
-				content: async (event, trigger, player) => {
-					player.revive(1, false);
-					const oldMaxHp = get.character(player.name1).maxHp;
-					await player.reinitCharacter(player.name1, "shanhetu_beiwang_bailang");
-					player.maxHp += get.character("shanhetu_beiwang_bailang").maxHp - oldMaxHp;
-					player.update();
-					await player.recover(player.maxHp - player.hp);
-					game.triggerEnter(player);
-				}
-			}
+			trigger.rebornTo = "shanhetu_beiwang_bailang";
 		}
 	},
 
