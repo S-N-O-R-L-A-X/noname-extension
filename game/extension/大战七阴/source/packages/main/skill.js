@@ -381,7 +381,6 @@ export const skills = {
 			return event && event.player == player && player.isPhaseUsing();
 		},
 		forced: true,
-		onremove: true,
 		firstDo: true,
 		init: function (player, skill) {
 			player.storage.re_boss_jinsuo = 0;
@@ -1608,7 +1607,7 @@ export const skills = {
 		}
 	},
 
-	"reborn_common_revive": {
+	"reborn_common": {
 		trigger: {
 			player: 'dieAfter'
 		},
@@ -1622,13 +1621,16 @@ export const skills = {
 		silent: true,
 		content: async (event, trigger, player) => {
 			const rebornTo = trigger.rebornTo;
+			const info = get.character(rebornTo);
 			player.revive(1, false);
 			const oldMaxHp = player.maxHp;
 			await player.reinitCharacter(player.name1, rebornTo);
-			player.maxHp += get.character(rebornTo).maxHp - oldMaxHp;
+			player.maxHp += info.maxHp - oldMaxHp;
+			player.hujia = info.hujia;
 			player.update();
 			await player.recover(player.maxHp - player.hp);
-			game.triggerEnter(player);
+			await player.draw(4);
+			await game.triggerEnter(player);
 		}
 	},
 
@@ -1643,7 +1645,7 @@ export const skills = {
 		forceDie: true,
 		forceOut: true,
 		priority: 15,
-		group: ["reborn_common_revive"],
+		group: ["reborn_common"],
 		content: function (event, trigger, player) {
 			trigger.reserveOut = true;
 			trigger.noDieAudio = true;
@@ -3186,7 +3188,6 @@ export const skills = {
 		audio: "boss_wangshi",
 		trigger: { global: 'phaseZhunbeiBegin' },
 		forced: true,
-		audio: true,
 		filter: function (event, player) {
 			if (player.getEnemies().contains(event.player)) { return true; }
 			return false;
@@ -7582,7 +7583,6 @@ export const skills = {
 				trigger: {
 					player: 'useCard',
 				},
-				forced: true,
 				filter: function (event, player) {
 					var storage = player.storage.fusion_liuxiang_card;
 					return get.type(event.card) == get.type(storage[0]);
@@ -8419,7 +8419,6 @@ export const skills = {
 			combo: 'guju'
 		},
 		trigger: { global: 'phaseBegin' },
-		forced: true,
 		skillAnimation: true,
 		animationColor: 'thunder',
 		filter: function (event, player) {
