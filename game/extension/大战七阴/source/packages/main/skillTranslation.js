@@ -495,24 +495,24 @@ export const skillTranslation = {
 	"re_boss_kuangxi_info": "出牌阶段，你可以失去1点体力，然后对一名其他角色造成1点伤害，若以此法使其进入濒死状态，则本回合本技能失效。",
 
 	// shanhetu_boss_wuhu_huangzhong
-	"re_boss_reborn_machao": "重生",
-	"re_boss_reborn_machao_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之马超。",
+	"reborn_machao": "重生",
+	"reborn_machao_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之马超。",
 
 	// shanhetu_boss_wuhu_machao
-	"re_boss_reborn_zhaoyun": "重生",
-	"re_boss_reborn_zhaoyun_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之赵云。",
+	"reborn_zhaoyun": "重生",
+	"reborn_zhaoyun_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之赵云。",
 
 	// shanhetu_boss_zhaoyun
-	"re_boss_reborn_zhangfei": "重生",
-	"re_boss_reborn_zhangfei_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之张飞。",
+	"reborn_zhangfei": "重生",
+	"reborn_zhangfei_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之张飞。",
 
 	// shanhetu_boss_zhangfei
-	"re_boss_reborn_guanyu": "重生",
-	"re_boss_reborn_guanyu_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之关羽。",
+	"reborn_guanyu": "重生",
+	"reborn_guanyu_info": "锁定技，当你死亡时，你将此武将牌替换为五虎之关羽。",
 
 	// shanhetu_boss_caoxiancaohua
-	"re_boss_reborn_caoxiancaohua2": "重生",
-	"re_boss_reborn_caoxiancaohua2_info": "锁定技，当你死亡时，你将此武将牌替换为灵杉玉树。",
+	"reborn_caoxiancaohua2": "重生",
+	"reborn_caoxiancaohua2_info": "锁定技，当你死亡时，你将此武将牌替换为灵杉玉树。",
 
 	// shanhetu_boss_caiyong
 	"re_boss_chenghu": "成虎",
@@ -542,8 +542,8 @@ export const skillTranslation = {
 	"re_boss_xietu_info": "当你受到伤害后，你可以弃置1张牌，然后对伤害来源造成同等伤害。",
 
 	// shanhetu_boss_kuileiguowang
-	"re_boss_reborn_yaosengzhenjia": "重生",
-	"re_boss_reborn_yaosengzhenjia_info": "锁定技，当你死亡时，你将此武将牌替换为篡朝妖僧。",
+	"reborn_yaosengzhenjia": "重生",
+	"reborn_yaosengzhenjia_info": "锁定技，当你死亡时，你将此武将牌替换为篡朝妖僧。",
 
 	// shanhetu_boss_chijianwuzhe
 	"re_boss_shihun": "噬魂",

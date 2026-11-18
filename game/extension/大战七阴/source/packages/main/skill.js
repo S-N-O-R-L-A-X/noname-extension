@@ -1508,102 +1508,114 @@ export const skills = {
 		}
 	},
 
-	"re_boss_reborn_machao": {
+	"reborn_machao": {
 		trigger: {
 			player: 'dieBefore'
 		},
 		filter: function (event, player) {
-			return !event.finished;
+			return !event.finished && event.getParent()?.name !== 'giveup' && player.maxHp > 0;
 		},
 		forced: true,
 		forceDie: true,
-		content: async (event, trigger, player) => {
-			trigger.cancel();
-			await player.reinitCharacter(player.name1, "shanhetu_jiangdong_wuhu_machao");
-			await player.recover(player.maxHp - player.hp);
-			game.triggerEnter(player);
+		forceOut: true,
+		priority: 15,
+		group: ["reborn_common"],
+		content: function (event, trigger, player) {
+			trigger.reserveOut = true;
+			trigger.noDieAudio = true;
+			trigger.rebornTo = "shanhetu_jiangdong_wuhu_machao";
 		},
 	},
-	"re_boss_reborn_zhaoyun": {
+	"reborn_zhaoyun": {
 		trigger: {
 			player: 'dieBefore'
 		},
 		filter: function (event, player) {
-			return !event.finished;
+			return !event.finished && event.getParent()?.name !== 'giveup' && player.maxHp > 0;
 		},
 		forced: true,
 		forceDie: true,
-		content: async (event, trigger, player) => {
-			trigger.cancel();
-			await player.reinitCharacter(player.name1, "shanhetu_jiangdong_wuhu_zhaoyun");
-			await player.recover(player.maxHp - player.hp);
-			game.triggerEnter(player);
+		forceOut: true,
+		priority: 15,
+		group: ["reborn_common"],
+		content: function (event, trigger, player) {
+			trigger.reserveOut = true;
+			trigger.noDieAudio = true;
+			trigger.rebornTo = "shanhetu_jiangdong_wuhu_zhaoyun";
 		}
 	},
-	"re_boss_reborn_zhangfei": {
+	"reborn_zhangfei": {
 		trigger: {
 			player: 'dieBefore'
 		},
 		filter: function (event, player) {
-			return !event.finished;
+			return !event.finished && event.getParent()?.name !== 'giveup' && player.maxHp > 0;
 		},
 		forced: true,
 		forceDie: true,
-		content: async (event, trigger, player) => {
-			trigger.cancel();
-			await player.reinitCharacter(player.name1, "shanhetu_jiangdong_wuhu_zhangfei");
-			await player.recover(player.maxHp - player.hp);
-			game.triggerEnter(player);
+		forceOut: true,
+		priority: 15,
+		group: ["reborn_common"],
+		content: function (event, trigger, player) {
+			trigger.reserveOut = true;
+			trigger.noDieAudio = true;
+			trigger.rebornTo = "shanhetu_jiangdong_wuhu_zhangfei";
 		}
 	},
-	"re_boss_reborn_guanyu": {
+	"reborn_guanyu": {
 		trigger: {
 			player: 'dieBefore'
 		},
 		filter: function (event, player) {
-			return !event.finished;
+			return !event.finished && event.getParent()?.name !== 'giveup' && player.maxHp > 0;
 		},
 		forced: true,
 		forceDie: true,
-		content: async (event, trigger, player) => {
-			trigger.cancel();
-			await player.reinitCharacter(player.name1, "shanhetu_jiangdong_wuhu_guanyu");
-			await player.recover(player.maxHp - player.hp);
-			game.triggerEnter(player);
-		}
-	},
-
-	"re_boss_reborn_caoxiancaohua2": {
-		trigger: {
-			player: 'dieBefore'
-		},
-		filter: function (event, player) {
-			return !event.finished;
-		},
-		forced: true,
-		forceDie: true,
-		content: async (event, trigger, player) => {
-			trigger.cancel();
-			await player.reinitCharacter(player.name1, "shanhetu_jiangdong_caoxiancaohua2");
-			await player.recover(player.maxHp - player.hp);
-			game.triggerEnter(player);
+		forceOut: true,
+		priority: 15,
+		group: ["reborn_common"],
+		content: function (event, trigger, player) {
+			trigger.reserveOut = true;
+			trigger.noDieAudio = true;
+			trigger.rebornTo = "shanhetu_jiangdong_wuhu_guanyu";
 		}
 	},
 
-	"re_boss_reborn_yaosengzhenjia": {
+	"reborn_caoxiancaohua2": {
 		trigger: {
 			player: 'dieBefore'
 		},
 		filter: function (event, player) {
-			return !event.finished;
+			return !event.finished && event.getParent()?.name !== 'giveup' && player.maxHp > 0;
 		},
 		forced: true,
 		forceDie: true,
-		content: async (event, trigger, player) => {
-			trigger.cancel();
-			await player.reinitCharacter(player.name1, "shanhetu_boss_yaosengzhenjia");
-			await player.recover(player.maxHp - player.hp);
-			game.triggerEnter(player);
+		forceOut: true,
+		priority: 15,
+		group: ["reborn_common"],
+		content: function (event, trigger, player) {
+			trigger.reserveOut = true;
+			trigger.noDieAudio = true;
+			trigger.rebornTo = "shanhetu_jiangdong_caoxiancaohua2";
+		}
+	},
+
+	"reborn_yaosengzhenjia": {
+		trigger: {
+			player: 'dieBefore'
+		},
+		filter: function (event, player) {
+			return !event.finished && event.getParent()?.name !== 'giveup' && player.maxHp > 0;
+		},
+		forced: true,
+		forceDie: true,
+		forceOut: true,
+		priority: 15,
+		group: ["reborn_common"],
+		content: function (event, trigger, player) {
+			trigger.reserveOut = true;
+			trigger.noDieAudio = true;
+			trigger.rebornTo = "shanhetu_boss_yaosengzhenjia";
 		}
 	},
 
