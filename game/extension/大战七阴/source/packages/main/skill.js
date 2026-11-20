@@ -1,6 +1,35 @@
 import { lib, game, ui, get, ai, _status } from '../../../../../noname.js'
 import { intro } from './characterIntro.js';
 
+function makeRebornRevive() {
+	return {
+		trigger: {
+			player: 'dieAfter'
+		},
+		filter: function (event, player) {
+			return event.rebornTo && event.reserveOut && player.isDead();
+		},
+		forced: true,
+		forceDie: true,
+		forceOut: true,
+		lastDo: true,
+		silent: true,
+		content: async (event, trigger, player) => {
+			const rebornTo = trigger.rebornTo;
+			const info = get.character(rebornTo);
+			player.revive(1, false);
+			const oldMaxHp = player.maxHp;
+			await player.reinitCharacter(player.name1, rebornTo);
+			player.maxHp += info.maxHp - oldMaxHp;
+			player.hujia = info.hujia;
+			player.update();
+			await player.recover(player.maxHp - player.hp);
+			await player.draw(4);
+			await game.triggerEnter(player);
+		}
+	};
+}
+
 export const skills = {
 	shenhu: {
 		mod: {
@@ -1519,7 +1548,10 @@ export const skills = {
 		forceDie: true,
 		forceOut: true,
 		priority: 15,
-		group: ["reborn_common"],
+		group: ["reborn_machao_revive"],
+		subSkill: {
+			revive: makeRebornRevive(),
+		},
 		content: function (event, trigger, player) {
 			trigger.reserveOut = true;
 			trigger.noDieAudio = true;
@@ -1537,7 +1569,10 @@ export const skills = {
 		forceDie: true,
 		forceOut: true,
 		priority: 15,
-		group: ["reborn_common"],
+		group: ["reborn_zhaoyun_revive"],
+		subSkill: {
+			revive: makeRebornRevive(),
+		},
 		content: function (event, trigger, player) {
 			trigger.reserveOut = true;
 			trigger.noDieAudio = true;
@@ -1555,7 +1590,10 @@ export const skills = {
 		forceDie: true,
 		forceOut: true,
 		priority: 15,
-		group: ["reborn_common"],
+		group: ["reborn_zhangfei_revive"],
+		subSkill: {
+			revive: makeRebornRevive(),
+		},
 		content: function (event, trigger, player) {
 			trigger.reserveOut = true;
 			trigger.noDieAudio = true;
@@ -1573,7 +1611,10 @@ export const skills = {
 		forceDie: true,
 		forceOut: true,
 		priority: 15,
-		group: ["reborn_common"],
+		group: ["reborn_guanyu_revive"],
+		subSkill: {
+			revive: makeRebornRevive(),
+		},
 		content: function (event, trigger, player) {
 			trigger.reserveOut = true;
 			trigger.noDieAudio = true;
@@ -1592,7 +1633,10 @@ export const skills = {
 		forceDie: true,
 		forceOut: true,
 		priority: 15,
-		group: ["reborn_common"],
+		group: ["reborn_caoxiancaohua2_revive"],
+		subSkill: {
+			revive: makeRebornRevive(),
+		},
 		content: function (event, trigger, player) {
 			trigger.reserveOut = true;
 			trigger.noDieAudio = true;
@@ -1611,38 +1655,14 @@ export const skills = {
 		forceDie: true,
 		forceOut: true,
 		priority: 15,
-		group: ["reborn_common"],
+		group: ["reborn_yaosengzhenjia_revive"],
+		subSkill: {
+			revive: makeRebornRevive(),
+		},
 		content: function (event, trigger, player) {
 			trigger.reserveOut = true;
 			trigger.noDieAudio = true;
 			trigger.rebornTo = "shanhetu_boss_yaosengzhenjia";
-		}
-	},
-
-	"reborn_common": {
-		trigger: {
-			player: 'dieAfter'
-		},
-		filter: function (event, player) {
-			return event.rebornTo && event.reserveOut && player.isDead();
-		},
-		forced: true,
-		forceDie: true,
-		forceOut: true,
-		lastDo: true,
-		silent: true,
-		content: async (event, trigger, player) => {
-			const rebornTo = trigger.rebornTo;
-			const info = get.character(rebornTo);
-			player.revive(1, false);
-			const oldMaxHp = player.maxHp;
-			await player.reinitCharacter(player.name1, rebornTo);
-			player.maxHp += info.maxHp - oldMaxHp;
-			player.hujia = info.hujia;
-			player.update();
-			await player.recover(player.maxHp - player.hp);
-			await player.draw(4);
-			await game.triggerEnter(player);
 		}
 	},
 
@@ -1657,7 +1677,10 @@ export const skills = {
 		forceDie: true,
 		forceOut: true,
 		priority: 15,
-		group: ["reborn_common"],
+		group: ["reborn_bailang_revive"],
+		subSkill: {
+			revive: makeRebornRevive(),
+		},
 		content: function (event, trigger, player) {
 			trigger.reserveOut = true;
 			trigger.noDieAudio = true;
