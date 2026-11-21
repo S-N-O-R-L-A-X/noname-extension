@@ -1697,14 +1697,30 @@ export const skills = {
 		direct: true,
 		content: function () {
 			const evt = _status.event.getParent("phase", true);
+			const loop = _status.event.getParent("phaseLoop");
+			game.resetSkills();
 			if (evt) {
-				game.resetSkills();
+				// 将当前事件切换为回合事件，使当前结算逐层中断
+				_status.event = evt;
 				evt.finish();
 				evt.untrigger(true);
+				// 提前结束回合，需手动清理回合相关的状态
+				if (evt.player) {
+					game.broadcastAll(current => {
+						current.classList.remove("glow_phase");
+						delete _status.currentPhase;
+					}, evt.player);
+				}
 			}
-			const loop = _status.event.getParent("phaseLoop");
 			if (loop) {
-				loop.player = player.previous;
+				if (loop._isStandardLoop) {
+					// 标准回合循环会在本回合结束后通过findNext寻找下一名角色
+					loop.player = player.previousSeat;
+				} else {
+					// 自定义回合循环（如boss模式）通过goto(0)直接开始新回合
+					loop.player = player;
+					loop.goto(0);
+				}
 			}
 		},
 	},
